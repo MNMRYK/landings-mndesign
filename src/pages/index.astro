@@ -1,43 +1,60 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="refresh" content="2; url=https://mndesignweb.es">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- Redirección inmediata para usuarios, pero con el tiempo suficiente para que cargue -->
+    <meta http-equiv="refresh" content="2; url=https://mndesignweb.es" />
+
+    <!-- ETIQUETA CANÓNICA: La más importante para evitar contenido duplicado -->
+    <link rel="canonical" href="https://mndesignweb.es" />
+
+    <!-- META ROBOTS: Le decimos a Google que indexe el dominio pero que entienda que esta página es solo un puente -->
+    <meta name="robots" content="index, follow" />
+
+    <!-- META DESCRIPTION: Aunque no se vea, Google la lee -->
+    <meta
+      name="description"
+      content="Redirigiendo a MN Design Web, servicios de diseño web profesional."
+    />
     <title>Redirigiendo a MN Design Web...</title>
     <style>
-        body {
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-color: #d1c4e9; 
-            font-family: 'Nunito', sans-serif;
-            color: #1d1231;
+      body {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #d1c4e9;
+        font-family: "Nunito", sans-serif;
+        color: #1d1231;
+      }
+      .container {
+        text-align: center;
+      }
+      .loader {
+        border: 3px solid #efebfc;
+        border-top: 3px solid #7e57c2;
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+        animation: spin 1s linear infinite;
+        margin: 20px auto;
+      }
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
         }
-        .container {
-            text-align: center;
+        100% {
+          transform: rotate(360deg);
         }
-        .loader {
-            border: 3px solid #efebfc;
-            border-top: 3px solid #7e57c2; 
-            border-radius: 50%;
-            width: 30px;
-            height: 30px;
-            animation: spin 1s linear infinite;
-            margin: 20px auto;
-        }
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <div class="container">
-        <div class="loader"></div>
-        <p>Redirigiendo a MN Design Web...</p>
+      <div class="loader"></div>
+      <p>Redirigiendo a MN Design Web...</p>
     </div>
-</body>
+  </body>
 </html>
