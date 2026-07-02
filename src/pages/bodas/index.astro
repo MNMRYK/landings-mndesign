@@ -8,10 +8,18 @@
     <link rel="icon" type="image/webp" href="/favicon_v2.webp" />
     <meta name="robots" content="index, follow" />
     <meta name="theme-color" content="#ece8ff" />
-    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ece8ff" />
-    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#ece8ff" />
+    <meta
+      name="theme-color"
+      media="(prefers-color-scheme: light)"
+      content="#ece8ff"
+    />
+    <meta
+      name="theme-color"
+      media="(prefers-color-scheme: dark)"
+      content="#ece8ff"
+    />
     <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-    
+
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
@@ -164,6 +172,89 @@
           ]
         }
       ]
+    </script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      var localConsent = localStorage.getItem("cookieConsent");
+      if (localConsent === "accepted") {
+        gtag("consent", "default", {
+          ad_storage: "granted",
+          ad_user_data: "granted",
+          ad_personalization: "granted",
+          analytics_storage: "granted",
+        });
+      } else {
+        gtag("consent", "default", {
+          ad_storage: "denied",
+          ad_user_data: "denied",
+          ad_personalization: "denied",
+          analytics_storage: "denied",
+          wait_for_update: 500,
+        });
+      }
+    </script>
+
+    <script
+      is:inline
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-36WYJMYT3Z"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-36WYJMYT3Z");
+    </script>
+
+    <script is:inline>
+      !(function (f, b, e, v, n, t, s) {
+        if (f.fbq) return;
+        n = f.fbq = function () {
+          n.callMethod
+            ? n.callMethod.apply(n, arguments)
+            : n.queue.push(arguments);
+        };
+        if (!f._fbq) f._fbq = n;
+        n.push = n;
+        n.loaded = !0;
+        n.version = "2.0";
+        n.queue = [];
+        t = b.createElement(e);
+        t.async = !0;
+        t.src = v;
+        s = b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t, s);
+      })(
+        window,
+        document,
+        "script",
+        "https://connect.facebook.net/en_US/fbevents.js",
+      );
+      var localConsent = localStorage.getItem("cookieConsent");
+      if (localConsent !== "accepted") {
+        fbq("consent", "revoke");
+      }
+      fbq("init", "1627135808585120");
+      fbq("track", "PageView");
+    </script>
+
+    <script is:inline type="text/javascript">
+      (function (c, l, a, r, i, t, y) {
+        c[a] =
+          c[a] ||
+          function () {
+            (c[a].q = c[a].q || []).push(arguments);
+          };
+        t = l.createElement(r);
+        t.async = 1;
+        t.src = "https://www.clarity.ms/tag/" + i;
+        y = l.getElementsByTagName(r)[0];
+        y.parentNode.insertBefore(t, y);
+      })(window, document, "clarity", "script", "wuzaxaifa0");
     </script>
   </head>
   <body
@@ -385,9 +476,9 @@
               </div>
               <h3>Navegación GPS</h3>
               <p>
-                Adiós a las pérdidas de última hora. Enlazamos directamente
-                con mapas interactivos para guiar a todos hasta la puerta del
-                evento sin estrés.
+                Adiós a las pérdidas de última hora. Enlazamos directamente con
+                mapas interactivos para guiar a todos hasta la puerta del evento
+                sin estrés.
               </p>
             </div>
 
@@ -398,8 +489,8 @@
               <h3>Timeline del Evento</h3>
               <p>
                 El timing perfecto, diseñado paso a paso. Desde el primer
-                brindis hasta el último baile, todo organizado visualmente
-                para que nadie se pierda nada.
+                brindis hasta el último baile, todo organizado visualmente para
+                que nadie se pierda nada.
               </p>
             </div>
 
@@ -409,9 +500,9 @@
               </div>
               <h3>Cuenta Atrás en Directo</h3>
               <p>
-                Aumenta la expectación de tus invitados con un contador
-                dinámico que marca los días, horas y minutos exactos que
-                faltan para el "sí, quiero".
+                Aumenta la expectación de tus invitados con un contador dinámico
+                que marca los días, horas y minutos exactos que faltan para el
+                "sí, quiero".
               </p>
             </div>
 
@@ -433,9 +524,9 @@
               </div>
               <h3>Código de Vestimenta</h3>
               <p>
-                Establece la etiqueta clara desde el principio. Define el
-                estilo visual de vuestra boda para que todo el mundo acierte
-                de lleno con su look.
+                Establece la etiqueta clara desde el principio. Define el estilo
+                visual de vuestra boda para que todo el mundo acierte de lleno
+                con su look.
               </p>
             </div>
 
@@ -446,8 +537,8 @@
               <h3>Recomendaciones de Alojamiento</h3>
               <p>
                 Cuida a los que vienen de fuera con un listado exclusivo de
-                vuestros hoteles de confianza y enlaces directos para
-                facilitar sus reservas.
+                vuestros hoteles de confianza y enlaces directos para facilitar
+                sus reservas.
               </p>
             </div>
 
@@ -470,8 +561,7 @@
               <h3>Galería Post-Evento</h3>
               <p>
                 El día no acaba al amanecer. Un rincón privado donde amigos y
-                familiares podrán revivir la magia subiendo sus propios
-                fotones.
+                familiares podrán revivir la magia subiendo sus propios fotones.
               </p>
             </div>
 
@@ -505,17 +595,15 @@
 
       <section class="pricing-section">
         <div class="container">
-          <h2 class="section-title">
-            Elige el plan perfecto para tu gran día
-          </h2>
+          <h2 class="section-title">Elige el plan perfecto para tu gran día</h2>
 
           <div class="pricing-grid">
             <div class="pricing-card">
               <h3 class="plan-name">Digital Básico</h3>
               <div class="plan-price"><span>Desde</span> 100€</div>
               <p class="plan-desc">
-                La opción ideal para parejas prácticas que buscan sorprender
-                con una invitación interactiva y elegante.
+                La opción ideal para parejas prácticas que buscan sorprender con
+                una invitación interactiva y elegante.
               </p>
               <ul class="plan-features">
                 <li>
@@ -539,9 +627,8 @@
                   <span>Hasta 6 funciones a escoger</span>
                 </li>
               </ul>
-              <a
-                href="?plan=basico#formulario-boda"
-                class="btn-mockup-precios">Seleccionar Plan</a
+              <a href="?plan=basico#formulario-boda" class="btn-mockup-precios"
+                >Seleccionar Plan</a
               >
             </div>
 
@@ -550,8 +637,8 @@
               <h3 class="plan-name">Digital + Gestión</h3>
               <div class="plan-price"><span>Desde</span> 150€</div>
               <p class="plan-desc">
-                La herramienta definitiva. Sorprende a tus invitados y
-                organiza tu boda sin estrés desde un solo lugar.
+                La herramienta definitiva. Sorprende a tus invitados y organiza
+                tu boda sin estrés desde un solo lugar.
               </p>
               <ul class="plan-features">
                 <li>
@@ -604,18 +691,15 @@
                 </li>
                 <li>
                   <i class="fa-solid fa-check"></i>
-                  <span
-                    ><em>Save the Date</em> (Recordatorio 1 año antes)</span
-                  >
+                  <span><em>Save the Date</em> (Recordatorio 1 año antes)</span>
                 </li>
                 <li>
                   <i class="fa-solid fa-check"></i>
                   <span>Diseño adaptado para imprimir</span>
                 </li>
               </ul>
-              <a
-                href="?plan=premium#formulario-boda"
-                class="btn-mockup-precios">Seleccionar Plan</a
+              <a href="?plan=premium#formulario-boda" class="btn-mockup-precios"
+                >Seleccionar Plan</a
               >
             </div>
           </div>
@@ -796,8 +880,7 @@
                     <i class="fa-solid fa-circle-check"></i>
                   </span>
                 </span>
-                Elige el día que mejor te venga y hablemos de cómo hacer vuestro
-                diseño.
+                Elige el día que mejor te venga y hablemos de cómo hacer vuestro diseño.
               </li>
               <li>
                 <span class="check-icon">
@@ -874,7 +957,6 @@
       </section>
 
       <section class="faq-section">
-
         <div class="faq-container">
           <h2 class="section-main-title text-center">Preguntas Frecuentes</h2>
 
@@ -962,7 +1044,6 @@
           </div>
         </div>
       </footer>
-
     </main>
 
     <div id="cookie-banner" class="cookie-card-uiverse" style="display: none;">
@@ -985,7 +1066,9 @@
       <p class="cookieDescription">
         Utilizamos cookies para darte la mejor experiencia en nuestra web. <br
         />
-        <a class="cookielink" href="https://mndesignweb.es/cookies">Ver políticas de cookies</a>
+        <a class="cookielink" href="https://mndesignweb.es/cookies"
+          >Ver políticas de cookies</a
+        >
       </p>
 
       <div class="buttonContainer">
@@ -995,26 +1078,26 @@
     </div>
   </body>
 
-  <script>
+  <script is:inline>
     window.addEventListener("DOMContentLoaded", () => {
-      // 1. Lógica del desplegable según la URL
+      // Lógica del desplegable según la URL
       const plan = new URLSearchParams(window.location.search).get("plan");
       if (plan) {
         const selectPlan = document.getElementById("plan-seleccionado");
-        selectPlan.value = plan;
-        if (selectPlan.value !== plan) {
-          selectPlan.selectedIndex = 0;
-        }
-        const seccionContacto = document.getElementById("contacto");
-        if (seccionContacto) {
-          seccionContacto.scrollIntoView({ behavior: "smooth" });
+        if (selectPlan) {
+          selectPlan.value = plan;
+          if (selectPlan.value !== plan) {
+            selectPlan.selectedIndex = 0;
+          }
+          const seccionContacto = document.getElementById("contacto");
+          if (seccionContacto) {
+            seccionContacto.scrollIntoView({ behavior: "smooth" });
+          }
         }
       }
 
-      // 2. Lógica del Formulario
+      // Lógica del Formulario
       const formBoda = document.getElementById("formulario-boda");
-
-      // Verificamos que el formulario existe para evitar errores en consola
       if (formBoda) {
         formBoda.addEventListener("submit", function (e) {
           e.preventDefault();
@@ -1053,7 +1136,7 @@
             .then(async (results) => {
               const result = await results[0].json();
               if (result.success) {
-                // 🔥 EVENTOS DE CONVERSIÓN PARA META, ANALYTICS Y CLARITY 🔥
+                // Eventos de conversión
                 if (typeof gtag === "function")
                   gtag("event", "generate_lead", { currency: "EUR", value: 0 });
                 if (typeof fbq === "function") fbq("track", "Lead");
@@ -1081,57 +1164,45 @@
       const cookieBanner = document.getElementById("cookie-banner");
       const acceptBtn = document.getElementById("btn-accept-cookies");
       const declineBtn = document.getElementById("btn-decline-cookies");
-
-      // 1. Comprobamos si el usuario ya ha tomado una decisión previamente
       const consent = localStorage.getItem("cookieConsent");
 
-      if (!consent) {
-        // Si no hay decisión, mostramos el banner.
-        // Usamos "flex" porque tu CSS .cookie-card-uiverse usa display: flex
+      if (!consent && cookieBanner) {
         cookieBanner.style.display = "flex";
       }
 
-      // 2. Acción al Aceptar
-      acceptBtn.addEventListener("click", () => {
-        localStorage.setItem("cookieConsent", "accepted");
-        cookieBanner.style.display = "none";
+      if (acceptBtn) {
+        acceptBtn.addEventListener("click", () => {
+          localStorage.setItem("cookieConsent", "accepted");
+          cookieBanner.style.display = "none";
 
-        // Activamos Google Analytics
-        if (typeof gtag === "function") {
-          gtag("consent", "update", {
-            ad_storage: "granted",
-            ad_user_data: "granted",
-            ad_personalization: "granted",
-            analytics_storage: "granted",
-          });
-        }
+          if (typeof gtag === "function") {
+            gtag("consent", "update", {
+              ad_storage: "granted",
+              ad_user_data: "granted",
+              ad_personalization: "granted",
+              analytics_storage: "granted",
+            });
+          }
+          if (typeof clarity === "function") clarity("consent");
+          if (typeof fbq === "function") fbq("consent", "grant");
+        });
+      }
 
-        // Activamos Microsoft Clarity
-        if (typeof clarity === "function") {
-          clarity("consent");
-        }
+      if (declineBtn) {
+        declineBtn.addEventListener("click", () => {
+          localStorage.setItem("cookieConsent", "declined");
+          cookieBanner.style.display = "none";
 
-        // Activamos Meta Pixel
-        if (typeof fbq === "function") {
-          fbq("consent", "grant");
-        }
-      });
-
-      // 3. Acción al Rechazar
-      declineBtn.addEventListener("click", () => {
-        localStorage.setItem("cookieConsent", "declined");
-        cookieBanner.style.display = "none";
-
-        // Aseguramos que Google mantenga el rechazo
-        if (typeof gtag === "function") {
-          gtag("consent", "update", {
-            ad_storage: "denied",
-            ad_user_data: "denied",
-            ad_personalization: "denied",
-            analytics_storage: "denied",
-          });
-        }
-      });
+          if (typeof gtag === "function") {
+            gtag("consent", "update", {
+              ad_storage: "denied",
+              ad_user_data: "denied",
+              ad_personalization: "denied",
+              analytics_storage: "denied",
+            });
+          }
+        });
+      }
     });
   </script>
 </html>
@@ -1676,7 +1747,7 @@
   .invitaciones-section {
     padding: 80px 20px 100px;
     background-color: var(--fondo-claro); /* Tono arena claro */
-  
+
     text-align: center;
   }
 
@@ -2632,7 +2703,6 @@
   }
 
   @media (max-width: 1024px) {
-
     .faq-section {
       padding: 50px 20px 50px;
       background-color: var(--fondo-oscuro, #1a102d);

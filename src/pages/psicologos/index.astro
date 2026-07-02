@@ -41,7 +41,10 @@
 
     <!-- OPEN GRAPH (Facebook, LinkedIn, WhatsApp) -->
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://descubre.mndesignweb.es/psicologos" />
+    <meta
+      property="og:url"
+      content="https://descubre.mndesignweb.es/psicologos"
+    />
     <meta
       property="og:title"
       content="Diseño Web Profesional para Psicólogos | MN Design Web"
@@ -58,7 +61,10 @@
 
     <!-- TWITTER CARDS (X) -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:url" content="https://descubre.mndesignweb.es/psicologos" />
+    <meta
+      name="twitter:url"
+      content="https://descubre.mndesignweb.es/psicologos"
+    />
     <meta
       name="twitter:title"
       content="Diseño Web Profesional para Psicólogos | MN Design Web"
@@ -178,6 +184,89 @@
           ]
         }
       ]
+    </script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      var localConsent = localStorage.getItem("cookieConsent");
+      if (localConsent === "accepted") {
+        gtag("consent", "default", {
+          ad_storage: "granted",
+          ad_user_data: "granted",
+          ad_personalization: "granted",
+          analytics_storage: "granted",
+        });
+      } else {
+        gtag("consent", "default", {
+          ad_storage: "denied",
+          ad_user_data: "denied",
+          ad_personalization: "denied",
+          analytics_storage: "denied",
+          wait_for_update: 500,
+        });
+      }
+    </script>
+
+    <script
+      is:inline
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-36WYJMYT3Z"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-36WYJMYT3Z");
+    </script>
+
+    <script is:inline>
+      !(function (f, b, e, v, n, t, s) {
+        if (f.fbq) return;
+        n = f.fbq = function () {
+          n.callMethod
+            ? n.callMethod.apply(n, arguments)
+            : n.queue.push(arguments);
+        };
+        if (!f._fbq) f._fbq = n;
+        n.push = n;
+        n.loaded = !0;
+        n.version = "2.0";
+        n.queue = [];
+        t = b.createElement(e);
+        t.async = !0;
+        t.src = v;
+        s = b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t, s);
+      })(
+        window,
+        document,
+        "script",
+        "https://connect.facebook.net/en_US/fbevents.js",
+      );
+      var localConsent = localStorage.getItem("cookieConsent");
+      if (localConsent !== "accepted") {
+        fbq("consent", "revoke");
+      }
+      fbq("init", "1627135808585120");
+      fbq("track", "PageView");
+    </script>
+
+    <script is:inline type="text/javascript">
+      (function (c, l, a, r, i, t, y) {
+        c[a] =
+          c[a] ||
+          function () {
+            (c[a].q = c[a].q || []).push(arguments);
+          };
+        t = l.createElement(r);
+        t.async = 1;
+        t.src = "https://www.clarity.ms/tag/" + i;
+        y = l.getElementsByTagName(r)[0];
+        y.parentNode.insertBefore(t, y);
+      })(window, document, "clarity", "script", "wuzaxaifa0");
     </script>
   </head>
   <body
@@ -1039,7 +1128,7 @@
     </div>
   </body>
 
-  <script>
+  <script is:inline>
     window.addEventListener("DOMContentLoaded", () => {
       // 1. Lógica del desplegable según la URL (Adaptado a "servicio")
       const servicioParam = new URLSearchParams(window.location.search).get(
@@ -1058,22 +1147,19 @@
 
       // 2. Lógica del Formulario (Adaptado a Clínicas)
       const formClinica = document.getElementById("formulario");
-
-      // Verificamos que el formulario existe para evitar errores en consola
       if (formClinica) {
         formClinica.addEventListener("submit", function (e) {
           e.preventDefault();
-
           const btn = document.getElementById("btn-submit");
           btn.innerText = "Enviando...";
           btn.disabled = true;
 
           const data = {
             access_key: "1bc2d285-71cb-4fe3-806f-530066ab6e15",
-            subject: "Nuevo Lead: Psicólogos / Clínicas", // Asunto actualizado
+            subject: "Nuevo Lead: Psicólogos / Clínicas",
             nombre: document.getElementById("nombre").value,
             email: document.getElementById("email").value,
-            servicio: document.getElementById("servicio").value, // Capturamos el nuevo select
+            servicio: document.getElementById("servicio").value,
           };
 
           Promise.all([
@@ -1097,12 +1183,12 @@
             .then(async (results) => {
               const result = await results[0].json();
               if (result.success) {
-                // 🔥 EVENTOS DE CONVERSIÓN PARA META, ANALYTICS Y CLARITY 🔥
+                // Eventos de conversión para Meta, Analytics y Clarity
                 if (typeof gtag === "function")
                   gtag("event", "generate_lead", { currency: "EUR", value: 0 });
                 if (typeof fbq === "function") fbq("track", "Lead");
                 if (typeof clarity === "function")
-                  clarity("set", "lead", "clinica"); // Etiqueta actualizada
+                  clarity("set", "lead", "clinica");
 
                 alert(
                   "¡Solicitud recibida! Analizaré tu caso personalmente y te contactaré pronto.",
@@ -1116,60 +1202,53 @@
               alert("Hubo un error. Por favor, inténtalo de nuevo.");
             })
             .finally(() => {
-              btn.innerText = "Enviar solicitud de auditoría"; // Texto original del botón restaurado
+              btn.innerText = "Enviar solicitud de auditoría";
               btn.disabled = false;
             });
         });
       }
     });
 
-    // 3. Lógica del Banner de Cookies (Esta parte estaba perfecta, no hay que tocarla)
+    // 3. Lógica del Banner de Cookies
     window.addEventListener("DOMContentLoaded", () => {
       const cookieBanner = document.getElementById("cookie-banner");
       const acceptBtn = document.getElementById("btn-accept-cookies");
       const declineBtn = document.getElementById("btn-decline-cookies");
-
       const consent = localStorage.getItem("cookieConsent");
 
-      if (!consent) {
+      if (!consent && cookieBanner) {
         cookieBanner.style.display = "flex";
       }
 
-      acceptBtn.addEventListener("click", () => {
-        localStorage.setItem("cookieConsent", "accepted");
-        cookieBanner.style.display = "none";
+      if (acceptBtn) {
+        acceptBtn.addEventListener("click", () => {
+          localStorage.setItem("cookieConsent", "accepted");
+          cookieBanner.style.display = "none";
+          if (typeof gtag === "function")
+            gtag("consent", "update", {
+              ad_storage: "granted",
+              ad_user_data: "granted",
+              ad_personalization: "granted",
+              analytics_storage: "granted",
+            });
+          if (typeof clarity === "function") clarity("consent");
+          if (typeof fbq === "function") fbq("consent", "grant");
+        });
+      }
 
-        if (typeof gtag === "function") {
-          gtag("consent", "update", {
-            ad_storage: "granted",
-            ad_user_data: "granted",
-            ad_personalization: "granted",
-            analytics_storage: "granted",
-          });
-        }
-
-        if (typeof clarity === "function") {
-          clarity("consent");
-        }
-
-        if (typeof fbq === "function") {
-          fbq("consent", "grant");
-        }
-      });
-
-      declineBtn.addEventListener("click", () => {
-        localStorage.setItem("cookieConsent", "declined");
-        cookieBanner.style.display = "none";
-
-        if (typeof gtag === "function") {
-          gtag("consent", "update", {
-            ad_storage: "denied",
-            ad_user_data: "denied",
-            ad_personalization: "denied",
-            analytics_storage: "denied",
-          });
-        }
-      });
+      if (declineBtn) {
+        declineBtn.addEventListener("click", () => {
+          localStorage.setItem("cookieConsent", "declined");
+          cookieBanner.style.display = "none";
+          if (typeof gtag === "function")
+            gtag("consent", "update", {
+              ad_storage: "denied",
+              ad_user_data: "denied",
+              ad_personalization: "denied",
+              analytics_storage: "denied",
+            });
+        });
+      }
     });
   </script>
 </html>
