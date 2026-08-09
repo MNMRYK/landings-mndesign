@@ -581,9 +581,9 @@
               hundirá tu web.
             </p>
           </div>
-          <form class="lm-form" onsubmit="event.preventDefault();">
-            <input type="email" placeholder="Tu mejor email" required />
-            <button type="submit" class="btn btn-dark"
+          <form id="form-lead-magnet" class="lm-form">
+            <input type="email" id="lm-email" placeholder="Tu mejor email" required />
+            <button type="submit" id="btn-lm-submit" class="btn btn-dark"
               >Descargar PDF gratis</button
             >
           </form>
@@ -1564,6 +1564,65 @@
               .finally(() => {
                 btn.innerText = "Bloquear mi sesión ahora";
                 btn.disabled = false;
+              });
+          });
+        }
+
+        // --- 2.5 LÓGICA DEL LEAD MAGNET (PDF) ---
+        const formLeadMagnet = document.getElementById("form-lead-magnet");
+
+        if (formLeadMagnet) {
+          formLeadMagnet.addEventListener("submit", function (e) {
+            e.preventDefault();
+            const btnLM = document.getElementById("btn-lm-submit");
+            btnLM.innerText = "Enviando...";
+            btnLM.disabled = true;
+
+            const dataLM = {
+              access_key: "1bc2d285-71cb-4fe3-806f-530066ab6e15", // Tu API Web3Forms
+              subject: "🚀 Nuevo Lead (Descarga PDF Shopify)",
+              email: document.getElementById("lm-email").value,
+              tipo_lead: "Lead Magnet PDF" // Etiqueta clave para diferenciarlo en Make
+            };
+
+            Promise.all([
+              fetch("https://api.web3forms.com/submit", {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                  Accept: "application/json",
+                },
+                body: JSON.stringify(dataLM),
+              }),
+              fetch(
+                "https://hook.eu1.make.com/mxvqg7gwne43yab165v2uhtyw5yh115r",
+                {
+                  method: "POST",
+                  headers: { "Content-Type": "application/json" },
+                  body: JSON.stringify(dataLM),
+                }
+              ),
+            ])
+              .then(async (results) => {
+                const result = await results[0].json();
+                if (result.success) {
+                  // Tracking del Lead
+                  if (typeof gtag === "function") gtag("event", "generate_lead", { currency: "EUR", value: 0 });
+                  if (typeof fbq === "function") fbq("track", "Lead");
+                  if (typeof clarity === "function") clarity("set", "lead", "shopify_pdf");
+
+                  alert("¡Genial! 📩 Revisa tu bandeja de entrada (y la carpeta de spam). Te acabo de enviar el enlace para descargar el PDF.");
+                  formLeadMagnet.reset();
+                } else {
+                  throw new Error("Error en el envío");
+                }
+              })
+              .catch(() => {
+                alert("Hubo un error. Por favor, inténtalo de nuevo.");
+              })
+              .finally(() => {
+                btnLM.innerText = "Descargar PDF gratis";
+                btnLM.disabled = false;
               });
           });
         }
