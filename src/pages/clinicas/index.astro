@@ -959,6 +959,16 @@
               </div>
 
               <div class="form-grupo">
+                <label>Teléfono de contacto</label>
+                <input
+                  type="tel"
+                  id="telefono"
+                  placeholder="+34 600 000 000"
+                  required
+                />
+              </div>
+
+              <div class="form-grupo">
                 <label>¿Qué necesitas implementar principalmente?</label>
                 <select id="servicio" required>
                   <option value="">Selecciona una opción</option>
@@ -1394,6 +1404,7 @@
             subject: "Nuevo Lead: Psicólogos / Clínicas",
             nombre: document.getElementById("nombre").value,
             email: document.getElementById("email").value,
+            telefono: document.getElementById("telefono").value,
             servicio: document.getElementById("servicio").value,
             mensaje: document.getElementById("mensaje").value,
           };

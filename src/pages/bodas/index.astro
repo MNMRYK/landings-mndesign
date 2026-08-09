@@ -930,6 +930,16 @@
                 />
               </div>
 
+              <div class="form-grupo">
+                <label>Teléfono de contacto</label>
+                <input
+                  type="tel"
+                  id="telefono"
+                  placeholder="+34 600 000 000"
+                  required
+                />
+              </div>
+
               <div class="diseno-form-grupo">
                 <label>Fecha del Evento (Aprox)</label>
                 <input type="date" id="fecha" required />
@@ -1112,6 +1122,7 @@
             nombre: document.getElementById("nombre").value,
             email: document.getElementById("email").value,
             fecha: document.getElementById("fecha").value,
+            telefono: document.getElementById("telefono").value,
             plan: document.getElementById("plan-seleccionado").value,
           };
 
