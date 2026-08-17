@@ -2756,9 +2756,9 @@
     color: var(--text-muted);
   }
 
-  /* ==========================================
-     BANNER COOKIES (Tonos Terracota)
-     ========================================== */
+/* ==========================================
+   BANNER COOKIES (Tonos Verdes / Bienestar)
+   ========================================== */
 
   .cookie-card-uiverse {
     width: 480px;
@@ -2776,7 +2776,7 @@
     bottom: 30px;
     left: 30px;
     z-index: 999999;
-    box-shadow: 0 20px 40px rgba(163, 87, 64, 0.15);
+    box-shadow: 0 20px 40px rgba(45, 106, 79, 0.15);
     font-family: "Nunito", sans-serif;
   }
 
@@ -2785,7 +2785,7 @@
   }
 
   #cookieSvg g path {
-    fill: #1b4332;
+    fill: var(--psico-primary);
   }
 
   .cookieHeading {
@@ -2806,28 +2806,18 @@
     line-height: 1.6;
   }
 
-  .cookielink {
-    color: #1b4332;
-    text-decoration: none;
-    font-weight: 700;
-    display: block;
-    margin-top: 15px;
-  }
-
-  .cookielink:hover {
-    text-decoration-line: underline;
-    color: #1b4332;
-    border-color: #1b4332;
-  }
-
+  .cookielink,
   .cookieDescription a {
-    color: #1b4332;
+    color: var(--psico-primary);
     text-decoration: none;
     font-weight: 700;
+    display: inline-block;
   }
 
+  .cookielink:hover,
   .cookieDescription a:hover {
     text-decoration-line: underline;
+    color: var(--text-primary);
   }
 
   .buttonContainer {
@@ -2839,33 +2829,34 @@
     justify-content: center;
   }
 
+  /* Botón Principal (Aceptar): Destaca con tu verde principal */
   .acceptButton {
     width: 140px;
     height: 40px;
-    background-color: #1b4332;
+    background-color: var(--psico-primary);
     border: none;
-    color: white;
+    color: var(--fondo-claro);
     cursor: pointer;
     font-weight: 700;
     border-radius: 20px;
-    box-shadow: 0 10px 25px rgba(27, 67, 50, 0.25);
+    box-shadow: 0 10px 25px rgba(45, 106, 79, 0.25);
     transition: all 0.3s ease;
     font-size: 1em;
     font-family: "Nunito", sans-serif;
   }
 
   .acceptButton:hover {
-    color: #1b4332;
-    border-color: #1b4332;
+    background-color: var(--text-primary);
     transform: translateY(-2px);
   }
 
+  /* Botón Secundario (Rechazar): Limpio, sutil y con contraste real */
   .declineButton {
     width: 140px;
     height: 40px;
-    background-color: #3b5e3a;
-    color: #1b4332;
-    border: 1px solid rgba(27, 67, 50, 0.3);
+    background-color: transparent;
+    color: var(--text-muted);
+    border: 1px solid var(--border-color);
     cursor: pointer;
     font-weight: 700;
     border-radius: 20px;
@@ -2875,10 +2866,11 @@
   }
 
   .declineButton:hover {
-    background-color: #1b4332;
+    background-color: var(--psico-light);
+    color: var(--text-primary);
+    border-color: var(--text-muted);
     transform: translateY(-2px);
   }
-
 
   /* ==========================================
      RESPONSIVE (MEDIA QUERIES)
