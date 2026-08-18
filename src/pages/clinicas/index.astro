@@ -104,16 +104,10 @@
         },
         {
           "@context": "https://schema.org/",
-          "@type": "Product",
+          "@type": "Service",
           "name": "Portal de Salud y Academia Clínicas Nutrición",
           "image": "https://descubre.mndesignweb.es/imagen-miniatura-clinicas.webp",
-          "description": "Creación e integración a medida de portales de paciente, áreas formativas y sistemas de gestión automatizados para clínicas de salud.",
-          "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "5.0",
-            "bestRating": "5",
-            "ratingCount": "32"
-          }
+          "description": "Creación e integración a medida de portales de paciente, áreas formativas y sistemas de gestión automatizados para clínicas de salud."
         },
         {
           "@context": "https://schema.org",
@@ -331,7 +325,12 @@
           <div class="hero-visuals desktop-only">
             <div class="mac-mockup">
               <!-- Cambia esto por una captura de tu demo de psicólogo -->
-              <img src="/hero-clinica.webp" alt="Web de Clínica en Mac" />
+              <img
+                src="/hero-clinica.webp"
+                alt="Software y web a medida para clínicas de nutrición"
+                width="800"
+                height="600"
+              />
             </div>
           </div>
         </div>
@@ -374,8 +373,11 @@
                 </div>
                 <img
                   src="/cursos.webp"
-                  alt="Aula Virtual"
+                  alt="Aula virtual integrada para pacientes de nutrición"
                   class="mockup-img-browser"
+                  width="500"
+                  height="250"
+                  loading="lazy"
                 />
               </div>
             </div>
@@ -397,6 +399,9 @@
                   src="/pacientes.webp"
                   alt="Panel privado del portal del paciente centralizado"
                   class="mockup-img-browser"
+                  width="500"
+                  height="250"
+                  loading="lazy"
                 />
               </div>
             </div>
@@ -434,6 +439,9 @@
                   src="/alertas.webp"
                   alt="Sistema de notificaciones y alertas automatizadas para pacientes"
                   class="mockup-img-browser"
+                  width="500"
+                  height="250"
+                  loading="lazy"
                 />
               </div>
             </div>
@@ -490,6 +498,9 @@
                   src="/recursos.webp"
                   alt="Mockup de plataforma con recursos clínicos y documentos descargables"
                   class="mockup-img-browser"
+                  width="500"
+                  height="250"
+                  loading="lazy"
                 />
               </div>
             </div>
@@ -509,8 +520,11 @@
                 </div>
                 <img
                   src="/calendario.webp"
-                  alt="Videoconsulta segura"
+                  alt="Sistema de agenda y calendario automatizado para clínicas"
                   class="mockup-img-browser"
+                  width="500"
+                  height="250"
+                  loading="lazy"
                 />
               </div>
             </div>
@@ -567,6 +581,9 @@
                   src="/facturacion.webp"
                   alt="Interfaz de facturación electrónica y ERP para clínicas"
                   class="mockup-img-browser"
+                  width="500"
+                  height="250"
+                  loading="lazy"
                 />
               </div>
             </div>
@@ -902,7 +919,7 @@
             </div>
             <div class="cal-widget">
               <iframe
-                src="https://cal.com/mndesignweb/reunion-30-min"
+                src="https://cal.com/mndesignweb/reunion-30-min?embed=true"
                 title="Reserva tu cita"
                 class="calendar-iframe"
                 width="100%"
@@ -1722,7 +1739,12 @@
   .btn-secondary:hover {
     color: #1b4332;
     border-color: #1b4332; /* El borde adopta el tono verde principal */
-    background-color: rgba(27, 67, 50, 0.04); /* Fondo sutilísimo al hacer hover */
+    background-color: rgba(
+      27,
+      67,
+      50,
+      0.04
+    ); /* Fondo sutilísimo al hacer hover */
     transform: translateY(-2px);
   }
 
@@ -2261,15 +2283,17 @@
   }
 
   .cal-widget {
+    margin: 2rem 0 0 0;
     width: 100%;
-    height: 460px;
-    background: var(--psico-light);
-    border: 2px solid rgba(166, 114, 255, 0.15);
-    border-radius: 30px;
+    height: 400px;
+    background: var(--white);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    box-shadow: var(--shadow-sm);
     position: relative;
   }
+
 
   /* Iframe limpio: sin escalas, sin transformaciones raras */
   .calendar-iframe {
@@ -2756,7 +2780,7 @@
     color: var(--text-muted);
   }
 
-/* ==========================================
+  /* ==========================================
    BANNER COOKIES (Tonos Verdes / Bienestar)
    ========================================== */
 
