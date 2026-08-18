@@ -368,7 +368,12 @@
 
           <!-- Columna Derecha: Imagen -->
           <div class="hero-image">
-            <img src="/shopify/2.webp" alt="Plataforma Shopify Optimizada y Desarrollo E-commerce" width="800" height="600" />
+            <img
+              src="/shopify/2.webp"
+              alt="Plataforma Shopify Optimizada y Desarrollo E-commerce"
+              width="800"
+              height="600"
+            />
           </div>
         </div>
       </section>
@@ -427,7 +432,14 @@
 
             <!-- TARJETA VISUAL GIGANTE (Con tu imagen 1.webp) -->
             <div class="glass-card visual-card">
-              <img src="/shopify/1.webp" alt="Panel de gestión de Shopify para mentorías técnicas" class="floating-bag" width="400" height="400" loading="lazy" />
+              <img
+                src="/shopify/1.webp"
+                alt="Panel de gestión de Shopify para mentorías técnicas"
+                class="floating-bag"
+                width="400"
+                height="400"
+                loading="lazy"
+              />
               <div class="visual-card-content">
                 <h3>Tu ecosistema, bajo control</h3>
                 <p>
@@ -594,7 +606,14 @@
       <!-- 3. PRICING -->
       <section id="precios" class="pricing">
         <!-- Imagen de fondo (Marca de agua) -->
-        <img src="/shopify/5.webp" alt="Decoración visual E-commerce" class="pricing-bg-image" width="400" height="400" loading="lazy" />
+        <img
+          src="/shopify/5.webp"
+          alt="Decoración visual E-commerce"
+          class="pricing-bg-image"
+          width="400"
+          height="400"
+          loading="lazy"
+        />
 
         <div class="container">
           <div class="pricing-header">
@@ -922,7 +941,14 @@
           <!-- NUEVO: Imagen encapsulada en una Tarjeta Blanca -->
           <div class="dev-image">
             <div class="dev-image-card">
-              <img src="/shopify/4.webp" alt="Diseño y desarrollo de tiendas Shopify a medida" class="floating-mockups" width="800" height="600" loading="lazy" />
+              <img
+                src="/shopify/4.webp"
+                alt="Diseño y desarrollo de tiendas Shopify a medida"
+                class="floating-mockups"
+                width="800"
+                height="600"
+                loading="lazy"
+              />
             </div>
           </div>
         </div>
@@ -2106,6 +2132,21 @@
         .visual-card {
           grid-column: span 1;
           grid-row: span 1;
+        }
+
+        /* --- AJUSTE CRÍTICO DEL CALENDARIO --- */
+        .cal-widget {
+          height: 520px; /* Le damos un poco más de aire vertical en móvil */
+          border-radius: 20px;
+        }
+
+        .calendar-iframe {
+          width: 100%; /* Quitamos tu 125% */
+          height: 100%; /* Quitamos tu 570px fijo */
+          transform: scale(
+            1
+          ); /* Devolvemos la escala a la normalidad para que sea táctil */
+          transform-origin: center;
         }
 
         .lm-text {
