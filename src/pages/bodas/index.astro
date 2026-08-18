@@ -2956,6 +2956,23 @@
     .contacto-grid {
       grid-template-columns: 1fr;
     }
+
+    /* --- AJUSTE CRÍTICO DEL CALENDARIO --- */
+    .cal-widget {
+      height: 520px; /* Le damos un poco más de aire vertical en móvil */
+      border-radius: 20px;
+    }
+
+    .calendar-iframe {
+      width: 100%; /* Quitamos tu 125% */
+      height: 100%; /* Quitamos tu 570px fijo */
+      transform: scale(
+        1
+      ); /* Devolvemos la escala a la normalidad para que sea táctil */
+      transform-origin: center;
+    }
+
+    
     .formulario-boda {
       padding: 25px;
     }
