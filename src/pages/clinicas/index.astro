@@ -30,9 +30,17 @@
       rel="stylesheet"
     />
     <link
-      rel="stylesheet"
+      rel="preload"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
     />
+    <noscript
+      ><link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      /></noscript
+    >
 
     <!-- METADATOS PRINCIPALES -->
     <meta
@@ -330,6 +338,7 @@
                 alt="Software y web a medida para clínicas de nutrición"
                 width="800"
                 height="600"
+                fetchpriority="high"
               />
             </div>
           </div>
@@ -861,6 +870,158 @@
         </div>
       </section>
 
+      <!-- ==========================================
+     SECCIÓN ESCALERA DE VALOR (FASE 1 Y 2)
+=========================================== -->
+      <section class="fases-section">
+        <div class="container">
+          <div class="fases-header">
+            <h2 class="section-title">
+              ¿Acabas de abrir tu consulta? Crece a tu ritmo
+            </h2>
+            <p class="fases-lead">
+              No necesitas hacer una gran inversión inicial si aún no tienes un
+              gran volumen de pacientes. Elige a la carta por dónde empezar y
+              escala tu tecnología conforme crezca tu clínica.
+            </p>
+          </div>
+
+          <div class="fases-grid">
+            <!-- Tarjeta Fase 1 -->
+            <div class="fase-card">
+              <div class="fase-badge">FASE 1: DESPEGUE DIGITAL</div>
+              <h3>Presencia y Citas Básicas</h3>
+              <p>
+                Ideal para profesionales que aún no tienen página web y
+                necesitan empezar a captar pacientes hoy mismo.
+              </p>
+              <ul>
+                <li>
+                  <i class="fa-solid fa-check"></i> Diseño de Landing Page (WordPress)
+                </li>
+                <li>
+                  <i class="fa-solid fa-check"></i> Integración de agenda online básica
+                </li>
+                <li>
+                  <i class="fa-solid fa-check"></i> Formulario de captación optimizado
+                </li>
+                <li>
+                  <i class="fa-solid fa-check"></i> Inversión inicial reducida
+                </li>
+              </ul>
+            </div>
+
+            <!-- Tarjeta Fase 2 -->
+            <div class="fase-card premium-card">
+              <div class="premium-tag">Más demandado</div>
+              <div class="fase-badge premium-badge">
+                FASE 2: ECOSISTEMA TOTAL
+              </div>
+              <h3>Portal Clínico a Medida</h3>
+              <p>
+                La solución definitiva para clínicas consolidadas que buscan
+                automatizar el 100% de su gestión diaria.
+              </p>
+              <ul>
+                <li><i class="fa-solid fa-check"></i> Todo lo de la Fase 1</li>
+                <li>
+                  <i class="fa-solid fa-check"></i> Portal del Paciente privado y
+                  seguro
+                </li>
+                <li>
+                  <i class="fa-solid fa-check"></i> Aula virtual y cobros recurrentes
+                </li>
+                <li>
+                  <i class="fa-solid fa-check"></i> Sincronización completa con ERP
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================
+     DETALLE FASE 1: PACK WORDPRESS
+=========================================== -->
+      <section class="wp-pack-section">
+        <div class="container wp-pack-container">
+          <div class="wp-pack-header">
+            <h2 class="wp-pack-title">
+              Fase 1: Tu primera clínica digital en WordPress
+            </h2>
+            <div class="wp-pack-price">
+              <span class="price-label">Valorado en</span>
+              <span class="price-amount">500€</span>
+            </div>
+            <p class="wp-pack-desc">
+              Una base sólida y profesional para que tus pacientes te
+              encuentren, confíen en ti y agenden su primera cita sin
+              fricciones.
+            </p>
+          </div>
+
+          <div class="wp-pack-grid">
+            <!-- Columna 1: Estructura -->
+            <div class="wp-pack-box">
+              <h3>
+                <i class="fa-regular fa-file-lines"></i> Estructura del Sitio (5 Páginas)
+              </h3>
+              <ul class="wp-pack-list">
+                <li>
+                  <strong>Inicio:</strong> Presentación de tu propuesta de valor,
+                  servicios destacados y llamada a la acción para agendar cita.
+                </li>
+                <li>
+                  <strong>Sobre Mí:</strong> Tu perfil profesional, formación y filosofía
+                  para generar confianza.
+                </li>
+                <li>
+                  <strong>Servicios:</strong> Detalle de tus consultas (primera visita,
+                  seguimientos, bonos).
+                </li>
+                <li>
+                  <strong>Blog:</strong> Espacio preparado para que publiques artículos
+                  de nutrición, menús, recetarios, consejos y tips.
+                </li>
+                <li>
+                  <strong>Contacto:</strong> Información de ubicación, horarios y
+                  formulario de contacto.
+                </li>
+              </ul>
+            </div>
+
+            <!-- Columna 2: Funcionalidades -->
+            <div class="wp-pack-box">
+              <h3>
+                <i class="fa-solid fa-gears"></i> Funcionalidades Técnicas
+              </h3>
+              <ul class="wp-pack-list">
+                <li>
+                  <strong>Sistema de Citas Online:</strong> Formulario integrado para
+                  que los pacientes puedan solicitar citas.
+                </li>
+                <li>
+                  <strong>Diseño Responsive:</strong> Perfectamente adaptado a móviles
+                  y tablets.
+                </li>
+                <li>
+                  <strong>Panel Autogestionable:</strong> Para que puedas subir artículos
+                  al blog y modificar textos fácilmente.
+                </li>
+                <li>
+                  <strong>Optimización Básica SEO:</strong> Preparada para que Google
+                  empiece a indexar tu contenido.
+                </li>
+                <li>
+                  <strong>Botón de WhatsApp:</strong> Chat directo integrado para
+                  consultas rápidas.
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section class="inversion-section">
         <div class="container">
           <h2 class="section-title">Inversión adaptada a tu crecimiento</h2>
@@ -924,7 +1085,8 @@
                 class="calendar-iframe"
                 width="100%"
                 height="100%"
-                frameBorder="0"></iframe>
+                frameBorder="0"
+                loading="lazy"></iframe>
             </div>
             <div
               style="margin-top: 30px; padding: 30px; background-color: var(--fondo-claro); border-radius: 20px; border: 1px solid var(--border-color); box-shadow: 0 10px 20px rgba(212, 127, 101, 0.08);"
@@ -988,18 +1150,22 @@
               </div>
 
               <div class="form-grupo">
-                <label>¿Qué necesitas implementar principalmente?</label>
+                <label for="servicio"
+                  >¿Qué necesitas implementar principalmente?</label
+                >
                 <select id="servicio" required>
                   <option value="">Selecciona una opción</option>
-                  <option value="web-corporativa"
-                    >Web corporativa profesional</option
+                  <option value="fase-1-wordpress"
+                    >Fase 1: Presencia Básica (WordPress - 500€)</option
+                  >
+                  <option value="fase-2-portal"
+                    >Fase 2: Portal de Salud Completo a medida</option
                   >
                   <option value="sistema-reservas"
-                    >Sistema de reservas automático</option
+                    >Solo Sistema de Reservas</option
                   >
-                  <option value="aula-virtual">Aula Virtual / Cursos</option>
-                  <option value="integracion-crm"
-                    >Integración con mi CRM/ERP</option
+                  <option value="aula-virtual"
+                    >Solo Aula Virtual / Cursos</option
                   >
                   <option value="demo-portal">Obtener 24h demo Portal</option>
                 </select>
@@ -1922,7 +2088,7 @@
     border-radius: 16px;
     overflow: hidden;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
-    max-width: 500px;
+    max-width: 600px;
     margin: 0 auto;
   }
 
@@ -2134,6 +2300,202 @@
     font-size: 1.15rem;
   }
   /* ==========================================
+   SECCIÓN ESCALERA DE VALOR (FASES 1 Y 2)
+========================================== */
+  .fases-section {
+    background-color: var(--fondo-claro);
+    padding: 40px 25px 80px;
+  }
+  .fases-header {
+    max-width: 800px;
+    margin: 0 auto 50px;
+    text-align: center;
+  }
+  .fases-lead {
+    color: var(--text-muted);
+    font-size: 1.15rem;
+    line-height: 1.6;
+  }
+  .fases-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+    align-items: stretch;
+  }
+  .fase-card {
+    border: 2px solid var(--border-color);
+    border-radius: 20px;
+    padding: 40px 30px;
+    background: var(--white);
+    position: relative;
+    transition: all 0.3s ease;
+  }
+  .fase-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(45, 106, 79, 0.1);
+    border-color: var(--psico-primary);
+  }
+  .fase-badge {
+    background: var(--psico-light);
+    color: var(--psico-primary);
+    font-weight: 800;
+    padding: 8px 16px;
+    border-radius: 50px;
+    display: inline-block;
+    margin-bottom: 20px;
+    font-size: 0.9rem;
+  }
+  .fase-card h3 {
+    font-family: var(--font-titulos);
+    font-size: 1.5rem;
+    color: var(--text-primary);
+    margin-bottom: 15px;
+  }
+  .fase-card p {
+    color: var(--text-muted);
+    margin-bottom: 25px;
+    line-height: 1.5;
+  }
+  .fase-card ul {
+    list-style: none;
+    padding: 0;
+    color: var(--text-primary);
+    font-weight: 600;
+    line-height: 2;
+  }
+  .fase-card ul i {
+    color: var(--psico-primary);
+    margin-right: 10px;
+  }
+
+  /* Tarjeta Premium (Fase 2) */
+  .premium-card {
+    border: 2px solid var(--psico-primary);
+    background: var(--psico-primary);
+    box-shadow: 0 15px 35px rgba(45, 106, 79, 0.2);
+  }
+  .premium-card:hover {
+    border-color: #ffbd2e;
+    box-shadow: 0 15px 35px rgba(255, 189, 46, 0.2);
+  }
+  .premium-tag {
+    position: absolute;
+    top: -15px;
+    right: 30px;
+    background: #ffbd2e;
+    color: #1b2b22;
+    font-weight: 800;
+    font-size: 0.8rem;
+    padding: 5px 15px;
+    border-radius: 20px;
+    text-transform: uppercase;
+  }
+  .premium-badge {
+    background: rgba(255, 255, 255, 0.15);
+    color: var(--white);
+  }
+  .premium-card h3,
+  .premium-card p,
+  .premium-card ul {
+    color: var(--white);
+  }
+  .premium-card ul i {
+    color: #ffbd2e;
+  }
+
+  /* ==========================================
+   DETALLE PACK WORDPRESS (FASE 1)
+========================================== */
+  .wp-pack-section {
+    background-color: var(--psico-light);
+    padding: 60px 25px 80px;
+  }
+  .wp-pack-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    background: var(--white);
+    border-radius: 24px;
+    padding: 50px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+  }
+  .wp-pack-header {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  .wp-pack-title {
+    font-family: var(--font-titulos);
+    font-size: 2rem;
+    color: var(--text-primary);
+    margin-bottom: 15px;
+  }
+  .wp-pack-price {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--fondo-claro);
+    border: 2px solid var(--psico-primary);
+    padding: 10px 25px;
+    border-radius: 50px;
+    margin-bottom: 20px;
+  }
+  .price-label {
+    font-weight: 600;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    font-size: 0.9rem;
+  }
+  .price-amount {
+    font-weight: 900;
+    color: var(--psico-primary);
+    font-size: 1.5rem;
+  }
+  .wp-pack-desc {
+    font-size: 1.15rem;
+    color: var(--text-muted);
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  .wp-pack-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+  .wp-pack-box {
+    background: var(--fondo-claro);
+    padding: 30px;
+    border-radius: 16px;
+    border: 1px solid var(--border-color);
+  }
+  .wp-pack-box h3 {
+    font-family: var(--font-titulos);
+    font-size: 1.3rem;
+    color: var(--psico-primary);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-bottom: 2px solid var(--psico-light);
+    padding-bottom: 15px;
+  }
+  .wp-pack-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .wp-pack-list li {
+    margin-bottom: 15px;
+    color: var(--text-muted);
+    font-size: 1.05rem;
+    line-height: 1.5;
+  }
+  .wp-pack-list li strong {
+    color: var(--text-primary);
+    display: block;
+    margin-bottom: 3px;
+  }
+
+  /* ==========================================
    METODOLOGÍA 
    ========================================== */
   .metodologia-section {
@@ -2196,8 +2558,7 @@
 
   .inversion-section {
     background-color: var(--psico-light);
-    border-top: 1px solid #5e707138;
-    padding: 80px 25px 40px;
+    padding: 40px 25px 60px;
   }
 
   .inversion-lead {
@@ -2294,7 +2655,6 @@
     position: relative;
   }
 
-
   /* Iframe limpio: sin escalas, sin transformaciones raras */
   .calendar-iframe {
     width: 125%; /* Esto compensa el 0.85 de escala (1 / 0.85 ≈ 1.176) */
@@ -2363,7 +2723,7 @@
   .privacy-note {
     text-align: center;
     font-size: 0.85rem;
-    color: #888;
+    color: #595959;
   }
 
   .formulario select {
@@ -3075,6 +3435,16 @@
       letter-spacing: -0.5px;
     }
 
+    .metodologia-section {
+      padding: 40px 25px;
+      background-color: var(--fondo-claro);
+    }
+
+    .wp-pack-section {
+      background-color: var(--psico-light);
+      padding: 60px 25px 40px;
+    }
+
     .btn-content {
       flex-direction: column; /* Apilamos los botones uno encima de otro */
       gap: 20px;
@@ -3139,6 +3509,20 @@
     .section-main-title {
       font-size: 2.25rem;
       padding: 0 10px;
+    }
+    .mockup-img-browser {
+      height: 180px;
+    }
+
+    .wp-pack-container {
+      padding: 30px 20px;
+    }
+    .wp-pack-grid {
+      grid-template-columns: 1fr;
+      gap: 25px;
+    }
+    .wp-pack-title {
+      font-size: 1.6rem;
     }
 
     /* --- AJUSTE CRÍTICO DEL CALENDARIO --- */
