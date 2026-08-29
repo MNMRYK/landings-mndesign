@@ -1,45 +1,37 @@
 /* ==========================================
-   SCROLL SUAVE GENERAL
+   SCROLL SUAVE Y FONDO DE REBOTE MÓVIL
 ========================================== */
 html {
   scroll-behavior: smooth;
+  background-color: #080f1e; /* Fondo oscuro para el rebote del móvil */
+  
+  /* Fuerza los colores en navegadores modernos (Mozilla y nuevos Chrome) */
+  scrollbar-color: #598eff8e #080f1e; 
+  scrollbar-width: thin;
 }
 
 /* ==========================================
    BARRA DE SCROLL NATIVA PERSONALIZADA
 ========================================== */
-/* Ancho de la barra */
 ::-webkit-scrollbar {
   width: 10px;
 }
 
-/* Fondo de la pista de scroll */
+/* Fondo de la pista (Azul noche del footer) */
 ::-webkit-scrollbar-track {
-  background: var(--accent-light);
+  background: #080f1e; 
 }
 
-/* Color y diseño del "pulgar" (la barra que se arrastra) en azul suave */
+/* Color y diseño de la barra (Azul suave) */
 ::-webkit-scrollbar-thumb {
-  background: #598eff8e; /* Azul suave */
+  background: #598eff8e; 
   border-radius: 5px;
-  border: 2px solid #f1f5f9; /* Crea un efecto flotante muy limpio */
+  border: 2px solid #080f1e; /* Borde oscuro para que flote perfectamente sobre el fondo */
 }
 
-/* Color al pasar el ratón por encima */
+/* Color al pasar el ratón */
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--accent); /* Azul corporativo */
-}
-
-/* ==========================================
-   FORZAR FONDO EN AUTOCOMPLETADO DE NAVEGADORES
-========================================== */
-input:-webkit-autofill,
-input:-webkit-autofill:hover, 
-input:-webkit-autofill:focus, 
-input:-webkit-autofill:active {
-  -webkit-box-shadow: 0 0 0 30px #eff6ff inset !important;
-  -webkit-text-fill-color: var(--text-main, #0f172a) !important;
-  transition: background-color 5000s ease-in-out 0s;
+  background: var(--accent); 
 }
 
 /* ==========================================
@@ -1719,33 +1711,6 @@ body.academy-landing-body {
   color: var(--white);
 }
 
-/* ==========================================
-   SCROLL SUAVE GENERAL
-========================================== */
-html {
-  scroll-behavior: smooth;
-}
-
-/* ==========================================
-   BARRA DE SCROLL NATIVA PERSONALIZADA
-========================================== */
-::-webkit-scrollbar {
-  width: 10px;
-}
-
-::-webkit-scrollbar-track {
-  background: var(--accent-light);
-}
-
-::-webkit-scrollbar-thumb {
-  background: #598eff8e;
-  border-radius: 5px;
-  border: 2px solid #f1f5f9;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--accent);
-}
 
 /* ==========================================
    SECCIÓN 6: DOSSIER Y PRECIOS
@@ -2036,14 +2001,101 @@ body.academy-landing-body {
   width: 100%;
 }
 
-@media (max-width: 480px) {
-  /* 5. El banner oscuro se salía porque tenía 100% de ancho + 20px de padding */
-  .trust-item {
-    width: 100%;
-    padding-left: 0; /* Quitamos el padding extra */
-    justify-content: center; /* Lo centramos para que quede perfecto en móvil */
-  }
+/* ==========================================
+   8. COOKIE BANNER PREMIUM (Adaptado B2B)
+========================================== */
+.cookie-card-uiverse {
+  position: fixed;
+  bottom: 24px;
+  left: 24px;
+  max-width: 360px;
+  background: linear-gradient(
+    135deg,
+    #080f1e 0%,
+    #0f172a 50%,
+    var(--accent) 100%
+  );
+  color: var(--white);
+  padding: 24px;
+  border-radius: 16px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
 }
+
+#cookieSvg {
+  width: 36px;
+  height: 36px;
+  fill: #598eff; /* Azul suave corporativo */
+}
+
+.cookieHeading {
+  font-size: 1.25rem;
+  font-weight: 800;
+  margin: 0;
+  color: var(--white);
+  font-family: var(--font-titulos);
+}
+
+.cookieDescription {
+  font-size: 0.9rem;
+  opacity: 0.85;
+  margin: 0;
+  line-height: 1.6;
+}
+
+.cookielink {
+  color: #93c5fd; /* Azul claro brillante para enlaces */
+  text-decoration: underline;
+  font-weight: 600;
+  transition: opacity 0.3s ease;
+}
+
+.cookielink:hover {
+  opacity: 0.8;
+}
+
+.buttonContainer {
+  display: flex;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.acceptButton,
+.declineButton {
+  flex: 1;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: inherit;
+}
+
+.acceptButton {
+  background-color: var(--white);
+  color: var(--accent);
+}
+
+.acceptButton:hover {
+  background-color: var(--accent-light);
+  transform: translateY(-2px);
+}
+
+.declineButton {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: var(--white);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.declineButton:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
 
 /* ==========================================
    MEDIA QUERIES GLOBALES ORDENADAS
@@ -2094,7 +2146,7 @@ body.academy-landing-body {
 
   /* 4. Aseguramos que la tarjeta verde flotante se quede en su sitio */
   .floating-notification {
-    display:none;
+    display: none;
   }
 
   .hero-content {
@@ -2198,26 +2250,6 @@ body.academy-landing-body {
     max-width: 600px;
   }
 
-  ::-webkit-scrollbar {
-    width: 10px;
-  }
-
-  /* Fondo de la pista de scroll */
-  ::-webkit-scrollbar-track {
-    background: var(--accent-light);
-  }
-
-  /* Color y diseño del "pulgar" (la barra que se arrastra) en azul suave */
-  ::-webkit-scrollbar-thumb {
-    background: #598eff8e; /* Azul suave */
-    border-radius: 5px;
-    border: 2px solid #f1f5f9; /* Crea un efecto flotante muy limpio */
-  }
-
-  /* Color al pasar el ratón por encima */
-  ::-webkit-scrollbar-thumb:hover {
-    background: var(--accent); /* Azul corporativo */
-  }
 }
 
 /* 4. Tablets pequeñas / Móviles horizontales (hasta 768px) */
@@ -2268,6 +2300,17 @@ body.academy-landing-body {
     margin-top: 0px;
   }
 
+  .cookie-card-uiverse {
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    max-width: 100%;
+    border-radius: 20px 20px 0 0;
+    border-left: none;
+    border-right: none;
+    border-bottom: none;
+    padding: 20px 20px 30px 20px; /* Un poco más de margen abajo por los gestos del móvil */
+  }
 }
 
 /* 5. Móviles estándar (hasta 480px) */
@@ -2315,5 +2358,12 @@ body.academy-landing-body {
     width: 320px;
     height: 630px;
     margin: 80px 0 20px;
+  }
+
+  /* 5. El banner oscuro se salía porque tenía 100% de ancho + 20px de padding */
+  .trust-item {
+    width: 100%;
+    padding-left: 0; /* Quitamos el padding extra */
+    justify-content: center; /* Lo centramos para que quede perfecto en móvil */
   }
 }
