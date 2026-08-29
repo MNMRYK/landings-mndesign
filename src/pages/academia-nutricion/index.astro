@@ -1,0 +1,1613 @@
+---
+import "./style.css";
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Academia Online para Nutricionistas | MN Design Web</title>
+    <meta
+      name="theme-color"
+      media="(prefers-color-scheme: light)"
+      content="#fcfffb"
+    />
+    <meta
+      name="theme-color"
+      media="(prefers-color-scheme: dark)"
+      content="#fcfffb"
+    />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+
+    <!-- URL CANÓNICA -->
+    <link
+      rel="canonical"
+      href="https://descubre.mndesignweb.es/academia-nutricion"
+    />
+    <link rel="icon" type="image/webp" href="/favicon_v2.webp" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- MEJORA WPO: Preconexión para acelerar carga de fuentes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Nunito:wght@400;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="preload"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <noscript
+      ><link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      /></noscript
+    >
+
+    <!-- METADATOS PRINCIPALES -->
+    <meta
+      name="description"
+      content="Escala tu facturación clínica sin sumar más horas. Creamos tu Academia Online a medida: cursos, membresías, protección de vídeos y cero comisiones por venta."
+    />
+    <meta name="author" content="MN Design Web" />
+
+    <!-- OPEN GRAPH (Facebook, LinkedIn, WhatsApp) -->
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:url"
+      content="https://descubre.mndesignweb.es/academia-nutricion"
+    />
+    <meta
+      property="og:title"
+      content="Academia Online para Nutricionistas | MN Design Web"
+    />
+    <meta
+      property="og:description"
+      content="Transforma tu conocimiento clínico en ingresos recurrentes. Plataformas e-learning a medida para el sector salud con pasarela de pagos integrada."
+    />
+    <meta
+      property="og:image"
+      content="https://descubre.mndesignweb.es/imagen-miniatura-academia.webp"
+    />
+    <meta property="og:locale" content="es_ES" />
+
+    <!-- TWITTER CARDS (X) -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:url"
+      content="https://descubre.mndesignweb.es/academia-nutricion"
+    />
+    <meta
+      name="twitter:title"
+      content="Academia Online para Nutricionistas | MN Design Web"
+    />
+    <meta
+      name="twitter:description"
+      content="Transforma tu conocimiento clínico en ingresos recurrentes. Plataformas e-learning a medida para el sector salud con pasarela de pagos integrada."
+    />
+    <meta
+      name="twitter:image"
+      content="https://descubre.mndesignweb.es/imagen-miniatura-academia.webp"
+    />
+
+    <!-- DATOS ESTRUCTURADOS (JSON-LD) -->
+    <script type="application/ld+json">
+      [
+        {
+          "@context": "https://schema.org",
+          "@type": "WebPage",
+          "name": "Desarrollo de Academias Online para Nutrición | MN Design Web",
+          "description": "Desarrollo de plataformas e-learning personalizadas para nutricionistas y profesionales de la salud. Vende cursos y membresías sin comisiones de terceros."
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "ProfessionalService",
+          "name": "MN Design Web",
+          "image": "https://descubre.mndesignweb.es/logo.webp",
+          "url": "https://descubre.mndesignweb.es/",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Alicante",
+            "addressCountry": "ES"
+          },
+          "priceRange": "$$"
+        },
+        {
+          "@context": "https://schema.org/",
+          "@type": "Service",
+          "name": "Creación de Academias Digitales y E-commerce de Formación",
+          "image": "https://descubre.mndesignweb.es/imagen-miniatura-academia.webp",
+          "description": "Sistemas LMS a medida con pasarelas de pago (Stripe/Mercado Pago), protección de contenidos audiovisuales y foros privados para alumnos."
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "¿Me cobráis comisiones por cada curso o membresía que venda?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "No. Al ser un desarrollo a medida, la plataforma es 100% tuya. Todo lo que factures va directo a tu cuenta sin los peajes abusivos de plataformas de terceros."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "¿Están protegidos mis vídeos y PDFs para que no los descarguen?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Sí, implementamos protocolos de seguridad y reproductores encriptados para dificultar la piratería y proteger tu capital intelectual clínico."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "¿Pueden los alumnos interactuar o preguntar dudas?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Desarrollamos sistemas de foros privados y cajas de comentarios por lección para que puedas moderar y fidelizar a tu propia comunidad sin depender de redes sociales."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "¿Se encarga MN Design Web del mantenimiento técnico?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Tú solo te encargas de grabar y subir el contenido. Nosotros garantizamos las actualizaciones de seguridad, el servidor y el correcto funcionamiento de los pagos."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "¿Qué hago si todavía no tengo página web de captación?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Ofrecemos un pack de 'Despegue Digital' que incluye el diseño de tu Landing Page optimizada para vender tu programa, además de configurar todo el hosting y dominio."
+              }
+            }
+          ]
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Inicio MN Design Web",
+              "item": "https://mndesignweb.es/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Academia Online para Nutricionistas",
+              "item": "https://descubre.mndesignweb.es/academia-nutricion"
+            }
+          ]
+        }
+      ]
+    </script>
+
+    <!-- SCRIPTS DE SEGUIMIENTO (GTM, Meta Pixel, Clarity) -->
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      var localConsent = localStorage.getItem("cookieConsent");
+      if (localConsent === "accepted") {
+        gtag("consent", "default", {
+          ad_storage: "granted",
+          ad_user_data: "granted",
+          ad_personalization: "granted",
+          analytics_storage: "granted",
+        });
+      } else {
+        gtag("consent", "default", {
+          ad_storage: "denied",
+          ad_user_data: "denied",
+          ad_personalization: "denied",
+          analytics_storage: "denied",
+          wait_for_update: 500,
+        });
+      }
+    </script>
+    <script
+      is:inline
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-36WYJMYT3Z"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-36WYJMYT3Z");
+    </script>
+    <script is:inline>
+      !(function (f, b, e, v, n, t, s) {
+        if (f.fbq) return;
+        n = f.fbq = function () {
+          n.callMethod
+            ? n.callMethod.apply(n, arguments)
+            : n.queue.push(arguments);
+        };
+        if (!f._fbq) f._fbq = n;
+        n.push = n;
+        n.loaded = !0;
+        n.version = "2.0";
+        n.queue = [];
+        t = b.createElement(e);
+        t.async = !0;
+        t.src = v;
+        s = b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t, s);
+      })(
+        window,
+        document,
+        "script",
+        "https://connect.facebook.net/en_US/fbevents.js",
+      );
+      var localConsent = localStorage.getItem("cookieConsent");
+      if (localConsent !== "accepted") {
+        fbq("consent", "revoke");
+      }
+      fbq("init", "1627135808585120");
+      fbq("track", "PageView");
+    </script>
+    <script is:inline type="text/javascript">
+      (function (c, l, a, r, i, t, y) {
+        c[a] =
+          c[a] ||
+          function () {
+            (c[a].q = c[a].q || []).push(arguments);
+          };
+        t = l.createElement(r);
+        t.async = 1;
+        t.src = "https://www.clarity.ms/tag/" + i;
+        y = l.getElementsByTagName(r)[0];
+        y.parentNode.insertBefore(t, y);
+      })(window, document, "clarity", "script", "wuzaxaifa0");
+    </script>
+  </head>
+
+  <body class="academy-landing-body">
+    <!-- LOGO GLOBAL MN DESIGN WEB (Adaptado al B2B) -->
+    <a
+      href="https://mndesignweb.es/"
+      class="global-logo"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <div class="texto-logo">
+        <span class="siglas">MN</span>
+        <span class="marca">Design Web</span>
+      </div>
+    </a>
+
+    <main class="landing-main">
+      <!-- ========================================== -->
+      <!-- HERO SECTION B2B (El Gancho)               -->
+      <!-- ========================================== -->
+      <section class="hero-b2b">
+        <!-- Círculo difuminado decorativo de fondo -->
+        <div class="hero-bg-glow"></div>
+
+        <div class="container hero-grid">
+          <!-- Copywriting Estratégico -->
+          <div class="hero-content">
+            <span class="tag-b2b">E-learning Médico y Nutricional</span>
+            <h1 class="hero-title">
+              Multiplica tu facturación clínica <span class="text-accent"
+                >sin depender de tu agenda.</span
+              >
+            </h1>
+            <p class="hero-description">
+              Transforma tu conocimiento en ingresos recurrentes. Desarrollamos
+              tu Academia Online a medida: pasarelas de pago integradas,
+              protección antipiratería y <strong
+                >cero comisiones por venta</strong
+              >.
+            </p>
+
+            <div class="hero-actions">
+              <a
+                href="https://mnmryk.github.io/nutrilearn-pro/"
+                target="_blank"
+                class="btn-primary"
+              >
+                Explorar Demo Interactiva <i
+                  class="fa-solid fa-arrow-up-right-from-square"></i>
+              </a>
+              <a href="#contacto" class="btn-outline"> Solicitar Auditoría </a>
+            </div>
+
+            <div class="hero-trust">
+              <span><i class="fa-solid fa-check"></i> Plataforma 100% tuya</span
+              >
+              <span><i class="fa-solid fa-check"></i> Diseño Premium</span>
+            </div>
+          </div>
+
+          <!-- Visual (Mockup de la Academia) -->
+          <div class="hero-visuals">
+            <div class="mockup-wrapper">
+              <!-- Portada de NutriLearn Pro -->
+              <img
+                src="/landing.webp"
+                alt="Plataforma E-learning NutriLearn Pro"
+                class="mockup-img"
+              />
+
+              <!-- Elemento UI flotante animado -->
+              <div class="floating-notification">
+                <div class="notification-icon">
+                  <i class="fa-solid fa-sack-dollar"></i>
+                </div>
+                <div class="notification-text">
+                  <p class="notif-title">Nuevo Suscriptor</p>
+                  <p class="notif-amount">+ 79,00 €</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================== -->
+      <!-- BANNER DE AUTORIDAD (Separador Visual)     -->
+      <!-- ========================================== -->
+      <div class="trust-banner">
+        <div class="container trust-grid">
+          <div class="trust-item">
+            <i class="fa-solid fa-percent"></i>
+            <span><strong>0% Comisiones</strong> de terceros</span>
+          </div>
+          <div class="trust-item">
+            <i class="fa-solid fa-shield-halved"></i>
+            <span><strong>Protección</strong> antipiratería</span>
+          </div>
+          <div class="trust-item">
+            <i class="fa-solid fa-clock-rotate-left"></i>
+            <span><strong>+40h ahorradas</strong> al mes</span>
+          </div>
+          <div class="trust-item">
+            <i class="fa-solid fa-credit-card"></i>
+            <span><strong>Pagos automáticos</strong> 24/7</span>
+          </div>
+        </div>
+      </div>
+
+      <section class="comparativa-section">
+        <div class="container">
+          <div class="comparativa-header">
+            <h2>¿Por qué tu clínica ha tocado su techo de cristal?</h2>
+            <p>
+              Seguir llenando tu agenda de pacientes tiene un límite físico y
+              mental. Es hora de dejar de intercambiar horas por dinero y
+              empezar a escalar de verdad.
+            </p>
+          </div>
+
+          <div class="comparativa-grid">
+            <div class="card-problema">
+              <div class="card-header-comp">
+                <div class="icon-red">
+                  <i class="fa-solid fa-user-clock"></i>
+                </div>
+                <h3>El modelo tradicional (1 a 1)</h3>
+              </div>
+
+              <ul class="lista-comparativa">
+                <li>
+                  <i class="fa-solid fa-circle-xmark icon-list-red"></i>
+                  <p>
+                    <strong>Límite de ingresos:</strong> Tu facturación máxima está
+                    capada por las horas que puedes trabajar al día.
+                  </p>
+                </li>
+                <li>
+                  <i class="fa-solid fa-circle-xmark icon-list-red"></i>
+                  <p>
+                    <strong>Burnout clínico:</strong> Repites las mismas pautas básicas
+                    a decenas de pacientes cada semana, agotando tu energía.
+                  </p>
+                </li>
+                <li>
+                  <i class="fa-solid fa-circle-xmark icon-list-red"></i>
+                  <p>
+                    <strong>Ingresos inestables:</strong> Si te vas de vacaciones
+                    o te pones enfermo, tu clínica factura cero euros.
+                  </p>
+                </li>
+                <li>
+                  <i class="fa-solid fa-circle-xmark icon-list-red"></i>
+                  <p>
+                    <strong>Impacto local:</strong> Solo puedes atender a la gente
+                    de tu zona geográfica o a quien coincida con tu horario.
+                  </p>
+                </li>
+              </ul>
+            </div>
+
+            <div class="card-solucion">
+              <div class="badge-solucion">Nuestra Solución</div>
+              <div class="card-header-comp">
+                <div class="icon-blue">
+                  <i class="fa-solid fa-earth-americas"></i>
+                </div>
+                <h3>El modelo Academia (1 a Múltiples)</h3>
+              </div>
+
+              <ul class="lista-comparativa">
+                <li>
+                  <i class="fa-solid fa-circle-check icon-list-blue"></i>
+                  <p>
+                    <strong>Ingresos exponenciales:</strong> Grabas un curso de protocolos
+                    digestivos una vez y lo vendes ilimitadas veces.
+                  </p>
+                </li>
+                <li>
+                  <i class="fa-solid fa-circle-check icon-list-blue"></i>
+                  <p>
+                    <strong>Automatización total:</strong> El usuario paga, recibe
+                    sus claves y entra a su área privada sin que tú intervengas.
+                  </p>
+                </li>
+                <li>
+                  <i class="fa-solid fa-circle-check icon-list-blue"></i>
+                  <p>
+                    <strong>Pasivos reales:</strong> Generas suscripciones mensuales
+                    recurrentes mientras duermes o estás de viaje.
+                  </p>
+                </li>
+                <li>
+                  <i class="fa-solid fa-circle-check icon-list-blue"></i>
+                  <p>
+                    <strong>Escala global:</strong> Tienes impacto en pacientes de
+                    todo el mundo hispanohablante a cualquier hora.
+                  </p>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================== -->
+      <!-- SECCIÓN 3: LA EXPERIENCIA DUAL (Vistas)    -->
+      <!-- ========================================== -->
+      <section class="experiencia-section">
+        <div class="container">
+          <div class="experiencia-header">
+            <h2>Un ecosistema, dos experiencias perfectas</h2>
+            <p>
+              Olvídate de las plataformas comerciales rígidas. Desarrollamos un
+              entorno a medida que centraliza tu negocio y enamora a tus
+              alumnos.
+            </p>
+          </div>
+
+          <div class="experiencia-grid">
+            <!-- Bloque 1: Panel de Administración -->
+            <div class="vista-card">
+              <div class="vista-imagen admin-bg">
+                <!-- Ilustración/Icono abstracto para el admin -->
+                <img src="/admin.webp" alt="Panel de Administración" class="vista-mockup-img" />
+              </div>
+              <div class="vista-contenido">
+                <h3>Panel de Administración (Centro de Mando)</h3>
+                <ul class="vista-lista">
+                  <li>
+                    <i class="fa-solid fa-laptop-code text-accent"></i>
+                    <span
+                      ><strong>Creador de Contenidos:</strong> Interfaz de arrastrar
+                      y soltar para crear cursos, masterclasses en directo y subir
+                      material audiovisual protegido.</span
+                    >
+                  </li>
+                  <li>
+                    <i class="fa-solid fa-users-gear text-accent"></i>
+                    <span
+                      ><strong>Arquitectura Multiprofesional:</strong> Sistema de
+                      roles para incluir profesores invitados con acceso restringido
+                      exclusivo a sus propios cursos.</span
+                    >
+                  </li>
+                  <li>
+                    <i class="fa-solid fa-chart-line text-accent"></i>
+                    <span
+                      ><strong>CRM Educativo y Facturación:</strong> Control total
+                      sobre la base de alumnos, seguimiento de progresos, historial
+                      de transacciones y emisión de recibos.</span
+                    >
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Bloque 2: Panel del Alumno -->
+            <div class="vista-card">
+              <div class="vista-imagen alumno-bg">
+                
+                <!-- Ilustración/Icono abstracto para el alumno -->
+                <img src="/alumno.webp" alt="Vista del Alumno" class="vista-mockup-img" />
+              </div>
+              <div class="vista-contenido">
+                <h3>Entorno del Alumno (Experiencia Premium)</h3>
+                <ul class="vista-lista">
+                  <li>
+                    <i class="fa-solid fa-layer-group text-accent"></i>
+                    <span
+                      ><strong>Aulas Inmersivas y Gamificación:</strong> Reproductor
+                      multimedia sin cortes conectado a servidores CDN, con barras
+                      de progreso y desbloqueo de contenidos.</span
+                    >
+                  </li>
+                  <li>
+                    <i class="fa-solid fa-comments text-accent"></i>
+                    <span
+                      ><strong>Ecosistema Social Privado:</strong> Foros de debate
+                      categorizados para que los alumnos interactúen, creando una
+                      comunidad exclusiva y viva.</span
+                    >
+                  </li>
+                  <li>
+                    <i class="fa-solid fa-headset text-accent"></i>
+                    <span
+                      ><strong>Centro de Soporte Nativo:</strong> Sistema de tickets
+                      (Help Desk) integrado para que los alumnos reporten incidencias
+                      sin saturar tu WhatsApp o email.</span
+                    >
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================== -->
+      <!-- SECCIÓN 4: INFRAESTRUCTURA TÉCNICA         -->
+      <!-- ========================================== -->
+      <section class="infraestructura-section">
+        <div class="container">
+          <div class="infra-header">
+            <h2>Tecnología de Alto Rendimiento</h2>
+            <p>
+              Tu contenido clínico es tu mayor activo. Lo protegemos y lo
+              hacemos volar con infraestructura de nivel empresarial.
+            </p>
+          </div>
+
+          <div class="infra-grid">
+            <div class="infra-card">
+              <div class="infra-icon"><i class="fa-solid fa-server"></i></div>
+              <h4>Servidores VPS Propios</h4>
+              <p>
+                Alojamiento en Servidor Privado Virtual con discos NVMe. Tu
+                academia no se ralentizará aunque tengas cientos de alumnos
+                conectados a la vez.
+              </p>
+            </div>
+            <div class="infra-card">
+              <div class="infra-icon">
+                <i class="fa-solid fa-shield-virus"></i>
+              </div>
+              <h4>CDN y Antipiratería</h4>
+              <p>
+                Tus vídeos se sirven a través de la red Bunny.net. Reproducción
+                nativa en HD sin cortes y encriptación avanzada para evitar
+                descargas ilegales.
+              </p>
+            </div>
+            <div class="infra-card">
+              <div class="infra-icon"><i class="fa-solid fa-database"></i></div>
+              <h4>Bases de Datos</h4>
+              <p>
+                Utilizamos arquitectura PostgreSQL, el estándar más potente y
+                seguro del mercado, garantizando el cumplimiento RGPD de los
+                datos de tus pacientes.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================== -->
+      <!-- SECCIÓN 5: PACK WEB WORDPRESS (Despegue)   -->
+      <!-- ========================================== -->
+      <section class="wp-premium-section">
+        <div class="container">
+          <div class="wp-premium-header">
+            <span class="wp-badge">Pack Despegue Web</span>
+            <h2>Tu clínica digital 100% autogestionable</h2>
+            <p>
+              Pensado para proyectos que arrancan desde cero: creamos un
+              escaparate en WordPress optimizado como un motor real de ventas y
+              captación. <strong>¿Ya tienes página?</strong> Incluimos un rediseño
+              estratégico completo para integrarla a la perfección con tu academia.
+            </p>
+          </div>
+
+          <!-- Tarjetas de Beneficios Destacados -->
+          <div class="wp-floating-benefits">
+            <div class="benefit-card hosting-card">
+              <div class="benefit-icon"><i class="fa-solid fa-server"></i></div>
+              <div class="benefit-text">
+                <h4>Hosting y Dominio</h4>
+                <p>Servidor de alto rendimiento y gestión técnica incluida.</p>
+              </div>
+            </div>
+            <div class="benefit-card training-card">
+              <div class="benefit-icon">
+                <i class="fa-solid fa-graduation-cap"></i>
+              </div>
+              <div class="benefit-text">
+                <h4>3h Formación Privada</h4>
+                <p>Domina tu plataforma sin depender de nadie.</p>
+              </div>
+            </div>
+            <div class="benefit-card redesign-card">
+              <div class="benefit-icon">
+                <i class="fa-solid fa-wand-magic-sparkles"></i>
+              </div>
+              <div class="benefit-text">
+                <h4>Rediseño Incluido</h4>
+                <p>
+                  Si ya tienes web, la modernizamos para maximizar conversiones.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Layout Bento Modular para Estructura y Funciones -->
+          <div class="wp-bento-layout">
+            <!-- Estructura (Grid Visual) -->
+            <div class="bento-box bento-structure">
+              <h3 class="bento-title">
+                <i class="fa-solid fa-sitemap"></i> Estructura (5 Páginas)
+              </h3>
+              <div class="structure-grid">
+                <div class="structure-item">
+                  <span class="struct-number">01</span>
+                  <div class="struct-content">
+                    <strong>Inicio (Ventas)</strong>
+                    <p>
+                      Propuesta de valor y CTA directa al catálogo de formación.
+                    </p>
+                  </div>
+                </div>
+                <div class="structure-item">
+                  <span class="struct-number">02</span>
+                  <div class="struct-content">
+                    <strong>Equipo Docente</strong>
+                    <p>
+                      Presentación de profesionales y autoridad clínica para
+                      generar confianza.
+                    </p>
+                  </div>
+                </div>
+                <div class="structure-item">
+                  <span class="struct-number">03</span>
+                  <div class="struct-content">
+                    <strong>La Academia</strong>
+                    <p>
+                      Catálogo visual de cursos, temarios, masterclasses y
+                      precios.
+                    </p>
+                  </div>
+                </div>
+                <div class="structure-item">
+                  <span class="struct-number">04</span>
+                  <div class="struct-content">
+                    <strong>Recursos Gratuitos</strong>
+                    <p>
+                      Espacio optimizado para publicar artículos de valor y
+                      captar leads.
+                    </p>
+                  </div>
+                </div>
+                <div class="structure-item">
+                  <span class="struct-number">05</span>
+                  <div class="struct-content">
+                    <strong>Contacto y FAQs</strong>
+                    <p>
+                      Resolución de dudas frecuentes previas a la compra y
+                      soporte.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Funcionalidades (Iconos Modernos) -->
+            <div class="bento-box bento-features">
+              <h3 class="bento-title">
+                <i class="fa-solid fa-gears"></i> Funcionalidades Técnicas
+              </h3>
+              <div class="features-grid">
+                <div class="feature-item">
+                  <div class="feat-icon feat-calendar">
+                    <i class="fa-solid fa-link"></i>
+                  </div>
+                  <div class="feat-text">
+                    <strong>Conexión E-learning</strong>
+                    <p>Integración fluida con tu área privada de alumnos.</p>
+                  </div>
+                </div>
+
+                <div class="feature-item">
+                  <div class="feat-icon feat-mobile">
+                    <i class="fa-solid fa-mobile-screen-button"></i>
+                  </div>
+                  <div class="feat-text">
+                    <strong>Diseño Mobile-First</strong>
+                    <p>Experiencia de compra perfecta en móviles y tablets.</p>
+                  </div>
+                </div>
+
+                <div class="feature-item">
+                  <div class="feat-icon feat-admin">
+                    <i class="fa-solid fa-pen-nib"></i>
+                  </div>
+                  <div class="feat-text">
+                    <strong>Autogestionable</strong>
+                    <p>
+                      Lanza nuevos cursos y sube artículos sin tocar código.
+                    </p>
+                  </div>
+                </div>
+
+                <div class="feature-item">
+                  <div class="feat-icon feat-seo">
+                    <i class="fa-solid fa-magnifying-glass-chart"></i>
+                  </div>
+                  <div class="feat-text">
+                    <strong>Optimización SEO</strong>
+                    <p>Preparada para posicionar tus formaciones en Google.</p>
+                  </div>
+                </div>
+
+                <div class="feature-item">
+                  <div class="feat-icon feat-whatsapp">
+                    <i class="fa-brands fa-whatsapp"></i>
+                  </div>
+                  <div class="feat-text">
+                    <strong>Soporte WhatsApp</strong>
+                    <p>Chat directo estratégico para cerrar ventas.</p>
+                  </div>
+                </div>
+
+                <!-- Nueva Función para equilibrar el diseño y aportar valor B2B -->
+                <div class="feature-item">
+                  <div class="feat-icon feat-analytics">
+                    <i class="fa-solid fa-chart-pie"></i>
+                  </div>
+                  <div class="feat-text">
+                    <strong>Analítica y Píxeles</strong>
+                    <p>
+                      Conexión con Meta Ads y Analytics para medir campañas.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================== -->
+      <!-- SECCIÓN 6: DOSSIER, PRECIOS Y MANTENIMIENTO -->
+      <!-- ========================================== -->
+      <section class="dossier-section">
+        <div class="container">
+          <!-- Bloque Superior: Planes y Lead Magnet -->
+          <div class="dossier-flex">
+            <div class="dossier-content">
+              <h2 class="mb-4">
+                Tú eliges: Módulos a la carta o Todo Incluido
+              </h2>
+              <p class="mb-8">
+                Sabemos que cada clínica está en una fase diferente. Por eso,
+                hemos estructurado nuestros servicios para que inviertas solo en
+                lo que necesitas hoy.
+              </p>
+
+              <div class="planes-grid">
+                <!-- Opción A: Despegue (Desde Cero) -->
+                <div class="plan-card">
+                  <div class="plan-header">
+                    <h3>Opción A: Despegue Digital</h3>
+                    <p>Para lanzar tu primera academia sin alumnos previos.</p>
+                  </div>
+                  <ul class="plan-features">
+                    <li>
+                      <i class="fa-solid fa-check icon-accent"></i>
+                      <span
+                        ><strong>Landing Web en WordPress</strong> para captación.</span
+                      >
+                    </li>
+                    <li>
+                      <i class="fa-solid fa-check icon-accent"></i>
+                      <span
+                        ><strong>Motor E-learning y CRM</strong> de alumnos.</span
+                      >
+                    </li>
+                    <li>
+                      <i class="fa-solid fa-check icon-accent"></i>
+                      <span
+                        ><strong
+                          >Cursos con vídeos, audios y descargables.</strong
+                        ></span
+                      >
+                    </li>
+                    <li>
+                      <i class="fa-solid fa-check icon-accent"></i>
+                      <span
+                        ><strong>Gamificación y sistema Help Desk.</strong
+                        ></span
+                      >
+                    </li>
+                    <li class="disabled">
+                      <i class="fa-solid fa-xmark"></i>
+                      <span
+                        >Mantenimiento y Servidores externos (No incluidos).</span
+                      >
+                    </li>
+                  </ul>
+                </div>
+
+                <!-- Opción B: Llave en Mano (Destacada) -->
+                <div class="plan-card plan-destacado">
+                  <span class="plan-badge">Recomendado</span>
+                  <div class="plan-header">
+                    <h3>Opción B: Llave en Mano</h3>
+                    <p>1 Año entero Todo Incluido.</p>
+                  </div>
+                  <ul class="plan-features">
+                    <li>
+                      <i class="fa-solid fa-check icon-white"></i>
+                      <span
+                        ><strong>Todas las funciones</strong> de la academia.</span
+                      >
+                    </li>
+                    <li>
+                      <i class="fa-solid fa-check icon-white"></i>
+                      <span
+                        ><strong>Landing WP Opcional</strong> o Rediseño de tus páginas
+                        principales actuales.</span
+                      >
+                    </li>
+                    <li>
+                      <i class="fa-solid fa-check icon-white"></i>
+                      <span>Servidores VPS y tráfico de vídeo Bunny.net.</span>
+                    </li>
+                    <li>
+                      <i class="fa-solid fa-check icon-white"></i>
+                      <span>Resolución de incidencias 24/7.</span>
+                    </li>
+                    <li>
+                      <i class="fa-solid fa-check icon-white"></i>
+                      <span
+                        ><strong
+                          >Costes de Alojamiento infraestructura (12 meses).</strong
+                        ></span
+                      >
+                    </li>
+                    <li>
+                      <i class="fa-solid fa-check icon-white"></i>
+                      <span
+                        ><strong
+                          >Mantenimiento Técnico Activo (12 meses).</strong
+                        ></span
+                      >
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- Formulario Lead Magnet (Ampliado y detallado) -->
+            <div class="dossier-form-box">
+              <div class="dossier-form-header">
+                <i class="fa-solid fa-file-pdf"></i>
+                <div>
+                  <h4>Descarga el Dossier</h4>
+                  <p>Configura tu proyecto a medida.</p>
+                </div>
+              </div>
+
+              <div class="dossier-extra-info">
+                <p>
+                  <strong>¿Prefieres crear tu propio plan?</strong> En el dossier
+                  encontrarás el desglose completo para elegir funciones <em
+                    >a la carta</em
+                  > fuera de los planes estándar:
+                </p>
+                <ul>
+                  <li>
+                    <i class="fa-solid fa-check"></i> Estudio de mercado.
+                  </li>
+                  <li>
+                    <i class="fa-solid fa-check"></i> Campañas de anuncios dirijidas
+                    a un público objetivo.
+                  </li>
+                  <li>
+                    <i class="fa-solid fa-check"></i> Módulos extra (foros, pagos,
+                    videoconsulta).
+                  </li>
+                  <li>
+                    <i class="fa-solid fa-check"></i> Diseño de Branding e Identidad
+                    Visual.
+                  </li>
+                  <li>
+                    <i class="fa-solid fa-check"></i> Integración de Agentes de Inteligencia
+                    Artificial.
+                  </li>
+                </ul>
+              </div>
+
+              <form id="dossier-form" class="dossier-form">
+                <input
+                  type="text"
+                  id="dossier-nombre"
+                  placeholder="Tu nombre"
+                  required
+                />
+                <input
+                  type="email"
+                  id="dossier-email"
+                  placeholder="Tu email profesional"
+                  required
+                />
+                <button
+                  type="submit"
+                  id="btn-dossier"
+                  class="btn-primary custom-btn-shadow w-full"
+                >
+                  Descargar Dossier <i class="fa-solid fa-download"></i>
+                </button>
+                <p class="dossier-privacy">
+                  <i class="fa-solid fa-lock"></i> Tus datos están seguros (RGPD).
+                </p>
+              </form>
+            </div>
+          </div>
+
+          <!-- Bloque Inferior: Transparencia sobre el Mantenimiento -->
+          <div class="maintenance-box mt-12">
+            <!-- Fila superior: Texto e icono ocupando todo el ancho -->
+            <div class="maintenance-header-row">
+              <div class="maintenance-icon">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+              </div>
+              <div class="maintenance-title-wrap">
+                <h3>Hablemos claro sobre el Mantenimiento Técnico</h3>
+                <p>
+                  Una plataforma con suscripciones, pagos y servidores VPS no es
+                  una web estática presencial. Es un software vivo. <strong
+                    >Nosotros no te obligamos a que lo contrates con nosotros</strong
+                  >, pero necesitas imperativamente a un experto al mando para
+                  evitar caídas y hackeos.
+                </p>
+              </div>
+            </div>
+
+            <!-- Fila inferior: Tarjetas interactivas a pantalla completa dentro de la caja -->
+            <div class="maintenance-grid">
+              <div class="m-card m-included-card">
+                <div class="m-card-header">
+                  <div class="m-card-icon">
+                    <i class="fa-solid fa-shield-halved"></i>
+                  </div>
+                  <h4>Qué SÍ incluye nuestro servicio</h4>
+                </div>
+                <ul>
+                  <li>
+                    <i class="fa-solid fa-circle-check"></i>
+                    <span
+                      ><strong>Backups redundantes:</strong> Copias de seguridad automáticas
+                      y externalizadas del código y datos de los alumnos para restaurar
+                      tu academia en tiempo récord ante cualquier desastre.</span
+                    >
+                  </li>
+                  <li>
+                    <i class="fa-solid fa-circle-check"></i>
+                    <span
+                      ><strong>Monitorización 24/7 y seguridad:</strong> Cortafuegos
+                      y escaneos en tiempo real para bloquear ataques, intrusiones
+                      y garantizar la privacidad de los datos.</span
+                    >
+                  </li>
+                  <li>
+                    <i class="fa-solid fa-circle-check"></i>
+                    <span
+                      ><strong>Optimización mensual de BBDD:</strong> Limpiezas periódicas
+                      para que la plataforma cargue a la velocidad de la luz independientemente
+                      de los alumnos conectados.</span
+                    >
+                  </li>
+                  <li>
+                    <i class="fa-solid fa-circle-check"></i>
+                    <span
+                      ><strong>Resolución técnica prioritaria:</strong> Actuación
+                      inmediata ante caídas del servidor, desajustes en pasarelas
+                      de pago o errores de código emergentes.</span
+                    >
+                  </li>
+                  <li>
+                    <i class="fa-solid fa-circle-check"></i>
+                    <span
+                      ><strong>Acompañamiento y tickets:</strong> Cobertura técnica
+                      continua para asegurar que las incidencias de los usuarios dentro
+                      de la plataforma se resuelvan rápidamente.</span
+                    >
+                  </li>
+                </ul>
+              </div>
+
+              <div class="m-card m-excluded-card">
+                <div class="m-card-header">
+                  <div class="m-card-icon">
+                    <i class="fa-solid fa-circle-xmark"></i>
+                  </div>
+                  <h4>Qué NO incluye</h4>
+                </div>
+                <ul>
+                  <li>
+                    <i class="fa-solid fa-xmark"></i>
+                    <span
+                      ><strong>Subida de contenido:</strong> Creación, redacción,
+                      maquetación o subida de tus nuevos cursos o vídeos al panel.</span
+                    >
+                  </li>
+                  <li>
+                    <i class="fa-solid fa-xmark"></i>
+                    <span
+                      ><strong>Nuevas páginas web:</strong> Creación de landing pages
+                      adicionales o rediseños de apartados que ya estaban aprobados.</span
+                    >
+                  </li>
+                  <li>
+                    <i class="fa-solid fa-xmark"></i>
+                    <span
+                      ><strong>Desarrollo de nuevos módulos:</strong> Si en el futuro
+                      necesitas programar una función compleja desde cero (ej. un
+                      sistema de afiliados a medida), al ser programación nueva, se
+                      presupuesta de forma independiente.</span
+                    >
+                  </li>
+                  <li>
+                    <i class="fa-solid fa-xmark"></i>
+                    <span
+                      ><strong>Integraciones externas inéditas:</strong> Conectar
+                      herramientas de terceros (un nuevo CRM, software de email marketing,
+                      etc.) que no formaban parte del ecosistema original.</span
+                    >
+                  </li>
+                  <li>
+                    <i class="fa-solid fa-xmark"></i>
+                    <span
+                      ><strong>Soporte a tus alumnos:</strong> Resolución de dudas
+                      clínicas, moderación de foros o gestión de contraseñas de tus
+                      pacientes.</span
+                    >
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================== -->
+      <!-- SECCIÓN 7: CONTACTO ESTRATÉGICO            -->
+      <!-- ========================================== -->
+      <section id="contacto" class="contacto-section">
+        <div class="container">
+          <div class="contacto-grid">
+            <!-- Columna Izquierda: Calendario y CTA -->
+            <div class="contacto-izq">
+              <h2 class="contacto-titulo">
+                Agenda tu sesión de consultoría estratégica
+              </h2>
+
+              <div class="cal-widget">
+                <iframe
+                  src="https://cal.com/mndesignweb/reunion-30-min?embed=true"
+                  title="Reserva tu cita"
+                  class="calendar-iframe"
+                  width="100%"
+                  height="100%"
+                  frameBorder="0"
+                  loading="lazy"></iframe>
+              </div>
+
+              <div class="contacto-razon-card">
+                <h4>
+                  <i class="fa-solid fa-clock-rotate-left"></i> ¿Por qué agendar ahora?
+                </h4>
+                <p>
+                  Analizaremos en directo los cuellos de botella de tu clínica,
+                  cómo automatizar la captación de alumnos y la viabilidad
+                  técnica de tu propia academia a medida. ¡Sin compromisos!
+                </p>
+              </div>
+            </div>
+
+            <!-- Columna Derecha: Formulario -->
+            <div class="contacto-der">
+              <div class="form-wrapper">
+                <h3>¿Hablamos sobre tu proyecto?</h3>
+                <p class="form-sub">
+                  Dime qué necesitas y diseñemos la hoja de ruta para tu
+                  academia online. ¿Quieres ver la demo desde dentro?
+                </p>
+
+                <form id="formulario" class="main-form">
+                  <div class="form-group">
+                    <label for="nombre">Nombre del profesional o clínica</label>
+                    <input
+                      type="text"
+                      id="nombre"
+                      placeholder="Tu nombre o el de tu centro"
+                      required
+                    />
+                  </div>
+
+                  <div class="form-group">
+                    <label for="email">Email corporativo</label>
+                    <input
+                      type="email"
+                      id="email"
+                      placeholder="consulta@clinica.es"
+                      required
+                    />
+                  </div>
+
+                  <div class="form-group">
+                    <label for="telefono">Teléfono de contacto</label>
+                    <input
+                      type="tel"
+                      id="telefono"
+                      placeholder="+34 600 000 000"
+                    />
+                  </div>
+
+                  <div class="form-group">
+                    <label for="mensaje"
+                      >Cuéntanos más sobre tu clínica o proyecto</label
+                    >
+                    <textarea
+                      id="mensaje"
+                      rows="4"
+                      placeholder="Escribe aquí los detalles, especialidad médica o si deseas acceso a la demo..."
+                      required></textarea>
+                  </div>
+
+                  <button
+                    type="submit"
+                    id="btn-submit"
+                    class="btn-primary custom-btn-shadow w-full mt-4"
+                  >
+                    Enviar solicitud de auditoría <i
+                      class="fa-solid fa-paper-plane"></i>
+                  </button>
+                  <p class="form-privacy">
+                    <i class="fa-solid fa-lock"></i> Confidencialidad garantizada.
+                    Analizaré tu caso personalmente.
+                  </p>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================== -->
+      <!-- SECCIÓN 8: PREGUNTAS FRECUENTES (FAQs)     -->
+      <!-- ========================================== -->
+      <section class="faqs-section">
+        <div class="container">
+          <!-- Quitamos la limitación de ancho para usar el grid completo -->
+
+          <div class="faqs-header">
+            <h2>Preguntas Frecuentes</h2>
+            <p>
+              Resolvemos las dudas más comunes sobre el desarrollo y la
+              infraestructura.
+            </p>
+          </div>
+
+          <div class="faqs-grid">
+            <!-- Columna Izquierda: Acordeón -->
+            <div class="faqs-accordion">
+              <details class="faq-item" open>
+                <summary class="faq-pregunta"
+                  >¿Me cobráis comisiones por cada curso que venda?</summary
+                >
+                <div class="faq-respuesta">
+                  <p>
+                    No. Al ser un desarrollo a medida, la plataforma es 100%
+                    tuya y todo lo que factures va directo a tu cuenta sin
+                    depender de plataformas comerciales ni pagar peajes abusivos
+                    por venta.
+                  </p>
+                </div>
+              </details>
+
+              <details class="faq-item">
+                <summary class="faq-pregunta"
+                  >¿Están protegidos mis vídeos para que no los descarguen?</summary
+                >
+                <div class="faq-respuesta">
+                  <p>
+                    Sí, utilizamos la red de distribución de contenidos
+                    Bunny.net. Esta tecnología garantiza que tus vídeos no
+                    tengan cortes y aplica protocolos de seguridad para evitar
+                    descargas ilegales.
+                  </p>
+                </div>
+              </details>
+
+              <details class="faq-item">
+                <summary class="faq-pregunta"
+                  >¿Qué pasa si todavía no tengo página web de captación?</summary
+                >
+                <div class="faq-respuesta">
+                  <p>
+                    En nuestra Opción B, o añadiendo el módulo correspondiente,
+                    desarrollamos un Front-End público en WordPress orientado
+                    específicamente a la venta, presentación de tu equipo y
+                    captación.
+                  </p>
+                </div>
+              </details>
+
+              <details class="faq-item">
+                <summary class="faq-pregunta"
+                  >¿Os encargáis del mantenimiento técnico a largo plazo?</summary
+                >
+                <div class="faq-respuesta">
+                  <p>
+                    Sí, ofrecemos un servicio de mantenimiento integral que
+                    incluye monitorización 24/7, optimización de base de datos y
+                    copias de seguridad para que tú solo te centres en tu
+                    contenido clínico.
+                  </p>
+                </div>
+              </details>
+            </div>
+
+            <!-- Columna Derecha: Mockup Visual Animado -->
+            <div class="faqs-visual">
+              <div class="demo-item">
+                <div class="iphone-mockup">
+                  <div class="phone-notch"></div>
+                  <!-- Cambia 'demo-5.webp' por la ruta de tu captura larga -->
+                  <div
+                    class="screen"
+                    style="background-image: url('/lecciones.webp');"
+                  >
+                  </div>
+                </div>
+
+                <a
+                  href="https://mnmryk.github.io/demo-nutricion/"
+                  target="_blank"
+                  class="btn-demo"
+                >
+                  Ver web en directo <i
+                    class="fa-solid fa-arrow-up-right-from-square"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================== -->
+      <!-- SECCIÓN 9: CTA FINAL                       -->
+      <!-- ========================================== -->
+      <section class="cta-final-section">
+        <div class="container">
+          <div class="cta-final-box">
+            <h2>¿Listo para dejar de intercambiar horas por dinero?</h2>
+            <p>
+              Da el salto al modelo de Academia y transforma tu conocimiento
+              clínico en ingresos recurrentes y escalables.
+            </p>
+            <a href="#contacto" class="btn-primary custom-btn-shadow cta-btn">
+              Agendar Auditoría Gratuita <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================== -->
+      <!-- FOOTER                                     -->
+      <!-- ========================================== -->
+      <footer class="site-footer">
+        <div class="container footer-grid">
+          <div class="footer-brand">
+            <span class="footer-logo"><strong>MN</strong> Design Web</span>
+            <p>
+              Desarrollo especializado de ecosistemas formativos y plataformas
+              E-learning a medida para el sector clínico.
+            </p>
+            <a
+              href="https://descubre.mndesignweb.es/clinicas/"
+              class="btn-primary custom-btn-shadow footer-eco-btn"
+              target="_blank"
+            >
+              Ver Ecosistema Portal Paciente <i class="fa-solid fa-arrow-right"
+              ></i>
+            </a>
+          </div>
+
+          <div class="footer-links">
+            <h4>Legal</h4>
+            <ul>
+              <li><a href="#">Aviso Legal</a></li>
+              <li><a href="#">Política de Privacidad</a></li>
+              <li><a href="#">Política de Cookies</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-contact">
+            <h4>Contacto</h4>
+            <p>
+              <i class="fa-solid fa-envelope text-accent"></i>
+              <a href="mailto:info@mndesignweb.es">info@mndesignweb.es</a>
+            </p>
+            <p>
+              <i class="fa-solid fa-phone text-accent"></i>
+              <a href="tel:+34645854934">+34 645 854 934</a>
+            </p>
+            <p>
+              <i class="fa-solid fa-globe text-accent"></i>
+              <a href="https://mndesignweb.es" target="_blank">mndesignweb.es</a
+              >
+            </p>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <div class="container">
+            <p>&copy; 2026 MN Design Web. Todos los derechos reservados.</p>
+          </div>
+        </div>
+      </footer>
+    </main>
+  </body>
+
+  <!-- BANNER DE COOKIES -->
+  <div id="cookie-banner" class="cookie-card-uiverse" style="display: none;">
+    <svg
+      xml:space="preserve"
+      viewBox="0 0 122.88 122.25"
+      y="0px"
+      x="0px"
+      id="cookieSvg"
+      version="1.1"
+    >
+      <g>
+        <path
+          d="M101.77,49.38c2.09,3.1,4.37,5.11,6.86,5.78c2.45,0.66,5.32,0.06,8.7-2.01c1.36-0.84,3.14-0.41,3.97,0.95 c0.28,0.46,0.42,0.96,0.43,1.47c0.13,1.4,0.21,2.82,0.24,4.26c0.03,1.46,0.02,2.91-0.05,4.35h0v0c0,0.13-0.01,0.26-0.03,0.38 c-0.91,16.72-8.47,31.51-20,41.93c-11.55,10.44-27.06,16.49-43.82,15.69v0.01h0c-0.13,0-0.26-0.01-0.38-0.03 c-16.72-0.91-31.51-8.47-41.93-20C5.31,90.61-0.73,75.1,0.07,58.34H0.07v0c0-0.13,0.01-0.26,0.03-0.38 C1,41.22,8.81,26.35,20.57,15.87C32.34,5.37,48.09-0.73,64.85,0.07V0.07h0c1.6,0,2.89,1.29,2.89,2.89c0,0.4-0.08,0.78-0.23,1.12 c-1.17,3.81-1.25,7.34-0.27,10.14c0.89,2.54,2.7,4.51,5.41,5.52c1.44,0.54,2.2,2.1,1.74,3.55l0.01,0 c-1.83,5.89-1.87,11.08-0.52,15.26c0.82,2.53,2.14,4.69,3.88,6.4c1.74,1.72,3.9,3,6.39,3.78c4.04,1.26,8.94,1.18,14.31-0.55 C99.73,47.78,101.08,48.3,101.77,49.38L101.77,49.38z M59.28,57.86c2.77,0,5.01,2.24,5.01,5.01c0,2.77-2.24,5.01-5.01,5.01 c-2.77,0-5.01-2.24-5.01-5.01C54.27,60.1,56.52,57.86,59.28,57.86L59.28,57.86z M37.56,78.49c3.37,0,6.11,2.73,6.11,6.11 s-2.73,6.11-6.11,6.11s-6.11-2.73-6.11-6.11S34.18,78.49,37.56,78.49L37.56,78.49z M50.72,31.75c2.65,0,4.79,2.14,4.79,4.79 c0,2.65-2.14,4.79-4.79,4.79c-2.65,0-4.79-2.14-4.79-4.79C45.93,33.89,48.08,31.75,50.72,31.75L50.72,31.75z M119.3,32.4 c1.98,0,3.58,1.6,3.58,3.58c0,1.98-1.6,3.58-3.58,3.58s-3.58-1.6-3.58-3.58C115.71,34.01,117.32,32.4,119.3,32.4L119.3,32.4z M93.62,22.91c2.98,0,5.39,2.41,5.39,5.39c0,2.98-2.41,5.39-5.39,5.39c-2.98,0-5.39-2.41-5.39-5.39 C88.23,25.33,90.64,22.91,93.62,22.91L93.62,22.91z M97.79,0.59c3.19,0,5.78,2.59,5.78,5.78c0,3.19-2.59,5.78-5.78,5.78 c-3.19,0-5.78-2.59-5.78-5.78C92.02,3.17,94.6,0.59,97.79,0.59L97.79,0.59z M76.73,80.63c4.43,0,8.03,3.59,8.03,8.03 c0,4.43-3.59,8.03-8.03,8.03s-8.03-3.59-8.03-8.03C68.7,84.22,72.29,80.63,76.73,80.63L76.73,80.63z M31.91,46.78 c4.8,0,8.69,3.89,8.69,8.69c0,4.8-3.89,8.69-8.69,8.69s-8.69-3.89-8.69-8.69C23.22,50.68,27.11,46.78,31.91,46.78L31.91,46.78z M107.13,60.74c-3.39-0.91-6.35-3.14-8.95-6.48c-5.78,1.52-11.16,1.41-15.76-0.02c-3.37-1.05-6.32-2.81-8.71-5.18 c-2.39-2.37-4.21-5.32-5.32-8.75c-1.51-4.66-1.69-10.2-0.18-16.32c-3.1-1.8-5.25-4.53-6.42-7.88c-1.06-3.05-1.28-6.59-0.61-10.35 C47.27,5.95,34.3,11.36,24.41,20.18C13.74,29.69,6.66,43.15,5.84,58.29l0,0.05v0h0l-0.01,0.13v0C5.07,73.72,10.55,87.82,20.02,98.3 c9.44,10.44,22.84,17.29,38,18.1l0.05,0h0v0l0.13,0.01h0c15.24,0.77,29.35-4.71,39.83-14.19c10.44-9.44,17.29-22.84,18.1-38l0-0.05 v0h0l0.01-0.13v0c0.07-1.34,0.09-2.64,0.06-3.91C112.98,61.34,109.96,61.51,107.13,60.74L107.13,60.74z"
+        ></path>
+      </g>
+    </svg>
+    <p class="cookieHeading">Usamos cookies</p>
+    <p class="cookieDescription">
+      Utilizamos cookies para darte la mejor experiencia en nuestra web. <br />
+      <a class="cookielink" href="https://mndesignweb.es/cookies"
+        >Ver políticas de cookies</a
+      >
+    </p>
+    <div class="buttonContainer">
+      <button id="btn-accept-cookies" class="acceptButton">Permitir</button>
+      <button id="btn-decline-cookies" class="declineButton">Rechazar</button>
+    </div>
+  </div>
+
+  <!-- SCRIPTS DE INTERACTIVIDAD Y ENVÍO -->
+  <script is:inline>
+    // Lógica Formulario Lead Magnet (Descarga de Dossier)
+    const formDossier = document.getElementById("dossier-form");
+    if (formDossier) {
+      formDossier.addEventListener("submit", function (e) {
+        e.preventDefault();
+        const btn = document.getElementById("btn-dossier");
+        btn.innerHTML =
+          'Procesando... <i class="fa-solid fa-spinner fa-spin"></i>';
+        btn.disabled = true;
+
+        const data = {
+          access_key: "1bc2d285-71cb-4fe3-806f-530066ab6e15",
+          subject: "Lead Magnet: Descarga Dossier Academias",
+          nombre: document.getElementById("dossier-nombre").value,
+          email: document.getElementById("dossier-email").value,
+        };
+
+        // Enviamos los datos a tu Web3Forms/Make
+        Promise.all([
+          fetch("https://api.web3forms.com/submit", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Accept: "application/json",
+            },
+            body: JSON.stringify(data),
+          }),
+          fetch("https://hook.eu1.make.com/mxvqg7gwne43yab165v2uhtyw5yh115r", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(data),
+          }),
+        ])
+          .then(async (results) => {
+            const result = await results[0].json();
+            if (result.success) {
+              // Eventos de conversión
+              if (typeof gtag === "function")
+                gtag("event", "download_dossier", {
+                  currency: "EUR",
+                  value: 0,
+                });
+              if (typeof fbq === "function") fbq("track", "Lead");
+              if (typeof clarity === "function")
+                clarity("set", "lead", "dossier_academia");
+
+              alert(
+                "¡Gracias! La descarga del dossier comenzará automáticamente.",
+              );
+
+              // Simula la descarga del PDF (Sustituye la ruta por el enlace real a tu PDF)
+              const link = document.createElement("a");
+              link.href = "/dossier-academia.pdf"; 
+              link.download = "Dossier_Academia_MNDesignWeb.pdf";
+              document.body.appendChild(link);
+              link.click();
+              document.body.removeChild(link);
+
+              formDossier.reset();
+            } else {
+              throw new Error("Error en el envío");
+            }
+          })
+          .catch(() => alert("Hubo un error. Por favor, inténtalo de nuevo."))
+          .finally(() => {
+            btn.innerHTML =
+              'Descargar Dossier Ahora <i class="fa-solid fa-download"></i>';
+            btn.disabled = false;
+          });
+      });
+    }
+    window.addEventListener("DOMContentLoaded", () => {
+      // 1. Lógica del desplegable según la URL
+      const servicioParam = new URLSearchParams(window.location.search).get(
+        "servicio",
+      );
+      if (servicioParam) {
+        const selectServicio = document.getElementById("servicio");
+        if (selectServicio) {
+          selectServicio.value = servicioParam;
+          const seccionContacto = document.getElementById("contacto");
+          if (seccionContacto) {
+            seccionContacto.scrollIntoView({ behavior: "smooth" });
+          }
+        }
+      }
+
+      // 2. Lógica del Formulario (Adaptado a Academias B2B)
+      const formAcademias = document.getElementById("formulario");
+      if (formAcademias) {
+        formAcademias.addEventListener("submit", function (e) {
+          e.preventDefault();
+          const btn = document.getElementById("btn-submit");
+          btn.innerText = "Enviando...";
+          btn.disabled = true;
+
+          const data = {
+            access_key: "1bc2d285-71cb-4fe3-806f-530066ab6e15",
+            subject: "Nuevo Lead: Academias de Nutrición", // Asunto actualizado
+            nombre: document.getElementById("nombre").value,
+            email: document.getElementById("email").value,
+            telefono: document.getElementById("telefono").value,
+            servicio: document.getElementById("servicio").value,
+            mensaje: document.getElementById("mensaje").value,
+          };
+
+          Promise.all([
+            fetch("https://api.web3forms.com/submit", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+                Accept: "application/json",
+              },
+              body: JSON.stringify(data),
+            }),
+            fetch(
+              "https://hook.eu1.make.com/mxvqg7gwne43yab165v2uhtyw5yh115r",
+              {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(data),
+              },
+            ),
+          ])
+            .then(async (results) => {
+              const result = await results[0].json();
+              if (result.success) {
+                // Eventos de conversión para Meta, Analytics y Clarity (Adaptados)
+                if (typeof gtag === "function")
+                  gtag("event", "generate_lead", { currency: "EUR", value: 0 });
+                if (typeof fbq === "function") fbq("track", "Lead");
+                if (typeof clarity === "function")
+                  clarity("set", "lead", "academia_nutricion");
+
+                alert(
+                  "¡Solicitud recibida! Analizaré tu proyecto y me pondré en contacto contigo pronto.",
+                );
+                formAcademias.reset();
+              } else {
+                throw new Error("Error en el envío");
+              }
+            })
+            .catch(() => {
+              alert("Hubo un error. Por favor, inténtalo de nuevo.");
+            })
+            .finally(() => {
+              btn.innerText = "Enviar solicitud de auditoría";
+              btn.disabled = false;
+            });
+        });
+      }
+    });
+
+    // 3. Lógica del Banner de Cookies
+    window.addEventListener("DOMContentLoaded", () => {
+      const cookieBanner = document.getElementById("cookie-banner");
+      const acceptBtn = document.getElementById("btn-accept-cookies");
+      const declineBtn = document.getElementById("btn-decline-cookies");
+      const consent = localStorage.getItem("cookieConsent");
+
+      if (!consent && cookieBanner) {
+        cookieBanner.style.display = "flex";
+      }
+
+      if (acceptBtn) {
+        acceptBtn.addEventListener("click", () => {
+          localStorage.setItem("cookieConsent", "accepted");
+          cookieBanner.style.display = "none";
+          if (typeof gtag === "function")
+            gtag("consent", "update", {
+              ad_storage: "granted",
+              ad_user_data: "granted",
+              ad_personalization: "granted",
+              analytics_storage: "granted",
+            });
+          if (typeof clarity === "function") clarity("consent");
+          if (typeof fbq === "function") fbq("consent", "grant");
+        });
+      }
+
+      if (declineBtn) {
+        declineBtn.addEventListener("click", () => {
+          localStorage.setItem("cookieConsent", "declined");
+          cookieBanner.style.display = "none";
+          if (typeof gtag === "function")
+            gtag("consent", "update", {
+              ad_storage: "denied",
+              ad_user_data: "denied",
+              ad_personalization: "denied",
+              analytics_storage: "denied",
+            });
+        });
+      }
+    });
+  </script>
+</html>
