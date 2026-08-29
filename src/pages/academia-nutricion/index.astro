@@ -29,6 +29,13 @@ import "./style.css";
     <meta name="robots" content="index, follow" />
 
     <!-- MEJORA WPO: Preconexión para acelerar carga de fuentes -->
+    <!-- Sonner Toast Library -->
+    <script src="https://cdn.jsdelivr.net/npm/sonner@1.7.1/dist/index.umd.js"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/sonner@1.7.1/dist/styles.css"
+    />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -495,7 +502,11 @@ import "./style.css";
             <div class="vista-card">
               <div class="vista-imagen admin-bg">
                 <!-- Ilustración/Icono abstracto para el admin -->
-                <img src="/admin.webp" alt="Panel de Administración" class="vista-mockup-img" />
+                <img
+                  src="/admin.webp"
+                  alt="Panel de Administración"
+                  class="vista-mockup-img"
+                />
               </div>
               <div class="vista-contenido">
                 <h3>Panel de Administración (Centro de Mando)</h3>
@@ -531,9 +542,12 @@ import "./style.css";
             <!-- Bloque 2: Panel del Alumno -->
             <div class="vista-card">
               <div class="vista-imagen alumno-bg">
-                
                 <!-- Ilustración/Icono abstracto para el alumno -->
-                <img src="/alumno.webp" alt="Vista del Alumno" class="vista-mockup-img" />
+                <img
+                  src="/alumno.webp"
+                  alt="Vista del Alumno"
+                  class="vista-mockup-img"
+                />
               </div>
               <div class="vista-contenido">
                 <h3>Entorno del Alumno (Experiencia Premium)</h3>
@@ -1461,13 +1475,13 @@ import "./style.css";
               if (typeof clarity === "function")
                 clarity("set", "lead", "dossier_academia");
 
-              alert(
-                "¡Gracias! La descarga del dossier comenzará automáticamente.",
-              );
+              window.sonner.toast.success("¡Dossier en camino!", {
+                description: "La descarga comenzará automáticamente.",
+              });
 
               // Simula la descarga del PDF (Sustituye la ruta por el enlace real a tu PDF)
               const link = document.createElement("a");
-              link.href = "/dossier-academia.pdf"; 
+              link.href = "/dossier-academia.pdf";
               link.download = "Dossier_Academia_MNDesignWeb.pdf";
               document.body.appendChild(link);
               link.click();
@@ -1478,7 +1492,12 @@ import "./style.css";
               throw new Error("Error en el envío");
             }
           })
-          .catch(() => alert("Hubo un error. Por favor, inténtalo de nuevo."))
+          .catch(() =>
+            window.sonner.toast.error("Vaya, algo ha fallado", {
+              description:
+                "Hubo un error al procesar tu solicitud. Inténtalo de nuevo.",
+            }),
+          )
           .finally(() => {
             btn.innerHTML =
               'Descargar Dossier Ahora <i class="fa-solid fa-download"></i>';
@@ -1549,17 +1568,21 @@ import "./style.css";
                 if (typeof clarity === "function")
                   clarity("set", "lead", "academia_nutricion");
 
-                alert(
-                  "¡Solicitud recibida! Analizaré tu proyecto y me pondré en contacto contigo pronto.",
-                );
+                window.sonner.toast.success("¡Solicitud recibida con éxito!", {
+                  description:
+                    "Analizaré tu caso personalmente y te responderé muy pronto.",
+                });
                 formAcademias.reset();
               } else {
                 throw new Error("Error en el envío");
               }
             })
-            .catch(() => {
-              alert("Hubo un error. Por favor, inténtalo de nuevo.");
-            })
+            .catch(() =>
+              window.sonner.toast.error("Error de envío", {
+                description:
+                  "No se ha podido enviar el mensaje. Por favor, revísalo.",
+              }),
+            )
             .finally(() => {
               btn.innerText = "Enviar solicitud de auditoría";
               btn.disabled = false;
