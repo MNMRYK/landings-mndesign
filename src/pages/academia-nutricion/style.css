@@ -2066,24 +2066,6 @@ body.academy-landing-body {
   .dossier-form-box {
     max-width: 100%;
   }
-
-  ::-webkit-scrollbar {
-    width: 10px;
-  }
-
-  ::-webkit-scrollbar-track {
-    background: var(--accent-light);
-  }
-
-  ::-webkit-scrollbar-thumb {
-    background: #598eff8e; 
-    border-radius: 5px;
-    border: 2px solid #f1f5f9; 
-  }
-
-  ::-webkit-scrollbar-thumb:hover {
-    background: var(--accent); 
-  }
 }
 
 /* 2. Tablets en general (hasta 992px) */
@@ -2214,6 +2196,27 @@ body.academy-landing-body {
   .experiencia-grid {
     grid-template-columns: 1fr;
     max-width: 600px;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  /* Fondo de la pista de scroll */
+  ::-webkit-scrollbar-track {
+    background: var(--accent-light);
+  }
+
+  /* Color y diseño del "pulgar" (la barra que se arrastra) en azul suave */
+  ::-webkit-scrollbar-thumb {
+    background: #598eff8e; /* Azul suave */
+    border-radius: 5px;
+    border: 2px solid #f1f5f9; /* Crea un efecto flotante muy limpio */
+  }
+
+  /* Color al pasar el ratón por encima */
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--accent); /* Azul corporativo */
   }
 }
 
