@@ -1041,7 +1041,7 @@
       </div>
     </div>
 
-    <style>
+    <style is:global>
       :root {
         --shopify-green: #008060;
         --dark-green: #004c3f;
@@ -1063,22 +1063,61 @@
         box-sizing: border-box;
       }
 
+      /* ==========================================
+   1. SCROLL SUAVE Y FONDO DE REBOTE MÓVIL
+========================================== */
       html {
         scroll-behavior: smooth;
-        /* Soporte para Firefox (barra fina) */
+        background-color: #002e26; /* Fondo verde oscuro para el rebote del móvil */
+
+        /* Estándar moderno: barra verde semitransparente sobre fondo claro */
+        scrollbar-color: #0055406e var(--bg-light);
         scrollbar-width: thin;
-        scrollbar-color: #0055406e #f4f6f800;
-      }
-      /* 2. Personalización de la barra de desplazamiento (Scrollbar) con colores de Shopify */
-      ::-webkit-scrollbar {
-        width: 10px; /* Ancho de la barra */
       }
 
+      /* ==========================================
+   2. SEGURO DE DESBORDAMIENTO (BODY)
+========================================== */
       body {
         font-family: "Inter", system-ui, sans-serif;
-        background-color: var(--bg-light);
+        background-color: #002e26; /* Lienzo base oscuro para forzar a Safari iOS */
         color: var(--text-dark);
         line-height: 1.6;
+        margin: 0;
+        padding: 0;
+        -webkit-font-smoothing: antialiased;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        overflow-x: hidden;
+        width: 100%;
+      }
+
+      /* Devolvemos el fondo gris clarito al contenido de la web */
+      main {
+        background-color: var(--bg-light);
+        flex-grow: 1;
+      }
+
+      /* ==========================================
+   3. BARRA DE SCROLL NATIVA (WEBKIT)
+========================================== */
+      ::-webkit-scrollbar {
+        width: 10px;
+      }
+
+      ::-webkit-scrollbar-track {
+        background: var(--bg-light);
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background: #0055406e;
+        border-radius: 5px;
+        border: 2px solid var(--bg-light); /* Borde igual que el track para efecto flotante */
+      }
+
+      ::-webkit-scrollbar-thumb:hover {
+        background: var(--shopify-green);
       }
 
       .container {
@@ -1966,6 +2005,86 @@
         background-color: rgba(255, 255, 255, 0.2);
       }
 
+      /* ==========================================
+         TOAST NOTIFICACIONES NATIVAS
+      ========================================== */
+      #custom-toast-container {
+        position: fixed;
+        bottom: 24px;
+        right: 24px;
+        z-index: 99999;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .custom-toast {
+        background: var(--white);
+        color: var(--text-dark);
+        padding: 16px 20px;
+        border-radius: 14px;
+        box-shadow: 0 15px 35px -5px rgba(0, 0, 0, 0.15);
+        border: 1px solid var(--border-color);
+        font-family: inherit;
+        display: flex;
+        align-items: flex-start;
+        gap: 14px;
+        min-width: 300px;
+        max-width: 400px;
+        animation:
+          toastSlideIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards,
+          toastFadeOut 0.3s ease 4.7s forwards;
+      }
+
+      .custom-toast.success {
+        border-left: 5px solid var(--shopify-green);
+      }
+      .custom-toast.error {
+        border-left: 5px solid #dc2626;
+      }
+
+      .custom-toast-content strong {
+        display: block;
+        font-size: 0.95rem;
+        font-weight: 800;
+        color: var(--text-dark);
+        margin-bottom: 3px;
+      }
+
+      .custom-toast-content span {
+        font-size: 0.85rem;
+        color: var(--text-light);
+        line-height: 1.4;
+      }
+
+      @keyframes toastSlideIn {
+        from {
+          transform: translateY(100px);
+          opacity: 0;
+        }
+        to {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+      @keyframes toastFadeOut {
+        to {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+      }
+
+      @media (max-width: 480px) {
+        #custom-toast-container {
+          bottom: 20px;
+          right: 20px;
+          left: 20px;
+        }
+        .custom-toast {
+          min-width: 100%;
+        }
+      }
+
       /* =========================================
          RESPONSIVE OPTIMIZADO (TABLET Y MÓVIL)
          ========================================= */
@@ -2214,8 +2333,40 @@
         }
       }
     </style>
-
     <script is:inline>
+      // ==========================================
+      // 0. FUNCIÓN TOAST NATIVA (Estilo App)
+      // ==========================================
+      function mostrarToast(titulo, descripcion, tipo = "success") {
+        let container = document.getElementById("custom-toast-container");
+        if (!container) {
+          container = document.createElement("div");
+          container.id = "custom-toast-container";
+          document.body.appendChild(container);
+        }
+
+        const toast = document.createElement("div");
+        toast.className = `custom-toast ${tipo}`;
+
+        const icono =
+          tipo === "success"
+            ? '<svg style="color: #008060; width: 24px; height: 24px; flex-shrink: 0;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>'
+            : '<svg style="color: #dc2626; width: 24px; height: 24px; flex-shrink: 0;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>';
+
+        toast.innerHTML = `
+        ${icono}
+        <div class="custom-toast-content">
+          <strong>${titulo}</strong>
+          <span>${descripcion}</span>
+        </div>
+      `;
+        container.appendChild(toast);
+
+        setTimeout(() => {
+          toast.remove();
+        }, 5000);
+      }
+
       // --- 1. LÓGICA DE BOTONES DE PRECIOS ---
       window.selectPlan = function (planId) {
         document.getElementById("plan").value = planId;
@@ -2225,9 +2376,8 @@
       };
 
       window.addEventListener("DOMContentLoaded", () => {
-        // --- 2. LÓGICA DEL FORMULARIO DE SHOPIFY ---
+        // --- 2. LÓGICA DEL FORMULARIO DE RESERVA ---
         const formMentoria = document.getElementById("formulario");
-
         if (formMentoria) {
           formMentoria.addEventListener("submit", function (e) {
             e.preventDefault();
@@ -2235,9 +2385,8 @@
             btn.innerText = "Enviando solicitud...";
             btn.disabled = true;
 
-            // Mapeamos los IDs reales de tu HTML
             const data = {
-              access_key: "1bc2d285-71cb-4fe3-806f-530066ab6e15", // Tu API Web3Forms
+              access_key: "1bc2d285-71cb-4fe3-806f-530066ab6e15",
               subject: "Nuevo Lead: Mentoría / Desarrollo Shopify",
               nombre: document.getElementById("name").value,
               email: document.getElementById("email").value,
@@ -2267,7 +2416,6 @@
               .then(async (results) => {
                 const result = await results[0].json();
                 if (result.success) {
-                  // Disparar eventos si aceptaron cookies
                   if (typeof gtag === "function")
                     gtag("event", "generate_lead", {
                       currency: "EUR",
@@ -2277,19 +2425,22 @@
                   if (typeof clarity === "function")
                     clarity("set", "lead", "shopify_mentoria");
 
-                  alert(
-                    "¡Solicitud recibida! Analizaré tu tienda y te contactaré en breve.",
+                  mostrarToast(
+                    "¡Solicitud recibida!",
+                    "Analizaré tu tienda y te contactaré en breve.",
                   );
                   formMentoria.reset();
                 } else {
                   throw new Error("Error en el envío");
                 }
               })
-              .catch(() => {
-                alert(
+              .catch(() =>
+                mostrarToast(
+                  "Error de envío",
                   "Hubo un error de conexión. Por favor, inténtalo de nuevo.",
-                );
-              })
+                  "error",
+                ),
+              )
               .finally(() => {
                 btn.innerText = "Bloquear mi sesión ahora";
                 btn.disabled = false;
@@ -2297,21 +2448,20 @@
           });
         }
 
-        // --- 2.5 LÓGICA DEL LEAD MAGNET (PDF) ---
+        // --- 3. LÓGICA DEL LEAD MAGNET (DESCARGA PDF) ---
         const formLeadMagnet = document.getElementById("form-lead-magnet");
-
         if (formLeadMagnet) {
           formLeadMagnet.addEventListener("submit", function (e) {
             e.preventDefault();
             const btnLM = document.getElementById("btn-lm-submit");
-            btnLM.innerText = "Enviando...";
+            btnLM.innerText = "Procesando...";
             btnLM.disabled = true;
 
             const dataLM = {
-              access_key: "1bc2d285-71cb-4fe3-806f-530066ab6e15", // Tu API Web3Forms
+              access_key: "1bc2d285-71cb-4fe3-806f-530066ab6e15",
               subject: "🚀 Nuevo Lead (Descarga PDF Shopify)",
               email: document.getElementById("lm-email").value,
-              tipo_lead: "Lead Magnet PDF", // Etiqueta clave para diferenciarlo en Make
+              tipo_lead: "Lead Magnet PDF",
             };
 
             Promise.all([
@@ -2335,7 +2485,6 @@
               .then(async (results) => {
                 const result = await results[0].json();
                 if (result.success) {
-                  // Tracking del Lead
                   if (typeof gtag === "function")
                     gtag("event", "generate_lead", {
                       currency: "EUR",
@@ -2345,17 +2494,31 @@
                   if (typeof clarity === "function")
                     clarity("set", "lead", "shopify_pdf");
 
-                  alert(
-                    "¡Genial! 📩 Revisa tu bandeja de entrada (y la carpeta de spam). Te acabo de enviar el enlace para descargar el PDF.",
+                  mostrarToast(
+                    "¡Dossier en camino!",
+                    "Tu descarga comenzará automáticamente en unos segundos.",
                   );
+
+                  // Forzar descarga del PDF en el navegador
+                  const link = document.createElement("a");
+                  link.href = "/arsenal-secreto-shopify.pdf"; // Asegúrate de que este archivo existe en tu carpeta public/
+                  link.download = "El_Arsenal_Secreto_Shopify.pdf";
+                  document.body.appendChild(link);
+                  link.click();
+                  document.body.removeChild(link);
+
                   formLeadMagnet.reset();
                 } else {
                   throw new Error("Error en el envío");
                 }
               })
-              .catch(() => {
-                alert("Hubo un error. Por favor, inténtalo de nuevo.");
-              })
+              .catch(() =>
+                mostrarToast(
+                  "Vaya, algo ha fallado",
+                  "Hubo un error al procesar tu solicitud. Inténtalo de nuevo.",
+                  "error",
+                ),
+              )
               .finally(() => {
                 btnLM.innerText = "Descargar PDF gratis";
                 btnLM.disabled = false;
@@ -2363,7 +2526,7 @@
           });
         }
 
-        // --- 3. LÓGICA DEL BANNER DE COOKIES ---
+        // --- 4. LÓGICA DEL BANNER DE COOKIES ---
         const cookieBanner = document.getElementById("cookie-banner");
         const acceptBtn = document.getElementById("btn-accept-cookies");
         const declineBtn = document.getElementById("btn-decline-cookies");
@@ -2377,7 +2540,6 @@
           acceptBtn.addEventListener("click", () => {
             localStorage.setItem("cookieConsent", "accepted");
             cookieBanner.style.display = "none";
-
             if (typeof gtag === "function") {
               gtag("consent", "update", {
                 ad_storage: "granted",
@@ -2395,7 +2557,6 @@
           declineBtn.addEventListener("click", () => {
             localStorage.setItem("cookieConsent", "declined");
             cookieBanner.style.display = "none";
-
             if (typeof gtag === "function") {
               gtag("consent", "update", {
                 ad_storage: "denied",

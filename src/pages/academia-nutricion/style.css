@@ -2094,6 +2094,77 @@ html {
   background-color: rgba(255, 255, 255, 0.2);
 }
 
+/* ==========================================
+   TOAST NOTIFICACIONES NATIVAS
+========================================== */
+#custom-toast-container {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 99999;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.custom-toast {
+  background: var(--white, #ffffff);
+  color: var(--text-main, #0f172a);
+  padding: 16px 20px;
+  border-radius: 14px;
+  box-shadow: 0 15px 35px -5px rgba(0, 0, 0, 0.15);
+  border: 1px solid var(--border-color, #e2e8f0);
+  font-family: var(--font-texto, sans-serif);
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  min-width: 300px;
+  max-width: 400px;
+  /* Animación de entrada rápida y salida a los 4.7s */
+  animation: toastSlideIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards, toastFadeOut 0.3s ease 4.7s forwards;
+}
+
+/* Bordes de color según el tipo de aviso */
+.custom-toast.success { border-left: 5px solid #16a34a; }
+.custom-toast.error { border-left: 5px solid #dc2626; }
+
+.custom-toast-content strong {
+  display: block;
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: var(--text-main, #0f172a);
+  margin-bottom: 3px;
+  font-family: var(--font-titulos, sans-serif);
+}
+
+.custom-toast-content span {
+  font-size: 0.85rem;
+  color: var(--text-muted, #475569);
+  line-height: 1.4;
+}
+
+/* Animaciones fluidas estilo app nativa */
+@keyframes toastSlideIn {
+  from { transform: translateY(100px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes toastFadeOut {
+  to { opacity: 0; transform: translateY(10px); }
+}
+
+/* Adaptación a móviles para que ocupe todo el ancho abajo */
+@media (max-width: 480px) {
+  #custom-toast-container {
+    bottom: 20px;
+    right: 20px;
+    left: 20px;
+  }
+  .custom-toast {
+    min-width: 100%;
+  }
+}
+
 
 /* ==========================================
    MEDIA QUERIES GLOBALES ORDENADAS

@@ -1427,9 +1427,43 @@ import "./style.css";
     </div>
   </div>
 
-  <!-- SCRIPTS DE INTERACTIVIDAD Y ENVÍO -->
   <script is:inline>
-    // Lógica Formulario Lead Magnet (Descarga de Dossier)
+    // ==========================================
+    // 0. FUNCIÓN TOAST NATIVA (Infalible)
+    // ==========================================
+    function mostrarToast(titulo, descripcion, tipo = "success") {
+      let container = document.getElementById("custom-toast-container");
+      if (!container) {
+        container = document.createElement("div");
+        container.id = "custom-toast-container";
+        document.body.appendChild(container);
+      }
+
+      const toast = document.createElement("div");
+      toast.className = `custom-toast ${tipo}`;
+
+      const icono =
+        tipo === "success"
+          ? '<i class="fa-solid fa-circle-check" style="color: #16a34a; font-size: 1.2rem; margin-top: 2px;"></i>'
+          : '<i class="fa-solid fa-circle-exclamation" style="color: #dc2626; font-size: 1.2rem; margin-top: 2px;"></i>';
+
+      toast.innerHTML = `
+        ${icono}
+        <div class="custom-toast-content">
+          <strong>${titulo}</strong>
+          <span>${descripcion}</span>
+        </div>
+      `;
+      container.appendChild(toast);
+
+      setTimeout(() => {
+        toast.remove();
+      }, 5000);
+    }
+
+    // ==========================================
+    // 1. LÓGICA DESCARGA DOSSIER
+    // ==========================================
     const formDossier = document.getElementById("dossier-form");
     if (formDossier) {
       formDossier.addEventListener("submit", function (e) {
@@ -1446,7 +1480,6 @@ import "./style.css";
           email: document.getElementById("dossier-email").value,
         };
 
-        // Enviamos los datos a tu Web3Forms/Make
         Promise.all([
           fetch("https://api.web3forms.com/submit", {
             method: "POST",
@@ -1465,7 +1498,6 @@ import "./style.css";
           .then(async (results) => {
             const result = await results[0].json();
             if (result.success) {
-              // Eventos de conversión
               if (typeof gtag === "function")
                 gtag("event", "download_dossier", {
                   currency: "EUR",
@@ -1475,11 +1507,11 @@ import "./style.css";
               if (typeof clarity === "function")
                 clarity("set", "lead", "dossier_academia");
 
-              window.sonner.toast.success("¡Dossier en camino!", {
-                description: "La descarga comenzará automáticamente.",
-              });
+              mostrarToast(
+                "¡Dossier en camino!",
+                "La descarga comenzará automáticamente.",
+              );
 
-              // Simula la descarga del PDF (Sustituye la ruta por el enlace real a tu PDF)
               const link = document.createElement("a");
               link.href = "/dossier-academia.pdf";
               link.download = "Dossier_Academia_MNDesignWeb.pdf";
@@ -1493,10 +1525,11 @@ import "./style.css";
             }
           })
           .catch(() =>
-            window.sonner.toast.error("Vaya, algo ha fallado", {
-              description:
-                "Hubo un error al procesar tu solicitud. Inténtalo de nuevo.",
-            }),
+            mostrarToast(
+              "Vaya, algo ha fallado",
+              "Hubo un error al procesar tu solicitud. Inténtalo de nuevo.",
+              "error",
+            ),
           )
           .finally(() => {
             btn.innerHTML =
@@ -1505,38 +1538,26 @@ import "./style.css";
           });
       });
     }
-    window.addEventListener("DOMContentLoaded", () => {
-      // 1. Lógica del desplegable según la URL
-      const servicioParam = new URLSearchParams(window.location.search).get(
-        "servicio",
-      );
-      if (servicioParam) {
-        const selectServicio = document.getElementById("servicio");
-        if (selectServicio) {
-          selectServicio.value = servicioParam;
-          const seccionContacto = document.getElementById("contacto");
-          if (seccionContacto) {
-            seccionContacto.scrollIntoView({ behavior: "smooth" });
-          }
-        }
-      }
 
-      // 2. Lógica del Formulario (Adaptado a Academias B2B)
+    // ==========================================
+    // 2. LÓGICA FORMULARIO CONTACTO / AUDITORÍA
+    // ==========================================
+    window.addEventListener("DOMContentLoaded", () => {
       const formAcademias = document.getElementById("formulario");
       if (formAcademias) {
         formAcademias.addEventListener("submit", function (e) {
           e.preventDefault();
           const btn = document.getElementById("btn-submit");
-          btn.innerText = "Enviando...";
+          btn.innerHTML =
+            'Enviando... <i class="fa-solid fa-spinner fa-spin"></i>';
           btn.disabled = true;
 
           const data = {
             access_key: "1bc2d285-71cb-4fe3-806f-530066ab6e15",
-            subject: "Nuevo Lead: Academias de Nutrición", // Asunto actualizado
+            subject: "Nuevo Lead: Academias de Nutrición",
             nombre: document.getElementById("nombre").value,
             email: document.getElementById("email").value,
             telefono: document.getElementById("telefono").value,
-            servicio: document.getElementById("servicio").value,
             mensaje: document.getElementById("mensaje").value,
           };
 
@@ -1561,38 +1582,39 @@ import "./style.css";
             .then(async (results) => {
               const result = await results[0].json();
               if (result.success) {
-                // Eventos de conversión para Meta, Analytics y Clarity (Adaptados)
                 if (typeof gtag === "function")
                   gtag("event", "generate_lead", { currency: "EUR", value: 0 });
                 if (typeof fbq === "function") fbq("track", "Lead");
                 if (typeof clarity === "function")
                   clarity("set", "lead", "academia_nutricion");
 
-                window.sonner.toast.success("¡Solicitud recibida con éxito!", {
-                  description:
-                    "Analizaré tu caso personalmente y te responderé muy pronto.",
-                });
+                mostrarToast(
+                  "¡Solicitud recibida con éxito!",
+                  "Analizaré tu caso personalmente y te responderé muy pronto.",
+                );
                 formAcademias.reset();
               } else {
                 throw new Error("Error en el envío");
               }
             })
             .catch(() =>
-              window.sonner.toast.error("Error de envío", {
-                description:
-                  "No se ha podido enviar el mensaje. Por favor, revísalo.",
-              }),
+              mostrarToast(
+                "Error de envío",
+                "No se ha podido enviar el mensaje. Por favor, revísalo.",
+                "error",
+              ),
             )
             .finally(() => {
-              btn.innerText = "Enviar solicitud de auditoría";
+              btn.innerHTML =
+                'Enviar solicitud de auditoría <i class="fa-solid fa-paper-plane"></i>';
               btn.disabled = false;
             });
         });
       }
-    });
 
-    // 3. Lógica del Banner de Cookies
-    window.addEventListener("DOMContentLoaded", () => {
+      // ==========================================
+      // 3. BANNER DE COOKIES
+      // ==========================================
       const cookieBanner = document.getElementById("cookie-banner");
       const acceptBtn = document.getElementById("btn-accept-cookies");
       const declineBtn = document.getElementById("btn-decline-cookies");
