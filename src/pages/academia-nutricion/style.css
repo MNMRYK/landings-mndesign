@@ -165,7 +165,7 @@ html {
 
 .hero-title {
   font-family: var(--font-titulos);
-  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-size: clamp(2.5rem, 5vw, 3.6rem);
   font-weight: 800;
   line-height: 1.15;
   margin-top: 0;
@@ -181,7 +181,7 @@ html {
   font-size: 1.15rem;
   color: var(--text-muted);
   line-height: 1.6;
-  margin-bottom: 40px;
+  margin-bottom: 30px;
   max-width: 550px;
 }
 
@@ -2318,6 +2318,11 @@ html {
     grid-template-columns: 1fr;
     max-width: 600px;
   }
+  .iphone-mockup {
+    width: 420px;
+    height: 780px;
+    margin: 100px 0 20px;
+  }
 
 }
 
@@ -2426,7 +2431,7 @@ html {
   .iphone-mockup {
     width: 320px;
     height: 630px;
-    margin: 80px 0 20px;
+    margin: 100px 0 20px;
   }
 
   /* 5. El banner oscuro se salía porque tenía 100% de ancho + 20px de padding */
