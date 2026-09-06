@@ -2,16 +2,16 @@
 
 Este subdominio (descubre.mndesignweb.es) aloja los embudos de captación y soluciones tecnológicas especializadas desarrolladas por MN Design Web.
 
-## E-commerce y Plataformas de Reservas
-Soluciones avanzadas que integran gestión de agendas, pagos y áreas privadas:
-- [Software para Clínicas Médicas y Nutrición](/clinicas/) - Portales de paciente a medida, aulas virtuales y sincronización ERP.
+## Diseño Web y Plataformas de Reservas
+Soluciones avanzadas y webs a medida que integran gestión de agendas, áreas privadas y desarrollo corporativo:
+- [Estudio de Diseño Web Alcoi / Cocentaina](/alcoi/) - Diseño web d'alt rendiment, desarrollo de plataformas SaaS y SEO local para negocios de l'Alcoià y el Comtat.
+- [Diseño Web para Nutricionistas y Dietistas](/clinicas/) - Webs estratégicas diseñadas para captar pacientes. Incluye integración de reservas online automatizadas, blog de salud y portales/aulas virtuales a medida.
 - [Plataformas para Psicólogos](/psicologos/) - Sistemas de videoconsulta encriptada, reservas automatizadas y diario clínico.
-
-## Diseño Web Temático
 - [Invitaciones de Boda Digitales](/bodas/) - Webs interactivas, confirmación de asistencia y diseño premium para eventos.
 
-## Formación E-commerce
-- [Mentorías y Creación de E-commerce Shopify](/aprende-shopify/) - Acompañamiento técnico para escalar tiendas existentes y servicio de desarrollo web desde cero con presupuestos accesibles.
+## E-commerce
+Proyectos centrados en la venta de productos y escalabilidad online:
+- [Mentorías y Creación de E-commerce Shopify](/aprende-shopify/) - Acompañamiento técnico para escalar tiendas existentes y servicio de desarrollo e-commerce desde cero con presupuestos accesibles.
 
 ## Información Corporativa
 Para consultar nuestro portafolio de diseño corporativo general, servicios de SEO o información legal, por favor dirígete a nuestro dominio principal:
