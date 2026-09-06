@@ -1,0 +1,62 @@
+body {
+  background-color: #fafafc;
+  overflow-x: hidden;
+}
+.glass-card {
+  background: #ffffff;
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  transition: all 0.3s ease;
+}
+.glass-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.08);
+}
+.gradient-text {
+  background: linear-gradient(135deg, #0f172a 0%, #4a3355 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+/* Animaciones flotantes */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-15px); }
+}
+@keyframes float-delay {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+.anim-float {
+  animation: float 6s ease-in-out infinite;
+}
+.anim-float-delay {
+  animation: float-delay 7s ease-in-out 2s infinite;
+}
+
+/* =========================================
+   SCROLLBAR PERSONALIZADA (Morado Pastel)
+   ========================================= */
+
+/* Soporte para Chrome, Safari y Edge */
+::-webkit-scrollbar {
+  width: 10px; /* Anchura de la barra */
+}
+
+::-webkit-scrollbar-track {
+  background: transparent; /* Fondo transparente para que se funda con la web */
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(139, 92, 246, 0.4); /* Morado pastel / semi-transparente */
+  border-radius: 20px; /* Bordes bien redonditos */
+  border: 3px solid #fafafc; /* Pequeño margen para que no pegue al borde (mismo color que el body) */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(139, 92, 246, 0.7); /* Morado un poco más fuerte al pasar el ratón */
+}
+
+/* Soporte para Firefox */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(139, 92, 246, 0.5) transparent;
+}
