@@ -293,27 +293,26 @@ import "./style.css";
     class="text-slate-800 antialiased selection:bg-saas-violet selection:text-white"
   >
     <header
-      class="fixed top-0 left-0 w-full z-[100] bg-white/80 backdrop-blur-md border-b border-slate-200/50"
+      class="fixed top-0 left-0 w-full z-[100] bg-white/95 backdrop-blur-xl border-b border-slate-200/80 shadow-sm"
     >
       <div
-        class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between"
+        class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between relative z-20 bg-transparent"
       >
-        <!-- Logo -->
-        <a href="/" class="flex items-center gap-3 group">
+        <!-- Logo (Ahora visible completo en móvil) -->
+        <a href="/" class="flex items-center gap-3 group shrink-0">
           <div
-            class="flex items-center justify-center w-10 h-10 rounded-xl bg-gradient-to-br from-saas-violet to-indigo-600 shadow-md shadow-saas-violet/20 transition-transform group-hover:scale-110"
+            class="flex items-center justify-center w-10 h-10 rounded-xl bg-gradient-to-br from-saas-violet to-indigo-600 shadow-md shadow-saas-violet/20 transition-transform group-hover:scale-110 shrink-0"
           >
-            <span class="text-lg font-black tracking-tighter text-white"
-              >MN</span
-            >
+            <span class="text-lg font-black tracking-tighter text-white">MN</span>
           </div>
-          <div class="hidden sm:flex flex-col justify-center">
+          <!-- Quitamos el 'hidden sm:flex' para que se vea siempre -->
+          <div class="flex flex-col justify-center">
             <span
-              class="text-base font-extrabold text-slate-900 tracking-tight leading-none mb-0.5"
+              class="text-base sm:text-lg font-extrabold text-slate-900 tracking-tight leading-none mb-0.5"
               >Design Web</span
             >
             <span
-              class="text-[9px] font-bold text-saas-violet uppercase tracking-[0.2em] leading-none"
+              class="text-[9px] sm:text-[10px] font-bold text-saas-violet uppercase tracking-[0.2em] leading-none"
               >Estudi</span
             >
           </div>
@@ -323,18 +322,10 @@ import "./style.css";
         <nav
           class="hidden md:flex items-center gap-8 font-semibold text-sm text-slate-600"
         >
-          <a href="#serveis" class="hover:text-saas-violet transition-colors"
-            >Serveis</a
-          >
-          <a href="#branding" class="hover:text-saas-violet transition-colors"
-            >Branding</a
-          >
-          <a href="#portfolio" class="hover:text-saas-violet transition-colors"
-            >Casos d'èxit</a
-          >
-          <a href="#nosaltres" class="hover:text-saas-violet transition-colors"
-            >Nosaltres</a
-          >
+          <a href="#serveis" class="hover:text-saas-violet transition-colors">Serveis</a>
+          <a href="#branding" class="hover:text-saas-violet transition-colors">Branding</a>
+          <a href="#portfolio" class="hover:text-saas-violet transition-colors">Casos d'èxit</a>
+          <a href="#nosaltres" class="hover:text-saas-violet transition-colors">Nosaltres</a>
         </nav>
 
         <div class="flex items-center gap-4">
@@ -344,57 +335,50 @@ import "./style.css";
           >
             Reserva
           </a>
+          <!-- Botón Hamburguesa -->
           <button
-            class="md:hidden text-slate-600 hover:text-saas-violet transition-colors"
+            id="mobile-menu-btn"
+            aria-label="Obrir menú"
+            class="md:hidden flex items-center justify-center w-10 h-10 bg-slate-50 border border-slate-200 rounded-xl text-slate-600 hover:text-saas-violet hover:bg-violet-50 transition-colors"
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              ><line x1="4" x2="20" y1="12" y2="12"></line><line
-                x1="4"
-                x2="20"
-                y1="6"
-                y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg
-            >
+            <i data-lucide="menu" class="w-5 h-5"></i>
           </button>
         </div>
       </div>
+
+      <!-- Menú Desplegable Móvil (Diseño Premium) -->
       <div
         id="mobile-dropdown"
-        class="hidden absolute top-20 left-0 w-full bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-2xl px-6 py-8 flex-col gap-6 text-center md:hidden"
+        class="hidden absolute top-full left-0 w-full bg-white/95 backdrop-blur-xl border-b border-slate-200 shadow-2xl px-6 py-8 flex-col gap-2 text-center md:hidden"
       >
         <a
           href="#serveis"
-          class="mobile-link text-xl font-extrabold text-slate-800 hover:text-saas-violet"
+          class="mobile-link w-full py-3.5 text-lg font-bold text-slate-700 hover:text-saas-violet hover:bg-slate-50 rounded-2xl transition-colors"
           >Serveis</a
         >
         <a
           href="#branding"
-          class="mobile-link text-xl font-extrabold text-slate-800 hover:text-saas-violet"
+          class="mobile-link w-full py-3.5 text-lg font-bold text-slate-700 hover:text-saas-violet hover:bg-slate-50 rounded-2xl transition-colors"
           >Branding</a
         >
         <a
           href="#portfolio"
-          class="mobile-link text-xl font-extrabold text-slate-800 hover:text-saas-violet"
+          class="mobile-link w-full py-3.5 text-lg font-bold text-slate-700 hover:text-saas-violet hover:bg-slate-50 rounded-2xl transition-colors"
           >Casos d'èxit</a
         >
         <a
           href="#nosaltres"
-          class="mobile-link text-xl font-extrabold text-slate-800 hover:text-saas-violet"
+          class="mobile-link w-full py-3.5 text-lg font-bold text-slate-700 hover:text-saas-violet hover:bg-slate-50 rounded-2xl transition-colors"
           >Nosaltres</a
         >
+        
+        <!-- Botón de Reserva Móvil idéntico al de escritorio -->
         <a
           href="#contacte"
-          class="mobile-link text-xl font-black text-saas-violet mt-2"
-          >Reserva Consultoria</a
+          class="mobile-link w-full mt-4 bg-saas-dark hover:bg-black text-white px-8 py-4 rounded-2xl font-bold text-base transition-all shadow-lg shadow-slate-900/20"
         >
+          Reserva consultoria
+        </a>
       </div>
     </header>
 
