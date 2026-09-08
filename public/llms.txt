@@ -1,6 +1,6 @@
 # MN Design Web - Landing Pages y Soluciones Sectoriales
 
-Este subdominio (descubre.mndesignweb.es) aloja los embudos de captación y soluciones tecnológicas especializadas desarrolladas por MN Design Web.
+Este subdominio (mndesignweb.es) aloja los embudos de captación y soluciones tecnológicas especializadas desarrolladas por MN Design Web.
 
 ## Diseño Web y Plataformas de Reservas
 Soluciones avanzadas y webs a medida que integran gestión de agendas, áreas privadas y desarrollo corporativo:
