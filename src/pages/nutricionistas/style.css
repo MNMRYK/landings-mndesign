@@ -2687,8 +2687,245 @@ html {
     font-size: 32px;
     text-align: center;
   }
+
+
   .cal-widget {
-    height: 550px; 
+    height: 520px; /* Le damos un poco más de aire vertical en móvil */
+    border-radius: 20px;
+  }
+
+  .calendar-iframe {
+    width: 100%; /* Quitamos tu 125% */
+    height: 100%; /* Quitamos tu 570px fijo */
+    transform: scale(
+      1
+    ); /* Devolvemos la escala a la normalidad para que sea táctil */
+    transform-origin: center;
+  }
+  .contact-form-wrapper {
+    padding: 25px;
+  }
+
+  /* --- FOOTER --- */
+  .footer-floating-container {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    text-align: center;
+    padding-bottom: 20px;
+  }
+  .footer-brand {
+    max-width: 100%;
+    margin: 0 auto;
+  }
+  .footer-contact-actions {
+    margin: 25px auto 0 auto; /* Aseguramos margen automático a ambos lados */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Obliga a los botones a estar en el centro del eje */
+    width: 100%;
+    max-width: 280px; /* Mantenemos el ancho para que los botones no se hagan gigantes */
+  }
+  .footer-bottom {
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+  }
+
+  /* --- TOASTS --- */
+  .toast-container {
+    bottom: 20px;
+    right: 20px;
+    left: 20px;
+  }
+  .toast {
+    min-width: 100%;
+    box-sizing: border-box;
+  }
+  
+  /* --- OTROS COMPONENTES --- */
+  .demo-cta-container {
+    padding: 40px 20px;
+  }
+  .demo-title {
+    font-size: 26px;
+  }
+
+  /* ========================================= */
+/* --- RESPONSIVE UNIFICADO (MÓVILES Y TABLETS) --- */
+/* ========================================= */
+
+@media (max-width: 900px) {
+  /* --- NAVBAR --- */
+  .desktop-nav, .navbar-cta {
+    display: none;
+  }
+
+  .navbar-logo {
+    text-decoration: none;
+    color: #FFFFFF;
+    font-weight: 700;
+    font-size: 24px;
+    letter-spacing: -0.5px;
+  }
+
+  .navbar-container {
+    padding: 20px 5%;
+  } 
+  .menu-toggle {
+    display: flex;
+  }
+
+  /* --- HERO SECTION --- */
+  .hero {
+    flex-direction: column;
+    text-align: center;
+    padding: 120px 5% 120px; 
+  }
+
+  .features-header{
+    margin: 0 auto 30px;
+  }
+  .hero-visual {
+    width: 100%;
+    margin-top: 40px;
+    justify-content: flex-end;
+    height: auto;
+  }
+
+  .ui-header {
+    height: 10px;
+    border-bottom: 1px solid #2c4239;
+    display: flex;
+    align-items: center;
+    padding: 0 15px;
+  }
+
+  .laptop-mockup {
+    width: 100%;
+    max-width: 400px;
+    height: 210px;
+    order: 1;
+  }
+  .laptop-base {
+    width: 110%;
+  }
+  .phone-mockup {
+    position: relative;
+    order: 2; /* Obligamos a que el móvil vaya después (a la derecha) */
+    left: auto;
+    bottom: -15px; /* Lo bajamos un poquito para que rompa el borde y dé profundidad */
+    margin-top: 0;
+    margin-right: 0; /* Limpiamos el margen antiguo */
+    margin-left: -90px; /* Tira del móvil hacia la izquierda para que solape el PC */
+    z-index: 3;
+  }
+
+  /* --- SECCIONES ZIG-ZAG (SOLUCIÓN A COMPRESIÓN DE TEXTO) --- */
+  .feature-row, 
+  .feature-row.reverse {
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .features {
+    padding: 100px 5% 120px;
+  }
+  .feature-text, 
+  .feature-visual {
+    width: 100%; /* Forzamos el ancho completo en móvil */
+  }
+  .feature-text {
+    text-align: left; /* Mantenemos legibilidad alineada a la izquierda */
+  }
+
+  /* --- GRID COMUNES A 1 COLUMNA --- */
+  .modular-grid, 
+  .strategy-grid, 
+  .pricing-interactive-grid, 
+  .reviews-grid, 
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* --- WEB INICIAL --- */
+  .web-inicial {
+    padding: 100px 5% 50px;
+    background-color: var(--primary);
+    position: relative;
+  }
+
+  .web-inicial-row {
+    flex-direction: column;
+  }
+  .web-inicial-content, 
+  .web-inicial-visual {
+    width: 100%;
+  }
+  .web-card-content {
+    height: 250px; 
+  }
+  .floating-badge {
+    display: none; 
+  }
+
+  .strategy-section {
+    padding: 52px 5% 120px;
+  }
+
+  /* --- SOBRE MÍ --- */
+  .about-container {
+    flex-direction: column;
+    text-align: center;
+    gap: 50px;
+  }
+  .about-visual {
+    width: 80%;
+    margin: 0 auto;
+  }
+  .about-text-content {
+    width: 100%;
+  }
+  .about-decoration-dot {
+    right: -15px;
+    width: 50px;
+    height: 50px;
+  }
+
+  .reviews-section {
+    padding: 100px 5% 50px;
+    background-color: var(--accent);
+    position: relative;
+    z-index: 2;
+  }
+
+  /* --- CONTACTO Y FAQ --- */
+  .faq-section {
+    padding-top: 80px;
+  }
+
+  .contact-section {
+    margin-top: -2px; /* Sella la línea entre reseñas y contacto solo en móvil */
+    padding: 80px 5% 140px; /* Le da el respiro necesario al título "Da el paso definitivo..." */
+  }
+
+  .contact-main-title {
+    font-size: 32px;
+    text-align: center;
+  }
+
+
+  .cal-widget {
+    height: 520px; /* Le damos un poco más de aire vertical en móvil */
+    border-radius: 20px;
+  }
+
+  .calendar-iframe {
+    width: 100%; /* Quitamos tu 125% */
+    height: 100%; /* Quitamos tu 570px fijo */
+    transform: scale(
+      1
+    ); /* Devolvemos la escala a la normalidad para que sea táctil */
+    transform-origin: center;
   }
   .contact-form-wrapper {
     padding: 25px;
@@ -2738,6 +2975,19 @@ html {
     font-size: 26px;
   }
 }
+
+/* ========================================= */
+/* --- AJUSTE EXCLUSIVO PARA COOKIES (MÓVIL PEQUEÑO) --- */
+/* ========================================= */
+@media (max-width: 600px) {
+  .cookie-card-uiverse {
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+    max-width: calc(100% - 40px);
+  }
+}
+
 
 /* ========================================= */
 /* --- AJUSTE EXCLUSIVO PARA COOKIES (MÓVIL PEQUEÑO) --- */
