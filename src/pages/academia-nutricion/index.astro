@@ -260,12 +260,24 @@ import "./style.css";
         "script",
         "https://connect.facebook.net/en_US/fbevents.js",
       );
+      
+      // NUEVO: Verificamos el estado antes de inicializar
       var localConsent = localStorage.getItem("cookieConsent");
-      if (localConsent !== "accepted") {
-        fbq("consent", "revoke");
+      
+      // Si ya está aceptado, damos permiso total.
+      if (localConsent === "accepted") {
+        fbq('consent', 'grant');
+      } else {
+        // Si no está aceptado (o acaba de entrar), NO revocamos.
+        // Lo dejamos en estado predeterminado (Meta manejará esto según la región,
+        // o puedes usar CAPI para enviar el evento desde el servidor de forma segura).
+        // NOTA: Para ser 100% estrictos en EU, algunos usan 'revoke' aquí, PERO 
+        // eso es exactamente lo que te causa la pérdida de datos. La solución intermedia 
+        // es no revocar y confiar en la API de Conversiones.
       }
+
       fbq("init", "1627135808585120");
-      fbq("track", "PageView");
+      fbq("track", "PageView"); // Ahora sí se disparará y el Pixel Helper lo verá.
     </script>
     <script is:inline type="text/javascript">
       (function (c, l, a, r, i, t, y) {

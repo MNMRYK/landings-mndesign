@@ -51,10 +51,7 @@
 
     <!-- OPEN GRAPH (Facebook, LinkedIn, WhatsApp) -->
     <meta property="og:type" content="website" />
-    <meta
-      property="og:url"
-      content="https://mndesignweb.es/clinicas"
-    />
+    <meta property="og:url" content="https://mndesignweb.es/clinicas" />
     <meta
       property="og:title"
       content="Software de Consultas y Desarrollo Web Clínico | MN Design"
@@ -71,10 +68,7 @@
 
     <!-- TWITTER CARDS (X) -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta
-      name="twitter:url"
-      content="https://mndesignweb.es/clinicas"
-    />
+    <meta name="twitter:url" content="https://mndesignweb.es/clinicas" />
     <meta
       name="twitter:title"
       content="Software de Consultas y Desarrollo Web Clínico | MN Design"
@@ -236,6 +230,7 @@
       gtag("config", "G-36WYJMYT3Z");
     </script>
 
+    <!-- ESTO VA EN EL HTML (dentro del <head>) -->
     <script is:inline>
       !(function (f, b, e, v, n, t, s) {
         if (f.fbq) return;
@@ -261,8 +256,8 @@
         "https://connect.facebook.net/en_US/fbevents.js",
       );
       var localConsent = localStorage.getItem("cookieConsent");
-      if (localConsent !== "accepted") {
-        fbq("consent", "revoke");
+      if (localConsent === "accepted") {
+        fbq("consent", "grant");
       }
       fbq("init", "1627135808585120");
       fbq("track", "PageView");

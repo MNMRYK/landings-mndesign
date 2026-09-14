@@ -264,11 +264,13 @@ import "./style.css";
         "https://connect.facebook.net/en_US/fbevents.js",
       );
 
-      // Chequeo de consentimiento para el Píxel
+      // Chequeo de consentimiento para el Píxel SIN REVOKE
       var localConsent = localStorage.getItem("cookies_accepted");
-      if (localConsent !== "true") {
-        fbq("consent", "revoke");
+      
+      if (localConsent === "true") {
+        fbq('consent', 'grant');
       }
+
       fbq("init", "1627135808585120");
       fbq("track", "PageView");
     </script>

@@ -354,10 +354,13 @@ import "./style.css";
         "script",
         "https://connect.facebook.net/en_US/fbevents.js",
       );
+      
       var localConsent = localStorage.getItem("cookieConsent");
-      if (localConsent !== "accepted") {
-        fbq("consent", "revoke");
-      }
+      
+      if (localConsent === "accepted") {
+        fbq('consent', 'grant');
+      } 
+
       fbq("init", "1627135808585120");
       fbq("track", "PageView");
     </script>
