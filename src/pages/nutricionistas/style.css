@@ -1834,7 +1834,6 @@ html {
   gap: 80px;
 }
 
-
 .about-visual {
   width: 45%;
   position: relative;
@@ -1845,7 +1844,7 @@ html {
   aspect-ratio: 3 / 4; 
   background-color: var(--accent); 
   
-  border-radius: 200px 200px 12px 12px;
+  border-radius: 50% 50% 12px 12px / 37.5% 37.5% 12px 12px;
   overflow: hidden;
   position: relative;
   z-index: 2;
@@ -1975,10 +1974,8 @@ html {
   background-color: var(--accent); 
   position: relative;
   z-index: 2; 
-  
-  
   clip-path: polygon(0 0, 100% 0, 100% calc(100% - 60px), 0 100%);
-  margin-bottom: -60px;
+  margin-bottom: -62px;
 }
 
 .contact-grid {
