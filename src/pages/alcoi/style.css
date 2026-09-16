@@ -16,7 +16,7 @@ body {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
-/* Animaciones flotantes */
+
 @keyframes float {
   0%, 100% { transform: translateY(0px); }
   50% { transform: translateY(-15px); }
@@ -36,26 +36,26 @@ body {
    SCROLLBAR PERSONALIZADA (Morado Pastel)
    ========================================= */
 
-/* Soporte para Chrome, Safari y Edge */
+
 ::-webkit-scrollbar {
-  width: 10px; /* Anchura de la barra */
+  width: 10px; 
 }
 
 ::-webkit-scrollbar-track {
-  background: transparent; /* Fondo transparente para que se funda con la web */
+  background: transparent; 
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(139, 92, 246, 0.4); /* Morado pastel / semi-transparente */
-  border-radius: 20px; /* Bordes bien redonditos */
-  border: 3px solid #fafafc; /* Pequeño margen para que no pegue al borde (mismo color que el body) */
+  background: rgba(139, 92, 246, 0.4); 
+  border-radius: 20px; 
+  border: 3px solid #fafafc; 
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(139, 92, 246, 0.7); /* Morado un poco más fuerte al pasar el ratón */
+  background: rgba(139, 92, 246, 0.7); 
 }
 
-/* Soporte para Firefox */
+
 html {
   scrollbar-width: thin;
   scrollbar-color: rgba(139, 92, 246, 0.5) transparent;

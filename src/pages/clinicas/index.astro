@@ -1,64 +1,49 @@
+---
+import "./style.css";
+---
+
 <!doctype html>
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Software de Consultas y Desarrollo Web Nutrición | MN Design</title>
+    <title>Portal Salud - Gestión de Consultas</title>
 
     <meta
       name="theme-color"
       media="(prefers-color-scheme: light)"
-      content="#fcfffb"
+      content="#ffffff"
     />
     <meta
       name="theme-color"
       media="(prefers-color-scheme: dark)"
-      content="#fcfffb"
+      content="#ffffff"
     />
     <meta name="apple-mobile-web-app-status-bar-style" content="default" />
 
-    <!-- URL CANÓNICA -->
     <link rel="canonical" href="https://mndesignweb.es/clinicas" />
     <link rel="icon" type="image/webp" href="/favicon_v2.webp" />
     <meta name="robots" content="index, follow" />
 
-    <!-- MEJORA WPO -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Nunito:wght@400;600;700;800;900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
-    <link
-      rel="preload"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-      as="style"
-      onload="this.onload=null;this.rel='stylesheet'"
-    />
-    <noscript
-      ><link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-      /></noscript
-    >
 
-    <!-- METADATOS PRINCIPALES SEO -->
     <meta
       name="description"
-      content="Diseño y desarrollo web para clínicas. Software de consultas de nutrición con portal del paciente y academia e-learning. Elige funciones a la carta o packs cerrados."
+      content="Software de gestión clínica con pago único. Agenda inteligente, portal del paciente, facturación y academias online para tu centro de salud sin cuotas mensuales."
     />
     <meta name="author" content="MN Design Web" />
 
-    <!-- OPEN GRAPH (Facebook, LinkedIn, WhatsApp) -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://mndesignweb.es/clinicas" />
-    <meta
-      property="og:title"
-      content="Software de Consultas y Desarrollo Web Clínico | MN Design"
-    />
+    <meta property="og:title" content="Portal Salud - Gestión de Consultas" />
     <meta
       property="og:description"
-      content="Ecosistema digital para profesionales de la salud. Portal del paciente, agenda, videoconsulta y academia online. Módulos a la carta adaptados a tu clínica."
+      content="Ecosistema digital para profesionales de la salud mediante inversión inicial de pago único. Agenda, videoconsulta y academia online a tu medida."
     />
     <meta
       property="og:image"
@@ -66,30 +51,56 @@
     />
     <meta property="og:locale" content="es_ES" />
 
-    <!-- TWITTER CARDS (X) -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:url" content="https://mndesignweb.es/clinicas" />
-    <meta
-      name="twitter:title"
-      content="Software de Consultas y Desarrollo Web Clínico | MN Design"
-    />
+    <meta name="twitter:title" content="Portal Salud - Gestión de Consultas" />
     <meta
       name="twitter:description"
-      content="Ecosistema digital para profesionales de la salud. Portal del paciente, agenda, videoconsulta y academia online. Módulos a la carta adaptados a tu clínica."
+      content="Ecosistema digital para profesionales de la salud mediante inversión inicial de pago único. Agenda, videoconsulta y academia online a tu medida."
     />
     <meta
       name="twitter:image"
       content="https://mndesignweb.es/imagen-miniatura-clinicas.webp"
     />
 
-    <!-- DATOS ESTRUCTURADOS (JSON-LD) OPTIMIZADOS -->
     <script type="application/ld+json">
       [
         {
           "@context": "https://schema.org",
           "@type": "WebPage",
-          "name": "Diseño Web y Software de Consultas para Clínicas | MN Design Web",
-          "description": "Desarrollo y diseño web con software de gestión clínica. Portal del paciente y academia digital con módulos a la carta para nutricionistas y sector salud."
+          "name": "Portal Salud - Software de Gestión para Clínicas | MN Design Web",
+          "description": "Desarrollo y software de gestión clínica en propiedad con pago único. Portal del paciente y academia para el sector salud."
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "SoftwareApplication",
+          "name": "Portal Salud Consultas",
+          "operatingSystem": "All",
+          "applicationCategory": "BusinessApplication",
+          "description": "Software integral para la gestión de clínicas con inversión inicial de pago único.",
+          "offers": [
+            {
+              "@type": "Offer",
+              "name": "Primera Presencia",
+              "price": "790",
+              "priceCurrency": "EUR",
+              "description": "Pago único"
+            },
+            {
+              "@type": "Offer",
+              "name": "Portal Paciente",
+              "price": "1350",
+              "priceCurrency": "EUR",
+              "description": "Pago único"
+            },
+            {
+              "@type": "Offer",
+              "name": "Portal + Academia",
+              "price": "2190",
+              "priceCurrency": "EUR",
+              "description": "Pago único"
+            }
+          ]
         },
         {
           "@context": "https://schema.org",
@@ -102,14 +113,7 @@
             "addressLocality": "Alicante",
             "addressCountry": "ES"
           },
-          "priceRange": "$$"
-        },
-        {
-          "@context": "https://schema.org/",
-          "@type": "Service",
-          "name": "Software de Consultas y Diseño Web para Nutrición",
-          "image": "https://mndesignweb.es/imagen-miniatura-clinicas.webp",
-          "description": "Software a medida para clínicas de salud. Incluye portal del paciente, gestión de citas, videoconsultas E2EE y academia online. Disponible en packs cerrados o selección de funciones a la carta."
+          "priceRange": "€€"
         },
         {
           "@context": "https://schema.org",
@@ -117,82 +121,59 @@
           "mainEntity": [
             {
               "@type": "Question",
-              "name": "¿Puedo contratar solo el portal del paciente o necesito toda la academia?",
+              "name": "¿Cómo se realiza el pago del software y la web?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "Puedes elegir módulos a la carta. Ofrecemos tanto packs cerrados integrales como funciones individuales (solo citas, videoconsultas, o facturación) según la fase en la que se encuentre tu clínica de nutrición o salud."
+                "text": "Funciona mediante una inversión inicial de pago único según el plan elegido (Primera Presencia, Portal Paciente o Portal + Academia). No existen cuotas mensuales de software, tan solo un mantenimiento opcional si se requiere activo."
               }
             },
             {
               "@type": "Question",
-              "name": "¿Se integra con el software de gestión o ERP de mi clínica?",
+              "name": "¿Cómo migro los datos de mi clínica actual?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "Sí, estructuramos el desarrollo web para conectarse mediante API con los principales sistemas de gestión clínica, softwares de facturación/ERP y calendarios externos que ya utilices en tu consulta."
+                "text": "Ofrecemos herramientas de importación masiva mediante CSV o Excel. Nuestro equipo de soporte se encarga de realizar la migración por ti sin coste adicional en los planes avanzados."
               }
             },
             {
               "@type": "Question",
-              "name": "¿Qué nivel de seguridad y cumplimiento RGPD ofrece el Portal del Paciente?",
+              "name": "¿Cumplen con las normativas de protección de datos?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "Máxima seguridad sanitaria. Implementamos cifrado de extremo a extremo (E2EE) en las videoconsultas, bases de datos protegidas y protocolos que cumplen estrictamente con la normativa europea de protección de datos clínicos."
+                "text": "Sí, Portal Salud cumple con GDPR y las normativas sanitarias europeas. La información está encriptada de extremo a extremo con estrictos protocolos de seguridad."
               }
             },
             {
               "@type": "Question",
-              "name": "¿En qué se diferencia vuestro software a medida de plantillas o SaaS cerrados?",
+              "name": "¿Puedo integrar Portal Salud con otras aplicaciones?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "No dependes de herramientas limitantes. Desarrollamos un ecosistema digital propio, escalable y diseñado específicamente para centralizar la operativa de tu clínica y potenciar tu marca profesional."
+                "text": "Sí, contamos con integraciones nativas para calendarios, pasarelas de pago como Stripe, herramientas de videoconsulta y conexión con tu ERP."
               }
+            }
+          ]
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Inicio MN Design Web",
+              "item": "https://mndesignweb.es/"
             },
             {
-              "@type": "Question",
-              "name": "¿Cuánto tiempo se tarda en poner en marcha el Portal de Salud y la web?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Los plazos varían según los módulos elegidos, pero habitualmente el desarrollo web integral y las pruebas de seguridad del portal del paciente toman entre 3 y 5 semanas para funcionar al 100%."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "¿Necesito conocimientos técnicos para gestionar las citas o la academia online?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Para nada. Te entregamos un panel de administración ultra intuitivo y realizamos una sesión de formación personalizada para que tú y tu equipo podáis gestionar las consultas y los pacientes con total independencia."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "¿Cómo puedo probar la plataforma de salud antes de dar el paso?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Ofrecemos un acceso exclusivo de prueba a la demo del Portal del Paciente y la Academia para que puedas explorar todas las funciones de nuestro software clínico en profundidad y ver cómo encaja en tu centro."
-              }
-            },
-            {
-              "@context": "https://schema.org",
-              "@type": "BreadcrumbList",
-              "itemListElement": [
-                {
-                  "@type": "ListItem",
-                  "position": 1,
-                  "name": "Inicio MN Design Web",
-                  "item": "https://mndesignweb.es/"
-                },
-                {
-                  "@type": "ListItem",
-                  "position": 2,
-                  "name": "Desarrollo Web y Software Consultas Nutrición",
-                  "item": "https://mndesignweb.es/clinicas"
-                }
-              ]
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Portal Salud - Software para Clínicas",
+              "item": "https://mndesignweb.es/clinicas"
             }
           ]
         }
       ]
     </script>
+
     <script is:inline>
       window.dataLayer = window.dataLayer || [];
       function gtag() {
@@ -216,7 +197,6 @@
         });
       }
     </script>
-
     <script
       is:inline
       async
@@ -230,7 +210,6 @@
       gtag("config", "G-36WYJMYT3Z");
     </script>
 
-    <!-- ESTO VA EN EL HTML (dentro del <head>) -->
     <script is:inline>
       !(function (f, b, e, v, n, t, s) {
         if (f.fbq) return;
@@ -255,10 +234,13 @@
         "script",
         "https://connect.facebook.net/en_US/fbevents.js",
       );
+
       var localConsent = localStorage.getItem("cookieConsent");
+
       if (localConsent === "accepted") {
         fbq("consent", "grant");
       }
+
       fbq("init", "1627135808585120");
       fbq("track", "PageView");
     </script>
@@ -278,3334 +260,1709 @@
       })(window, document, "clarity", "script", "wuzaxaifa0");
     </script>
   </head>
-  <body
-    class="bg-white text-slate-900 antialiased selection:bg-purple-200 selection:text-purple-900"
-  >
-    <a
-      href="https://mndesignweb.es/"
-      class="global-logo"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      <div class="texto-logo">
-        <span class="siglas">MN</span>
-        <span class="marca">Design Web</span>
-      </div>
-    </a>
-    <main class="landing-main">
-      <!-- ==========================================
-                        HERO SECTION
-                =========================================== -->
-      <section class="hero-section">
-        <div class="container hero-grid">
-          <div class="hero-content">
-            <span class="tag">Diseño Web y Software Clínico</span>
-            <h1 class="hero-title">
-              Desarrollo Web y Software de Consultas para <span
-                class="text-gradient">Clínicas de Nutrición</span
-              >
-            </h1>
-            <p class="hero-description">
-              Centraliza tu centro de salud con un ecosistema digital a medida.
-              Creamos tu página web orientada a captar pacientes y la integramos
-              con tu propio Portal del Paciente: agenda automatizada,
-              videoconsultas y gestión clínica en una sola plataforma.
-            </p>
-            <div class="btn-content">
-              <a href="#contacto" class="btn-secondary">Solicitar auditoría</a>
-              <a href="#demos" class="btn-primary">Ver casos de éxito</a>
-            </div>
-          </div>
+  <body>
+    <header class="navbar" id="main-nav">
+      <div class="navbar-container">
+        <a href="#" class="logo">
+          <div class="logo-icon">MN</div>
+          Portal Salud Consultas
+        </a>
 
-          <div class="hero-visuals desktop-only">
-            <div class="mac-mockup">
-              <!-- Cambia esto por una captura de tu demo de psicólogo -->
-              <img
-                src="/hero-clinica.webp"
-                alt="Software y web a medida para clínicas de nutrición"
-                width="800"
-                height="600"
-                fetchpriority="high"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
-      <!-- ==========================================
-                INTERACCIONES (ZIG-ZAG)
-            =========================================== -->
-      <section class="features-section" id="servicios">
-        <div class="container">
-          <h2 class="section-title">
-            Tu Software de Consultas y Portal del Paciente Todo en Uno
-          </h2>
+        <nav class="desktop-nav">
+          <a href="#funciones" class="nav-link">Funciones</a>
+          <a href="#inversion" class="nav-link">Inversión</a>
+          <a href="#mejoras" class="nav-link">Mejoras</a>
+        </nav>
 
-          <div class="feature-row">
-            <div class="feature-text">
-              <h3>Aula Virtual para Pacientes de Nutrición</h3>
-              <p>
-                Escala el desarrollo web de tu clínica integrando un área
-                académica. Ofrece material psicoeducativo, ejercicios guiados o
-                cursos de salud que tus pacientes pueden consultar desde
-                cualquier lugar.
-              </p>
-              <ul class="feature-list">
-                <li>
-                  <span class="check">✓</span> Contenido bajo suscripción.
-                </li>
-                <li>
-                  <span class="check">✓</span> Material descargable (PDFs, audios,
-                  videos, enlaces, etc).
-                </li>
-              </ul>
-            </div>
-            <div class="feature-visual">
-              <div class="browser-mockup">
-                <div class="browser-header">
-                  <div class="browser-dots">
-                    <span class="dot-red"></span><span class="dot-yellow"
-                    ></span><span class="dot-green"></span>
-                  </div>
-                  <div class="browser-url" style="margin: 0 auto;">
-                    consulta.tu-nombre.com/aula
-                  </div>
-                </div>
-                <img
-                  src="/cursos.webp"
-                  alt="Aula virtual integrada para pacientes de nutrición"
-                  class="mockup-img-browser"
-                  width="500"
-                  height="250"
-                  loading="lazy"
-                />
-              </div>
-            </div>
-          </div>
-          <!-- Fila 4: Portal paciente -->
-          <div class="feature-row">
-            <div class="feature-visual">
-              <div class="browser-mockup">
-                <div class="browser-header">
-                  <div class="browser-dots">
-                    <span class="dot-red"></span><span class="dot-yellow"
-                    ></span><span class="dot-green"></span>
-                  </div>
-                  <div class="browser-url" style="margin: 0 auto;">
-                    consulta.tu-nombre.com/aula
-                  </div>
-                </div>
-                <img
-                  src="/pacientes.webp"
-                  alt="Panel privado del portal del paciente centralizado"
-                  class="mockup-img-browser"
-                  width="500"
-                  height="250"
-                  loading="lazy"
-                />
-              </div>
-            </div>
-            <div class="feature-text">
-              <h3>Portal del Paciente Centralizado</h3>
-              <p>
-                Un software de gestión clínica privado y seguro. Tus pacientes
-                acceden a su historial médico, revisan sus próximas citas de
-                nutrición y gestionan su documentación con total comodidad.
-              </p>
-              <ul class="feature-list">
-                <li>
-                  <span class="check">✓</span> Ficha paciente, historial, inbox y
-                  citas centralizadas.
-                </li>
-                <li>
-                  <span class="check">✓</span> Acceso seguro y cifrado.
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div class="feature-row">
-            <div class="feature-visual">
-              <div class="browser-mockup">
-                <div class="browser-header">
-                  <div class="browser-dots">
-                    <span class="dot-red"></span><span class="dot-yellow"
-                    ></span><span class="dot-green"></span>
-                  </div>
-                  <div class="browser-url" style="margin: 0 auto;">
-                    consulta.tu-nombre.com/aula
-                  </div>
-                </div>
-                <img
-                  src="/alertas.webp"
-                  alt="Sistema de notificaciones y alertas automatizadas para pacientes"
-                  class="mockup-img-browser"
-                  width="500"
-                  height="250"
-                  loading="lazy"
-                />
-              </div>
-            </div>
-            <div class="feature-text">
-              <h3>Alertas y Notificaciones</h3>
-              <p>
-                Sistema inteligente de avisos y notificaciones bidireccionales
-                en tiempo real para mantener informados tanto a los pacientes
-                como al equipo médico ante cualquier cambio de pauta, analítica
-                o incidencia.
-              </p>
-              <ul class="feature-list">
-                <li>
-                  <span class="check">✓</span> Avisos personalizados por canal (WhatsApp,
-                  SMS, email).
-                </li>
-                <li>
-                  <span class="check">✓</span> Alertas de citas, seguimientos y resultados
-                  recientes.
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="feature-row">
-            <div class="feature-text">
-              <h3>Entrega de Dietas y Recursos Clínicos</h3>
-              <p>
-                Comparte planes nutricionales, guías de autocuidado o protocolos
-                médicos personalizados desde tu propio software web. Mejora la
-                adherencia terapéutica sin usar herramientas externas no
-                seguras.
-              </p>
-              <ul class="feature-list">
-                <li>
-                  <span class="check">✓</span> Biblioteca de documentos y guías.
-                </li>
-                <li>
-                  <span class="check">✓</span> Fácil acceso desde cualquier dispositivo.
-                </li>
-              </ul>
-            </div>
-            <div class="feature-visual">
-              <div class="browser-mockup">
-                <div class="browser-header">
-                  <div class="browser-dots">
-                    <span class="dot-red"></span><span class="dot-yellow"
-                    ></span><span class="dot-green"></span>
-                  </div>
-                  <div class="browser-url" style="margin: 0 auto;">
-                    consulta.tu-nombre.com/video
-                  </div>
-                </div>
-                <img
-                  src="/recursos.webp"
-                  alt="Mockup de plataforma con recursos clínicos y documentos descargables"
-                  class="mockup-img-browser"
-                  width="500"
-                  height="250"
-                  loading="lazy"
-                />
-              </div>
-            </div>
-          </div>
-          <!-- Fila 2: Videoconsulta -->
-          <div class="feature-row">
-            <div class="feature-visual">
-              <div class="browser-mockup">
-                <div class="browser-header">
-                  <div class="browser-dots">
-                    <span class="dot-red"></span><span class="dot-yellow"
-                    ></span><span class="dot-green"></span>
-                  </div>
-                  <div class="browser-url" style="margin: 0 auto;">
-                    consulta.tu-nombre.com/video
-                  </div>
-                </div>
-                <img
-                  src="/calendario.webp"
-                  alt="Sistema de agenda y calendario automatizado para clínicas"
-                  class="mockup-img-browser"
-                  width="500"
-                  height="250"
-                  loading="lazy"
-                />
-              </div>
-            </div>
-            <div class="feature-text">
-              <h3>Agenda Automática y Videoconsulta Segura (E2EE)</h3>
-              <p>
-                Integramos en tu página web un sistema de reservas inteligente.
-                Tus pacientes consultan tu disponibilidad, pagan su cita y
-                acceden a la videoconsulta cifrada de extremo a extremo sin
-                salir del portal.
-              </p>
-              <ul class="feature-list">
-                <li>
-                  <span class="check">✓</span> Cumplimiento estricto de normativas.
-                </li>
-                <li>
-                  <span class="check">✓</span> Sincronización con calendario en tiempo
-                  real.
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div class="feature-row reverse">
-            <div class="feature-text">
-              <h3>Facturación Clínica y Sincronización ERP</h3>
-              <p>
-                Automatiza la contabilidad de tu centro de salud. Conectamos la
-                pasarela de cobros de tu web de reservas con tu software de
-                gestión fiscal y ERP para emitir facturas sin intervención
-                manual.
-              </p>
-              <ul class="feature-list">
-                <li>
-                  <span class="check">✓</span> Facturación automática por sesión o
-                  bono.
-                </li>
-                <li>
-                  <span class="check">✓</span> Cumplimiento fiscal y descarga directa.
-                </li>
-              </ul>
-            </div>
-            <div class="feature-visual">
-              <div class="browser-mockup">
-                <div class="browser-header">
-                  <div class="browser-dots">
-                    <span class="dot-red"></span><span class="dot-yellow"
-                    ></span><span class="dot-green"></span>
-                  </div>
-                  <div class="browser-url" style="margin: 0 auto;">
-                    consulta.tu-nombre.com/video
-                  </div>
-                </div>
-                <img
-                  src="/facturacion.webp"
-                  alt="Interfaz de facturación electrónica y ERP para clínicas"
-                  class="mockup-img-browser"
-                  width="500"
-                  height="250"
-                  loading="lazy"
-                />
-              </div>
-            </div>
-          </div>
-          <div
-            style="text-align: center; margin-bottom: 40px; padding: 45px 30px; background-color: var(--fondo-claro); border-radius: 20px; border: 1px solid var(--border-color); box-shadow: 0 10px 30px rgba(212, 127, 101, 0.12);"
+        <div class="desktop-cta-container">
+          <a
+            href="#contacto"
+            class="btn btn-primary"
+            style="padding: 10px 24px;">Empezar Proyecto &gt;</a
           >
-            <h3
-              style="font-family: var(--font-titulos); font-size: 1.9rem; color: var(--text-primary); margin-bottom: 12px;"
-            >
-              ¿Quieres ver la demo del Portal Salud y Software Clínico?
-            </h3>
-            <p
-              style="color: var(--text-muted); font-size: 1.15rem; margin-bottom: 25px; max-width: 750px; margin-left: auto; margin-right: auto; line-height: 1.6;"
-            >
-              Indícanoslo en el formulario y obtén acceso exclusivo durante 24
-              horas. Explora todas sus herramientas en profundidad y comprueba
-              cómo transformar, centralizar y automatizar la gestión de
-              pacientes en tu clínica antes de dar el paso definitivo.
-            </p>
-            <a href="/clinicas#formulario" class="btn-primary"
-              >Rellena tus datos en el formulario</a
-            >
-          </div>
         </div>
-      </section>
 
-      <section class="funciones-section">
-        <div class="funciones-container">
-          <h2 class="funciones-title">
-            Software médico a medida y herramientas centralizadas
-          </h2>
+        <button id="menu-toggle" class="menu-toggle" aria-label="Abrir menú">
+          <svg
+            viewBox="0 0 24 24"
+            width="26"
+            height="26"
+            stroke="currentColor"
+            stroke-width="2"
+            fill="none"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
 
-          <div class="funciones-grid">
-            <!-- 1. Gestión de Citas -->
-            <div class="funciones-card">
-              <div class="funciones-icon">
-                <i class="fa-solid fa-calendar-check"></i>
-              </div>
-              <h3>Gestión de Citas</h3>
-              <p>
-                Sistema de reservas automatizado que permite a los pacientes
-                elegir horarios disponibles, sincronizándose en tiempo real con
-                la agenda del centro.
-              </p>
-            </div>
+      <div id="mobile-dropdown" class="mobile-dropdown">
+        <a href="#funciones" class="mobile-link">Funciones</a>
+        <a href="#inversion" class="mobile-link">Inversión</a>
+        <a href="#mejoras" class="mobile-link">Mejoras</a>
 
-            <!-- 2. Portal del Paciente -->
-            <div class="funciones-card">
-              <div class="funciones-icon">
-                <i class="fa-solid fa-user-lock"></i>
-              </div>
-              <h3>Portal del Paciente</h3>
-              <p>
-                Espacio privado y seguro donde el paciente accede a su
-                historial, documentación clínica, enlaces a sesiones y facturas
-                de forma centralizada.
-              </p>
-            </div>
+        <a href="#contacto" class="btn btn-primary mobile-cta-btn"
+          >Empezar Proyecto &gt;</a
+        >
+      </div>
+    </header>
 
-            <!-- 3. Seguimiento y Diario Clínico -->
-            <div class="funciones-card">
-              <div class="funciones-icon">
-                <i class="fa-solid fa-notes-medical"></i>
-              </div>
-              <h3>Diario y Seguimiento</h3>
-              <p>
-                Control detallado de tratamientos, fases de recuperación y un
-                diario de síntomas para registrar la evolución diaria entre
-                consultas.
-              </p>
-            </div>
-
-            <!-- 4. Analíticas y Cuestionarios -->
-            <div class="funciones-card">
-              <div class="funciones-icon">
-                <i class="fa-solid fa-chart-line"></i>
-              </div>
-              <h3>Analíticas y Cuestionarios</h3>
-              <p>
-                Gráficos visuales de evolución clínica basados en analíticas y
-                cuestionarios periódicos para evaluar el progreso objetivo del
-                tratamiento.
-              </p>
-            </div>
-
-            <!-- 5. Aula Virtual y Masterclasses -->
-            <div class="funciones-card">
-              <div class="funciones-icon">
-                <i class="fa-solid fa-graduation-cap"></i>
-              </div>
-              <h3>Aula y Masterclasses</h3>
-              <p>
-                Plataforma formativa con recursos clínicos premium, guías
-                especializadas y soporte para masterclasses en directo con los
-                pacientes.
-              </p>
-            </div>
-
-            <!-- 6. Facturación y ERP -->
-            <div class="funciones-card">
-              <div class="funciones-icon">
-                <i class="fa-solid fa-file-invoice-dollar"></i>
-              </div>
-              <h3>Facturación y ERP</h3>
-              <p>
-                Automatización de cobros, pasarelas de pago y emisión de
-                facturas conectadas de forma fluida con el software de gestión
-                fiscal de la clínica.
-              </p>
-            </div>
-
-            <!-- 7. Gestión de Alertas -->
-            <div class="funciones-card">
-              <div class="funciones-icon">
-                <i class="fa-solid fa-bell"></i>
-              </div>
-              <h3>Gestión de Alertas</h3>
-              <p>
-                Sistema inteligente de avisos y notificaciones bidireccionales
-                entre el paciente y el equipo médico ante cambios relevantes o
-                incidencias.
-              </p>
-            </div>
-
-            <!-- 8. Admisión Digital -->
-            <div class="funciones-card">
-              <div class="funciones-icon">
-                <i class="fa-solid fa-file-signature"></i>
-              </div>
-              <h3>Admisión Digital</h3>
-              <p>
-                Formularios de evaluación previa y consentimientos informados
-                digitalizados para agilizar el alta del paciente antes de la
-                primera visita.
-              </p>
-            </div>
-
-            <!-- 9. Roles del Equipo -->
-            <div class="funciones-card">
-              <div class="funciones-icon">
-                <i class="fa-solid fa-users-gear"></i>
-              </div>
-              <h3>Roles del Equipo</h3>
-              <p>
-                Asignación de permisos, accesos y gestión interna personalizada
-                entre los diferentes profesionales y miembros del personal de la
-                clínica.
-              </p>
-            </div>
-
-            <!-- 10. Privacidad y Seguridad E2EE -->
-            <div class="funciones-card">
-              <div class="funciones-icon">
-                <i class="fa-solid fa-shield-halved"></i>
-              </div>
-              <h3>Privacidad y RGPD (E2EE)</h3>
-              <p>
-                Salas de videoconsulta cifradas de extremo a extremo y
-                protocolos estrictos que garantizan el cumplimiento de la
-                normativa sanitaria europea.
-              </p>
-            </div>
-
-            <!-- 11. Prescripción y Firma Digital -->
-            <div class="funciones-card">
-              <div class="funciones-icon">
-                <i class="fa-solid fa-file-pen"></i>
-              </div>
-              <h3>Prescripción y Firma Digital</h3>
-              <p>
-                Emisión de recetas médicas, planes de tratamiento personalizados
-                y firma electrónica avanzada con total validez legal para tus
-                pacientes.
-              </p>
-            </div>
-
-            <!-- 12. Bonos y Suscripciones -->
-            <div class="funciones-card">
-              <div class="funciones-icon">
-                <i class="fa-solid fa-ticket"></i>
-              </div>
-              <h3>Bonos y Suscripciones</h3>
-              <p>
-                Gestión avanzada de membresías para la academia o bonos de
-                sesiones clínicas con renovación y cobros recurrentes totalmente
-                automatizados.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="integracion-section">
-        <div class="container integracion-container">
-          <div class="integracion-content">
-            <h2 class="section-title">
-              Integración con tu Software de Gestión Clínica y ERP
-            </h2>
-            <p class="integracion-description">
-              No trabajes el doble. Conectamos tu nuevo desarrollo web con el
-              CRM, ERP o software médico que ya utilizas en tu clínica de
-              nutrición. Las reservas del portal del paciente, los cobros y los
-              historiales se sincronizan automáticamente vía API para que tu
-              flujo de trabajo sea impecable.
-            </p>
-
-            <div class="integracion-badges">
-              <span class="badge"
-                ><i class="fa-solid fa-database"></i> Sincronización en tiempo real</span
-              >
-              <span class="badge"
-                ><i class="fa-solid fa-code-branch"></i> APIs personalizadas</span
-              >
-              <span class="badge"
-                ><i class="fa-solid fa-lock"></i> Seguridad y cumplimiento</span
-              >
-            </div>
-          </div>
-          <div class="cta-box">
-            <h3>¿Listo para digitalizar tu clínica de nutrición?</h3>
-            <p>
-              Cada consulta de salud es un mundo y cada profesional tiene
-              necesidades únicas. Cuéntanos qué herramientas utilizas
-              actualmente y empecemos a diseñar tu ecosistema web a medida.
-            </p>
-            <a href="#formulario" class="btn-metodologia">Solicitar Auditoría</a
-            >
-          </div>
-        </div>
-      </section>
-
-      <section class="metodologia-section">
-        <div class="metodologia-container">
-          <div class="metodologia-header">
-            <h2 class="section-title">
-              Más allá del diseño: Consultoría Estratégica
-            </h2>
-            <p class="metodologia-lead">
-              No construimos webs, diseñamos ecosistemas digitales. Trabajamos
-              codo a codo contigo para entender tus procesos clínicos y definir
-              qué soluciones técnicas aportarán valor real a tu consulta.
-            </p>
-          </div>
-
-          <div class="metodologia-grid">
-            <div class="metodologia-bloque">
-              <h3>Auditoría de Necesidades</h3>
-              <p>
-                No partimos de una plantilla. Analizamos tu metodología, qué
-                tipo de pacientes tratas y cómo gestionas tu día a día.
-                Identificamos los "cuellos de botella" que te quitan tiempo y
-                los convertimos en automatizaciones inteligentes.
-              </p>
-            </div>
-
-            <div class="metodologia-bloque">
-              <h3>Selección de Stack Tecnológico</h3>
-              <p>
-                Tú eliges el camino. Evaluamos si tu proyecto requiere la
-                versatilidad de <strong>WordPress</strong> para una autogestión completa,
-                o la potencia y escalabilidad de una <strong
-                  >aplicación a medida</strong
-                > para funciones únicas y alto rendimiento.
-              </p>
-            </div>
-
-            <div class="metodologia-bloque">
-              <h3>Soporte y Evolución Continuada</h3>
-              <p>
-                Tu consulta es un ser vivo. No te entrego un archivo y
-                desaparezco; te acompaño como socio técnico para asegurar que la
-                plataforma crezca al ritmo de tu éxito, implementando mejoras
-                continuas y ajustes de rendimiento.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ==========================================
-     SECCIÓN ESCALERA DE VALOR (FASE 1 Y 2)
-=========================================== -->
-      <section class="fases-section">
-        <div class="container">
-          <div class="fases-header">
-            <h2 class="section-title">
-              Desarrollo Web Modular: Un Software Clínico que crece contigo
-            </h2>
-            <p class="fases-lead">
-              No necesitas hacer una gran inversión inicial si acabas de abrir
-              tu consulta. Elige módulos a la carta para tu <strong
-                >diseño web de nutrición</strong
-              > y escala tu plataforma con nuestro software de gestión clínica conforme
-              crezca tu volumen de pacientes.
-            </p>
-          </div>
-
-          <div class="fases-grid">
-            <!-- Tarjeta Fase 1 -->
-            <div class="fase-card">
-              <div class="fase-badge">FASE 1: DESPEGUE DIGITAL</div>
-              <h3>Diseño Web y Agenda de Consultas</h3>
-              <p>
-                Ideal para nutricionistas y profesionales de la salud que
-                necesitan presencia online optimizada para empezar a captar
-                pacientes hoy mismo.
-              </p>
-              <ul>
-                <li>
-                  <i class="fa-solid fa-check"></i> Diseño de Landing Page (WordPress)
-                </li>
-                <li>
-                  <i class="fa-solid fa-check"></i> Integración de agenda online básica
-                </li>
-                <li>
-                  <i class="fa-solid fa-check"></i> Formulario de captación optimizado
-                </li>
-                <li>
-                  <i class="fa-solid fa-check"></i> Inversión inicial reducida
-                </li>
-              </ul>
-            </div>
-
-            <!-- Tarjeta Fase 2 -->
-            <div class="fase-card premium-card">
-              <div class="premium-tag">Más demandado</div>
-              <div class="fase-badge premium-badge">
-                FASE 2: ECOSISTEMA TOTAL
-              </div>
-              <h3>Software Clínico y Portal del Paciente</h3>
-              <p>
-                La plataforma web definitiva para clínicas de nutrición
-                consolidadas que buscan automatizar el 100% de la gestión de sus
-                consultas.
-              </p>
-              <ul>
-                <li><i class="fa-solid fa-check"></i> Todo lo de la Fase 1</li>
-                <li>
-                  <i class="fa-solid fa-check"></i> Portal del Paciente privado y
-                  seguro
-                </li>
-                <li>
-                  <i class="fa-solid fa-check"></i> Aula virtual y cobros recurrentes
-                </li>
-                <li>
-                  <i class="fa-solid fa-check"></i> Sincronización completa con ERP
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ==========================================
-     DETALLE FASE 1: PACK WORDPRESS
-=========================================== -->
-      <section class="wp-pack-section">
-        <div class="container wp-pack-container">
-          <div class="wp-pack-header">
-            <h2 class="wp-pack-title">
-              Fase 1: Tu primera clínica digital en WordPress
-            </h2>
-            <div class="wp-pack-price">
-              <span class="price-label">Valorado en</span>
-              <span class="price-amount">500€</span>
-            </div>
-            <p class="wp-pack-desc">
-              Una base sólida y profesional para que tus pacientes te
-              encuentren, confíen en ti y agenden su primera cita sin
-              fricciones.
-            </p>
-          </div>
-
-          <div class="wp-pack-grid">
-            <!-- Columna 1: Estructura -->
-            <div class="wp-pack-box">
-              <h3>
-                <i class="fa-regular fa-file-lines"></i> Estructura del Sitio (5 Páginas)
-              </h3>
-              <ul class="wp-pack-list">
-                <li>
-                  <strong>Inicio:</strong> Presentación de tu propuesta de valor,
-                  servicios destacados y llamada a la acción para agendar cita.
-                </li>
-                <li>
-                  <strong>Sobre Mí:</strong> Tu perfil profesional, formación y filosofía
-                  para generar confianza.
-                </li>
-                <li>
-                  <strong>Servicios:</strong> Detalle de tus consultas (primera visita,
-                  seguimientos, bonos).
-                </li>
-                <li>
-                  <strong>Blog:</strong> Espacio preparado para que publiques artículos
-                  de nutrición, menús, recetarios, consejos y tips.
-                </li>
-                <li>
-                  <strong>Contacto:</strong> Información de ubicación, horarios y
-                  formulario de contacto.
-                </li>
-              </ul>
-            </div>
-
-            <!-- Columna 2: Funcionalidades -->
-            <div class="wp-pack-box">
-              <h3>
-                <i class="fa-solid fa-gears"></i> Funcionalidades Técnicas
-              </h3>
-              <ul class="wp-pack-list">
-                <li>
-                  <strong>Sistema de Citas Online:</strong> Formulario integrado para
-                  que los pacientes puedan solicitar citas.
-                </li>
-                <li>
-                  <strong>Diseño Responsive:</strong> Perfectamente adaptado a móviles
-                  y tablets.
-                </li>
-                <li>
-                  <strong>Panel Autogestionable:</strong> Para que puedas subir artículos
-                  al blog y modificar textos fácilmente.
-                </li>
-                <li>
-                  <strong>Optimización Básica SEO:</strong> Preparada para que Google
-                  empiece a indexar tu contenido.
-                </li>
-                <li>
-                  <strong>Botón de WhatsApp:</strong> Chat directo integrado para
-                  consultas rápidas.
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="inversion-section">
-        <div class="container">
-          <h2 class="section-title">Inversión adaptada a tu crecimiento</h2>
-          <p class="inversion-lead">
-            El coste de tu proyecto no es un precio cerrado, sino una inversión
-            proporcional a la complejidad, el volumen de pacientes y las
-            automatizaciones que requiere tu consulta para escalar con
-            tranquilidad.
+    <main>
+      <div class="hero-wrapper">
+        <div class="hero-bg-gradient"></div>
+        <section class="hero">
+          <h1>Simplifica la gestión de tu consulta en una sola plataforma</h1>
+          <p>
+            Destaca en el sector salud con una herramienta que optimiza tu
+            tiempo, fideliza a tus pacientes y hace crecer tus ingresos
+            automáticamente.
           </p>
 
-          <div class="escalabilidad-grid">
-            <!-- Factor 1 -->
-            <div class="factor-card">
-              <i class="fa-solid fa-code"></i>
-              <h3>Complejidad Funcional</h3>
-              <p>
-                Desde landings de conversión pura hasta sistemas de gestión
-                integral con áreas privadas, sincronización de CRM y entornos de
-                aprendizaje (LMS).
-              </p>
+          <div class="hero-buttons">
+            <a href="#solicitar-auditoria" class="btn btn-primary"
+              >Solicitar auditoría</a
+            >
+            <a
+              href="https://portalsalud-academia.mndesignweb.es/"
+              class="btn btn-secondary">Ver demostración</a
+            >
+          </div>
+
+          <div class="hero-mockup">
+            <div class="mockup-float float-left">
+              <div
+                style="font-size: 0.875rem; font-weight: 600; margin-bottom: 8px;"
+              >
+                Cita confirmada
+              </div>
+              <div
+                style="display: flex; gap: 12px; align-items: center; margin-bottom: 12px;"
+              >
+                <div
+                  class="mockup-skeleton-avatar"
+                  style="width:40px; height:40px;"
+                >
+                </div>
+                <div>
+                  <div style="font-weight: 500; font-size: 0.875rem;">
+                    María González
+                  </div>
+                  <div style="font-size: 0.75rem; color: var(--text-muted);">
+                    Cardiología - 10:30 AM
+                  </div>
+                </div>
+              </div>
+              <div
+                class="btn btn-primary"
+                style="width: 100%; padding: 8px; font-size: 0.75rem; border-radius: 8px;"
+              >
+                Enviar recordatorio
+              </div>
             </div>
 
-            <!-- Factor 2 -->
-            <div class="factor-card">
-              <i class="fa-solid fa-users"></i>
-              <h3>Volumen y Escalabilidad</h3>
-              <p>
-                No es lo mismo gestionar 5 consultas a la semana que un flujo
-                constante de 200 pacientes. Ajustamos la infraestructura y la
-                base de datos a tu tráfico real.
-              </p>
+            <div class="mockup-float float-right">
+              <div
+                style="font-size: 0.875rem; color: var(--text-muted); margin-bottom: 4px;"
+              >
+                Ingresos del mes
+              </div>
+              <div
+                style="font-size: 1.5rem; font-weight: 700; margin-bottom: 12px;"
+              >
+                $18,450.00
+              </div>
+              <div
+                style="display: flex; gap: 4px; align-items: flex-end; height: 60px;"
+              >
+                <div
+                  style="background: var(--border-color); width: 20%; height: 40%; border-radius: 4px;"
+                >
+                </div>
+                <div
+                  style="background: var(--border-color); width: 20%; height: 60%; border-radius: 4px;"
+                >
+                </div>
+                <div
+                  style="background: var(--accent-blue); width: 20%; height: 100%; border-radius: 4px;"
+                >
+                </div>
+                <div
+                  style="background: var(--border-color); width: 20%; height: 80%; border-radius: 4px;"
+                >
+                </div>
+                <div
+                  style="background: var(--border-color); width: 20%; height: 50%; border-radius: 4px;"
+                >
+                </div>
+              </div>
             </div>
 
-            <!-- Factor 3 -->
-            <div class="factor-card">
-              <i class="fa-solid fa-gear"></i>
-              <h3>Integraciones a Medida</h3>
-              <p>
-                Desarrollo de conectores específicos con tus herramientas de
-                gestión, calendarios externos o pasarelas de pago especializadas
-                para el sector sanitario.
-              </p>
+            <div class="mockup-main">
+              <div class="mockup-header">
+                <div class="mockup-skeleton-title"></div>
+                <div class="mockup-skeleton-avatar"></div>
+              </div>
+              <div class="mockup-body">
+                <div class="mockup-sidebar">
+                  <div class="mockup-skeleton-line" style="width: 80%"></div>
+                  <div class="mockup-skeleton-line" style="width: 60%"></div>
+                  <div class="mockup-skeleton-line" style="width: 70%"></div>
+                  <div class="mockup-skeleton-line" style="width: 50%"></div>
+                </div>
+                <div class="mockup-content">
+                  <div
+                    style="display: flex; justify-content: space-between; align-items: center;"
+                  >
+                    <div
+                      class="mockup-skeleton-line"
+                      style="width: 40%; height: 24px;"
+                    >
+                    </div>
+                    <div class="mockup-skeleton-line" style="width: 20%"></div>
+                  </div>
+                  <div class="mockup-graph"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <section class="tech-stack">
+        <div class="container">
+          <p class="tech-title">
+            Tecnologías de vanguardia que impulsan nuestra plataforma
+          </p>
+
+          <div class="marquee-container">
+            <div class="marquee-track track-left">
+              <div class="tech-tag">React</div>
+              <div class="tech-tag">Node.js</div>
+              <div class="tech-tag">Supabase</div>
+              <div class="tech-tag">Astro</div>
+              <div class="tech-tag">AWS Cloud</div>
+              <div class="tech-tag">Vercel</div>
+              <div class="tech-tag">Tailwind CSS</div>
+              <div class="tech-tag">TypeScript</div>
+              <div class="tech-tag">GraphQL</div>
+              <div class="tech-tag">Figma</div>
+              <div class="tech-tag">Stripe Payments</div>
+
+              <div class="tech-tag">React</div>
+              <div class="tech-tag">Node.js</div>
+              <div class="tech-tag">Supabase</div>
+              <div class="tech-tag">Astro</div>
+              <div class="tech-tag">AWS Cloud</div>
+              <div class="tech-tag">Vercel</div>
+              <div class="tech-tag">Tailwind CSS</div>
+              <div class="tech-tag">TypeScript</div>
+              <div class="tech-tag">GraphQL</div>
+              <div class="tech-tag">Figma</div>
+              <div class="tech-tag">Stripe Payments</div>
+            </div>
+
+            <div class="marquee-track track-right">
+              <div class="tech-tag">Nginx</div>
+              <div class="tech-tag">Responsive Design</div>
+              <div class="tech-tag">UX/UI Avanzado</div>
+              <div class="tech-tag">Seguridad SSL</div>
+              <div class="tech-tag">PostgreSQL</div>
+              <div class="tech-tag">Docker</div>
+              <div class="tech-tag">Redis</div>
+              <div class="tech-tag">Prisma ORM</div>
+              <div class="tech-tag">Next.js</div>
+              <div class="tech-tag">Google Cloud</div>
+              <div class="tech-tag">WebSockets</div>
+
+              <div class="tech-tag">Nginx</div>
+              <div class="tech-tag">Responsive Design</div>
+              <div class="tech-tag">UX/UI Avanzado</div>
+              <div class="tech-tag">Seguridad SSL</div>
+              <div class="tech-tag">PostgreSQL</div>
+              <div class="tech-tag">Docker</div>
+              <div class="tech-tag">Redis</div>
+              <div class="tech-tag">Prisma ORM</div>
+              <div class="tech-tag">Next.js</div>
+              <div class="tech-tag">Google Cloud</div>
+              <div class="tech-tag">WebSockets</div>
             </div>
           </div>
         </div>
       </section>
 
-      <section class="contacto-section">
-        <div id="contacto" class="contacto-grid container">
-          <!-- LADO IZQUIERDO: Calendario Cal.com -->
-          <div class="contacto-left">
-            <div class="container text-center">
-              <h2 class="section-main-title">
-                Agenda tu sesión de consultoría estratégica
-              </h2>
+      <section id="funciones" class="features container">
+        <div class="section-header">
+          <h2>Nuestras funciones exclusivas</h2>
+          <p class="text-muted">
+            Destaca en un entorno competitivo con herramientas diseñadas para la
+            eficiencia clínica. Esto no es un software genérico, es una solución
+            pensada para la salud y la gestión de pacientes, que integra todo lo
+            que necesitas en un solo lugar.
+          </p>
+        </div>
+
+        <div class="bento-grid">
+          <div class="bento-card bento-large" id="agenda">
+            <div class="bento-icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                ><rect x="3" y="4" width="18" height="18" rx="2" ry="2"
+                ></rect><line x1="16" y1="2" x2="16" y2="6"></line><line
+                  x1="8"
+                  y1="2"
+                  x2="8"
+                  y2="6"></line><line x1="3" y1="10" x2="21" y2="10"
+                ></line></svg
+              >
             </div>
-            <div class="cal-widget">
-              <iframe
-                src="https://cal.com/mndesignweb/reunion-30-min?embed=true"
-                title="Reserva tu cita"
-                class="calendar-iframe"
-                width="100%"
-                height="100%"
-                frameBorder="0"
-                loading="lazy"></iframe>
+            <h3>Agenda y Admisión Inteligente</h3>
+            <ul class="bento-list">
+              <li>
+                <strong>Sistema de reservas automatizado</strong>Los pacientes
+                eligen horarios disponibles, sincronizándose en tiempo real con
+                la agenda del centro.
+              </li>
+              <li>
+                <strong>Admisión Digital</strong>Formularios de evaluación
+                previa y consentimientos informados digitalizados para agilizar
+                el alta antes de la primera visita.
+              </li>
+              <li>
+                <strong>Gestión de Alertas</strong>Sistema inteligente de avisos
+                bidireccionales entre paciente y equipo ante cambios o
+                incidencias.
+              </li>
+            </ul>
+            <div class="bento-visual">
+              <div
+                style="position:absolute; top: 20px; left: 20px; right: 20px; bottom: -20px; background: white; border-radius: 12px; border: 1px solid var(--border-color); box-shadow: var(--shadow-soft); padding: 16px;"
+              >
+                <div style="display: flex; gap: 8px; margin-bottom: 12px;">
+                  <div
+                    style="width: 40px; height: 20px; background: var(--accent-blue); border-radius: 4px;"
+                  >
+                  </div>
+                  <div
+                    style="width: 40px; height: 20px; background: var(--border-color); border-radius: 4px;"
+                  >
+                  </div>
+                  <div
+                    style="width: 40px; height: 20px; background: var(--border-color); border-radius: 4px;"
+                  >
+                  </div>
+                </div>
+                <div
+                  style="width: 100%; height: 30px; background: var(--bg-color); border-radius: 4px; margin-bottom: 8px;"
+                >
+                </div>
+                <div
+                  style="width: 80%; height: 30px; background: var(--bg-color); border-radius: 4px;"
+                >
+                </div>
+              </div>
             </div>
+          </div>
+
+          <div class="bento-card bento-small" id="historial">
+            <div class="bento-icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                ><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"
+                ></path><circle cx="12" cy="7" r="4"></circle></svg
+              >
+            </div>
+            <h3>Portal del Paciente</h3>
+            <ul class="bento-list">
+              <li>
+                <strong>Espacio privado y seguro</strong>Acceso centralizado al
+                historial, enlaces a sesiones y facturas.
+              </li>
+              <li>
+                <strong>Diario y Seguimiento</strong>Control de fases de
+                recuperación y diario de síntomas para la evolución entre
+                consultas.
+              </li>
+              <li>
+                <strong>Analíticas y Gráficas</strong>Visualización de progreso
+                mediante cuestionarios y métricas de salud.
+              </li>
+            </ul>
             <div
-              style="margin-top: 30px; padding: 30px; background-color: var(--fondo-claro); border-radius: 20px; border: 1px solid var(--border-color); box-shadow: 0 10px 20px rgba(212, 127, 101, 0.08);"
+              class="bento-visual"
+              style="background: var(--accent-blue); border:none;"
             >
-              <h3
-                style="font-family: var(--font-titulos); font-size: 1.3rem; color: var(--text-primary); margin-bottom: 10px;"
+              <div
+                style="position:absolute; bottom:0; left:50%; transform:translateX(-50%); width: 70%; height: 80%; background: white; border-radius: 12px 12px 0 0; box-shadow: 0 -10px 20px rgba(0,0,0,0.05); padding: 16px;"
               >
-                <i
-                  class="fa-solid fa-clock-rotate-left"
-                  style="color: #1b4332; margin-right: 8px;"></i> ¿Por qué agendar
-                ahora?
-              </h3>
-              <p
-                style="color: var(--text-muted); font-size: 1.05rem; line-height: 1.6; margin: 0;"
+                <div class="mockup-skeleton-line" style="margin-bottom: 8px;">
+                </div>
+                <div class="mockup-skeleton-line" style="width: 70%;"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bento-card bento-small">
+            <div class="bento-icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                ><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"
+                ></path></svg
               >
-                Analizaremos en directo los cuellos de botella de tu clínica
-                actual, cómo automatizar la captación de pacientes y
-                laviabilidad técnica de integrar tu propio portal de salud a
-                medida. ¡Sin compromisos!
-              </p>
+            </div>
+            <h3>Gestión Clínica y Legal</h3>
+            <ul class="bento-list">
+              <li>
+                <strong>Privacidad y RGPD</strong>Salas E2EE y protocolos
+                estrictos que garantizan la normativa sanitaria europea.
+              </li>
+              <li>
+                <strong>Roles del Equipo</strong>Asignación de permisos
+                personalizados entre profesionales.
+              </li>
+              <li>
+                <strong>Prescripción y Firma</strong>Recetas médicas y firma
+                electrónica con validez legal.
+              </li>
+            </ul>
+            <div
+              class="bento-visual"
+              style="background: var(--accent-pink); border:none;"
+            >
+              <div
+                style="position:absolute; top:50%; left:50%; transform:translate(-50%, -50%); width: 80%; height: 60px; background: white; border-radius: 12px; box-shadow: var(--shadow-soft); display:flex; align-items:center; padding: 0 16px; justify-content:space-between;"
+              >
+                <div
+                  style="width:30px; height:20px; background:var(--bg-color); border-radius:4px;"
+                >
+                </div>
+                <div style="font-weight:700; font-size:1.2rem;">Verificado</div>
+              </div>
             </div>
           </div>
 
-          <!-- LADO DERECHO: Formulario de Invitaciones -->
-          <div class="contacto-right">
-            <form id="formulario" class="formulario">
-              <h3>¿Hablamos sobre tu proyecto?</h3>
-
-              <div class="form-grupo">
-                <label>Nombre del profesional o clínica</label>
-                <input
-                  type="text"
-                  id="nombre"
-                  placeholder="Tu nombre o el de tu centro"
-                  required
-                />
-              </div>
-
-              <div class="form-grupo">
-                <label>Email corporativo</label>
-                <input
-                  type="email"
-                  id="email"
-                  placeholder="consulta@clinica.es"
-                  required
-                />
-              </div>
-
-              <div class="form-grupo">
-                <label>Teléfono de contacto</label>
-                <input
-                  type="tel"
-                  id="telefono"
-                  placeholder="+34 600 000 000"
-                  required
-                />
-              </div>
-
-              <div class="form-grupo">
-                <label for="servicio"
-                  >¿Qué necesitas implementar principalmente?</label
-                >
-                <select id="servicio" required>
-                  <option value="">Selecciona una opción</option>
-                  <option value="fase-1-wordpress"
-                    >Fase 1: Presencia Básica (WordPress - 500€)</option
-                  >
-                  <option value="fase-2-portal"
-                    >Fase 2: Portal de Salud Completo a medida</option
-                  >
-                  <option value="sistema-reservas"
-                    >Solo Sistema de Reservas</option
-                  >
-                  <option value="aula-virtual"
-                    >Solo Aula Virtual / Cursos</option
-                  >
-                  <option value="demo-portal">Obtener 24h demo Portal</option>
-                </select>
-              </div>
-              <div class="form-grupo">
-                <label>Cuéntanos más sobre tu clínica o proyecto</label>
-                <textarea
-                  id="mensaje"
-                  rows="4"
-                  placeholder="Escribe aquí los detalles, especialidad médica o si deseas la demo de 24h..."
-                ></textarea>
-              </div>
-
-              <button type="submit" id="btn-submit" class="btn-final-glow">
-                Enviar solicitud de auditoría
-              </button>
-
-              <p class="privacy-note">
-                🔒 Confidencialidad garantizada. Analizaré tu caso personalmente
-                antes de responderte.
-              </p>
-            </form>
-          </div>
-        </div>
-      </section>
-
-      <section class="demos-testimonios-section">
-        <div class="container demo-grid">
-          <!-- Mockup iPhone con Scroll y Botones -->
-          <div class="demo-wrapper" id="demos">
-            <h2 class="section-title">Demostraciones en vivo</h2>
-            <div class="demos-row">
-              <div class="demo-item">
-                <div class="iphone-mockup">
-                  <div class="phone-notch"></div>
-                  <div
-                    class="screen"
-                    style="background-image: url('/demo-5.webp');"
-                  >
-                  </div>
-                </div>
-                <a
-                  href="https://mnmryk.github.io/demo-nutricion/"
-                  target="_blank"
-                  class="btn-demo"
-                >
-                  Ver web en directo <i
-                    class="fa-solid fa-arrow-up-right-from-square"></i>
-                </a>
-              </div>
-              <!-- Conjunto 1 -->
-              <div class="demo-item">
-                <div class="iphone-mockup">
-                  <div class="phone-notch"></div>
-                  <div
-                    class="screen"
-                    style="background-image: url('/psicologos/demo-1.webp');"
-                  >
-                  </div>
-                </div>
-                <a
-                  href="https://mnmryk.github.io/psicologia-especializada/"
-                  target="_blank"
-                  class="btn-demo"
-                >
-                  Ver web en directo <i
-                    class="fa-solid fa-arrow-up-right-from-square"></i>
-                </a>
-              </div>
-
-              <!-- Conjunto 2 -->
-              <div class="demo-item">
-                <div class="iphone-mockup">
-                  <div class="phone-notch"></div>
-                  <div
-                    class="screen"
-                    style="background-image: url('/demo-4.webp');"
-                  >
-                  </div>
-                </div>
-                <a
-                  href="https://mnmryk.github.io/demo-nutricion-2/"
-                  target="_blank"
-                  class="btn-demo"
-                >
-                  Ver web en directo <i
-                    class="fa-solid fa-arrow-up-right-from-square"></i>
-                </a>
-              </div>
-
-              <!-- Conjunto 3 -->
-              <div class="demo-item">
-                <div class="iphone-mockup">
-                  <div class="phone-notch"></div>
-                  <div
-                    class="screen"
-                    style="background-image: url('/psicologos/demo-3.webp');"
-                  >
-                  </div>
-                </div>
-                <a
-                  href="https://mnmryk.github.io/demo-psicologia-clinica/"
-                  target="_blank"
-                  class="btn-demo"
-                >
-                  Ver web en directo <i
-                    class="fa-solid fa-arrow-up-right-from-square"></i>
-                </a>
-              </div>
+          <div class="bento-card bento-large">
+            <div class="bento-icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                ><line x1="18" y1="20" x2="18" y2="10"></line><line
+                  x1="12"
+                  y1="20"
+                  x2="12"
+                  y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg
+              >
             </div>
-
-            <div class="scroll-indicator">
-              <i class="fa-solid fa-computer-mouse"></i>
-              <span>Desplaza para ver más</span>
-            </div>
-          </div>
-
-          <!-- Carrusel de testimonios -->
-          <div class="testimonios-wrapper">
-            <div class="carousel" id="carousel">
-              <!-- Pista 1 -->
-              <div class="carousel-track">
-                <div class="testimonio-card">
-                  <div class="stars">★★★★★</div>
-                  <p>
-                    "La automatización de mi agenda me ha ahorrado horas de
-                    gestión administrativa."
-                  </p>
-                  <div class="author">
-                    — Dra. Sonia O. <i
-                      class="fa-brands fa-google"
-                      style="color: #4285F4;"></i>
-                  </div>
-                </div>
-                <div class="testimonio-card">
-                  <div class="stars">★★★★★</div>
-                  <p>
-                    "La web ha transformado mi consulta, ahora todo está
-                    automatizado."
-                  </p>
-                  <div class="author">
-                    — Dra. Elena M. <i
-                      class="fa-brands fa-google"
-                      style="color: #4285F4;"></i>
-                  </div>
-                </div>
-                <div class="testimonio-card">
-                  <div class="stars">★★★★★</div>
-                  <p>"Un servicio técnico impecable y muy profesional."</p>
-                  <div class="author">
-                    — Psicólogo Marcos Ferrán <i
-                      class="fa-brands fa-google"
-                      style="color: #4285F4;"></i>
-                  </div>
-                </div>
-                <div class="testimonio-card">
-                  <div class="stars">★★★★★</div>
-                  <p>"Por fin tengo un calendario que no me da problemas."</p>
-                  <div class="author">
-                    — Centro Kinetix <i
-                      class="fa-brands fa-google"
-                      style="color: #4285F4;"></i>
-                  </div>
-                </div>
-                <div class="testimonio-card">
-                  <div class="stars">★★★★★</div>
-                  <p>"El diseño es limpio, moderno y muy funcional."</p>
-                  <div class="author">
-                    — Clínica Psicosalud <i
-                      class="fa-brands fa-google"
-                      style="color: #4285F4;"></i>
-                  </div>
-                </div>
-                <div class="testimonio-card">
-                  <div class="stars">★★★★★</div>
-                  <p>"La integración con mi software ha sido un éxito."</p>
-                  <div class="author">
-                    — Dr. Ruiz <i
-                      class="fa-brands fa-google"
-                      style="color: #4285F4;"></i>
-                  </div>
-                </div>
-                <div class="testimonio-card">
-                  <div class="stars">★★★★★</div>
-                  <p>"Atención personalizada y resultados de alto nivel."</p>
-                  <div class="author">
-                    — Centro de Terapia <i
-                      class="fa-brands fa-google"
-                      style="color: #4285F4;"></i>
-                  </div>
-                </div>
+            <h3>Evolución y Fidelización</h3>
+            <ul
+              class="bento-list"
+              style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;"
+            >
+              <li>
+                <strong>Analíticas y Cuestionarios</strong><br />Gráficos
+                visuales de evolución basados en cuestionarios para evaluar
+                progreso.
+              </li>
+              <li>
+                <strong>Bonos y Suscripciones</strong><br />Gestión avanzada de
+                membresías con cobros recurrentes automatizados.
+              </li>
+              <li style="grid-column: span 2;">
+                <strong>Aula y Masterclasses</strong><br />Plataforma formativa
+                con recursos clínicos premium y soporte en directo.
+              </li>
+            </ul>
+            <div
+              class="bento-visual"
+              style="display:flex; align-items:flex-end; gap: 8px; padding: 24px;"
+            >
+              <div
+                style="width: 10%; height: 30%; background: var(--accent-blue); border-radius: 4px 4px 0 0;"
+              >
               </div>
-
-              <!-- Pista 2 (Clon exacto) -->
-              <div class="carousel-track">
-                <div class="testimonio-card">
-                  <div class="stars">★★★★★</div>
-                  <p>
-                    "La automatización de mi agenda me ha ahorrado horas de
-                    gestión administrativa."
-                  </p>
-                  <div class="author">
-                    — Dra. Sonia O. <i
-                      class="fa-brands fa-google"
-                      style="color: #4285F4;"></i>
-                  </div>
-                </div>
-                <div class="testimonio-card">
-                  <div class="stars">★★★★★</div>
-                  <p>
-                    "La web ha transformado mi consulta, ahora todo está
-                    automatizado."
-                  </p>
-                  <div class="author">
-                    — Dra. Elena M. <i
-                      class="fa-brands fa-google"
-                      style="color: #4285F4;"></i>
-                  </div>
-                </div>
-                <div class="testimonio-card">
-                  <div class="stars">★★★★★</div>
-                  <p>"Un servicio técnico impecable y muy profesional."</p>
-                  <div class="author">
-                    — Psicólogo clínico <i
-                      class="fa-brands fa-google"
-                      style="color: #4285F4;"></i>
-                  </div>
-                </div>
-                <div class="testimonio-card">
-                  <div class="stars">★★★★★</div>
-                  <p>"Por fin tengo un calendario que no me da problemas."</p>
-                  <div class="author">
-                    — Centro Kinetix <i
-                      class="fa-brands fa-google"
-                      style="color: #4285F4;"></i>
-                  </div>
-                </div>
-                <div class="testimonio-card">
-                  <div class="stars">★★★★★</div>
-                  <p>"El diseño es limpio, moderno y muy funcional."</p>
-                  <div class="author">
-                    — Clínica Psicosalud <i
-                      class="fa-brands fa-google"
-                      style="color: #4285F4;"></i>
-                  </div>
-                </div>
-                <div class="testimonio-card">
-                  <div class="stars">★★★★★</div>
-                  <p>"La integración con mi software ha sido un éxito."</p>
-                  <div class="author">
-                    — Dr. Ruiz <i
-                      class="fa-brands fa-google"
-                      style="color: #4285F4;"></i>
-                  </div>
-                </div>
-                <div class="testimonio-card">
-                  <div class="stars">★★★★★</div>
-                  <p>"Atención personalizada y resultados de alto nivel."</p>
-                  <div class="author">
-                    — Centro de Terapia <i
-                      class="fa-brands fa-google"
-                      style="color: #4285F4;"></i>
-                  </div>
-                </div>
+              <div
+                style="width: 10%; height: 50%; background: var(--accent-blue); border-radius: 4px 4px 0 0;"
+              >
+              </div>
+              <div
+                style="width: 10%; height: 40%; background: var(--accent-blue); border-radius: 4px 4px 0 0;"
+              >
+              </div>
+              <div
+                style="width: 10%; height: 70%; background: var(--accent-blue); border-radius: 4px 4px 0 0;"
+              >
+              </div>
+              <div
+                style="width: 10%; height: 60%; background: var(--accent-blue); border-radius: 4px 4px 0 0;"
+              >
+              </div>
+              <div
+                style="width: 10%; height: 90%; background: var(--primary-dark); border-radius: 4px 4px 0 0;"
+              >
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section class="faq-section">
-        <div class="faq-container">
-          <h2 class="section-title text-center">
-            Preguntas Frecuentes sobre el Desarrollo Web Clínico
-          </h2>
+      <section class="billing-erp-section container" id="facturacion">
+        <div class="billing-container">
+          <div class="billing-left">
+            <span class="badge-small">• Integración Total</span>
+            <h2>Facturación Electrónica y<br />conexión ERP</h2>
+            <p>
+              Automatización de cobros, pasarelas de pago y emisión de facturas
+              conectadas de forma fluida con el software de gestión fiscal de la
+              clínica y Verifactu.
+            </p>
+            <a href="#" class="btn btn-primary" style="margin-top: 16px;"
+              >Ver integraciones</a
+            >
+          </div>
 
-          <div class="faq-list">
-            <details class="faq-item" open>
-              <summary
-                >¿Puedo contratar solo el portal del paciente o necesito toda la
-                academia?</summary
-              >
+          <div class="billing-right">
+            <div class="billing-mini-card">
+              <span class="card-number">001</span>
+              <div class="card-icon-corner">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  ><path d="M21 12V7H5a2 2 0 0 1 0-4h14v4"></path><path
+                    d="M3 5v14a2 2 0 0 0 2 2h16v-5"></path><path
+                    d="M18 12a2 2 0 0 0 0 4h4v-4Z"></path></svg
+                >
+              </div>
+              <h4>Control Financiero</h4>
               <p>
-                Puedes elegir módulos a la carta. Ofrecemos tanto packs cerrados
-                integrales como funciones individuales (solo citas,
-                videoconsultas, o facturación) según la fase en la que se
-                encuentre tu clínica de nutrición o salud.
+                Supervisa los cobros recurrentes y facturas emitidas desde un
+                solo panel en tiempo real.
               </p>
-            </details>
+            </div>
 
-            <details class="faq-item">
-              <summary
-                >¿Se integra con el software de gestión o ERP de mi clínica?</summary
-              >
+            <div class="billing-mini-card">
+              <span class="card-number">002</span>
+              <div class="card-icon-corner">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  ><rect x="3" y="11" width="18" height="11" rx="2" ry="2"
+                  ></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg
+                >
+              </div>
+              <h4>Sincronización Fiscal</h4>
               <p>
-                Sí, estructuramos el desarrollo web para conectarse mediante API
-                con los principales sistemas de gestión clínica, softwares de
-                facturación/ERP y calendarios externos que ya utilices en tu
-                consulta.
+                Exporta fácilmente los datos para tu gestoría o conéctalo con tu
+                ERP actual de forma segura.
               </p>
-            </details>
-
-            <details class="faq-item">
-              <summary
-                >¿Qué nivel de seguridad y cumplimiento RGPD ofrece el Portal
-                del Paciente?</summary
-              >
-              <p>
-                Máxima seguridad sanitaria. Implementamos cifrado de extremo a
-                extremo (E2EE) en las videoconsultas, bases de datos protegidas
-                y protocolos que cumplen estrictamente con la normativa europea
-                de protección de datos clínicos.
-              </p>
-            </details>
-
-            <details class="faq-item">
-              <summary
-                >¿Puedo realizar videoconsultas y gestión de tratamientos de
-                nutrición online?</summary
-              >
-              <p>
-                Sí, el software incluye salas de videollamada privadas
-                integradas, diario de síntomas, cuestionarios de evolución
-                periódicos, alertas automáticas y herramientas de firma digital
-                para planes, dietas o recetas.
-              </p>
-            </details>
-
-            <details class="faq-item">
-              <summary
-                >¿Cómo puedo probar el software clínico antes de dar el paso?</summary
-              >
-              <p>
-                Ofrecemos un acceso exclusivo de prueba a la demo del Portal del
-                Paciente y la Academia para que puedas explorar todas las
-                funciones en profundidad y ver cómo encaja en la gestión diaria
-                de tu centro.
-              </p>
-            </details>
+            </div>
           </div>
         </div>
       </section>
-      <footer class="footer-minimal">
-        <div class="footer-content">
-          <div class="footer-section footer-contact">
-            <a href="tel:+34645854934" class="correo-gigante">+34 645 854 934</a
-            >
-            <a href="mailto:info@mndesignweb.es" class="correo-gigante"
-              >info@mndesignweb.es</a
-            >
-          </div>
 
-          <div class="footer-section footer-links">
-            <a href="https://mndesignweb.es/aviso-legal">Aviso Legal</a>
-            <a href="https://mndesignweb.es/privacidad">Privacidad</a>
-            <a href="https://mndesignweb.es/cookies">Cookies</a>
+      <section class="metrics container">
+        <div class="metrics-grid">
+          <div class="metric-card">
+            <div class="metric-number">86%</div>
+            <div class="metric-label">De reducción en ausencias</div>
           </div>
-
-          <div class="footer-section footer-copyright">
-            <p>Copyright © MN Design Web</p>
+          <div class="metric-card">
+            <div class="metric-number">+20</div>
+            <div class="metric-label">Clínicas confían en nosotros</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-number">240%</div>
+            <div class="metric-label">Crecimiento en ingresos promedio</div>
           </div>
         </div>
-      </footer>
+      </section>
+
+      <section id="testimonials" class="testimonials container">
+        <div class="section-header">
+          <h2>Lo que opinan nuestros clientes</h2>
+        </div>
+        <div class="testimonials-grid">
+          <div class="testimonial-card">
+            <p class="testimonial-text">
+              "Hemos transformado nuestros datos en decisiones estratégicas. La
+              agenda inteligente nos ahorra horas de trabajo manual cada semana,
+              mejorando la productividad de todo el equipo."
+            </p>
+            <div class="testimonial-author">
+              <div class="author-avatar"></div>
+              <div class="author-info">
+                <h4>Dr. Carlos Mendoza</h4>
+                <p>Director Médico, Clínica Sol</p>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <p class="testimonial-text">
+              "La interfaz es tan limpia e intuitiva que nuestro personal
+              aprendió a usarla en un solo día. La función de historial clínico
+              digital es simplemente excepcional y muy segura."
+            </p>
+            <div class="testimonial-author">
+              <div class="author-avatar"></div>
+              <div class="author-info">
+                <h4>Dra. Laura Jiménez</h4>
+                <p>Dermatóloga, DermaCare</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="pricing container" id="inversion">
+        <div class="section-header">
+          <h2>Nuestros planes de inversión</h2>
+          <p class="pricing-subtitle">
+            Soluciones adaptadas al tamaño de tu clínica. Todos los planes
+            incluyen Dominio y VPS/Hosting.<br />
+            <small>* Precios sin IVA incluido.</small>
+          </p>
+        </div>
+
+        <div class="pricing-grid">
+          <div class="pricing-card">
+            <div class="pricing-top">
+              <h3>Primera Presencia</h3>
+              <div class="price-amount">790€<span> / pago único</span></div>
+              <p class="text-muted">
+                Ideal para profesionales independientes que inician su
+                digitalización.
+              </p>
+              <a href="#" class="btn btn-secondary">Empezar proyecto &gt;</a>
+            </div>
+            <div class="pricing-bottom">
+              <p class="features-title">Características incluidas:</p>
+              <ul class="price-features">
+                <li>
+                  <span class="check-icon"
+                    ><svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="3"
+                      ><polyline points="20 6 9 17 4 12"></polyline></svg
+                    ></span
+                  > Landing WordPress + 3h formación
+                </li>
+                <li>
+                  <span class="check-icon"
+                    ><svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="3"
+                      ><polyline points="20 6 9 17 4 12"></polyline></svg
+                    ></span
+                  > Interfaz dual: Panel de Administración y Área de Paciente
+                </li>
+                <li>
+                  <span class="check-icon"
+                    ><svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="3"
+                      ><polyline points="20 6 9 17 4 12"></polyline></svg
+                    ></span
+                  > CRM Clínico integral
+                </li>
+                <li>
+                  <span class="check-icon"
+                    ><svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="3"
+                      ><polyline points="20 6 9 17 4 12"></polyline></svg
+                    ></span
+                  > Integración API Citas (Ej. Calendly)
+                </li>
+                <li>
+                  <span class="check-icon"
+                    ><svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="3"
+                      ><polyline points="20 6 9 17 4 12"></polyline></svg
+                    ></span
+                  > Videoconsulta Segura (WebRTC)
+                </li>
+                <li>
+                  <span class="check-icon"
+                    ><svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="3"
+                      ><polyline points="20 6 9 17 4 12"></polyline></svg
+                    ></span
+                  > Gestor Documental básico
+                </li>
+                <li>
+                  <span
+                    class="check-icon"
+                    style="color: #6B7280; border-color: #6B7280;"
+                    ><svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      ><circle cx="12" cy="12" r="10"></circle><line
+                        x1="12"
+                        y1="8"
+                        x2="12"
+                        y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"
+                      ></line></svg
+                    ></span
+                  > Mantenimiento: Sin cuota activa. Revisión 2-3 meses.
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="pricing-card pro">
+            <div class="pricing-top">
+              <div class="pro-badge">Más popular</div>
+              <h3>Portal Paciente</h3>
+              <div class="price-amount">1.350€<span> / pago único</span></div>
+              <p class="text-muted">
+                Digitalización completa y gestión avanzada para clínicas
+                consolidadas.
+              </p>
+              <a href="#" class="btn btn-primary">Empezar proyecto &gt;</a>
+            </div>
+            <div class="pricing-bottom">
+              <p class="features-title">Todas las funciones incluidas:</p>
+              <ul class="price-features">
+                <li>
+                  <span class="check-icon"
+                    ><svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="3"
+                      ><polyline points="20 6 9 17 4 12"></polyline></svg
+                    ></span
+                  > CRM Clínico integral (Gestión avanzada de expedientes)
+                </li>
+                <li>
+                  <span class="check-icon"
+                    ><svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="3"
+                      ><polyline points="20 6 9 17 4 12"></polyline></svg
+                    ></span
+                  > Interfaz dual: Panel de Administración y Área de Paciente
+                </li>
+                <li>
+                  <span class="check-icon"
+                    ><svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="3"
+                      ><polyline points="20 6 9 17 4 12"></polyline></svg
+                    ></span
+                  > Gestor Documental e Infraestructura
+                </li>
+                <li>
+                  <span class="check-icon"
+                    ><svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="3"
+                      ><polyline points="20 6 9 17 4 12"></polyline></svg
+                    ></span
+                  > Módulo Facturación y Finanzas
+                </li>
+                <li>
+                  <span class="check-icon"
+                    ><svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="3"
+                      ><polyline points="20 6 9 17 4 12"></polyline></svg
+                    ></span
+                  > Formularios y Firma Legal LOPD
+                </li>
+                <li>
+                  <span class="check-icon"
+                    ><svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="3"
+                      ><polyline points="20 6 9 17 4 12"></polyline></svg
+                    ></span
+                  > Videoconsulta Segura y API Citas
+                </li>
+                <li>
+                  <span class="check-icon"
+                    ><svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="3"
+                      ><polyline points="20 6 9 17 4 12"></polyline></svg
+                    ></span
+                  > Analíticas, Algoritmo Adherencia y Alertas
+                </li>
+                <li>
+                  <span
+                    class="check-icon"
+                    style="color: #6B7280; border-color: #6B7280;"
+                    ><svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      ><circle cx="12" cy="12" r="10"></circle><line
+                        x1="12"
+                        y1="8"
+                        x2="12"
+                        y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"
+                      ></line></svg
+                    ></span
+                  > Mantenimiento: Sin cuota activa. Revisión 2-3 meses.
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="pricing-card">
+            <div class="pricing-top">
+              <h3>Portal + Academia</h3>
+              <div class="price-amount">2.190€<span> / pago único</span></div>
+              <p class="text-muted">
+                Escala tu clínica integrando una academia formativa.
+              </p>
+              <a href="#" class="btn btn-secondary">Empezar proyecto &gt;</a>
+            </div>
+            <div class="pricing-bottom">
+              <p class="features-title">Portal Paciente + Academia:</p>
+              <ul class="price-features">
+                <li>
+                  <span class="check-icon"
+                    ><svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="3"
+                      ><polyline points="20 6 9 17 4 12"></polyline></svg
+                    ></span
+                  > Todas las funciones del Portal del Paciente
+                </li>
+                <li>
+                  <span class="check-icon"
+                    ><svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="3"
+                      ><polyline points="20 6 9 17 4 12"></polyline></svg
+                    ></span
+                  > Gestión unificada de expedientes clínicos y alumnado
+                </li>
+                <li>
+                  <span class="check-icon"
+                    ><svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="3"
+                      ><polyline points="20 6 9 17 4 12"></polyline></svg
+                    ></span
+                  > Cursos interactivos, lecciones multimedia (vídeo/audio) y descargas
+                </li>
+                <li>
+                  <span class="check-icon"
+                    ><svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="3"
+                      ><polyline points="20 6 9 17 4 12"></polyline></svg
+                    ></span
+                  > Módulo Facturación y Finanzas
+                </li>
+                <li>
+                  <span class="check-icon"
+                    ><svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="3"
+                      ><polyline points="20 6 9 17 4 12"></polyline></svg
+                    ></span
+                  > Aulas Inmersivas, Directos y Talleres
+                </li>
+                <li>
+                  <span class="check-icon"
+                    ><svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="3"
+                      ><polyline points="20 6 9 17 4 12"></polyline></svg
+                    ></span
+                  > Comunidad, Foros y Gamificación
+                </li>
+                <li>
+                  <span class="check-icon"
+                    ><svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="3"
+                      ><polyline points="20 6 9 17 4 12"></polyline></svg
+                    ></span
+                  > Recursos Académicos y Retos
+                </li>
+                <li>
+                  <span class="check-icon"
+                    ><svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="3"
+                      ><polyline points="20 6 9 17 4 12"></polyline></svg
+                    ></span
+                  > Soporte Tickets y Notificaciones
+                </li>
+                <li>
+                  <span
+                    class="check-icon"
+                    style="color: #EF4444; border-color: #EF4444;"
+                    ><svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      ><circle cx="12" cy="12" r="10"></circle><line
+                        x1="12"
+                        y1="8"
+                        x2="12"
+                        y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"
+                      ></line></svg
+                    ></span
+                  > Requiere mantenimiento activo mensual.
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="pricing-addons container" id="mejoras">
+        <div class="section-header">
+          <h2>Mejoras para tu Consulta</h2>
+          <p class="text-muted">
+            Potencia tu plataforma con servicios adicionales diseñados para
+            escalar tu negocio al máximo nivel.
+          </p>
+        </div>
+
+        <div class="addons-dashboard-wrapper">
+          <div class="addons-top-row">
+            <div class="addon-main-card">
+              <div class="addon-main-icon">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  ><path
+                    d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"
+                  ></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"
+                  ></polyline><line x1="12" y1="22.08" x2="12" y2="12"
+                  ></line></svg
+                >
+              </div>
+              <h3>Mantenimiento Integral 1 Año</h3>
+              <p>
+                Plan especial que incluye el desarrollo más el mantenimiento
+                completo de la plataforma durante un año entero.
+              </p>
+              <ul class="addon-feature-list">
+                <li>
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="#10B981"
+                    stroke-width="3"
+                    ><polyline points="20 6 9 17 4 12"></polyline></svg
+                  > Portal Paciente + Academia completo
+                </li>
+                <li>
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="#10B981"
+                    stroke-width="3"
+                    ><polyline points="20 6 9 17 4 12"></polyline></svg
+                  > Todos gastos infraestructura + soporte tickets
+                </li>
+                <li>
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="#10B981"
+                    stroke-width="3"
+                    ><polyline points="20 6 9 17 4 12"></polyline></svg
+                  > Actualizaciones y Cortafuegos
+                </li>
+                <li>
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="#10B981"
+                    stroke-width="3"
+                    ><polyline points="20 6 9 17 4 12"></polyline></svg
+                  > Alojamiento y CDN Vídeo
+                </li>
+              </ul>
+              <div class="addon-price-big">2.890€</div>
+              <a href="#" class="btn btn-primary">Añadir Mantenimiento</a>
+            </div>
+
+            <div class="addon-mockup-card">
+              <img
+                src="plataforma.webp"
+                alt="Vista de la plataforma"
+                class="custom-mockup-img"
+              />
+              <div class="mockup-floating-widget">
+                <div class="widget-top">
+                  <div class="dot-red"></div>
+                  <div class="line-gray"></div>
+                </div>
+                <div class="widget-bottom">
+                  <strong>Activo</strong>
+                  <span>Consulta Online</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="addons-bottom-row">
+            <div class="addon-small-card">
+              <div class="addon-visual-box">
+                <div class="mini-row">
+                  <div
+                    class="mini-icon"
+                    style="background:#E0EAFF; color:#3B82F6;"
+                  >
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      ><path
+                        d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
+                      ></path><polyline points="14 2 14 8 20 8"></polyline><line
+                        x1="16"
+                        y1="13"
+                        x2="8"
+                        y2="13"></line><line x1="16" y1="17" x2="8" y2="17"
+                      ></line><polyline points="10 9 9 9 8 9"></polyline></svg
+                    >
+                  </div>
+                  <div class="mini-text">Generación de PDFs</div>
+                </div>
+                <div class="mini-row">
+                  <div
+                    class="mini-icon"
+                    style="background:#DCFCE7; color:#10B981;"
+                  >
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      ><path d="M21.21 15.89A10 10 0 1 1 8 2.83"></path><path
+                        d="M22 12A10 10 0 0 0 12 2v10z"></path></svg
+                    >
+                  </div>
+                  <div class="mini-text">Análisis de gráficas</div>
+                </div>
+              </div>
+              <div class="addon-header-small">
+                <h4>Agente de IA</h4>
+                <span>+390€</span>
+              </div>
+              <p>
+                Ayudante inteligente para elaborar dietas, menús, interpretar
+                analíticas y generar gráficos automáticos.
+              </p>
+            </div>
+
+            <div class="addon-small-card">
+              <div class="addon-visual-box visual-centered">
+                <img
+                  src="/ruta-a-mockup-1.jpg"
+                  alt="Branding 1"
+                  class="brand-card card-back"
+                />
+                <img
+                  src="/ruta-a-mockup-2.jpg"
+                  alt="Branding 2"
+                  class="brand-card card-mid"
+                />
+                <img
+                  src="/ruta-a-mockup-3.jpg"
+                  alt="Branding 3"
+                  class="brand-card card-front"
+                />
+              </div>
+              <div class="addon-header-small">
+                <h4>Branding Premium</h4>
+                <span>+490€</span>
+              </div>
+              <p>
+                Una tecnología de alto valor no puede vestir un diseño mediocre.
+                Logotipo, paleta psicológica y tipografías.
+              </p>
+            </div>
+
+            <div class="addon-small-card">
+              <div class="addon-visual-box">
+                <div class="chart-header">
+                  <div class="chart-circle">
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="white"
+                      stroke-width="2"
+                      ><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"
+                      ></polyline><polyline points="17 6 23 6 23 12"
+                      ></polyline></svg
+                    >
+                  </div>
+                  <div class="chart-text">Conversiones</div>
+                </div>
+                <div class="svg-chart-container">
+                  <svg
+                    viewBox="0 0 100 30"
+                    preserveAspectRatio="none"
+                    style="width: 100%; height: 100%; display: block;"
+                  >
+                    <path
+                      d="M0,30 L0,15 L20,10 L40,18 L60,5 L80,12 L100,2 L100,30 Z"
+                      fill="rgba(59, 130, 246, 0.1)"></path>
+                    <path
+                      d="M0,15 L20,10 L40,18 L60,5 L80,12 L100,2"
+                      fill="none"
+                      stroke="#3B82F6"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"></path>
+                  </svg>
+                </div>
+              </div>
+              <div class="addon-header-small">
+                <h4>Landing en WordPress</h4>
+                <span>+350€</span>
+              </div>
+              <p>
+                Escaparate optimizado para captación de leads y estructura
+                persuasiva para vender servicios clínicos.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="faq container">
+        <div class="section-header">
+          <h2>Encuentra la respuesta que necesitas</h2>
+        </div>
+
+        <details>
+          <summary>¿Cómo migro los datos de mi clínica actual?</summary>
+          <div class="faq-content">
+            Ofrecemos herramientas de importación masiva mediante CSV o Excel.
+            Si tienes el plan Pro o Experto, nuestro equipo de soporte se
+            encarga de realizar la migración por ti sin costo adicional.
+          </div>
+        </details>
+        <details>
+          <summary>¿Cumplen con las normativas de protección de datos?</summary>
+          <div class="faq-content">
+            Sí, Portal Salud cumple con GDPR, HIPAA y las leyes de protección de
+            datos locales. La información está encriptada de extremo a extremo y
+            hacemos copias de seguridad diarias.
+          </div>
+        </details>
+        <details>
+          <summary>¿Puedo integrar Portal Salud con otras aplicaciones?</summary
+          >
+          <div class="faq-content">
+            Claro, contamos con integraciones nativas para Google Calendar,
+            WhatsApp, Stripe y Zoom para telemedicina. Además, ofrecemos una API
+            abierta en el plan Experto.
+          </div>
+        </details>
+        <details>
+          <summary>¿Hay contratos a largo plazo?</summary>
+          <div class="faq-content">
+            No, puedes cancelar tu suscripción en cualquier momento. Cobramos
+            mes a mes, o si prefieres, puedes optar por un plan anual con un 20%
+            de descuento.
+          </div>
+        </details>
+      </section>
+
+      <section id="empezar-proyecto" class="contact-section container">
+        <div class="contact-mega-wrapper">
+          <div class="contact-bg-gradient"></div>
+
+          <div class="section-header">
+            <h2>Agenda una demostración</h2>
+            <p class="pricing-subtitle">
+              Descubre en directo cómo Portal Salud puede digitalizar tu
+              consulta. Cuéntanos tu caso o reserva un hueco en nuestra agenda.
+            </p>
+          </div>
+
+          <div class="contact-grid">
+            <div class="contact-left">
+              <div class="cal-widget">
+                <iframe
+                  src="https://cal.com/mndesignweb/reunion-30-min?embed=true"
+                  title="Reserva tu cita"
+                  class="calendar-iframe"
+                  width="100%"
+                  height="100%"
+                  frameBorder="0"
+                  loading="lazy"></iframe>
+              </div>
+
+              <div class="contact-reason-card">
+                <div class="reason-icon">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    ><path
+                      d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14v-4z"
+                    ></path><rect
+                      x="3"
+                      y="6"
+                      width="12"
+                      height="12"
+                      rx="2"
+                      ry="2"></rect></svg
+                  >
+                </div>
+                <div class="reason-text">
+                  <h4>¿Qué veremos en la sesión?</h4>
+                  <p>
+                    Te mostraremos la plataforma por dentro, analizaremos tus
+                    procesos actuales y trazaremos un plan de digitalización a
+                    medida sin compromiso.
+                  </p>
+                </div>
+              </div>
+
+              <div class="contact-direct-options">
+                <a href="tel:+34645854934" class="direct-btn">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    ><path
+                      d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"
+                    ></path></svg
+                  >
+                  645 854 934
+                </a>
+                <a
+                  href="https://wa.me/34645854934"
+                  target="_blank"
+                  class="direct-btn wa-btn"
+                >
+                  <svg viewBox="0 0 24 24" fill="currentColor"
+                    ><path
+                      d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"
+                    ></path></svg
+                  >
+                  WhatsApp
+                </a>
+                <a
+                  href="mailto:info@mndesignweb.es"
+                  class="direct-btn email-btn"
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    ><path
+                      d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+                    ></path><polyline points="22,6 12,13 2,6"></polyline></svg
+                  >
+                  info@mndesignweb.es
+                </a>
+              </div>
+            </div>
+
+            <div class="contact-right">
+              <div class="form-wrapper" id="solicitar-auditoria">
+                <h3>Solicitar información</h3>
+                <form id="formulario" class="main-form">
+                  <div class="form-group">
+                    <label for="nombre">Nombre de la clínica o centro</label>
+                    <input
+                      type="text"
+                      id="nombre"
+                      placeholder="Ej. Clínica San Martín"
+                      required
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="email">Email corporativo</label>
+                    <input
+                      type="email"
+                      id="email"
+                      placeholder="hola@tuclinica.com"
+                      required
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="telefono">Teléfono</label>
+                    <input
+                      type="tel"
+                      id="telefono"
+                      placeholder="+34 600 000 000"
+                      required
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="mensaje">¿En qué podemos ayudarte?</label>
+                    <textarea
+                      id="mensaje"
+                      rows="4"
+                      placeholder="Cuéntanos cuántos profesionales sois o si te interesa integrar la academia..."
+                      required></textarea>
+                  </div>
+                  <button
+                    type="submit"
+                    id="btn-submit"
+                    class="btn btn-primary"
+                    style="width: 100%; margin-top: 8px;"
+                  >
+                    Enviar solicitud
+                  </button>
+                  <p class="form-privacy">
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      ><rect x="3" y="11" width="18" height="11" rx="2" ry="2"
+                      ></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg
+                    >
+                    Tus datos están protegidos y son confidenciales.
+                  </p>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
-    <div id="cookie-banner" class="cookie-card-uiverse" style="display: none;">
-      <svg
-        xml:space="preserve"
-        viewBox="0 0 122.88 122.25"
-        y="0px"
-        x="0px"
-        id="cookieSvg"
-        version="1.1"
-      >
-        <g>
-          <path
-            d="M101.77,49.38c2.09,3.1,4.37,5.11,6.86,5.78c2.45,0.66,5.32,0.06,8.7-2.01c1.36-0.84,3.14-0.41,3.97,0.95 c0.28,0.46,0.42,0.96,0.43,1.47c0.13,1.4,0.21,2.82,0.24,4.26c0.03,1.46,0.02,2.91-0.05,4.35h0v0c0,0.13-0.01,0.26-0.03,0.38 c-0.91,16.72-8.47,31.51-20,41.93c-11.55,10.44-27.06,16.49-43.82,15.69v0.01h0c-0.13,0-0.26-0.01-0.38-0.03 c-16.72-0.91-31.51-8.47-41.93-20C5.31,90.61-0.73,75.1,0.07,58.34H0.07v0c0-0.13,0.01-0.26,0.03-0.38 C1,41.22,8.81,26.35,20.57,15.87C32.34,5.37,48.09-0.73,64.85,0.07V0.07h0c1.6,0,2.89,1.29,2.89,2.89c0,0.4-0.08,0.78-0.23,1.12 c-1.17,3.81-1.25,7.34-0.27,10.14c0.89,2.54,2.7,4.51,5.41,5.52c1.44,0.54,2.2,2.1,1.74,3.55l0.01,0 c-1.83,5.89-1.87,11.08-0.52,15.26c0.82,2.53,2.14,4.69,3.88,6.4c1.74,1.72,3.9,3,6.39,3.78c4.04,1.26,8.94,1.18,14.31-0.55 C99.73,47.78,101.08,48.3,101.77,49.38L101.77,49.38z M59.28,57.86c2.77,0,5.01,2.24,5.01,5.01c0,2.77-2.24,5.01-5.01,5.01 c-2.77,0-5.01-2.24-5.01-5.01C54.27,60.1,56.52,57.86,59.28,57.86L59.28,57.86z M37.56,78.49c3.37,0,6.11,2.73,6.11,6.11 s-2.73,6.11-6.11,6.11s-6.11-2.73-6.11-6.11S34.18,78.49,37.56,78.49L37.56,78.49z M50.72,31.75c2.65,0,4.79,2.14,4.79,4.79 c0,2.65-2.14,4.79-4.79,4.79c-2.65,0-4.79-2.14-4.79-4.79C45.93,33.89,48.08,31.75,50.72,31.75L50.72,31.75z M119.3,32.4 c1.98,0,3.58,1.6,3.58,3.58c0,1.98-1.6,3.58-3.58,3.58s-3.58-1.6-3.58-3.58C115.71,34.01,117.32,32.4,119.3,32.4L119.3,32.4z M93.62,22.91c2.98,0,5.39,2.41,5.39,5.39c0,2.98-2.41,5.39-5.39,5.39c-2.98,0-5.39-2.41-5.39-5.39 C88.23,25.33,90.64,22.91,93.62,22.91L93.62,22.91z M97.79,0.59c3.19,0,5.78,2.59,5.78,5.78c0,3.19-2.59,5.78-5.78,5.78 c-3.19,0-5.78-2.59-5.78-5.78C92.02,3.17,94.6,0.59,97.79,0.59L97.79,0.59z M76.73,80.63c4.43,0,8.03,3.59,8.03,8.03 c0,4.43-3.59,8.03-8.03,8.03s-8.03-3.59-8.03-8.03C68.7,84.22,72.29,80.63,76.73,80.63L76.73,80.63z M31.91,46.78 c4.8,0,8.69,3.89,8.69,8.69c0,4.8-3.89,8.69-8.69,8.69s-8.69-3.89-8.69-8.69C23.22,50.68,27.11,46.78,31.91,46.78L31.91,46.78z M107.13,60.74c-3.39-0.91-6.35-3.14-8.95-6.48c-5.78,1.52-11.16,1.41-15.76-0.02c-3.37-1.05-6.32-2.81-8.71-5.18 c-2.39-2.37-4.21-5.32-5.32-8.75c-1.51-4.66-1.69-10.2-0.18-16.32c-3.1-1.8-5.25-4.53-6.42-7.88c-1.06-3.05-1.28-6.59-0.61-10.35 C47.27,5.95,34.3,11.36,24.41,20.18C13.74,29.69,6.66,43.15,5.84,58.29l0,0.05v0h0l-0.01,0.13v0C5.07,73.72,10.55,87.82,20.02,98.3 c9.44,10.44,22.84,17.29,38,18.1l0.05,0h0v0l0.13,0.01h0c15.24,0.77,29.35-4.71,39.83-14.19c10.44-9.44,17.29-22.84,18.1-38l0-0.05 v0h0l0.01-0.13v0c0.07-1.34,0.09-2.64,0.06-3.91C112.98,61.34,109.96,61.51,107.13,60.74L107.13,60.74z"
-          ></path>
-        </g>
-      </svg>
 
-      <p class="cookieHeading">Usamos cookies</p>
-      <p class="cookieDescription">
-        Utilizamos cookies para darte la mejor experiencia en nuestra web. <br
-        />
-        <a class="cookielink" href="https://mndesignweb.es/cookies"
-          >Ver políticas de cookies</a
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <a href="#" class="logo">
+              <div class="logo-icon">MN</div>
+              Portal Salud Consultas
+            </a>
+            <p>
+              Simplificando la gestión médica en todo el mundo mediante
+              tecnología de vanguardia.
+            </p>
+            <a
+              href="https://portalsalud-academia.mndesignweb.es/"
+              class="btn btn-primary">Ver demostración</a
+            >
+          </div>
+
+          <div class="footer-col">
+            <h4>Producto</h4>
+            <ul>
+              <li><a href="#facturacion">Facturación</a></li>
+              <li><a href="#agenda">Agenda y Admisión</a></li>
+              <li><a href="#historial">Historial Clínico</a></li>
+              <li><a href="#inversion">Planes y Precios</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <h4>Recursos</h4>
+            <ul>
+              <li><a href="https://mndesignweb.es/blog/">Blog</a></li>
+              <li>
+                <a href="https://mndesignweb.es/academia-nutricion/"
+                  >Academias Online</a
+                >
+              </li>
+              <li>
+                <a href="https://mndesignweb.es/nutricionistas/"
+                  >Nutricionistas</a
+                >
+              </li>
+              <li>
+                <a href="https://mndesignweb.es/psicologos/">Psicólogos</a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <h4>Compañía</h4>
+            <ul>
+              <li>
+                <a href="https://mndesignweb.es/nosotros/">Sobre nosotros</a>
+              </li>
+              <li>
+                <a href="http://mndesignweb.es/digitalizatuconsulta#contacto"
+                  >Contacto</a
+                >
+              </li>
+              <li>
+                <a href="https://mndesignweb.es/aviso-legal">Aviso Legal</a>
+              </li>
+              <li>
+                <a href="https://mndesignweb.es/privacidad"
+                  >Política de Privacidad</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <div class="copyright">
+            &copy; 2026 Portal Salud. Todos los derechos reservados.
+            &nbsp;|&nbsp; <a href="https://mndesignweb.es/"
+              >Diseñado por MN Design Web</a
+            >
+          </div>
+          <div class="social-icons">
+            <a href="https://www.facebook.com/people/MN-Design-Web/61588142654941/?locale=es_ES" aria-label="Facebook"
+              ><svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                ><path
+                  d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"
+                ></path></svg
+              ></a
+            >
+            <a href="https://www.instagram.com/mndesignweb/" aria-label="Instagram"
+              ><svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                ><rect x="2" y="2" width="20" height="20" rx="5" ry="5"
+                ></rect><path
+                  d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"
+                ></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"
+                ></line></svg
+              ></a
+            >
+            <a href="https://www.linkedin.com/in/mar%C3%ADa-nadal-masi%C3%A1-080a77315/" aria-label="LinkedIn"
+              ><svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                ><path
+                  d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"
+                ></path><rect x="2" y="9" width="4" height="12"></rect><circle
+                  cx="4"
+                  cy="4"
+                  r="2"></circle></svg
+              ></a
+            >
+            <a href="https://github.com/MNMRYK" aria-label="GitHub"
+              ><svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                ><path
+                  d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"
+                ></path></svg
+              ></a
+            >
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <div id="cookie-banner" class="cookie-card-uiverse" style="display: none">
+      <div class="cookie-bg-gradient"></div>
+
+      <div class="cookie-content">
+        <svg
+          xml:space="preserve"
+          viewBox="0 0 122.88 122.25"
+          id="cookieSvg"
+          version="1.1"
         >
-      </p>
-
-      <div class="buttonContainer">
-        <button id="btn-accept-cookies" class="acceptButton">Permitir</button>
-        <button id="btn-decline-cookies" class="declineButton">Rechazar</button>
+          <g>
+            <path
+              d="M101.77,49.38c2.09,3.1,4.37,5.11,6.86,5.78c2.45,0.66,5.32,0.06,8.7-2.01c1.36-0.84,3.14-0.41,3.97,0.95 c0.28,0.46,0.42,0.96,0.43,1.47c0.13,1.4,0.21,2.82,0.24,4.26c0.03,1.46,0.02,2.91-0.05,4.35h0v0c0,0.13-0.01,0.26-0.03,0.38 c-0.91,16.72-8.47,31.51-20,41.93c-11.55,10.44-27.06,16.49-43.82,15.69v0.01h0c-0.13,0-0.26-0.01-0.38-0.03 c-16.72-0.91-31.51-8.47-41.93-20C5.31,90.61-0.73,75.1,0.07,58.34H0.07v0c0-0.13,0.01-0.26,0.03-0.38 C1,41.22,8.81,26.35,20.57,15.87C32.34,5.37,48.09-0.73,64.85,0.07V0.07h0c1.6,0,2.89,1.29,2.89,2.89c0,0.4-0.08,0.78-0.23,1.12 c-1.17,3.81-1.25,7.34-0.27,10.14c0.89,2.54,2.7,4.51,5.41,5.52c1.44,0.54,2.2,2.1,1.74,3.55l0.01,0 c-1.83,5.89-1.87,11.08-0.52,15.26c0.82,2.53,2.14,4.69,3.88,6.4c1.74,1.72,3.9,3,6.39,3.78c4.04,1.26,8.94,1.18,14.31-0.55 C99.73,47.78,101.08,48.3,101.77,49.38L101.77,49.38z M59.28,57.86c2.77,0,5.01,2.24,5.01,5.01c0,2.77-2.24,5.01-5.01,5.01 c-2.77,0-5.01-2.24-5.01-5.01C54.27,60.1,56.52,57.86,59.28,57.86L59.28,57.86z M37.56,78.49c3.37,0,6.11,2.73,6.11,6.11 s-2.73,6.11-6.11,6.11s-6.11-2.73-6.11-6.11S34.18,78.49,37.56,78.49L37.56,78.49z M50.72,31.75c2.65,0,4.79,2.14,4.79,4.79 c0,2.65-2.14,4.79-4.79,4.79c-2.65,0-4.79-2.14-4.79-4.79C45.93,33.89,48.08,31.75,50.72,31.75L50.72,31.75z M119.3,32.4 c1.98,0,3.58,1.6,3.58,3.58c0,1.98-1.6,3.58-3.58,3.58s-3.58-1.6-3.58-3.58C115.71,34.01,117.32,32.4,119.3,32.4L119.3,32.4z M93.62,22.91c2.98,0,5.39,2.41,5.39,5.39c0,2.98-2.41,5.39-5.39,5.39c-2.98,0-5.39-2.41-5.39-5.39 C88.23,25.33,90.64,22.91,93.62,22.91L93.62,22.91z M97.79,0.59c3.19,0,5.78,2.59,5.78,5.78c0,3.19-2.59,5.78-5.78,5.78 c-3.19,0-5.78-2.59-5.78-5.78C92.02,3.17,94.6,0.59,97.79,0.59L97.79,0.59z M76.73,80.63c4.43,0,8.03,3.59,8.03,8.03 c0,4.43-3.59,8.03-8.03,8.03s-8.03-3.59-8.03-8.03C68.7,84.22,72.29,80.63,76.73,80.63L76.73,80.63z M31.91,46.78 c4.8,0,8.69,3.89,8.69,8.69c0,4.8-3.89,8.69-8.69,8.69s-8.69-3.89-8.69-8.69C23.22,50.68,27.11,46.78,31.91,46.78L31.91,46.78z M107.13,60.74c-3.39-0.91-6.35-3.14-8.95-6.48c-5.78,1.52-11.16,1.41-15.76-0.02c-3.37-1.05-6.32-2.81-8.71-5.18 c-2.39-2.37-4.21-5.32-5.32-8.75c-1.51-4.66-1.69-10.2-0.18-16.32c-3.1-1.8-5.25-4.53-6.42-7.88c-1.06-3.05-1.28-6.59-0.61-10.35 C47.27,5.95,34.3,11.36,24.41,20.18C13.74,29.69,6.66,43.15,5.84,58.29l0,0.05v0h0l-0.01,0.13v0C5.07,73.72,10.55,87.82,20.02,98.3 c9.44,10.44,22.84,17.29,38,18.1l0.05,0h0v0l0.13,0.01h0c15.24,0.77,29.35-4.71,39.83-14.19c10.44-9.44,17.29-22.84,18.1-38l0-0.05 v0h0l0.01-0.13v0c0.07-1.34,0.09-2.64,0.06-3.91C112.98,61.34,109.96,61.51,107.13,60.74L107.13,60.74z"
+            ></path>
+          </g>
+        </svg>
+        <p class="cookieHeading">Usamos cookies</p>
+        <p class="cookieDescription">
+          Utilizamos cookies para darte la mejor experiencia en nuestra web.<br
+          />
+          <a class="cookielink" href="https://mndesignweb.es/cookies"
+            >Ver política de cookies</a
+          >
+        </p>
+        <div class="buttonContainer">
+          <button id="btn-accept-cookies" class="acceptButton">Permitir</button>
+          <button id="btn-decline-cookies" class="declineButton"
+            >Rechazar</button
+          >
+        </div>
       </div>
     </div>
-  </body>
 
-  <script is:inline>
-    window.addEventListener("DOMContentLoaded", () => {
-      // 1. Lógica del desplegable según la URL (Adaptado a "servicio")
-      const servicioParam = new URLSearchParams(window.location.search).get(
-        "servicio",
-      );
-      if (servicioParam) {
-        const selectServicio = document.getElementById("servicio");
-        if (selectServicio) {
-          selectServicio.value = servicioParam;
-          const seccionContacto = document.getElementById("contacto");
-          if (seccionContacto) {
-            seccionContacto.scrollIntoView({ behavior: "smooth" });
+    <div id="toast-container" class="toast-container"></div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        // ==========================================
+        // 1. MENÚ MÓVIL
+        // ==========================================
+        const menuBtn = document.getElementById("menu-toggle");
+        const mobileDropdown = document.getElementById("mobile-dropdown");
+        const mobileLinks = document.querySelectorAll(
+          ".mobile-link, .mobile-cta-btn",
+        );
+
+        menuBtn?.addEventListener("click", () => {
+          mobileDropdown.classList.toggle("open");
+          if (mobileDropdown.classList.contains("open")) {
+            menuBtn.innerHTML =
+              '<svg viewBox="0 0 24 24" width="26" height="26" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>';
+          } else {
+            menuBtn.innerHTML =
+              '<svg viewBox="0 0 24 24" width="26" height="26" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>';
           }
+        });
+
+        mobileLinks.forEach((link) => {
+          link.addEventListener("click", () => {
+            mobileDropdown.classList.remove("open");
+            menuBtn.innerHTML =
+              '<svg viewBox="0 0 24 24" width="26" height="26" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>';
+          });
+        });
+
+        // ==========================================
+        // 2. SISTEMA DE NOTIFICACIONES (TOASTS)
+        // ==========================================
+        function mostrarToast(titulo, mensaje, tipo = "success") {
+          const container = document.getElementById("toast-container");
+          if (!container) return;
+
+          const toast = document.createElement("div");
+          toast.className = `toast ${tipo}`;
+          toast.innerHTML = `
+        <div class="toast-title">${titulo}</div>
+        <div class="toast-msg">${mensaje}</div>
+      `;
+
+          container.appendChild(toast);
+
+          setTimeout(() => {
+            toast.classList.add("show");
+          }, 50);
+
+          setTimeout(() => {
+            toast.classList.remove("show");
+            setTimeout(() => {
+              toast.remove();
+            }, 400);
+          }, 5000);
         }
-      }
 
-      // 2. Lógica del Formulario (Adaptado a Clínicas)
-      const formClinica = document.getElementById("formulario");
-      if (formClinica) {
-        formClinica.addEventListener("submit", function (e) {
-          e.preventDefault();
-          const btn = document.getElementById("btn-submit");
-          btn.innerText = "Enviando...";
-          btn.disabled = true;
+        // ==========================================
+        // 3. LÓGICA DE ENVÍO DEL FORMULARIO
+        // ==========================================
+        const formAuditoria = document.getElementById("formulario");
 
-          const data = {
-            access_key: "1bc2d285-71cb-4fe3-806f-530066ab6e15",
-            subject: "Nuevo Lead: Psicólogos / Clínicas",
-            nombre: document.getElementById("nombre").value,
-            email: document.getElementById("email").value,
-            telefono: document.getElementById("telefono").value,
-            servicio: document.getElementById("servicio").value,
-            mensaje: document.getElementById("mensaje").value,
-          };
+        if (formAuditoria) {
+          formAuditoria.addEventListener("submit", function (e) {
+            e.preventDefault();
 
-          Promise.all([
-            fetch("https://api.web3forms.com/submit", {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-                Accept: "application/json",
-              },
-              body: JSON.stringify(data),
-            }),
-            fetch(
-              "https://hook.eu1.make.com/mxvqg7gwne43yab165v2uhtyw5yh115r",
-              {
+            const btn = document.getElementById("btn-submit");
+
+            // Estado de carga en el botón
+            btn.innerHTML =
+              'Enviando... <svg class="fa-spin" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 1 1-6.219-8.56"></path></svg>';
+            btn.disabled = true;
+
+            const data = {
+              access_key: "1bc2d285-71cb-4fe3-806f-530066ab6e15",
+              subject: "Nuevo Lead: Portal Salud Consultas",
+              nombre: document.getElementById("nombre").value,
+              email: document.getElementById("email").value,
+              telefono: document.getElementById("telefono").value,
+              mensaje: document.getElementById("mensaje").value,
+            };
+
+            Promise.all([
+              fetch("https://api.web3forms.com/submit", {
                 method: "POST",
-                headers: { "Content-Type": "application/json" },
+                headers: {
+                  "Content-Type": "application/json",
+                  Accept: "application/json",
+                },
                 body: JSON.stringify(data),
-              },
-            ),
-          ])
-            .then(async (results) => {
-              const result = await results[0].json();
-              if (result.success) {
-                // Eventos de conversión para Meta, Analytics y Clarity
-                if (typeof gtag === "function")
-                  gtag("event", "generate_lead", { currency: "EUR", value: 0 });
-                if (typeof fbq === "function") fbq("track", "Lead");
-                if (typeof clarity === "function")
-                  clarity("set", "lead", "clinica");
+              }),
+              fetch(
+                "https://hook.eu1.make.com/mxvqg7gwne43yab165v2uhtyw5yh115r",
+                {
+                  method: "POST",
+                  headers: { "Content-Type": "application/json" },
+                  body: JSON.stringify(data),
+                },
+              ),
+            ])
+              .then(async (results) => {
+                const result = await results[0].json();
+                if (result.success) {
+                  if (typeof gtag === "function")
+                    gtag("event", "generate_lead", {
+                      currency: "EUR",
+                      value: 0,
+                    });
+                  if (typeof fbq === "function") fbq("track", "Lead");
+                  if (typeof clarity === "function")
+                    clarity("set", "lead", "portal_salud_consultas");
 
-                alert(
-                  "¡Solicitud recibida! Analizaré tu caso personalmente y te contactaré pronto.",
+                  mostrarToast(
+                    "¡Solicitud recibida con éxito!",
+                    "Analizaré tu caso personalmente y te contactaré muy pronto con los siguientes pasos.",
+                  );
+
+                  formAuditoria.reset();
+                } else {
+                  throw new Error("Error en la respuesta de la API");
+                }
+              })
+              .catch((error) => {
+                console.error("Error en el envío:", error);
+                mostrarToast(
+                  "Error de envío",
+                  "No se ha podido enviar el mensaje. Por favor, comprueba tu conexión o inténtalo más tarde.",
+                  "error",
                 );
-                formClinica.reset();
-              } else {
-                throw new Error("Error en el envío");
-              }
-            })
-            .catch(() => {
-              alert("Hubo un error. Por favor, inténtalo de nuevo.");
-            })
-            .finally(() => {
-              btn.innerText = "Enviar solicitud de auditoría";
-              btn.disabled = false;
-            });
+              })
+              .finally(() => {
+                btn.innerHTML = "Enviar solicitud";
+                btn.disabled = false;
+              });
+          });
+        }
+
+        // ==========================================
+        // 4. LÓGICA DE COOKIES
+        // ==========================================
+        const cookieBanner = document.getElementById("cookie-banner");
+        const acceptBtn = document.getElementById("btn-accept-cookies");
+        const declineBtn = document.getElementById("btn-decline-cookies");
+
+        if (!localStorage.getItem("cookie_consent") && cookieBanner) {
+          cookieBanner.style.display = "block";
+        }
+
+        acceptBtn?.addEventListener("click", () => {
+          localStorage.setItem("cookie_consent", "accepted");
+          if (cookieBanner) cookieBanner.style.display = "none";
+          mostrarToast(
+            "¡Preferencias guardadas!",
+            "Gracias por aceptar las cookies de navegación.",
+          );
         });
-      }
-    });
 
-    // 3. Lógica del Banner de Cookies
-    window.addEventListener("DOMContentLoaded", () => {
-      const cookieBanner = document.getElementById("cookie-banner");
-      const acceptBtn = document.getElementById("btn-accept-cookies");
-      const declineBtn = document.getElementById("btn-decline-cookies");
-      const consent = localStorage.getItem("cookieConsent");
-
-      if (!consent && cookieBanner) {
-        cookieBanner.style.display = "flex";
-      }
-
-      if (acceptBtn) {
-        acceptBtn.addEventListener("click", () => {
-          localStorage.setItem("cookieConsent", "accepted");
-          cookieBanner.style.display = "none";
-          if (typeof gtag === "function")
-            gtag("consent", "update", {
-              ad_storage: "granted",
-              ad_user_data: "granted",
-              ad_personalization: "granted",
-              analytics_storage: "granted",
-            });
-          if (typeof clarity === "function") clarity("consent");
-          if (typeof fbq === "function") fbq("consent", "grant");
+        declineBtn?.addEventListener("click", () => {
+          localStorage.setItem("cookie_consent", "declined");
+          if (cookieBanner) cookieBanner.style.display = "none";
+          mostrarToast(
+            "Preferencias guardadas",
+            "Has rechazado las cookies opcionales.",
+          );
         });
-      }
-
-      if (declineBtn) {
-        declineBtn.addEventListener("click", () => {
-          localStorage.setItem("cookieConsent", "declined");
-          cookieBanner.style.display = "none";
-          if (typeof gtag === "function")
-            gtag("consent", "update", {
-              ad_storage: "denied",
-              ad_user_data: "denied",
-              ad_personalization: "denied",
-              analytics_storage: "denied",
-            });
-        });
-      }
-    });
-  </script>
+      });
+    </script>
+  </body>
 </html>
-
-<style>
-  /* ==========================================
-     PARTE CSS: VARIABLES Y AJUSTES GLOBALES
-  ========================================== */
-  :root {
-    /* Tonos frescos, vitales y saludables para nutrición */
-    --fondo-claro: #fcfffb; /* Blanco purísimo con un micro-toque de frescura */
-    --psico-primary: #2d6a4f; /* Verde espinaca/bosque: salud, frescura y profesionalidad médica */
-    --psico-accent: #6f947f8f; /* Naranja zanahoria/cítrico: da energía, abre el apetito de forma sana */
-    --psico-light: #eef4f0; /* Fondo secundario muy fresco y limpio */
-    --text-primary: #1b2b22; /* Verde muy oscuro casi negro para máxima legibilidad */
-    --text-muted: #526b5d; /* Texto secundario con matiz verdoso suave */
-    --border-color: #cce3d8; /* Bordes sutiles y limpios */
-
-    /* Variables de apoyo */
-    --slate-600: #1c1f1c;
-    --white: #ffffff;
-
-    /* Tipografías */
-    --font-titulos: "Montserrat", system-ui, sans-serif;
-    --font-texto: "Nunito", system-ui, sans-serif;
-  }
-
-  * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
-
-  body {
-    font-family: var(--font-texto);
-    background-color: var(
-      --fondo-claro
-    ); /* Tu tono más oscuro para leer bien */
-    line-height: 1.5;
-    -webkit-font-smoothing: antialiased;
-  }
-
-  html {
-    scroll-behavior: smooth;
-    zoom: 95%;
-  }
-
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6,
-  .hero-title,
-  .section-title,
-  .mockup-names {
-    font-family: var(--font-titulos);
-    color: var(--iris-glaze);
-  }
-
-  .container {
-    max-width: 1300px;
-    margin: 0 auto;
-  }
-
-  .global-logo {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    text-decoration: none;
-    position: absolute; /* Clavado en la parte superior */
-    top: 20px;
-    left: 30px;
-    z-index: 1000; /* Elevado para que siempre esté por encima de todo */
-  }
-
-  .global-logo img {
-    height: 55px;
-    width: auto;
-  }
-
-  .texto-logo {
-    display: flex;
-    flex-direction: row;
-    line-height: 1.2;
-    align-items: center;
-    gap: 5px;
-  }
-
-  .siglas {
-    font-family: "Nunito", sans-serif;
-    font-weight: 900;
-    font-size: 2rem;
-    color: #1b4332; /* Verde bosque oscuro y sólido */
-  }
-
-  .marca {
-    font-family: "Nunito", sans-serif;
-    color: #2d6a4f; /* Verde esmeralda fresco */
-    font-size: 1.5rem;
-    font-weight: 900;
-    opacity: 0.9;
-  }
-
-  /* ==========================================
-     HERO SECTION
-  ========================================== */
-  .hero-section {
-    background-color: var(--fondo-claro);
-    padding: 110px 0;
-    overflow: hidden;
-  }
-
-  .hero-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 60px;
-    align-items: center;
-  }
-
-  .tag {
-    display: inline-block;
-    background: rgba(45, 106, 79, 0.1); /* Fondo verde muy sutil y elegante */
-    border: 1px solid var(--border-color);
-    color: #1b4332; /* Texto en verde oscuro para máxima legibilidad */
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    border-radius: 50px;
-    margin-bottom: 30px;
-    padding: 0.5rem 1.2rem;
-    font-size: 0.85rem;
-    font-weight: 700;
-    box-shadow: 0 4px 6px -1px rgba(27, 67, 50, 0.05);
-  }
-
-  .hero-title {
-    font-size: clamp(2.8rem, 5vw, 3.5rem);
-    font-weight: 800;
-    line-height: 1.15; /* Más aire entre líneas */
-    letter-spacing: -1px; /* Montserrat queda más premium un pelín junta */
-    margin-bottom: 24px;
-  }
-
-  .text-gradient {
-    background: #1b4332;
-    -webkit-background-clip: text;
-    color: transparent;
-    display: inline-block;
-    padding-top: 8px; /* Para que no se corte el gradiente arriba */
-  }
-
-  .hero-description {
-    color: var(--text-primary);
-    max-width: 95%;
-    margin-bottom: 30px;
-    font-family: Nunito, sans-serif;
-    font-size: 1.2rem;
-    font-weight: 500;
-  }
-
-  .mobile-only {
-    display: none;
-  }
-
-  .btn-content {
-    display: flex;
-    gap: 30px;
-  }
-
-  /* ==========================================
-     ESTILOS DE BOTONES - DISEÑO SAAS MODERNO & LIMPIO
-     ========================================== */
-
-  /* Botón Principal ("Solicitar auditoría" / Alta conversión) */
-  .btn-primary {
-    color: #ffffff;
-    background-color: #1b4332; /* Verde bosque profundo, sobrio y muy profesional */
-    border-radius: 10px;
-    padding: 0.9rem 2.2rem;
-    font-size: 1.05rem;
-    font-weight: 700;
-    text-decoration: none;
-    border: 1px solid transparent;
-    transition: all 0.25s ease;
-    display: inline-block;
-    box-shadow: 0 4px 14px rgba(27, 67, 50, 0.2);
-  }
-
-  .btn-primary:hover {
-    background-color: #2d6a4f; /* Se aclara ligeramente con elegancia al pasar el ratón */
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(45, 106, 79, 0.3);
-  }
-
-  .btn-primary:active {
-    transform: translateY(0);
-  }
-
-  .btn-primary:disabled,
-  .btn-primary.disabled {
-    background-color: rgba(27, 67, 50, 0.4);
-    color: rgba(255, 255, 255, 0.7);
-    cursor: not-allowed;
-    box-shadow: none;
-    transform: none;
-  }
-
-  /* Botón Secundario ("Ver casos de éxito") */
-  .btn-secondary {
-    color: #1b4332;
-    background-color: transparent;
-    border: 2px solid #cbd5e1; /* Borde gris suave y neutro */
-    border-radius: 10px;
-    padding: 0.9rem 2.2rem;
-    font-size: 1.05rem;
-    font-weight: 700;
-    text-decoration: none;
-    transition: all 0.25s ease;
-    display: inline-block;
-  }
-
-  .btn-secondary:hover {
-    color: #1b4332;
-    border-color: #1b4332; /* El borde adopta el tono verde principal */
-    background-color: rgba(
-      27,
-      67,
-      50,
-      0.04
-    ); /* Fondo sutilísimo al hacer hover */
-    transform: translateY(-2px);
-  }
-
-  .btn-secondary:active {
-    transform: translateY(0);
-  }
-
-  .btn-secondary:disabled,
-  .btn-secondary.disabled {
-    background-color: rgba(203, 213, 225, 0.2);
-    color: rgba(27, 67, 50, 0.4);
-    border-color: rgba(203, 213, 225, 0.4);
-    cursor: not-allowed;
-    transform: none;
-  }
-
-  /* Botones de acción final / Metodología */
-  .btn-metodologia,
-  .btn-final-glow {
-    color: #ffffff;
-    background-color: #1b4332;
-    border: 1px solid #1b4332;
-    border-radius: 10px;
-    padding: 0.9rem 2.2rem;
-    font-size: 1.05rem;
-    font-weight: 700;
-    text-decoration: none;
-    display: inline-block;
-    box-shadow: 0 4px 14px rgba(27, 67, 50, 0.2);
-    transition: all 0.25s ease;
-    font-family: "Nunito", system-ui, sans-serif;
-    cursor: pointer;
-  }
-
-  .btn-metodologia:hover,
-  .btn-final-glow:hover {
-    background-color: #2d6a4f;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(45, 106, 79, 0.3);
-  }
-
-  .btn-metodologia:active,
-  .btn-final-glow:active {
-    transform: translateY(0);
-  }
-
-  /* Contenedor padre de los visuals */
-  .hero-visuals {
-    position: relative;
-    width: 100%;
-    height: 500px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  /* El Mac (fondo) */
-  .mac-mockup {
-    position: absolute;
-    left: -60px;
-    width: 125%;
-    z-index: 1;
-    transition: transform 0.3s ease;
-  }
-
-  .mac-mockup img {
-    width: 100%;
-    height: auto;
-    border-radius: 12px; /* Ajusta según tu imagen */
-  }
-
-  /* El iPhone (encima) */
-  .mobile-mockup {
-    position: absolute;
-    bottom: 70px; /* Sale un poco por abajo del Mac */
-    left: -40px; /* Desplazado a la derecha */
-    width: 25%; /* Tamaño pequeño comparado con el Mac */
-    z-index: 2;
-
-    overflow: hidden;
-    transition: transform 0.3s ease;
-  }
-
-  .mobile-mockup img {
-    width: 100%;
-    height: auto;
-    display: block;
-  }
-
-  /* Efecto suave al pasar el ratón */
-  .mac-mockup:hover {
-    transform: scale(1.02);
-  }
-  .mobile-mockup:hover {
-    transform: translateY(-10px);
-  }
-
-  /* ==========================================
-     INTERACCIONES
-  ========================================== */
-
-  .features-section {
-    padding: 80px 0 20px;
-    background-color: var(--psico-light);
-    border-top: 1px solid #5e707138;
-    border-bottom: 1px solid #5e707138;
-  }
-
-  .section-title {
-    text-align: center;
-    font-size: 2.25rem;
-    font-weight: 800;
-    margin-bottom: 80px;
-    color: var(--iris-glaze); /* Tu texto principal */
-  }
-
-  .feature-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 40px;
-    align-items: center;
-    margin-bottom: 80px;
-  }
-
-  .feature-text h3 {
-    font-size: 1.9rem;
-    margin-bottom: 16px;
-    color: var(--iris-glaze);
-  }
-
-  .feature-text p {
-    color: var(--white-iris);
-    font-size: 1.15rem;
-    margin-bottom: 24px;
-    line-height: 1.6;
-  }
-
-  .feature-list {
-    list-style: none;
-  }
-
-  .feature-list li {
-    display: flex;
-    align-items: center;
-    margin-bottom: 16px;
-    color: var(--iris-glaze);
-    font-size: 1.1rem;
-    font-weight: 600;
-  }
-
-  .feature-list .check {
-    background-color: var(--psico-accent);
-    color: var(--deep-eggplant);
-    width: 26px;
-    height: 26px;
-    border-radius: 50%;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    margin-right: 12px;
-    font-size: 0.9rem;
-    font-weight: bold;
-  }
-
-  /* --- MOCKUPS --- */
-  /* Navegador / Videollamada / Aula */
-  .feature-visual {
-    display: flex;
-    justify-content: center; /* Centra horizontalmente */
-    align-items: center; /* Centra verticalmente */
-  }
-  .browser-mockup {
-    background-color: var(--white);
-    border: 1px solid var(--border-color);
-    border-radius: 16px;
-    overflow: hidden;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
-    max-width: 600px;
-    margin: 0 auto;
-  }
-
-  .browser-header {
-    background-color: var(--psico-accent);
-    padding: 12px 16px;
-    display: flex;
-    align-items: center;
-    position: relative;
-  }
-
-  .browser-dots {
-    display: flex;
-    gap: 6px;
-    position: absolute; /* Asegura que se queden a la izquierda */
-    left: 16px;
-  }
-
-  .browser-dots span {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-  }
-  .dot-red {
-    background-color: #ff5f56;
-  }
-  .dot-yellow {
-    background-color: #ffbd2e;
-  }
-  .dot-green {
-    background-color: #27c93f;
-  }
-
-  .browser-url {
-    background: rgba(0, 0, 0, 0.233);
-    color: var(--iris-glaze);
-    font-size: 0.75rem;
-    padding: 4px 12px;
-    border-radius: 20px;
-    font-family: monospace;
-    margin-left: 10px;
-    display: flex;
-  }
-
-  .mockup-img-browser {
-    width: 100%;
-    display: block;
-  }
-
-  /* ==========================================
-   SECCIÓN FUNCIONES - NICHO PSICOLOGÍA
-   ========================================== */
-  .funciones-section {
-    padding: 80px 20px;
-    background-color: var(--fondo-claro);
-    text-align: center;
-  }
-
-  .funciones-container {
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-
-  .funciones-title {
-    text-align: center;
-    font-size: 2.25rem;
-    font-weight: 800;
-    margin-bottom: 50px;
-    color: var(--iris-glaze);
-    letter-spacing: 0.05em;
-  }
-
-  .funciones-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 30px;
-  }
-
-  .funciones-card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
-    background-color: var(--white);
-    border: 1px solid var(--border-color);
-    border-radius: 16px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.185);
-    transition: all 0.4s ease;
-  }
-
-  .funciones-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 15px 35px rgba(163, 177, 166, 0.425);
-    border-color: var(--psico-accent);
-  }
-
-  .funciones-icon {
-    font-size: 1.6rem;
-    color: var(--psico-primary);
-    background-color: var(--psico-light);
-    width: 70px;
-    height: 70px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    margin-bottom: 25px;
-    transition: all 0.4s ease;
-  }
-
-  .funciones-card:hover .funciones-icon {
-    background-color: var(--psico-primary);
-    color: var(--white);
-    transform: scale(1.1);
-  }
-
-  .funciones-card h3 {
-    font-family: var(--font-titulos);
-    font-size: 1.15rem;
-    color: var(--text-primary);
-    margin-bottom: 15px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-  }
-
-  .funciones-card p {
-    color: var(--text-primary);
-    font-size: 1.15rem;
-    margin-bottom: 24px;
-  }
-
-  /* ==========================================
-   SECCIÓN INTEGRACIÓN CRM / ERP
-   ========================================== */
-  .integracion-section {
-    background-color: var(--psico-light);
-    border-top: 1px solid #5e707138;
-    border-bottom: 1px solid #5e707138;
-    padding: 80px 25px;
-  }
-
-  .integracion-container {
-    max-width: 900px;
-    text-align: center;
-  }
-
-  .integracion-content .section-title {
-    margin-bottom: 10px;
-    text-align: center;
-    font-size: 2.25rem;
-    font-weight: 800;
-    color: var(--iris-glaze);
-  }
-
-  .integracion-description {
-    color: var(--white-iris);
-    font-size: 1.15rem;
-    margin-bottom: 30px;
-    line-height: 1.6;
-    padding-top: 35px;
-  }
-
-  .integracion-badges {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 15px;
-  }
-
-  .badge {
-    background-color: var(--fondo-claro);
-    color: var(--text-primary);
-    padding: 12px 20px;
-    border-radius: 50px;
-    font-size: 0.9rem;
-    font-weight: 600;
-    border: 1px solid #5e707165;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-
-  .badge i {
-    color: var(--psico-primary);
-  }
-  .cta-box {
-    margin: 50px auto 0 auto;
-    max-width: 700px;
-    background-color: var(--fondo-claro);
-    padding: 40px 20px;
-    border-radius: 20px;
-    border: 1px solid #5e707165;
-    text-align: center;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-  }
-
-  .cta-box h3 {
-    font-family: var(--font-titulos);
-    font-size: 1.5rem;
-    color: var(--text-primary);
-    margin-bottom: 15px;
-  }
-
-  .cta-box p {
-    color: var(--text-primary);
-    max-width: 600px;
-    margin: 0 auto 25px;
-    font-size: 1.15rem;
-  }
-  /* ==========================================
-   SECCIÓN ESCALERA DE VALOR (FASES 1 Y 2)
-========================================== */
-  .fases-section {
-    background-color: var(--fondo-claro);
-    padding: 40px 25px 80px;
-  }
-  .fases-header {
-    max-width: 800px;
-    margin: 0 auto 50px;
-    text-align: center;
-  }
-  .fases-lead {
-    color: var(--text-muted);
-    font-size: 1.15rem;
-    line-height: 1.6;
-  }
-  .fases-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 40px;
-    align-items: stretch;
-  }
-  .fase-card {
-    border: 2px solid var(--border-color);
-    border-radius: 20px;
-    padding: 40px 30px;
-    background: var(--white);
-    position: relative;
-    transition: all 0.3s ease;
-  }
-  .fase-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 35px rgba(45, 106, 79, 0.1);
-    border-color: var(--psico-primary);
-  }
-  .fase-badge {
-    background: var(--psico-light);
-    color: var(--psico-primary);
-    font-weight: 800;
-    padding: 8px 16px;
-    border-radius: 50px;
-    display: inline-block;
-    margin-bottom: 20px;
-    font-size: 0.9rem;
-  }
-  .fase-card h3 {
-    font-family: var(--font-titulos);
-    font-size: 1.5rem;
-    color: var(--text-primary);
-    margin-bottom: 15px;
-  }
-  .fase-card p {
-    color: var(--text-muted);
-    margin-bottom: 25px;
-    line-height: 1.5;
-  }
-  .fase-card ul {
-    list-style: none;
-    padding: 0;
-    color: var(--text-primary);
-    font-weight: 600;
-    line-height: 2;
-  }
-  .fase-card ul i {
-    color: var(--psico-primary);
-    margin-right: 10px;
-  }
-
-  /* Tarjeta Premium (Fase 2) */
-  .premium-card {
-    border: 2px solid var(--psico-primary);
-    background: var(--psico-primary);
-    box-shadow: 0 15px 35px rgba(45, 106, 79, 0.2);
-  }
-  .premium-card:hover {
-    border-color: #ffbd2e;
-    box-shadow: 0 15px 35px rgba(255, 189, 46, 0.2);
-  }
-  .premium-tag {
-    position: absolute;
-    top: -15px;
-    right: 30px;
-    background: #ffbd2e;
-    color: #1b2b22;
-    font-weight: 800;
-    font-size: 0.8rem;
-    padding: 5px 15px;
-    border-radius: 20px;
-    text-transform: uppercase;
-  }
-  .premium-badge {
-    background: rgba(255, 255, 255, 0.15);
-    color: var(--white);
-  }
-  .premium-card h3,
-  .premium-card p,
-  .premium-card ul {
-    color: var(--white);
-  }
-  .premium-card ul i {
-    color: #ffbd2e;
-  }
-
-  /* ==========================================
-   DETALLE PACK WORDPRESS (FASE 1)
-========================================== */
-  .wp-pack-section {
-    background-color: var(--psico-light);
-    padding: 60px 25px 80px;
-  }
-  .wp-pack-container {
-    max-width: 1000px;
-    margin: 0 auto;
-    background: var(--white);
-    border-radius: 24px;
-    padding: 50px;
-    border: 1px solid var(--border-color);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
-  }
-  .wp-pack-header {
-    text-align: center;
-    margin-bottom: 40px;
-  }
-  .wp-pack-title {
-    font-family: var(--font-titulos);
-    font-size: 2rem;
-    color: var(--text-primary);
-    margin-bottom: 15px;
-  }
-  .wp-pack-price {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    background: var(--fondo-claro);
-    border: 2px solid var(--psico-primary);
-    padding: 10px 25px;
-    border-radius: 50px;
-    margin-bottom: 20px;
-  }
-  .price-label {
-    font-weight: 600;
-    color: var(--text-muted);
-    text-transform: uppercase;
-    font-size: 0.9rem;
-  }
-  .price-amount {
-    font-weight: 900;
-    color: var(--psico-primary);
-    font-size: 1.5rem;
-  }
-  .wp-pack-desc {
-    font-size: 1.15rem;
-    color: var(--text-muted);
-    max-width: 700px;
-    margin: 0 auto;
-  }
-  .wp-pack-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 40px;
-  }
-  .wp-pack-box {
-    background: var(--fondo-claro);
-    padding: 30px;
-    border-radius: 16px;
-    border: 1px solid var(--border-color);
-  }
-  .wp-pack-box h3 {
-    font-family: var(--font-titulos);
-    font-size: 1.3rem;
-    color: var(--psico-primary);
-    margin-bottom: 20px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    border-bottom: 2px solid var(--psico-light);
-    padding-bottom: 15px;
-  }
-  .wp-pack-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-  .wp-pack-list li {
-    margin-bottom: 15px;
-    color: var(--text-muted);
-    font-size: 1.05rem;
-    line-height: 1.5;
-  }
-  .wp-pack-list li strong {
-    color: var(--text-primary);
-    display: block;
-    margin-bottom: 3px;
-  }
-
-  /* ==========================================
-   METODOLOGÍA 
-   ========================================== */
-  .metodologia-section {
-    padding: 80px 25px;
-    background-color: var(--fondo-claro);
-  }
-
-  .metodologia-container {
-    max-width: 900px; /* Estrecho para que la lectura sea elegante */
-    margin: 0 auto;
-  }
-
-  .section-title {
-    margin-bottom: 40px;
-  }
-
-  .metodologia-lead {
-    font-size: 1.3rem;
-    color: var(--text-primary);
-    line-height: 1.6;
-    max-width: 700px;
-    margin: 0 auto 50px;
-    padding-top: 20px;
-  }
-
-  .metodologia-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 40px;
-  }
-
-  .metodologia-bloque {
-    border-left: 2px solid var(--psico-primary); /* Línea de autoridad */
-    padding-left: 30px;
-  }
-
-  .metodologia-bloque h3 {
-    font-size: 1.5rem;
-    color: var(--text-primary);
-    margin-bottom: 15px;
-    font-family: var(--font-titulos);
-  }
-
-  .metodologia-bloque p {
-    font-size: 1.15rem;
-    margin-bottom: 24px;
-    line-height: 1.6;
-    color: var(--text-primary);
-    font-family: var(--font-texto);
-  }
-
-  /* Efecto hover suave en la línea */
-  .metodologia-bloque:hover {
-    border-left-color: var(--psico-accent);
-  }
-
-  /* ==========================================
-   Consultor
-   ========================================== */
-
-  .inversion-section {
-    background-color: var(--psico-light);
-    padding: 40px 25px 60px;
-  }
-
-  .inversion-lead {
-    max-width: 800px;
-    margin: 0 auto 40px;
-    text-align: center;
-    color: var(--white-iris);
-    font-size: 1.15rem;
-    line-height: 1.6;
-    padding-top: 20px;
-  }
-
-  .escalabilidad-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 40px;
-  }
-
-  .factor-card {
-    padding: 30px;
-    border: 1px solid #5e707165;
-    border-radius: 20px;
-    text-align: center;
-    background-color: var(--fondo-claro);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.185);
-    transition: all 0.4s ease;
-  }
-
-  .factor-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 15px 35px rgba(163, 177, 166, 0.425);
-    border-color: var(--psico-accent);
-  }
-
-  .factor-card i {
-    font-size: 2.5rem;
-    color: var(--psico-primary);
-    margin-bottom: 20px;
-  }
-
-  .factor-card h3 {
-    font-family: var(--font-titulos);
-    margin-bottom: 15px;
-    font-size: 1.15rem;
-    color: var(--text-primary);
-  }
-
-  .factor-card p {
-    color: var(--white-iris);
-    font-size: 1.15rem;
-    line-height: 1.6;
-  }
-
-  /* ==========================================
-   CCONTACTO
-   ========================================== */
-
-  .contacto-section {
-    background-color: var(--psico-light);
-    padding: 80px 25px 40px;
-  }
-
-  .text-center {
-    text-align: left;
-  }
-
-  .section-main-title {
-    font-size: 2.5rem;
-    color: var(--iris-glaze);
-    margin-bottom: 50px; /* Separación para que no pegue con el calendario */
-    font-family:
-      "Montserrat", sans-serif; /* O la tipografía que estés usando */
-    font-weight: 800;
-    line-height: 1.2;
-    letter-spacing: 0.03em;
-  }
-
-  .contacto-grid {
-    display: grid;
-    grid-template-columns: 1.1fr 0.9fr;
-    gap: 40px;
-    align-items: start;
-  }
-
-  .cal-widget {
-    margin: 2rem 0 0 0;
-    width: 100%;
-    height: 370px;
-    background: var(--white);
-    border: 1px solid var(--border-color);
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: var(--shadow-sm);
-    position: relative;
-  }
-
-  /* Iframe limpio: sin escalas, sin transformaciones raras */
-  .calendar-iframe {
-    width: 125%; /* Esto compensa el 0.85 de escala (1 / 0.85 ≈ 1.176) */
-    height: 540px; /* Altura mayor para que el contenido de Cal.com no se corte */
-    border: none;
-    display: block;
-    transform: scale(0.8); /* ¡Aquí está la reducción! */
-    transform-origin: top left;
-  }
-
-  .beneficios-lista {
-    list-style: none;
-    padding-top: 10px;
-    font-size: 1.1rem;
-  }
-
-  .check-icon-circle {
-    font-size: 1.4rem;
-    margin-right: 10px;
-    color: #7e57c2;
-  }
-
-  /* Estilo del Formulario */
-  .formulario {
-    border: 1px solid #5e707165;
-    border-radius: 20px;
-    background-color: var(--fondo-claro);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.185);
-    padding: 40px;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
-
-  .form-grupo {
-    font-family: "Nunito", system-ui, sans-serif;
-  }
-
-  .formulario h3 {
-    margin: 0;
-    font-size: 1.5rem;
-  }
-  .form-subtext {
-    color: var(--white-iris);
-    font-size: 1.1rem;
-    margin-bottom: 10px;
-  }
-
-  .form-grupo label {
-    display: block;
-    font-weight: bold;
-    margin-bottom: 8px;
-    font-size: 1rem;
-  }
-
-  .form-grupo input,
-  .form-grupo textarea {
-    width: 100%;
-    padding: 12px 16px;
-    border: 1px solid var(--border-color, #e2d8f5);
-    border-radius: 12px;
-    font-size: 1rem;
-    font-family: inherit;
-  }
-
-  .privacy-note {
-    text-align: center;
-    font-size: 0.85rem;
-    color: #595959;
-  }
-
-  .formulario select {
-    width: 100%;
-    /* padding: arriba, derecha (mucho espacio), abajo, izquierda */
-    padding: 12px 40px 12px 16px;
-    border: 1px solid var(--border-color, #e2d8f5);
-    border-radius: 12px; /* Unificado con los inputs de texto */
-    background-color: var(--white);
-    color: var(--text-primary);
-    font-family: "Nunito", system-ui, sans-serif;
-    cursor: pointer;
-    font-size: 1rem;
-    /* 1. Ocultamos la flecha fea por defecto de Chrome/Safari */
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-
-    /* 2. Dibujamos una flecha minimalista directamente desde CSS */
-    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%238aa3b3' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
-    background-repeat: no-repeat;
-    background-position: right 16px center; /* Separación perfecta desde la derecha */
-    background-size: 16px; /* Tamaño del icono */
-  }
-
-  /* Pequeño ajuste por si alguien usa Internet Explorer (aunque ya casi nadie lo hace) */
-  .formulario select::-ms-expand {
-    display: none;
-  }
-
-  /* ==========================================
-   TESTIMONIOS Y DEMOS
-   ========================================== */
-
-  .demos-testimonios-section {
-    background-color: var(--psico-light);
-    padding: 80px 25px 40px;
-    overflow: hidden;
-  }
-
-  .demo-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 0px;
-    align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-
-  .demo-wrapper {
-    text-align: center;
-    width: 100%;
-  }
-
-  .section-title {
-    margin-bottom: 20px;
-  }
-
-  /* Fila de Demos */
-  .demos-row {
-    display: flex;
-    justify-content: center;
-    gap: 60px;
-    margin-top: 50px;
-    flex-wrap: wrap;
-  }
-
-  .demo-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-  }
-
-  .iphone-mockup {
-    width: 230px;
-    height: 450px;
-    background: #111;
-    border-radius: 35px;
-    border: 8px solid #333;
-    overflow: hidden;
-    position: relative;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-  }
-
-  .screen {
-    width: 100%;
-    height: 100%;
-    background-size: 100% auto;
-    background-position: top;
-    transition: background-position 20s ease-in-out;
-  }
-
-  .iphone-mockup:hover .screen {
-    background-position: bottom;
-  }
-
-  .phone-notch {
-    position: absolute;
-    top: 12px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 90px;
-    height: 20px;
-    background-color: #000000;
-    border-radius: 20px;
-    z-index: 2;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    padding-right: 8px;
-  }
-
-  .phone-notch::after {
-    content: "";
-    width: 12px;
-    height: 12px;
-    background-color: #111;
-    border-radius: 50%;
-    box-shadow: inset -2px -2px 4px rgba(255, 255, 255, 0.15);
-  }
-
-  .scroll-indicator {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    background-color: #ffffff90;
-    color: var(--text-muted);
-    padding: 10px 25px;
-    border-radius: 50px;
-    font-size: 0.95rem;
-    font-weight: 600;
-    margin-top: 20px;
-    border: 1px solid var(--border-color);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
-  }
-
-  .scroll-indicator i {
-    color: var(--psico-primary);
-    font-size: 1.2rem;
-  }
-
-  /* Botones Demo */
-  .btn-demo {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 12px 24px;
-    background-color: transparent;
-    color: var(--text-primary);
-    border: 2px solid var(--border-color);
-    border-radius: 50px;
-    font-size: 0.95rem;
-    font-weight: 700;
-    text-decoration: none;
-    transition: all 0.3s ease;
-  }
-
-  .btn-demo i {
-    font-size: 0.85rem;
-    color: var(--psico-primary);
-    transition: color 0.3s ease;
-  }
-
-  .btn-demo:hover {
-    background-color: var(--psico-primary);
-    border-color: var(--psico-primary);
-    color: var(--white);
-    transform: translateY(-2px);
-  }
-
-  .btn-demo:hover i {
-    color: var(--white);
-  }
-
-  /* Carrusel de Testimonios */
-  .testimonios-wrapper {
-    width: 100%;
-    text-align: center;
-    overflow: hidden;
-    -webkit-mask-image: linear-gradient(
-      to right,
-      transparent,
-      black 10%,
-      black 90%,
-      transparent
-    );
-    mask-image: linear-gradient(
-      to right,
-      transparent,
-      black 10%,
-      black 90%,
-      transparent
-    );
-    margin-top: 60px;
-  }
-
-  .carousel {
-    display: flex;
-    gap: 25px;
-    padding: 10px 0;
-  }
-
-  .carousel-track {
-    display: flex;
-    gap: 25px;
-    flex-shrink: 0;
-    animation: scrollTestimonios 35s linear infinite;
-  }
-
-  .carousel:hover .carousel-track {
-    animation-play-state: paused;
-  }
-
-  .testimonio-card {
-    width: 320px;
-    height: 220px;
-    padding: 25px;
-    background: var(--fondo-claro);
-    border-radius: 16px;
-    border: 1px solid #5e707165;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.04);
-    text-align: left;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
-
-  .stars {
-    color: #f59e0b;
-    font-size: 1.2rem;
-    margin-bottom: 10px;
-    letter-spacing: 2px;
-  }
-
-  .testimonio-card p {
-    font-style: italic;
-    color: var(--text-primary);
-    font-size: 1.05rem;
-    line-height: 1.6;
-    margin: 0;
-    flex-grow: 1;
-    display: flex;
-    align-items: center;
-  }
-
-  .author {
-    display: flex;
-    align-items: center;
-    font-weight: 600;
-    color: var(--text-muted);
-    font-size: 0.9rem;
-    margin-top: 15px;
-  }
-
-  .author i {
-    margin-left: 8px;
-    font-size: 1.1rem;
-  }
-
-  @keyframes scrollTestimonios {
-    0% {
-      transform: translateX(0);
-    }
-    100% {
-      transform: translateX(calc(-100% - 25px));
-    }
-  }
-
-  /* ==========================================
-   FAQ
-   ========================================== */
-  .faq-section {
-    background-color: var(--psico-light);
-    padding: 40px 25px 80px; /* Fondo blanco limpio */
-    width: 100%;
-  }
-
-  .faq-container {
-    max-width: 800px;
-    margin: 0 auto;
-  }
-
-  .faq-section .section-title {
-    color: var(--text-primary);
-    margin-bottom: 50px;
-    text-align: center;
-  }
-
-  .faq-list {
-    display: flex;
-    flex-direction: column;
-    gap: 15px; /* Separación entre preguntas */
-  }
-
-  .faq-item {
-    background: var(--fondo-claro);
-    border: 1px solid #5e707165;
-    border-radius: 12px;
-    overflow: hidden;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02); /* Sombra muy sutil */
-  }
-
-  .faq-item[open] {
-    border-color: var(--psico-primary); /* Borde con color de marca al abrir */
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
-  }
-
-  .faq-item summary {
-    padding: 25px 30px;
-    font-family: var(--font-titulos);
-    font-weight: 600;
-    font-size: 1.1rem;
-    color: var(--text-primary);
-    cursor: pointer;
-    list-style: none;
-    position: relative;
-    outline: none;
-    transition: color 0.3s;
-  }
-
-  .faq-item summary:hover {
-    color: var(--psico-primary);
-  }
-
-  /* Flecha personalizada */
-  .faq-item summary::after {
-    content: "+";
-    position: absolute;
-    right: 25px;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 1.5rem;
-    color: var(--psico-primary);
-    transition: transform 0.3s ease;
-  }
-
-  .faq-item[open] summary::after {
-    content: "−";
-    transform: translateY(-50%) rotate(180deg);
-  }
-
-  /* Ocultar flecha nativa */
-  .faq-item summary::-webkit-details-marker {
-    display: none;
-  }
-
-  .faq-item p {
-    padding: 0 30px 25px 30px;
-    color: var(--white-iris);
-    font-size: 1.15rem;
-    line-height: 1.6;
-    margin: 0;
-  }
-
-  /* ==========================================
-   FOOTER MINIMAL (Estilo Psicología)
-   ========================================== */
-  .footer-minimal {
-    padding: 30px 25px;
-    background-color: var(--fondo-claro); /* Usamos tu fondo gris claro */
-    color: var(--text-muted);
-    border-top: 1px solid #5e707138;
-  }
-
-  .footer-content {
-    display: grid;
-    grid-template-columns: 1fr auto 1fr; /* Centra perfectamente los links */
-    align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-
-  .footer-contact {
-    display: flex;
-    flex-direction: column; /* Cambiado a columna para mayor limpieza */
-    gap: 10px;
-    text-align: left;
-  }
-
-  .correo-gigante {
-    color: var(--text-primary);
-    text-decoration: none;
-    font-weight: 600;
-    transition: color 0.3s;
-  }
-
-  .correo-gigante:hover {
-    color: var(--psico-primary);
-  }
-
-  .footer-links {
-    display: flex;
-    gap: 30px;
-    justify-content: center;
-    font-size: 1.15rem;
-  }
-
-  .footer-links a {
-    color: var(--text-muted);
-    text-decoration: none;
-    transition: color 0.3s;
-    font-size: 1rem;
-  }
-
-  .footer-links a:hover {
-    color: var(--psico-primary);
-  }
-
-  .footer-copyright {
-    text-align: right;
-    font-size: 0.9rem;
-    color: var(--text-muted);
-  }
-
-  /* ==========================================
-   BANNER COOKIES (Tonos Verdes / Bienestar)
-   ========================================== */
-
-  .cookie-card-uiverse {
-    width: 480px;
-    min-height: 240px;
-    background-color: var(--fondo-claro);
-    border: 1px solid var(--border-color);
-    border-radius: 16px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 30px 40px;
-    gap: 18px;
-    position: fixed;
-    bottom: 30px;
-    left: 30px;
-    z-index: 999999;
-    box-shadow: 0 20px 40px rgba(45, 106, 79, 0.15);
-    font-family: "Nunito", sans-serif;
-  }
-
-  #cookieSvg {
-    width: 60px;
-  }
-
-  #cookieSvg g path {
-    fill: var(--psico-primary);
-  }
-
-  .cookieHeading {
-    font-size: 1.8em;
-    font-weight: 800;
-    color: var(--text-primary);
-    margin: 0;
-    font-family: "Montserrat", sans-serif;
-  }
-
-  .cookieDescription {
-    text-align: center;
-    font-size: 1.1em;
-    font-weight: 600;
-    font-family: "Nunito", sans-serif;
-    color: var(--text-muted);
-    margin: 0;
-    line-height: 1.6;
-  }
-
-  .cookielink,
-  .cookieDescription a {
-    color: var(--psico-primary);
-    text-decoration: none;
-    font-weight: 700;
-    display: inline-block;
-  }
-
-  .cookielink:hover,
-  .cookieDescription a:hover {
-    text-decoration-line: underline;
-    color: var(--text-primary);
-  }
-
-  .buttonContainer {
-    display: flex;
-    gap: 15px;
-    flex-direction: row;
-    margin-top: 10px;
-    width: 100%;
-    justify-content: center;
-  }
-
-  /* Botón Principal (Aceptar): Destaca con tu verde principal */
-  .acceptButton {
-    width: 140px;
-    height: 40px;
-    background-color: var(--psico-primary);
-    border: none;
-    color: var(--fondo-claro);
-    cursor: pointer;
-    font-weight: 700;
-    border-radius: 20px;
-    box-shadow: 0 10px 25px rgba(45, 106, 79, 0.25);
-    transition: all 0.3s ease;
-    font-size: 1em;
-    font-family: "Nunito", sans-serif;
-  }
-
-  .acceptButton:hover {
-    background-color: var(--text-primary);
-    transform: translateY(-2px);
-  }
-
-  /* Botón Secundario (Rechazar): Limpio, sutil y con contraste real */
-  .declineButton {
-    width: 140px;
-    height: 40px;
-    background-color: transparent;
-    color: var(--text-muted);
-    border: 1px solid var(--border-color);
-    cursor: pointer;
-    font-weight: 700;
-    border-radius: 20px;
-    transition: all 0.3s ease;
-    font-size: 1em;
-    font-family: "Nunito", sans-serif;
-  }
-
-  .declineButton:hover {
-    background-color: var(--psico-light);
-    color: var(--text-primary);
-    border-color: var(--text-muted);
-    transform: translateY(-2px);
-  }
-
-  /* ==========================================
-     RESPONSIVE (MEDIA QUERIES)
-  ========================================== */
-  @media (max-width: 480px) {
-    .cookie-card-uiverse {
-      bottom: 10px; /* Pegadito abajo */
-      /* 🔥 REUBICACIÓN CLAVE: Arrinconamos a la izquierda 🔥 */
-      left: 10px;
-      right: auto;
-      transform: none; /* Apagamos el centrado de escritorio */
-
-      /* 🔥 ANCHO AJUSTADO: Dejamos espacio a la derecha para WhatsApp 🔥 */
-      width: calc(
-        100% - 70px
-      ); /* Calculamos el ancho dejando ~70px libres a la derecha */
-      max-width: 300px; /* Ponemos un tope para que no sea muy largo en pantallas grandes */
-
-      padding: 20px; /* Relleno muy compacto */
-      min-height: auto; /* Altura automática */
-      gap: 8px; /* Elementos muy pegaditos */
-      border-radius: 12px;
-      align-items: flex-start; /* Alineamos los textos a la izquierda */
-    }
-
-    /* Mantenemos el resto de optimizaciones de tamaño */
-    #cookieSvg {
-      display: none; /* Escondemos la galleta en móvil */
-    }
-
-    .cookieHeading {
-      font-size: 1.1em; /* Título pequeño */
-      text-align: left;
-    }
-
-    .cookieDescription {
-      font-size: 0.8em; /* Texto muy chiquitito */
-      line-height: 1.2;
-      text-align: left; /* Texto alineado a la izquierda */
-    }
-
-    .cookielink {
-      margin-top: 8px; /* Un pelín de aire arriba del enlace */
-      margin-bottom: 8px; /* Un pelín de aire abajo del enlace */
-      font-size: 0.8em;
-      display: inline-block; /* Para que los márgenes se apliquen bien */
-    }
-
-    .buttonContainer {
-      margin-top: 5px; /* Separación con el enlace */
-      gap: 8px;
-      justify-content: flex-start;
-    }
-
-    .acceptButton,
-    .declineButton {
-      width: auto; /* Ancho automático según texto */
-      padding: 0 15px; /* Relleno lateral */
-      height: 30px; /* Botones bajitos */
-      font-size: 0.8em;
-    }
-  }
-
-  /* ==========================================
-   RESPONSIVE HERO SECTION (TABLET Y MÓVIL)
-   ========================================== */
-
-  /* TABLET (Pantallas medianas hasta 992px) */
-  @media (max-width: 992px) {
-    .hero-section {
-      padding: 120px 120px; /* Quitamos un poco de aire vertical */
-    }
-
-    .hero-grid {
-      grid-template-columns: 1fr; /* Pasamos todo a una sola columna */
-      text-align: center;
-      gap: 50px;
-    }
-
-    .hero-description {
-      max-width: 100%;
-      margin: 0 auto;
-    }
-
-    .btn-content {
-      justify-content: center; /* Centramos los botones */
-    }
-
-    /* Ajuste de las imágenes para que no desborden */
-    .hero-visuals {
-      height: auto;
-      padding-top: 20px;
-    }
-
-    .mac-mockup {
-      position: relative; /* Le quitamos el absolute para que mande en el espacio */
-      width: 90%; /* Mucho más seguro que tu 115% */
-      left: 5;
-      margin: 0 auto;
-    }
-
-    .mobile-mockup {
-      bottom: -15px;
-      left: 5%; /* Pegado a la izquierda pero sin salirse de la pantalla */
-      width: 25%;
-    }
-
-    .features-section {
-      padding: 60px 25px 60px;
-    }
-
-    .section-title {
-      font-size: 2rem;
-    }
-
-    .feature-row {
-      grid-template-columns: 1fr; /* Pasamos a una sola columna */
-      gap: 40px;
-      margin-bottom: 60px;
-    }
-
-    /* 🔥 LA MAGIA: Forzamos el orden para que el texto vaya siempre arriba 🔥 */
-    .feature-text {
-      order: 1;
-      text-align: center; /* Centramos el texto para que quede simétrico en pantallas pequeñas */
-    }
-
-    .feature-visual {
-      order: 2;
-    }
-
-    /* Centramos la lista de checks para que acompañe al texto centrado */
-    .feature-list li {
-      justify-content: center;
-    }
-
-    .contacto-grid {
-      grid-template-columns: 1fr; /* Rompemos las dos columnas y apilamos */
-      gap: 50px;
-    }
-
-    .text-center {
-      text-align: center; /* Centramos el texto superior que estaba alineado a la izquierda */
-    }
-
-    .section-main-title {
-      font-size: 2.2rem;
-      margin-bottom: 30px;
-    }
-
-    .cal-widget {
-      /* Evitamos que el calendario se estire infinitamente en tablet */
-      margin: 0 auto;
-    }
-  }
-
-  /* MÓVIL (Pantallas pequeñas hasta 768px) */
-  @media (max-width: 768px) {
-    .hero-section {
-      padding: 120px 24px 60px;
-    }
-
-    .hero-grid {
-      grid-template-columns: 1fr; /* Pasamos todo a una sola columna */
-      text-align: center;
-      gap: 30px;
-    }
-
-    .tag {
-      font-size: 0.75rem;
-      padding: 0.4rem 1rem;
-      margin-bottom: 20px;
-    }
-
-    .hero-title {
-      /* El clamp ayuda, pero forzamos un tamaño base más seguro para móviles */
-      font-size: 2.25rem;
-      letter-spacing: -0.5px;
-    }
-
-    .metodologia-section {
-      padding: 40px 25px;
-      background-color: var(--fondo-claro);
-    }
-
-    .wp-pack-section {
-      background-color: var(--psico-light);
-      padding: 60px 25px 40px;
-    }
-
-    .btn-content {
-      flex-direction: column; /* Apilamos los botones uno encima de otro */
-      gap: 20px;
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin-top: 30px;
-    }
-
-    .btn-primary,
-    .btn-secondary {
-      width: 70%; /* Botones de ancho completo para facilitar el clic */
-      padding: 1rem;
-      max-width: 320px; /* Le ponemos un tope para que no queden gigantes en móviles grandes */
-      text-align: center; /* Asegura que el texto dentro del botón esté centrado */
-      margin-top: 0;
-    }
-
-    .mobile-mockup {
-      width: 30%; /* Lo hacemos un pelín más grande en móvil para que se vea el detalle */
-      bottom: -20px;
-      left: 0;
-    }
-
-    .funciones-section {
-      padding: 60px 25px;
-      background-color: var(--fondo-claro);
-      text-align: center;
-    }
-
-    .section-title {
-      font-size: 2.25rem;
-      margin-bottom: 40px;
-      margin-top: 0px;
-      padding: 0 10px;
-    }
-
-    .feature-text h3 {
-      font-size: 1.6rem;
-    }
-
-    .feature-list li {
-      font-size: 1rem;
-      justify-content: flex-start; /* En móvil puro suele leerse mejor alineado a la izquierda */
-      text-align: left;
-    }
-
-    .feature-text {
-      text-align: left; /* Volvemos a alinear a la izquierda para mejor lectura en pantallas estrechas */
-    }
-
-    .browser-url {
-      font-size: 0.65rem; /* Achicamos un poco la URL simulada para que no se rompa la cabecera */
-      padding: 4px 8px;
-    }
-
-    .contacto-section {
-      padding: 40px 15px 40px;
-    }
-
-    .section-main-title {
-      font-size: 2.25rem;
-      padding: 0 10px;
-    }
-    .mockup-img-browser {
-      height: 180px;
-    }
-
-    .wp-pack-container {
-      padding: 30px 20px;
-    }
-    .wp-pack-grid {
-      grid-template-columns: 1fr;
-      gap: 25px;
-    }
-    .wp-pack-title {
-      font-size: 1.6rem;
-    }
-
-    /* --- AJUSTE CRÍTICO DEL CALENDARIO --- */
-    .cal-widget {
-      height: 520px; /* Le damos un poco más de aire vertical en móvil */
-      border-radius: 20px;
-    }
-
-    .calendar-iframe {
-      width: 100%; /* Quitamos tu 125% */
-      height: 100%; /* Quitamos tu 570px fijo */
-      transform: scale(
-        1
-      ); /* Devolvemos la escala a la normalidad para que sea táctil */
-      transform-origin: center;
-    }
-
-    .testimonio-card {
-      /* Reducimos dimensiones para que quepan más cómodas */
-      width: 260px;
-      height: 190px;
-      padding: 20px;
-    }
-
-    .carousel {
-      /* Ajustamos el gap si sientes que se ven muy separadas */
-      gap: 15px;
-    }
-
-    .carousel-track {
-      gap: 15px; /* Debe coincidir con el gap del carousel */
-      /* Ajustamos la animación si la velocidad te parece muy rápida tras achicar las cartas */
-      animation-duration: 25s;
-    }
-
-    .testimonio-card p {
-      font-size: 0.95rem; /* Un pelín más pequeño para que no se coma la carta */
-    }
-
-    .stars {
-      font-size: 1rem;
-      margin-bottom: 5px;
-    }
-
-    .author {
-      font-size: 0.8rem;
-      margin-top: 10px;
-    }
-
-    /* --- AJUSTE DEL FORMULARIO --- */
-    .formulario {
-      padding: 25px 20px; /* Reducimos el padding para que no se coma la pantalla */
-      gap: 15px;
-    }
-
-    .formulario h3 {
-      text-align: center;
-    }
-
-    .form-subtext {
-      text-align: center;
-    }
-
-    .btn-final-glow {
-      width: 100%; /* Botón gigante y fácil de pulsar con el pulgar */
-      text-align: center;
-      padding: 1rem;
-      margin-top: 15px;
-    }
-
-    .footer-minimal {
-      padding: 40px 20px;
-      background-color: var(--fondo-claro);
-      color: var(--text-muted);
-      border-top: 1px solid #5e707138;
-    }
-
-    .footer-content {
-      display: flex;
-      flex-direction: column; /* En móvil, todo en vertical */
-      align-items: center; /* Centrado absoluto */
-      gap: 30px; /* Espacio entre secciones */
-      max-width: 1200px;
-      margin: 0 auto;
-      text-align: center;
-    }
-  }
-</style>

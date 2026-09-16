@@ -1,12 +1,12 @@
 :root {
-  --primary: #667055; /* DEEP OLIVE - Fondo del Hero */
-  --secondary: #98a084; /* SAGE GARDEN - Detalles y acentos */
-  --accent: #e7d9c8; /* SUNWASHED LINEN - Fondo de secciones */
-  --card-bg: #dcc8b2; /* WARM SAND - Tarjetas o contenedores */
-  --text-main: #2c3330; /* Texto principal oscuro */
-  --text-muted: #5a635e; /* Texto secundario */
-  --button-cta: #c28b6a; /* TERRACOTTA GLOW - Botones principales */
-  --button-hover: #a87352; /* Terracotta más oscuro para hover */
+  --primary: #667055; 
+  --secondary: #98a084; 
+  --accent: #e7d9c8; 
+  --card-bg: #dcc8b2; 
+  --text-main: #2c3330; 
+  --text-muted: #5a635e; 
+  --button-cta: #c28b6a; 
+  --button-hover: #a87352; 
 }
 
 body,
@@ -19,76 +19,76 @@ html {
   overflow-x: hidden;
 }
 
-/* ========================================= */
-/* --- BARRA DE SCROLL PERSONALIZADA --- */
-/* ========================================= */
 
-/* Firefox */
+
+
+
+
 html {
   scroll-behavior: smooth; 
   
-  /* Tu barra de scroll personalizada para Firefox */
+  
   scrollbar-width: thin;
   scrollbar-color: #c28b6a rgb(231, 217, 200);
   scrollbar-color: #c28b6a rgb(231, 217, 200); 
 }
 
-/* Chrome, Edge y Safari */
+
 ::-webkit-scrollbar {
   width: 10px; 
   height: 10px;
 }
 
-/* Fondo de la barra (Crema - accent) */
+
 ::-webkit-scrollbar-track {
   background: rgb(231, 217, 200); 
 }
 
-/* La bolita / Thumb (Terracota - button-cta) */
+
 ::-webkit-scrollbar-thumb {
   background: #c28b6a; 
   border-radius: 10px;
-  /* Borde del mismo color que el fondo para que la bolita parezca más fina y flote */
+  
   border: 2px solid rgb(231, 217, 200); 
   background-clip: padding-box; 
 }
 
-/* Hover de la bolita */
+
 ::-webkit-scrollbar-thumb:hover {
-  background: #a87352; /* Terracota oscuro (button-hover) */
+  background: #a87352; 
   border: 2px solid rgb(231, 217, 200);
   background-clip: padding-box;
 }
-/* ========================================= */
-/* --- ANIMACIONES HERO SECTION --- */
-/* ========================================= */
 
-/* 1. Definimos los movimientos maestros (Keyframes) */
+
+
+
+
 @keyframes fadeUpElegante {
   0% {
     opacity: 0;
-    transform: translateY(40px); /* Empieza 40px más abajo */
+    transform: translateY(40px); 
   }
   100% {
     opacity: 1;
-    transform: translateY(0); /* Termina en su posición original */
+    transform: translateY(0); 
   }
 }
 
 @keyframes levitacionPC {
   0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-12px); } /* Sube 12px sutilmente */
+  50% { transform: translateY(-12px); } 
 }
 
 @keyframes levitacionMovil {
   0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-8px); } /* Sube un poco menos para dar contraste */
+  50% { transform: translateY(-8px); } 
 }
 
-/* 2. Textos en Cascada (Cambiamos la opacidad inicial a 0 para que no se vean antes de tiempo) */
+
 .hero-tag {
   opacity: 0;
-  /* Animación: nombre | duración | curva de velocidad | estado final | retraso */
+  
   animation: fadeUpElegante 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.2s;
 }
 
@@ -107,25 +107,25 @@ html {
   animation: fadeUpElegante 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.8s;
 }
 
-/* 3. Mockups: Entrada majestuosa + Levitación infinita */
+
 .laptop-mockup {
   opacity: 0;
-  /* Le encadenamos dos animaciones separadas por coma */
+  
   animation: 
     fadeUpElegante 1s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.5s,
-    levitacionPC 6s ease-in-out infinite 1.5s; /* Empieza a levitar cuando termina de entrar */
+    levitacionPC 6s ease-in-out infinite 1.5s; 
 }
 
 .phone-mockup {
   opacity: 0;
   animation: 
-    fadeUpElegante 1s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.7s, /* Entra un pelín después que el PC */
-    levitacionMovil 5s ease-in-out infinite 1.7s; /* Flota un poco más rápido para dar realismo */
+    fadeUpElegante 1s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.7s, 
+    levitacionMovil 5s ease-in-out infinite 1.7s; 
 }
 
-/* ========================================= */
-/* --- EFECTOS REVEAL AL HACER SCROLL --- */
-/* ========================================= */
+
+
+
 .reveal {
   opacity: 0;
   transform: translateY(40px);
@@ -137,19 +137,19 @@ html {
   transform: translateY(0);
 }
 
-/* Clases opcionales para hacer "efecto dominó" si hay varios elementos juntos */
+
 .reveal.delay-1 { transition-delay: 0.2s; }
 .reveal.delay-2 { transition-delay: 0.4s; }
 .reveal.delay-3 { transition-delay: 0.6s; }
 
-/* --- NAVBAR GLASSMORPHISM --- */
+
 .navbar {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   z-index: 1000;
-  background-color: rgba(102, 112, 85, 0.85); /* Deep Olive con opacidad */
+  background-color: rgba(102, 112, 85, 0.85); 
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid rgba(231, 217, 200, 0.15);
@@ -180,7 +180,7 @@ html {
   font-weight: 300;
 }
 
-/* --- ESCRITORIO --- */
+
 .desktop-nav {
   display: flex;
   gap: 30px;
@@ -218,9 +218,9 @@ html {
   transform: translateY(-2px);
 }
 
-/* --- BOTÓN HAMBURGUESA --- */
+
 .menu-toggle {
-  display: none; /* Oculto en escritorio */
+  display: none; 
   align-items: center;
   justify-content: center;
   width: 40px;
@@ -237,21 +237,21 @@ html {
   background: rgba(255, 255, 255, 0.2);
 }
 
-/* --- DESPLEGABLE MÓVIL (TOP-DOWN) --- */
+
 .mobile-dropdown {
   display: none; 
   position: absolute;
   top: 100%;
   left: 0;
   width: 100%;
-  box-sizing: border-box; /* CLAVE: Evita que el padding sume al 100% de ancho */
+  box-sizing: border-box; 
   background-color: rgba(102, 112, 85, 0.98); 
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid rgba(231, 217, 200, 0.15);
-  padding: 30px 20px 40px 20px; /* Aquí están esos 20px de los lados */
+  padding: 30px 20px 40px 20px; 
   flex-direction: column;
-  align-items: center; /* Centramos todo el contenido horizontalmente */
+  align-items: center; 
   gap: 8px;
   text-align: center;
   box-shadow: 0 20px 40px rgba(0,0,0,0.2);
@@ -279,8 +279,8 @@ html {
 
 .mobile-cta-btn {
   margin-top: 15px;
-  width: 100%; /* Ahora el 100% respetará el padding del contenedor padre */
-  max-width: 320px; /* Evitamos que sea exageradamente ancho en tablets/móviles grandes */
+  width: 100%; 
+  max-width: 320px; 
   box-sizing: border-box;
   background-color: var(--button-cta);
   color: #FFFFFF;
@@ -297,17 +297,12 @@ html {
   background-color: var(--button-hover);
 }
 
-/* --- RESPONSIVE --- */
+
 @media (max-width: 900px) {
-  .desktop-nav, .desktop-cta-container {
-    display: none;
-  }
-  .menu-toggle {
-    display: flex;
-  }
+
 }
 
-/* --- CALENDARIO UI --- */
+
 .calendar-mockup {
   padding: 28px;
 }
@@ -433,7 +428,7 @@ html {
 }
 
 
-/* --- HERO SECTION --- */
+
 .hero {
   background-color: var(--primary);
   color: white;
@@ -442,12 +437,12 @@ html {
   align-items: center;
   justify-content: space-between;
   position: relative;
-  z-index: 2; /* Asegura que el pico pisa a la sección de abajo */
+  z-index: 2; 
   
-  /* El corte perfecto: recto arriba, diagonal abajo con 60px exactos de desnivel */
+  
   clip-path: polygon(0 0, 100% 0, 100% calc(100% - 60px), 0 100%);
   
-  /* Tira de la sección color arena hacia arriba para rellenar el hueco del corte */
+  
   margin-bottom: -60px; 
 }
 
@@ -499,7 +494,7 @@ html {
   transform: translateY(-2px);
 }
 
-/* Contenedor Visual Derecho (PC + Móvil superpuestos) */
+
 .hero-visual {
   width: 55%;
   display: flex;
@@ -510,7 +505,7 @@ html {
   height: 380px;
 }
 
-/* Mockup de Portátil */
+
 .laptop-mockup {
   width: 480px;
   height: 300px;
@@ -548,38 +543,38 @@ html {
 }
 
 
-/* ========================================= */
-/* --- AJUSTES MOCKUP PC --- */
-/* ========================================= */
+
+
+
 .ui-body {
   flex-grow: 1;
   background: #ffffff;
-  /* Eliminamos el padding y el gap antiguos */
+  
   display: flex;
-  overflow: hidden; /* Evita que la imagen se salga del marco del ordenador */
+  overflow: hidden; 
 }
 
-/* Nueva clase para la imagen del PC */
+
 .mockup-img-pc {
   width: 100%;
   height: 100%;
-  object-fit: contain; /* Hace que la captura llene todo el espacio sin deformarse */
-  object-position: top center; /* Muestra siempre la parte superior de la captura */
+  object-fit: contain; 
+  object-position: top center; 
 }
 
-/* ========================================= */
-/* --- AJUSTES MOCKUP MÓVIL --- */
-/* ========================================= */
+
+
+
 .phone-screen {
   background: #ffffff;
   flex-grow: 1;
-  /* Eliminamos el padding antiguo para que la imagen llegue de borde a borde */
+  
   display: flex;
   overflow: hidden;
-  border-radius: 0 0 18px 18px; /* Ajustamos la curva inferior de la pantalla */
+  border-radius: 0 0 18px 18px; 
 }
 
-/* Nueva clase para la imagen del Móvil */
+
 .mockup-img-phone {
   width: 100%;
   height: 100%;
@@ -612,9 +607,9 @@ html {
   margin-bottom: 4px;
 }
 
-/* ========================================= */
-/* --- SECCIÓN ZIG-ZAG (CARACTERÍSTICAS) --- */
-/* ========================================= */
+
+
+
 .features {
   padding: 100px 5% 140px; 
   background-color: var(--accent);
@@ -705,7 +700,7 @@ html {
   position: relative;
 }
 
-/* --- ESTILO BASE PARA TODOS LOS MOCKUPS (CON HOVER ARREGLADO) --- */
+
 .feature-mockup {
   background: white;
   border-radius: 12px;
@@ -725,9 +720,9 @@ html {
   transform: perspective(1000px) rotateY(0deg) translateY(-5px);
 }
 
-/* ========================================= */
-/* --- MOCKUP: PORTAL DEL PACIENTE PREMIUM --- */
-/* ========================================= */
+
+
+
 
 .portal-header {
   border-bottom: 1px solid var(--accent);
@@ -914,9 +909,9 @@ html {
 }
 
 
-/* ========================================= */
-/* --- MOCKUP: ACADEMIA PREMIUM --- */
-/* ========================================= */
+
+
+
 
 .mockup-academia {
   padding: 20px;
@@ -925,7 +920,7 @@ html {
   align-items: stretch;
 }
 
-/* Panel Izquierdo (Módulos y Progreso) */
+
 .academia-sidebar {
   width: 40%;
   background: var(--accent);
@@ -1010,7 +1005,7 @@ html {
   border-radius: 3px;
 }
 
-/* Panel Derecho (Reproductor de Video) */
+
 .academia-main {
   width: 60%;
   display: flex;
@@ -1130,7 +1125,7 @@ html {
   color: white;
 }
 
-/* --- CTA DEMO (FIN DE FEATURES) --- */
+
 .demo-cta-container {
   max-width: 900px;
   margin: 0 auto;
@@ -1144,7 +1139,7 @@ html {
   overflow: hidden;
 }
 
-/* Un toque decorativo sutil en las esquinas */
+
 .demo-cta-container::before {
   content: "";
   position: absolute;
@@ -1207,17 +1202,17 @@ html {
   box-shadow: 0 8px 20px rgba(102, 112, 85, 0.4);
 }
 
-/* ========================================= */
-/* 1. BLOQUE VERDE: WEB INICIAL + ESTRATEGIA */
-/* ========================================= */
 
-/* --- CONSULTORÍA ESTRATÉGICA (FUSIONADA AL VERDE) --- */
+
+
+
+
 .strategy-section {
-  padding: 52px 5% 140px; /* Padding ajustado para fusión invisible */
+  padding: 52px 5% 140px; 
   background-color: var(--primary);
   position: relative;
   z-index: 2;
-  clip-path: none; /* Sin corte, es una continuación de Web Inicial */
+  clip-path: none; 
   margin-top: -2;
 }
 
@@ -1272,10 +1267,10 @@ html {
 .strategy-card h3 { color: #FFFFFF; font-size: 20px; font-weight: 700; }
 .strategy-card p { color: #E6EDE8; font-size: 14px; line-height: 1.6; }
 
-/* --- WEB INICIAL --- */
+
 .web-inicial {
   padding: 140px 5% 50px;
-  background-color: var(--primary); /* Fondo Verde Salvia */
+  background-color: var(--primary); 
   position: relative;
 
 }
@@ -1296,7 +1291,7 @@ html {
   text-transform: uppercase;
   letter-spacing: 1.5px;
   font-size: 11px;
-  color: var(--button-cta); /* Terracota para contraste */
+  color: var(--button-cta); 
   font-weight: 800;
   display: block;
   margin-bottom: 12px;
@@ -1304,7 +1299,7 @@ html {
 
 .web-inicial-title {
   font-size: 32px;
-  color: #FFFFFF; /* Blanco para destacar en el fondo verde */
+  color: #FFFFFF; 
   margin-bottom: 16px;
   font-weight: 700;
 }
@@ -1312,7 +1307,7 @@ html {
 .web-inicial-text {
   font-size: 17px;
   line-height: 1.7;
-  color: #E6EDE8; /* Blanco roto */
+  color: #E6EDE8; 
   margin-bottom: 24px;
   font-weight: 300;
 }
@@ -1320,18 +1315,18 @@ html {
 .web-inicial-list { margin: 0 0 30px 0; }
 
 .web-inicial-list li {
-  color: #FFFFFF; /* ¡Solución al texto invisible! */
+  color: #FFFFFF; 
   font-weight: 500;
 }
 
-/* Modificamos el checkmark específico de esta lista para que se vea sobre verde */
+
 .web-inicial-list li::before {
   background: var(--button-cta);
   color: #FFFFFF;
 }
 
 .web-inicial-cta {
-  background-color: var(--button-cta); /* Botón principal */
+  background-color: var(--button-cta); 
   color: #FFFFFF;
   padding: 14px 28px;
   border-radius: 8px;
@@ -1348,7 +1343,7 @@ html {
   transform: translateY(-2px);
 }
 
-/* Tarjeta y animaciones de Web Inicial */
+
 .web-card {
   background: #FFFFFF;
   border-radius: 12px;
@@ -1470,13 +1465,13 @@ html {
   transform: scale(1.02);
 }
 
-/* ========================================= */
-/* 2. BLOQUE CREMA: PRECIOS + MÓDULOS        */
-/* ========================================= */
 
-/* ========================================= */
-/* --- SECCIÓN DE PRECIOS --- */
-/* ========================================= */
+
+
+
+
+
+
 .pricing-section {
   padding: 100px 5% 50px;
   background-color: var(--accent);
@@ -1575,18 +1570,18 @@ html {
 .pricing-card-title { font-size: 24px; font-weight: 800; color: var(--primary); margin-bottom: 12px; }
 .pricing-card-desc { font-size: 15px; line-height: 1.6; color: var(--text-muted); margin-bottom: 20px; min-height: 96px; }
 
-/* El hint inicial ("Pasa el ratón...") */
+
 .pricing-card-hint {
   font-size: 11px;
   color: var(--text-muted);
   opacity: 0.8;
   font-style: italic;
   display: block;
-  height: 16px; /* Altura fija inicial */
+  height: 16px; 
   transition: all 0.3s ease;
 }
 
-/* La caja oculta (Precios y lista) */
+
 .pricing-content-box {
   max-height: 0;
   opacity: 0;
@@ -1594,7 +1589,7 @@ html {
   transition: max-height 0.4s ease-in-out, opacity 0.3s ease-in-out;
 }
 
-/* --- ESTADOS HOVER PARA AMBAS TARJETAS --- */
+
 .pricing-card-alpha:hover {
   transform: translateY(-8px);
   background: rgba(255, 255, 255, 0.9);
@@ -1608,7 +1603,7 @@ html {
   box-shadow: 0 30px 60px rgba(194, 139, 106, 0.2);
 }
 
-/* El TRUCO: El hint desaparece Y colapsa su altura a 0 */
+
 .pricing-card-alpha:hover .pricing-card-hint,
 .pricing-card-beta:hover .pricing-card-hint { 
   opacity: 0; 
@@ -1616,23 +1611,23 @@ html {
   margin: 0;
 }
 
-/* La caja de contenido se despliega */
+
 .pricing-card-alpha:hover .pricing-content-box,
 .pricing-card-beta:hover .pricing-content-box { 
   max-height: 350px; 
   opacity: 1; 
-  /* Eliminamos el margin-top para que rellene el hueco que deja el hint */
+  
 }
 
-/* ========================================= */
-/* --- BLOQUE DE PRECIO REVELADO AL HOVER --- */
-/* ========================================= */
+
+
+
 .pricing-reveal-price {
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  margin-bottom: 15px; /* Da aire antes de empezar la lista */
+  margin-bottom: 15px; 
 }
 
 .price-from {
@@ -1660,7 +1655,7 @@ html {
   color: var(--text-muted);
 }
 
-/* --- LISTA DE CARACTERÍSTICAS --- */
+
 .pricing-features-list {
   list-style: none;
   padding: 0;
@@ -1668,7 +1663,7 @@ html {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  border-top: 1px dashed rgba(102, 112, 85, 0.2); /* La línea separadora va aquí ahora */
+  border-top: 1px dashed rgba(102, 112, 85, 0.2); 
   padding-top: 15px;
 }
 
@@ -1687,7 +1682,7 @@ html {
   font-weight: bold; 
 }
 
-/* --- BOTONES DE LA TARJETA --- */
+
 .pricing-card-btn {
   display: inline-block;
   text-align: center;
@@ -1717,17 +1712,17 @@ html {
 .pricing-card-beta:hover .pricing-card-btn { 
   background: var(--button-hover); 
 }
-/* --- SECCIÓN MODULAR (FUSIONADA AL CREMA) --- */
+
 .modular-section {
-  padding: 50px 5% 100px; /* Un poco más de aire arriba para compensar el solapamiento */
+  padding: 50px 5% 100px; 
   background-color: var(--accent);
   position: relative;
   
-  /* 3. La enviamos al fondo para que reciba las sombras de la sección de arriba */
+  
   z-index: 1; 
   clip-path: none;
   
-  /* 4. Solapamos las dos secciones para matar la línea horizontal fantasma */
+  
   margin-top: -10px; 
 }
 
@@ -1821,12 +1816,12 @@ html {
 }
 .modular-benefit svg { flex-shrink: 0; margin-top: 1px; }
 
-/* ========================================= */
-/* --- SOBRE MÍ (ESTILO EDITORIAL SIN CARDS) --- */
-/* ========================================= */
+
+
+
 .about-editorial {
   padding: 100px 5%;
-  background-color: #FFFFFF; /* Fondo blanco limpio para dar respiro */
+  background-color: #FFFFFF; 
   position: relative;
   z-index: 2;
 }
@@ -1839,7 +1834,7 @@ html {
   gap: 80px;
 }
 
-/* --- VISUAL (ARCO ORGÁNICO) --- */
+
 .about-visual {
   width: 45%;
   position: relative;
@@ -1847,9 +1842,9 @@ html {
 
 .about-image-arch {
   width: 100%;
-  aspect-ratio: 3 / 4; /* Proporción de retrato clásico */
-  background-color: var(--accent); /* Color de fondo por si la foto es PNG transparente */
-  /* Aquí está la magia: redondeamos solo la parte superior para hacer un arco */
+  aspect-ratio: 3 / 4; 
+  background-color: var(--accent); 
+  
   border-radius: 200px 200px 12px 12px;
   overflow: hidden;
   position: relative;
@@ -1863,7 +1858,7 @@ html {
   object-position: center top;
 }
 
-/* Un pequeño detalle geométrico para romper la simplicidad */
+
 .about-decoration-dot {
   position: absolute;
   bottom: 40px;
@@ -1875,7 +1870,7 @@ html {
   z-index: 3;
 }
 
-/* --- TEXTO LIBRE --- */
+
 .about-text-content {
   width: 55%;
 }
@@ -1913,7 +1908,7 @@ html {
 }
 
 .about-signature {
-  font-family: 'Georgia', serif; /* Tipografía elegante para la firma */
+  font-family: 'Georgia', serif; 
   font-size: 24px;
   font-style: italic;
   color: var(--primary);
@@ -1929,12 +1924,12 @@ html {
   font-weight: 600;
 }
 
-/* ========================================= */
-/* --- RESEÑAS --- */
-/* ========================================= */
+
+
+
 .reviews-section {
   padding: 100px 5%;
-  background-color: var(--accent); /* Fondo crema */
+  background-color: var(--accent); 
   position: relative;
   z-index: 2;
   margin-top: -2px;
@@ -1972,16 +1967,16 @@ html {
 .review-author strong { display: block; color: var(--primary); font-size: 16px; font-weight: 700; }
 .review-author span { font-size: 12px; color: var(--text-muted); font-weight: 500; text-transform: uppercase; letter-spacing: 0.5px; }
 
-/* ========================================= */
-/* --- CONTACTO Y RESERVA --- */
-/* ========================================= */
+
+
+
 .contact-section {
   padding: 50px 5% 140px;
-  background-color: var(--accent); /* Fondo Beige */
+  background-color: var(--accent); 
   position: relative;
-  z-index: 2; /* Se mantiene por encima para que el corte pise la sección FAQ */
+  z-index: 2; 
   
-  /* El corte diagonal: sube de izquierda a derecha */
+  
   clip-path: polygon(0 0, 100% 0, 100% calc(100% - 60px), 0 100%);
   margin-bottom: -60px;
 }
@@ -1990,12 +1985,12 @@ html {
   max-width: 1200px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 1.1fr 0.9fr; /* Izquierda más ancha para el calendario */
+  grid-template-columns: 1.1fr 0.9fr; 
   gap: 50px;
   align-items: start;
 }
 
-/* --- COLUMNA IZQUIERDA --- */
+
 .contact-left-col {
   display: flex;
   flex-direction: column;
@@ -2009,26 +2004,26 @@ html {
     margin-bottom: 16px;
 }
 
-/* Calendario */
+
 .cal-widget {
   width: 100%;
   height: 370px;
   background: #FFFFFF;
   border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 10px 30px rgba(102, 112, 85, 0.08); /* Sombra corporativa */
+  box-shadow: 0 10px 30px rgba(102, 112, 85, 0.08); 
 }
 
 .calendar-iframe {
-  width: 125%; /* Esto compensa el 0.85 de escala (1 / 0.85 ≈ 1.176) */
-  height: 540px; /* Altura mayor para que el contenido de Cal.com no se corte */
+  width: 125%; 
+  height: 540px; 
   border: none;
   display: block;
-  transform: scale(0.8); /* ¡Aquí está la reducción! */
+  transform: scale(0.8); 
   transform-origin: top left;
 }
 
-/* Caja de Info debajo del calendario */
+
 .contact-info-box {
   background: #FFFFFF;
   padding: 25px 30px;
@@ -2053,7 +2048,7 @@ html {
   line-height: 1.6;
 }
 
-/* --- COLUMNA DERECHA (FORMULARIO) --- */
+
 .contact-right-col {
   position: relative;
 }
@@ -2125,7 +2120,7 @@ html {
   box-shadow: 0 0 0 4px rgba(194, 139, 106, 0.1);
 }
 
-/* Botón Terracota que te gustaba */
+
 .form-submit-btn {
   background: var(--button-cta);
   color: white;
@@ -2166,12 +2161,12 @@ html {
 }
 
 
-/* ========================================= */
-/* --- PREGUNTAS FRECUENTES (VERDE SALVIA) --- */
-/* ========================================= */
+
+
+
 .faq-section {
   padding: 100px 5% 60px;
-  background-color: var(--primary); /* Fondo verde */
+  background-color: var(--primary); 
   position: relative;
   z-index: 1;
 }
@@ -2182,7 +2177,7 @@ html {
 }
 
 .faq-header h2 {
-  color: #FFFFFF; /* Títulos en blanco para contrastar */
+  color: #FFFFFF; 
   font-size: 36px;
   font-weight: 800;
   margin-bottom: 16px;
@@ -2202,7 +2197,7 @@ html {
 }
 
 .faq-item {
-  /* Efecto translúcido sobre el verde */
+  
   background: rgba(255, 255, 255, 0.05);
   border-radius: 12px;
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -2218,7 +2213,7 @@ html {
   padding: 22px 25px;
   font-size: 16px;
   font-weight: 700;
-  color: #FFFFFF; /* Texto pregunta en blanco */
+  color: #FFFFFF; 
   cursor: pointer;
   display: flex;
   justify-content: space-between;
@@ -2229,7 +2224,7 @@ html {
 .faq-icon {
   font-size: 24px;
   font-weight: 300;
-  color: var(--button-cta); /* El plus en color terracota */
+  color: var(--button-cta); 
   transition: transform 0.3s ease;
 }
 
@@ -2238,8 +2233,8 @@ html {
 }
 
 .faq-item[open] {
-  background: rgba(255, 255, 255, 0.1); /* Se aclara ligeramente al abrir */
-  border-color: var(--button-cta); /* Borde terracota al activarse */
+  background: rgba(255, 255, 255, 0.1); 
+  border-color: var(--button-cta); 
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
 }
 
@@ -2247,15 +2242,15 @@ html {
   padding: 0 25px 25px;
   font-size: 15px;
   line-height: 1.7;
-  color: #E6EDE8; /* Texto respuesta en un blanco roto suave */
+  color: #E6EDE8; 
 }
 
-/* ========================================= */
-/* --- FOOTER FLOTANTE (SIN SEPARACIONES) --- */
-/* ========================================= */
+
+
+
 .site-footer {
-  background-color: var(--primary); /* Mismo verde que las FAQ para fusión total */
-  padding: 0 5% 40px; /* Sin padding arriba para pegar con las FAQ */
+  background-color: var(--primary); 
+  padding: 0 5% 40px; 
   position: relative;
   z-index: 2;
 }
@@ -2358,22 +2353,22 @@ html {
   transform: translateY(-3px);
 }
 
-/* ========================================= */
-/* --- BOTONES DE CONTACTO FOOTER --- */
-/* ========================================= */
+
+
+
 .footer-contact-actions {
   display: flex;
-  flex-direction: column; /* Apilamos los botones uno debajo del otro */
+  flex-direction: column; 
   gap: 12px;
   margin-top: 25px;
-  max-width: 280px; /* Les damos un ancho máximo para que no se estiren al infinito */
+  max-width: 280px; 
 }
 
 .footer-contact-btn {
-  display: flex; /* Cambiamos a flex para poder centrar el contenido */
-  justify-content: center; /* Centra el icono y el texto perfectamente */
+  display: flex; 
+  justify-content: center; 
   align-items: center;
-  width: 100%; /* Hacemos que ambos botones midan exactamente lo mismo */
+  width: 100%; 
   gap: 8px;
   padding: 12px 18px;
   background: rgba(255, 255, 255, 0.05); 
@@ -2393,9 +2388,9 @@ html {
   transform: translateY(-2px);
 }
 
-/* ========================================= */
-/* --- BANNER DE COOKIES --- */
-/* ========================================= */
+
+
+
 .cookie-card-uiverse {
   position: fixed;
   bottom: 30px;
@@ -2411,7 +2406,7 @@ html {
   display: flex;
   flex-direction: column;
   gap: 15px;
-  /* Animación de entrada */
+  
   animation: slideUpCookie 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -2423,13 +2418,13 @@ html {
 #cookieSvg {
   width: 42px;
   height: 42px;
-  fill: var(--button-cta); /* Galleta en color terracota */
+  fill: var(--button-cta); 
 }
 
 .cookieHeading {
   font-size: 18px;
   font-weight: 800;
-  color: var(--primary); /* Texto verde salvia */
+  color: var(--primary); 
   margin: 0;
 }
 
@@ -2477,7 +2472,7 @@ html {
 
 .declineButton {
   flex: 1;
-  background-color: var(--accent); /* Fondo beige para botón secundario */
+  background-color: var(--accent); 
   color: var(--primary);
   border: none;
   padding: 12px 0;
@@ -2489,13 +2484,13 @@ html {
 }
 
 .declineButton:hover {
-  background-color: #dcc8b2; /* Tono más oscuro de beige */
+  background-color: #dcc8b2; 
 }
 
 
-/* ========================================= */
-/* --- TOAST NOTIFICATIONS --- */
-/* ========================================= */
+
+
+
 .toast-container {
   position: fixed;
   bottom: 30px;
@@ -2524,14 +2519,21 @@ html {
 .toast-msg { color: var(--text-muted); font-size: 13px; line-height: 1.5; }
 
 
-  /* ========================================= */
-/* --- RESPONSIVE UNIFICADO (MÓVILES Y TABLETS) --- */
-/* ========================================= */
+  
+
+
 
 @media (max-width: 900px) {
-  /* --- NAVBAR --- */
+  
   .desktop-nav, .navbar-cta {
     display: none;
+  }
+
+  .desktop-nav, .desktop-cta-container {
+    display: none;
+  }
+  .menu-toggle {
+    display: flex;
   }
 
   .navbar-logo {
@@ -2549,7 +2551,7 @@ html {
     display: flex;
   }
 
-  /* --- HERO SECTION --- */
+  
   .hero {
     flex-direction: column;
     text-align: center;
@@ -2585,16 +2587,16 @@ html {
   }
   .phone-mockup {
     position: relative;
-    order: 2; /* Obligamos a que el móvil vaya después (a la derecha) */
+    order: 2; 
     left: auto;
-    bottom: -15px; /* Lo bajamos un poquito para que rompa el borde y dé profundidad */
+    bottom: -15px; 
     margin-top: 0;
-    margin-right: 0; /* Limpiamos el margen antiguo */
-    margin-left: -90px; /* Tira del móvil hacia la izquierda para que solape el PC */
+    margin-right: 0; 
+    margin-left: -90px; 
     z-index: 3;
   }
 
-  /* --- SECCIONES ZIG-ZAG (SOLUCIÓN A COMPRESIÓN DE TEXTO) --- */
+  
   .feature-row, 
   .feature-row.reverse {
     flex-direction: column;
@@ -2606,13 +2608,13 @@ html {
   }
   .feature-text, 
   .feature-visual {
-    width: 100%; /* Forzamos el ancho completo en móvil */
+    width: 100%; 
   }
   .feature-text {
-    text-align: left; /* Mantenemos legibilidad alineada a la izquierda */
+    text-align: left; 
   }
 
-  /* --- GRID COMUNES A 1 COLUMNA --- */
+  
   .modular-grid, 
   .strategy-grid, 
   .pricing-interactive-grid, 
@@ -2621,7 +2623,7 @@ html {
     grid-template-columns: 1fr;
   }
 
-  /* --- WEB INICIAL --- */
+  
   .web-inicial {
     padding: 100px 5% 50px;
     background-color: var(--primary);
@@ -2646,7 +2648,7 @@ html {
     padding: 52px 5% 120px;
   }
 
-  /* --- SOBRE MÍ --- */
+  
   .about-container {
     flex-direction: column;
     text-align: center;
@@ -2672,14 +2674,14 @@ html {
     z-index: 2;
   }
 
-  /* --- CONTACTO Y FAQ --- */
+  
   .faq-section {
     padding-top: 80px;
   }
 
   .contact-section {
-    margin-top: -2px; /* Sella la línea entre reseñas y contacto solo en móvil */
-    padding: 80px 5% 140px; /* Le da el respiro necesario al título "Da el paso definitivo..." */
+    margin-top: -2px; 
+    padding: 80px 5% 140px; 
   }
 
   .contact-main-title {
@@ -2689,23 +2691,23 @@ html {
 
 
   .cal-widget {
-    height: 520px; /* Le damos un poco más de aire vertical en móvil */
+    height: 520px; 
     border-radius: 20px;
   }
 
   .calendar-iframe {
-    width: 100%; /* Quitamos tu 125% */
-    height: 100%; /* Quitamos tu 570px fijo */
+    width: 100%; 
+    height: 100%; 
     transform: scale(
       1
-    ); /* Devolvemos la escala a la normalidad para que sea táctil */
+    ); 
     transform-origin: center;
   }
   .contact-form-wrapper {
     padding: 25px;
   }
 
-  /* --- FOOTER --- */
+  
   .footer-floating-container {
     grid-template-columns: 1fr;
     gap: 20px;
@@ -2717,12 +2719,12 @@ html {
     margin: 0 auto;
   }
   .footer-contact-actions {
-    margin: 25px auto 0 auto; /* Aseguramos margen automático a ambos lados */
+    margin: 25px auto 0 auto; 
     display: flex;
     flex-direction: column;
-    align-items: center; /* Obliga a los botones a estar en el centro del eje */
+    align-items: center; 
     width: 100%;
-    max-width: 280px; /* Mantenemos el ancho para que los botones no se hagan gigantes */
+    max-width: 280px; 
   }
   .footer-bottom {
     flex-direction: column;
@@ -2730,7 +2732,7 @@ html {
     text-align: center;
   }
 
-  /* --- TOASTS --- */
+  
   .toast-container {
     bottom: 20px;
     right: 20px;
@@ -2741,7 +2743,7 @@ html {
     box-sizing: border-box;
   }
   
-  /* --- OTROS COMPONENTES --- */
+  
   .demo-cta-container {
     padding: 40px 20px;
   }
@@ -2754,9 +2756,9 @@ html {
 }
 }
 
-/* ========================================= */
-/* --- AJUSTE EXCLUSIVO PARA COOKIES (MÓVIL PEQUEÑO) --- */
-/* ========================================= */
+
+
+
 @media (max-width: 600px) {
   .cookie-card-uiverse {
     bottom: 20px;
@@ -2766,15 +2768,3 @@ html {
   }
 }
 
-
-/* ========================================= */
-/* --- AJUSTE EXCLUSIVO PARA COOKIES (MÓVIL PEQUEÑO) --- */
-/* ========================================= */
-@media (max-width: 600px) {
-  .cookie-card-uiverse {
-    bottom: 20px;
-    left: 20px;
-    right: 20px;
-    max-width: calc(100% - 40px);
-  }
-}
