@@ -8,7 +8,7 @@ import "./style.css";
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
-      Software de Academia Online para Nutricionistas y Profesionales de la
+      Software de Academia Online para Profesionales de la
       Salud | MN Design Web
     </title>
     <meta
@@ -23,22 +23,10 @@ import "./style.css";
     />
     <meta name="apple-mobile-web-app-status-bar-style" content="default" />
 
-    
-    <link
-      rel="canonical"
-      href="https://mndesignweb.es/academia-nutricion"
-    />
+    <link rel="canonical" href="https://mndesignweb.es/academia-nutricion" />
     <link rel="icon" type="image/webp" href="/favicon_v2.webp" />
     <meta name="robots" content="index, follow" />
 
-    
-    
-    <script src="https://cdn.jsdelivr.net/npm/sonner@1.7.1/dist/index.umd.js"
-    ></script>
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/sonner@1.7.1/dist/styles.css"
-    />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -58,14 +46,12 @@ import "./style.css";
       /></noscript
     >
 
-    
     <meta
       name="description"
       content="Escala tu facturación clínica sin sumar más horas. Creamos tu Academia Online a medida: cursos, membresías, protección de vídeos y cero comisiones por venta."
     />
     <meta name="author" content="MN Design Web" />
 
-    
     <meta property="og:type" content="website" />
     <meta
       property="og:url"
@@ -85,7 +71,6 @@ import "./style.css";
     />
     <meta property="og:locale" content="es_ES" />
 
-    
     <meta name="twitter:card" content="summary_large_image" />
     <meta
       name="twitter:url"
@@ -104,7 +89,6 @@ import "./style.css";
       content="https://mndesignweb.es/imagen-miniatura-academia.webp"
     />
 
-    
     <script type="application/ld+json">
       [
         {
@@ -200,13 +184,15 @@ import "./style.css";
       ]
     </script>
 
-    
+
     <script is:inline>
       window.dataLayer = window.dataLayer || [];
       function gtag() {
         dataLayer.push(arguments);
       }
-      var localConsent = localStorage.getItem("cookieConsent");
+
+      var localConsent = localStorage.getItem("cookie_consent");
+
       if (localConsent === "accepted") {
         gtag("consent", "default", {
           ad_storage: "granted",
@@ -223,19 +209,14 @@ import "./style.css";
           wait_for_update: 500,
         });
       }
+      gtag("js", new Date());
+      gtag("config", "G-36WYJMYT3Z");
     </script>
     <script
       is:inline
       async
       src="https://www.googletagmanager.com/gtag/js?id=G-36WYJMYT3Z"></script>
-    <script is:inline>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
-      gtag("config", "G-36WYJMYT3Z");
-    </script>
+
     <script is:inline>
       !(function (f, b, e, v, n, t, s) {
         if (f.fbq) return;
@@ -260,25 +241,16 @@ import "./style.css";
         "script",
         "https://connect.facebook.net/en_US/fbevents.js",
       );
-      
-      // NUEVO: Verificamos el estado antes de inicializar
-      var localConsent = localStorage.getItem("cookieConsent");
-      
-      // Si ya está aceptado, damos permiso total.
+
+      var localConsent = localStorage.getItem("cookie_consent");
       if (localConsent === "accepted") {
-        fbq('consent', 'grant');
-      } else {
-        // Si no está aceptado (o acaba de entrar), NO revocamos.
-        // Lo dejamos en estado predeterminado (Meta manejará esto según la región,
-        // o puedes usar CAPI para enviar el evento desde el servidor de forma segura).
-        // NOTA: Para ser 100% estrictos en EU, algunos usan 'revoke' aquí, PERO 
-        // eso es exactamente lo que te causa la pérdida de datos. La solución intermedia 
-        // es no revocar y confiar en la API de Conversiones.
+        fbq("consent", "grant");
       }
 
       fbq("init", "1627135808585120");
-      fbq("track", "PageView"); // Ahora sí se disparará y el Pixel Helper lo verá.
+      fbq("track", "PageView");
     </script>
+
     <script is:inline type="text/javascript">
       (function (c, l, a, r, i, t, y) {
         c[a] =
@@ -296,7 +268,6 @@ import "./style.css";
   </head>
 
   <body class="academy-landing-body">
-    
     <a
       href="https://mndesignweb.es/"
       class="global-logo"
@@ -310,15 +281,10 @@ import "./style.css";
     </a>
 
     <main class="landing-main">
-      
-      
-      
       <section class="hero-b2b">
-        
         <div class="hero-bg-glow"></div>
 
         <div class="container hero-grid">
-          
           <div class="hero-content">
             <span class="tag-b2b">E-learning Salud y Nutrición</span>
             <h1 class="hero-title">
@@ -352,17 +318,14 @@ import "./style.css";
             </div>
           </div>
 
-          
           <div class="hero-visuals">
             <div class="mockup-wrapper">
-              
               <img
                 src="/software-academia-online-nutricionistas.webp"
                 alt="Plataforma E-learning NutriLearn Pro"
                 class="mockup-img"
               />
 
-              
               <div class="floating-notification" data-nosnippet>
                 <div class="notification-icon">
                   <i class="fa-solid fa-sack-dollar"></i>
@@ -377,9 +340,6 @@ import "./style.css";
         </div>
       </section>
 
-      
-      
-      
       <div class="trust-banner">
         <div class="container trust-grid">
           <div class="trust-item">
@@ -497,9 +457,6 @@ import "./style.css";
         </div>
       </section>
 
-      
-      
-      
       <section class="experiencia-section">
         <div class="container">
           <div class="experiencia-header">
@@ -512,10 +469,8 @@ import "./style.css";
           </div>
 
           <div class="experiencia-grid">
-            
             <div class="vista-card">
               <div class="vista-imagen admin-bg">
-                
                 <img
                   src="/admin.webp"
                   alt="Panel de Administración"
@@ -553,10 +508,8 @@ import "./style.css";
               </div>
             </div>
 
-            
             <div class="vista-card">
               <div class="vista-imagen alumno-bg">
-                
                 <img
                   src="/alumno.webp"
                   alt="Vista del Alumno"
@@ -597,9 +550,6 @@ import "./style.css";
         </div>
       </section>
 
-      
-      
-      
       <section class="infraestructura-section">
         <div class="container">
           <div class="infra-header">
@@ -644,9 +594,6 @@ import "./style.css";
         </div>
       </section>
 
-      
-      
-      
       <section class="wp-premium-section">
         <div class="container">
           <div class="wp-premium-header">
@@ -662,7 +609,6 @@ import "./style.css";
             </p>
           </div>
 
-          
           <div class="wp-floating-benefits">
             <div class="benefit-card hosting-card">
               <div class="benefit-icon"><i class="fa-solid fa-server"></i></div>
@@ -693,9 +639,7 @@ import "./style.css";
             </div>
           </div>
 
-          
           <div class="wp-bento-layout">
-            
             <div class="bento-box bento-structure">
               <h3 class="bento-title">
                 <i class="fa-solid fa-sitemap"></i> Estructura (5 Páginas)
@@ -753,7 +697,6 @@ import "./style.css";
               </div>
             </div>
 
-            
             <div class="bento-box bento-features">
               <h3 class="bento-title">
                 <i class="fa-solid fa-gears"></i> Funcionalidades Técnicas
@@ -811,7 +754,6 @@ import "./style.css";
                   </div>
                 </div>
 
-                
                 <div class="feature-item">
                   <div class="feat-icon feat-analytics">
                     <i class="fa-solid fa-chart-pie"></i>
@@ -829,12 +771,8 @@ import "./style.css";
         </div>
       </section>
 
-      
-      
-      
       <section class="dossier-section">
         <div class="container">
-          
           <div class="dossier-flex">
             <div class="dossier-content">
               <h2 class="mb-4">
@@ -849,7 +787,6 @@ import "./style.css";
               </p>
 
               <div class="planes-grid">
-                
                 <div class="plan-card">
                   <div class="plan-header">
                     <h3>Opción A: Despegue Digital</h3>
@@ -892,7 +829,6 @@ import "./style.css";
                   </ul>
                 </div>
 
-                
                 <div class="plan-card plan-destacado">
                   <span class="plan-badge">Recomendado</span>
                   <div class="plan-header">
@@ -942,7 +878,6 @@ import "./style.css";
               </div>
             </div>
 
-            
             <div class="dossier-form-box" id="descarga-dossier">
               <div class="dossier-form-header">
                 <i class="fa-solid fa-file-pdf"></i>
@@ -1009,9 +944,7 @@ import "./style.css";
             </div>
           </div>
 
-          
           <div class="maintenance-box mt-12">
-            
             <div class="maintenance-header-row">
               <div class="maintenance-icon">
                 <i class="fa-solid fa-triangle-exclamation"></i>
@@ -1028,7 +961,6 @@ import "./style.css";
               </div>
             </div>
 
-            
             <div class="maintenance-grid">
               <div class="m-card m-included-card">
                 <div class="m-card-header">
@@ -1135,13 +1067,9 @@ import "./style.css";
         </div>
       </section>
 
-      
-      
-      
       <section id="contacto" class="contacto-section">
         <div class="container">
           <div class="contacto-grid">
-            
             <div class="contacto-izq">
               <h2 class="contacto-titulo">
                 Agenda tu sesión de consultoría estratégica
@@ -1170,7 +1098,6 @@ import "./style.css";
               </div>
             </div>
 
-            
             <div class="contacto-der">
               <div class="form-wrapper">
                 <h3>¿Hablamos sobre tu proyecto?</h3>
@@ -1239,9 +1166,6 @@ import "./style.css";
         </div>
       </section>
 
-      
-      
-      
       <section class="faqs-section">
         <div class="container">
           <div class="faqs-header">
@@ -1254,7 +1178,6 @@ import "./style.css";
           </div>
 
           <div class="faqs-grid">
-            
             <div class="faqs-accordion">
               <details class="faq-item" open>
                 <summary class="faq-pregunta">
@@ -1320,12 +1243,11 @@ import "./style.css";
               </details>
             </div>
 
-            
             <div class="faqs-visual">
               <div class="demo-item">
                 <div class="iphone-mockup">
                   <div class="phone-notch"></div>
-                  
+
                   <div
                     class="screen"
                     style="background-image: url('/lecciones.webp');"
@@ -1347,9 +1269,6 @@ import "./style.css";
         </div>
       </section>
 
-      
-      
-      
       <section class="cta-final-section">
         <div class="container">
           <div class="cta-final-box">
@@ -1364,319 +1283,317 @@ import "./style.css";
           </div>
         </div>
       </section>
-
-      
-      
-      
-      <footer class="site-footer">
-        <div class="container footer-grid">
-          <div class="footer-brand">
-            <span class="footer-logo"><strong>MN</strong> Design Web</span>
-            <p>
-              Desarrollo especializado de ecosistemas formativos y plataformas
-              E-learning a medida para el sector clínico.
-            </p>
-            <a
-              href="https://mndesignweb.es/clinicas/"
-              class="btn-primary custom-btn-shadow footer-eco-btn"
-              target="_blank"
-            >
-              Ver Ecosistema Portal Paciente <i class="fa-solid fa-arrow-right"
-              ></i>
-            </a>
-          </div>
-
-          <div class="footer-links">
-            <h4>Legal</h4>
-            <ul>
-              <li><a href="#">Aviso Legal</a></li>
-              <li><a href="#">Política de Privacidad</a></li>
-              <li><a href="#">Política de Cookies</a></li>
-            </ul>
-          </div>
-
-          <div class="footer-contact">
-            <h4>Contacto</h4>
-            <p>
-              <i class="fa-solid fa-envelope text-accent"></i>
-              <a href="mailto:info@mndesignweb.es">info@mndesignweb.es</a>
-            </p>
-            <p>
-              <i class="fa-solid fa-phone text-accent"></i>
-              <a href="tel:+34645854934">+34 645 854 934</a>
-            </p>
-            <p>
-              <i class="fa-solid fa-globe text-accent"></i>
-              <a href="https://mndesignweb.es" target="_blank">mndesignweb.es</a
-              >
-            </p>
-          </div>
-        </div>
-
-        <div class="footer-bottom">
-          <div class="container">
-            <p>&copy; 2026 MN Design Web. Todos los derechos reservados.</p>
-          </div>
-        </div>
-      </footer>
     </main>
-  </body>
 
-  
-  <div id="cookie-banner" class="cookie-card-uiverse" style="display: none;">
-    <svg
-      xml:space="preserve"
-      viewBox="0 0 122.88 122.25"
-      y="0px"
-      x="0px"
-      id="cookieSvg"
-      version="1.1"
-    >
-      <g>
-        <path
-          d="M101.77,49.38c2.09,3.1,4.37,5.11,6.86,5.78c2.45,0.66,5.32,0.06,8.7-2.01c1.36-0.84,3.14-0.41,3.97,0.95 c0.28,0.46,0.42,0.96,0.43,1.47c0.13,1.4,0.21,2.82,0.24,4.26c0.03,1.46,0.02,2.91-0.05,4.35h0v0c0,0.13-0.01,0.26-0.03,0.38 c-0.91,16.72-8.47,31.51-20,41.93c-11.55,10.44-27.06,16.49-43.82,15.69v0.01h0c-0.13,0-0.26-0.01-0.38-0.03 c-16.72-0.91-31.51-8.47-41.93-20C5.31,90.61-0.73,75.1,0.07,58.34H0.07v0c0-0.13,0.01-0.26,0.03-0.38 C1,41.22,8.81,26.35,20.57,15.87C32.34,5.37,48.09-0.73,64.85,0.07V0.07h0c1.6,0,2.89,1.29,2.89,2.89c0,0.4-0.08,0.78-0.23,1.12 c-1.17,3.81-1.25,7.34-0.27,10.14c0.89,2.54,2.7,4.51,5.41,5.52c1.44,0.54,2.2,2.1,1.74,3.55l0.01,0 c-1.83,5.89-1.87,11.08-0.52,15.26c0.82,2.53,2.14,4.69,3.88,6.4c1.74,1.72,3.9,3,6.39,3.78c4.04,1.26,8.94,1.18,14.31-0.55 C99.73,47.78,101.08,48.3,101.77,49.38L101.77,49.38z M59.28,57.86c2.77,0,5.01,2.24,5.01,5.01c0,2.77-2.24,5.01-5.01,5.01 c-2.77,0-5.01-2.24-5.01-5.01C54.27,60.1,56.52,57.86,59.28,57.86L59.28,57.86z M37.56,78.49c3.37,0,6.11,2.73,6.11,6.11 s-2.73,6.11-6.11,6.11s-6.11-2.73-6.11-6.11S34.18,78.49,37.56,78.49L37.56,78.49z M50.72,31.75c2.65,0,4.79,2.14,4.79,4.79 c0,2.65-2.14,4.79-4.79,4.79c-2.65,0-4.79-2.14-4.79-4.79C45.93,33.89,48.08,31.75,50.72,31.75L50.72,31.75z M119.3,32.4 c1.98,0,3.58,1.6,3.58,3.58c0,1.98-1.6,3.58-3.58,3.58s-3.58-1.6-3.58-3.58C115.71,34.01,117.32,32.4,119.3,32.4L119.3,32.4z M93.62,22.91c2.98,0,5.39,2.41,5.39,5.39c0,2.98-2.41,5.39-5.39,5.39c-2.98,0-5.39-2.41-5.39-5.39 C88.23,25.33,90.64,22.91,93.62,22.91L93.62,22.91z M97.79,0.59c3.19,0,5.78,2.59,5.78,5.78c0,3.19-2.59,5.78-5.78,5.78 c-3.19,0-5.78-2.59-5.78-5.78C92.02,3.17,94.6,0.59,97.79,0.59L97.79,0.59z M76.73,80.63c4.43,0,8.03,3.59,8.03,8.03 c0,4.43-3.59,8.03-8.03,8.03s-8.03-3.59-8.03-8.03C68.7,84.22,72.29,80.63,76.73,80.63L76.73,80.63z M31.91,46.78 c4.8,0,8.69,3.89,8.69,8.69c0,4.8-3.89,8.69-8.69,8.69s-8.69-3.89-8.69-8.69C23.22,50.68,27.11,46.78,31.91,46.78L31.91,46.78z M107.13,60.74c-3.39-0.91-6.35-3.14-8.95-6.48c-5.78,1.52-11.16,1.41-15.76-0.02c-3.37-1.05-6.32-2.81-8.71-5.18 c-2.39-2.37-4.21-5.32-5.32-8.75c-1.51-4.66-1.69-10.2-0.18-16.32c-3.1-1.8-5.25-4.53-6.42-7.88c-1.06-3.05-1.28-6.59-0.61-10.35 C47.27,5.95,34.3,11.36,24.41,20.18C13.74,29.69,6.66,43.15,5.84,58.29l0,0.05v0h0l-0.01,0.13v0C5.07,73.72,10.55,87.82,20.02,98.3 c9.44,10.44,22.84,17.29,38,18.1l0.05,0h0v0l0.13,0.01h0c15.24,0.77,29.35-4.71,39.83-14.19c10.44-9.44,17.29-22.84,18.1-38l0-0.05 v0h0l0.01-0.13v0c0.07-1.34,0.09-2.64,0.06-3.91C112.98,61.34,109.96,61.51,107.13,60.74L107.13,60.74z"
-        ></path>
-      </g>
-    </svg>
-    <p class="cookieHeading">Usamos cookies</p>
-    <p class="cookieDescription">
-      Utilizamos cookies para darte la mejor experiencia en nuestra web. <br />
-      <a class="cookielink" href="https://mndesignweb.es/cookies"
-        >Ver políticas de cookies</a
-      >
-    </p>
-    <div class="buttonContainer">
-      <button id="btn-accept-cookies" class="acceptButton">Permitir</button>
-      <button id="btn-decline-cookies" class="declineButton">Rechazar</button>
-    </div>
-  </div>
-
-  <script is:inline>
-    // ==========================================
-    // 0. FUNCIÓN TOAST NATIVA (Infalible)
-    // ==========================================
-    function mostrarToast(titulo, descripcion, tipo = "success") {
-      let container = document.getElementById("custom-toast-container");
-      if (!container) {
-        container = document.createElement("div");
-        container.id = "custom-toast-container";
-        document.body.appendChild(container);
-      }
-
-      const toast = document.createElement("div");
-      toast.className = `custom-toast ${tipo}`;
-
-      const icono =
-        tipo === "success"
-          ? '<i class="fa-solid fa-circle-check" style="color: #16a34a; font-size: 1.2rem; margin-top: 2px;"></i>'
-          : '<i class="fa-solid fa-circle-exclamation" style="color: #dc2626; font-size: 1.2rem; margin-top: 2px;"></i>';
-
-      toast.innerHTML = `
-        ${icono}
-        <div class="custom-toast-content">
-          <strong>${titulo}</strong>
-          <span>${descripcion}</span>
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div class="footer-brand">
+          <span class="footer-logo"><strong>MN</strong> Design Web</span>
+          <p>
+            Desarrollo especializado de ecosistemas formativos y plataformas
+            E-learning a medida para el sector clínico.
+          </p>
+          <a
+            href="https://mndesignweb.es/clinicas/"
+            class="btn-primary custom-btn-shadow footer-eco-btn"
+            target="_blank"
+          >
+            Ver Ecosistema Portal Paciente <i class="fa-solid fa-arrow-right"
+            ></i>
+          </a>
         </div>
-      `;
-      container.appendChild(toast);
 
-      setTimeout(() => {
-        toast.remove();
-      }, 5000);
-    }
+        <div class="footer-links">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="#">Aviso Legal</a></li>
+            <li><a href="#">Política de Privacidad</a></li>
+            <li><a href="#">Política de Cookies</a></li>
+          </ul>
+        </div>
 
-    // ==========================================
-    // 1. LÓGICA DESCARGA DOSSIER
-    // ==========================================
-    const formDossier = document.getElementById("dossier-form");
-    if (formDossier) {
-      formDossier.addEventListener("submit", function (e) {
-        e.preventDefault();
-        const btn = document.getElementById("btn-dossier");
-        btn.innerHTML =
-          'Procesando... <i class="fa-solid fa-spinner fa-spin"></i>';
-        btn.disabled = true;
+        <div class="footer-contact">
+          <h4>Contacto</h4>
+          <p>
+            <i class="fa-solid fa-envelope text-accent"></i>
+            <a href="mailto:info@mndesignweb.es">info@mndesignweb.es</a>
+          </p>
+          <p>
+            <i class="fa-solid fa-phone text-accent"></i>
+            <a href="tel:+34645854934">+34 645 854 934</a>
+          </p>
+          <p>
+            <i class="fa-solid fa-globe text-accent"></i>
+            <a href="https://mndesignweb.es" target="_blank">mndesignweb.es</a>
+          </p>
+        </div>
+      </div>
 
-        const data = {
-          access_key: "1bc2d285-71cb-4fe3-806f-530066ab6e15",
-          subject: "Lead Magnet: Descarga Dossier Academias",
-          nombre: document.getElementById("dossier-nombre").value,
-          email: document.getElementById("dossier-email").value,
-        };
+      <div class="footer-bottom">
+        <div class="container">
+          <p>&copy; 2026 MN Design Web. Todos los derechos reservados.</p>
+        </div>
+      </div>
+    </footer>
 
-        Promise.all([
-          fetch("https://api.web3forms.com/submit", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-              Accept: "application/json",
-            },
-            body: JSON.stringify(data),
-          }),
-          fetch("https://hook.eu1.make.com/mxvqg7gwne43yab165v2uhtyw5yh115r", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(data),
-          }),
-        ])
-          .then(async (results) => {
-            const result = await results[0].json();
-            if (result.success) {
-              if (typeof gtag === "function")
-                gtag("event", "download_dossier", {
-                  currency: "EUR",
-                  value: 0,
-                });
-              if (typeof fbq === "function") fbq("track", "Lead");
-              if (typeof clarity === "function")
-                clarity("set", "lead", "dossier_academia");
+    <div id="cookie-banner" class="cookie-card-uiverse" style="display: none;">
+      <svg
+        xml:space="preserve"
+        viewBox="0 0 122.88 122.25"
+        y="0px"
+        x="0px"
+        id="cookieSvg"
+        version="1.1"
+      >
+        <g>
+          <path
+            d="M101.77,49.38c2.09,3.1,4.37,5.11,6.86,5.78c2.45,0.66,5.32,0.06,8.7-2.01c1.36-0.84,3.14-0.41,3.97,0.95 c0.28,0.46,0.42,0.96,0.43,1.47c0.13,1.4,0.21,2.82,0.24,4.26c0.03,1.46,0.02,2.91-0.05,4.35h0v0c0,0.13-0.01,0.26-0.03,0.38 c-0.91,16.72-8.47,31.51-20,41.93c-11.55,10.44-27.06,16.49-43.82,15.69v0.01h0c-0.13,0-0.26-0.01-0.38-0.03 c-16.72-0.91-31.51-8.47-41.93-20C5.31,90.61-0.73,75.1,0.07,58.34H0.07v0c0-0.13,0.01-0.26,0.03-0.38 C1,41.22,8.81,26.35,20.57,15.87C32.34,5.37,48.09-0.73,64.85,0.07V0.07h0c1.6,0,2.89,1.29,2.89,2.89c0,0.4-0.08,0.78-0.23,1.12 c-1.17,3.81-1.25,7.34-0.27,10.14c0.89,2.54,2.7,4.51,5.41,5.52c1.44,0.54,2.2,2.1,1.74,3.55l0.01,0 c-1.83,5.89-1.87,11.08-0.52,15.26c0.82,2.53,2.14,4.69,3.88,6.4c1.74,1.72,3.9,3,6.39,3.78c4.04,1.26,8.94,1.18,14.31-0.55 C99.73,47.78,101.08,48.3,101.77,49.38L101.77,49.38z M59.28,57.86c2.77,0,5.01,2.24,5.01,5.01c0,2.77-2.24,5.01-5.01,5.01 c-2.77,0-5.01-2.24-5.01-5.01C54.27,60.1,56.52,57.86,59.28,57.86L59.28,57.86z M37.56,78.49c3.37,0,6.11,2.73,6.11,6.11 s-2.73,6.11-6.11,6.11s-6.11-2.73-6.11-6.11S34.18,78.49,37.56,78.49L37.56,78.49z M50.72,31.75c2.65,0,4.79,2.14,4.79,4.79 c0,2.65-2.14,4.79-4.79,4.79c-2.65,0-4.79-2.14-4.79-4.79C45.93,33.89,48.08,31.75,50.72,31.75L50.72,31.75z M119.3,32.4 c1.98,0,3.58,1.6,3.58,3.58c0,1.98-1.6,3.58-3.58,3.58s-3.58-1.6-3.58-3.58C115.71,34.01,117.32,32.4,119.3,32.4L119.3,32.4z M93.62,22.91c2.98,0,5.39,2.41,5.39,5.39c0,2.98-2.41,5.39-5.39,5.39c-2.98,0-5.39-2.41-5.39-5.39 C88.23,25.33,90.64,22.91,93.62,22.91L93.62,22.91z M97.79,0.59c3.19,0,5.78,2.59,5.78,5.78c0,3.19-2.59,5.78-5.78,5.78 c-3.19,0-5.78-2.59-5.78-5.78C92.02,3.17,94.6,0.59,97.79,0.59L97.79,0.59z M76.73,80.63c4.43,0,8.03,3.59,8.03,8.03 c0,4.43-3.59,8.03-8.03,8.03s-8.03-3.59-8.03-8.03C68.7,84.22,72.29,80.63,76.73,80.63L76.73,80.63z M31.91,46.78 c4.8,0,8.69,3.89,8.69,8.69c0,4.8-3.89,8.69-8.69,8.69s-8.69-3.89-8.69-8.69C23.22,50.68,27.11,46.78,31.91,46.78L31.91,46.78z M107.13,60.74c-3.39-0.91-6.35-3.14-8.95-6.48c-5.78,1.52-11.16,1.41-15.76-0.02c-3.37-1.05-6.32-2.81-8.71-5.18 c-2.39-2.37-4.21-5.32-5.32-8.75c-1.51-4.66-1.69-10.2-0.18-16.32c-3.1-1.8-5.25-4.53-6.42-7.88c-1.06-3.05-1.28-6.59-0.61-10.35 C47.27,5.95,34.3,11.36,24.41,20.18C13.74,29.69,6.66,43.15,5.84,58.29l0,0.05v0h0l-0.01,0.13v0C5.07,73.72,10.55,87.82,20.02,98.3 c9.44,10.44,22.84,17.29,38,18.1l0.05,0h0v0l0.13,0.01h0c15.24,0.77,29.35-4.71,39.83-14.19c10.44-9.44,17.29-22.84,18.1-38l0-0.05 v0h0l0.01-0.13v0c0.07-1.34,0.09-2.64,0.06-3.91C112.98,61.34,109.96,61.51,107.13,60.74L107.13,60.74z"
+          ></path>
+        </g>
+      </svg>
+      <p class="cookieHeading">Usamos cookies</p>
+      <p class="cookieDescription">
+        Utilizamos cookies para darte la mejor experiencia en nuestra web. <br
+        />
+        <a class="cookielink" href="https://mndesignweb.es/cookies"
+          >Ver políticas de cookies</a
+        >
+      </p>
+      <div class="buttonContainer">
+        <button id="btn-accept-cookies" class="acceptButton">Permitir</button>
+        <button id="btn-decline-cookies" class="declineButton">Rechazar</button>
+      </div>
+    </div>
 
-              mostrarToast(
-                "¡Dossier en camino!",
-                "La descarga comenzará automáticamente.",
-              );
+    <script is:inline>
+      // ==========================================
+      // 0. FUNCIÓN TOAST NATIVA (Infalible)
+      // ==========================================
+      function mostrarToast(titulo, descripcion, tipo = "success") {
+        let container = document.getElementById("custom-toast-container");
+        if (!container) {
+          container = document.createElement("div");
+          container.id = "custom-toast-container";
+          document.body.appendChild(container);
+        }
 
-              const link = document.createElement("a");
-              link.href = "/dossier-academia.pdf";
-              link.download = "Dossier_Academia_MNDesignWeb.pdf";
-              document.body.appendChild(link);
-              link.click();
-              document.body.removeChild(link);
+        const toast = document.createElement("div");
+        toast.className = `custom-toast ${tipo}`;
 
-              formDossier.reset();
-            } else {
-              throw new Error("Error en el envío");
-            }
-          })
-          .catch(() =>
-            mostrarToast(
-              "Vaya, algo ha fallado",
-              "Hubo un error al procesar tu solicitud. Inténtalo de nuevo.",
-              "error",
-            ),
-          )
-          .finally(() => {
-            btn.innerHTML =
-              'Descargar Dossier Ahora <i class="fa-solid fa-download"></i>';
-            btn.disabled = false;
-          });
-      });
-    }
+        const icono =
+          tipo === "success"
+            ? '<i class="fa-solid fa-circle-check" style="color: #16a34a; font-size: 1.2rem; margin-top: 2px;"></i>'
+            : '<i class="fa-solid fa-circle-exclamation" style="color: #dc2626; font-size: 1.2rem; margin-top: 2px;"></i>';
 
-    // ==========================================
-    // 2. LÓGICA FORMULARIO CONTACTO / AUDITORÍA
-    // ==========================================
-    window.addEventListener("DOMContentLoaded", () => {
-      const formAcademias = document.getElementById("formulario");
-      if (formAcademias) {
-        formAcademias.addEventListener("submit", function (e) {
-          e.preventDefault();
-          const btn = document.getElementById("btn-submit");
-          btn.innerHTML =
-            'Enviando... <i class="fa-solid fa-spinner fa-spin"></i>';
-          btn.disabled = true;
+        toast.innerHTML = `
+          ${icono}
+          <div class="custom-toast-content">
+            <strong>${titulo}</strong>
+            <span>${descripcion}</span>
+          </div>
+        `;
+        container.appendChild(toast);
 
-          const data = {
-            access_key: "1bc2d285-71cb-4fe3-806f-530066ab6e15",
-            subject: "Nuevo Lead: Academias de Nutrición",
-            nombre: document.getElementById("nombre").value,
-            email: document.getElementById("email").value,
-            telefono: document.getElementById("telefono").value,
-            mensaje: document.getElementById("mensaje").value,
-          };
+        setTimeout(() => {
+          toast.remove();
+        }, 5000);
+      }
 
-          Promise.all([
-            fetch("https://api.web3forms.com/submit", {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-                Accept: "application/json",
-              },
-              body: JSON.stringify(data),
-            }),
-            fetch(
-              "https://hook.eu1.make.com/mxvqg7gwne43yab165v2uhtyw5yh115r",
-              {
+      // ==========================================
+      // ENVOLVEMOS TODO EN UN ÚNICO DOMContentLoaded
+      // ==========================================
+      window.addEventListener("DOMContentLoaded", () => {
+        // 1. LÓGICA DESCARGA DOSSIER
+        const formDossier = document.getElementById("dossier-form");
+        if (formDossier) {
+          formDossier.addEventListener("submit", function (e) {
+            e.preventDefault();
+            const btn = document.getElementById("btn-dossier");
+            btn.innerHTML = "Procesando..."; // Limpio sin icono
+            btn.disabled = true;
+
+            const data = {
+              access_key: "1bc2d285-71cb-4fe3-806f-530066ab6e15",
+              subject: "Lead Magnet: Descarga Dossier Academias",
+              nombre: document.getElementById("dossier-nombre").value,
+              email: document.getElementById("dossier-email").value,
+            };
+
+            Promise.all([
+              fetch("https://api.web3forms.com/submit", {
                 method: "POST",
-                headers: { "Content-Type": "application/json" },
+                headers: {
+                  "Content-Type": "application/json",
+                  Accept: "application/json",
+                },
                 body: JSON.stringify(data),
-              },
-            ),
-          ])
-            .then(async (results) => {
-              const result = await results[0].json();
-              if (result.success) {
-                if (typeof gtag === "function")
-                  gtag("event", "generate_lead", { currency: "EUR", value: 0 });
-                if (typeof fbq === "function") fbq("track", "Lead");
-                if (typeof clarity === "function")
-                  clarity("set", "lead", "academia_nutricion");
-
-                mostrarToast(
-                  "¡Solicitud recibida con éxito!",
-                  "Analizaré tu caso personalmente y te responderé muy pronto.",
-                );
-                formAcademias.reset();
-              } else {
-                throw new Error("Error en el envío");
-              }
-            })
-            .catch(() =>
-              mostrarToast(
-                "Error de envío",
-                "No se ha podido enviar el mensaje. Por favor, revísalo.",
-                "error",
+              }),
+              fetch(
+                "https://hook.eu1.make.com/mxvqg7gwne43yab165v2uhtyw5yh115r",
+                {
+                  method: "POST",
+                  headers: { "Content-Type": "application/json" },
+                  body: JSON.stringify(data),
+                },
               ),
-            )
-            .finally(() => {
-              btn.innerHTML =
-                'Enviar solicitud de auditoría <i class="fa-solid fa-paper-plane"></i>';
-              btn.disabled = false;
-            });
-        });
-      }
+            ])
+              .then(async (results) => {
+                const result = await results[0].json();
+                if (result.success) {
+                  if (typeof gtag === "function")
+                    gtag("event", "download_dossier", {
+                      currency: "EUR",
+                      value: 0,
+                    });
+                  if (typeof fbq === "function") fbq("track", "Lead");
+                  if (typeof clarity === "function")
+                    clarity("set", "lead", "dossier_academia");
 
-      // ==========================================
-      // 3. BANNER DE COOKIES
-      // ==========================================
-      const cookieBanner = document.getElementById("cookie-banner");
-      const acceptBtn = document.getElementById("btn-accept-cookies");
-      const declineBtn = document.getElementById("btn-decline-cookies");
-      const consent = localStorage.getItem("cookieConsent");
+                  mostrarToast(
+                    "¡Dossier en camino!",
+                    "La descarga comenzará automáticamente.",
+                  );
 
-      if (!consent && cookieBanner) {
-        cookieBanner.style.display = "flex";
-      }
+                  const link = document.createElement("a");
+                  link.href = "/dossier-academia.pdf";
+                  link.download = "Dossier_Academia_MNDesignWeb.pdf";
+                  document.body.appendChild(link);
+                  link.click();
+                  document.body.removeChild(link);
 
-      if (acceptBtn) {
-        acceptBtn.addEventListener("click", () => {
-          localStorage.setItem("cookieConsent", "accepted");
-          cookieBanner.style.display = "none";
-          if (typeof gtag === "function")
-            gtag("consent", "update", {
-              ad_storage: "granted",
-              ad_user_data: "granted",
-              ad_personalization: "granted",
-              analytics_storage: "granted",
-            });
-          if (typeof clarity === "function") clarity("consent");
-          if (typeof fbq === "function") fbq("consent", "grant");
-        });
-      }
+                  formDossier.reset();
+                } else {
+                  throw new Error("Error en el envío");
+                }
+              })
+              .catch(() =>
+                mostrarToast(
+                  "Vaya, algo ha fallado",
+                  "Hubo un error al procesar tu solicitud. Inténtalo de nuevo.",
+                  "error",
+                ),
+              )
+              .finally(() => {
+                btn.innerHTML = "Descargar Dossier Ahora"; // Limpio sin icono
+                btn.disabled = false;
+              });
+          });
+        }
 
-      if (declineBtn) {
-        declineBtn.addEventListener("click", () => {
-          localStorage.setItem("cookieConsent", "declined");
-          cookieBanner.style.display = "none";
-          if (typeof gtag === "function")
-            gtag("consent", "update", {
-              ad_storage: "denied",
-              ad_user_data: "denied",
-              ad_personalization: "denied",
-              analytics_storage: "denied",
-            });
-        });
-      }
-    });
-  </script>
+        // 2. LÓGICA FORMULARIO CONTACTO / AUDITORÍA
+        const formAcademias = document.getElementById("formulario");
+        if (formAcademias) {
+          formAcademias.addEventListener("submit", function (e) {
+            e.preventDefault();
+            const btn = document.getElementById("btn-submit");
+            btn.innerHTML = "Enviando..."; // Limpio sin icono
+            btn.disabled = true;
+
+            const data = {
+              access_key: "1bc2d285-71cb-4fe3-806f-530066ab6e15",
+              subject: "Nuevo Lead: Academias de Nutrición",
+              nombre: document.getElementById("nombre").value,
+              email: document.getElementById("email").value,
+              telefono: document.getElementById("telefono").value,
+              mensaje: document.getElementById("mensaje").value,
+            };
+
+            Promise.all([
+              fetch("https://api.web3forms.com/submit", {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                  Accept: "application/json",
+                },
+                body: JSON.stringify(data),
+              }),
+              fetch(
+                "https://hook.eu1.make.com/mxvqg7gwne43yab165v2uhtyw5yh115r",
+                {
+                  method: "POST",
+                  headers: { "Content-Type": "application/json" },
+                  body: JSON.stringify(data),
+                },
+              ),
+            ])
+              .then(async (results) => {
+                const result = await results[0].json();
+                if (result.success) {
+                  if (typeof gtag === "function")
+                    gtag("event", "generate_lead", {
+                      currency: "EUR",
+                      value: 0,
+                    });
+                  if (typeof fbq === "function") fbq("track", "Lead");
+                  if (typeof clarity === "function")
+                    clarity("set", "lead", "academia_nutricion");
+
+                  mostrarToast(
+                    "¡Solicitud recibida con éxito!",
+                    "Analizaré tu caso personalmente y te responderé muy pronto.",
+                  );
+                  formAcademias.reset();
+                } else {
+                  throw new Error("Error en el envío");
+                }
+              })
+              .catch(() =>
+                mostrarToast(
+                  "Error de envío",
+                  "No se ha podido enviar el mensaje. Por favor, revísalo.",
+                  "error",
+                ),
+              )
+              .finally(() => {
+                btn.innerHTML = "Enviar solicitud de auditoría"; 
+                btn.disabled = false;
+              });
+          });
+        }
+
+
+        const cookieBanner = document.getElementById("cookie-banner");
+        const acceptBtn = document.getElementById("btn-accept-cookies");
+        const declineBtn = document.getElementById("btn-decline-cookies");
+
+        const consent = localStorage.getItem("cookie_consent");
+
+        if (!consent && cookieBanner) {
+          cookieBanner.style.display = "flex";
+        }
+
+        if (acceptBtn) {
+          acceptBtn.addEventListener("click", () => {
+            localStorage.setItem("cookie_consent", "accepted");
+            cookieBanner.style.display = "none";
+            if (typeof gtag === "function") {
+              gtag("consent", "update", {
+                ad_storage: "granted",
+                ad_user_data: "granted",
+                ad_personalization: "granted",
+                analytics_storage: "granted",
+              });
+            }
+            if (typeof clarity === "function") clarity("consent");
+            if (typeof fbq === "function") fbq("consent", "grant");
+          });
+        }
+
+        if (declineBtn) {
+          declineBtn.addEventListener("click", () => {
+            localStorage.setItem("cookie_consent", "declined");
+            cookieBanner.style.display = "none";
+            if (typeof gtag === "function") {
+              gtag("consent", "update", {
+                ad_storage: "denied",
+                ad_user_data: "denied",
+                ad_personalization: "denied",
+                analytics_storage: "denied",
+              });
+            }
+          });
+        }
+      });
+    </script>
+  </body>
 </html>

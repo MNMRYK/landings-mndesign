@@ -19,15 +19,10 @@
       content="black-translucent"
     />
 
-    
-    <link
-      rel="canonical"
-      href="https://mndesignweb.es/aprende-shopify"
-    />
+    <link rel="canonical" href="https://mndesignweb.es/aprende-shopify" />
     <link rel="icon" type="image/webp" href="/favicon_v2.webp" />
     <meta name="robots" content="index, follow" />
 
-    
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -35,19 +30,14 @@
       rel="stylesheet"
     />
 
-    
     <meta
       name="description"
       content="Toma el control de tu Shopify. Mentoría técnica 1 a 1, resolución de problemas de configuración y desarrollo integral de E-commerce. Eres el dueño de tus ventas."
     />
     <meta name="author" content="MN Design Web" />
 
-    
     <meta property="og:type" content="website" />
-    <meta
-      property="og:url"
-      content="https://mndesignweb.es/aprende-shopify"
-    />
+    <meta property="og:url" content="https://mndesignweb.es/aprende-shopify" />
     <meta
       property="og:title"
       content="Mentoría Técnica y Desarrollo Shopify | MN Design Web"
@@ -56,19 +46,15 @@
       property="og:description"
       content="Domina la operativa de tu tienda online sin miedo a romper nada. Auditorías en directo, optimización de envíos y desarrollo E-commerce integral."
     />
-    
+
     <meta
       property="og:image"
       content="https://mndesignweb.es/shopify/imagen-miniatura-shopify.webp"
     />
     <meta property="og:locale" content="es_ES" />
 
-    
     <meta name="twitter:card" content="summary_large_image" />
-    <meta
-      name="twitter:url"
-      content="https://mndesignweb.es/aprende-shopify"
-    />
+    <meta name="twitter:url" content="https://mndesignweb.es/aprende-shopify" />
     <meta
       name="twitter:title"
       content="Mentoría Técnica y Desarrollo Shopify | MN Design Web"
@@ -82,7 +68,6 @@
       content="https://mndesignweb.es/shopify/imagen-miniatura-shopify.webp"
     />
 
-    
     <script type="application/ld+json">
       [
         {
@@ -202,13 +187,16 @@
       ]
     </script>
 
-    
     <script is:inline>
+      // 1. Inicializar DataLayer de Google
       window.dataLayer = window.dataLayer || [];
       function gtag() {
         dataLayer.push(arguments);
       }
-      var localConsent = localStorage.getItem("cookieConsent");
+
+      // ÚNICA DECLARACIÓN DE VARIABLE PARA TODO EL HEAD
+      var localConsent = localStorage.getItem("cookie_consent");
+
       if (localConsent === "accepted") {
         gtag("consent", "default", {
           ad_storage: "granted",
@@ -225,22 +213,16 @@
           wait_for_update: 500,
         });
       }
+      gtag("js", new Date());
+      gtag("config", "G-36WYJMYT3Z");
     </script>
     <script
       is:inline
       async
       src="https://www.googletagmanager.com/gtag/js?id=G-36WYJMYT3Z"></script>
-    <script is:inline>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
-      gtag("config", "G-36WYJMYT3Z");
-    </script>
 
-    
     <script is:inline>
+      // 2. Inicializar Pixel de Facebook
       !(function (f, b, e, v, n, t, s) {
         if (f.fbq) return;
         n = f.fbq = function () {
@@ -264,52 +246,53 @@
         "script",
         "https://connect.facebook.net/en_US/fbevents.js",
       );
-      var localConsent = localStorage.getItem("cookieConsent");
-      if (localConsent === "accepted") {
+
+      // Bloqueo por defecto para Facebook
+      if (localConsent !== "accepted") {
+        fbq("consent", "revoke");
+      } else {
         fbq("consent", "grant");
       }
       fbq("init", "1627135808585120");
       fbq("track", "PageView");
     </script>
 
-    
     <script is:inline type="text/javascript">
-      (function (c, l, a, r, i, t, y) {
-        c[a] =
-          c[a] ||
-          function () {
-            (c[a].q = c[a].q || []).push(arguments);
-          };
-        t = l.createElement(r);
-        t.async = 1;
-        t.src = "https://www.clarity.ms/tag/" + i;
-        y = l.getElementsByTagName(r)[0];
-        y.parentNode.insertBefore(t, y);
-      })(window, document, "clarity", "script", "wuzaxaifa0");
+      // 3. Inicializar Clarity SOLO si hay consentimiento previo
+      if (localConsent === "accepted") {
+        (function (c, l, a, r, i, t, y) {
+          c[a] =
+            c[a] ||
+            function () {
+              (c[a].q = c[a].q || []).push(arguments);
+            };
+          t = l.createElement(r);
+          t.async = 1;
+          t.src = "https://www.clarity.ms/tag/" + i;
+          y = l.getElementsByTagName(r)[0];
+          y.parentNode.insertBefore(t, y);
+        })(window, document, "clarity", "script", "wuzaxaifa0");
+      }
     </script>
   </head>
+
   <body>
     <main>
-      
       <section class="hero">
         <header class="top-nav container">
-          
           <a href="https://mndesignweb.es/" class="texto-logo">
             <span class="siglas">MN</span>
             <span class="marca">Design Web</span>
           </a>
 
-          
           <div class="custom-shopify-logo">
             <img src="/shopify/6.webp" alt="Shopify Icon" class="shopify-bag" />
             <span class="shopify-text">Shopify</span>
           </div>
 
-          
           <div class="nav-spacer"></div>
         </header>
         <div class="container hero-content">
-          
           <div class="hero-text">
             <h1>
               Toma el control operativo de tu Shopify <span class="highlight"
@@ -366,7 +349,6 @@
             </div>
           </div>
 
-          
           <div class="hero-image">
             <img
               src="/shopify/2.webp"
@@ -378,9 +360,7 @@
         </div>
       </section>
 
-      
       <section class="pain-points">
-        
         <div class="blob blob-1"></div>
         <div class="blob blob-2"></div>
 
@@ -390,7 +370,6 @@
           </h2>
 
           <div class="glass-bento-grid">
-            
             <div class="glass-card">
               <div class="glass-icon">
                 <svg
@@ -413,7 +392,6 @@
               </p>
             </div>
 
-            
             <div class="glass-card">
               <div class="glass-icon">
                 <svg
@@ -430,7 +408,6 @@
               </p>
             </div>
 
-            
             <div class="glass-card visual-card">
               <img
                 src="/shopify/1.webp"
@@ -449,7 +426,6 @@
               </div>
             </div>
 
-            
             <div class="glass-card">
               <div class="glass-icon">
                 <svg
@@ -472,7 +448,6 @@
               </p>
             </div>
 
-            
             <div class="glass-card">
               <div class="glass-icon">
                 <svg
@@ -491,7 +466,6 @@
               </p>
             </div>
 
-            
             <div class="glass-card">
               <div class="glass-icon">
                 <svg
@@ -511,7 +485,6 @@
               </p>
             </div>
 
-            
             <div class="glass-card">
               <div class="glass-icon">
                 <svg
@@ -536,7 +509,6 @@
               </p>
             </div>
 
-            
             <div class="glass-card">
               <div class="glass-icon">
                 <svg
@@ -578,7 +550,6 @@
         </div>
       </section>
 
-      
       <section id="recurso-gratis" class="lead-magnet">
         <div class="container lead-magnet-content">
           <div class="lm-text">
@@ -603,9 +574,7 @@
         </div>
       </section>
 
-      
       <section id="precios" class="pricing">
-        
         <img
           src="/shopify/5.webp"
           alt="Decoración visual E-commerce"
@@ -620,9 +589,7 @@
             <h2 class="section-title">Elige cómo quieres avanzar</h2>
           </div>
 
-          
           <div class="pricing-cards">
-            
             <div class="pricing-card standard">
               <div class="card-header">
                 <h3>Solución Puntual</h3>
@@ -671,7 +638,6 @@
               >
             </div>
 
-            
             <div class="pricing-card premium">
               <div class="badge-recommended">Opción Recomendada</div>
               <div class="card-header">
@@ -734,12 +700,10 @@
         </div>
       </section>
 
-      
       <section id="booking" class="booking-section">
         <div class="container">
           <h2 class="section-title">Bloquea tu espacio en mi agenda</h2>
           <div class="booking-layout">
-            
             <div class="calendly-wrapper">
               <div class="form-header">
                 <h3 class="form-title">Paso 1: Elige fecha y hora</h3>
@@ -761,10 +725,8 @@
                 </iframe>
               </div>
 
-              
               <div class="cta-box-below glass-card">
                 <div class="glass-icon">
-                  
                   <svg
                     viewBox="0 0 24 24"
                     fill="none"
@@ -786,14 +748,12 @@
               </div>
             </div>
 
-            
             <div class="form-wrapper">
               <div class="form-header">
                 <h3 class="form-title">Paso 2: Prepara la sesión</h3>
                 <p>Ayúdame a entender tu situación para ir directo al grano.</p>
               </div>
               <form id="formulario" class="qualification-form">
-                
                 <div class="form-group">
                   <label for="plan">¿Qué plan deseas reservar?</label>
                   <select id="plan" required>
@@ -871,10 +831,9 @@
           </div>
         </div>
       </section>
-      
+
       <section class="development-service">
         <div class="container dev-layout">
-          
           <div class="dev-text">
             <h2>¿Prefieres que lo construyamos nosotros?</h2>
             <p>
@@ -921,7 +880,6 @@
               </li>
             </ul>
 
-            
             <div class="dev-cta-row">
               <div class="dev-price-box">
                 <span class="dev-label">Servicio Integral "Llave en Mano"</span>
@@ -938,7 +896,6 @@
             </div>
           </div>
 
-          
           <div class="dev-image">
             <div class="dev-image-card">
               <img
@@ -954,10 +911,8 @@
         </div>
       </section>
 
-      
       <footer class="site-footer">
         <div class="container footer-content">
-          
           <div class="footer-contact">
             <a href="tel:+34645854934" class="contact-link">
               <svg
@@ -985,7 +940,6 @@
             </a>
           </div>
 
-          
           <div class="footer-partner">
             <img
               src="/shopify/6.webp"
@@ -995,7 +949,6 @@
             <span class="partner-text">Shopify Partner</span>
           </div>
 
-          
           <div class="footer-legal">
             <a href="https://mndesignweb.es/aviso-legal">Aviso Legal</a>
             <span class="separator">|</span>
@@ -1009,7 +962,6 @@
       </footer>
     </main>
 
-    
     <div id="cookie-banner" class="cookie-card-uiverse" style="display: none;">
       <svg
         xml:space="preserve"
@@ -1063,24 +1015,17 @@
         box-sizing: border-box;
       }
 
-      /* ==========================================
-   1. SCROLL SUAVE Y FONDO DE REBOTE MÓVIL
-========================================== */
       html {
         scroll-behavior: smooth;
-        background-color: #002e26; /* Fondo verde oscuro para el rebote del móvil */
+        background-color: #002e26;
 
-        /* Estándar moderno: barra verde semitransparente sobre fondo claro */
         scrollbar-color: #0055406e var(--bg-light);
         scrollbar-width: thin;
       }
 
-      /* ==========================================
-   2. SEGURO DE DESBORDAMIENTO (BODY)
-========================================== */
       body {
         font-family: "Inter", system-ui, sans-serif;
-        background-color: #002e26; /* Lienzo base oscuro para forzar a Safari iOS */
+        background-color: #002e26;
         color: var(--text-dark);
         line-height: 1.6;
         margin: 0;
@@ -1093,7 +1038,6 @@
         width: 100%;
       }
 
-      /* Devolvemos el fondo gris clarito al contenido de la web */
       main {
         background-color: var(--bg-light);
         flex-grow: 1;
@@ -1113,7 +1057,7 @@
       ::-webkit-scrollbar-thumb {
         background: #0055406e;
         border-radius: 5px;
-        border: 2px solid var(--bg-light); /* Borde igual que el track para efecto flotante */
+        border: 2px solid var(--bg-light);
       }
 
       ::-webkit-scrollbar-thumb:hover {
@@ -1134,7 +1078,6 @@
         color: var(--dark-green);
       }
 
-      /* BOTONES */
       .btn {
         display: inline-block;
         text-align: center;
@@ -1175,7 +1118,6 @@
         margin-top: 1rem;
       }
 
-      /* 1. HERO */
       .hero {
         background: linear-gradient(
           135deg,
@@ -1304,7 +1246,6 @@
         filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.4));
       }
 
-      /* 2. GLASS BENTO GRID */
       .pain-points {
         padding: 7rem 0;
         background-color: var(--bg-light);
@@ -1433,7 +1374,6 @@
         }
       }
 
-      /* 3. PRICING CENTRADO CON MARCA DE AGUA */
       .pricing {
         padding: 6rem 0 4rem;
         background: var(--bg-light);
@@ -1575,7 +1515,6 @@
         flex-shrink: 0;
       }
 
-      /* 4. BOOKING / FORMULARIOS */
       .booking-section {
         padding: 3rem 0 5rem;
         background-color: var(--bg-light);
@@ -1688,7 +1627,6 @@
         margin-top: 1rem;
       }
 
-      /* 5. LEAD MAGNET */
       .lead-magnet {
         background-color: var(--shopify-green);
         color: var(--white);
@@ -1722,7 +1660,6 @@
         font-size: 1rem;
       }
 
-      /* 6. DESARROLLO E-COMMERCE */
       .development-service {
         background: linear-gradient(
           135deg,
@@ -1844,7 +1781,6 @@
         filter: drop-shadow(0 15px 25px rgba(0, 0, 0, 0.15));
       }
 
-      /* 7. FOOTER */
       .site-footer {
         background: linear-gradient(
           135deg,
@@ -1924,7 +1860,6 @@
         opacity: 0.3;
       }
 
-      /* 8. COOKIE BANNER PREMIUM */
       .cookie-card-uiverse {
         position: fixed;
         bottom: 24px;
@@ -2005,9 +1940,6 @@
         background-color: rgba(255, 255, 255, 0.2);
       }
 
-      /* ==========================================
-         TOAST NOTIFICACIONES NATIVAS
-      ========================================== */
       #custom-toast-container {
         position: fixed;
         bottom: 24px;
@@ -2085,17 +2017,12 @@
         }
       }
 
-      /* =========================================
-         RESPONSIVE OPTIMIZADO (TABLET Y MÓVIL)
-         ========================================= */
-
-      /* 1. TABLET GRANDE (max-width: 1024px) */
       @media (max-width: 1024px) {
         .glass-bento-grid {
           grid-template-columns: repeat(2, 1fr);
         }
         .pricing-cards {
-          padding-left: 0; /* Corrección del margen izquierdo en tablets */
+          padding-left: 0;
           gap: 1.5rem;
         }
         .dev-layout,
@@ -2104,9 +2031,7 @@
         }
       }
 
-      /* 2. TABLET / MÓVIL HORIZONTAL (max-width: 992px) */
       @media (max-width: 992px) {
-        /* Ajustes de espaciado general */
         .pain-points,
         .pricing,
         .development-service,
@@ -2118,26 +2043,25 @@
           margin-bottom: 2.5rem;
         }
 
-        /* Cabecera / Navegación */
         .top-nav {
-          position: absolute; /* Lo mantenemos flotando arriba */
+          position: absolute;
           top: 0;
           left: 0;
-          transform: none; /* Quitamos el centrado del ordenador */
+          transform: none;
           width: 100%;
-          flex-direction: row; /* Los logos en la misma línea */
-          justify-content: space-between; /* Uno a cada extremo */
+          flex-direction: row;
+          justify-content: space-between;
           padding: 1.5rem 24px 0;
         }
         .texto-logo {
-          flex: none; /* Evita que ocupe espacio de más */
+          flex: none;
         }
         .custom-shopify-logo {
           flex: none;
           justify-content: flex-end;
         }
         .nav-spacer {
-          display: none; /* Lo quitamos porque ya no hay que centrar a 3 bandas */
+          display: none;
         }
 
         .hero {
@@ -2145,11 +2069,10 @@
           padding-bottom: 3rem;
         }
 
-        /* Hero */
         .hero-content {
           grid-template-columns: 1fr;
           text-align: center;
-          padding-top: 8rem; /* Aumentamos para que el menú de arriba no pise el texto */
+          padding-top: 8rem;
         }
         .hero-text {
           text-align: center;
@@ -2165,7 +2088,6 @@
           margin-top: 1rem;
         }
 
-        /* Precios */
         .pricing-bg-image {
           display: none;
         }
@@ -2178,7 +2100,6 @@
           max-width: 100%;
         }
 
-        /* Formulario Reserva */
         .booking-layout {
           grid-template-columns: 1fr;
         }
@@ -2189,7 +2110,6 @@
           height: 440px;
         }
 
-        /* Desarrollo */
         .dev-layout {
           grid-template-columns: 1fr;
           text-align: center;
@@ -2210,7 +2130,6 @@
           max-width: 450px;
         }
 
-        /* Footer */
         .footer-content {
           flex-direction: column;
           text-align: center;
@@ -2236,7 +2155,6 @@
         }
       }
 
-      /* 3. MÓVIL ESTÁNDAR (max-width: 768px) */
       @media (max-width: 768px) {
         .hero h1 {
           font-size: 2.5rem;
@@ -2253,18 +2171,15 @@
           grid-row: span 1;
         }
 
-        /* --- AJUSTE CRÍTICO DEL CALENDARIO --- */
         .cal-widget {
-          height: 520px; /* Le damos un poco más de aire vertical en móvil */
+          height: 520px;
           border-radius: 20px;
         }
 
         .calendar-iframe {
-          width: 100%; /* Quitamos tu 125% */
-          height: 100%; /* Quitamos tu 570px fijo */
-          transform: scale(
-            1
-          ); /* Devolvemos la escala a la normalidad para que sea táctil */
+          width: 100%;
+          height: 100%;
+          transform: scale(1);
           transform-origin: center;
         }
 
@@ -2277,7 +2192,6 @@
         }
       }
 
-      /* 4. MÓVIL PEQUEÑO (max-width: 576px) */
       @media (max-width: 576px) {
         .hero h1 {
           font-size: 2rem;
@@ -2288,7 +2202,6 @@
           align-items: center;
         }
 
-        /* Precios y Botones */
         .pricing-card {
           padding: 2rem 1.5rem;
         }
@@ -2300,7 +2213,6 @@
           padding: 16px;
         }
 
-        /* Desarrollo */
         .dev-cta-row {
           flex-direction: column;
           gap: 1.5rem;
@@ -2316,12 +2228,10 @@
           padding: 1.5rem;
         }
 
-        /* Formulario padding extra en móvil pequeño */
         .form-wrapper {
           padding: 2rem 1.2rem;
         }
 
-        /* Banner Cookies Pegado Abajo */
         .cookie-card-uiverse {
           bottom: 0;
           left: 0;
@@ -2334,9 +2244,6 @@
       }
     </style>
     <script is:inline>
-      // ==========================================
-      // 0. FUNCIÓN TOAST NATIVA (Estilo App)
-      // ==========================================
       function mostrarToast(titulo, descripcion, tipo = "success") {
         let container = document.getElementById("custom-toast-container");
         if (!container) {
@@ -2367,7 +2274,6 @@
         }, 5000);
       }
 
-      // --- 1. LÓGICA DE BOTONES DE PRECIOS ---
       window.selectPlan = function (planId) {
         document.getElementById("plan").value = planId;
         document
@@ -2376,7 +2282,6 @@
       };
 
       window.addEventListener("DOMContentLoaded", () => {
-        // --- 2. LÓGICA DEL FORMULARIO DE RESERVA ---
         const formMentoria = document.getElementById("formulario");
         if (formMentoria) {
           formMentoria.addEventListener("submit", function (e) {
@@ -2448,7 +2353,6 @@
           });
         }
 
-        // --- 3. LÓGICA DEL LEAD MAGNET (DESCARGA PDF) ---
         const formLeadMagnet = document.getElementById("form-lead-magnet");
         if (formLeadMagnet) {
           formLeadMagnet.addEventListener("submit", function (e) {
@@ -2499,9 +2403,8 @@
                     "Tu descarga comenzará automáticamente en unos segundos.",
                   );
 
-                  // Forzar descarga del PDF en el navegador
                   const link = document.createElement("a");
-                  link.href = "/arsenal-secreto-shopify.pdf"; // Asegúrate de que este archivo existe en tu carpeta public/
+                  link.href = "/arsenal-secreto-shopify.pdf";
                   link.download = "El_Arsenal_Secreto_Shopify.pdf";
                   document.body.appendChild(link);
                   link.click();
@@ -2526,11 +2429,11 @@
           });
         }
 
-        // --- 4. LÓGICA DEL BANNER DE COOKIES ---
         const cookieBanner = document.getElementById("cookie-banner");
         const acceptBtn = document.getElementById("btn-accept-cookies");
         const declineBtn = document.getElementById("btn-decline-cookies");
-        const consent = localStorage.getItem("cookieConsent");
+
+        const consent = localStorage.getItem("cookie_consent");
 
         if (!consent && cookieBanner) {
           cookieBanner.style.display = "flex";
@@ -2538,8 +2441,9 @@
 
         if (acceptBtn) {
           acceptBtn.addEventListener("click", () => {
-            localStorage.setItem("cookieConsent", "accepted");
+            localStorage.setItem("cookie_consent", "accepted");
             cookieBanner.style.display = "none";
+
             if (typeof gtag === "function") {
               gtag("consent", "update", {
                 ad_storage: "granted",
@@ -2548,14 +2452,32 @@
                 analytics_storage: "granted",
               });
             }
-            if (typeof clarity === "function") clarity("consent");
+
+            // Inyectamos Clarity en este momento si no estaba cargado
+            if (typeof clarity === "undefined") {
+              (function (c, l, a, r, i, t, y) {
+                c[a] =
+                  c[a] ||
+                  function () {
+                    (c[a].q = c[a].q || []).push(arguments);
+                  };
+                t = l.createElement(r);
+                t.async = 1;
+                t.src = "https://www.clarity.ms/tag/" + i;
+                y = l.getElementsByTagName(r)[0];
+                y.parentNode.insertBefore(t, y);
+              })(window, document, "clarity", "script", "wuzaxaifa0");
+            } else if (typeof clarity === "function") {
+              clarity("consent");
+            }
+
             if (typeof fbq === "function") fbq("consent", "grant");
           });
         }
 
         if (declineBtn) {
           declineBtn.addEventListener("click", () => {
-            localStorage.setItem("cookieConsent", "declined");
+            localStorage.setItem("cookie_consent", "declined");
             cookieBanner.style.display = "none";
             if (typeof gtag === "function") {
               gtag("consent", "update", {

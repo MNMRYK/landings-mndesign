@@ -8,7 +8,6 @@ import "./style.css";
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    
     <title>Diseño Web para Nutricionistas y Dietistas | MN Design Web</title>
 
     <meta
@@ -29,14 +28,10 @@ import "./style.css";
     />
     <meta name="apple-mobile-web-app-status-bar-style" content="default" />
 
-    <link
-      rel="canonical"
-      href="https://mndesignweb.es/nutricionistas"
-    />
+    <link rel="canonical" href="https://mndesignweb.es/nutricionistas" />
     <link rel="icon" type="image/webp" href="/favicon_v2.webp" />
     <meta name="robots" content="index, follow" />
 
-    
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -60,12 +55,8 @@ import "./style.css";
       />
     </noscript>
 
-    
     <meta property="og:type" content="website" />
-    <meta
-      property="og:url"
-      content="https://mndesignweb.es/nutricionistas"
-    />
+    <meta property="og:url" content="https://mndesignweb.es/nutricionistas" />
     <meta
       property="og:title"
       content="Diseño Web para Nutricionistas y Dietistas | MN Design Web"
@@ -80,12 +71,8 @@ import "./style.css";
     />
     <meta property="og:locale" content="es_ES" />
 
-    
     <meta name="twitter:card" content="summary_large_image" />
-    <meta
-      name="twitter:url"
-      content="https://mndesignweb.es/nutricionistas"
-    />
+    <meta name="twitter:url" content="https://mndesignweb.es/nutricionistas" />
     <meta
       name="twitter:title"
       content="Diseño Web para Nutricionistas y Dietistas | MN Design Web"
@@ -99,7 +86,6 @@ import "./style.css";
       content="https://mndesignweb.es/nutri/imagen-miniatura-nutricion.webp"
     />
 
-    
     <script type="application/ld+json">
       [
         {
@@ -298,7 +284,8 @@ import "./style.css";
       function gtag() {
         dataLayer.push(arguments);
       }
-      var localConsent = localStorage.getItem("cookieConsent");
+
+      var localConsent = localStorage.getItem("cookie_consent");
       if (localConsent === "accepted") {
         gtag("consent", "default", {
           ad_storage: "granted",
@@ -315,20 +302,13 @@ import "./style.css";
           wait_for_update: 500,
         });
       }
+      gtag("js", new Date());
+      gtag("config", "G-36WYJMYT3Z");
     </script>
     <script
       is:inline
       async
-      src="https://www.googletagmanager.com/gtag/js?id=G-36WYJMYT3Z"
-    ></script>
-    <script is:inline>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
-      gtag("config", "G-36WYJMYT3Z");
-    </script>
+      src="https://www.googletagmanager.com/gtag/js?id=G-36WYJMYT3Z"></script>
 
     <script is:inline>
       !(function (f, b, e, v, n, t, s) {
@@ -354,12 +334,12 @@ import "./style.css";
         "script",
         "https://connect.facebook.net/en_US/fbevents.js",
       );
-      
-      var localConsent = localStorage.getItem("cookieConsent");
-      
+
+      var localConsent = localStorage.getItem("cookie_consent");
+
       if (localConsent === "accepted") {
-        fbq('consent', 'grant');
-      } 
+        fbq("consent", "grant");
+      }
 
       fbq("init", "1627135808585120");
       fbq("track", "PageView");
@@ -381,13 +361,10 @@ import "./style.css";
     </script>
   </head>
   <body>
-    
     <header class="navbar">
       <div class="navbar-container">
-        
         <a href="#" class="navbar-logo">MN Design <span>Web</span></a>
 
-        
         <nav class="desktop-nav">
           <a href="#web-inicial" class="mobile-link">Diseño Web</a>
           <a href="#Consulta" class="mobile-link">Consultas</a>
@@ -395,14 +372,12 @@ import "./style.css";
           <a href="#inversion" class="mobile-link">Inversión</a>
         </nav>
 
-        
         <div class="desktop-cta-container">
           <a href="#agendar-consultoria" class="navbar-cta"
             >Agendar consultoría</a
           >
         </div>
 
-        
         <button
           id="mobile-menu-btn"
           class="menu-toggle"
@@ -425,1183 +400,1148 @@ import "./style.css";
         </button>
       </div>
 
-      
       <div id="mobile-dropdown" class="mobile-dropdown">
         <a href="#web-inicial" class="mobile-link">Diseño Web</a>
         <a href="#Consulta" class="mobile-link">Consultas</a>
         <a href="#modulos" class="mobile-link">Módulos</a>
         <a href="#inversion" class="mobile-link">Inversión</a>
-        
+
         <a href="#agendar-consultoria" class="mobile-cta-btn"
           >Agendar consultoría</a
         >
       </div>
     </header>
 
-    
-    <section class="hero">
-      <div class="hero-content">
-        <span class="hero-tag">Desarrollo Web High Ticket</span>
-        <h1>Digitaliza la gestión de tu consulta de <span>nutrición</span></h1>
-        <p>
-          Una infraestructura web corporativa que trabaja por ti. Automatiza
-          reservas, cobra online y centraliza el seguimiento en tu propio Portal
-          del Paciente.
-        </p>
-        <a href="#agendar-consultoria" class="cta-button"
-          >Ver disponibilidad en la agenda</a
-        >
-      </div>
-      <div class="hero-visual">
-        
-        <div class="phone-mockup">
-          <div class="phone-notch"></div>
-          <div class="phone-screen">
-            <img 
-              src="/nutri/movil.webp" 
-              alt="Vista móvil del portal del paciente" 
-              class="mockup-img-phone" 
-            />
-          </div>
-        </div>
-
-        <div class="laptop-mockup">
-          <div class="ui-header">
-            <div class="ui-dot"></div>
-            <div class="ui-dot"></div>
-            <div class="ui-dot"></div>
-          </div>
-          <div class="ui-body">
-            <img 
-              src="/nutri/pc.webp" 
-              alt="Vista escritorio de la plataforma de nutrición" 
-              class="mockup-img-pc" 
-            />
-          </div>
-          <div class="laptop-base"></div>
-        </div>
-
-      </div>
-    </section>
-
-    
-    <section class="features">
-      
-      <div class="features-header reveal">
-        <h2 class="features-title" id="Consulta">
-          Tu consulta, centralizada y en piloto automático
-        </h2>
-        <p class="features-subtitle">
-          Olvídate de usar 4 herramientas distintas. Integramos reservas,
-          gestión de pacientes y venta de cursos en una única plataforma
-          corporativa.
-        </p>
-      </div>
-
-      
-      <div class="feature-row reveal" id="reservas">
-        <div class="feature-text">
-          <h3>Sistema de Reservas Automático</h3>
+    <main>
+      <section class="hero">
+        <div class="hero-content">
+          <span class="hero-tag">Desarrollo Web High Ticket</span>
+          <h1>
+            Digitaliza la gestión de tu consulta de <span>nutrición</span>
+          </h1>
           <p>
-            Deja de cuadrar agendas por WhatsApp. Tus pacientes seleccionan el
-            día, la hora y pagan la consulta directamente desde tu web,
-            sincronizado con tu calendario.
+            Una infraestructura web corporativa que trabaja por ti. Automatiza
+            reservas, cobra online y centraliza el seguimiento en tu propio
+            Portal del Paciente.
           </p>
-          <ul class="feature-list">
-            <li>Sincronización bidireccional en tiempo real</li>
-            <li>Pasarela de pago segura (Stripe/Redsys)</li>
-            <li>Recordatorios automáticos para reducir ausencias</li>
-          </ul>
+          <a href="#agendar-consultoria" class="cta-button"
+            >Ver disponibilidad en la agenda</a
+          >
         </div>
-        <div class="feature-visual">
-          
-          <div class="feature-mockup calendar-mockup">
-            <div class="calendar-header">
-              <span class="calendar-month">OCTUBRE 2026</span>
-              <div class="calendar-dots">
-                <div class="calendar-dot dark"></div>
-                <div class="calendar-dot light"></div>
-              </div>
+        <div class="hero-visual">
+          <div class="phone-mockup">
+            <div class="phone-notch"></div>
+            <div class="phone-screen">
+              <img
+                src="/nutri/movil.webp"
+                alt="Vista móvil del portal del paciente"
+                class="mockup-img-phone"
+              />
             </div>
-            <div class="calendar-layout">
-              <div class="calendar-grid-container">
-                <div class="calendar-label">Selecciona el día</div>
-                <div class="calendar-grid">
-                  <div class="calendar-day inactive"></div>
-                  <div class="calendar-day inactive"></div>
-                  <div class="calendar-day active">14</div>
-                  <div class="calendar-day"></div>
-                  <div class="calendar-day"></div>
-                  <div class="calendar-day empty"></div>
-                  <div class="calendar-day"></div>
-                  <div class="calendar-day"></div>
+          </div>
+
+          <div class="laptop-mockup">
+            <div class="ui-header">
+              <div class="ui-dot"></div>
+              <div class="ui-dot"></div>
+              <div class="ui-dot"></div>
+            </div>
+            <div class="ui-body">
+              <img
+                src="/nutri/pc.webp"
+                alt="Vista escritorio de la plataforma de nutrición"
+                class="mockup-img-pc"
+              />
+            </div>
+            <div class="laptop-base"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="features">
+        <div class="features-header reveal">
+          <h2 class="features-title" id="Consulta">
+            Tu consulta, centralizada y en piloto automático
+          </h2>
+          <p class="features-subtitle">
+            Olvídate de usar 4 herramientas distintas. Integramos reservas,
+            gestión de pacientes y venta de cursos en una única plataforma
+            corporativa.
+          </p>
+        </div>
+
+        <div class="feature-row reveal" id="reservas">
+          <div class="feature-text">
+            <h3>Sistema de Reservas Automático</h3>
+            <p>
+              Deja de cuadrar agendas por WhatsApp. Tus pacientes seleccionan el
+              día, la hora y pagan la consulta directamente desde tu web,
+              sincronizado con tu calendario.
+            </p>
+            <ul class="feature-list">
+              <li>Sincronización bidireccional en tiempo real</li>
+              <li>Pasarela de pago segura (Stripe/Redsys)</li>
+              <li>Recordatorios automáticos para reducir ausencias</li>
+            </ul>
+          </div>
+          <div class="feature-visual">
+            <div class="feature-mockup calendar-mockup">
+              <div class="calendar-header">
+                <span class="calendar-month">OCTUBRE 2026</span>
+                <div class="calendar-dots">
+                  <div class="calendar-dot dark"></div>
+                  <div class="calendar-dot light"></div>
                 </div>
               </div>
-              <div class="calendar-time-container">
-                <div class="calendar-label">Hora disponible</div>
-                <div class="calendar-time-list">
-                  <div class="calendar-time-slot">09:30 h</div>
-                  <div class="calendar-time-slot active">11:00 h</div>
-                  <div class="calendar-time-slot">16:30 h</div>
+              <div class="calendar-layout">
+                <div class="calendar-grid-container">
+                  <div class="calendar-label">Selecciona el día</div>
+                  <div class="calendar-grid">
+                    <div class="calendar-day inactive"></div>
+                    <div class="calendar-day inactive"></div>
+                    <div class="calendar-day active">14</div>
+                    <div class="calendar-day"></div>
+                    <div class="calendar-day"></div>
+                    <div class="calendar-day empty"></div>
+                    <div class="calendar-day"></div>
+                    <div class="calendar-day"></div>
+                  </div>
+                </div>
+                <div class="calendar-time-container">
+                  <div class="calendar-label">Hora disponible</div>
+                  <div class="calendar-time-list">
+                    <div class="calendar-time-slot">09:30 h</div>
+                    <div class="calendar-time-slot active">11:00 h</div>
+                    <div class="calendar-time-slot">16:30 h</div>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="calendar-footer">
-              <span class="calendar-footer-text"
-                >Sincronizado con Google Calendar</span
-              >
-              <span class="calendar-footer-cta">Confirmar cita →</span>
+              <div class="calendar-footer">
+                <span class="calendar-footer-text"
+                  >Sincronizado con Google Calendar</span
+                >
+                <span class="calendar-footer-cta">Confirmar cita →</span>
+              </div>
             </div>
           </div>
         </div>
-      </div>
 
-      
-      <div class="feature-row reverse reveal" id="portal">
-        <div class="feature-text">
-          <h3>Portal del Paciente Centralizado</h3>
-          <p>
-            Un área privada donde tus pacientes acceden con su usuario. Comparte
-            planes nutricionales, pautas y permite que registren su evolución de
-            forma segura.
-          </p>
-          <ul class="feature-list">
-            <li>Entrega de dietas y recursos sin usar WhatsApp</li>
-            <li>Gráficas de evolución de peso y medidas</li>
-            <li>Historial clínico y documentos cifrados</li>
-          </ul>
-        </div>
-        <div class="feature-visual">
-          
-          <div class="feature-mockup mockup-portal">
-            
-            <div class="portal-header">
-              <div class="portal-nav-pills">
-                <div class="portal-pill active">Mi Evolución</div>
-                <div class="portal-pill">Dietas</div>
-                <div class="portal-pill">Mensajes</div>
+        <div class="feature-row reverse reveal" id="portal">
+          <div class="feature-text">
+            <h3>Portal del Paciente Centralizado</h3>
+            <p>
+              Un área privada donde tus pacientes acceden con su usuario.
+              Comparte planes nutricionales, pautas y permite que registren su
+              evolución de forma segura.
+            </p>
+            <ul class="feature-list">
+              <li>Entrega de dietas y recursos sin usar WhatsApp</li>
+              <li>Gráficas de evolución de peso y medidas</li>
+              <li>Historial clínico y documentos cifrados</li>
+            </ul>
+          </div>
+          <div class="feature-visual">
+            <div class="feature-mockup mockup-portal">
+              <div class="portal-header">
+                <div class="portal-nav-pills">
+                  <div class="portal-pill active">Mi Evolución</div>
+                  <div class="portal-pill">Dietas</div>
+                  <div class="portal-pill">Mensajes</div>
+                </div>
+                <div class="portal-badge">Área Privada</div>
               </div>
-              <div class="portal-badge">Área Privada</div>
-            </div>
 
-            
-            <div class="portal-user-row">
-              <div class="portal-avatar">
-                MP
-                <div class="portal-status-dot"></div>
-              </div>
-              <div class="portal-user-details">
-                <div class="portal-user-name">María Pérez</div>
-                <div class="portal-user-goal">Objetivo: Pérdida de grasa</div>
-              </div>
-              <div class="portal-next-appointment">
-                <div
-                  style="
+              <div class="portal-user-row">
+                <div class="portal-avatar">
+                  MP
+                  <div class="portal-status-dot"></div>
+                </div>
+                <div class="portal-user-details">
+                  <div class="portal-user-name">María Pérez</div>
+                  <div class="portal-user-goal">Objetivo: Pérdida de grasa</div>
+                </div>
+                <div class="portal-next-appointment">
+                  <div
+                    style="
                     font-size: 9px;
                     color: var(--text-muted);
                     text-transform: uppercase;
                     letter-spacing: 0.5px;
                     margin-bottom: 2px;
                   "
-                >
-                  Próxima cita
-                </div>
-                <div
-                  style="
+                  >
+                    Próxima cita
+                  </div>
+                  <div
+                    style="
                     font-size: 12px;
                     color: var(--primary);
                     font-weight: 800;
                   "
-                >
-                  24 Oct - 16:30h
-                </div>
-              </div>
-            </div>
-
-            
-            <div class="portal-content-row">
-              
-              <div class="portal-chart-box">
-                <div class="portal-chart-title">Evolución de peso (kg)</div>
-
-                <div class="portal-grid-line" style="top: 35%"></div>
-                <div class="portal-grid-line" style="top: 60%"></div>
-                <div class="portal-grid-line" style="top: 85%"></div>
-
-                <svg
-                  viewBox="-5 -5 110 55"
-                  preserveAspectRatio="none"
-                  class="portal-chart-svg"
-                >
-                  <defs>
-                    <linearGradient
-                      id="chart-gradient"
-                      x1="0%"
-                      y1="0%"
-                      x2="0%"
-                      y2="100%"
-                    >
-                      <stop
-                        offset="0%"
-                        stop-color="var(--button-cta)"
-                        stop-opacity="0.3"
-                      />
-                      <stop
-                        offset="100%"
-                        stop-color="var(--button-cta)"
-                        stop-opacity="0"
-                      />
-                    </linearGradient>
-                  </defs>
-                  <path
-                    d="M0,40 Q20,15 40,30 T80,15 T100,25 L100,50 L0,50 Z"
-                    fill="url(#chart-gradient)"
-                  ></path>
-                  <path
-                    d="M0,40 Q20,15 40,30 T80,15 T100,25"
-                    fill="none"
-                    stroke="var(--button-cta)"
-                    stroke-width="2.5"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  ></path>
-                  <circle
-                    cx="80"
-                    cy="15"
-                    r="3.5"
-                    fill="white"
-                    stroke="var(--button-cta)"
-                    stroke-width="2.5"
-                  ></circle>
-                </svg>
-              </div>
-
-              
-              <div class="portal-files-col">
-                <div
-                  class="portal-file-card"
-                  style="background: var(--card-bg)"
-                >
-                  <div class="file-icon" style="color: var(--button-cta)">
-                    📄
-                  </div>
-                  <div class="file-info">
-                    <span class="file-name" style="color: white"
-                      >Dieta_Semana4.pdf</span
-                    >
-                    <span
-                      class="file-size"
-                      style="color: rgba(255, 255, 255, 0.8)"
-                      >1.2 MB</span
-                    >
+                  >
+                    24 Oct - 16:30h
                   </div>
                 </div>
-                <div class="portal-file-card" style="background: var(--accent)">
-                  <div class="file-icon" style="color: var(--primary)">📋</div>
-                  <div class="file-info">
-                    <span class="file-name">Pautas_Suplementos</span>
-                    <span class="file-size">Nuevo archivo</span>
+              </div>
+
+              <div class="portal-content-row">
+                <div class="portal-chart-box">
+                  <div class="portal-chart-title">Evolución de peso (kg)</div>
+
+                  <div class="portal-grid-line" style="top: 35%"></div>
+                  <div class="portal-grid-line" style="top: 60%"></div>
+                  <div class="portal-grid-line" style="top: 85%"></div>
+
+                  <svg
+                    viewBox="-5 -5 110 55"
+                    preserveAspectRatio="none"
+                    class="portal-chart-svg"
+                  >
+                    <defs>
+                      <linearGradient
+                        id="chart-gradient"
+                        x1="0%"
+                        y1="0%"
+                        x2="0%"
+                        y2="100%"
+                      >
+                        <stop
+                          offset="0%"
+                          stop-color="var(--button-cta)"
+                          stop-opacity="0.3"></stop>
+                        <stop
+                          offset="100%"
+                          stop-color="var(--button-cta)"
+                          stop-opacity="0"></stop>
+                      </linearGradient>
+                    </defs>
+                    <path
+                      d="M0,40 Q20,15 40,30 T80,15 T100,25 L100,50 L0,50 Z"
+                      fill="url(#chart-gradient)"></path>
+                    <path
+                      d="M0,40 Q20,15 40,30 T80,15 T100,25"
+                      fill="none"
+                      stroke="var(--button-cta)"
+                      stroke-width="2.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"></path>
+                    <circle
+                      cx="80"
+                      cy="15"
+                      r="3.5"
+                      fill="white"
+                      stroke="var(--button-cta)"
+                      stroke-width="2.5"></circle>
+                  </svg>
+                </div>
+
+                <div class="portal-files-col">
+                  <div
+                    class="portal-file-card"
+                    style="background: var(--card-bg)"
+                  >
+                    <div class="file-icon" style="color: var(--button-cta)">
+                      📄
+                    </div>
+                    <div class="file-info">
+                      <span class="file-name" style="color: white"
+                        >Dieta_Semana4.pdf</span
+                      >
+                      <span
+                        class="file-size"
+                        style="color: rgba(255, 255, 255, 0.8)">1.2 MB</span
+                      >
+                    </div>
+                  </div>
+                  <div
+                    class="portal-file-card"
+                    style="background: var(--accent)"
+                  >
+                    <div class="file-icon" style="color: var(--primary)">
+                      📋
+                    </div>
+                    <div class="file-info">
+                      <span class="file-name">Pautas_Suplementos</span>
+                      <span class="file-size">Nuevo archivo</span>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
 
-      
-      <div class="feature-row reveal" id="academia">
-        <div class="feature-text">
-          <span
-            class="web-inicial-tag"
-            style="color: var(--button-cta); margin-bottom: 8px"
-            >Ingresos Pasivos y Escalabilidad</span
-          >
-          <h3>Escala tus ingresos con tu propia Academia Online</h3>
-          <p>
-            El techo de tu facturación son tus horas disponibles. Deja de
-            depender exclusivamente de las consultas 1 a 1 y empaqueta tu
-            conocimiento. Crea cursos, retos nutricionales o programas grupales
-            y monetiza tu experiencia las 24 horas del día.
-          </p>
-          <ul class="feature-list">
-            <li>
-              <strong>Alojamiento integral 100% tuyo:</strong> Olvídate de pagar
-              comisiones a plataformas externas (como Hotmart, Teachable o
-              Vimeo). Todo vive en tu web.
-            </li>
-            <li>
-              <strong>Membresías y pagos recurrentes:</strong> Configura cobros
-              automáticos mensuales para generar ingresos predecibles de tu
-              comunidad privada.
-            </li>
-            <li>
-              <strong>Experiencia gamificada:</strong> Control de progreso
-              visual, lecciones bloqueadas y certificados para que tus pacientes
-              completen el programa.
-            </li>
-            <li>
-              <strong>Protección de contenido:</strong> Material blindado y
-              sistema anticopia, accesible única y exclusivamente para alumnos
-              con suscripción activa.
-            </li>
-          </ul>
-        </div>
+        <div class="feature-row reveal" id="academia">
+          <div class="feature-text">
+            <span
+              class="web-inicial-tag"
+              style="color: var(--button-cta); margin-bottom: 8px"
+              >Ingresos Pasivos y Escalabilidad</span
+            >
+            <h3>Escala tus ingresos con tu propia Academia Online</h3>
+            <p>
+              El techo de tu facturación son tus horas disponibles. Deja de
+              depender exclusivamente de las consultas 1 a 1 y empaqueta tu
+              conocimiento. Crea cursos, retos nutricionales o programas
+              grupales y monetiza tu experiencia las 24 horas del día.
+            </p>
+            <ul class="feature-list">
+              <li>
+                <strong>Alojamiento integral 100% tuyo:</strong> Olvídate de pagar
+                comisiones a plataformas externas (como Hotmart, Teachable o Vimeo).
+                Todo vive en tu web.
+              </li>
+              <li>
+                <strong>Membresías y pagos recurrentes:</strong> Configura cobros
+                automáticos mensuales para generar ingresos predecibles de tu comunidad
+                privada.
+              </li>
+              <li>
+                <strong>Experiencia gamificada:</strong> Control de progreso visual,
+                lecciones bloqueadas y certificados para que tus pacientes completen
+                el programa.
+              </li>
+              <li>
+                <strong>Protección de contenido:</strong> Material blindado y sistema
+                anticopia, accesible única y exclusivamente para alumnos con suscripción
+                activa.
+              </li>
+            </ul>
+          </div>
 
-        <div class="feature-visual">
-          
-          <div class="feature-mockup mockup-academia">
-            
-            <div class="academia-sidebar">
-              <div class="academia-course-title">
-                Reto: Desinflamación 21 Días
-              </div>
-              <div class="academia-module">
-                <div class="academia-module-icon done">✓</div>
-                <div class="academia-module-text">
-                  Módulo 1: Bases y compras
+          <div class="feature-visual">
+            <div class="feature-mockup mockup-academia">
+              <div class="academia-sidebar">
+                <div class="academia-course-title">
+                  Reto: Desinflamación 21 Días
                 </div>
-              </div>
-              <div class="academia-module">
-                <div class="academia-module-icon active">2</div>
-                <div class="academia-module-text">
-                  Módulo 2: Ayuno y microbiota
+                <div class="academia-module">
+                  <div class="academia-module-icon done">✓</div>
+                  <div class="academia-module-text">
+                    Módulo 1: Bases y compras
+                  </div>
                 </div>
-              </div>
-              <div class="academia-module locked">
-                <div class="academia-module-icon locked">🔒</div>
-                <div class="academia-module-text">Módulo 3: Mantenimiento</div>
-              </div>
-              <div class="academia-progress-box">
-                <div class="academia-progress-text">
-                  <span>Progreso del paciente</span>
-                  <span>33%</span>
+                <div class="academia-module">
+                  <div class="academia-module-icon active">2</div>
+                  <div class="academia-module-text">
+                    Módulo 2: Ayuno y microbiota
+                  </div>
                 </div>
-                <div class="academia-progress-bar-bg">
-                  <div class="academia-progress-bar-fill"></div>
+                <div class="academia-module locked">
+                  <div class="academia-module-icon locked">🔒</div>
+                  <div class="academia-module-text">
+                    Módulo 3: Mantenimiento
+                  </div>
                 </div>
-              </div>
-            </div>
-
-            
-            <div class="academia-main">
-              <div class="academia-player">
-                <div class="academia-play-glass">
-                  <div class="academia-play-triangle"></div>
-                </div>
-                <div class="academia-player-controls">
-                  <div class="academia-player-timeline">
-                    <div class="academia-player-timeline-fill"></div>
+                <div class="academia-progress-box">
+                  <div class="academia-progress-text">
+                    <span>Progreso del paciente</span>
+                    <span>33%</span>
+                  </div>
+                  <div class="academia-progress-bar-bg">
+                    <div class="academia-progress-bar-fill"></div>
                   </div>
                 </div>
               </div>
-              <div class="academia-lesson-info">
-                <div class="academia-lesson-title">
-                  Lección 2.1: Alimentos Prohibidos
+
+              <div class="academia-main">
+                <div class="academia-player">
+                  <div class="academia-play-glass">
+                    <div class="academia-play-triangle"></div>
+                  </div>
+                  <div class="academia-player-controls">
+                    <div class="academia-player-timeline">
+                      <div class="academia-player-timeline-fill"></div>
+                    </div>
+                  </div>
                 </div>
-                <div class="academia-lesson-meta">
-                  Video • 12 min • Material adjunto
+                <div class="academia-lesson-info">
+                  <div class="academia-lesson-title">
+                    Lección 2.1: Alimentos Prohibidos
+                  </div>
+                  <div class="academia-lesson-meta">
+                    Video • 12 min • Material adjunto
+                  </div>
                 </div>
+                <div class="academia-btn-complete">Marcar como completado</div>
               </div>
-              <div class="academia-btn-complete">Marcar como completado</div>
             </div>
           </div>
         </div>
-      </div>
-      
-      <div class="demo-cta-container reveal" id="contacto">
-        <h3 class="demo-title">
-          ¿Quieres ver la demo del Portal Salud y Módulo Academia?
-        </h3>
-        <p class="demo-text">
-          Indícanoslo en el formulario y obtén acceso exclusivo durante 24
-          horas. Explora todas sus herramientas en profundidad y comprueba cómo
-          transformar, centralizar y automatizar la gestión de pacientes en tu
-          consulta antes de dar el paso definitivo.
-        </p>
-        <a href="#formulario" class="demo-btn"
-          >Rellena tus datos en el formulario</a
-        >
-      </div>
-    </section>
 
-    
-    
-    
-
-    
-    <section id="web-inicial" class="web-inicial">
-      <div class="feature-row reveal web-inicial-row">
-        <div class="web-inicial-content">
-          <span class="web-inicial-tag">Cimientos Digitales</span>
-          <h3 class="web-inicial-title">
-            Diseño Web para Nutricionistas: Capta Pacientes Online
+        <div class="demo-cta-container reveal" id="contacto">
+          <h3 class="demo-title">
+            ¿Quieres ver la demo del Portal Salud y Módulo Academia?
           </h3>
-          <p class="web-inicial-text">
-            Tu consulta necesita una base sólida. Creamos tu plataforma en
-            WordPress optimizada para posicionamiento SEO local y diseñada
-            estratégicamente para convertir visitas en pacientes reales desde el
-            primer día.
+          <p class="demo-text">
+            Indícanoslo en el formulario y obtén acceso exclusivo durante 24
+            horas. Explora todas sus herramientas en profundidad y comprueba
+            cómo transformar, centralizar y automatizar la gestión de pacientes
+            en tu consulta antes de dar el paso definitivo.
           </p>
-          <ul class="feature-list web-inicial-list">
-            <li>
-              Diseño corporativo a medida enfocado en conversión y captación.
-            </li>
-            <li>Velocidad de carga extrema y optimización 100% móvil (WPO).</li>
-            <li>
-              Arquitectura SEO preparada para escalar a portal del paciente.
-            </li>
-            <li>
-              Formación completa para que gestiones tu contenido con autonomía.
-            </li>
-          </ul>
+          <a href="#formulario" class="demo-btn"
+            >Rellena tus datos en el formulario</a
+          >
         </div>
-        <div class="web-inicial-visual">
-          <div class="web-card">
-            
-            <div class="floating-badge badge-left">Optimizado SEO</div>
-            <div class="floating-badge badge-right">Captación Activa</div>
+      </section>
 
-            <div class="web-card-header">
-              <div class="web-card-skeleton long"></div>
-              <div class="web-card-skeleton short"></div>
+      <section id="web-inicial" class="web-inicial">
+        <div class="feature-row reveal web-inicial-row">
+          <div class="web-inicial-content">
+            <span class="web-inicial-tag">Cimientos Digitales</span>
+            <h3 class="web-inicial-title">
+              Diseño Web para Nutricionistas: Capta Pacientes Online
+            </h3>
+            <p class="web-inicial-text">
+              Tu consulta necesita una base sólida. Creamos tu plataforma en
+              WordPress optimizada para posicionamiento SEO local y diseñada
+              estratégicamente para convertir visitas en pacientes reales desde
+              el primer día.
+            </p>
+            <ul class="feature-list web-inicial-list">
+              <li>
+                Diseño corporativo a medida enfocado en conversión y captación.
+              </li>
+              <li>
+                Velocidad de carga extrema y optimización 100% móvil (WPO).
+              </li>
+              <li>
+                Arquitectura SEO preparada para escalar a portal del paciente.
+              </li>
+              <li>
+                Formación completa para que gestiones tu contenido con
+                autonomía.
+              </li>
+            </ul>
+          </div>
+          <div class="web-inicial-visual">
+            <div class="web-card">
+              <div class="floating-badge badge-left">Optimizado SEO</div>
+              <div class="floating-badge badge-right">Captación Activa</div>
+
+              <div class="web-card-header">
+                <div class="web-card-skeleton long"></div>
+                <div class="web-card-skeleton short"></div>
+              </div>
+
+              <div class="web-card-content">
+                <img
+                  src="/nutri/nutricionista.webp"
+                  alt="Diseño de Landing Page para Nutricionistas"
+                  class="web-card-img"
+                />
+
+                <div class="scroll-overlay">
+                  Pasa el ratón para ver la web ↓
+                </div>
+              </div>
+
+              <div class="web-card-buttons">
+                <div class="web-card-btn-1"></div>
+                <div class="web-card-btn-2"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="strategy-section">
+        <div class="strategy-header reveal">
+          <h2>Consultoría Tecnológica: Optimizamos tu Consulta</h2>
+          <p>
+            No solo diseñamos páginas web; estructuramos negocios de salud
+            rentables. Auditamos tus procesos internos para implementar el
+            software clínico que te permita escalar sin multiplicar tus horas de
+            trabajo.
+          </p>
+        </div>
+
+        <div class="strategy-grid reveal">
+          <div class="strategy-card">
+            <div class="strategy-icon">01</div>
+            <h3>Auditoría de Flujos de Trabajo</h3>
+            <p>
+              Estudiamos cómo captas pacientes, gestionas citas y entregas
+              pautas nutricionales para eliminar cuellos de botella y tareas
+              administrativas manuales.
+            </p>
+          </div>
+
+          <div class="strategy-card">
+            <div class="strategy-icon">02</div>
+            <h3>Arquitectura Digital a Medida</h3>
+            <p>
+              Diseñamos un ecosistema tecnológico exclusivo para tu consulta,
+              garantizando que tu web y tu software de gestión se comuniquen a
+              la perfección.
+            </p>
+          </div>
+
+          <div class="strategy-card">
+            <div class="strategy-icon">03</div>
+            <h3>Acompañamiento y Evolución</h3>
+            <p>
+              Tu consulta crece, tu tecnología también. Te guiamos en cada fase
+              de expansión tecnológica para que nunca te quedes estancada ni
+              obsoleta.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="pricing-section" id="inversion">
+        <div class="pricing-header">
+          <h2>Planes de Digitalización: De la Captación a la Automatización</h2>
+          <p>
+            Escoge el punto de partida perfecto para tu consulta. Dos soluciones
+            integrales diseñadas para acompañarte desde tu primera visita online
+            hasta la automatización total de tu negocio.
+          </p>
+        </div>
+
+        <div class="pricing-interactive-grid">
+          <div class="pricing-card-alpha">
+            <div>
+              <h3 class="pricing-card-title">Fase 1: Presencia y Captación</h3>
+              <p class="pricing-card-desc">
+                Diseño Web en WordPress con agenda integrada. El motor perfecto
+                para nutricionistas que necesitan atraer pacientes y
+                profesionalizar su imagen hoy mismo.
+              </p>
+
+              <span class="pricing-card-hint"
+                >Pasa el ratón para ver detalles ↓</span
+              >
+
+              <div class="pricing-content-box">
+                <div class="pricing-reveal-price">
+                  <span class="price-from">Inversión desde</span>
+                  <div class="price-amount">
+                    490€ <span class="price-tax">+ IVA</span>
+                  </div>
+                </div>
+
+                <ul class="pricing-features-list">
+                  <li>Diseño Web corporativo y estratégico (SEO local)</li>
+                  <li>Integración de agenda online de primeras visitas</li>
+                  <li>Formulario de cualificación de pacientes</li>
+                  <li>Inversión inicial accesible para arrancar</li>
+                </ul>
+              </div>
+            </div>
+            <a href="#agendar-consultoria" class="pricing-card-btn"
+              >Solicitar Despegue</a
+            >
+          </div>
+
+          <div class="pricing-card-beta">
+            <span class="pricing-badge-top">La opción definitiva</span>
+            <div>
+              <h3 class="pricing-card-title">Fase 2: Automatización Total</h3>
+              <p class="pricing-card-desc">
+                Plataforma All-in-One. La infraestructura web definitiva para
+                consultas consolidadas que buscan escalar ingresos y automatizar
+                el 100% de su gestión diaria.
+              </p>
+
+              <span class="pricing-card-hint"
+                >Pasa el ratón para ver detalles ↓</span
+              >
+
+              <div class="pricing-content-box">
+                <div class="pricing-reveal-price">
+                  <span class="price-from">Inversión desde</span>
+                  <div class="price-amount">
+                    1.850€ <span class="price-tax">+ IVA</span>
+                  </div>
+                </div>
+
+                <ul class="pricing-features-list">
+                  <li>Todo lo incluido en la Fase 1 (Web optimizada)</li>
+                  <li>Portal del Paciente privado y 100% seguro</li>
+                  <li>Academia virtual y gestión de cobros recurrentes</li>
+                  <li>Sincronización completa con facturación y ERP</li>
+                </ul>
+              </div>
+            </div>
+            <a href="#agendar-consultoria" class="pricing-card-btn"
+              >Elegir Ecosistema Total</a
+            >
+          </div>
+        </div>
+      </section>
+
+      <section class="modular-section" id="modulos">
+        <div class="modular-header reveal">
+          <h2 class="features-title">
+            Ecosistema Escalable: Funcionalidades a la Carta
+          </h2>
+          <p class="features-subtitle">
+            No tienes que encajar en un paquete cerrado. Si ya tienes una base
+            sólida o buscas expandirte en una segunda fase, elige únicamente las
+            funciones tecnológicos que tu consulta necesite hoy.
+          </p>
+        </div>
+
+        <div class="modular-grid reveal">
+          <div class="modular-column">
+            <h3 class="modular-col-title">Consulta Base</h3>
+
+            <div class="modular-item">
+              <div class="modular-item-header">
+                <span class="modular-item-title">Agenda Automática</span>
+                <span class="modular-tag core">Core</span>
+              </div>
+              <p class="modular-item-desc">
+                Tus pacientes consultan tu disponibilidad, reservan y pagan su
+                sesión 24/7 sin que tú intervengas.
+              </p>
+              <div class="modular-benefit">
+                <svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                Ahorra hasta 10 horas semanales de gestión.
+              </div>
             </div>
 
-            <div class="web-card-content">
-              
+            <div class="modular-item">
+              <div class="modular-item-header">
+                <span class="modular-item-title">Facturación ERP</span>
+                <span class="modular-tag core">Core</span>
+              </div>
+              <p class="modular-item-desc">
+                Emisión de facturas automatizada tras cada cobro, conectada
+                directamente a tu software fiscal.
+              </p>
+              <div class="modular-benefit">
+                <svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                Cero errores contables a final de trimestre.
+              </div>
+            </div>
+
+            <div class="modular-item">
+              <div class="modular-item-header">
+                <span class="modular-item-title">Videoconsulta (E2EE)</span>
+                <span class="modular-tag core">Core</span>
+              </div>
+              <p class="modular-item-desc">
+                Sala virtual médica encriptada, sin límite de tiempo ni enlaces
+                de Zoom externos. Todo dentro de tu plataforma.
+              </p>
+              <div class="modular-benefit">
+                <svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <polygon points="23 7 16 12 23 17 23 7"></polygon>
+                  <rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>
+                </svg>
+                Privacidad garantizada e imagen 100% corporativa.
+              </div>
+            </div>
+          </div>
+
+          <div class="modular-column">
+            <h3 class="modular-col-title">Automatización</h3>
+
+            <div class="modular-item">
+              <div class="modular-item-header">
+                <span class="modular-item-title">Admisión Previa</span>
+                <span class="modular-tag addon">Add-on</span>
+              </div>
+              <p class="modular-item-desc">
+                Formularios clínicos y triaje digital que el paciente rellena
+                antes de pisar la consulta.
+              </p>
+              <div class="modular-benefit">
+                <svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path>
+                </svg>
+                Sesiones 100% productivas desde el minuto uno.
+              </div>
+            </div>
+
+            <div class="modular-item">
+              <div class="modular-item-header">
+                <span class="modular-item-title">Diario Clínico</span>
+                <span class="modular-tag addon">Add-on</span>
+              </div>
+              <p class="modular-item-desc">
+                Herramienta para que el paciente registre comidas, síntomas o
+                evolución entre visitas.
+              </p>
+              <div class="modular-benefit">
+                <svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path>
+                </svg>
+                Aumenta drásticamente la adherencia del paciente.
+              </div>
+            </div>
+
+            <div class="modular-item">
+              <div class="modular-item-header">
+                <span class="modular-item-title">Archivos y Gráficas</span>
+                <span class="modular-tag addon">Add-on</span>
+              </div>
+              <p class="modular-item-desc">
+                Repositorio privado para entregar pautas nutricionales y
+                visualizar la evolución antropométrica de forma interactiva.
+              </p>
+              <div class="modular-benefit">
+                <svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M3 3v18h18"></path>
+                  <path d="M18 17V9"></path>
+                  <path d="M13 17V5"></path>
+                  <path d="M8 17v-3"></path>
+                </svg>
+                Tangibiliza resultados y eleva la motivación visual.
+              </div>
+            </div>
+          </div>
+
+          <div class="modular-column">
+            <h3 class="modular-col-title">Expansión</h3>
+
+            <div class="modular-item">
+              <div class="modular-item-header">
+                <span class="modular-item-title">Membresías</span>
+                <span class="modular-tag addon">Add-on</span>
+              </div>
+              <p class="modular-item-desc">
+                Gestión integral de suscripciones mensuales, cobros recurrentes
+                y accesos privados a tu contenido.
+              </p>
+              <div class="modular-benefit">
+                <svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <line x1="12" y1="1" x2="12" y2="23"></line>
+                  <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"
+                  ></path>
+                </svg>
+                Ingresos predecibles sin depender de citas 1 a 1.
+              </div>
+            </div>
+
+            <div class="modular-item">
+              <div class="modular-item-header">
+                <span class="modular-item-title">Firma Legal (RGPD)</span>
+                <span class="modular-tag addon">Add-on</span>
+              </div>
+              <p class="modular-item-desc">
+                Plataforma integrada de firma electrónica para consentimientos y
+                documentos médicos legales.
+              </p>
+              <div class="modular-benefit">
+                <svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <line x1="12" y1="1" x2="12" y2="23"></line>
+                  <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"
+                  ></path>
+                </svg>
+                Cobertura absoluta ante la normativa europea.
+              </div>
+            </div>
+
+            <div class="modular-item">
+              <div class="modular-item-header">
+                <span class="modular-item-title">Asistente Clínico IA</span>
+                <span
+                  class="modular-tag addon"
+                  style="background: var(--primary)">Extra</span
+                >
+              </div>
+              <p class="modular-item-desc">
+                Inteligencia Artificial integrada para estructurar dietas base,
+                interpretar analíticas y redactar informes en segundos.
+              </p>
+              <div class="modular-benefit">
+                <svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"
+                  ></polygon>
+                </svg>
+                Reduce el trabajo administrativo a la mitad.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="about-editorial" id="sobre-mi">
+        <div class="about-container reveal">
+          <div class="about-visual">
+            <div class="about-image-arch">
               <img
-                src="/nutri/nutricionista.webp"
-                alt="Diseño de Landing Page para Nutricionistas"
-                class="web-card-img"
+                src="/nutri/perfil.webp"
+                alt="María Nadal - Especialista en digitalización de consultas"
+                class="about-img"
               />
-
-              
-              <div class="scroll-overlay">Pasa el ratón para ver la web ↓</div>
             </div>
+            <div class="about-decoration-dot"></div>
+          </div>
 
-            <div class="web-card-buttons">
-              <div class="web-card-btn-1"></div>
-              <div class="web-card-btn-2"></div>
+          <div class="about-text-content">
+            <span class="about-tag">Tu Socia Tecnológica</span>
+            <h2 class="about-title">
+              Hola, soy María. Y entiendo los números de tu consulta.
+            </h2>
+
+            <p class="about-paragraph">
+              La mayoría de agencias te entregan una web "bonita", te cobran y
+              desaparecen. Yo creé <strong>MN Design Web</strong> con una filosofía
+              radicalmente distinta: construir herramientas tecnológicas que de verdad
+              te devuelvan el tiempo.
+            </p>
+
+            <p class="about-paragraph">
+              Esta visión no es casualidad. Antes de fundar mi propia agencia,
+              trabajé en otras empresas del sector, viendo de primera mano los
+              errores técnicos y estratégicos que frenan a los profesionales de
+              la salud. Conozco perfectamente el caos de usar cinco herramientas
+              distintas, las horas perdidas cuadrando agendas por WhatsApp y la
+              frustración de tener plataformas que ni tú ni tus pacientes sabéis
+              usar.
+            </p>
+
+            <p class="about-paragraph">
+              Hoy aplicamos todo ese aprendizaje para ir mucho más allá del
+              diseño web. Creamos <strong
+                >ecosistemas digitales completos y centralizados</strong
+              >. Desde la captación inicial optimizada para SEO, hasta la
+              integración de sistemas de reservas, portales privados para
+              pacientes y academias online. Todo en tu propio dominio, para que
+              puedas escalar tu facturación sin vivir pegada a la pantalla.
+            </p>
+
+            <div class="about-signature">María Nadal</div>
+            <div class="about-role">CEO de MN Design Web</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="reviews-section" id="testimonios">
+        <div class="reviews-header reveal">
+          <h2>Consultas que ya han dado el salto</h2>
+          <p>
+            Resultados reales de profesionales de la salud que han digitalizado
+            su consulta.
+          </p>
+        </div>
+        <div class="reviews-grid reveal">
+          <div class="review-card">
+            <div class="review-stars">★★★★★</div>
+            <p class="review-text">
+              "Antes perdía horas cada semana gestionando citas por WhatsApp.
+              Desde que María integró la agenda y el portal, mis pacientes
+              reservan solos y yo me dedico 100% a pasar consulta. Una inversión
+              que se paga sola."
+            </p>
+            <div class="review-author">
+              <strong>Laura M.</strong>
+              <span>Nutricionista consulta</span>
+            </div>
+          </div>
+          <div class="review-card">
+            <div class="review-stars">★★★★★</div>
+            <p class="review-text">
+              "Tenía miedo de que la tecnología fuera muy compleja para mí. El
+              diseño es súper intuitivo, cargan rapidísimo y el soporte de MN
+              Design Web es impecable. He triplicado mis primeras visitas
+              online."
+            </p>
+            <div class="review-author">
+              <strong>Carlos G.</strong>
+              <span>Dietista Deportivo</span>
+            </div>
+          </div>
+          <div class="review-card">
+            <div class="review-stars">★★★★★</div>
+            <p class="review-text">
+              "El módulo de membresías cambió mi negocio. Ahora tengo un grupo
+              de pacientes con suscripción mensual para mis menús y el cobro se
+              hace en piloto automático. Brutal."
+            </p>
+            <div class="review-author">
+              <strong>Elena R.</strong>
+              <span>Psiconutricionista</span>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    
-    <section class="strategy-section">
-      <div class="strategy-header reveal">
-        <h2>Consultoría Tecnológica: Optimizamos tu Consulta</h2>
-        <p>
-          No solo diseñamos páginas web; estructuramos negocios de salud
-          rentables. Auditamos tus procesos internos para implementar el
-          software clínico que te permita escalar sin multiplicar tus horas de
-          trabajo.
-        </p>
-      </div>
+      <section class="contact-section" id="agendar-consultoria">
+        <div class="contact-grid reveal">
+          <div class="contact-left-col">
+            <h2 class="contact-main-title">
+              Da el paso definitivo para digitalizar tu consulta
+            </h2>
 
-      <div class="strategy-grid reveal">
-        <div class="strategy-card">
-          <div class="strategy-icon">01</div>
-          <h3>Auditoría de Flujos de Trabajo</h3>
-          <p>
-            Estudiamos cómo captas pacientes, gestionas citas y entregas pautas
-            nutricionales para eliminar cuellos de botella y tareas
-            administrativas manuales.
-          </p>
-        </div>
+            <div class="cal-widget">
+              <iframe
+                src="https://cal.com/mndesignweb/reunion-30-min?embed=true"
+                title="Reserva tu cita"
+                class="calendar-iframe"
+                width="100%"
+                height="100%"
+                frameborder="0"
+                loading="lazy"
+              >
+              </iframe>
+            </div>
 
-        <div class="strategy-card">
-          <div class="strategy-icon">02</div>
-          <h3>Arquitectura Digital a Medida</h3>
-          <p>
-            Diseñamos un ecosistema tecnológico exclusivo para tu consulta,
-            garantizando que tu web y tu software de gestión se comuniquen a la
-            perfección.
-          </p>
-        </div>
+            <div class="contact-info-box">
+              <h4>
+                <i class="fa-solid fa-video"></i> ¿Qué haremos en esta sesión?
+              </h4>
+              <p>
+                Analizaremos en directo tus cuellos de botella actuales, cómo
+                automatizar la captación de pacientes y la viabilidad técnica de
+                integrar tu propio ecosistema a medida. ¡Sin compromisos!
+              </p>
+            </div>
+          </div>
 
-        <div class="strategy-card">
-          <div class="strategy-icon">03</div>
-          <h3>Acompañamiento y Evolución</h3>
-          <p>
-            Tu consulta crece, tu tecnología también. Te guiamos en cada fase de
-            expansión tecnológica para que nunca te quedes estancada ni
-            obsoleta.
-          </p>
-        </div>
-      </div>
-    </section>
+          <div class="contact-right-col">
+            <div class="contact-form-wrapper">
+              <h3>Solicitar Auditoría</h3>
+              <p class="contact-form-subtitle">
+                O si lo prefieres, cuéntame los detalles de tu proyecto por
+                escrito y te contactaré con un análisis previo.
+              </p>
 
-    
-    
-    
-
-    
-    <section class="pricing-section" id="inversion">
-      <div class="pricing-header">
-        <h2>Planes de Digitalización: De la Captación a la Automatización</h2>
-        <p>
-          Escoge el punto de partida perfecto para tu consulta. Dos soluciones
-          integrales diseñadas para acompañarte desde tu primera visita online
-          hasta la automatización total de tu negocio.
-        </p>
-      </div>
-
-      <div class="pricing-interactive-grid">
-        <div class="pricing-card-alpha">
-          <div>
-            <h3 class="pricing-card-title">Fase 1: Presencia y Captación</h3>
-            <p class="pricing-card-desc">
-              Diseño Web en WordPress con agenda integrada. El motor perfecto
-              para nutricionistas que necesitan atraer pacientes y
-              profesionalizar su imagen hoy mismo.
-            </p>
-
-            <span class="pricing-card-hint"
-              >Pasa el ratón para ver detalles ↓</span
-            >
-
-            <div class="pricing-content-box">
-              <div class="pricing-reveal-price">
-                <span class="price-from">Inversión desde</span>
-                <div class="price-amount">
-                  490€ <span class="price-tax">+ IVA</span>
+              <form id="formulario" class="custom-form">
+                <div class="form-group">
+                  <label for="nombre">Nombre o nombre de la consulta</label>
+                  <input
+                    type="text"
+                    id="nombre"
+                    name="nombre"
+                    required
+                    placeholder="Ej. consulta NutriSana"
+                  />
                 </div>
-              </div>
 
-              <ul class="pricing-features-list">
-                <li>Diseño Web corporativo y estratégico (SEO local)</li>
-                <li>Integración de agenda online de primeras visitas</li>
-                <li>Formulario de cualificación de pacientes</li>
-                <li>Inversión inicial accesible para arrancar</li>
-              </ul>
-            </div>
-          </div>
-          <a href="#agendar-consultoria" class="pricing-card-btn"
-            >Solicitar Despegue</a
-          >
-        </div>
-
-        <div class="pricing-card-beta">
-          <span class="pricing-badge-top">La opción definitiva</span>
-          <div>
-            <h3 class="pricing-card-title">Fase 2: Automatización Total</h3>
-            <p class="pricing-card-desc">
-              Plataforma All-in-One. La infraestructura web definitiva para
-              consultas consolidadas que buscan escalar ingresos y automatizar
-              el 100% de su gestión diaria.
-            </p>
-
-            <span class="pricing-card-hint"
-              >Pasa el ratón para ver detalles ↓</span
-            >
-
-            <div class="pricing-content-box">
-              <div class="pricing-reveal-price">
-                <span class="price-from">Inversión desde</span>
-                <div class="price-amount">
-                  1.850€ <span class="price-tax">+ IVA</span>
+                <div class="form-group">
+                  <label for="email">Correo electrónico</label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    required
+                    placeholder="hola@tuclinica.com"
+                  />
                 </div>
-              </div>
 
-              <ul class="pricing-features-list">
-                <li>Todo lo incluido en la Fase 1 (Web optimizada)</li>
-                <li>Portal del Paciente privado y 100% seguro</li>
-                <li>Academia virtual y gestión de cobros recurrentes</li>
-                <li>Sincronización completa con facturación y ERP</li>
-              </ul>
-            </div>
-          </div>
-          <a href="#agendar-consultoria" class="pricing-card-btn"
-            >Elegir Ecosistema Total</a
-          >
-        </div>
-      </div>
-    </section>
+                <div class="form-group">
+                  <label for="telefono">Teléfono (WhatsApp)</label>
+                  <input
+                    type="tel"
+                    id="telefono"
+                    name="telefono"
+                    required
+                    placeholder="+34 600 000 000"
+                  />
+                </div>
 
-    
-    <section class="modular-section" id="modulos">
-      <div class="modular-header reveal">
-        <h2 class="features-title">
-          Ecosistema Escalable: Funcionalidades a la Carta
-        </h2>
-        <p class="features-subtitle">
-          No tienes que encajar en un paquete cerrado. Si ya tienes una base
-          sólida o buscas expandirte en una segunda fase, elige únicamente las
-          funciones tecnológicos que tu consulta necesite hoy.
-        </p>
-      </div>
+                <div class="form-group">
+                  <label for="mensaje">Háblame de tu proyecto</label>
+                  <textarea
+                    id="mensaje"
+                    name="mensaje"
+                    rows="5"
+                    required
+                    placeholder="¿Cuántos pacientes atiendes? ¿Qué herramientas usas ahora mismo? ¿Qué necesitas digitalizar urgente?"
+                  ></textarea>
+                </div>
 
-      <div class="modular-grid reveal">
-        
-        <div class="modular-column">
-          <h3 class="modular-col-title">Consulta Base</h3>
+                <button type="submit" id="btn-submit" class="form-submit-btn">
+                  Enviar solicitud de auditoría
+                  <i class="fa-solid fa-paper-plane"></i>
+                </button>
 
-          <div class="modular-item">
-            <div class="modular-item-header">
-              <span class="modular-item-title">Agenda Automática</span>
-              <span class="modular-tag core">Core</span>
-            </div>
-            <p class="modular-item-desc">
-              Tus pacientes consultan tu disponibilidad, reservan y pagan su
-              sesión 24/7 sin que tú intervengas.
-            </p>
-            <div class="modular-benefit">
-              <svg
-                width="14"
-                height="14"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2.5"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <polyline points="20 6 9 17 4 12"></polyline>
-              </svg>
-              Ahorra hasta 10 horas semanales de gestión.
-            </div>
-          </div>
-
-          <div class="modular-item">
-            <div class="modular-item-header">
-              <span class="modular-item-title">Facturación ERP</span>
-              <span class="modular-tag core">Core</span>
-            </div>
-            <p class="modular-item-desc">
-              Emisión de facturas automatizada tras cada cobro, conectada
-              directamente a tu software fiscal.
-            </p>
-            <div class="modular-benefit">
-              <svg
-                width="14"
-                height="14"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2.5"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <polyline points="20 6 9 17 4 12"></polyline>
-              </svg>
-              Cero errores contables a final de trimestre.
-            </div>
-          </div>
-
-          
-          <div class="modular-item">
-            <div class="modular-item-header">
-              <span class="modular-item-title">Videoconsulta (E2EE)</span>
-              <span class="modular-tag core">Core</span>
-            </div>
-            <p class="modular-item-desc">
-              Sala virtual médica encriptada, sin límite de tiempo ni enlaces de
-              Zoom externos. Todo dentro de tu plataforma.
-            </p>
-            <div class="modular-benefit">
-              <svg
-                width="14"
-                height="14"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2.5"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <polygon points="23 7 16 12 23 17 23 7"></polygon>
-                <rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>
-              </svg>
-              Privacidad garantizada e imagen 100% corporativa.
+                <div class="form-security-note">
+                  <i class="fa-solid fa-lock"></i> Analizaré tu caso personalmente
+                  de forma 100% confidencial.
+                </div>
+              </form>
             </div>
           </div>
         </div>
+      </section>
 
-        
-        <div class="modular-column">
-          <h3 class="modular-col-title">Automatización</h3>
-
-          <div class="modular-item">
-            <div class="modular-item-header">
-              <span class="modular-item-title">Admisión Previa</span>
-              <span class="modular-tag addon">Add-on</span>
-            </div>
-            <p class="modular-item-desc">
-              Formularios clínicos y triaje digital que el paciente rellena
-              antes de pisar la consulta.
-            </p>
-            <div class="modular-benefit">
-              <svg
-                width="14"
-                height="14"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2.5"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path>
-              </svg>
-              Sesiones 100% productivas desde el minuto uno.
-            </div>
-          </div>
-
-          <div class="modular-item">
-            <div class="modular-item-header">
-              <span class="modular-item-title">Diario Clínico</span>
-              <span class="modular-tag addon">Add-on</span>
-            </div>
-            <p class="modular-item-desc">
-              Herramienta para que el paciente registre comidas, síntomas o
-              evolución entre visitas.
-            </p>
-            <div class="modular-benefit">
-              <svg
-                width="14"
-                height="14"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2.5"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path>
-              </svg>
-              Aumenta drásticamente la adherencia del paciente.
-            </div>
-          </div>
-
-          
-          <div class="modular-item">
-            <div class="modular-item-header">
-              <span class="modular-item-title">Archivos y Gráficas</span>
-              <span class="modular-tag addon">Add-on</span>
-            </div>
-            <p class="modular-item-desc">
-              Repositorio privado para entregar pautas nutricionales y
-              visualizar la evolución antropométrica de forma interactiva.
-            </p>
-            <div class="modular-benefit">
-              <svg
-                width="14"
-                height="14"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2.5"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <path d="M3 3v18h18"></path>
-                <path d="M18 17V9"></path>
-                <path d="M13 17V5"></path>
-                <path d="M8 17v-3"></path>
-              </svg>
-              Tangibiliza resultados y eleva la motivación visual.
-            </div>
-          </div>
-        </div>
-
-        
-        <div class="modular-column">
-          <h3 class="modular-col-title">Expansión</h3>
-
-          <div class="modular-item">
-            <div class="modular-item-header">
-              <span class="modular-item-title">Membresías</span>
-              <span class="modular-tag addon">Add-on</span>
-            </div>
-            <p class="modular-item-desc">
-              Gestión integral de suscripciones mensuales, cobros recurrentes y
-              accesos privados a tu contenido.
-            </p>
-            <div class="modular-benefit">
-              <svg
-                width="14"
-                height="14"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2.5"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <line x1="12" y1="1" x2="12" y2="23"></line>
-                <path
-                  d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"
-                ></path>
-              </svg>
-              Ingresos predecibles sin depender de citas 1 a 1.
-            </div>
-          </div>
-
-          <div class="modular-item">
-            <div class="modular-item-header">
-              <span class="modular-item-title">Firma Legal (RGPD)</span>
-              <span class="modular-tag addon">Add-on</span>
-            </div>
-            <p class="modular-item-desc">
-              Plataforma integrada de firma electrónica para consentimientos y
-              documentos médicos legales.
-            </p>
-            <div class="modular-benefit">
-              <svg
-                width="14"
-                height="14"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2.5"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <line x1="12" y1="1" x2="12" y2="23"></line>
-                <path
-                  d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"
-                ></path>
-              </svg>
-              Cobertura absoluta ante la normativa europea.
-            </div>
-          </div>
-
-          
-          <div class="modular-item">
-            <div class="modular-item-header">
-              <span class="modular-item-title">Asistente Clínico IA</span>
-              <span class="modular-tag addon" style="background: var(--primary)"
-                >Extra</span
-              >
-            </div>
-            <p class="modular-item-desc">
-              Inteligencia Artificial integrada para estructurar dietas base,
-              interpretar analíticas y redactar informes en segundos.
-            </p>
-            <div class="modular-benefit">
-              <svg
-                width="14"
-                height="14"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2.5"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <polygon
-                  points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"
-                ></polygon>
-              </svg>
-              Reduce el trabajo administrativo a la mitad.
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    
-    
-    
-    <section class="about-editorial" id="sobre-mi">
-      <div class="about-container reveal">
-        <div class="about-visual">
-          <div class="about-image-arch">
-            
-            <img
-              src="/nutri/perfil.webp"
-              alt="María Nadal - Especialista en digitalización de consultas"
-              class="about-img"
-            />
-          </div>
-          <div class="about-decoration-dot"></div>
-        </div>
-
-        <div class="about-text-content">
-          <span class="about-tag">Tu Socia Tecnológica</span>
-          <h2 class="about-title">
-            Hola, soy María. Y entiendo los números de tu consulta.
-          </h2>
-
-          <p class="about-paragraph">
-            La mayoría de agencias te entregan una web "bonita", te cobran y desaparecen. Yo creé <strong>MN Design Web</strong> con una filosofía radicalmente distinta: construir herramientas tecnológicas que de verdad te devuelvan el tiempo.
+      <section class="faq-section" id="faq">
+        <div class="faq-header reveal">
+          <h2>Preguntas Frecuentes</h2>
+          <p>
+            Transparencia total. Resolvemos tus dudas antes de empezar a
+            digitalizar tu clínica.
           </p>
-
-          <p class="about-paragraph">
-            Esta visión no es casualidad. Antes de fundar mi propia agencia, trabajé en otras empresas del sector, viendo de primera mano los errores técnicos y estratégicos que frenan a los profesionales de la salud. Conozco perfectamente el caos de usar cinco herramientas distintas, las horas perdidas cuadrando agendas por WhatsApp y la frustración de tener plataformas que ni tú ni tus pacientes sabéis usar.
-          </p>
-
-          <p class="about-paragraph">
-            Hoy aplicamos todo ese aprendizaje para ir mucho más allá del diseño web. Creamos <strong>ecosistemas digitales completos y centralizados</strong>. Desde la captación inicial optimizada para SEO, hasta la integración de sistemas de reservas, portales privados para pacientes y academias online. Todo en tu propio dominio, para que puedas escalar tu facturación sin vivir pegada a la pantalla.
-          </p>
-
-          <div class="about-signature">María Nadal</div>
-          <div class="about-role">CEO de MN Design Web</div>
-        </div>
-      </div>
-    </section>
-    
-    
-    
-    <section class="reviews-section" id="testimonios">
-      <div class="reviews-header reveal">
-        <h2>Consultas que ya han dado el salto</h2>
-        <p>
-          Resultados reales de profesionales de la salud que han digitalizado su
-          consulta.
-        </p>
-      </div>
-      <div class="reviews-grid reveal">
-        <div class="review-card">
-          <div class="review-stars">★★★★★</div>
-          <p class="review-text">
-            "Antes perdía horas cada semana gestionando citas por WhatsApp.
-            Desde que María integró la agenda y el portal, mis pacientes
-            reservan solos y yo me dedico 100% a pasar consulta. Una inversión
-            que se paga sola."
-          </p>
-          <div class="review-author">
-            <strong>Laura M.</strong>
-            <span>Nutricionista consulta</span>
-          </div>
-        </div>
-        <div class="review-card">
-          <div class="review-stars">★★★★★</div>
-          <p class="review-text">
-            "Tenía miedo de que la tecnología fuera muy compleja para mí. El
-            diseño es súper intuitivo, cargan rapidísimo y el soporte de MN
-            Design Web es impecable. He triplicado mis primeras visitas online."
-          </p>
-          <div class="review-author">
-            <strong>Carlos G.</strong>
-            <span>Dietista Deportivo</span>
-          </div>
-        </div>
-        <div class="review-card">
-          <div class="review-stars">★★★★★</div>
-          <p class="review-text">
-            "El módulo de membresías cambió mi negocio. Ahora tengo un grupo de
-            pacientes con suscripción mensual para mis menús y el cobro se hace
-            en piloto automático. Brutal."
-          </p>
-          <div class="review-author">
-            <strong>Elena R.</strong>
-            <span>Psiconutricionista</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    
-    
-    
-    <section class="contact-section" id="agendar-consultoria">
-      <div class="contact-grid reveal">
-        
-        <div class="contact-left-col">
-          <h2 class="contact-main-title">
-            Da el paso definitivo para digitalizar tu consulta
-          </h2>
-
-          <div class="cal-widget">
-            <iframe
-              src="https://cal.com/mndesignweb/reunion-30-min?embed=true"
-              title="Reserva tu cita"
-              class="calendar-iframe"
-              width="100%"
-              height="100%"
-              frameborder="0"
-              loading="lazy"
-            >
-            </iframe>
-          </div>
-
-          <div class="contact-info-box">
-            <h4>
-              <i class="fa-solid fa-video"></i> ¿Qué haremos en esta sesión?
-            </h4>
-            <p>
-              Analizaremos en directo tus cuellos de botella actuales, cómo
-              automatizar la captación de pacientes y la viabilidad técnica de
-              integrar tu propio ecosistema a medida. ¡Sin compromisos!
-            </p>
-          </div>
         </div>
 
-        
-        <div class="contact-right-col">
-          <div class="contact-form-wrapper">
-            <h3>Solicitar Auditoría</h3>
-            <p class="contact-form-subtitle">
-              O si lo prefieres, cuéntame los detalles de tu proyecto por
-              escrito y te contactaré con un análisis previo.
-            </p>
+        <div class="faq-container reveal">
+          <details class="faq-item">
+            <summary>
+              ¿En qué os diferenciáis de una agencia de diseño web tradicional?
+              <span class="faq-icon">+</span>
+            </summary>
+            <div class="faq-content">
+              <p>
+                Las agencias generalistas hacen webs bonitas; yo diseño
+                ecosistemas de salud. Entiendo cómo funciona la normativa RGPD
+                para datos médicos, qué necesita un software clínico (ERP) para
+                sincronizarse y cómo debe fluir un paciente para reservar sin
+                fricción. Hablamos tu mismo idioma desde el minuto uno.
+              </p>
+            </div>
+          </details>
 
-            <form id="formulario" class="custom-form">
-              <div class="form-group">
-                <label for="nombre">Nombre o nombre de la consulta</label>
-                <input
-                  type="text"
-                  id="nombre"
-                  name="nombre"
-                  required
-                  placeholder="Ej. consulta NutriSana"
-                />
-              </div>
+          <details class="faq-item">
+            <summary>
+              ¿Tendré que pagar cuotas ocultas o depender de ti para cada
+              cambio?
+              <span class="faq-icon">+</span>
+            </summary>
+            <div class="faq-content">
+              <p>
+                Cero secuestros digitales. La web y la infraestructura son 100%
+                tuyas. Te entrego el proyecto "llave en mano" con
+                videotutoriales grabados sobre tu propia plataforma para que tú
+                y tu equipo podáis modificar textos, subir dietas o gestionar
+                agendas con total autonomía.
+              </p>
+            </div>
+          </details>
 
-              <div class="form-group">
-                <label for="email">Correo electrónico</label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  required
-                  placeholder="hola@tuclinica.com"
-                />
-              </div>
+          <details class="faq-item">
+            <summary>
+              He tenido malas experiencias con plazos, ¿cuánto tardaremos en
+              lanzar? <span class="faq-icon">+</span>
+            </summary>
+            <div class="faq-content">
+              <p>
+                Trabajo con metodologías ágiles y fechas bloqueadas por
+                contrato. Una Fase 1 (Web y Agenda) suele estar lista en 3-4
+                semanas desde que recibimos tu material. Si optamos por el
+                Ecosistema Total, el cronograma es de 6 a 8 semanas. Sin
+                retrasos, sorpresas ni excusas.
+              </p>
+            </div>
+          </details>
 
-              <div class="form-group">
-                <label for="telefono">Teléfono (WhatsApp)</label>
-                <input
-                  type="tel"
-                  id="telefono"
-                  name="telefono"
-                  required
-                  placeholder="+34 600 000 000"
-                />
-              </div>
+          <details class="faq-item">
+            <summary>
+              Mis pacientes no son muy tecnológicos, ¿les costará usar el
+              portal?
+              <span class="faq-icon">+</span>
+            </summary>
+            <div class="faq-content">
+              <p>
+                Diseño pensando en la "paciencia cero" del usuario. La interfaz
+                móvil de reservas y el portal del paciente están creados con la
+                máxima usabilidad (UX/UI). Si tus pacientes saben enviar un
+                mensaje por WhatsApp, sabrán entrar a su videoconsulta,
+                descargar su dieta o pagar su suscripción en un par de clics.
+              </p>
+            </div>
+          </details>
 
-              <div class="form-group">
-                <label for="mensaje">Háblame de tu proyecto</label>
-                <textarea
-                  id="mensaje"
-                  name="mensaje"
-                  rows="5"
-                  required
-                  placeholder="¿Cuántos pacientes atiendes? ¿Qué herramientas usas ahora mismo? ¿Qué necesitas digitalizar urgente?"
-                ></textarea>
-              </div>
-
-              <button type="submit" id="btn-submit" class="form-submit-btn">
-                Enviar solicitud de auditoría
-                <i class="fa-solid fa-paper-plane"></i>
-              </button>
-
-              <div class="form-security-note">
-                <i class="fa-solid fa-lock"></i> Analizaré tu caso personalmente
-                de forma 100% confidencial.
-              </div>
-            </form>
-          </div>
+          <details class="faq-item">
+            <summary>
+              ¿Qué pasa si la web se cae o tengo un problema tras el
+              lanzamiento?
+              <span class="faq-icon">+</span>
+            </summary>
+            <div class="faq-content">
+              <p>
+                No te dejo sola frente a una pantalla en blanco. Ofrezco planes
+                opcionales de soporte y mantenimiento técnico donde me encargo
+                de las actualizaciones, seguridad y resolución de incidencias.
+                Tu único trabajo es pasar consulta; del código y los servidores
+                me encargo yo.
+              </p>
+            </div>
+          </details>
         </div>
-      </div>
-    </section>
+      </section>
+    </main>
 
-    
-    
-    
-    <section class="faq-section" id="faq">
-      <div class="faq-header reveal">
-        <h2>Preguntas Frecuentes</h2>
-        <p>
-          Transparencia total. Resolvemos tus dudas antes de empezar a
-          digitalizar tu clínica.
-        </p>
-      </div>
-
-      <div class="faq-container reveal">
-        
-        <details class="faq-item">
-          <summary>
-            ¿En qué os diferenciáis de una agencia de diseño web tradicional?
-            <span class="faq-icon">+</span>
-          </summary>
-          <div class="faq-content">
-            <p>
-              Las agencias generalistas hacen webs bonitas; yo diseño
-              ecosistemas de salud. Entiendo cómo funciona la normativa RGPD
-              para datos médicos, qué necesita un software clínico (ERP) para
-              sincronizarse y cómo debe fluir un paciente para reservar sin
-              fricción. Hablamos tu mismo idioma desde el minuto uno.
-            </p>
-          </div>
-        </details>
-
-        
-        <details class="faq-item">
-          <summary>
-            ¿Tendré que pagar cuotas ocultas o depender de ti para cada cambio?
-            <span class="faq-icon">+</span>
-          </summary>
-          <div class="faq-content">
-            <p>
-              Cero secuestros digitales. La web y la infraestructura son 100%
-              tuyas. Te entrego el proyecto "llave en mano" con videotutoriales
-              grabados sobre tu propia plataforma para que tú y tu equipo podáis
-              modificar textos, subir dietas o gestionar agendas con total
-              autonomía.
-            </p>
-          </div>
-        </details>
-
-        
-        <details class="faq-item">
-          <summary>
-            He tenido malas experiencias con plazos, ¿cuánto tardaremos en
-            lanzar? <span class="faq-icon">+</span>
-          </summary>
-          <div class="faq-content">
-            <p>
-              Trabajo con metodologías ágiles y fechas bloqueadas por contrato.
-              Una Fase 1 (Web y Agenda) suele estar lista en 3-4 semanas desde
-              que recibimos tu material. Si optamos por el Ecosistema Total, el
-              cronograma es de 6 a 8 semanas. Sin retrasos, sorpresas ni
-              excusas.
-            </p>
-          </div>
-        </details>
-
-        
-        <details class="faq-item">
-          <summary>
-            Mis pacientes no son muy tecnológicos, ¿les costará usar el portal?
-            <span class="faq-icon">+</span>
-          </summary>
-          <div class="faq-content">
-            <p>
-              Diseño pensando en la "paciencia cero" del usuario. La interfaz
-              móvil de reservas y el portal del paciente están creados con la
-              máxima usabilidad (UX/UI). Si tus pacientes saben enviar un
-              mensaje por WhatsApp, sabrán entrar a su videoconsulta, descargar
-              su dieta o pagar su suscripción en un par de clics.
-            </p>
-          </div>
-        </details>
-
-        
-        <details class="faq-item">
-          <summary>
-            ¿Qué pasa si la web se cae o tengo un problema tras el lanzamiento?
-            <span class="faq-icon">+</span>
-          </summary>
-          <div class="faq-content">
-            <p>
-              No te dejo sola frente a una pantalla en blanco. Ofrezco planes
-              opcionales de soporte y mantenimiento técnico donde me encargo de
-              las actualizaciones, seguridad y resolución de incidencias. Tu
-              único trabajo es pasar consulta; del código y los servidores me
-              encargo yo.
-            </p>
-          </div>
-        </details>
-      </div>
-    </section>
-
-    
-    
-    
     <footer class="site-footer">
       <div class="footer-floating-container">
         <div class="footer-brand">
@@ -1611,7 +1551,6 @@ import "./style.css";
             recuperen su tiempo.
           </p>
 
-          
           <div class="footer-contact-actions">
             <a
               href="https://wa.me/34645854934"
@@ -1638,7 +1577,9 @@ import "./style.css";
           <h4>Consultas</h4>
           <a href="https://mndesignweb.es/clinicas/">Clínicas</a>
           <a href="https://mndesignweb.es/psicologos/">Psicólogos</a>
-          <a href="https://mndesignweb.es/academia-nutricion/">Academias Online</a>
+          <a href="https://mndesignweb.es/academia-nutricion/"
+            >Academias Online</a
+          >
         </div>
 
         <div class="footer-links-col">
@@ -1652,15 +1593,17 @@ import "./style.css";
       <div class="footer-bottom">
         <p>&copy; 2026 MN Design Web. Todos los derechos reservados.</p>
         <div class="footer-social">
-          <a href="https://www.instagram.com/mndesignweb/"><i class="fa-brands fa-instagram"></i></a>
-          <a href="https://www.linkedin.com/in/mar%C3%ADa-nadal-masi%C3%A1-080a77315/"><i class="fa-brands fa-linkedin-in"></i></a>
+          <a href="https://www.instagram.com/mndesignweb/"
+            ><i class="fa-brands fa-instagram"></i></a
+          >
+          <a
+            href="https://www.linkedin.com/in/mar%C3%ADa-nadal-masi%C3%A1-080a77315/"
+            ><i class="fa-brands fa-linkedin-in"></i></a
+          >
         </div>
       </div>
     </footer>
 
-    
-    
-    
     <div id="cookie-banner" class="cookie-card-uiverse" style="display: none">
       <svg
         xml:space="preserve"
@@ -1687,7 +1630,6 @@ import "./style.css";
       </div>
     </div>
 
-    
     <div id="toast-container" class="toast-container"></div>
 
     <script>
@@ -1695,12 +1637,10 @@ import "./style.css";
       const mobileDropdown = document.getElementById("mobile-dropdown");
       const mobileLinks = mobileDropdown.querySelectorAll("a");
 
-      // Abre y cierra el desplegable
       mobileMenuBtn.addEventListener("click", () => {
         mobileDropdown.classList.toggle("open");
       });
 
-      // Cierra el menú automáticamente al hacer clic en cualquier enlace
       mobileLinks.forEach((link) => {
         link.addEventListener("click", () => {
           mobileDropdown.classList.remove("open");
@@ -1715,40 +1655,37 @@ import "./style.css";
       const revealObserver = new IntersectionObserver(
         (entries, observer) => {
           entries.forEach((entry) => {
-            // Si el elemento entra en la pantalla
             if (entry.isIntersecting) {
               entry.target.classList.add("active");
-              // Dejamos de observarlo para que la animación solo ocurra una vez
+
               observer.unobserve(entry.target);
             }
           });
         },
         {
           root: null,
-          threshold: 0.15, // Se activa cuando el 15% del elemento ya es visible
-          rootMargin: "0px 0px -50px 0px", // Evita que se active antes de tiempo
+          threshold: 0.15,
+          rootMargin: "0px 0px -50px 0px",
         },
       );
 
       revealElements.forEach((el) => revealObserver.observe(el));
 
-      // ==========================================
-      // BANNER DE COOKIES Y CONSENTIMIENTO
-      // ==========================================
       const cookieBanner = document.getElementById("cookie-banner");
       const acceptBtn = document.getElementById("btn-accept-cookies");
       const declineBtn = document.getElementById("btn-decline-cookies");
-      const consent = localStorage.getItem("cookieConsent");
 
-      // Mostrar si no hay consentimiento guardado
+      // CAMBIADO: Usamos cookie_consent
+      const consent = localStorage.getItem("cookie_consent");
+
       if (!consent && cookieBanner) {
         cookieBanner.style.display = "flex";
       }
 
-      // Aceptar Cookies
       if (acceptBtn) {
         acceptBtn.addEventListener("click", () => {
-          localStorage.setItem("cookieConsent", "accepted");
+          // CAMBIADO: Usamos cookie_consent
+          localStorage.setItem("cookie_consent", "accepted");
           cookieBanner.style.display = "none";
           if (typeof gtag === "function") {
             gtag("consent", "update", {
@@ -1763,10 +1700,10 @@ import "./style.css";
         });
       }
 
-      // Rechazar Cookies
       if (declineBtn) {
         declineBtn.addEventListener("click", () => {
-          localStorage.setItem("cookieConsent", "declined");
+          // CAMBIADO: Usamos cookie_consent
+          localStorage.setItem("cookie_consent", "declined");
           cookieBanner.style.display = "none";
           if (typeof gtag === "function") {
             gtag("consent", "update", {
@@ -1779,15 +1716,12 @@ import "./style.css";
         });
       }
 
-      // ==========================================
-      // SISTEMA DE NOTIFICACIONES (TOASTS)
-      // ==========================================
       function mostrarToast(titulo, mensaje, tipo = "success") {
         const container = document.getElementById("toast-container");
         if (!container) return;
 
         const toast = document.createElement("div");
-        // Añade la clase 'toast' y la clase del tipo (success o error)
+
         toast.className = `toast ${tipo}`;
 
         toast.innerHTML = `
@@ -1797,23 +1731,18 @@ import "./style.css";
 
         container.appendChild(toast);
 
-        // Pequeño retardo para que la transición CSS se active correctamente
         setTimeout(() => {
           toast.classList.add("show");
         }, 50);
 
-        // Se oculta y se elimina del DOM después de 5 segundos
         setTimeout(() => {
           toast.classList.remove("show");
           setTimeout(() => {
             toast.remove();
-          }, 400); // Espera a que termine la animación CSS
+          }, 400);
         }, 5000);
       }
 
-      // ==========================================
-      // LÓGICA DE ENVÍO DEL FORMULARIO
-      // ==========================================
       window.addEventListener("DOMContentLoaded", () => {
         const formAuditoria = document.getElementById("formulario");
 
@@ -1823,12 +1752,10 @@ import "./style.css";
 
             const btn = document.getElementById("btn-submit");
 
-            // Estado de carga en el botón
-            btn.innerHTML =
-              'Enviando... <i class="fa-solid fa-spinner fa-spin"></i>';
+            // LIMPIO: Sin iconos de FontAwesome
+            btn.innerHTML = "Enviando...";
             btn.disabled = true;
 
-            // Recopilación de los datos del formulario
             const data = {
               access_key: "1bc2d285-71cb-4fe3-806f-530066ab6e15",
               subject: "Nuevo Lead: Digitalización Clínicas Nutrición",
@@ -1838,7 +1765,6 @@ import "./style.css";
               mensaje: document.getElementById("mensaje").value,
             };
 
-            // Envío simultáneo a Web3Forms y a Make
             Promise.all([
               fetch("https://api.web3forms.com/submit", {
                 method: "POST",
@@ -1860,7 +1786,6 @@ import "./style.css";
               .then(async (results) => {
                 const result = await results[0].json();
                 if (result.success) {
-                  // Eventos de Analítica y Píxeles
                   if (typeof gtag === "function")
                     gtag("event", "generate_lead", {
                       currency: "EUR",
@@ -1870,13 +1795,11 @@ import "./style.css";
                   if (typeof clarity === "function")
                     clarity("set", "lead", "auditoria_nutricion");
 
-                  // Lanzamos el Toast de Éxito
                   mostrarToast(
                     "¡Solicitud recibida con éxito!",
                     "Analizaré tu caso personalmente y te contactaré muy pronto con los siguientes pasos.",
                   );
 
-                  // Reseteamos los campos
                   formAuditoria.reset();
                 } else {
                   throw new Error("Error en la respuesta de la API");
@@ -1884,7 +1807,6 @@ import "./style.css";
               })
               .catch((error) => {
                 console.error("Error en el envío:", error);
-                // Lanzamos el Toast de Error
                 mostrarToast(
                   "Error de envío",
                   "No se ha podido enviar el mensaje. Por favor, comprueba tu conexión o inténtalo más tarde.",
@@ -1892,9 +1814,7 @@ import "./style.css";
                 );
               })
               .finally(() => {
-                // Restauramos el botón a su estado original
-                btn.innerHTML =
-                  'Enviar solicitud de auditoría <i class="fa-solid fa-paper-plane"></i>';
+                btn.innerHTML = "Enviar solicitud de auditoría";
                 btn.disabled = false;
               });
           });

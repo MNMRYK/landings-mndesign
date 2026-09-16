@@ -179,7 +179,8 @@ import "./style.css";
       function gtag() {
         dataLayer.push(arguments);
       }
-      var localConsent = localStorage.getItem("cookieConsent");
+
+      var localConsent = localStorage.getItem("cookie_consent");
       if (localConsent === "accepted") {
         gtag("consent", "default", {
           ad_storage: "granted",
@@ -196,19 +197,14 @@ import "./style.css";
           wait_for_update: 500,
         });
       }
+
+      gtag("js", new Date());
+      gtag("config", "G-36WYJMYT3Z");
     </script>
     <script
       is:inline
       async
       src="https://www.googletagmanager.com/gtag/js?id=G-36WYJMYT3Z"></script>
-    <script is:inline>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
-      gtag("config", "G-36WYJMYT3Z");
-    </script>
 
     <script is:inline>
       !(function (f, b, e, v, n, t, s) {
@@ -235,7 +231,7 @@ import "./style.css";
         "https://connect.facebook.net/en_US/fbevents.js",
       );
 
-      var localConsent = localStorage.getItem("cookieConsent");
+      var localConsent = localStorage.getItem("cookie_consent");
 
       if (localConsent === "accepted") {
         fbq("consent", "grant");
@@ -276,7 +272,7 @@ import "./style.css";
 
         <div class="desktop-cta-container">
           <a
-            href="#contacto"
+            href="#empezar-proyecto"
             class="btn btn-primary"
             style="padding: 10px 24px;">Empezar Proyecto &gt;</a
           >
@@ -305,7 +301,7 @@ import "./style.css";
         <a href="#inversion" class="mobile-link">Inversión</a>
         <a href="#mejoras" class="mobile-link">Mejoras</a>
 
-        <a href="#contacto" class="btn btn-primary mobile-cta-btn"
+        <a href="#empezar-proyecto" class="btn btn-primary mobile-cta-btn"
           >Empezar Proyecto &gt;</a
         >
       </div>
@@ -332,7 +328,9 @@ import "./style.css";
             >
           </div>
 
+          
           <div class="hero-mockup">
+            
             <div class="mockup-float float-left">
               <div
                 style="font-size: 0.875rem; font-weight: 600; margin-bottom: 8px;"
@@ -342,17 +340,19 @@ import "./style.css";
               <div
                 style="display: flex; gap: 12px; align-items: center; margin-bottom: 12px;"
               >
-                <div
-                  class="mockup-skeleton-avatar"
-                  style="width:40px; height:40px;"
-                >
-                </div>
+                
+                <img
+                  src="/avatar-maria.webp"
+                  alt="Paciente María González"
+                  style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 1px solid var(--border-color);"
+                />
+
                 <div>
                   <div style="font-weight: 500; font-size: 0.875rem;">
                     María González
                   </div>
                   <div style="font-size: 0.75rem; color: var(--text-muted);">
-                    Cardiología - 10:30 AM
+                    Dietista - 10:30 AM
                   </div>
                 </div>
               </div>
@@ -364,6 +364,7 @@ import "./style.css";
               </div>
             </div>
 
+            
             <div class="mockup-float float-right">
               <div
                 style="font-size: 0.875rem; color: var(--text-muted); margin-bottom: 4px;"
@@ -401,33 +402,12 @@ import "./style.css";
               </div>
             </div>
 
-            <div class="mockup-main">
-              <div class="mockup-header">
-                <div class="mockup-skeleton-title"></div>
-                <div class="mockup-skeleton-avatar"></div>
-              </div>
-              <div class="mockup-body">
-                <div class="mockup-sidebar">
-                  <div class="mockup-skeleton-line" style="width: 80%"></div>
-                  <div class="mockup-skeleton-line" style="width: 60%"></div>
-                  <div class="mockup-skeleton-line" style="width: 70%"></div>
-                  <div class="mockup-skeleton-line" style="width: 50%"></div>
-                </div>
-                <div class="mockup-content">
-                  <div
-                    style="display: flex; justify-content: space-between; align-items: center;"
-                  >
-                    <div
-                      class="mockup-skeleton-line"
-                      style="width: 40%; height: 24px;"
-                    >
-                    </div>
-                    <div class="mockup-skeleton-line" style="width: 20%"></div>
-                  </div>
-                  <div class="mockup-graph"></div>
-                </div>
-              </div>
-            </div>
+            
+            <img
+              src="/vista-paciente.webp"
+              alt="Interfaz del Portal del Paciente en Tablet"
+              class="mockup-main-image"
+            />
           </div>
         </section>
       </div>
@@ -506,6 +486,7 @@ import "./style.css";
         </div>
 
         <div class="bento-grid">
+          
           <div class="bento-card bento-large" id="agenda">
             <div class="bento-icon">
               <svg
@@ -543,36 +524,18 @@ import "./style.css";
                 incidencias.
               </li>
             </ul>
+
+            
             <div class="bento-visual">
-              <div
-                style="position:absolute; top: 20px; left: 20px; right: 20px; bottom: -20px; background: white; border-radius: 12px; border: 1px solid var(--border-color); box-shadow: var(--shadow-soft); padding: 16px;"
-              >
-                <div style="display: flex; gap: 8px; margin-bottom: 12px;">
-                  <div
-                    style="width: 40px; height: 20px; background: var(--accent-blue); border-radius: 4px;"
-                  >
-                  </div>
-                  <div
-                    style="width: 40px; height: 20px; background: var(--border-color); border-radius: 4px;"
-                  >
-                  </div>
-                  <div
-                    style="width: 40px; height: 20px; background: var(--border-color); border-radius: 4px;"
-                  >
-                  </div>
-                </div>
-                <div
-                  style="width: 100%; height: 30px; background: var(--bg-color); border-radius: 4px; margin-bottom: 8px;"
-                >
-                </div>
-                <div
-                  style="width: 80%; height: 30px; background: var(--bg-color); border-radius: 4px;"
-                >
-                </div>
-              </div>
+              <img
+                src="/reserva.webp"
+                alt="Agenda y Admisión"
+                class="bento-img"
+              />
             </div>
           </div>
 
+          
           <div class="bento-card bento-small" id="historial">
             <div class="bento-icon">
               <svg
@@ -603,20 +566,18 @@ import "./style.css";
                 mediante cuestionarios y métricas de salud.
               </li>
             </ul>
-            <div
-              class="bento-visual"
-              style="background: var(--accent-blue); border:none;"
-            >
-              <div
-                style="position:absolute; bottom:0; left:50%; transform:translateX(-50%); width: 70%; height: 80%; background: white; border-radius: 12px 12px 0 0; box-shadow: 0 -10px 20px rgba(0,0,0,0.05); padding: 16px;"
-              >
-                <div class="mockup-skeleton-line" style="margin-bottom: 8px;">
-                </div>
-                <div class="mockup-skeleton-line" style="width: 70%;"></div>
-              </div>
+
+            
+            <div class="bento-visual">
+              <img
+                src="/ficha.webp"
+                alt="Portal del Paciente"
+                class="bento-img"
+              />
             </div>
           </div>
 
+          
           <div class="bento-card bento-small">
             <div class="bento-icon">
               <svg
@@ -646,22 +607,18 @@ import "./style.css";
                 electrónica con validez legal.
               </li>
             </ul>
-            <div
-              class="bento-visual"
-              style="background: var(--accent-pink); border:none;"
-            >
-              <div
-                style="position:absolute; top:50%; left:50%; transform:translate(-50%, -50%); width: 80%; height: 60px; background: white; border-radius: 12px; box-shadow: var(--shadow-soft); display:flex; align-items:center; padding: 0 16px; justify-content:space-between;"
-              >
-                <div
-                  style="width:30px; height:20px; background:var(--bg-color); border-radius:4px;"
-                >
-                </div>
-                <div style="font-weight:700; font-size:1.2rem;">Verificado</div>
-              </div>
+
+            
+            <div class="bento-visual">
+              <img
+                src="/historial.webp"
+                alt="Gestión Clínica Legal"
+                class="bento-img"
+              />
             </div>
           </div>
 
+          
           <div class="bento-card bento-large">
             <div class="bento-icon">
               <svg
@@ -685,47 +642,27 @@ import "./style.css";
               style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;"
             >
               <li>
-                <strong>Analíticas y Cuestionarios</strong><br />Gráficos
-                visuales de evolución basados en cuestionarios para evaluar
-                progreso.
+                
+                <strong>Analíticas y Cuestionarios</strong>Gráficos visuales de
+                evolución basados en cuestionarios para evaluar progreso.
               </li>
               <li>
-                <strong>Bonos y Suscripciones</strong><br />Gestión avanzada de
+                <strong>Bonos y Suscripciones</strong>Gestión avanzada de
                 membresías con cobros recurrentes automatizados.
               </li>
               <li style="grid-column: span 2;">
-                <strong>Aula y Masterclasses</strong><br />Plataforma formativa
-                con recursos clínicos premium y soporte en directo.
+                <strong>Aula y Masterclasses</strong>Plataforma formativa con
+                recursos clínicos premium y soporte en directo.
               </li>
             </ul>
-            <div
-              class="bento-visual"
-              style="display:flex; align-items:flex-end; gap: 8px; padding: 24px;"
-            >
-              <div
-                style="width: 10%; height: 30%; background: var(--accent-blue); border-radius: 4px 4px 0 0;"
-              >
-              </div>
-              <div
-                style="width: 10%; height: 50%; background: var(--accent-blue); border-radius: 4px 4px 0 0;"
-              >
-              </div>
-              <div
-                style="width: 10%; height: 40%; background: var(--accent-blue); border-radius: 4px 4px 0 0;"
-              >
-              </div>
-              <div
-                style="width: 10%; height: 70%; background: var(--accent-blue); border-radius: 4px 4px 0 0;"
-              >
-              </div>
-              <div
-                style="width: 10%; height: 60%; background: var(--accent-blue); border-radius: 4px 4px 0 0;"
-              >
-              </div>
-              <div
-                style="width: 10%; height: 90%; background: var(--primary-dark); border-radius: 4px 4px 0 0;"
-              >
-              </div>
+
+            
+            <div class="bento-visual">
+              <img
+                src="/facturacion.webp"
+                alt="Fidelización y Métricas"
+                class="bento-img"
+              />
             </div>
           </div>
         </div>
@@ -822,7 +759,11 @@ import "./style.css";
               mejorando la productividad de todo el equipo."
             </p>
             <div class="testimonial-author">
-              <div class="author-avatar"></div>
+              <img
+                src="/avatar-carlos.webp"
+                alt="Dr. Carlos Mendoza"
+                class="author-avatar-img"
+              />
               <div class="author-info">
                 <h4>Dr. Carlos Mendoza</h4>
                 <p>Director Médico, Clínica Sol</p>
@@ -836,7 +777,11 @@ import "./style.css";
               digital es simplemente excepcional y muy segura."
             </p>
             <div class="testimonial-author">
-              <div class="author-avatar"></div>
+              <img
+                src="/avatar-laura.webp"
+                alt="Dra. Laura Jiménez"
+                class="author-avatar-img"
+              />
               <div class="author-info">
                 <h4>Dra. Laura Jiménez</h4>
                 <p>Dermatóloga, DermaCare</p>
@@ -1341,17 +1286,17 @@ import "./style.css";
             <div class="addon-small-card">
               <div class="addon-visual-box visual-centered">
                 <img
-                  src="/ruta-a-mockup-1.jpg"
+                  src="/branding-1.webp"
                   alt="Branding 1"
                   class="brand-card card-back"
                 />
                 <img
-                  src="/ruta-a-mockup-2.jpg"
+                  src="/branding-2.webp"
                   alt="Branding 2"
                   class="brand-card card-mid"
                 />
                 <img
-                  src="/ruta-a-mockup-3.jpg"
+                  src="/branding-3.webp"
                   alt="Branding 3"
                   class="brand-card card-front"
                 />
@@ -1699,7 +1644,9 @@ import "./style.css";
             >
           </div>
           <div class="social-icons">
-            <a href="https://www.facebook.com/people/MN-Design-Web/61588142654941/?locale=es_ES" aria-label="Facebook"
+            <a
+              href="https://www.facebook.com/people/MN-Design-Web/61588142654941/?locale=es_ES"
+              aria-label="Facebook"
               ><svg
                 viewBox="0 0 24 24"
                 fill="none"
@@ -1712,7 +1659,9 @@ import "./style.css";
                 ></path></svg
               ></a
             >
-            <a href="https://www.instagram.com/mndesignweb/" aria-label="Instagram"
+            <a
+              href="https://www.instagram.com/mndesignweb/"
+              aria-label="Instagram"
               ><svg
                 viewBox="0 0 24 24"
                 fill="none"
@@ -1727,7 +1676,9 @@ import "./style.css";
                 ></line></svg
               ></a
             >
-            <a href="https://www.linkedin.com/in/mar%C3%ADa-nadal-masi%C3%A1-080a77315/" aria-label="LinkedIn"
+            <a
+              href="https://www.linkedin.com/in/mar%C3%ADa-nadal-masi%C3%A1-080a77315/"
+              aria-label="LinkedIn"
               ><svg
                 viewBox="0 0 24 24"
                 fill="none"
@@ -1865,7 +1816,7 @@ import "./style.css";
 
             const btn = document.getElementById("btn-submit");
 
-            // Estado de carga en el botón
+
             btn.innerHTML =
               'Enviando... <svg class="fa-spin" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 1 1-6.219-8.56"></path></svg>';
             btn.disabled = true;
@@ -1948,6 +1899,20 @@ import "./style.css";
         acceptBtn?.addEventListener("click", () => {
           localStorage.setItem("cookie_consent", "accepted");
           if (cookieBanner) cookieBanner.style.display = "none";
+
+
+          if (typeof gtag === "function") {
+            gtag("consent", "update", {
+              ad_storage: "granted",
+              ad_user_data: "granted",
+              ad_personalization: "granted",
+              analytics_storage: "granted",
+            });
+          }
+          if (typeof fbq === "function") {
+            fbq("consent", "grant");
+          }
+
           mostrarToast(
             "¡Preferencias guardadas!",
             "Gracias por aceptar las cookies de navegación.",

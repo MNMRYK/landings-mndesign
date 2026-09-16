@@ -174,11 +174,14 @@
       ]
     </script>
     <script is:inline>
+      // 1. Inicializar DataLayer de Google
       window.dataLayer = window.dataLayer || [];
       function gtag() {
         dataLayer.push(arguments);
       }
-      var localConsent = localStorage.getItem("cookieConsent");
+
+      var localConsent = localStorage.getItem("cookie_consent");
+
       if (localConsent === "accepted") {
         gtag("consent", "default", {
           ad_storage: "granted",
@@ -195,22 +198,16 @@
           wait_for_update: 500,
         });
       }
+      gtag("js", new Date());
+      gtag("config", "G-36WYJMYT3Z");
     </script>
-
     <script
       is:inline
       async
       src="https://www.googletagmanager.com/gtag/js?id=G-36WYJMYT3Z"></script>
-    <script is:inline>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
-      gtag("config", "G-36WYJMYT3Z");
-    </script>
 
     <script is:inline>
+      // 2. Inicializar Pixel de Facebook
       !(function (f, b, e, v, n, t, s) {
         if (f.fbq) return;
         n = f.fbq = function () {
@@ -234,27 +231,32 @@
         "script",
         "https://connect.facebook.net/en_US/fbevents.js",
       );
-      var localConsent = localStorage.getItem("cookieConsent");
+
       if (localConsent !== "accepted") {
         fbq("consent", "revoke");
+      } else {
+        fbq("consent", "grant");
       }
       fbq("init", "1627135808585120");
       fbq("track", "PageView");
     </script>
 
     <script is:inline type="text/javascript">
-      (function (c, l, a, r, i, t, y) {
-        c[a] =
-          c[a] ||
-          function () {
-            (c[a].q = c[a].q || []).push(arguments);
-          };
-        t = l.createElement(r);
-        t.async = 1;
-        t.src = "https://www.clarity.ms/tag/" + i;
-        y = l.getElementsByTagName(r)[0];
-        y.parentNode.insertBefore(t, y);
-      })(window, document, "clarity", "script", "wuzaxaifa0");
+      // 3. Inicializar Clarity SOLO si hay consentimiento previo
+      if (localConsent === "accepted") {
+        (function (c, l, a, r, i, t, y) {
+          c[a] =
+            c[a] ||
+            function () {
+              (c[a].q = c[a].q || []).push(arguments);
+            };
+          t = l.createElement(r);
+          t.async = 1;
+          t.src = "https://www.clarity.ms/tag/" + i;
+          y = l.getElementsByTagName(r)[0];
+          y.parentNode.insertBefore(t, y);
+        })(window, document, "clarity", "script", "wuzaxaifa0");
+      }
     </script>
   </head>
   <body
@@ -273,9 +275,6 @@
       </div>
     </a>
     <main class="landing-main">
-      <!-- ==========================================
-        HERO SECTION
-  =========================================== -->
       <section class="hero-section">
         <div class="container hero-grid">
           <div class="hero-content">
@@ -306,14 +305,11 @@
           </div>
         </div>
       </section>
-      <!-- ==========================================
-          INTERACCIONES (ZIG-ZAG)
-    =========================================== -->
+
       <section class="features-section">
         <div class="container">
           <h2 class="section-title">La magia ocurre en sus pantallas</h2>
 
-          
           <div class="feature-row">
             <div class="feature-text">
               <h3>Envíalas por WhatsApp en 1 clic</h3>
@@ -353,7 +349,6 @@
             </div>
           </div>
 
-          
           <div class="feature-row reverse">
             <div class="feature-visual">
               <div class="rsvp-mockup">
@@ -437,9 +432,7 @@
           </div>
         </div>
       </section>
-      <!-- ==========================================
-        QUE INCLUYEN LAS INVITACIONES
-      =========================================== -->
+
       <section class="invitaciones-section">
         <div class="invitaciones-container">
           <h2 class="invitaciones-title">
@@ -589,10 +582,6 @@
         </div>
       </section>
 
-      <!-- ==========================================
-            PRECIOS
-      =========================================== -->
-
       <section class="pricing-section">
         <div class="container">
           <h2 class="section-title">Elige el plan perfecto para tu gran día</h2>
@@ -706,9 +695,6 @@
         </div>
       </section>
 
-      <!-- ==========================================
-        ESCAPARATE DE DEMOS
-      =========================================== -->
       <section class="demos-section">
         <div class="container relative">
           <div class="section-header">
@@ -852,12 +838,8 @@
         </div>
       </section>
 
-      <!-- ==========================================
-        LEAD CAPTURE (FORMULARIO)
-      =========================================== -->
       <section class="contacto-boda-section">
         <div id="contacto" class="contacto-grid container">
-          
           <div class="contacto-left">
             <div class="container text-center">
               <h2 class="section-main-title">
@@ -901,7 +883,6 @@
             </ul>
           </div>
 
-          
           <div class="contacto-right">
             <form id="formulario-boda" class="formulario-boda">
               <h3>¿Hablamos de vuestra boda?</h3>
@@ -1071,7 +1052,6 @@
           ></path>
         </g>
       </svg>
-
       <p class="cookieHeading">Usamos cookies</p>
       <p class="cookieDescription">
         Utilizamos cookies para darte la mejor experiencia en nuestra web. <br
@@ -1080,142 +1060,158 @@
           >Ver políticas de cookies</a
         >
       </p>
-
       <div class="buttonContainer">
         <button id="btn-accept-cookies" class="acceptButton">Permitir</button>
         <button id="btn-decline-cookies" class="declineButton">Rechazar</button>
       </div>
     </div>
-  </body>
 
-  <script is:inline>
-    window.addEventListener("DOMContentLoaded", () => {
-      // Lógica del desplegable según la URL
-      const plan = new URLSearchParams(window.location.search).get("plan");
-      if (plan) {
-        const selectPlan = document.getElementById("plan-seleccionado");
-        if (selectPlan) {
-          selectPlan.value = plan;
-          if (selectPlan.value !== plan) {
-            selectPlan.selectedIndex = 0;
-          }
-          const seccionContacto = document.getElementById("contacto");
-          if (seccionContacto) {
-            seccionContacto.scrollIntoView({ behavior: "smooth" });
+    <script is:inline>
+      window.addEventListener("DOMContentLoaded", () => {
+        // Lógica del desplegable según la URL
+        const plan = new URLSearchParams(window.location.search).get("plan");
+        if (plan) {
+          const selectPlan = document.getElementById("plan-seleccionado");
+          if (selectPlan) {
+            selectPlan.value = plan;
+            if (selectPlan.value !== plan) {
+              selectPlan.selectedIndex = 0;
+            }
+            const seccionContacto = document.getElementById("contacto");
+            if (seccionContacto) {
+              seccionContacto.scrollIntoView({ behavior: "smooth" });
+            }
           }
         }
-      }
 
-      // Lógica del Formulario
-      const formBoda = document.getElementById("formulario-boda");
-      if (formBoda) {
-        formBoda.addEventListener("submit", function (e) {
-          e.preventDefault();
+        // Lógica del Formulario
+        const formBoda = document.getElementById("formulario-boda");
+        if (formBoda) {
+          formBoda.addEventListener("submit", function (e) {
+            e.preventDefault();
+            const btn = document.getElementById("btn-submit");
+            btn.innerText = "Enviando...";
+            btn.disabled = true;
 
-          const btn = document.getElementById("btn-submit");
-          btn.innerText = "Enviando...";
-          btn.disabled = true;
+            const data = {
+              access_key: "1bc2d285-71cb-4fe3-806f-530066ab6e15",
+              subject: "Nuevo Lead: Invitación Boda",
+              nombre: document.getElementById("nombre").value,
+              email: document.getElementById("email").value,
+              fecha: document.getElementById("fecha").value,
+              telefono: document.getElementById("telefono").value,
+              plan: document.getElementById("plan-seleccionado").value,
+            };
 
-          const data = {
-            access_key: "1bc2d285-71cb-4fe3-806f-530066ab6e15",
-            subject: "Nuevo Lead: Invitación Boda",
-            nombre: document.getElementById("nombre").value,
-            email: document.getElementById("email").value,
-            fecha: document.getElementById("fecha").value,
-            telefono: document.getElementById("telefono").value,
-            plan: document.getElementById("plan-seleccionado").value,
-          };
-
-          Promise.all([
-            fetch("https://api.web3forms.com/submit", {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-                Accept: "application/json",
-              },
-              body: JSON.stringify(data),
-            }),
-            fetch(
-              "https://hook.eu1.make.com/mxvqg7gwne43yab165v2uhtyw5yh115r",
-              {
+            Promise.all([
+              fetch("https://api.web3forms.com/submit", {
                 method: "POST",
-                headers: { "Content-Type": "application/json" },
+                headers: {
+                  "Content-Type": "application/json",
+                  Accept: "application/json",
+                },
                 body: JSON.stringify(data),
-              },
-            ),
-          ])
-            .then(async (results) => {
-              const result = await results[0].json();
-              if (result.success) {
-                // Eventos de conversión
-                if (typeof gtag === "function")
-                  gtag("event", "generate_lead", { currency: "EUR", value: 0 });
-                if (typeof fbq === "function") fbq("track", "Lead");
-                if (typeof clarity === "function")
-                  clarity("set", "lead", "boda");
+              }),
+              fetch(
+                "https://hook.eu1.make.com/mxvqg7gwne43yab165v2uhtyw5yh115r",
+                {
+                  method: "POST",
+                  headers: { "Content-Type": "application/json" },
+                  body: JSON.stringify(data),
+                },
+              ),
+            ])
+              .then(async (results) => {
+                const result = await results[0].json();
+                if (result.success) {
+                  if (typeof gtag === "function")
+                    gtag("event", "generate_lead", {
+                      currency: "EUR",
+                      value: 0,
+                    });
+                  if (typeof fbq === "function") fbq("track", "Lead");
+                  if (typeof clarity === "function")
+                    clarity("set", "lead", "boda");
 
-                alert("¡Solicitud recibida! Te contactaremos pronto.");
-                formBoda.reset();
-              } else {
-                throw new Error("Error en el envío");
-              }
-            })
-            .catch(() => {
-              alert("Hubo un error. Por favor, inténtalo de nuevo.");
-            })
-            .finally(() => {
-              btn.innerText = "Solicitar Presupuesto";
-              btn.disabled = false;
-            });
-        });
-      }
-    });
+                  alert("¡Solicitud recibida! Te contactaremos pronto.");
+                  formBoda.reset();
+                } else {
+                  throw new Error("Error en el envío");
+                }
+              })
+              .catch(() => {
+                alert("Hubo un error. Por favor, inténtalo de nuevo.");
+              })
+              .finally(() => {
+                btn.innerText = "Solicitar Presupuesto";
+                btn.disabled = false;
+              });
+          });
+        }
 
-    window.addEventListener("DOMContentLoaded", () => {
-      const cookieBanner = document.getElementById("cookie-banner");
-      const acceptBtn = document.getElementById("btn-accept-cookies");
-      const declineBtn = document.getElementById("btn-decline-cookies");
-      const consent = localStorage.getItem("cookieConsent");
+        // Lógica del Banner de Cookies (Clave unificada: cookie_consent)
+        const cookieBanner = document.getElementById("cookie-banner");
+        const acceptBtn = document.getElementById("btn-accept-cookies");
+        const declineBtn = document.getElementById("btn-decline-cookies");
+        const consent = localStorage.getItem("cookie_consent");
 
-      if (!consent && cookieBanner) {
-        cookieBanner.style.display = "flex";
-      }
+        if (!consent && cookieBanner) {
+          cookieBanner.style.display = "flex";
+        }
 
-      if (acceptBtn) {
-        acceptBtn.addEventListener("click", () => {
-          localStorage.setItem("cookieConsent", "accepted");
-          cookieBanner.style.display = "none";
+        if (acceptBtn) {
+          acceptBtn.addEventListener("click", () => {
+            localStorage.setItem("cookie_consent", "accepted");
+            cookieBanner.style.display = "none";
 
-          if (typeof gtag === "function") {
-            gtag("consent", "update", {
-              ad_storage: "granted",
-              ad_user_data: "granted",
-              ad_personalization: "granted",
-              analytics_storage: "granted",
-            });
-          }
-          if (typeof clarity === "function") clarity("consent");
-          if (typeof fbq === "function") fbq("consent", "grant");
-        });
-      }
+            if (typeof gtag === "function") {
+              gtag("consent", "update", {
+                ad_storage: "granted",
+                ad_user_data: "granted",
+                ad_personalization: "granted",
+                analytics_storage: "granted",
+              });
+            }
 
-      if (declineBtn) {
-        declineBtn.addEventListener("click", () => {
-          localStorage.setItem("cookieConsent", "declined");
-          cookieBanner.style.display = "none";
+            if (typeof clarity === "undefined") {
+              (function (c, l, a, r, i, t, y) {
+                c[a] =
+                  c[a] ||
+                  function () {
+                    (c[a].q = c[a].q || []).push(arguments);
+                  };
+                t = l.createElement(r);
+                t.async = 1;
+                t.src = "https://www.clarity.ms/tag/" + i;
+                y = l.getElementsByTagName(r)[0];
+                y.parentNode.insertBefore(t, y);
+              })(window, document, "clarity", "script", "wuzaxaifa0");
+            } else if (typeof clarity === "function") {
+              clarity("consent");
+            }
 
-          if (typeof gtag === "function") {
-            gtag("consent", "update", {
-              ad_storage: "denied",
-              ad_user_data: "denied",
-              ad_personalization: "denied",
-              analytics_storage: "denied",
-            });
-          }
-        });
-      }
-    });
-  </script>
+            if (typeof fbq === "function") fbq("consent", "grant");
+          });
+        }
+
+        if (declineBtn) {
+          declineBtn.addEventListener("click", () => {
+            localStorage.setItem("cookie_consent", "declined");
+            cookieBanner.style.display = "none";
+
+            if (typeof gtag === "function") {
+              gtag("consent", "update", {
+                ad_storage: "denied",
+                ad_user_data: "denied",
+                ad_personalization: "denied",
+                analytics_storage: "denied",
+              });
+            }
+          });
+        }
+      });
+    </script>
+  </body>
 </html>
 
 <style>
@@ -1223,7 +1219,6 @@
      PARTE CSS: VARIABLES Y AJUSTES GLOBALES
   ========================================== */
   :root {
-    /* Tus colores corporativos (MN Design Web) */
     --fondo-claro: #ece8ff;
     --deep-eggplant: #1a102d;
     --dark-violet: #5f2eb4;
@@ -1233,12 +1228,10 @@
     --white-iris: #efebfc;
     --fondo-oscuro: #1d1231;
 
-    /* Variables de apoyo */
-    --slate-600: #11151a; /* Para textos de párrafos secundarios */
-    --border-color: #d1c4e9; /* Usamos tu iris-glaze para bordes suaves */
+    --slate-600: #11151a;
+    --border-color: #d1c4e9;
     --white: #ffffff;
 
-    /* Tipografías */
     --font-titulos: "Montserrat", system-ui, sans-serif;
     --font-texto: "Nunito", system-ui, sans-serif;
   }
@@ -1251,7 +1244,7 @@
 
   body {
     font-family: var(--font-texto);
-    color: var(--deep-eggplant); /* Tu tono más oscuro para leer bien */
+    color: var(--deep-eggplant);
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
     background-color: var(--fondo-claro);
@@ -1285,10 +1278,10 @@
     align-items: center;
     gap: 12px;
     text-decoration: none;
-    position: absolute; /* Clavado en la parte superior */
+    position: absolute;
     top: 20px;
     left: 30px;
-    z-index: 1000; /* Elevado para que siempre esté por encima de todo */
+    z-index: 1000;
   }
 
   .global-logo img {
@@ -1338,8 +1331,8 @@
   .tag {
     display: inline-block;
     background: #9c46ff0d;
-    border: 1px solid #9b4fff44; /* Fondo contundente */
-    color: #ece8ff; /* Texto en blanco para contraste total */
+    border: 1px solid #9b4fff44;
+    color: #ece8ff;
     letter-spacing: 1px;
     text-transform: uppercase;
     background: #1a102d;
@@ -1355,8 +1348,8 @@
   .hero-title {
     font-size: clamp(2.8rem, 5vw, 3.5rem);
     font-weight: 800;
-    line-height: 1.15; /* Más aire entre líneas */
-    letter-spacing: -1px; /* Montserrat queda más premium un pelín junta */
+    line-height: 1.15;
+    letter-spacing: -1px;
     margin-bottom: 24px;
   }
 
@@ -1369,7 +1362,7 @@
     -webkit-background-clip: text;
     color: transparent;
     display: inline-block;
-    padding-top: 8px; /* Para que no se corte el gradiente arriba */
+    padding-top: 8px;
   }
 
   .hero-description {
@@ -1433,7 +1426,6 @@
     transform: translateY(-2px);
   }
 
-  /* Contenedor padre de los visuals */
   .hero-visuals {
     position: relative;
     width: 100%;
@@ -1443,7 +1435,6 @@
     justify-content: center;
   }
 
-  /* El Mac (fondo) */
   .mac-mockup {
     position: absolute;
     width: 125%;
@@ -1454,15 +1445,14 @@
   .mac-mockup img {
     width: 100%;
     height: auto;
-    border-radius: 12px; /* Ajusta según tu imagen */
+    border-radius: 12px;
   }
 
-  /* El iPhone (encima) */
   .mobile-mockup {
     position: absolute;
-    bottom: 20px; /* Sale un poco por abajo del Mac */
-    left: -40px; /* Desplazado a la derecha */
-    width: 30%; /* Tamaño pequeño comparado con el Mac */
+    bottom: 20px;
+    left: -40px;
+    width: 30%;
     z-index: 2;
 
     overflow: hidden;
@@ -1475,7 +1465,6 @@
     display: block;
   }
 
-  /* Efecto suave al pasar el ratón */
   .mac-mockup:hover {
     transform: scale(1.02);
   }
@@ -1500,7 +1489,7 @@
 
   .feature-row {
     display: grid;
-    grid-template-columns: 1fr 1fr; /* ¡Las dos columnas! */
+    grid-template-columns: 1fr 1fr;
     gap: 48px;
     align-items: center;
   }
@@ -1550,14 +1539,13 @@
     font-weight: bold;
   }
 
-  /* Mockups internos (Chat y RSVP) */
   .chat-mockup,
   .rsvp-mockup {
     background-color: var(--white);
     border: 1px solid var(--border-color);
     border-radius: 24px;
     padding: 24px;
-    box-shadow: 0 20px 25px -5px rgba(26, 16, 45, 0.05); /* Sombra basada en eggplant */
+    box-shadow: 0 20px 25px -5px rgba(26, 16, 45, 0.05);
     max-width: 350px;
     margin: 0 auto;
     position: relative;
@@ -1574,16 +1562,12 @@
   .avatar {
     width: 40px;
     height: 40px;
-    /* Eliminamos el color plano */
-    /* background-color: var(--iris-glaze); */
 
-    /* Añadimos la imagen */
     background-image: url("/avatar-familia.webp");
-    background-size: cover; /* Asegura que la foto cubra todo el círculo */
-    background-position: center; /* Centra la cara de la familia */
+    background-size: cover;
+    background-position: center;
     border-radius: 50%;
 
-    /* Opcional: un pequeño borde para que quede más integrado */
     border: 1px solid rgba(0, 0, 0, 0.1);
   }
 
@@ -1683,12 +1667,11 @@
     margin-top: 24px;
   }
 
-  /* Mockup de Navegador Mac (Fila 3) */
   .browser-mockup {
     background-color: var(--white);
     border: 1px solid var(--border-color);
     border-radius: 12px;
-    overflow: hidden; /* Corta lo que sobresale para mantener las esquinas redondas */
+    overflow: hidden;
     box-shadow: 0 20px 25px -5px rgba(26, 16, 45, 0.08);
     max-width: 550px;
     max-height: 350px;
@@ -1697,7 +1680,7 @@
   }
 
   .browser-header {
-    background-color: #1a1525; /* Tono oscuro muy elegante para la barra */
+    background-color: #1a1525;
     padding: 12px 16px;
     display: flex;
     align-items: center;
@@ -1745,7 +1728,7 @@
 
   .mockup-img-browser {
     width: 100%;
-    height: auto; /* Dejamos que la foto dicte su propia altura */
+    height: auto;
     display: block;
     object-fit: cover;
     border-bottom-left-radius: 12px;
@@ -1757,7 +1740,7 @@
 ========================================== */
   .invitaciones-section {
     padding: 80px 20px 100px;
-    background-color: var(--fondo-claro); /* Tono arena claro */
+    background-color: var(--fondo-claro);
 
     text-align: center;
   }
@@ -1772,18 +1755,17 @@
     text-align: center;
     font-size: 2.25rem;
     font-weight: bold;
-    color: #1a2530; /* Azul oscuro midnight */
+    color: #1a2530;
     margin-bottom: 70px;
     font-weight: 400;
     letter-spacing: 0.05em;
   }
 
-  /* El truco principal: CSS Grid automático */
   .invitaciones-grid {
     display: grid;
-    /* Esto crea columnas que se adaptan solas. Mínimo 280px, máximo lo que sobre */
+
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 30px 30px; /* 50px de fila, 30px de columna */
+    gap: 30px 30px;
   }
 
   .invitaciones-card {
@@ -1791,35 +1773,34 @@
     flex-direction: column;
     align-items: center;
     padding: 20px 20px;
-    background-color: #ffffff; /* Fondo blanco para la tarjeta */
-    border: 1px solid rgba(160, 88, 255, 0.05); /* Borde súper sutil */
-    border-radius: 16px; /* Bordes redondeados elegantes */
-    box-shadow: 0 10px 30px #7e57c266; /* Sombra base muy suave */
+    background-color: #ffffff;
+    border: 1px solid rgba(160, 88, 255, 0.05);
+    border-radius: 16px;
+    box-shadow: 0 10px 30px #7e57c266;
     transition: all 0.4s ease;
   }
 
   .invitaciones-card:hover {
     transform: translateY(-8px);
-    box-shadow: 0 15px 35px rgba(160, 88, 255, 0.05); /* La sombra se vuelve dorada al pasar el ratón */
-    border-color: rgba(160, 88, 255, 0.05); /* El borde se tiñe de dorado */
+    box-shadow: 0 15px 35px rgba(160, 88, 255, 0.05);
+    border-color: rgba(160, 88, 255, 0.05);
   }
 
   .invitaciones-icon {
     font-size: 1.8rem;
     color: #8d37d4;
-    background-color: #f9efff8a; /* Fondo arena para el círculo del icono */
-    width: 80px; /* Ancho y alto fijos para hacer un círculo perfecto */
+    background-color: #f9efff8a;
+    width: 80px;
     height: 80px;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 50%; /* Esto lo convierte en círculo */
+    border-radius: 50%;
     margin-bottom: 25px;
     border: 1px solid rgba(160, 88, 255, 0.05);
     transition: all 0.4s ease;
   }
 
-  /* Magia extra: el icono reacciona cuando pasas el ratón por la tarjeta completa */
   .invitaciones-card:hover .invitaciones-icon {
     background-color: #7e57c266;
     color: #ffffff;
@@ -1856,7 +1837,7 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 30px;
-    align-items: center; /* Alinea los elementos en el centro verticalmente */
+    align-items: center;
     max-width: 1200px;
     margin: 0 auto;
   }
@@ -1865,7 +1846,7 @@
     background-color: var(--white, #ffffff);
     border: 1px solid var(--border-color, #e2e8f0);
     border-radius: 24px;
-    padding: 30px 20px; /* Reducimos el padding (antes 40px 30px) */
+    padding: 30px 20px;
     box-shadow: 0 10px 30px rgba(26, 16, 45, 0.03);
     position: relative;
     transition:
@@ -1881,12 +1862,11 @@
     box-shadow: 0 20px 40px rgba(26, 16, 45, 0.08);
   }
 
-  /* El truco para destacar la tarjeta del medio */
   .pricing-card.popular {
     border: 2px solid var(--electric-violet, #8d37d4);
     box-shadow: 0 20px 40px rgba(141, 55, 212, 0.15);
-    transform: scale(1.05); /* La hacemos un 5% más grande que las demás */
-    z-index: 2; /* Nos aseguramos de que se superponga visualmente a las otras */
+    transform: scale(1.05);
+    z-index: 2;
   }
 
   .pricing-card.popular:hover {
@@ -1916,11 +1896,11 @@
   }
 
   .plan-price {
-    font-size: 2.5rem; /* Letra un poco más pequeña (antes 3rem) */
+    font-size: 2.5rem;
     font-weight: bold;
     color: var(--deep-eggplant, #1a2530);
     text-align: center;
-    margin-bottom: 5px; /* Menos espacio debajo */
+    margin-bottom: 5px;
   }
 
   .plan-price span {
@@ -1934,12 +1914,12 @@
   }
 
   .plan-desc {
-    font-size: 1.1rem; /* Letra ligeramente más ajustada */
+    font-size: 1.1rem;
     color: var(--slate-600, #4a5568);
     text-align: center;
     line-height: 1.5;
     margin-bottom: 10px;
-    padding-bottom: 15px; /* Menos espacio de separación con la línea */
+    padding-bottom: 15px;
     border-bottom: 1px solid var(--border-color, #e2e8f0);
   }
 
@@ -1948,13 +1928,13 @@
     padding: 0;
     margin-top: 10px;
     margin-bottom: 15px;
-    flex-grow: 1; /* Esto empuja el botón siempre hacia abajo del todo */
+    flex-grow: 1;
   }
 
   .plan-features li {
     display: flex;
     align-items: flex-start;
-    margin-bottom: 12px; /* Reducimos la separación entre los ticks (antes 16px) */
+    margin-bottom: 12px;
     font-size: 1rem;
     color: var(--deep-eggplant, #1a2530);
     line-height: 1.4;
@@ -1963,7 +1943,7 @@
   .plan-features li i {
     color: var(--electric-violet, #8d37d4);
     margin-right: 12px;
-    margin-top: 4px; /* Para que el check quede alineado si el texto ocupa dos líneas */
+    margin-top: 4px;
   }
 
   .btn-primary-precios {
@@ -1997,7 +1977,7 @@
     justify-content: center;
     border-radius: 8px;
     font-weight: bold;
-    text-decoration: none; /* ¡Esta es la magia que quita la línea! */
+    text-decoration: none;
   }
 
   /* ==========================================
@@ -2006,7 +1986,7 @@
   .demos-section {
     background-color: #fcfbff;
     padding: 80px 0;
-    overflow: hidden; /* Evita que el scroll horizontal rompa la web entera */
+    overflow: hidden;
   }
 
   .section-header {
@@ -2033,16 +2013,15 @@
     position: relative;
     max-width: 1050px;
     margin: 0 auto;
-    padding: 0; /* Dejamos hueco para las flechas */
+    padding: 0;
   }
 
-  /* La pista donde deslizan los elementos */
   .carousel-track {
     display: flex;
     gap: 40px;
     overflow-x: auto;
-    scroll-snap-type: x mandatory; /* Fuerza a que el móvil se encaje en el centro al deslizar */
-    scrollbar-width: none; /* Oculta la barra en Firefox */
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
     padding: 20px 40px 40px 40px;
     -webkit-mask-image: linear-gradient(
       to right,
@@ -2061,31 +2040,30 @@
   }
 
   .carousel-track::-webkit-scrollbar {
-    display: none; /* Oculta la barra en Chrome/Safari */
+    display: none;
   }
 
   .carousel-item {
-    scroll-snap-align: center; /* Punto de anclaje */
+    scroll-snap-align: center;
     flex: 0 0 auto;
     display: flex;
     flex-direction: column;
     align-items: center;
   }
 
-  /* El diseño del falso iPhone */
   .phone-mockup {
     width: 200px;
     height: 400px;
-    /* El bisel negro fino de la pantalla */
+
     border: 12px solid #000000;
     border-radius: 45px;
     position: relative;
     overflow: hidden;
-    /* Magia 3D: El borde metálico exterior creado con sombras apiladas */
+
     box-shadow:
       0 0 0 2px #e2e8f0,
-      /* Brillo metálico clarito */ 0 0 0 4px #94a3b8,
-      /* Borde gris titanio */ 0 25px 50px rgba(26, 16, 45, 0.2); /* Sombra elegante proyectada */
+      0 0 0 4px #94a3b8,
+      0 25px 50px rgba(26, 16, 45, 0.2);
     margin-bottom: 24px;
     background-color: #fff;
     transition: transform 0.4s ease;
@@ -2095,7 +2073,6 @@
     transform: translateY(-10px);
   }
 
-  /* La "Isla Dinámica" (Dynamic Island) exclusiva de los iPhone modernos */
   .phone-notch {
     position: absolute;
     top: 12px;
@@ -2106,14 +2083,13 @@
     background-color: #000000;
     border-radius: 20px;
     z-index: 2;
-    /* Detalle pro: Alineamos la cámara dentro de la isla */
+
     display: flex;
     align-items: center;
     justify-content: flex-end;
     padding-right: 8px;
   }
 
-  /* El detallito definitivo: El brillo de la lente de la cámara frontal */
   .phone-notch::after {
     content: "";
     width: 12px;
@@ -2165,20 +2141,12 @@
     transform: translateY(-2px);
   }
 
-  /* Flechas de navegación */
   .carousel-arrow {
     position: absolute;
     top: 40%;
     transform: translateY(-50%);
-    background-color: rgba(
-      255,
-      255,
-      255,
-      0.6
-    ); /* Fondo blanco semi-transparente */
-    backdrop-filter: blur(
-      4px
-    ); /* Difumina lo que hay detrás del botón, queda súper premium */
+    background-color: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(4px);
     border: 1px solid rgba(255, 255, 255, 0.4);
     width: 50px;
     height: 50px;
@@ -2210,7 +2178,7 @@
   /* ==========================================
      LEAD CAPTURE SECTION
   ========================================== */
-  /* Sección Contenedor */
+
   .contacto-boda-section {
     padding: 80px 20px;
     background-color: var(--fondo-oscuro, #1a102d);
@@ -2222,11 +2190,10 @@
   }
 
   .section-main-title {
-    font-size: 2.5rem; /* Tamaño grande y potente */
+    font-size: 2.5rem;
     color: white;
-    margin-bottom: 50px; /* Separación para que no pegue con el calendario */
-    font-family:
-      "Montserrat", sans-serif; /* O la tipografía que estés usando */
+    margin-bottom: 50px;
+    font-family: "Montserrat", sans-serif;
     font-weight: 800;
     line-height: 1.2;
   }
@@ -2250,16 +2217,14 @@
     position: relative;
   }
 
-  /* Iframe limpio: sin escalas, sin transformaciones raras */
   .calendar-iframe {
-    width: 125%; /* Esto compensa el 0.85 de escala (1 / 0.85 ≈ 1.176) */
-    height: 570px; /* Altura mayor para que el contenido de Cal.com no se corte */
+    width: 125%;
+    height: 570px;
     border: none;
     display: block;
-    transform: scale(0.8); /* ¡Aquí está la reducción! */
+    transform: scale(0.8);
     transform-origin: top left;
   }
-
 
   .beneficios-lista {
     list-style: none;
@@ -2273,7 +2238,6 @@
     color: #7e57c2;
   }
 
-  /* Estilo del Formulario */
   .formulario-boda {
     background: white;
     padding: 40px;
@@ -2319,24 +2283,19 @@
     font-size: 1rem;
     color: var(--deep-eggplant, #1a102d);
 
-    /* 1. Quitamos los estilos de Apple para que acepte nuestro padding */
     -webkit-appearance: none;
     appearance: none;
 
-    /* 2. ¡LA CLAVE! Le damos altura obligatoria para que el texto no desaparezca */
     min-height: 48px;
 
-    /* 3. Ahora sí nos hará caso con el aire interno */
     padding: 12px 16px;
   }
 
-  /* 4. Reseteo extra por si algún iPhone antiguo sigue pegando el texto */
   .diseno-form-grupo input[type="date"]::-webkit-datetime-edit {
     padding: 0;
     line-height: normal;
   }
 
-  /* Botón y Notas */
   .btn-final-glow {
     background: var(--electric-violet, #7e57c2);
     color: white;
@@ -2360,7 +2319,6 @@
     color: #888;
   }
 
-  /* Estilo moderno para el desplegable */
   #plan-seleccionado {
     width: 100%;
     padding: 12px 16px;
@@ -2376,7 +2334,6 @@
     appearance: none;
     color-scheme: light;
 
-    /* Añade una flecha elegante */
     background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%237e57c2' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
     background-repeat: no-repeat;
     background-position: right 1rem center;
@@ -2417,7 +2374,6 @@
   }
 
   .faq-item {
-    /* Fondo semitransparente sutil para que resalte sobre el fondo oscuro */
     background: rgba(255, 255, 255, 0.03);
     border: 1px solid rgba(166, 114, 255, 0.15);
     border-radius: 12px;
@@ -2428,7 +2384,7 @@
 
   .faq-item[open] {
     border-color: var(--electric-violet, #7e57c2);
-    background: rgba(255, 255, 255, 0.05); /* Se ilumina un pelín al abrir */
+    background: rgba(255, 255, 255, 0.05);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
   }
 
@@ -2437,14 +2393,13 @@
     font-family: "Montserrat", sans-serif;
     font-weight: 700;
     font-size: 1.1rem;
-    color: white; /* Letra principal en blanco */
+    color: white;
     cursor: pointer;
     list-style: none;
     position: relative;
     outline: none;
   }
 
-  /* Flecha personalizada */
   .faq-item summary::after {
     content: "+";
     position: absolute;
@@ -2459,17 +2414,13 @@
     transform: rotate(180deg);
   }
 
-  /* Ocultar la flecha nativa de Safari/Chrome antiguo */
   .faq-item summary::-webkit-details-marker {
     display: none;
   }
 
   .faq-item p {
     padding: 0 20px 20px 20px;
-    color: var(
-      --iris-glaze,
-      #d1c4e9
-    ); /* Un blanco roto/lavanda para no cansar la vista */
+    color: var(--iris-glaze, #d1c4e9);
     font-family: "Nunito", sans-serif;
     font-size: 1rem;
     line-height: 1.6;
@@ -2486,7 +2437,7 @@
 
   .footer-content {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr; /* Tres columnas iguales */
+    grid-template-columns: 1fr 1fr 1fr;
     align-items: center;
     max-width: 1400px;
     margin: 0 auto;
@@ -2496,23 +2447,21 @@
   .footer-contact {
     text-align: left;
     display: flex;
-    flex-direction: row; /* Apila el mail y el teléfono */
-    gap: 50px; /* 🔥 ESTE ES EL GAP QUE BUSCABAS 🔥 */
+    flex-direction: row;
+    gap: 50px;
   }
 
-  /* Aseguramos que los enlaces no tengan comportamientos raros */
   .correo-gigante {
     color: #d8d8d8;
     text-decoration: none;
     transition: 0.3s;
-    display: block; /* Para que ocupen su propia línea al ser links */
+    display: block;
   }
 
   .correo-gigante:hover {
     color: #ffffff;
   }
 
-  /* Alineaciones específicas */
   .footer-contact {
     text-align: left;
   }
@@ -2537,26 +2486,26 @@
   }
 
   .cookie-card-uiverse {
-    width: 480px; /* 🔥 Un poco más ancho */
+    width: 480px;
     min-height: 240px;
     background-color: rgb(255, 255, 255);
-    border-radius: 16px; /* 🔥 Bordes un poquito más suaves */
+    border-radius: 16px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 30px 40px; /* 🔥 Más espacio interior */
+    padding: 30px 40px;
     gap: 18px;
     position: fixed;
     bottom: 30px;
     left: 30px;
     z-index: 999999;
-    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.15); /* 🔥 Sombra más elegante */
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.15);
     font-family: "Nunito", sans-serif;
   }
 
   #cookieSvg {
-    width: 60px; /* 🔥 Icono un poco más grande */
+    width: 60px;
   }
 
   #cookieSvg g path {
@@ -2564,7 +2513,7 @@
   }
 
   .cookieHeading {
-    font-size: 1.8em; /* 🔥 Título con más peso */
+    font-size: 1.8em;
     font-weight: 800;
     color: rgb(26, 26, 26);
     margin: 0;
@@ -2573,7 +2522,7 @@
 
   .cookieDescription {
     text-align: center;
-    font-size: 1.1em; /* 🔥 Texto más legible */
+    font-size: 1.1em;
     font-weight: 600;
     font-family: "Nunito", sans-serif;
     color: rgb(99, 99, 99);
@@ -2585,8 +2534,8 @@
     color: #7e57c2;
     text-decoration: none;
     font-weight: 700;
-    display: block; /* 🔥 Esto hace que el enlace ocupe su propia línea */
-    margin-top: 15px; /* 🔥 Esto separa el enlace del texto de arriba */
+    display: block;
+    margin-top: 15px;
   }
 
   .cookielink:hover {
@@ -2613,7 +2562,7 @@
   }
 
   .acceptButton {
-    width: 140px; /* 🔥 Botones más grandes */
+    width: 140px;
     height: 40px;
     background-color: #7e57c2;
     border: none;
@@ -2633,7 +2582,7 @@
   }
 
   .declineButton {
-    width: 140px; /* 🔥 Botones más grandes */
+    width: 140px;
     height: 40px;
     background-color: #f0f0f0;
     color: #555;
@@ -2651,66 +2600,60 @@
     transform: translateY(-2px);
   }
 
-  /* Responsivo para móviles - CORREGIDO PARA NO CHOCAR CON WHATSAPP */
-
   /* ==========================================
      RESPONSIVE (MEDIA QUERIES)
   ========================================== */
   @media (max-width: 480px) {
     .cookie-card-uiverse {
-      bottom: 10px; /* Pegadito abajo */
-      /* 🔥 REUBICACIÓN CLAVE: Arrinconamos a la izquierda 🔥 */
+      bottom: 10px;
+
       left: 10px;
       right: auto;
-      transform: none; /* Apagamos el centrado de escritorio */
+      transform: none;
 
-      /* 🔥 ANCHO AJUSTADO: Dejamos espacio a la derecha para WhatsApp 🔥 */
-      width: calc(
-        100% - 70px
-      ); /* Calculamos el ancho dejando ~70px libres a la derecha */
-      max-width: 300px; /* Ponemos un tope para que no sea muy largo en pantallas grandes */
+      width: calc(100% - 70px);
+      max-width: 300px;
 
-      padding: 20px; /* Relleno muy compacto */
-      min-height: auto; /* Altura automática */
-      gap: 8px; /* Elementos muy pegaditos */
+      padding: 20px;
+      min-height: auto;
+      gap: 8px;
       border-radius: 12px;
-      align-items: flex-start; /* Alineamos los textos a la izquierda */
+      align-items: flex-start;
     }
 
-    /* Mantenemos el resto de optimizaciones de tamaño */
     #cookieSvg {
-      display: none; /* Escondemos la galleta en móvil */
+      display: none;
     }
 
     .cookieHeading {
-      font-size: 1.1em; /* Título pequeño */
+      font-size: 1.1em;
       text-align: left;
     }
 
     .cookieDescription {
-      font-size: 0.8em; /* Texto muy chiquitito */
+      font-size: 0.8em;
       line-height: 1.2;
-      text-align: left; /* Texto alineado a la izquierda */
+      text-align: left;
     }
 
     .cookielink {
-      margin-top: 8px; /* Un pelín de aire arriba del enlace */
-      margin-bottom: 8px; /* Un pelín de aire abajo del enlace */
+      margin-top: 8px;
+      margin-bottom: 8px;
       font-size: 0.8em;
-      display: inline-block; /* Para que los márgenes se apliquen bien */
+      display: inline-block;
     }
 
     .buttonContainer {
-      margin-top: 5px; /* Separación con el enlace */
+      margin-top: 5px;
       gap: 8px;
       justify-content: flex-start;
     }
 
     .acceptButton,
     .declineButton {
-      width: auto; /* Ancho automático según texto */
-      padding: 0 15px; /* Relleno lateral */
-      height: 30px; /* Botones bajitos */
+      width: auto;
+      padding: 0 15px;
+      height: 30px;
       font-size: 0.8em;
     }
   }
@@ -2721,34 +2664,32 @@
       background-color: var(--fondo-oscuro, #1a102d);
       width: 100%;
     }
-    /* FOOTER OK */
+
     .footer-content {
-      /* Pasamos de 3 columnas a 1 sola para que todo respire */
       grid-template-columns: 1fr;
       text-align: center;
-      gap: 30px; /* Un poco de aire entre el contacto, los links y el copyright */
+      gap: 30px;
     }
 
     .footer-contact {
-      flex-direction: column; /* Apilamos el mail y el teléfono uno debajo del otro */
-      gap: 10px; /* Reducimos el hueco gigante de 50px */
-      align-items: center; /* Centramos todo */
+      flex-direction: column;
+      gap: 10px;
+      align-items: center;
       justify-content: center;
     }
 
     .footer-links {
-      justify-content: center; /* Aseguramos que los enlaces queden en el medio */
+      justify-content: center;
     }
 
     .footer-copyright {
-      text-align: center; /* Centramos el texto legal */
+      text-align: center;
     }
   }
 
   @media (max-width: 768px) {
-    /* LOGO OK */
     .global-logo {
-      left: 15px; /* Menos margen en móvil */
+      left: 15px;
       gap: 8px;
     }
     .siglas {
@@ -2761,7 +2702,6 @@
       height: 50px;
     }
 
-    /* HERO NO OK */
     .hero-section {
       background-color: var(--fondo-claro);
       padding: 100px 0 30px;
@@ -2792,15 +2732,15 @@
       gap: 10px;
       padding-top: 15px;
       width: 100%;
-      max-width: 250px; /* Opcional: para que no queden absurdamente gigantes en pantallas grandes */
+      max-width: 250px;
       margin: 0 auto;
     }
 
     .btn-primary,
     .btn-secondary {
-      width: 100%; /* El botón ocupa todo el ancho del contenedor */
-      text-align: center; /* Centra el texto dentro del botón */
-      display: block; /* Asegura que se comporten como bloque */
+      width: 100%;
+      text-align: center;
+      display: block;
     }
 
     .btn-primary {
@@ -2831,7 +2771,7 @@
     }
 
     .features-section {
-      padding: 80px 0 20px; /* Un poco menos de padding arriba en móvil */
+      padding: 80px 0 20px;
     }
 
     .section-title {
@@ -2839,8 +2779,8 @@
     }
 
     .feature-row {
-      display: flex; /* Cambiamos de grid a flex para control total */
-      flex-direction: column; /* Apilamos verticalmente */
+      display: flex;
+      flex-direction: column;
       gap: 32px;
       text-align: center;
     }
@@ -2887,7 +2827,6 @@
       display: inline-block;
     }
 
-    /* Centramos también la lista de checks en móvil */
     .feature-list {
       display: inline-block;
       text-align: left;
@@ -2900,12 +2839,11 @@
 
     .invitaciones-grid {
       display: grid;
-      /* Esto crea columnas que se adaptan solas. Mínimo 280px, máximo lo que sobre */
+
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 30px 30px; /* 50px de fila, 30px de columna */
+      gap: 30px 30px;
     }
 
-    /* PRICE OK */
     .pricing-section {
       padding: 80px 0 0px;
     }
@@ -2933,7 +2871,6 @@
       font-size: 1.2rem;
     }
 
-    /* DEMOS NO OK */
     .carousel-wrapper {
       padding: 0 10px;
     }
@@ -2946,7 +2883,6 @@
       gap: 20px;
     }
 
-    /* CONTACTO OK */
     .contacto-boda-section {
       padding: 80px 0px;
       background-color: var(--fondo-oscuro, #1a102d);
@@ -2957,22 +2893,18 @@
       grid-template-columns: 1fr;
     }
 
-    /* --- AJUSTE CRÍTICO DEL CALENDARIO --- */
     .cal-widget {
-      height: 520px; /* Le damos un poco más de aire vertical en móvil */
+      height: 520px;
       border-radius: 20px;
     }
 
     .calendar-iframe {
-      width: 100%; /* Quitamos tu 125% */
-      height: 100%; /* Quitamos tu 570px fijo */
-      transform: scale(
-        1
-      ); /* Devolvemos la escala a la normalidad para que sea táctil */
+      width: 100%;
+      height: 100%;
+      transform: scale(1);
       transform-origin: center;
     }
 
-    
     .formulario-boda {
       padding: 25px;
     }
@@ -2989,7 +2921,6 @@
       text-align: center;
     }
 
-    /* FOOTER OK */
     .footer-content {
       grid-template-columns: 1fr;
       text-align: center;
@@ -2998,9 +2929,9 @@
 
     .footer-contact {
       text-align: center;
-      flex-direction: column; /* Apilamos el mail y el teléfono */
-      gap: 10px; /* Reducimos el gap para móviles */
-      align-items: center; /* Centra los elementos de la columna */
+      flex-direction: column;
+      gap: 10px;
+      align-items: center;
     }
 
     .footer-contact,
@@ -3009,7 +2940,7 @@
     }
     .footer-links {
       justify-content: center;
-      gap: 15px; /* Reducimos el hueco entre enlaces en móvil */
+      gap: 15px;
     }
   }
 </style>
