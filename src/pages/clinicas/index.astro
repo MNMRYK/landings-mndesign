@@ -311,14 +311,14 @@ import "./style.css";
       <div class="hero-wrapper">
         <div class="hero-bg-gradient"></div>
         <section class="hero">
-          <h1>Simplifica la gestión de tu consulta en una sola plataforma</h1>
-          <p>
+          <h1 class="hero-reveal">Simplifica la gestión de tu consulta en una sola plataforma</h1>
+          <p class="hero-reveal hero-delay-1">
             Destaca en el sector salud con una herramienta que optimiza tu
             tiempo, fideliza a tus pacientes y hace crecer tus ingresos
             automáticamente.
           </p>
 
-          <div class="hero-buttons">
+          <div class="hero-buttons hero-reveal hero-delay-2">
             <a href="#solicitar-auditoria" class="btn btn-primary"
               >Solicitar auditoría</a
             >
@@ -329,7 +329,7 @@ import "./style.css";
           </div>
 
           
-          <div class="hero-mockup">
+          <div class="hero-mockup hero-reveal hero-delay-3">
             
             <div class="mockup-float float-left">
               <div
@@ -412,7 +412,7 @@ import "./style.css";
         </section>
       </div>
 
-      <section class="tech-stack">
+      <section class="tech-stack reveal">
         <div class="container">
           <p class="tech-title">
             Tecnologías de vanguardia que impulsan nuestra plataforma
@@ -474,7 +474,7 @@ import "./style.css";
         </div>
       </section>
 
-      <section id="funciones" class="features container">
+      <section id="funciones" class="features container reveal">
         <div class="section-header">
           <h2>Nuestras funciones exclusivas</h2>
           <p class="text-muted">
@@ -668,7 +668,8 @@ import "./style.css";
         </div>
       </section>
 
-      <section class="billing-erp-section container" id="facturacion">
+      <section class="billing-erp-section container reveal" id="facturacion">
+
         <div class="billing-container">
           <div class="billing-left">
             <span class="badge-small">• Integración Total</span>
@@ -730,7 +731,7 @@ import "./style.css";
         </div>
       </section>
 
-      <section class="metrics container">
+      <section class="metrics container reveal">
         <div class="metrics-grid">
           <div class="metric-card">
             <div class="metric-number">86%</div>
@@ -747,7 +748,7 @@ import "./style.css";
         </div>
       </section>
 
-      <section id="testimonials" class="testimonials container">
+      <section id="testimonios" class="testimonials container reveal">
         <div class="section-header">
           <h2>Lo que opinan nuestros clientes</h2>
         </div>
@@ -791,7 +792,7 @@ import "./style.css";
         </div>
       </section>
 
-      <section class="pricing container" id="inversion">
+      <section class="pricing container reveal" id="inversion">
         <div class="section-header">
           <h2>Nuestros planes de inversión</h2>
           <p class="pricing-subtitle">
@@ -1140,7 +1141,7 @@ import "./style.css";
         </div>
       </section>
 
-      <section class="pricing-addons container" id="mejoras">
+      <section class="pricing-addons container reveal" id="mejoras">
         <div class="section-header">
           <h2>Mejoras para tu Consulta</h2>
           <p class="text-muted">
@@ -1359,7 +1360,7 @@ import "./style.css";
         </div>
       </section>
 
-      <section class="faq container">
+      <section class="faq container reveal">
         <div class="section-header">
           <h2>Encuentra la respuesta que necesitas</h2>
         </div>
@@ -1399,7 +1400,7 @@ import "./style.css";
         </details>
       </section>
 
-      <section id="empezar-proyecto" class="contact-section container">
+      <section id="empezar-proyecto" class="contact-section container reveal">
         <div class="contact-mega-wrapper">
           <div class="contact-bg-gradient"></div>
 
@@ -1565,7 +1566,7 @@ import "./style.css";
       </section>
     </main>
 
-    <footer class="site-footer">
+    <footer class="site-footer reveal">
       <div class="container">
         <div class="footer-grid">
           <div class="footer-brand">
@@ -1927,6 +1928,28 @@ import "./style.css";
             "Has rechazado las cookies opcionales.",
           );
         });
+
+        // ==========================================
+        // 5. INTERSECTION OBSERVER (REVEAL AL SCROLL)
+        // ==========================================
+        const revealElements = document.querySelectorAll('.reveal');
+        
+        const revealObserver = new IntersectionObserver((entries, observer) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              // Añade la clase active para desencadenar el CSS
+              entry.target.classList.add('active');
+              // Deja de observar el elemento una vez que ya ha aparecido
+              observer.unobserve(entry.target);
+            }
+          });
+        }, {
+          // El elemento debe asomar un 15% en la pantalla para activarse
+          threshold: 0.15, 
+          rootMargin: "0px 0px -50px 0px"
+        });
+
+        revealElements.forEach(el => revealObserver.observe(el));
       });
     </script>
   </body>
