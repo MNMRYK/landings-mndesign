@@ -35,7 +35,7 @@
   font-size: 1.15rem;
 }
 
-/* --- FONDO GENERAL DE LA WEB --- */
+
 body {
   font-family:
     "Inter",
@@ -57,9 +57,6 @@ body {
   font-family: inherit;
 }
 
-/* ========================================= */
-/* --- BARRA DE SCROLL PERSONALIZADA (SaaS) --- */
-/* ========================================= */
 
 /* Firefox */
 html {
@@ -286,6 +283,11 @@ html {
   max-width: 1400px;
   margin-left: auto;
   margin-right: auto;
+
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  -webkit-mask-image: -webkit-radial-gradient(white, black);
+  mask-image: radial-gradient(white, black);
 }
 
 .hero-bg-gradient {
@@ -488,6 +490,12 @@ html {
   100% {
     transform: translateY(0px);
   }
+}
+
+@keyframes float-mobile {
+  0% { transform: scale(0.6) translateY(0px); }
+  50% { transform: scale(0.6) translateY(-15px); }
+  100% { transform: scale(0.6) translateY(0px); }
 }
 
 /* --- NUEVA IMAGEN CENTRAL (TABLET) --- */
@@ -1982,7 +1990,7 @@ details[open] summary::after {
 
 @media (max-width: 768px) {
   .hero {
-    padding: 60px 0 80px;
+    padding: 60px 0 20px;
     text-align: center;
   }
   .hero h1 {
@@ -2022,6 +2030,29 @@ details[open] summary::after {
   .hero-wrapper {
     margin-top: 120px;
   }
+
+  .hero-mockup {
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto;
+    padding-top: 20px;
+    height: 300px;
+  }
+
+  .float-left {
+    left: -5%;
+    top: -15%;
+    transform-origin: top left;
+    animation: float-mobile 6s ease-in-out infinite;
+  }
+
+  .float-right {
+    right: -5%;
+    bottom: 5%;
+    transform-origin: bottom right;
+    animation: float-mobile 6s ease-in-out infinite;
+    animation-delay: -3s; 
+  }
   .metrics-grid,
   .testimonials-grid {
     grid-template-columns: 1fr;
@@ -2042,6 +2073,27 @@ details[open] summary::after {
     flex-direction: column-reverse;
     gap: 24px;
     text-align: center;
+  }
+
+  .price-amount {
+    font-size: 3rem;
+  }
+
+  .form-privacy {
+    gap: 2px;
+  }
+  .cal-widget {
+    height: 520px; 
+    border-radius: 20px;
+  }
+
+  .calendar-iframe {
+    width: 100%; 
+    height: 100%; 
+    transform: scale(
+      1
+    ); 
+    transform-origin: center;
   }
 }
 
