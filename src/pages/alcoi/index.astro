@@ -719,7 +719,7 @@ import "./style.css";
         </div>
       </section>
 
-      <section id="portfolio" class="relative py-20 z-10">
+<section id="portfolio" class="relative py-20 z-10">
         <div class="max-w-7xl mx-auto px-6">
           <div class="text-center mb-16 max-w-3xl mx-auto">
             <div
@@ -739,7 +739,10 @@ import "./style.css";
             </p>
           </div>
 
+          <!-- Grid de proyectos: Al tener 8, se harán 2 filas de 4 en escritorio -->
           <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            
+            <!-- 1. Nutrición (Original) -->
             <a
               href="https://mnmryk.github.io/demo-nutricion/"
               target="_blank"
@@ -765,19 +768,23 @@ import "./style.css";
                   >Plataforma / SaaS</span
                 >
                 <h3
-                  class="text-lg font-extrabold text-slate-900 mb-3 leading-snug"
+                  class="text-lg font-extrabold text-slate-900 mb-2 leading-snug"
                 >
                   Plataforma Nutrició
                 </h3>
+                <p class="text-sm text-slate-500 mb-4 line-clamp-3">
+                  Software de gestió de pacients i dietes amb una interfície intuïtiva per a professionals de la nutrició.
+                </p>
                 <div
                   class="mt-auto flex items-center gap-1.5 text-slate-600 text-sm font-semibold group-hover:text-saas-violet transition-colors"
                 >
-                  Veure demo <i data-lucide="arrow-right" class="w-3.5 h-3.5"
+                  Veure Web <i data-lucide="arrow-right" class="w-3.5 h-3.5"
                   ></i>
                 </div>
               </div>
             </a>
 
+            <!-- 2. Evento B2B (Original) -->
             <a
               href="https://mnmryk.github.io/demo-evento-B2B/"
               target="_blank"
@@ -803,19 +810,23 @@ import "./style.css";
                   >Esdeveniment</span
                 >
                 <h3
-                  class="text-lg font-extrabold text-slate-900 mb-3 leading-snug"
+                  class="text-lg font-extrabold text-slate-900 mb-2 leading-snug"
                 >
                   NEXUS X - 10º Aniversari
                 </h3>
+                <p class="text-sm text-slate-500 mb-4 line-clamp-3">
+                  Landing page d'alt impacte orientada a la conversió i registre d'assistents per a esdeveniments corporatius.
+                </p>
                 <div
                   class="mt-auto flex items-center gap-1.5 text-slate-600 text-sm font-semibold group-hover:text-saas-violet transition-colors"
                 >
-                  Veure demo <i data-lucide="arrow-right" class="w-3.5 h-3.5"
+                  Veure Web <i data-lucide="arrow-right" class="w-3.5 h-3.5"
                   ></i>
                 </div>
               </div>
             </a>
 
+            <!-- 3. Micropigmentación (Original) -->
             <a
               href="https://mnmryk.github.io/demo-micropigmentacion/"
               target="_blank"
@@ -841,19 +852,23 @@ import "./style.css";
                   >Web Corporativa</span
                 >
                 <h3
-                  class="text-lg font-extrabold text-slate-900 mb-3 leading-snug"
+                  class="text-lg font-extrabold text-slate-900 mb-2 leading-snug"
                 >
                   Lucia Micropigmentació
                 </h3>
+                <p class="text-sm text-slate-500 mb-4 line-clamp-3">
+                  Aparador digital elegant amb galeria de treballs, serveis detallats i vies de contacte directes.
+                </p>
                 <div
                   class="mt-auto flex items-center gap-1.5 text-slate-600 text-sm font-semibold group-hover:text-saas-violet transition-colors"
                 >
-                  Veure demo <i data-lucide="arrow-right" class="w-3.5 h-3.5"
+                  Veure Web <i data-lucide="arrow-right" class="w-3.5 h-3.5"
                   ></i>
                 </div>
               </div>
             </a>
 
+            <!-- 4. Gastronómico (Original) -->
             <a
               href="https://mnmryk.github.io/demo-evento-gastronimico/"
               target="_blank"
@@ -879,18 +894,194 @@ import "./style.css";
                   >Reserves</span
                 >
                 <h3
-                  class="text-lg font-extrabold text-slate-900 mb-3 leading-snug"
+                  class="text-lg font-extrabold text-slate-900 mb-2 leading-snug"
                 >
                   UMAMI | Secret Supper Club
                 </h3>
+                <p class="text-sm text-slate-500 mb-4 line-clamp-3">
+                  Plataforma exclusiva amb un sistema integrat per a la gestió de reserves en experiències gastronòmiques.
+                </p>
                 <div
                   class="mt-auto flex items-center gap-1.5 text-slate-600 text-sm font-semibold group-hover:text-saas-violet transition-colors"
                 >
-                  Veure demo <i data-lucide="arrow-right" class="w-3.5 h-3.5"
+                  Veure Web <i data-lucide="arrow-right" class="w-3.5 h-3.5"
                   ></i>
                 </div>
               </div>
             </a>
+
+            <!-- 5. Portal Salud Clínicas (NUEVO) -->
+            <a
+              href="https://portalsalud-academia.mndesignweb.es/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="group flex flex-col bg-slate-50 rounded-3xl border border-slate-200 overflow-hidden hover:shadow-[0_20px_40px_-10px_rgba(139,92,246,0.15)] transition-all duration-300 hover:-translate-y-2"
+            >
+              <div
+                class="w-full aspect-video bg-slate-200 overflow-hidden relative"
+              >
+                <!-- ¡CAMBIA ESTA IMAGEN! -->
+                <img
+                  src="/alcoi/demo-portal-salud.webp"
+                  alt="Portal Salud per a Clíniques"
+                  class="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                />
+                <div
+                  class="absolute inset-0 bg-saas-dark/5 group-hover:bg-transparent transition-colors duration-300"
+                >
+                </div>
+              </div>
+              <div class="p-5 flex flex-col flex-1">
+                <span
+                  class="text-[10px] font-bold uppercase tracking-wider text-saas-violet mb-1.5"
+                  >Software / Clíniques</span
+                >
+                <h3
+                  class="text-lg font-extrabold text-slate-900 mb-2 leading-snug"
+                >
+                  Portal Salud
+                </h3>
+                <p class="text-sm text-slate-500 mb-4 line-clamp-3">
+                  Portal per a pacients dissenyat per a nutricionistes i clíniques, centralitzant tot el seguiment de salut.
+                </p>
+                <div
+                  class="mt-auto flex items-center gap-1.5 text-slate-600 text-sm font-semibold group-hover:text-saas-violet transition-colors"
+                >
+                  Veure Software <i data-lucide="arrow-right" class="w-3.5 h-3.5"
+                  ></i>
+                </div>
+              </div>
+            </a>
+
+            <!-- 6. Software Industria (NUEVO) -->
+            <a
+              href="https://mndesignweb.es/supplyconnect"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="group flex flex-col bg-slate-50 rounded-3xl border border-slate-200 overflow-hidden hover:shadow-[0_20px_40px_-10px_rgba(139,92,246,0.15)] transition-all duration-300 hover:-translate-y-2"
+            >
+              <div
+                class="w-full aspect-video bg-slate-200 overflow-hidden relative"
+              >
+                <!-- ¡CAMBIA ESTA IMAGEN! -->
+                <img
+                  src="/alcoi/demo-industria.webp"
+                  alt="Software Gestió Indústria"
+                  class="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                />
+                <div
+                  class="absolute inset-0 bg-saas-dark/5 group-hover:bg-transparent transition-colors duration-300"
+                >
+                </div>
+              </div>
+              <div class="p-5 flex flex-col flex-1">
+                <span
+                  class="text-[10px] font-bold uppercase tracking-wider text-saas-violet mb-1.5"
+                  >SaaS / B2B</span
+                >
+                <h3
+                  class="text-lg font-extrabold text-slate-900 mb-2 leading-snug"
+                >
+                  Gestió per Indústria
+                </h3>
+                <p class="text-sm text-slate-500 mb-4 line-clamp-3">
+                  Sistema de gestió interna creat a mida per optimitzar els processos de producció i flux de treball a fàbriques.
+                </p>
+                <div
+                  class="mt-auto flex items-center gap-1.5 text-slate-600 text-sm font-semibold group-hover:text-saas-violet transition-colors"
+                >
+                  Veure Software <i data-lucide="arrow-right" class="w-3.5 h-3.5"
+                  ></i>
+                </div>
+              </div>
+            </a>
+
+            <!-- 7. Reservas Logística y Oficinas (NUEVO) -->
+            <a
+              href="https://mnmryk.github.io/novoteix/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="group flex flex-col bg-slate-50 rounded-3xl border border-slate-200 overflow-hidden hover:shadow-[0_20px_40px_-10px_rgba(139,92,246,0.15)] transition-all duration-300 hover:-translate-y-2"
+            >
+              <div
+                class="w-full aspect-video bg-slate-200 overflow-hidden relative"
+              >
+                <!-- ¡CAMBIA ESTA IMAGEN! -->
+                <img
+                  src="/alcoi/demo-logistica.webp"
+                  alt="Reserves Logística i Oficines"
+                  class="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                />
+                <div
+                  class="absolute inset-0 bg-saas-dark/5 group-hover:bg-transparent transition-colors duration-300"
+                >
+                </div>
+              </div>
+              <div class="p-5 flex flex-col flex-1">
+                <span
+                  class="text-[10px] font-bold uppercase tracking-wider text-saas-violet mb-1.5"
+                  >Web / Logística</span
+                >
+                <h3
+                  class="text-lg font-extrabold text-slate-900 mb-2 leading-snug"
+                >
+                  Portal de Logística
+                </h3>
+                <p class="text-sm text-slate-500 mb-4 line-clamp-3">
+                  Web corporativa avançada amb sistema en temps real per a reserves de càrrega, descàrrega i gestió d'oficines.
+                </p>
+                <div
+                  class="mt-auto flex items-center gap-1.5 text-slate-600 text-sm font-semibold group-hover:text-saas-violet transition-colors"
+                >
+                  Veure Software <i data-lucide="arrow-right" class="w-3.5 h-3.5"
+                  ></i>
+                </div>
+              </div>
+            </a>
+
+            <!-- 8. E-learning Academias (NUEVO) -->
+            <a
+              href="https://mnmryk.github.io/nutrilearn-pro"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="group flex flex-col bg-slate-50 rounded-3xl border border-slate-200 overflow-hidden hover:shadow-[0_20px_40px_-10px_rgba(139,92,246,0.15)] transition-all duration-300 hover:-translate-y-2"
+            >
+              <div
+                class="w-full aspect-video bg-slate-200 overflow-hidden relative"
+              >
+                <!-- ¡CAMBIA ESTA IMAGEN! -->
+                <img
+                  src="/alcoi/demo-elearning.webp"
+                  alt="Software Acadèmies Online"
+                  class="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                />
+                <div
+                  class="absolute inset-0 bg-saas-dark/5 group-hover:bg-transparent transition-colors duration-300"
+                >
+                </div>
+              </div>
+              <div class="p-5 flex flex-col flex-1">
+                <span
+                  class="text-[10px] font-bold uppercase tracking-wider text-saas-violet mb-1.5"
+                  >E-learning / LMS</span
+                >
+                <h3
+                  class="text-lg font-extrabold text-slate-900 mb-2 leading-snug"
+                >
+                  Acadèmia Online
+                </h3>
+                <p class="text-sm text-slate-500 mb-4 line-clamp-3">
+                  Plataforma completa d'aprenentatge online per a acadèmies, amb gestió de cursos, alumnes i matriculació.
+                </p>
+                <div
+                  class="mt-auto flex items-center gap-1.5 text-slate-600 text-sm font-semibold group-hover:text-saas-violet transition-colors"
+                >
+                  Veure Software <i data-lucide="arrow-right" class="w-3.5 h-3.5"
+                  ></i>
+                </div>
+              </div>
+            </a>
+
           </div>
         </div>
       </section>
