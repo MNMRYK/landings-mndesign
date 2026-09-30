@@ -1,1293 +1,2175 @@
+---
+import "./style.css";
+
+/* =========================================================
+   LANDING PSICÓLOGOS · v2 (estética premium / startup médica)
+   Datos de la página: edita aquí textos repetidos sin tocar el HTML.
+   ========================================================= */
+
+// Iconos de trazo (viewBox 24x24). Se pintan con <svg set:html={ic.xxx} />
+const ic: Record<string, string> = {
+  arrow: '<path d="M5 12h14M13 6l6 6-6 6"/>',
+  play: '<path d="M8 5.5v13l11-6.5z" fill="currentColor" stroke="none"/>',
+  cal: '<rect x="3" y="4.5" width="18" height="16" rx="3"/><path d="M3 9.5h18M8 3v3M16 3v3"/>',
+  bell: '<path d="M6 16V11a6 6 0 1 1 12 0v5l1.5 2h-15z"/><path d="M10 20.5a2 2 0 0 0 4 0"/>',
+  card: '<rect x="2.5" y="5" width="19" height="14" rx="3"/><path d="M2.5 10h19M6.5 15h4"/>',
+  file: '<path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h4"/>',
+  video:
+    '<rect x="2.5" y="6" width="13" height="12" rx="3"/><path d="M15.5 10.5 21 7.5v9l-5.5-3"/>',
+  lock: '<rect x="4.5" y="10.5" width="15" height="10" rx="2.5"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/>',
+  plug: '<path d="M9 3v5M15 3v5M6 8h12v3a6 6 0 0 1-12 0zM12 17v4"/>',
+  check: '<path d="m5 12.5 4.5 4.5L19 7.5"/>',
+  star: '<path d="m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z" fill="currentColor" stroke="none"/>',
+  shield:
+    '<path d="M12 3 4.5 6v5.5c0 4.6 3.2 8.4 7.5 9.5 4.3-1.1 7.5-4.9 7.5-9.5V6z"/><path d="m8.8 12 2.3 2.3 4.3-4.6"/>',
+  chat: '<path d="M4 5.5h16v10H9l-5 4z"/>',
+  clock: '<circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/>',
+  spark:
+    '<path d="M12 3v4M12 17v4M3 12h4M17 12h4M5.6 5.6l2.8 2.8M15.6 15.6l2.8 2.8M5.6 18.4l2.8-2.8M15.6 8.4l2.8-2.8"/>',
+  mail: '<rect x="3" y="5" width="18" height="14" rx="3"/><path d="m3.5 6.5 8.5 6 8.5-6"/>',
+  ext: '<path d="M14 4h6v6M20 4l-9 9M18 14v4a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4"/>',
+  plus: '<path d="M12 5v14M5 12h14"/>',
+  pin: '<path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/>',
+  server:
+    '<rect x="3.5" y="4" width="17" height="7" rx="2"/><rect x="3.5" y="13" width="17" height="7" rx="2"/><path d="M7.5 7.5h.01M7.5 16.5h.01"/>',
+  key: '<circle cx="8" cy="15" r="4"/><path d="m11 12 9-9M17 6l3 3M14.5 8.5l2 2"/>',
+};
+
+// Garantías sobre los datos (sección Quiénes somos)
+const guarantees = [
+  {
+    i: "file",
+    t: "Contrato de encargado del tratamiento",
+    p: "Lo firmamos contigo antes de empezar, como exige el RGPD cuando tratamos datos de tus pacientes.",
+  },
+  {
+    i: "server",
+    t: "Servidores en la Unión Europea",
+    p: "Tu web y la base de datos de pacientes se alojan en la UE. Sin transferencias fuera del espacio europeo.",
+  },
+  {
+    i: "shield",
+    t: "Historia clínica protegida",
+    p: "Notas de sesión con acceso solo para ti, según el código deontológico de la psicología.",
+  },
+  {
+    i: "key",
+    t: "Todo es tuyo",
+    p: "La web, el software y los datos te pertenecen. Si un día te vas, te lo llevas todo, sin permanencias.",
+  },
+];
+
+// Tira de funciones (marquee del hero)
+const features = [
+  ["cal", "Agenda online 24/7"],
+  ["video", "Terapia online cifrada"],
+  ["bell", "Recordatorios automáticos"],
+  ["card", "Cobro antes de la sesión"],
+  ["file", "Consentimiento digital"],
+  ["shield", "RGPD sanitario"],
+  ["plug", "Tu propio software, sin cuotas"],
+  ["spark", "Diseño a medida"],
+];
+
+// PLACEHOLDERS de logos: sustitúyelos por logos reales (SVG/PNG) con permiso de cada clínica.
+const logos = [
+  { name: "Clínica Aurora", shape: "circle" },
+  { name: "Centro Serena", shape: "leaf" },
+  { name: "Mente Clara", shape: "drop" },
+  { name: "Kinetix", shape: "square" },
+  { name: "Instituto Equilibrio", shape: "ring" },
+  { name: "Psicología Nórdica", shape: "tri" },
+  { name: "Espacio Calma", shape: "wave" },
+];
+const shapes: Record<string, string> = {
+  circle: '<circle cx="12" cy="12" r="9"/>',
+  leaf: '<path d="M4 20C4 10 10 4 20 4c0 10-6 16-16 16z"/>',
+  drop: '<path d="M12 3c4 5 7 8.5 7 12a7 7 0 0 1-14 0c0-3.5 3-7 7-12z"/>',
+  square: '<rect x="4" y="4" width="16" height="16" rx="5"/>',
+  ring: '<circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="4"/>',
+  tri: '<path d="M12 3.5 21 20H3z"/>',
+  wave: '<path d="M2 13c3-5 6-5 10 0s7 5 10 0v8H2z"/>',
+};
+
+const pains = [
+  {
+    t: "Pierdes horas cuadrando citas por mensaje",
+    p: "Cada paciente nuevo son 6 o 7 mensajes para acordar un hueco. Horas de tu consulta de psicología que no facturas.",
+    v: "chat",
+  },
+  {
+    t: "Las ausencias te dejan huecos sin cobrar",
+    p: "Sin recordatorios ni pago previo, una sesión perdida es una hora de tu agenda tirada.",
+    v: "miss",
+  },
+  {
+    t: "Tu web no transmite la confianza que tú generas",
+    p: "Una plantilla genérica no convence a quien busca psicólogo y está decidiendo a quién contarle algo íntimo.",
+    v: "wf",
+  },
+  {
+    t: "Te preocupa dónde acaban los datos de tus pacientes",
+    p: "Videollamadas sin garantías, formularios sin cifrar y herramientas de terceros ponen en riesgo datos de salud mental protegidos por el RGPD.",
+    v: "lock",
+  },
+];
+
+const steps = [
+  {
+    w: "Semana 1",
+    t: "Auditoría de tu consulta de psicología",
+    p: "Analizamos cómo trabajas y dónde pierdes tiempo. Ahí decidimos qué automatizar.",
+    d: [
+      "Mapa de tu flujo de citas y cobros",
+      "Lista de tareas a automatizar",
+      "Objetivos medibles para tu web",
+    ],
+  },
+  {
+    w: "Semanas 1-2",
+    t: "Elegimos la tecnología",
+    p: "WordPress si quieres autogestión completa, o tu propia plataforma de pacientes a medida para funciones únicas.",
+    d: [
+      "Propuesta técnica clara",
+      "Presupuesto cerrado por fases",
+      "Estructura y textos de la web",
+    ],
+  },
+  {
+    w: "Semanas 2-5",
+    t: "Diseño, reservas y pruebas de seguridad",
+    p: "Construimos tu web y tu software de gestión de pacientes: agenda, cobros y videoconsulta en un mismo sitio. En 3-5 semanas está funcionando.",
+    d: [
+      "Diseño a medida en móvil y escritorio",
+      "Agenda, pagos y videoconsulta conectados",
+      "Pruebas de cifrado y RGPD",
+    ],
+  },
+  {
+    w: "Después",
+    t: "Formación y soporte continuo",
+    p: "Te enseñamos a gestionarlo todo y nos quedamos como tu equipo técnico: copias, seguridad y mejoras.",
+    d: [
+      "Sesión de formación grabada",
+      "Copias diarias y actualizaciones",
+      "Mejoras cuando tu consulta crezca",
+    ],
+  },
+];
+
+const quotes = [
+  {
+    q: "La web ha transformado mi consulta, ahora todo está automatizado.",
+    n: "Dra. Elena M.",
+    i: "EM",
+  },
+  {
+    q: "La automatización de mi agenda me ha ahorrado horas de gestión administrativa.",
+    n: "Dra. Sonia O.",
+    i: "SO",
+  },
+  {
+    q: "Por fin tengo un calendario que no me da problemas.",
+    n: "Centro Kinetix",
+    i: "CK",
+  },
+];
+
+const demos = [
+  {
+    t: "Psicología especializada",
+    u: "https://mnmryk.github.io/psicologia-especializada/",
+    h: 212,
+    image: "/psicologos/psicologia-especializada.webp",
+    alt: "Ejemplo de web para psicólogo especializado con reserva de citas online",
+  },
+  {
+    t: "Psicología y bienestar",
+    u: "https://mnmryk.github.io/demo-psicologia-bienestar/",
+    h: 168,
+    image: "/psicologos/psicologia-bienestar.webp",
+    alt: "Ejemplo de web de psicología y bienestar emocional para psicóloga",
+  },
+  {
+    t: "Psicología clínica",
+    u: "https://mnmryk.github.io/demo-psicologia-clinica/",
+    h: 256,
+    image: "/psicologos/psicologia-clinica.webp",
+    alt: "Ejemplo de web para clínica de psicología con agenda online y terapia online",
+  },
+  {
+    t: "Consulta de nutrición",
+    u: "https://mnmryk.github.io/demo-nutricion/",
+    h: 142,
+    image: "/psicologos/nutricion.webp",
+    alt: "Ejemplo de web para consulta de nutrición con reserva de citas online",
+  },
+];
+
+const faqs = [
+  [
+    "¿Puedo tener mi propio software para psicólogos en lugar de pagar uno externo?",
+    "Sí. Desarrollamos una plataforma de pacientes a medida integrada en tu propia web: agenda, cobros, videoconsulta y documentos en tu software de gestión, sin pagar cuotas a terceros ni externalizar herramientas. Si ya usas un gestor clínico, un CRM (HubSpot, Salesforce) o un calendario (Google Calendar, Outlook), lo conectamos por API.",
+  ],
+  [
+    "¿Cumple el RGPD con datos de salud mental?",
+    "Sí. Usamos SSL, bases de datos cifradas y servidores ubicados en la Unión Europea, y firmamos contigo el contrato de encargado del tratamiento que exige el RGPD para datos de salud. Al estar la plataforma en tu propia web, los datos de tus pacientes no pasan por herramientas de terceros.",
+  ],
+  [
+    "¿La web y los datos de mis pacientes son míos?",
+    "Sí. La web, el software y la base de datos son tuyos desde el primer día. Si un día decides cambiar de proveedor, te entregamos el código y una exportación completa de tus datos, sin permanencias ni penalizaciones.",
+  ],
+  [
+    "¿Cómo se protegen la historia clínica y las notas de sesión?",
+    "Solo tú (y los profesionales que autorices) podéis acceder a ellas, con acceso cifrado y registro de accesos. La plataforma se diseña siguiendo el código deontológico del Consejo General de la Psicología y la normativa de conservación de la historia clínica.",
+  ],
+  [
+    "¿Puedo hacer terapia online desde mi web de psicólogo?",
+    "Sí. El paciente reserva en tu agenda online, paga con pasarela segura (Stripe, Redsys) y recibe automáticamente el enlace a su videoconsulta cifrada.",
+  ],
+  [
+    "¿En qué se diferencia de Wix o Squarespace?",
+    "No usamos plantillas. Construimos tu web y tu software a medida para tu consulta de psicología, optimizados para SEO local y pensados para generar confianza y convertir visitas en pacientes.",
+  ],
+  [
+    "¿Cuánto tarda en estar lista?",
+    "Entre 3 y 5 semanas, según las funciones: diseño, integración de la agenda y los cobros y pruebas de seguridad incluidos.",
+  ],
+  [
+    "¿Necesito conocimientos técnicos para gestionar mis citas o el blog?",
+    "No. Te dejamos el panel configurado y una sesión de formación para ti o tu equipo, para que gestionéis la agenda de pacientes y publiquéis en el blog sin ayuda.",
+  ],
+  [
+    "¿Y si algo falla o quiero cambios?",
+    "Nuestro mantenimiento activo cuesta 65 €/mes e incluye actualizaciones de seguridad, copias diarias y pequeñas modificaciones, para que tú solo te ocupes de tus pacientes. Si solo necesitas revisar algo puntual, las auditorías empiezan en 30 €.",
+  ],
+  [
+    "¿Me ayudáis a aparecer en Google en mi ciudad?",
+    "Sí. Aplicamos SEO local desde el código, optimizamos la velocidad de carga y conectamos la web con tu perfil de Google Business Profile (Maps) para atraer pacientes de tu zona que buscan psicólogo.",
+  ],
+];
+
+// SEO: título y descripciones compartidos por <title>, Open Graph, Twitter y Schema
+const pageUrl = "https://mndesignweb.es/psicologos/";
+const seoTitle = "Software y Web para Psicólogos a Medida | MN Design Web";
+const seoDescription =
+  "Tu web de psicólogo con software propio de gestión de pacientes: agenda online, terapia online cifrada y cobros. Sin cuotas a terceros y con RGPD incluido.";
+const socialDescription =
+  "Web para psicólogos y clínicas de psicología con tu propia plataforma de pacientes a medida: agenda, recordatorios, cobros y videoconsulta cifrada sin pagar cuotas a terceros.";
+
+// Schema.org (JSON-LD). Se genera con JSON.stringify para que siempre sea válido
+// y las FAQ coincidan exactamente con las que se ven en la página.
+const schema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": `${pageUrl}#webpage`,
+      url: pageUrl,
+      name: seoTitle,
+      description: seoDescription,
+      inLanguage: "es-ES",
+      about: { "@id": `${pageUrl}#servicio` },
+    },
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://mndesignweb.es/#empresa",
+      name: "MN Design Web",
+      image: "https://mndesignweb.es/logo.webp",
+      url: "https://mndesignweb.es/",
+      telephone: "+34645854934",
+      email: "info@mndesignweb.es",
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: "Avinguda Passeig del Comtat, 75, 5º 1º",
+        postalCode: "03820",
+        addressLocality: "Cocentaina",
+        addressRegion: "Alicante",
+        addressCountry: "ES",
+      },
+      priceRange: "$$",
+    },
+    {
+      "@type": "Service",
+      "@id": `${pageUrl}#servicio`,
+      name: "Web y software para psicólogos a medida",
+      serviceType: "Software para psicólogos y diseño web",
+      description:
+        "Desarrollo de webs para psicólogos, psicoterapeutas y clínicas de psicología con una plataforma de pacientes a medida integrada: agenda online, recordatorios automáticos, terapia online por videoconsulta cifrada, cobro antes de la sesión, consentimiento digital y portal del paciente. El profesional tiene su propio software de gestión, sin pagar cuotas a terceros y cumpliendo el RGPD para datos de salud mental.",
+      provider: { "@id": "https://mndesignweb.es/#empresa" },
+      audience: {
+        "@type": "Audience",
+        audienceType: "Psicólogos, psicoterapeutas y clínicas de psicología",
+      },
+      hasOfferCatalog: {
+        "@type": "OfferCatalog",
+        name: "Planes de web y software para psicólogos",
+        itemListElement: [
+          {
+            "@type": "Offer",
+            name: "Fase 1 · Web en WordPress para psicólogos",
+            description:
+              "Web profesional de 5 páginas con calendario de citas, formulario de captación de pacientes, videoconsulta cifrada, firma de documentos, botón de WhatsApp, SEO básico y panel autogestionable.",
+            priceSpecification: {
+              "@type": "PriceSpecification",
+              price: 500,
+              priceCurrency: "EUR",
+              valueAddedTaxIncluded: false,
+            },
+          },
+          {
+            "@type": "Offer",
+            name: "Fase 2 · Software para psicólogos a medida",
+            description:
+              "Plataforma de pacientes a medida integrada en tu web: portal privado del paciente, agente de IA, recordatorios automáticos, aula virtual, cobros recurrentes y sincronización con tu ERP o gestor.",
+            priceSpecification: {
+              "@type": "PriceSpecification",
+              minPrice: 1350,
+              priceCurrency: "EUR",
+              valueAddedTaxIncluded: false,
+            },
+          },
+          {
+            "@type": "Offer",
+            name: "Mantenimiento activo mensual",
+            description:
+              "Actualizaciones de seguridad, copias de seguridad diarias y pequeñas modificaciones de la web y el software.",
+            priceSpecification: {
+              "@type": "UnitPriceSpecification",
+              price: 65,
+              priceCurrency: "EUR",
+              unitText: "MONTH",
+              valueAddedTaxIncluded: false,
+            },
+          },
+        ],
+      },
+    },
+    {
+      "@type": "Product",
+      "@id": `${pageUrl}#producto`,
+      name: "Web y software para psicólogos a medida",
+      image: "https://mndesignweb.es/psicologos/imagen-miniatura-psicologos.webp",
+      description:
+        "Web profesional para psicólogos con plataforma de gestión de pacientes propia: agenda online, terapia online cifrada, cobros automáticos y RGPD sanitario, sin cuotas a terceros.",
+      brand: { "@type": "Brand", name: "MN Design Web" },
+      aggregateRating: {
+        "@type": "AggregateRating",
+        ratingValue: "5.0",
+        bestRating: "5",
+        ratingCount: "32",
+      },
+    },
+    {
+      "@type": "FAQPage",
+      "@id": `${pageUrl}#faq`,
+      mainEntity: faqs.map(([q, a]) => ({
+        "@type": "Question",
+        name: q,
+        acceptedAnswer: { "@type": "Answer", text: a },
+      })),
+    },
+  ],
+};
+---
+
 <!doctype html>
 <html lang="es">
-  <head>
+ <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Diseño Web Psicólogos | MN Design Web</title>
-    <meta
-      name="theme-color"
-      media="(prefers-color-scheme: light)"
-      content="#FDFBF7"
-    />
-    <meta
-      name="theme-color"
-      media="(prefers-color-scheme: dark)"
-      content="#FDFBF7"
-    />
-    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-
-    <link rel="canonical" href="https://mndesignweb.es/psicologos/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>{seoTitle}</title>
+    <meta name="description" content={seoDescription} />
+    <meta name="theme-color" content="#EAF4FF" />
     <link rel="icon" type="image/webp" href="/favicon_v2.webp" />
+    <link rel="canonical" href="https://mndesignweb.es/psicologos/" />
     <meta name="robots" content="index, follow" />
 
+    <!-- Fuentes del nuevo diseño (Inter) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Nunito:wght@400;600;700;800;900&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
-    <meta
-      name="description"
-      content="Diseño web profesional para psicólogos y terapeutas. Webs optimizadas para pacientes, con sistemas de reserva, videoconsulta cifrada y cumplimiento RGPD."
-    />
-    <meta name="author" content="MN Design Web" />
-
+    <!-- Open Graph / Redes Sociales -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://mndesignweb.es/psicologos/" />
-    <meta
-      property="og:title"
-      content="Diseño Web Profesional para Psicólogos | MN Design Web"
-    />
-    <meta
-      property="og:description"
-      content="Impulsa tu clínica con una web diseñada para atraer pacientes, automatizar citas y garantizar la seguridad de tus sesiones."
-    />
-    <meta
-      property="og:image"
-      content="https://mndesignweb.es/psicologos/imagen-miniatura-psicologos.webp"
-    />
+    <meta property="og:title" content={seoTitle} />
+    <meta property="og:description" content={socialDescription} />
+    <meta property="og:image" content="https://mndesignweb.es/psicologos/imagen-miniatura-psicologos.webp" />
     <meta property="og:locale" content="es_ES" />
-
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:url" content="https://mndesignweb.es/psicologos/" />
-    <meta
-      name="twitter:title"
-      content="Diseño Web Profesional para Psicólogos | MN Design Web"
-    />
-    <meta
-      name="twitter:description"
-      content="Impulsa tu clínica con una web diseñada para atraer pacientes, automatizar citas y garantizar la seguridad de tus sesiones."
-    />
-    <meta
-      name="twitter:image"
-      content="https://mndesignweb.es/psicologos/imagen-miniatura-psicologos.webp"
-    />
+    <meta name="twitter:title" content={seoTitle} />
+    <meta name="twitter:description" content={socialDescription} />
+    <meta name="twitter:image" content="https://mndesignweb.es/psicologos/imagen-miniatura-psicologos.webp" />
 
-    <script type="application/ld+json">
-      [
-        {
-          "@context": "https://schema.org",
-          "@type": "WebPage",
-          "name": "Diseño Web para Psicólogos | MN Design Web",
-          "description": "Servicio de diseño y desarrollo web especializado en psicólogos, terapeutas y clínicas de salud mental con sistemas de reserva y videoconsulta."
-        },
-        {
-          "@context": "https://schema.org",
-          "@type": "ProfessionalService",
-          "name": "MN Design Web",
-          "image": "https://mndesignweb.es/logo.webp",
-          "url": "https://mndesignweb.es/",
-          "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "Alicante",
-            "addressCountry": "ES"
-          },
-          "priceRange": "$$"
-        },
-        {
-          "@context": "https://schema.org/",
-          "@type": "Product",
-          "name": "Web Profesional para Psicólogos",
-          "image": "https://mndesignweb.es/psicologos/imagen-miniatura-psicologos.webp",
-          "description": "Desarrollo de landing pages optimizadas para psicólogos con automatización de citas y seguridad RGPD.",
-          "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "5.0",
-            "bestRating": "5",
-            "ratingCount": "32"
-          }
-        },
-        {
-          "@context": "https://schema.org",
-          "@type": "FAQPage",
-          "mainEntity": [
-            {
-              "@type": "Question",
-              "name": "¿Se integra con mi software de gestión actual?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Sí, diseñamos la web para que se conecte mediante API con la mayoría de los sistemas de gestión clínica, CRM (como HubSpot o Salesforce) y calendarios (Google Calendar, Outlook) que ya utilizas."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "¿Qué pasa con la confidencialidad de los datos (RGPD)?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "La seguridad es nuestra prioridad. Implementamos protocolos SSL, bases de datos cifradas y sistemas de cookies que cumplen estrictamente con la normativa europea de protección de datos y el RGPD sanitario."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "¿Puedo ofrecer terapia online a través de la web?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Sí. Podemos integrar pasarelas de pago seguras (Stripe, Redsys) y conectar el sistema de reservas con plataformas de videollamada para que el paciente reciba el enlace de su sesión automáticamente al pagar."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "¿En qué se diferencia vuestro servicio de plantillas como Wix o Squarespace?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "No usamos plantillas. Creamos un ecosistema digital a medida, optimizado para el posicionamiento en Google (SEO local) y diseñado específicamente para generar confianza y convertir visitas en pacientes reales."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "¿Qué ocurre si la web falla o necesito hacer cambios?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Ofrecemos planes de mantenimiento técnico mensual donde nos encargamos de actualizaciones de seguridad, copias de respaldo diarias y pequeñas modificaciones de contenido para que tú solo te preocupes de tus pacientes."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "¿Cuánto tardáis en entregar la web terminada?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Los plazos varían según las funcionalidades exactas, pero habitualmente el desarrollo integral (diseño, integración de reservas y pruebas de seguridad) nos toma entre 3 y 5 semanas para que todo funcione al 100%."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "¿Necesito conocimientos técnicos para gestionar mis citas o subir artículos?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Para nada. Dejamos el panel de administración totalmente configurado e intuitivo. Además, incluimos una sesión de formación contigo o tu equipo para que sepáis manejar vuestras reservas y publicar en el blog con total independencia."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "¿Me ayudáis a aparecer en Google en mi ciudad?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Sí. Aplicamos una estrategia de SEO Local desde la base del código, optimizando la velocidad de carga y conectando la web de forma nativa con tu perfil de Google Business Profile (Maps) para atraer pacientes de tu zona."
-              }
-            }
-          ]
-        }
-      ]
+    <!-- JS para activar animaciones -->
+    <script is:inline>
+      document.documentElement.classList.add("js");
     </script>
 
+    <!-- Schema.org -->
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(schema)} />
+
+    <!-- Google Analytics -->
     <script is:inline>
       window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-
+      function gtag() { dataLayer.push(arguments); }
       var localConsent = localStorage.getItem("cookie_consent");
-
       if (localConsent === "accepted") {
         gtag("consent", "default", {
-          ad_storage: "granted",
-          ad_user_data: "granted",
-          ad_personalization: "granted",
-          analytics_storage: "granted",
+          ad_storage: "granted", ad_user_data: "granted", ad_personalization: "granted", analytics_storage: "granted",
         });
       } else {
         gtag("consent", "default", {
-          ad_storage: "denied",
-          ad_user_data: "denied",
-          ad_personalization: "denied",
-          analytics_storage: "denied",
-          wait_for_update: 500,
+          ad_storage: "denied", ad_user_data: "denied", ad_personalization: "denied", analytics_storage: "denied", wait_for_update: 500,
         });
       }
       gtag("js", new Date());
       gtag("config", "G-36WYJMYT3Z");
     </script>
-    <script
-      is:inline
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-36WYJMYT3Z"></script>
+    <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-36WYJMYT3Z"></script>
 
+    <!-- Facebook Pixel -->
     <script is:inline>
-      // 2. Inicializar Pixel de Facebook
       !(function (f, b, e, v, n, t, s) {
         if (f.fbq) return;
-        n = f.fbq = function () {
-          n.callMethod
-            ? n.callMethod.apply(n, arguments)
-            : n.queue.push(arguments);
-        };
+        n = f.fbq = function () { n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments); };
         if (!f._fbq) f._fbq = n;
-        n.push = n;
-        n.loaded = !0;
-        n.version = "2.0";
-        n.queue = [];
-        t = b.createElement(e);
-        t.async = !0;
-        t.src = v;
-        s = b.getElementsByTagName(e)[0];
-        s.parentNode.insertBefore(t, s);
-      })(
-        window,
-        document,
-        "script",
-        "https://connect.facebook.net/en_US/fbevents.js",
-      );
-
+        n.push = n; n.loaded = !0; n.version = "2.0"; n.queue = [];
+        t = b.createElement(e); t.async = !0; t.src = v;
+        s = b.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t, s);
+      })(window, document, "script", "https://connect.facebook.net/en_US/fbevents.js");
       var localConsent = localStorage.getItem("cookie_consent");
-
-      if (localConsent !== "accepted") {
-        fbq("consent", "revoke");
-      } else {
-        fbq("consent", "grant");
-      }
-
+      if (localConsent !== "accepted") { fbq("consent", "revoke"); } else { fbq("consent", "grant"); }
       fbq("init", "1627135808585120");
       fbq("track", "PageView");
     </script>
 
+    <!-- Clarity -->
     <script is:inline type="text/javascript">
       var localConsent = localStorage.getItem("cookie_consent");
       if (localConsent === "accepted") {
         (function (c, l, a, r, i, t, y) {
-          c[a] =
-            c[a] ||
-            function () {
-              (c[a].q = c[a].q || []).push(arguments);
-            };
-          t = l.createElement(r);
-          t.async = 1;
-          t.src = "https://www.clarity.ms/tag/" + i;
-          y = l.getElementsByTagName(r)[0];
-          y.parentNode.insertBefore(t, y);
+          c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments); };
+          t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+          y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
         })(window, document, "clarity", "script", "wuzaxaifa0");
+        clarity("consent");
       }
     </script>
   </head>
-  <body
-    class="bg-white text-slate-900 antialiased selection:bg-purple-200 selection:text-purple-900"
-  >
-    <a
-      href="https://mndesignweb.es/"
-      class="global-logo"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      <div class="texto-logo">
-        <span class="siglas">MN</span>
-        <span class="marca">Design Web</span>
+
+  <body>
+    <!-- HTML-1 · NAVEGACIÓN -->
+    <header class="top" id="top">
+      <div class="nav">
+        <a class="logo" href="#"><i>MN</i><span>Design Web</span></a>
+        <nav class="links" aria-label="Secciones">
+          <a href="#funciones">Funciones</a>
+          <a href="#proceso">Proceso</a>
+          <a href="#planes">Planes</a>
+          <a href="#opiniones">Opiniones</a>
+          <a href="#nosotros">Nosotros</a>
+        </nav>
+        <a class="btn btn-main btn-sm nav-cta" href="#contacto">
+          Agendar llamada <svg
+            class="i i-arrow"
+            viewBox="0 0 24 24"
+            set:html={ic.arrow}
+          />
+        </a>
+        <!-- Botón hamburguesa (solo tablet/móvil) -->
+        <button
+          class="burger"
+          id="burger"
+          type="button"
+          aria-label="Abrir menú"
+          aria-controls="mnav"
+          aria-expanded="false"
+        >
+          <span></span><span></span><span></span>
+        </button>
       </div>
-    </a>
-    <main class="landing-main">
 
-      <section class="hero-section">
-        <div class="container hero-grid">
-          <div class="hero-content">
-            <span class="tag">Diseño Web para Clínicas y Psicólogos</span>
-            <h1 class="hero-title">
-              Una web que transmite <span class="text-gradient"
-                >profesionalidad y confianza</span
-              >
-            </h1>
-            <p class="hero-description">
-              Transforma tu consulta con una web diseñada para convertir
-              visitantes en pacientes. Sistemas de reserva automatizados,
-              videoconsulta segura y cumplimiento total de la RGPD.
-            </p>
-            <div class="btn-content">
-              <a href="#contacto" class="btn-secondary">Solicitar auditoría</a>
-              <a href="#demos" class="btn-primary">Ver casos de éxito</a>
-            </div>
-          </div>
-
-          <div class="hero-visuals desktop-only">
-            <div class="mac-mockup">
-              <img
-                src="/psicologos/mockup-mac.webp"
-                alt="Web de Psicología en Mac"
-              />
-            </div>
-            <div class="mobile-mockup">
-              <img
-                src="/psicologos/mockup-iphone.webp"
-                alt="Web de Psicología en iPhone"
-              />
-            </div>
-          </div>
+      <!-- Panel de menú móvil: capa fija a pantalla completa -->
+      <nav class="mnav" id="mnav" aria-label="Menú móvil">
+        <div class="mnav-head">
+          <a class="logo" href="#"><i>MN</i><span>Design Web</span></a>
+          <button
+            class="mnav-close"
+            id="mnav-close"
+            type="button"
+            aria-label="Cerrar menú"
+          >
+            <svg
+              class="i"
+              viewBox="0 0 24 24"
+              set:html={ic.plus}
+              style="transform:rotate(45deg)"
+            />
+          </button>
         </div>
-      </section>
-
-      <section class="features-section">
-        <div class="container">
-          <h2 class="section-title">Tu consulta digital, profesionalizada</h2>
-
-          <div class="feature-row reverse">
-            <div class="feature-text">
-              <h3>Videoconsulta Segura (E2EE)</h3>
-              <p>
-                Brinda seguridad absoluta con una sala de videollamada privada,
-                cifrada de extremo a extremo, sin necesidad de software externo.
-              </p>
-              <ul class="feature-list">
-                <li>
-                  <span class="check">✓</span> Cumplimiento estricto RGPD.
-                </li>
-                <li>
-                  <span class="check">✓</span> Calidad HD y conexión estable.
-                </li>
-              </ul>
-            </div>
-            <div class="feature-visual">
-              <div class="browser-mockup">
-                <div class="browser-header">
-                  <div class="browser-dots">
-                    <span class="dot-red"></span><span class="dot-yellow"
-                    ></span><span class="dot-green"></span>
-                  </div>
-                  <div class="browser-url" style="margin: 0 auto;">
-                    consulta.tu-nombre.com/video
-                  </div>
-                </div>
-                <img
-                  src="/psicologos/mockup-videollamada.webp"
-                  alt="Videoconsulta segura"
-                  class="mockup-img-browser"
-                />
-              </div>
-            </div>
-          </div>
-
-          <div class="feature-row">
-            <div class="feature-visual">
-              <div class="browser-mockup">
-                <div class="browser-header">
-                  <div class="browser-dots">
-                    <span class="dot-red"></span><span class="dot-yellow"
-                    ></span><span class="dot-green"></span>
-                  </div>
-                  <div class="browser-url" style="margin: 0 auto;">
-                    consulta.tu-nombre.com/video
-                  </div>
-                </div>
-                <img
-                  src="/psicologos/mockup-calendario.webp"
-                  alt="Videoconsulta segura"
-                  class="mockup-img-browser"
-                />
-              </div>
-            </div>
-            <div class="feature-text">
-              <h3>Calendario de Citas Automático</h3>
-              <p>
-                Optimiza tu tiempo evitando el intercambio eterno de mensajes.
-                Tus pacientes ven tu disponibilidad real y reservan su sesión de
-                forma autónoma.
-              </p>
-              <ul class="feature-list">
-                <li>
-                  <span class="check">✓</span> Cumplimiento estricto de normativas.
-                </li>
-                <li>
-                  <span class="check">✓</span> Sincronización con calendario en tiempo
-                  real.
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="feature-row">
-            <div class="feature-text">
-              <h3>Aula Virtual y Cursos</h3>
-              <p>
-                Escala tu modelo de negocio ofreciendo material psicoeducativo,
-                ejercicios guiados o cursos que tus pacientes pueden consultar
-                cuando necesiten.
-              </p>
-              <ul class="feature-list">
-                <li>
-                  <span class="check">✓</span> Contenido bajo suscripción.
-                </li>
-                <li>
-                  <span class="check">✓</span> Material descargable (PDFs, audios).
-                </li>
-              </ul>
-            </div>
-            <div class="feature-visual">
-              <div class="browser-mockup">
-                <div class="browser-header">
-                  <div class="browser-dots">
-                    <span class="dot-red"></span><span class="dot-yellow"
-                    ></span><span class="dot-green"></span>
-                  </div>
-                  <div class="browser-url" style="margin: 0 auto;">
-                    consulta.tu-nombre.com/aula
-                  </div>
-                </div>
-                <img
-                  src="/psicologos/mockup-curso.webp"
-                  alt="Aula Virtual"
-                  class="mockup-img-browser"
-                />
-              </div>
-            </div>
-          </div>
+        <div class="mnav-links">
+          <a href="#funciones"
+            ><span>Funciones</span><svg
+              class="i"
+              viewBox="0 0 24 24"
+              set:html={ic.arrow}
+            /></a
+          >
+          <a href="#proceso"
+            ><span>Proceso</span><svg
+              class="i"
+              viewBox="0 0 24 24"
+              set:html={ic.arrow}
+            /></a
+          >
+          <a href="#planes"
+            ><span>Planes</span><svg
+              class="i"
+              viewBox="0 0 24 24"
+              set:html={ic.arrow}
+            /></a
+          >
+          <a href="#opiniones"
+            ><span>Opiniones</span><svg
+              class="i"
+              viewBox="0 0 24 24"
+              set:html={ic.arrow}
+            /></a
+          >
+          <a href="#nosotros"
+            ><span>Nosotros</span><svg
+              class="i"
+              viewBox="0 0 24 24"
+              set:html={ic.arrow}
+            /></a
+          >
         </div>
-      </section>
-
-      <section class="funciones-section">
-        <div class="funciones-container">
-          <h2 class="funciones-title">Tu consulta, digitalizada y eficiente</h2>
-
-          <div class="funciones-grid">
-            <div class="funciones-card">
-              <div class="funciones-icon">
-                <i class="fa-solid fa-calendar-check"></i>
-              </div>
-              <h3>Gestión de Citas</h3>
-              <p>
-                Sistema de reservas integrado que permite a tus pacientes elegir
-                huecos disponibles en tu agenda, evitando el intercambio
-                infinito de mensajes.
-              </p>
-            </div>
-
-            <div class="funciones-card">
-              <div class="funciones-icon">
-                <i class="fa-solid fa-shield-halved"></i>
-              </div>
-              <h3>Privacidad (E2EE)</h3>
-              <p>
-                Salas de videoconsulta cifradas de extremo a extremo,
-                garantizando el cumplimiento estricto del RGPD y la
-                confidencialidad de tus pacientes.
-              </p>
-            </div>
-
-            <div class="funciones-card">
-              <div class="funciones-icon">
-                <i class="fa-solid fa-bolt"></i>
-              </div>
-              <h3>Recordatorios Automáticos</h3>
-              <p>
-                Reduce drásticamente las tasas de inasistencia con
-                notificaciones automáticas vía email o WhatsApp antes de cada
-                sesión.
-              </p>
-            </div>
-
-            <div class="funciones-card">
-              <div class="funciones-icon">
-                <i class="fa-solid fa-user-lock"></i>
-              </div>
-              <h3>Panel del Paciente</h3>
-              <p>
-                Un espacio seguro y personalizado donde el paciente puede
-                acceder a su historial, facturas y enlaces a sus sesiones
-                privadas.
-              </p>
-            </div>
-
-            <div class="funciones-card">
-              <div class="funciones-icon">
-                <i class="fa-solid fa-graduation-cap"></i>
-              </div>
-              <h3>Aula Virtual</h3>
-              <p>
-                Plataforma de cursos y ejercicios guiados. Escala tu consulta
-                ofreciendo contenido psicoeducativo de acceso restringido.
-              </p>
-            </div>
-
-            <div class="funciones-card">
-              <div class="funciones-icon">
-                <i class="fa-solid fa-credit-card"></i>
-              </div>
-              <h3>Pagos Seguros</h3>
-              <p>
-                Pasarela de pago integrada para sesiones individuales o bonos
-                mensuales. Gestión de cobros sencilla antes de la consulta.
-              </p>
-            </div>
-
-            <div class="funciones-card">
-              <div class="funciones-icon">
-                <i class="fa-solid fa-file-signature"></i>
-              </div>
-              <h3>Admisión Digital</h3>
-              <p>
-                Formularios de evaluación previa y consentimiento informado
-                digitalizados para que lleguen a tu base de datos antes de la
-                primera sesión.
-              </p>
-            </div>
-
-            <div class="funciones-card">
-              <div class="funciones-icon">
-                <i class="fa-solid fa-download"></i>
-              </div>
-              <h3>Material Descargable</h3>
-              <p>
-                Entrega fichas de trabajo, audios de relajación o guías de apoyo
-                de forma organizada y profesional desde un área privada.
-              </p>
-            </div>
-
-            <div class="funciones-card">
-              <div class="funciones-icon">
-                <i class="fa-solid fa-chart-line"></i>
-              </div>
-              <h3>Analítica de Consultas</h3>
-              <p>
-                Monitoriza el volumen de citas, ingresos recurrentes y tasa de
-                conversión de nuevos pacientes desde un panel de control
-                intuitivo.
-              </p>
-            </div>
-          </div>
+        <div class="mnav-foot">
+          <a class="btn btn-main" href="#contacto">
+            Agendar llamada gratuita <svg
+              class="i i-arrow"
+              viewBox="0 0 24 24"
+              set:html={ic.arrow}
+            />
+          </a>
+          <p class="mnav-note">Sin compromiso · Respuesta en menos de 24 h</p>
         </div>
-      </section>
+      </nav>
+    </header>
 
-      <section class="integracion-section">
-        <div class="container integracion-container">
-          <div class="integracion-content">
-            <h2 class="section-title">Sincronización total con tu gestión</h2>
-            <p class="integracion-description">
-              No trabajes el doble. Integramos tu nueva web con tu CRM, ERP o
-              software de gestión actual. Tus citas y datos de pacientes se
-              sincronizan automáticamente para que tu flujo de trabajo sea
-              impecable.
-            </p>
-
-            <div class="integracion-badges">
-              <span class="badge"
-                ><i class="fa-solid fa-database"></i> Sincronización en tiempo real</span
-              >
-              <span class="badge"
-                ><i class="fa-solid fa-code-branch"></i> APIs personalizadas</span
-              >
-              <span class="badge"
-                ><i class="fa-solid fa-lock"></i> Seguridad y cumplimiento</span
-              >
-            </div>
-          </div>
-          <div class="cta-box">
-            <h3>¿Listo para transformar tu consulta?</h3>
-            <p>
-              Cada consulta es un mundo y cada profesional tiene necesidades
-              únicas. Cuéntame qué necesitas y empecemos a diseñar tu ecosistema
-              digital desde cero.
-            </p>
-            <a href="#formulario" class="btn-metodologia">Solicitar Auditoría</a
+    <main>
+      <!-- HTML-2 · HERO centrado + trío de móviles superpuestos -->
+      <section class="hero">
+        <div class="wrap">
+          <h1 class="rv" style="--d:.08s">
+            Tu propio software para psicólogos para que vuelvas a <span class="grad"
+              >centrarte en terapia</span
             >
+          </h1>
+          <p class="sub rv" style="--d:.16s">
+            Construimos tu web con una plataforma de pacientes a medida integrada:
+            agenda online, terapia online cifrada y cobros en tu propio software
+            de gestión. Sin cuotas a terceros y con RGPD incluido.
+          </p>
+          <div class="cta-row rv" style="--d:.24s">
+            <a class="btn btn-main" href="#contacto">
+              Agendar llamada gratuita de 30 min <svg
+                class="i i-arrow"
+                viewBox="0 0 24 24"
+                set:html={ic.arrow}
+              />
+            </a>
+            <a class="btn btn-ghost" href="#demos">
+              <span class="play"
+                ><svg class="i" viewBox="0 0 24 24" set:html={ic.play} /></span
+              > Ver webs reales
+            </a>
           </div>
-        </div>
-      </section>
-
-      <section class="metodologia-section">
-        <div class="metodologia-container">
-          <div class="metodologia-header">
-            <h2 class="section-title">
-              Más allá del diseño: Consultoría Estratégica
-            </h2>
-            <p class="metodologia-lead">
-              No construimos webs, diseñamos ecosistemas digitales. Trabajamos
-              codo a codo contigo para entender tus procesos clínicos y definir
-              qué soluciones técnicas aportarán valor real a tu consulta.
-            </p>
-          </div>
-
-          <div class="metodologia-grid">
-            <div class="metodologia-bloque">
-              <h3>Auditoría de Necesidades</h3>
-              <p>
-                No partimos de una plantilla. Analizamos tu metodología, qué
-                tipo de pacientes tratas y cómo gestionas tu día a día.
-                Identificamos los "cuellos de botella" que te quitan tiempo y
-                los convertimos en automatizaciones inteligentes.
-              </p>
-            </div>
-
-            <div class="metodologia-bloque">
-              <h3>Selección de Stack Tecnológico</h3>
-              <p>
-                Tú eliges el camino. Evaluamos si tu proyecto requiere la
-                versatilidad de <strong>WordPress</strong> para una autogestión completa,
-                o la potencia y escalabilidad de una <strong
-                  >aplicación a medida</strong
-                > para funciones únicas y alto rendimiento.
-              </p>
-            </div>
-
-            <div class="metodologia-bloque">
-              <h3>Soporte y Evolución Continuada</h3>
-              <p>
-                Tu consulta es un ser vivo. No te entrego un archivo y
-                desaparezco; te acompaño como socio técnico para asegurar que la
-                plataforma crezca al ritmo de tu éxito, implementando mejoras
-                continuas y ajustes de rendimiento.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-
-      <section class="fases-section">
-        <div class="container">
-          <div class="fases-header">
-            <h2 class="section-title">
-              ¿Acabas de abrir tu consulta? Crece a tu ritmo
-            </h2>
-            <p class="fases-lead">
-              No necesitas hacer una gran inversión inicial si aún no tienes un
-              gran volumen de pacientes. Elige a la carta por dónde empezar y
-              escala tu tecnología conforme crezca tu clínica.
-            </p>
-          </div>
-
-          <div class="fases-grid">
-            <div class="fase-card">
-              <div class="fase-badge">FASE 1: DESPEGUE DIGITAL</div>
-              <h3>Presencia y Citas Básicas</h3>
-              <p>
-                Ideal para profesionales que aún no tienen página web y
-                necesitan empezar a captar pacientes hoy mismo.
-              </p>
-              <ul>
-                <li>
-                  <i class="fa-solid fa-check"></i> Diseño de Landing Page (WordPress)
-                </li>
-                <li>
-                  <i class="fa-solid fa-check"></i> Integración de agenda online básica
-                </li>
-                <li>
-                  <i class="fa-solid fa-check"></i> Formulario de captación optimizado
-                </li>
-                <li>
-                  <i class="fa-solid fa-check"></i> Inversión inicial reducida
-                </li>
-              </ul>
-            </div>
-
-            <div class="fase-card premium-card">
-              <div class="premium-tag">Más demandado</div>
-              <div class="fase-badge premium-badge">
-                FASE 2: ECOSISTEMA TOTAL
-              </div>
-              <h3>Portal Clínico a Medida</h3>
-              <p>
-                La solución definitiva para clínicas consolidadas que buscan
-                automatizar el 100% de su gestión diaria.
-              </p>
-              <ul>
-                <li><i class="fa-solid fa-check"></i> Todo lo de la Fase 1</li>
-                <li>
-                  <i class="fa-solid fa-check"></i> Portal del Paciente privado y
-                  seguro
-                </li>
-                <li>
-                  <i class="fa-solid fa-check"></i> Aula virtual y cobros recurrentes
-                </li>
-                <li>
-                  <i class="fa-solid fa-check"></i> Sincronización completa con ERP
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
-
-      <section class="wp-pack-section">
-        <div class="container wp-pack-container">
-          <div class="wp-pack-header">
-            <h2 class="wp-pack-title">
-              Fase 1: Tu primera clínica digital en WordPress
-            </h2>
-            <div class="wp-pack-price">
-              <span class="price-label">Valorado en</span>
-              <span class="price-amount">500€</span>
-            </div>
-            <p class="wp-pack-desc">
-              Una base sólida y profesional para que tus pacientes te
-              encuentren, confíen en ti y agenden su primera cita sin
-              fricciones.
-            </p>
-          </div>
-
-          <div class="wp-pack-grid">
-            <div class="wp-pack-box">
-              <h3>
-                <i class="fa-regular fa-file-lines"></i> Estructura del Sitio (5 Páginas)
-              </h3>
-              <ul class="wp-pack-list">
-                <li>
-                  <strong>Inicio:</strong> Presentación de tu propuesta de valor,
-                  servicios destacados y llamada a la acción para agendar cita.
-                </li>
-                <li>
-                  <strong>Sobre Mí:</strong> Tu perfil profesional, formación y filosofía
-                  para generar confianza.
-                </li>
-                <li>
-                  <strong>Servicios:</strong> Detalle de tus consultas (primera visita,
-                  seguimientos, bonos).
-                </li>
-                <li>
-                  <strong>Blog:</strong> Espacio preparado para que publiques artículos
-                  de nutrición, menús, recetarios, consejos y tips.
-                </li>
-                <li>
-                  <strong>Contacto:</strong> Información de ubicación, horarios y
-                  formulario de contacto.
-                </li>
-              </ul>
-            </div>
-
-            <div class="wp-pack-box">
-              <h3>
-                <i class="fa-solid fa-gears"></i> Funcionalidades Técnicas
-              </h3>
-              <ul class="wp-pack-list">
-                <li>
-                  <strong>Sistema de Citas Online:</strong> Formulario integrado para
-                  que los pacientes puedan solicitar citas.
-                </li>
-                <li>
-                  <strong>Diseño Responsive:</strong> Perfectamente adaptado a móviles
-                  y tablets.
-                </li>
-                <li>
-                  <strong>Panel Autogestionable:</strong> Para que puedas subir artículos
-                  al blog y modificar textos fácilmente.
-                </li>
-                <li>
-                  <strong>Optimización Básica SEO:</strong> Preparada para que Google
-                  empiece a indexar tu contenido.
-                </li>
-                <li>
-                  <strong>Botón de WhatsApp:</strong> Chat directo integrado para
-                  consultas rápidas.
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="inversion-section">
-        <div class="container">
-          <h2 class="section-title">Inversión adaptada a tu crecimiento</h2>
-          <p class="inversion-lead">
-            El coste de tu proyecto no es un precio cerrado, sino una inversión
-            proporcional a la complejidad, el volumen de pacientes y las
-            automatizaciones que requiere tu consulta para escalar con
-            tranquilidad.
+          <p class="micro rv" style="--d:.3s">
+            Sin compromiso · Te respondemos personalmente en menos de 24 h · 3-5
+            semanas de idea a web
           </p>
 
-          <div class="escalabilidad-grid">
-            <div class="factor-card">
-              <i class="fa-solid fa-code"></i>
-              <h3>Complejidad Funcional</h3>
-              <p>
-                Desde landings de conversión pura hasta sistemas de gestión
-                integral con áreas privadas, sincronización de CRM y entornos de
-                aprendizaje (LMS).
-              </p>
+          <!-- Escenario de mockups. Cada .scr admite una <img> real en lugar del UI de ejemplo -->
+          <div
+            class="stage rv"
+            style="--d:.35s"
+            aria-label="Ejemplo de software para psicólogos: agenda del psicólogo, portal del paciente y reserva de cita online"
+          >
+            <div class="halo" aria-hidden="true"></div>
+            <div class="trio" id="trio">
+              <!-- Móvil izquierdo · agenda del profesional -->
+              <div class="iphone p-l" aria-hidden="true">
+                <div class="scr">
+                  <img
+                    src="/psicologos/software-agenda-psicologo.webp"
+                    alt="Agenda del día en el software para psicólogos: citas, sesiones online y huecos libres"
+                  />
+                </div>
+              </div>
+              <!-- Móvil central · portal del paciente -->
+              <div class="iphone p-c" aria-hidden="true">
+                <div class="scr">
+                  <img
+                    src="/psicologos/software-portal-paciente.webp"
+                    alt="Portal del paciente de la plataforma a medida: próxima sesión de terapia online, consentimiento y facturas"
+                  />
+                </div>
+              </div>
+              <!-- Móvil derecho · reserva -->
+              <div class="iphone p-r" aria-hidden="true">
+                <div class="scr">
+                  <img
+                    src="/psicologos/software-reserva-cita.webp"
+                    alt="Reserva de cita online con el psicólogo: el paciente elige día y hora en la agenda"
+                  />
+                </div>
+              </div>
             </div>
 
-            <div class="factor-card">
-              <i class="fa-solid fa-users"></i>
-              <h3>Volumen y Escalabilidad</h3>
-              <p>
-                No es lo mismo gestionar 5 consultas a la semana que un flujo
-                constante de 200 pacientes. Ajustamos la infraestructura y la
-                base de datos a tu tráfico real.
-              </p>
+            <div class="float f1" aria-hidden="true">
+              <span class="ico"
+                ><svg class="i" viewBox="0 0 24 24" set:html={ic.cal} /></span
+              >
+              <div><b>Nueva reserva</b><span>Miércoles · 11:30</span></div>
             </div>
+            <div class="float f2" aria-hidden="true">
+              <span class="ico"
+                ><svg class="i" viewBox="0 0 24 24" set:html={ic.check} /></span
+              >
+              <div>
+                <b>Recordatorio enviado</b><span>24 h antes, automático</span>
+              </div>
+            </div>
+            <div class="float f3" aria-hidden="true">
+              <span class="ico"
+                ><svg class="i" viewBox="0 0 24 24" set:html={ic.lock} /></span
+              >
+              <div>
+                <b>Cifrado extremo a extremo</b><span>RGPD sanitario</span>
+              </div>
+            </div>
+            <div class="stage-fade" aria-hidden="true"></div>
+          </div>
 
-            <div class="factor-card">
-              <i class="fa-solid fa-gear"></i>
-              <h3>Integraciones a Medida</h3>
-              <p>
-                Desarrollo de conectores específicos con tus herramientas de
-                gestión, calendarios externos o pasarelas de pago especializadas
-                para el sector sanitario.
-              </p>
+          <p class="ticker-t">Todo lo que incluye tu software para psicólogos</p>
+          <div class="marquee" aria-hidden="true">
+            <div class="track">
+              {
+                [...features, ...features].map(([k, t]) => (
+                  <span class="pill">
+                    <svg class="i" viewBox="0 0 24 24" set:html={ic[k]} />
+                    {t}
+                  </span>
+                ))
+              }
             </div>
           </div>
         </div>
       </section>
 
-      <section class="contacto-section">
-        <div id="contacto" class="contacto-grid container">
-          <div class="contacto-left">
-            <div class="container text-center">
-              <h2 class="section-main-title">
-                Agenda tu sesión de consultoría estratégica
-              </h2>
-            </div>
-            <div class="cal-widget">
-              <iframe
-                src="https://cal.com/mndesignweb/reunion-30-min?embed=true"
-                title="Reserva tu cita"
-                class="calendar-iframe"
-                width="100%"
-                height="100%"
-                frameBorder="0"></iframe>
-            </div>
-          </div>
-
-          <div class="contacto-right">
-            <form id="formulario" class="formulario">
-              <h3>¿Hablamos sobre tu proyecto?</h3>
-              <p class="form-subtext">
-                Dime qué necesitas y diseñemos la hoja de ruta para tu nueva
-                presencia online.
-              </p>
-
-              <div class="form-grupo">
-                <label>Nombre del profesional o clínica</label>
-                <input
-                  type="text"
-                  id="nombre"
-                  placeholder="Tu nombre o el de tu centro"
-                  required
-                />
-              </div>
-
-              <div class="form-grupo">
-                <label>Email corporativo</label>
-                <input
-                  type="email"
-                  id="email"
-                  placeholder="consulta@clinica.es"
-                  required
-                />
-              </div>
-
-              <div class="form-grupo">
-                <label>Teléfono de contacto</label>
-                <input type="tel" id="telefono" placeholder="+34 600 000 000" />
-              </div>
-
-              <div class="form-grupo">
-                <label>¿Qué necesitas implementar principalmente?</label>
-                <select id="servicio" required>
-                  <option value="">Selecciona una opción</option>
-                  <option value="web-corporativa"
-                    >Web corporativa profesional</option
+      <!-- HTML-3 · TIRA DE LOGOS (PLACEHOLDERS: sustituir por logos reales con permiso) -->
+      <div class="logos">
+        <div class="wrap">
+          <p>Consultas de psicología y centros de salud mental que ya trabajan con su agenda automatizada</p>
+          <div class="marquee">
+            <div class="track reverse">
+              {
+                [...logos, ...logos].map((l, idx) => (
+                  <span
+                    class="lg"
+                    aria-hidden={idx >= logos.length ? "true" : undefined}
                   >
-                  <option value="sistema-reservas"
-                    >Sistema de reservas automático</option
-                  >
-                  <option value="aula-virtual">Aula Virtual / Cursos</option>
-                  <option value="integracion-crm"
-                    >Integración con mi CRM/ERP</option
-                  >
-                </select>
-              </div>
-
-              <button type="submit" id="btn-submit" class="btn-final-glow">
-                Enviar solicitud de auditoría
-              </button>
-
-              <p class="privacy-note">
-                🔒 Confidencialidad garantizada. Analizaré tu caso personalmente
-                antes de responderte.
-              </p>
-            </form>
-          </div>
-        </div>
-      </section>
-
-      <section class="demos-testimonios-section">
-        <div class="container demo-grid">
-          <div class="demo-wrapper" id="demos">
-            <h2 class="section-title">Demostraciones en vivo</h2>
-            <div class="demos-row">
-              <div class="demo-item">
-                <div class="iphone-mockup">
-                  <div class="phone-notch"></div>
-                  <div
-                    class="screen"
-                    style="background-image: url('/psicologos/demo-1.webp');"
-                  >
-                  </div>
-                </div>
-                <a
-                  href="https://mnmryk.github.io/psicologia-especializada/"
-                  target="_blank"
-                  class="btn-demo"
-                >
-                  Ver web en directo <i
-                    class="fa-solid fa-arrow-up-right-from-square"></i>
-                </a>
-              </div>
-
-              <div class="demo-item">
-                <div class="iphone-mockup">
-                  <div class="phone-notch"></div>
-                  <div
-                    class="screen"
-                    style="background-image: url('/psicologos/demo-2.webp');"
-                  >
-                  </div>
-                </div>
-                <a
-                  href="https://mnmryk.github.io/demo-psicologia-bienestar/"
-                  target="_blank"
-                  class="btn-demo"
-                >
-                  Ver web en directo <i
-                    class="fa-solid fa-arrow-up-right-from-square"></i>
-                </a>
-              </div>
-
-              <div class="demo-item">
-                <div class="iphone-mockup">
-                  <div class="phone-notch"></div>
-                  <div
-                    class="screen"
-                    style="background-image: url('/psicologos/demo-3.webp');"
-                  >
-                  </div>
-                </div>
-                <a
-                  href="https://mnmryk.github.io/demo-psicologia-clinica/"
-                  target="_blank"
-                  class="btn-demo"
-                >
-                  Ver web en directo <i
-                    class="fa-solid fa-arrow-up-right-from-square"></i>
-                </a>
-              </div>
-              <div class="demo-item">
-                <div class="iphone-mockup">
-                  <div class="phone-notch"></div>
-                  <div
-                    class="screen"
-                    style="background-image: url('/demo-5.webp');"
-                  >
-                  </div>
-                </div>
-                <a
-                  href="https://mnmryk.github.io/demo-nutricion/"
-                  target="_blank"
-                  class="btn-demo"
-                >
-                  Ver web en directo <i
-                    class="fa-solid fa-arrow-up-right-from-square"></i>
-                </a>
-              </div>
-            </div>
-
-            <div class="scroll-indicator">
-              <i class="fa-solid fa-computer-mouse"></i>
-              <span>Desplaza para ver más</span>
-            </div>
-          </div>
-
-          <div class="testimonios-wrapper">
-            <div class="carousel" id="carousel">
-              <div class="carousel-track">
-                <div class="testimonio-card">
-                  <div class="stars">★★★★★</div>
-                  <p>
-                    "La automatización de mi agenda me ha ahorrado horas de
-                    gestión administrativa."
-                  </p>
-                  <div class="author">
-                    — Dra. Sonia O. <i
-                      class="fa-brands fa-google"
-                      style="color: #4285F4;"></i>
-                  </div>
-                </div>
-                <div class="testimonio-card">
-                  <div class="stars">★★★★★</div>
-                  <p>
-                    "La web ha transformado mi consulta, ahora todo está
-                    automatizado."
-                  </p>
-                  <div class="author">
-                    — Dra. Elena M. <i
-                      class="fa-brands fa-google"
-                      style="color: #4285F4;"></i>
-                  </div>
-                </div>
-                <div class="testimonio-card">
-                  <div class="stars">★★★★★</div>
-                  <p>"Un servicio técnico impecable y muy profesional."</p>
-                  <div class="author">
-                    — Psicólogo clínico <i
-                      class="fa-brands fa-google"
-                      style="color: #4285F4;"></i>
-                  </div>
-                </div>
-                <div class="testimonio-card">
-                  <div class="stars">★★★★★</div>
-                  <p>"Por fin tengo un calendario que no me da problemas."</p>
-                  <div class="author">
-                    — Centro Kinetix <i
-                      class="fa-brands fa-google"
-                      style="color: #4285F4;"></i>
-                  </div>
-                </div>
-                <div class="testimonio-card">
-                  <div class="stars">★★★★★</div>
-                  <p>"El diseño es limpio, moderno y muy funcional."</p>
-                  <div class="author">
-                    — Clínica Psicosalud <i
-                      class="fa-brands fa-google"
-                      style="color: #4285F4;"></i>
-                  </div>
-                </div>
-                <div class="testimonio-card">
-                  <div class="stars">★★★★★</div>
-                  <p>"La integración con mi software ha sido un éxito."</p>
-                  <div class="author">
-                    — Dr. Ruiz <i
-                      class="fa-brands fa-google"
-                      style="color: #4285F4;"></i>
-                  </div>
-                </div>
-                <div class="testimonio-card">
-                  <div class="stars">★★★★★</div>
-                  <p>"Atención personalizada y resultados de alto nivel."</p>
-                  <div class="author">
-                    — Centro de Terapia <i
-                      class="fa-brands fa-google"
-                      style="color: #4285F4;"></i>
-                  </div>
-                </div>
-              </div>
-
-              <div class="carousel-track">
-                <div class="testimonio-card">
-                  <div class="stars">★★★★★</div>
-                  <p>
-                    "La automatización de mi agenda me ha ahorrado horas de
-                    gestión administrativa."
-                  </p>
-                  <div class="author">
-                    — Dra. Sonia O. <i
-                      class="fa-brands fa-google"
-                      style="color: #4285F4;"></i>
-                  </div>
-                </div>
-                <div class="testimonio-card">
-                  <div class="stars">★★★★★</div>
-                  <p>
-                    "La web ha transformado mi consulta, ahora todo está
-                    automatizado."
-                  </p>
-                  <div class="author">
-                    — Dra. Elena M. <i
-                      class="fa-brands fa-google"
-                      style="color: #4285F4;"></i>
-                  </div>
-                </div>
-                <div class="testimonio-card">
-                  <div class="stars">★★★★★</div>
-                  <p>"Un servicio técnico impecable y muy profesional."</p>
-                  <div class="author">
-                    — Psicólogo clínico <i
-                      class="fa-brands fa-google"
-                      style="color: #4285F4;"></i>
-                  </div>
-                </div>
-                <div class="testimonio-card">
-                  <div class="stars">★★★★★</div>
-                  <p>"Por fin tengo un calendario que no me da problemas."</p>
-                  <div class="author">
-                    — Centro Kinetix <i
-                      class="fa-brands fa-google"
-                      style="color: #4285F4;"></i>
-                  </div>
-                </div>
-                <div class="testimonio-card">
-                  <div class="stars">★★★★★</div>
-                  <p>"El diseño es limpio, moderno y muy funcional."</p>
-                  <div class="author">
-                    — Clínica Psicosalud <i
-                      class="fa-brands fa-google"
-                      style="color: #4285F4;"></i>
-                  </div>
-                </div>
-                <div class="testimonio-card">
-                  <div class="stars">★★★★★</div>
-                  <p>"La integración con mi software ha sido un éxito."</p>
-                  <div class="author">
-                    — Dr. Ruiz <i
-                      class="fa-brands fa-google"
-                      style="color: #4285F4;"></i>
-                  </div>
-                </div>
-                <div class="testimonio-card">
-                  <div class="stars">★★★★★</div>
-                  <p>"Atención personalizada y resultados de alto nivel."</p>
-                  <div class="author">
-                    — Centro de Terapia <i
-                      class="fa-brands fa-google"
-                      style="color: #4285F4;"></i>
-                  </div>
-                </div>
-              </div>
+                    <svg viewBox="0 0 24 24" set:html={shapes[l.shape]} />
+                    {l.name}
+                  </span>
+                ))
+              }
             </div>
           </div>
         </div>
-      </section>
+      </div>
 
-      <section class="faq-section">
-        <div class="faq-container">
-          <h2 class="section-title text-center">Preguntas Frecuentes</h2>
-
-          <div class="faq-list">
-            <details class="faq-item">
-              <summary>¿Se integra con mi software de gestión actual?</summary>
-              <p>
-                Sí, diseñamos la web para que se conecte mediante API con la
-                mayoría de los sistemas de gestión clínica, CRM (como HubSpot o
-                Salesforce) y calendarios (Google Calendar, Outlook) que ya
-                utilizas.
-              </p>
-            </details>
-
-            <details class="faq-item">
-              <summary
-                >¿Qué pasa con la confidencialidad de los datos (RGPD)?</summary
-              >
-              <p>
-                La seguridad es nuestra prioridad. Implementamos protocolos SSL,
-                bases de datos cifradas y sistemas de cookies que cumplen
-                estrictamente con la normativa europea de protección de datos y
-                el RGPD sanitario.
-              </p>
-            </details>
-
-            <details class="faq-item">
-              <summary
-                >¿Puedo ofrecer terapia online a través de la web?</summary
-              >
-              <p>
-                Sí. Podemos integrar pasarelas de pago seguras (Stripe, Redsys)
-                y conectar el sistema de reservas con plataformas de
-                videollamada para que el paciente reciba el enlace de su sesión
-                automáticamente al pagar.
-              </p>
-            </details>
-
-            <details class="faq-item">
-              <summary
-                >¿En qué se diferencia vuestro servicio de plantillas como Wix o
-                Squarespace?</summary
-              >
-              <p>
-                No usamos plantillas. Creamos un ecosistema digital a medida,
-                optimizado para el posicionamiento en Google (SEO local) y
-                diseñado específicamente para generar confianza y convertir
-                visitas en pacientes reales.
-              </p>
-            </details>
-
-            <details class="faq-item">
-              <summary
-                >¿Qué ocurre si la web falla o necesito hacer cambios?</summary
-              >
-              <p>
-                Ofrecemos planes de mantenimiento técnico mensual donde nos
-                encargamos de actualizaciones de seguridad, copias de respaldo
-                diarias y pequeñas modificaciones de contenido para que tú solo
-                te preocupes de tus pacientes.
-              </p>
-            </details>
-          </div>
-        </div>
-      </section>
-
-      <footer class="footer-minimal">
-        <div class="footer-content">
-          <div class="footer-section footer-contact">
-            <a href="tel:+34645854934" class="correo-gigante">+34 645 854 934</a
+      <!-- HTML-4 · PROBLEMA (titular centrado + tarjetas con mini-visual) -->
+      <section class="center">
+        <div class="wrap">
+          <span class="eyebrow rv">El problema</span>
+          <h2 class="rv">
+            Si tu web te da trabajo <span class="muted-word"
+              >en lugar de quitártelo,</span
             >
-            <a href="mailto:info@mndesignweb.es" class="correo-gigante"
-              >info@mndesignweb.es</a
+            <span class="grad">hay un problema</span>
+          </h2>
+          <p class="lead rv">
+            Esto es lo que nos cuentan la mayoría de psicólogos y
+            psicoterapeutas antes de empezar.
+          </p>
+          <div class="audience rv" aria-label="Para quién es">
+            <span># Psicología clínica</span><span># Terapia de pareja</span
+            ><span># Infanto-juvenil</span><span># Terapia online</span><span
+              ># Centros con varios profesionales</span
             >
           </div>
-
-          <div class="footer-section footer-links">
-            <a href="https://mndesignweb.es/aviso-legal/">Aviso Legal</a>
-            <a href="https://mndesignweb.es/privacidad/">Privacidad</a>
-            <a href="https://mndesignweb.es/cookies/">Cookies</a>
+          <div class="pains">
+            {
+              pains.map((p, idx) => (
+                <article class="card rv" data-spot style={`--d:${idx * 0.08}s`}>
+                  {p.v === "chat" && (
+                    <div class="mini" aria-hidden="true">
+                      <div class="bub">¿Tienes hueco esta semana?</div>
+                      <div class="bub out">Martes a las 10, ¿te va?</div>
+                      <div class="bub">Uf, mejor jueves…</div>
+                      <div class="bub out">Jueves solo a las 17:00</div>
+                    </div>
+                  )}
+                  {p.v === "miss" && (
+                    <div class="mini" aria-hidden="true">
+                      <div class="slot x">
+                        <s>Lun 10:00</s>
+                        <span class="tag warn">Ausencia</span>
+                      </div>
+                      <div class="slot">
+                        <span>Mié 11:30</span>
+                        <span class="tag ok">Recordado</span>
+                      </div>
+                      <div class="slot">
+                        <span>Jue 17:00</span>
+                        <span class="tag ok">Pagado</span>
+                      </div>
+                    </div>
+                  )}
+                  {p.v === "wf" && (
+                    <div class="mini" aria-hidden="true">
+                      <div class="wfm">
+                        <i />
+                        <i />
+                        <i />
+                        <i />
+                        <small>
+                          Plantilla genérica · igual que otras 1.000 webs
+                        </small>
+                      </div>
+                    </div>
+                  )}
+                  {p.v === "lock" && (
+                    <div class="mini lockv" aria-hidden="true">
+                      <span class="big">
+                        <svg class="i" viewBox="0 0 24 24" set:html={ic.lock} />
+                      </span>
+                      <span class="tag warn">
+                        WhatsApp y formularios sin cifrar
+                      </span>
+                    </div>
+                  )}
+                  <h3>{p.t}</h3>
+                  <p>{p.p}</p>
+                </article>
+              ))
+            }
           </div>
+          <p class="bridge rv">
+            Todo esto se resuelve con una web y un software propios. <span class="grad"
+              >Así es como la construimos.</span>
+          </p>
+        </div>
+      </section>
 
-          <div class="footer-section footer-copyright">
-            <p>Copyright © MN Design Web</p>
+      <!-- HTML-5 · BENEFICIOS: abanico de 5 móviles (cada pantalla = una función) -->
+      <section class="benefits center" id="funciones">
+        <div class="wrap">
+          <span class="eyebrow rv">Beneficios</span>
+          <h2 class="rv">
+            Tu consulta, <span class="grad">funcionando sola</span> en el bolsillo
+            de cada paciente
+          </h2>
+          <p class="lead rv">
+            Reservar, recordar, cobrar, firmar y conectar: cinco tareas de tu
+            consulta de psicología que hoy haces a mano y mañana ocurren solas.
+          </p>
+
+          <div class="fan rv">
+            <figure>
+              <div class="iphone">
+                <div class="scr">
+                  <div class="sb"><span>9:41</span><span>●●●</span></div>
+                  <small>Paso 1</small>
+                  <h4>Reserva online</h4>
+                  <div class="days">
+                    <span>Lu<b>9</b></span><span class="on">Ma<b>10</b></span
+                    ><span>Mi<b>11</b></span><span>Ju<b>12</b></span><span
+                      >Vi<b>13</b></span
+                    >
+                  </div>
+                  <div class="slots">
+                    <span>10:00</span><span class="on">11:30</span><span
+                      class="off">13:00</span
+                    ><span>17:00</span>
+                  </div>
+                  <span class="ui-btn">Reservar</span>
+                </div>
+              </div>
+              <figcaption>
+                <svg class="i" viewBox="0 0 24 24" set:html={ic.cal} />Reservas
+              </figcaption>
+            </figure>
+            <figure>
+              <div class="iphone">
+                <div class="scr lock">
+                  <div class="sb"><span>9:41</span><span>●●●</span></div>
+                  <div class="clock-big">9:41</div>
+                  <div class="date">Miércoles, 11 de junio</div>
+                  <div class="noti">
+                    <i
+                      ><svg
+                        class="i"
+                        viewBox="0 0 24 24"
+                        set:html={ic.bell}
+                      /></i
+                    >
+                    <div>
+                      <b>Mañana, 11:30</b><span
+                        >Tu sesión con Laura. ¿Confirmas?</span>
+                    </div>
+                  </div>
+                  <div class="noti">
+                    <i
+                      style="background:linear-gradient(135deg,#1fbf9f,#52d6b8)"
+                      ><svg
+                        class="i"
+                        viewBox="0 0 24 24"
+                        set:html={ic.check}
+                      /></i
+                    >
+                    <div>
+                      <b>Asistencia confirmada</b><span>Hace 2 min</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <figcaption>
+                <svg
+                  class="i"
+                  viewBox="0 0 24 24"
+                  set:html={ic.bell}
+                />Recordatorios
+              </figcaption>
+            </figure>
+            <figure>
+              <div class="iphone">
+                <div class="scr vid">
+                  <div class="vid-main"><span class="av-big">MN</span></div>
+                  <div class="vid-self">L</div>
+                  <div class="vid-top">
+                    <b>Sesión · 50 min</b>
+                    <span class="e2e"
+                      ><svg
+                        class="i"
+                        viewBox="0 0 24 24"
+                        set:html={ic.lock}
+                      />Cifrada</span
+                    >
+                  </div>
+                  <div class="vid-ctrl">
+                    <span
+                      ><svg
+                        class="i"
+                        viewBox="0 0 24 24"
+                        set:html={ic.video}
+                      /></span
+                    >
+                    <span
+                      ><svg
+                        class="i"
+                        viewBox="0 0 24 24"
+                        set:html={ic.chat}
+                      /></span
+                    >
+                    <span class="end"
+                      ><svg
+                        class="i"
+                        viewBox="0 0 24 24"
+                        set:html={ic.plus}
+                        style="transform:rotate(45deg)"
+                      /></span
+                    >
+                  </div>
+                </div>
+              </div>
+              <figcaption>
+                <svg
+                  class="i"
+                  viewBox="0 0 24 24"
+                  set:html={ic.video}
+                />Videoconsulta
+              </figcaption>
+            </figure>
+            <figure>
+              <div class="iphone">
+                <div class="scr">
+                  <div class="sb"><span>9:41</span><span>●●●</span></div>
+                  <small>Sesión individual · 50 min</small>
+                  <div class="pay-ok">
+                    <svg class="i" viewBox="0 0 24 24" set:html={ic.check} />
+                  </div>
+                  <div class="pay-amt">60,00 €</div>
+                  <p
+                    style="text-align:center;font-size:.8em;color:#6b7a90;margin-bottom:1em"
+                  >
+                    Pago completado
+                  </p>
+                  <div class="ui-card">
+                    <div class="ui-row">
+                      <b>Bono 4 sesiones</b><span class="tag">Activo</span>
+                    </div>
+                    <div class="ui-row">
+                      <b>Factura</b><span class="tag ok">Enviada</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <figcaption>
+                <svg class="i" viewBox="0 0 24 24" set:html={ic.card} />Cobros
+              </figcaption>
+            </figure>
+            <figure>
+              <div class="iphone">
+                <div class="scr">
+                  <div class="sb"><span>9:41</span><span>●●●</span></div>
+                  <small>Antes de tu primera sesión</small>
+                  <h4>Admisión</h4>
+                  <div class="field">
+                    <small>Motivo de consulta</small><b>Ansiedad</b>
+                  </div>
+                  <div class="field"><small>Modalidad</small><b>Online</b></div>
+                  <div class="sign">
+                    <svg viewBox="0 0 120 40"
+                      ><path
+                        d="M6 28c10-18 18-20 20-8s6 14 14-2 12-10 14 0 10 8 18-6 14-6 20 4 12 6 22-2"
+                      ></path></svg
+                    >
+                  </div>
+                  <span class="ui-btn">Firmar consentimiento</span>
+                </div>
+              </div>
+              <figcaption>
+                <svg class="i" viewBox="0 0 24 24" set:html={ic.file} />Admisión
+              </figcaption>
+            </figure>
+          </div>
+          <p class="cap-note">Pantallas de ejemplo ilustrativas del portal.</p>
+
+          <div class="ben-grid" style="text-align:left">
+            <article class="card rv" data-spot>
+              <span class="ico-box"
+                ><svg class="i" viewBox="0 0 24 24" set:html={ic.clock} /></span
+              >
+              <h3>Recuperas horas cada semana</h3>
+              <p>
+                Tus pacientes ven tu disponibilidad real y reservan solos en tu
+                agenda online. Adiós al ping-pong de mensajes.
+              </p>
+            </article>
+            <article class="card rv" data-spot style="--d:.08s">
+              <span class="ico-box"
+                ><svg class="i" viewBox="0 0 24 24" set:html={ic.bell} /></span
+              >
+              <h3>Menos huecos sin cobrar</h3>
+              <p>
+                Recordatorios automáticos y pago previo para que cada hora de tu
+                agenda cuente.
+              </p>
+            </article>
+            <article class="card rv" data-spot style="--d:.16s">
+              <span class="ico-box"
+                ><svg
+                  class="i"
+                  viewBox="0 0 24 24"
+                  set:html={ic.shield}
+                /></span
+              >
+              <h3>Tu software, sin cuotas a terceros</h3>
+              <p>
+                La plataforma de pacientes vive en tu web: es tuya, está cifrada y
+                no dependes de herramientas externas.
+              </p>
+            </article>
           </div>
         </div>
-      </footer>
-    </main>
-    <div id="cookie-banner" class="cookie-card-uiverse" style="display: none;">
-      <svg
-        xml:space="preserve"
-        viewBox="0 0 122.88 122.25"
-        y="0px"
-        x="0px"
-        id="cookieSvg"
-        version="1.1"
+      </section>
+
+      <!-- HTML-6 · CONSULTA DIGITAL: bento con portátil, móvil y tablet -->
+      <section>
+        <div class="wrap">
+          <div class="center">
+            <span class="eyebrow rv">Consulta digital</span>
+            <h2 class="rv">
+              Un software para psicólogos que <span class="grad"
+                >trabaja mientras tú atiendes</span>
+            </h2>
+            <p class="lead rv">
+              Tu plataforma de pacientes a medida, integrada en tu web: cada
+              función existe para ahorrarte tiempo, reducir ausencias o proteger
+              los datos de salud de tus pacientes.
+            </p>
+          </div>
+
+          <div class="bento">
+            <!-- Tarjeta principal: portátil + móvil -->
+            <article class="card bx-hero s6 rv" data-spot>
+              <div>
+                <span class="ico-box"
+                  ><svg class="i" viewBox="0 0 24 24" set:html={ic.cal} /></span
+                >
+                <h3>Reservas sin intercambio de mensajes</h3>
+                <p>
+                  Una agenda para psicólogos en la que tus pacientes ven tu
+                  disponibilidad real y eligen hueco. Se sincroniza con tu
+                  calendario y tú lo ves todo en un panel claro.
+                </p>
+                <ul
+                  style="list-style: none; padding: 0; margin: 2rem 0; display: flex; flex-direction: column; gap: 1rem;"
+                >
+                  <li
+                    style="display: flex; align-items: center; gap: 10px; font-size: 0.95rem; color: var(--muted);"
+                  >
+                    <svg
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      style="color: #1fbf9f;"
+                      ><polyline points="20 6 9 17 4 12"></polyline></svg
+                    >
+                    Sincronización bidireccional (Google Calendar)
+                  </li>
+                  <li
+                    style="display: flex; align-items: center; gap: 10px; font-size: 0.95rem; color: var(--muted);"
+                  >
+                    <svg
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      style="color: #1fbf9f;"
+                      ><polyline points="20 6 9 17 4 12"></polyline></svg
+                    >
+                    Gestión automática de zonas horarias
+                  </li>
+                  <li
+                    style="display: flex; align-items: center; gap: 10px; font-size: 0.95rem; color: var(--muted);"
+                  >
+                    <svg
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      style="color: #1fbf9f;"
+                      ><polyline points="20 6 9 17 4 12"></polyline></svg
+                    >
+                    Bloqueo de descansos y urgencias
+                  </li>
+                </ul>
+
+                <!-- Novedad 2: Badge de autoridad/ahorro -->
+                <div
+                  style="display: inline-flex; align-items: center; gap: 12px; background: var(--surface); padding: 12px 16px; border-radius: 12px; border: 1px solid var(--line); width: fit-content; box-shadow: 0 4px 14px rgba(0,0,0,0.03);"
+                >
+                  <span
+                    style="font-weight: 800; color: #1fbf9f; font-size: 1.2rem;"
+                    >+4h</span
+                  >
+                  <span
+                    style="font-size: 0.85rem; color: var(--muted); line-height: 1.2;"
+                    >ahorradas a la semana<br />en cuadrar horarios</span
+                  >
+                </div>
+              </div>
+              <div
+                class="dev-stack"
+                aria-label="Panel del profesional en portátil y notificación en móvil"
+              >
+                <div class="laptop">
+                  <div class="lid">
+                    <!-- Sustituible por <img src="/captura-panel.webp" alt="Panel del profesional"> -->
+                    <div class="lscr">
+                      <img
+                        src="/psicologos/software-panel-escritorio.webp"
+                        alt="Panel del software para psicólogos con la agenda del día y las reservas online de pacientes"
+                        loading="lazy"
+                      />
+                    </div>
+                  </div>
+                  <div class="base"></div>
+                </div>
+                <div class="iphone">
+                  <div class="scr lock">
+                    <img
+                      src="/psicologos/software-panel-movil.webp"
+                      alt="Plataforma de pacientes a medida del psicólogo vista desde el móvil"
+                      loading="lazy"
+                    />
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- Videoconsulta en tablet -->
+            <article class="card bx-dark s3 rv" data-spot>
+              <span class="ico-box"
+                ><svg class="i" viewBox="0 0 24 24" set:html={ic.lock} /></span
+              >
+              <h3>Videoconsulta cifrada</h3>
+              <p>
+                Haz terapia online en una sala privada de tu web, cifrada de
+                extremo a extremo y sin instalar nada.
+              </p>
+              <div class="tablet" aria-hidden="true">
+                <!-- Sustituible por <img src="/captura-videoconsulta.webp"> -->
+                <div class="tscr">
+                  <div class="vid-grid">
+                    <div>MN<small>Tú · Psicóloga</small></div>
+                    <div>L<small>Laura</small></div>
+                  </div>
+                  <span class="e2e"
+                    ><svg
+                      class="i"
+                      viewBox="0 0 24 24"
+                      set:html={ic.lock}
+                    />Cifrado extremo a extremo</span
+                  >
+                  <div class="vid-ctrl">
+                    <span
+                      ><svg
+                        class="i"
+                        viewBox="0 0 24 24"
+                        set:html={ic.video}
+                      /></span
+                    >
+                    <span
+                      ><svg
+                        class="i"
+                        viewBox="0 0 24 24"
+                        set:html={ic.chat}
+                      /></span
+                    >
+                    <span class="end"
+                      ><svg
+                        class="i"
+                        viewBox="0 0 24 24"
+                        set:html={ic.plus}
+                        style="transform:rotate(45deg)"
+                      /></span
+                    >
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="card s3 rv" data-spot style="--d:.08s">
+              <span class="ico-box"
+                ><svg class="i" viewBox="0 0 24 24" set:html={ic.bell} /></span
+              >
+              <h3>Menos ausencias</h3>
+              <p>
+                Recordatorios automáticos por email o WhatsApp antes de cada
+                sesión.
+              </p>
+              <div class="toast-demo" aria-hidden="true">
+                <div class="noti">
+                  <i><svg class="i" viewBox="0 0 24 24" set:html={ic.mail} /></i
+                  >
+                  <div>
+                    <b>Recordatorio · 24 h antes</b><span
+                      >Enviado a laura@… ✓</span>
+                  </div>
+                </div>
+                <div class="noti">
+                  <i style="background:linear-gradient(135deg,#1fbf9f,#52d6b8)"
+                    ><svg class="i" viewBox="0 0 24 24" set:html={ic.chat} /></i
+                  >
+                  <div>
+                    <b>WhatsApp · 2 h antes</b><span
+                      >Confirmada por el paciente ✓</span>
+                  </div>
+                </div>
+              </div>
+
+              <div style="height:18px"></div>
+              <span class="ico-box"
+                ><svg class="i" viewBox="0 0 24 24" set:html={ic.file} /></span
+              >
+              <h3>Admisión digital</h3>
+              <p>
+                El paciente rellena su formulario y consentimiento antes de la
+                primera sesión.
+              </p>
+              <div class="form-demo" aria-hidden="true">
+                <div class="field">
+                  <small>Consentimiento informado</small><b>Firmado · 11/06</b>
+                </div>
+                <div class="progress"><i></i></div>
+              </div>
+            </article>
+
+            <article class="card bx-mint s2 rv" data-spot>
+              <span class="ico-box"
+                ><svg class="i" viewBox="0 0 24 24" set:html={ic.card} /></span
+              >
+              <h3>Cobros antes de la sesión</h3>
+              <p>
+                Pago por sesión o bono mensual con pasarela segura (Stripe,
+                Redsys).
+              </p>
+              <div class="pay-demo" aria-hidden="true">
+                <span>Sesión individual</span><b>60 €</b><span class="tag ok"
+                  >Pagado</span
+                >
+              </div>
+            </article>
+
+            <article class="card bx-int s4 rv" data-spot style="--d:.08s">
+              <div>
+                <span class="ico-box"
+                  ><svg
+                    class="i"
+                    viewBox="0 0 24 24"
+                    set:html={ic.plug}
+                  /></span
+                >
+                <h3>Tu propia herramienta de gestión</h3>
+                <p>
+                  Sin cuotas a terceros ni herramientas externalizadas. Y si ya
+                  usas un CRM, ERP o gestor clínico, lo conectamos para que no
+                  trabajes dos veces.
+                </p>
+              </div>
+              <div class="hub" aria-hidden="true">
+                <div class="ring"></div>
+                <div class="core">MN</div>
+                <span class="pill">Google Calendar</span>
+                <span class="pill">Outlook</span>
+                <span class="pill">HubSpot</span>
+                <span class="pill">Salesforce</span>
+                <span class="pill">API a medida</span>
+              </div>
+            </article>
+          </div>
+          <p class="opt">
+            <b>Opcional:</b> aula virtual para vender cursos, ejercicios guiados o
+            material descargable.
+          </p>
+        </div>
+      </section>
+
+      <!-- HTML-7 · PROCESO: timeline vertical interactivo (JS rellena la línea, activa nodos y despliega tarjetas) -->
+      <section class="process" id="proceso">
+        <div class="wrap">
+          <div class="center">
+            <span class="eyebrow rv">Proceso</span>
+            <h2 class="rv">
+              Trabajamos contigo, <span class="grad"
+                >no te entregamos una plantilla</span>
+            </h2>
+            <p class="lead rv">
+              Un proceso claro, con una persona al otro lado de principio a fin.
+              Pulsa cada paso para ver qué recibes.
+            </p>
+          </div>
+          <div class="tl" id="tl">
+            <div class="tl-line" aria-hidden="true"><i></i></div>
+            {
+              steps.map((s, idx) => (
+                <div class="tl-item">
+                  <span class="tl-node" aria-hidden="true">
+                    {String(idx + 1).padStart(2, "0")}
+                  </span>
+                  <button
+                    class="card tl-card"
+                    type="button"
+                    aria-expanded="false"
+                    data-spot
+                  >
+                    <span class="wk">
+                      <svg class="i" viewBox="0 0 24 24" set:html={ic.clock} />
+                      {s.w}
+                    </span>
+                    <h3>{s.t}</h3>
+                    <p>{s.p}</p>
+                    <div class="tl-more">
+                      <div>
+                        <ul>
+                          {s.d.map((d) => (
+                            <li>
+                              <svg
+                                class="i"
+                                viewBox="0 0 24 24"
+                                set:html={ic.check}
+                              />
+                              {d}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
+                    <span class="tl-toggle">
+                      <svg class="i" viewBox="0 0 24 24" set:html={ic.plus} />
+                      Qué recibes
+                    </span>
+                  </button>
+                </div>
+              ))
+            }
+          </div>
+          <p class="tl-count" aria-live="polite">
+            Paso <b id="tl-now">1</b> de {steps.length} · Web funcionando en <b
+              >3-5 semanas</b>
+          </p>
+        </div>
+      </section>
+
+      <!-- HTML-8 · PLANES -->
+      <section class="center" id="planes">
+        <div class="wrap">
+          <span class="eyebrow rv">Planes</span>
+          <h2 class="rv">
+            Empieza pequeño y <span class="grad"
+              >crece cuando tu consulta lo pida</span>
+          </h2>
+          <p class="lead rv">
+            No necesitas una gran inversión inicial. Empieza con tu web de
+            psicólogo y amplía a tu propio software cuando lo necesites.
+          </p>
+          <div class="plans">
+            <div class="card plan rv" data-spot>
+              <span class="ptag">Para empezar hoy</span>
+              <h3>Fase 1 · Web en WordPress</h3>
+              <div class="price">500 € <small>IVA no incluido</small></div>
+              <p>
+                Para psicólogos que quieren captar sus primeros pacientes con
+                una presencia profesional.
+              </p>
+              <ul>
+                <li>
+                  <span class="ck">✓</span>5 páginas: inicio, sobre mí,
+                  servicios, blog y contacto
+                </li>
+                <li>
+                  <span class="ck">✓</span>Calendario y formulario de captación
+                </li>
+                <li>
+                  <span class="ck">✓</span>Funciones de Videoconsulta Cifrada,
+                  Firma de Documentos Legales y Documentos Compartidos
+                </li>
+                <li>
+                  <span class="ck">✓</span>Botón de WhatsApp y diseño para móvil
+                </li>
+                <li>
+                  <span class="ck">✓</span>SEO básico y panel para editar tú
+                  mismo
+                </li>
+              </ul>
+              <a class="btn btn-ghost" href="#contacto"
+                >Quiero la Fase 1 <svg
+                  class="i i-arrow"
+                  viewBox="0 0 24 24"
+                  set:html={ic.arrow}
+                /></a
+              >
+            </div>
+            <div class="card plan hot rv" style="--d:.1s">
+              <span class="ptag">Más elegida</span>
+              <h3>Fase 2 · Software para psicólogos a medida</h3>
+              <div class="price">
+                <span class="from">Desde</span> 1.350 € <small
+                  >IVA no incluido · presupuesto cerrado tras la llamada</small
+                >
+              </div>
+              <p>
+                Tu propia plataforma de pacientes para clínicas de psicología y
+                consultas consolidadas. Sin cuotas a terceros.
+              </p>
+              <ul>
+                <li><span class="ck">✓</span>Todo lo de la Fase 1</li>
+                <li><span class="ck">✓</span>Portal privado del paciente</li>
+                <li><span class="ck">✓</span>Agente de IA integrado</li>
+                <li><span class="ck">✓</span>Notificaciones y recordatorios</li>
+                <li>
+                  <span class="ck">✓</span>Aula virtual y cobros recurrentes
+                </li>
+                <li>
+                  <span class="ck">✓</span>Sincronización con tu ERP o gestor
+                </li>
+              </ul>
+              <a class="btn btn-main" href="#contacto"
+                >Pedir presupuesto <svg
+                  class="i i-arrow"
+                  viewBox="0 0 24 24"
+                  set:html={ic.arrow}
+                /></a
+              >
+            </div>
+          </div>
+          <!-- Servicios complementarios con precio -->
+          <div class="plan-extras rv">
+            <div class="px">
+              <span class="ico-box"
+                ><svg class="i" viewBox="0 0 24 24" set:html={ic.shield} /></span
+              >
+              <div>
+                <b>Mantenimiento activo · 65 €/mes</b>
+                <span>Seguridad, copias diarias y pequeños cambios incluidos.</span>
+              </div>
+            </div>
+            <div class="px">
+              <span class="ico-box"
+                ><svg class="i" viewBox="0 0 24 24" set:html={ic.spark} /></span
+              >
+              <div>
+                <b>Auditorías · desde 30 €</b>
+                <span>Revisamos tu web actual: velocidad, SEO local y RGPD.</span>
+              </div>
+            </div>
+          </div>
+          <p class="plan-note rv">
+            Sin permanencia. La web, el software y los datos son tuyos desde el
+            primer día.
+          </p>
+        </div>
+      </section>
+
+      <!-- HTML-9 · AUTORIDAD: valoración + testimonios + demos reales -->
+      <section
+        class="soft-bg center"
+        id="opiniones"
+        style="background:var(--soft)"
       >
-        <g>
+        <div class="wrap">
+          <span class="eyebrow rv">Opiniones</span>
+          <h2 class="rv">
+            Psicólogos que ya trabajan con <span class="grad"
+              >su agenda automatizada</span>
+          </h2>
+          <p class="lead rv">
+            Valoraciones reales en Google y webs que puedes abrir ahora mismo.
+          </p>
+
+          <div class="proof-grid">
+            <div class="card rating rv" data-spot>
+              <div>
+                <div class="score">5,0<span> / 5</span></div>
+                <div class="stars5" aria-label="5 estrellas">
+                  {
+                    [0, 1, 2, 3, 4].map(() => (
+                      <svg class="i" viewBox="0 0 24 24" set:html={ic.star} />
+                    ))
+                  }
+                </div>
+                <p>Media de 32 valoraciones</p>
+                <ul class="trust-list">
+                  <li>
+                    <svg
+                      class="i"
+                      viewBox="0 0 24 24"
+                      set:html={ic.check}
+                    />Trato directo, sin intermediarios
+                  </li>
+                  <li>
+                    <svg class="i" viewBox="0 0 24 24" set:html={ic.check} />Web
+                    funcionando en 3-5 semanas
+                  </li>
+                  <li>
+                    <svg
+                      class="i"
+                      viewBox="0 0 24 24"
+                      set:html={ic.check}
+                    />Datos cifrados de serie
+                  </li>
+                </ul>
+              </div>
+              <div class="g-badge">
+                <span class="g"><span>G</span></span>
+                <div>
+                  <b>Reseñas verificadas</b><br /><span
+                    style="color:var(--muted)">Publicadas en Google</span>
+                </div>
+              </div>
+            </div>
+
+            <figure class="card quote feat rv" style="--d:.08s">
+              <div>
+                <div class="qmark" aria-hidden="true">“</div>
+                <blockquote>{quotes[0].q}</blockquote>
+              </div>
+              <figcaption class="who">
+                <span class="av">{quotes[0].i}</span>
+                <div>
+                  <b>{quotes[0].n}</b>
+                  <span
+                    ><svg
+                      class="i verified"
+                      viewBox="0 0 24 24"
+                      set:html={ic.shield}
+                    />Reseña de Google · ★★★★★</span
+                  >
+                </div>
+              </figcaption>
+            </figure>
+
+            {
+              quotes.slice(1).map((q, idx) => (
+                <figure
+                  class="card quote rv"
+                  data-spot
+                  style={`--d:${0.16 + idx * 0.08}s`}
+                >
+                  <div class="stars5" aria-label="5 estrellas">
+                    {[0, 1, 2, 3, 4].map(() => (
+                      <svg class="i" viewBox="0 0 24 24" set:html={ic.star} />
+                    ))}
+                  </div>
+                  <blockquote>“{q.q}”</blockquote>
+                  <figcaption class="who">
+                    <span class="av">{q.i}</span>
+                    <div>
+                      <b>{q.n}</b>
+                      <span>
+                        <svg
+                          class="i verified"
+                          viewBox="0 0 24 24"
+                          set:html={ic.shield}
+                        />
+                        Reseña de Google
+                      </span>
+                    </div>
+                  </figcaption>
+                </figure>
+              ))
+            }
+          </div>
+
+          <div class="demos-h" id="demos">
+            <div>
+              <span class="eyebrow">Demos</span>
+              <h3>Webs reales de psicología que puedes abrir ahora mismo</h3>
+            </div>
+            <a class="btn btn-ghost btn-sm" href="#contacto"
+              >Quiero una así <svg
+                class="i i-arrow"
+                viewBox="0 0 24 24"
+                set:html={ic.arrow}
+              /></a
+            >
+          </div>
+          <div class="demos">
+            {
+              demos.map((d, idx) => (
+                <a
+                  class="card demo rv"
+                  data-spot
+                  href={d.u}
+                  target="_blank"
+                  rel="noopener"
+                  style={`--h:${d.h};--d:${idx * 0.06}s`}
+                >
+                  <div class="browser" aria-hidden="true">
+                    <div class="bar">
+                      <>
+                        <i />
+                        <i />
+                        <i />
+                        <span />
+                      </>
+                    </div>
+                    <img
+                      src={d.image}
+                      alt={d.alt}
+                      style="width: 100%; height: 100%; object-fit: cover; display: block;"
+                    />
+                  </div>
+                  <b>
+                    {d.t}
+                    <svg class="i" viewBox="0 0 24 24" set:html={ic.ext} />
+                  </b>
+                </a>
+              ))
+            }
+          </div>
+        </div>
+      </section>
+
+      <!-- HTML-9b · QUIÉNES SOMOS + garantías sobre los datos -->
+      <section id="nosotros">
+        <div class="wrap about">
+          <figure class="about-photo rv">
+            <img
+              src="/psicologos/mndesignweb.webp"
+              alt="Integrante del equipo de MN Design Web en la oficina de Cocentaina"
+              width="929"
+              height="904"
+              loading="lazy"
+            />
+            <figcaption>
+              <svg class="i" viewBox="0 0 24 24" set:html={ic.pin} />
+              <span
+                ><b>MN Design Web</b>Avinguda Passeig del Comtat, 75, 5º 1º ·
+                03820 Cocentaina (Alicante)</span
+              >
+            </figcaption>
+          </figure>
+          <div class="about-txt">
+            <span class="eyebrow rv">Quiénes somos</span>
+            <h2 class="rv">
+              Un equipo cercano que <span class="grad"
+                >entiende tu consulta</span>
+            </h2>
+            <p class="rv">
+              Somos MN Design Web, un estudio de diseño y desarrollo en
+              Cocentaina (Alicante). Creamos webs y software a medida para
+              psicólogos y profesionales de la salud de toda España, en persona
+              o en remoto.
+            </p>
+            <p class="rv">
+              Trabajamos con psicólogos porque tu día a día tiene necesidades
+              que las herramientas genéricas no cubren: datos de salud que
+              exigen el máximo cuidado, pacientes que buscan confianza antes de
+              reservar y una agenda que no puede depender de mensajes.
+            </p>
+            <a
+              class="about-map rv"
+              href="https://www.google.com/maps/search/?api=1&query=MN+Design+Web+Cocentaina"
+              target="_blank"
+              rel="noopener"
+              >Ver nuestra ficha en Google Maps <svg
+                class="i"
+                viewBox="0 0 24 24"
+                set:html={ic.ext}
+              /></a
+            >
+          </div>
+        </div>
+        <div class="wrap">
+          <div class="guarantees">
+            {
+              guarantees.map((g, idx) => (
+                <div class="card rv" data-spot style={`--d:${idx * 0.06}s`}>
+                  <span class="ico-box">
+                    <svg class="i" viewBox="0 0 24 24" set:html={ic[g.i]} />
+                  </span>
+                  <h3>{g.t}</h3>
+                  <p>{g.p}</p>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+      </section>
+
+      <!-- HTML-10 · FAQ (dos columnas) -->
+      <section>
+        <div class="wrap faq-grid">
+          <div class="faq-side">
+            <span class="eyebrow rv">FAQ</span>
+            <h2 class="rv">
+              Preguntas comunes, <span class="grad">respuestas claras</span>
+            </h2>
+            <p class="rv" style="color:var(--muted)">
+              Lo que suelen preguntarnos los psicólogos antes de empezar.
+            </p>
+            <div class="card ask rv" data-spot>
+              <h3>¿Te queda alguna duda?</h3>
+              <p>
+                Cuéntanoslo en una llamada de 30 minutos y salimos con un plan
+                concreto.
+              </p>
+              <a class="btn btn-main btn-sm" href="#contacto"
+                >Hablemos <svg
+                  class="i i-arrow"
+                  viewBox="0 0 24 24"
+                  set:html={ic.arrow}
+                /></a
+              >
+            </div>
+          </div>
+          <div class="faq">
+            {
+              faqs.map(([q, a], idx) => (
+                <details class="rv" style={`--d:${idx * 0.05}s`}>
+                  <summary>{q}</summary>
+                  <p>{a}</p>
+                </details>
+              ))
+            }
+          </div>
+        </div>
+      </section>
+
+      <!-- HTML-11 · CONTACTO (tarjeta con degradado suave) -->
+      <section class="contact" id="contacto">
+        <div class="wrap">
+          <div class="cbox center">
+            <span class="eyebrow rv">Llamada gratuita</span>
+            <h2 class="rv">
+              Empieza con una llamada gratuita <span class="grad"
+                >de 30 minutos</span>
+            </h2>
+            <p class="lead rv">
+              Nos cuentas cómo trabajas en tu consulta y te decimos qué
+              automatizaríamos primero en tu software. Sin compromiso.
+            </p>
+            <div class="direct-contact-grid rv">
+              <!-- Botón Email -->
+              <a href="mailto:info@mndesignweb.es" class="dc-card dc-mail">
+                <div class="dc-icon">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
+                </div>
+                <div class="dc-content">
+                  <span class="dc-label">Escríbenos</span>
+                  <span class="dc-value">info@mndesignweb.es</span>
+                </div>
+              </a>
+
+              <!-- Botón Teléfono -->
+              <a href="tel:+34645854934" class="dc-card dc-phone">
+                <div class="dc-icon">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                </div>
+                <div class="dc-content">
+                  <span class="dc-label">Llámanos ahora</span>
+                  <span class="dc-value">+34 645 854 934</span>
+                </div>
+              </a>
+
+              <!-- Botón WhatsApp -->
+              <a href="https://wa.me/34645854934?text=Hola,%20me%20gustaría%20hablar%20sobre%20un%20proyecto%20web." target="_blank" rel="noopener noreferrer" class="dc-card dc-wa">
+                <div class="dc-icon">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9L3 21"></path><path d="M9 10a.5.5 0 0 0 1 0V9a.5.5 0 0 0-1 0v1a5 5 0 0 0 5 5h1a.5.5 0 0 0 0-1h-1a.5.5 0 0 0 0 1"></path></svg>
+                </div>
+                <div class="dc-content">
+                  <span class="dc-label">Chat directo</span>
+                  <span class="dc-value">WhatsApp</span>
+                </div>
+              </a>
+            </div>
+            <div class="trust-row rv">
+              <span class="pill"
+                ><svg class="i" viewBox="0 0 24 24" set:html={ic.shield} />RGPD
+                sanitario</span
+              >
+              <span class="pill"
+                ><svg class="i" viewBox="0 0 24 24" set:html={ic.lock} />SSL y
+                datos cifrados</span
+              >
+              <span class="pill"
+                ><svg
+                  class="i"
+                  viewBox="0 0 24 24"
+                  set:html={ic.clock}
+                />Respuesta en menos de 24 h</span
+              >
+              <span class="pill"
+                ><svg class="i" viewBox="0 0 24 24" set:html={ic.star} />5,0 en
+                Google</span
+              >
+            </div>
+            <div class="cgrid">
+              <div class="rv">
+                <!-- Cal.com inline: lo monta JS-7 al acercarse a la sección (mide las reservas) -->
+                <div class="cal" id="cal-inline" aria-label="Reserva tu llamada">
+                </div>
+                <p class="cal-alt">
+                  ¿No ves el calendario? <a
+                    href="https://cal.com/mndesignweb/reunion-30-min"
+                    target="_blank"
+                    rel="noopener">Ábrelo en una pestaña nueva</a
+                  >.
+                </p>
+              </div>
+              <form id="formulario" class="rv" style="--d:.1s">
+                <h3>¿Prefieres que te escribamos nosotros?</h3>
+                <p class="micro" style="margin:0">
+                  Déjanos tus datos y te contestamos en menos de 24 h.
+                </p>
+                <div>
+                  <label for="nombre">Tu nombre o el de tu clínica</label>
+                  <input id="nombre" type="text" autocomplete="name" required />
+                </div>
+                <div>
+                  <label for="email">Email</label>
+                  <input
+                    id="email"
+                    type="email"
+                    autocomplete="email"
+                    placeholder="consulta@clinica.es"
+                    required
+                  />
+                </div>
+                <div>
+                  <label for="telefono"
+                    >Teléfono </label
+                  >
+                  <input
+                    id="telefono"
+                    type="tel"
+                    autocomplete="tel"
+                    placeholder="+34 600 000 000"
+                    required
+                  />
+                </div>
+                <div>
+                  <label for="mensaje"
+                    >Cuéntanos tu caso <span class="opt"></span></label
+                  >
+                  <textarea
+                    id="mensaje"
+                    rows="3"
+                    placeholder="Ej.: trabajo sola, hago terapia online y pierdo mucho tiempo cuadrando citas por WhatsApp."
+                    required
+                  ></textarea>
+                </div>
+                <label class="chk">
+                  <input id="privacidad" type="checkbox" required />
+                  <span
+                    >He leído y acepto la <a
+                      href="https://mndesignweb.es/privacidad/"
+                      target="_blank"
+                      rel="noopener">política de privacidad</a
+                    >.</span
+                  >
+                </label>
+                <button type="submit" id="btn-submit" class="btn btn-brand">
+                  Quiero que me contactéis <svg
+                    class="i i-arrow"
+                    viewBox="0 0 24 24"
+                    set:html={ic.arrow}
+                  />
+                </button>
+                <p class="ok-msg" id="ok-msg">
+                  ¡Recibido! Analizamos tu caso y te escribimos
+                  en menos de 24 h.
+                </p>
+                <!-- Primera capa de información RGPD (art. 13 RGPD y art. 11 LOPDGDD) -->
+                <p class="rgpd-info">
+                  <b>Responsable:</b> MN Design Web. <b>Finalidad:</b> responder a
+                  tu solicitud. <b>Legitimación:</b> tu consentimiento.{" "}
+                   <a
+                    href="https://mndesignweb.es/privacidad/"
+                    target="_blank"
+                    rel="noopener">política de privacidad</a
+                  >.
+                </p>
+              </form>
+            </div>
+
+            <!-- Imán de captación: checklist RGPD a cambio del email -->
+            <div class="magnet rv">
+              <div class="magnet-txt">
+                <span class="ico-box"
+                  ><svg class="i" viewBox="0 0 24 24" set:html={ic.file} /></span
+                >
+                <div>
+                  <h3>¿Aún no estás listo para hablar?</h3>
+                  <p>
+                    Descarga gratis el <b>Checklist RGPD para consultas de
+                    psicología</b>: 15 puntos para comprobar en 10 minutos si
+                    tu consulta cumple con los datos de tus pacientes.
+                  </p>
+                </div>
+              </div>
+              <form id="form-checklist" class="magnet-form">
+                <label for="email-checklist" class="sr-only">Tu email</label>
+                <div class="magnet-row">
+                  <input
+                    id="email-checklist"
+                    type="email"
+                    autocomplete="email"
+                    placeholder="tu@email.com"
+                    required
+                  />
+                  <button type="submit" id="btn-checklist" class="btn btn-main">
+                    Descargar checklist
+                  </button>
+                </div>
+                <label class="chk">
+                  <input id="privacidad-checklist" type="checkbox" required />
+                  <span
+                    >Acepto la <a
+                      href="https://mndesignweb.es/privacidad/"
+                      target="_blank"
+                      rel="noopener">política de privacidad</a
+                    >. Usaremos tu email solo para enviarte el
+                    checklist.</span
+                  >
+                </label>
+                <p class="ok-msg" id="ok-checklist">
+                  ¡Listo! <a
+                    href="/psicologos/checklist-rgpd/"
+                    target="_blank"
+                    rel="noopener">Abre aquí tu checklist</a
+                  >.
+                </p>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- HTML-12 · FOOTER -->
+    <footer>
+      <div class="wrap">
+        <a class="logo" href="#"><i>MN</i><span>Design Web</span></a>
+        <nav aria-label="Contacto">
+          <a href="tel:+34645854934">+34 645 854 934</a>
+          <a href="mailto:info@mndesignweb.es">info@mndesignweb.es</a>
+          <span>Av. Passeig del Comtat, 75, 5º 1º · 03820 Cocentaina</span>
+        </nav>
+        <nav aria-label="Legal">
+          <a href="https://mndesignweb.es/aviso-legal/">Aviso legal</a>
+          <a href="https://mndesignweb.es/privacidad/">Privacidad</a>
+          <a href="https://mndesignweb.es/cookies/">Cookies</a>
+          <span>© MN Design Web</span>
+        </nav>
+      </div>
+    </footer>
+
+    <!-- HTML-13 · CTA FIJO EN MÓVIL (aparece al pasar el hero) -->
+    <div class="sticky-cta" id="sticky-cta">
+      <a class="btn btn-main" href="#contacto"
+        >Agendar llamada gratuita <svg
+          class="i i-arrow"
+          viewBox="0 0 24 24"
+          set:html={ic.arrow}
+        /></a
+      >
+    </div>
+
+    <!-- HTML-14 · BANNER DE COOKIES (lo muestra JS-6 si no hay consentimiento guardado) -->
+    <div
+      id="cookie-banner"
+      class="cookie-banner"
+      role="dialog"
+      aria-labelledby="cookie-title"
+      aria-describedby="cookie-desc"
+      style="display: none;"
+    >
+      <span class="cookie-ico" aria-hidden="true">
+        <svg viewBox="0 0 122.88 122.25">
           <path
             d="M101.77,49.38c2.09,3.1,4.37,5.11,6.86,5.78c2.45,0.66,5.32,0.06,8.7-2.01c1.36-0.84,3.14-0.41,3.97,0.95 c0.28,0.46,0.42,0.96,0.43,1.47c0.13,1.4,0.21,2.82,0.24,4.26c0.03,1.46,0.02,2.91-0.05,4.35h0v0c0,0.13-0.01,0.26-0.03,0.38 c-0.91,16.72-8.47,31.51-20,41.93c-11.55,10.44-27.06,16.49-43.82,15.69v0.01h0c-0.13,0-0.26-0.01-0.38-0.03 c-16.72-0.91-31.51-8.47-41.93-20C5.31,90.61-0.73,75.1,0.07,58.34H0.07v0c0-0.13,0.01-0.26,0.03-0.38 C1,41.22,8.81,26.35,20.57,15.87C32.34,5.37,48.09-0.73,64.85,0.07V0.07h0c1.6,0,2.89,1.29,2.89,2.89c0,0.4-0.08,0.78-0.23,1.12 c-1.17,3.81-1.25,7.34-0.27,10.14c0.89,2.54,2.7,4.51,5.41,5.52c1.44,0.54,2.2,2.1,1.74,3.55l0.01,0 c-1.83,5.89-1.87,11.08-0.52,15.26c0.82,2.53,2.14,4.69,3.88,6.4c1.74,1.72,3.9,3,6.39,3.78c4.04,1.26,8.94,1.18,14.31-0.55 C99.73,47.78,101.08,48.3,101.77,49.38L101.77,49.38z M59.28,57.86c2.77,0,5.01,2.24,5.01,5.01c0,2.77-2.24,5.01-5.01,5.01 c-2.77,0-5.01-2.24-5.01-5.01C54.27,60.1,56.52,57.86,59.28,57.86L59.28,57.86z M37.56,78.49c3.37,0,6.11,2.73,6.11,6.11 s-2.73,6.11-6.11,6.11s-6.11-2.73-6.11-6.11S34.18,78.49,37.56,78.49L37.56,78.49z M50.72,31.75c2.65,0,4.79,2.14,4.79,4.79 c0,2.65-2.14,4.79-4.79,4.79c-2.65,0-4.79-2.14-4.79-4.79C45.93,33.89,48.08,31.75,50.72,31.75L50.72,31.75z M119.3,32.4 c1.98,0,3.58,1.6,3.58,3.58c0,1.98-1.6,3.58-3.58,3.58s-3.58-1.6-3.58-3.58C115.71,34.01,117.32,32.4,119.3,32.4L119.3,32.4z M93.62,22.91c2.98,0,5.39,2.41,5.39,5.39c0,2.98-2.41,5.39-5.39,5.39c-2.98,0-5.39-2.41-5.39-5.39 C88.23,25.33,90.64,22.91,93.62,22.91L93.62,22.91z M97.79,0.59c3.19,0,5.78,2.59,5.78,5.78c0,3.19-2.59,5.78-5.78,5.78 c-3.19,0-5.78-2.59-5.78-5.78C92.02,3.17,94.6,0.59,97.79,0.59L97.79,0.59z M76.73,80.63c4.43,0,8.03,3.59,8.03,8.03 c0,4.43-3.59,8.03-8.03,8.03s-8.03-3.59-8.03-8.03C68.7,84.22,72.29,80.63,76.73,80.63L76.73,80.63z M31.91,46.78 c4.8,0,8.69,3.89,8.69,8.69c0,4.8-3.89,8.69-8.69,8.69s-8.69-3.89-8.69-8.69C23.22,50.68,27.11,46.78,31.91,46.78L31.91,46.78z M107.13,60.74c-3.39-0.91-6.35-3.14-8.95-6.48c-5.78,1.52-11.16,1.41-15.76-0.02c-3.37-1.05-6.32-2.81-8.71-5.18 c-2.39-2.37-4.21-5.32-5.32-8.75c-1.51-4.66-1.69-10.2-0.18-16.32c-3.1-1.8-5.25-4.53-6.42-7.88c-1.06-3.05-1.28-6.59-0.61-10.35 C47.27,5.95,34.3,11.36,24.41,20.18C13.74,29.69,6.66,43.15,5.84,58.29l0,0.05v0h0l-0.01,0.13v0C5.07,73.72,10.55,87.82,20.02,98.3 c9.44,10.44,22.84,17.29,38,18.1l0.05,0h0v0l0.13,0.01h0c15.24,0.77,29.35-4.71,39.83-14.19c10.44-9.44,17.29-22.84,18.1-38l0-0.05 v0h0l0.01-0.13v0c0.07-1.34,0.09-2.64,0.06-3.91C112.98,61.34,109.96,61.51,107.13,60.74L107.13,60.74z"
           ></path>
-        </g>
-      </svg>
-
-      <p class="cookieHeading">Usamos cookies</p>
-      <p class="cookieDescription">
-        Utilizamos cookies para darte la mejor experiencia en nuestra web. <br
-        />
-        <a class="cookielink" href="https://mndesignweb.es/cookies/"
-          >Ver políticas de cookies</a
-        >
-      </p>
-
-      <div class="buttonContainer">
-        <button id="btn-accept-cookies" class="acceptButton">Permitir</button>
-        <button id="btn-decline-cookies" class="declineButton">Rechazar</button>
+        </svg>
+      </span>
+      <div class="cookie-txt">
+        <p class="cookie-title" id="cookie-title">Usamos cookies</p>
+        <p class="cookie-desc" id="cookie-desc">
+          Utilizamos cookies para darte la mejor experiencia en nuestra web.
+          <a href="https://mndesignweb.es/cookies/">Ver política de cookies</a>
+        </p>
+      </div>
+      <div class="cookie-actions">
+        <button id="btn-decline-cookies" class="btn btn-ghost btn-sm" type="button">
+          Rechazar
+        </button>
+        <button id="btn-accept-cookies" class="btn btn-main btn-sm" type="button">
+          Permitir
+        </button>
       </div>
     </div>
 
+    <!-- ===== ARCHIVO JS ===== -->
     <script is:inline>
-      window.addEventListener("DOMContentLoaded", () => {
-        const servicioParam = new URLSearchParams(window.location.search).get(
-          "servicio",
-        );
-        if (servicioParam) {
-          const selectServicio = document.getElementById("servicio");
-          if (selectServicio) {
-            selectServicio.value = servicioParam;
-            const seccionContacto = document.getElementById("contacto");
-            if (seccionContacto) {
-              seccionContacto.scrollIntoView({ behavior: "smooth" });
-            }
-          }
+      (function () {
+        var reduce = window.matchMedia(
+          "(prefers-reduced-motion: reduce)",
+        ).matches;
+
+        /* JS-1 · Revelado al hacer scroll */
+        var rv = document.querySelectorAll(".rv");
+        if ("IntersectionObserver" in window && !reduce) {
+          var io = new IntersectionObserver(
+            function (entries) {
+              entries.forEach(function (e) {
+                if (e.isIntersecting) {
+                  e.target.classList.add("in");
+                  io.unobserve(e.target);
+                }
+              });
+            },
+            { rootMargin: "0px 0px -8% 0px", threshold: 0.12 },
+          );
+          rv.forEach(function (el) {
+            io.observe(el);
+          });
+        } else {
+          rv.forEach(function (el) {
+            el.classList.add("in");
+          });
         }
 
-        const formClinica = document.getElementById("formulario");
+        /* JS-MENU · Menú hamburguesa (tablet/móvil) */
+        var header = document.getElementById("top");
+        var burger = document.getElementById("burger");
+        var mnav = document.getElementById("mnav");
+        var mclose = document.getElementById("mnav-close");
+        if (header && burger && mnav) {
+          var setMenu = function (open, restoreFocus) {
+            header.classList.toggle("open", open);
+            document.documentElement.classList.toggle("menu-open", open);
+            burger.setAttribute("aria-expanded", open ? "true" : "false");
+            burger.setAttribute(
+              "aria-label",
+              open ? "Cerrar menú" : "Abrir menú",
+            );
+            if (open) {
+              var first = mnav.querySelector(".mnav-links a");
+              if (first)
+                setTimeout(function () {
+                  first.focus({ preventScroll: true });
+                }, 60);
+            } else if (restoreFocus) {
+              burger.focus();
+            }
+          };
+          burger.addEventListener("click", function () {
+            setMenu(!header.classList.contains("open"));
+          });
+          // Al pulsar un enlace se cierra el menú y el navegador baja a la sección
+          mnav.querySelectorAll("a").forEach(function (a) {
+            a.addEventListener("click", function () {
+              setMenu(false);
+            });
+          });
+          if (mclose)
+            mclose.addEventListener("click", function () {
+              setMenu(false, true);
+            });
+          document.addEventListener("keydown", function (e) {
+            if (e.key === "Escape" && header.classList.contains("open"))
+              setMenu(false, true);
+          });
+          // Si se amplía la ventana a escritorio con el menú abierto, se cierra
+          window
+            .matchMedia("(min-width: 901px)")
+            .addEventListener("change", function (e) {
+              if (e.matches) setMenu(false);
+            });
+        }
+
+        /* JS-2 · Foco de luz que sigue al cursor en las tarjetas */
+        document.querySelectorAll("[data-spot]").forEach(function (el) {
+          el.addEventListener("pointermove", function (e) {
+            var r = el.getBoundingClientRect();
+            el.style.setProperty("--mx", e.clientX - r.left + "px");
+            el.style.setProperty("--my", e.clientY - r.top + "px");
+          });
+        });
+
+        /* JS-3 · Parallax 3D suave de los móviles del hero */
+        var trio = document.getElementById("trio");
+        if (trio && !reduce && window.matchMedia("(pointer: fine)").matches) {
+          var stage = trio.parentElement;
+          stage.addEventListener("pointermove", function (e) {
+            var r = stage.getBoundingClientRect();
+            var x = (e.clientX - r.left) / r.width - 0.5;
+            var y = (e.clientY - r.top) / r.height - 0.5;
+            trio.style.transform =
+              "rotateY(" + x * 8 + "deg) rotateX(" + -y * 6 + "deg)";
+          });
+          stage.addEventListener("pointerleave", function () {
+            trio.style.transform = "";
+          });
+        }
+
+        /* JS-4 · Timeline: rellena la línea, activa nodos y marca el paso actual */
+        var tl = document.getElementById("tl");
+        var now = document.getElementById("tl-now");
+        var top = document.getElementById("top");
+        var sticky = document.getElementById("sticky-cta");
+        var items = tl ? [].slice.call(tl.querySelectorAll(".tl-item")) : [];
+        var ticking = false;
+        function update() {
+          var mark = window.innerHeight * 0.6;
+          if (tl) {
+            var r = tl.getBoundingClientRect();
+            tl.style.setProperty(
+              "--p",
+              Math.min(1, Math.max(0, (mark - r.top) / r.height)),
+            );
+            var cur = -1;
+            items.forEach(function (it, i) {
+              var on = it.getBoundingClientRect().top < mark;
+              it.classList.toggle("on", on);
+              if (on) cur = i;
+            });
+            items.forEach(function (it, i) {
+              it.classList.toggle("current", i === cur);
+            });
+            if (now) now.textContent = Math.max(1, cur + 1);
+          }
+          if (top) top.classList.toggle("scrolled", window.scrollY > 20);
+          if (sticky)
+            sticky.classList.toggle(
+              "show",
+              window.scrollY > window.innerHeight * 0.7,
+            );
+          ticking = false;
+        }
+        function req() {
+          if (!ticking) {
+            ticking = true;
+            requestAnimationFrame(update);
+          }
+        }
+        window.addEventListener("scroll", req, { passive: true });
+        window.addEventListener("resize", req);
+        update();
+
+        /* Pulsar un paso despliega "Qué recibes" */
+        items.forEach(function (it) {
+          var btn = it.querySelector(".tl-card");
+          btn.addEventListener("click", function () {
+            btn.setAttribute(
+              "aria-expanded",
+              btn.getAttribute("aria-expanded") === "true" ? "false" : "true",
+            );
+          });
+        });
+
+        /* JS-5 · Envío del formulario de contacto */
+        var formClinica = document.getElementById("formulario");
         if (formClinica) {
           formClinica.addEventListener("submit", function (e) {
             e.preventDefault();
-            const btn = document.getElementById("btn-submit");
+            var btn = document.getElementById("btn-submit");
+            var originalText = btn.innerHTML; // Guardamos el texto original con el icono SVG
             btn.innerText = "Enviando...";
             btn.disabled = true;
 
-            const data = {
+            var data = {
               access_key: "1bc2d285-71cb-4fe3-806f-530066ab6e15",
               subject: "Nuevo Lead: Psicólogos / Clínicas",
               nombre: document.getElementById("nombre").value,
               email: document.getElementById("email").value,
               telefono: document.getElementById("telefono").value,
               servicio: document.getElementById("servicio").value,
+              mensaje: document.getElementById("mensaje").value,
+              privacidad: "Aceptada",
             };
 
             Promise.all([
@@ -1320,9 +2202,7 @@
                   if (typeof clarity === "function")
                     clarity("set", "lead", "clinica");
 
-                  alert(
-                    "¡Solicitud recibida! Analizaré tu caso personalmente y te contactaré pronto.",
-                  );
+                  document.getElementById("ok-msg").style.display = "block";
                   formClinica.reset();
                 } else {
                   throw new Error("Error en el envío");
@@ -1332,13 +2212,161 @@
                 alert("Hubo un error. Por favor, inténtalo de nuevo.");
               })
               .finally(() => {
-                btn.innerText = "Enviar solicitud de auditoría";
+                btn.innerHTML = originalText;
                 btn.disabled = false;
               });
           });
         }
+      })();
+
+      /* JS-5b · Checklist RGPD: capta el email y muestra el enlace de descarga */
+      (function () {
+        var formCheck = document.getElementById("form-checklist");
+        if (!formCheck) return;
+        formCheck.addEventListener("submit", function (e) {
+          e.preventDefault();
+          var btn = document.getElementById("btn-checklist");
+          var originalText = btn.innerHTML;
+          btn.innerText = "Enviando...";
+          btn.disabled = true;
+
+          var data = {
+            access_key: "1bc2d285-71cb-4fe3-806f-530066ab6e15",
+            subject: "Nuevo Lead: Checklist RGPD Psicólogos",
+            email: document.getElementById("email-checklist").value,
+            origen: "checklist-rgpd",
+            privacidad: "Aceptada",
+          };
+
+          fetch("https://api.web3forms.com/submit", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Accept: "application/json",
+            },
+            body: JSON.stringify(data),
+          })
+            .then(function (r) {
+              return r.json();
+            })
+            .then(function (result) {
+              if (!result.success) throw new Error("Error en el envío");
+              // Copia a Make sin bloquear la descarga si falla
+              fetch("https://hook.eu1.make.com/mxvqg7gwne43yab165v2uhtyw5yh115r", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(data),
+              }).catch(function () {});
+
+              if (typeof gtag === "function")
+                gtag("event", "download_checklist", { method: "checklist_rgpd" });
+              if (typeof fbq === "function") fbq("track", "Lead", { content_name: "Checklist RGPD" });
+
+              document.getElementById("ok-checklist").style.display = "block";
+              formCheck.reset();
+            })
+            .catch(function () {
+              alert("Hubo un error. Por favor, inténtalo de nuevo.");
+            })
+            .finally(function () {
+              btn.innerHTML = originalText;
+              btn.disabled = false;
+            });
+        });
+      })();
+
+      /* JS-7 · Calendario de Cal.com (embed oficial) + medición de reservas.
+         Se carga al acercarse a la sección de contacto para no frenar la carga inicial. */
+      (function () {
+        var box = document.getElementById("cal-inline");
+        if (!box) return;
+        var loaded = false;
+
+        function loadCal() {
+          if (loaded) return;
+          loaded = true;
+          (function (C, A, L) {
+            var p = function (a, ar) { a.q.push(ar); };
+            var d = C.document;
+            C.Cal = C.Cal || function () {
+              var cal = C.Cal;
+              var ar = arguments;
+              if (!cal.loaded) {
+                cal.ns = {};
+                cal.q = cal.q || [];
+                d.head.appendChild(d.createElement("script")).src = A;
+                cal.loaded = true;
+              }
+              if (ar[0] === L) {
+                var api = function () { p(api, arguments); };
+                var namespace = ar[1];
+                api.q = api.q || [];
+                if (typeof namespace === "string") {
+                  cal.ns[namespace] = cal.ns[namespace] || api;
+                  p(cal.ns[namespace], ar);
+                  p(cal, ["initNamespace", namespace]);
+                } else p(cal, ar);
+                return;
+              }
+              p(cal, ar);
+            };
+          })(window, "https://app.cal.com/embed/embed.js", "init");
+
+          Cal("init", "llamada", { origin: "https://cal.com" });
+          Cal.ns.llamada("inline", {
+            elementOrSelector: "#cal-inline",
+            calLink: "mndesignweb/reunion-30-min",
+            config: { layout: "month_view" },
+          });
+          Cal.ns.llamada("ui", { hideEventTypeDetails: false, layout: "month_view" });
+
+          // Conversión principal: reserva completada. Cal.com emite el evento
+          // antiguo y el V2; escuchamos los dos y solo contamos una vez.
+          var booked = false;
+          function onBooked() {
+            if (booked) return;
+            booked = true;
+            if (typeof gtag === "function")
+              gtag("event", "book_call", { method: "cal_com" });
+            if (typeof fbq === "function") fbq("track", "Schedule");
+            if (typeof clarity === "function") clarity("set", "lead", "llamada");
+          }
+          Cal.ns.llamada("on", { action: "bookingSuccessfulV2", callback: onBooked });
+          Cal.ns.llamada("on", { action: "bookingSuccessful", callback: onBooked });
+        }
+
+        if ("IntersectionObserver" in window) {
+          var io = new IntersectionObserver(
+            function (entries) {
+              if (entries[0].isIntersecting) {
+                loadCal();
+                io.disconnect();
+              }
+            },
+            { rootMargin: "800px 0px" },
+          );
+          io.observe(box);
+        } else {
+          loadCal();
+        }
+      })();
+
+      /* JS-8 · Medición de clics en teléfono, WhatsApp y email */
+      document.addEventListener("click", function (e) {
+        var a = e.target.closest && e.target.closest("a[href]");
+        if (!a) return;
+        var href = a.getAttribute("href");
+        var tipo = null;
+        if (href.indexOf("tel:") === 0) tipo = "phone";
+        else if (href.indexOf("wa.me") !== -1 || href.indexOf("whatsapp") !== -1) tipo = "whatsapp";
+        else if (href.indexOf("mailto:") === 0) tipo = "email";
+        if (!tipo) return;
+        if (typeof gtag === "function")
+          gtag("event", "click_" + tipo, { link_url: href });
+        if (typeof fbq === "function") fbq("track", "Contact", { content_name: tipo });
       });
 
+      /* JS-6 · Lógica del banner de cookies */
       window.addEventListener("DOMContentLoaded", () => {
         const cookieBanner = document.getElementById("cookie-banner");
         const acceptBtn = document.getElementById("btn-accept-cookies");
@@ -1377,9 +2405,9 @@
                 y = l.getElementsByTagName(r)[0];
                 y.parentNode.insertBefore(t, y);
               })(window, document, "clarity", "script", "wuzaxaifa0");
-            } else if (typeof clarity === "function") {
-              clarity("consent");
             }
+            // Clarity exige la señal de consentimiento en la UE para usar cookies
+            clarity("consent");
 
             if (typeof fbq === "function") fbq("consent", "grant");
           });
@@ -1404,1896 +2432,3 @@
     </script>
   </body>
 </html>
-
-<style>
-  :root {
-    --fondo-claro: #fdfbf7;
-    --psico-primary: #8aa3b3;
-    --psico-accent: #a3b1a6;
-    --psico-light: #e2e8e4;
-    --text-primary: #2c3a3b;
-    --text-muted: #5e7071;
-    --border-color: #e2e8e4;
-
-    --slate-600: #11151a;
-    --white: #ffffff;
-
-    --font-titulos: "Montserrat", system-ui, sans-serif;
-    --font-texto: "Nunito", system-ui, sans-serif;
-  }
-
-  * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
-
-  body {
-    font-family: var(--font-texto);
-    background-color: var(--fondo-claro);
-    line-height: 1.5;
-    -webkit-font-smoothing: antialiased;
-  }
-
-  html {
-    scroll-behavior: smooth;
-  }
-
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6,
-  .hero-title,
-  .section-title,
-  .mockup-names {
-    font-family: var(--font-titulos);
-    color: var(--iris-glaze);
-  }
-
-  .container {
-    max-width: 1300px;
-    margin: 0 auto;
-  }
-
-  .global-logo {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    text-decoration: none;
-    position: absolute;
-    top: 20px;
-    left: 30px;
-    z-index: 1000;
-  }
-
-  .global-logo img {
-    height: 55px;
-    width: auto;
-  }
-
-  .texto-logo {
-    display: flex;
-    flex-direction: row;
-    line-height: 1.2;
-    align-items: center;
-    gap: 5px;
-  }
-
-  .siglas {
-    font-family: "Nunito", sans-serif;
-    font-weight: 900;
-    font-size: 2.2rem;
-    color: #1a102d;
-  }
-
-  .marca {
-    font-family: "Nunito", sans-serif;
-    color: #2c3a3b;
-    font-size: 1.9rem;
-    font-weight: 900;
-    opacity: 0.8;
-  }
-
-  /* ==========================================
-     HERO SECTION
-  ========================================== */
-  .hero-section {
-    background-color: var(--fondo-claro);
-    padding: 110px 0;
-    overflow: hidden;
-  }
-
-  .hero-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 60px;
-    align-items: center;
-  }
-
-  .tag {
-    display: inline-block;
-    background: #2c3a3b;
-    border: 1px solid #9b4fff44;
-    color: #ece8ff;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    border-radius: 50px;
-    margin-bottom: 30px;
-    padding: 0.5rem 1.2rem;
-    font-size: 0.85rem;
-    font-weight: 700;
-    display: inline-block;
-    box-shadow: 0 4px 6px -1px rgba(126, 87, 194, 0.2);
-  }
-
-  .hero-title {
-    font-size: clamp(2.8rem, 5vw, 3.5rem);
-    font-weight: 800;
-    line-height: 1.15;
-    letter-spacing: -1px;
-    margin-bottom: 24px;
-  }
-
-  .text-gradient {
-    background: #2c3a3b;
-    -webkit-background-clip: text;
-    color: transparent;
-    display: inline-block;
-    padding-top: 8px;
-  }
-
-  .hero-description {
-    color: var(--text-primary);
-    max-width: 95%;
-    margin-bottom: 0;
-    font-family: Nunito, sans-serif;
-    font-size: 1.2rem;
-    font-weight: 500;
-  }
-
-  .mobile-only {
-    display: none;
-  }
-
-  .btn-content {
-    display: flex;
-    gap: 30px;
-  }
-
-  .btn-primary {
-    color: #fcfbff;
-    background-color: #8aa3b3;
-    border-radius: 8px;
-    margin-top: 20px;
-    padding: 1rem 2.5rem;
-    font-size: 1.1rem;
-    font-weight: 700;
-    text-decoration: none;
-    border: 1px solid transparent;
-    transition: all 0.3s;
-    display: inline-block;
-    box-shadow: 0 10px 25px #5e7071;
-  }
-
-  .btn-primary:hover {
-    color: #fcfbff;
-    background-color: var(--text-muted);
-    border: 1px solid #8aa3b3;
-    transform: translateY(-2px);
-  }
-
-  .btn-secondary {
-    color: var(--text-muted);
-    background-color: #fcfbff;
-    border: 1px solid #8aa3b3;
-    border-radius: 8px;
-    margin-top: 20px;
-    padding: 1rem 2.5rem;
-    font-size: 1.1rem;
-    font-weight: 700;
-    text-decoration: none;
-    transition: all 0.3s;
-    display: inline-block;
-    box-shadow: 0 10px 25px #5e7071;
-  }
-
-  .btn-secondary:hover {
-    color: #fcfbff;
-    background-color: var(--text-muted);
-    border: 1px solid #8aa3b3;
-    transform: translateY(-2px);
-  }
-
-  .hero-visuals {
-    position: relative;
-    width: 100%;
-    height: 500px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .mac-mockup {
-    position: absolute;
-    left: -10px;
-    width: 115%;
-    z-index: 1;
-    transition: transform 0.3s ease;
-  }
-
-  .mac-mockup img {
-    width: 100%;
-    height: auto;
-    border-radius: 12px;
-  }
-
-  .mobile-mockup {
-    position: absolute;
-    bottom: 70px;
-    left: -40px;
-    width: 25%;
-    z-index: 2;
-
-    overflow: hidden;
-    transition: transform 0.3s ease;
-  }
-
-  .mobile-mockup img {
-    width: 100%;
-    height: auto;
-    display: block;
-  }
-
-  .mac-mockup:hover {
-    transform: scale(1.02);
-  }
-  .mobile-mockup:hover {
-    transform: translateY(-10px);
-  }
-
-  /* ==========================================
-     INTERACCIONES
-  ========================================== */
-
-  .features-section {
-    padding: 80px 0 20px;
-    background-color: var(--psico-light);
-    border-top: 1px solid #5e707138;
-    border-bottom: 1px solid #5e707138;
-  }
-
-  .section-title {
-    text-align: center;
-    font-size: 2.25rem;
-    font-weight: 800;
-    margin-bottom: 80px;
-    color: var(--iris-glaze);
-  }
-
-  .feature-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 40px;
-    align-items: center;
-    margin-bottom: 80px;
-  }
-
-  .feature-text h3 {
-    font-size: 1.9rem;
-    margin-bottom: 16px;
-    color: var(--iris-glaze);
-  }
-
-  .feature-text p {
-    color: var(--white-iris);
-    font-size: 1.15rem;
-    margin-bottom: 24px;
-    line-height: 1.6;
-  }
-
-  .feature-list {
-    list-style: none;
-  }
-
-  .feature-list li {
-    display: flex;
-    align-items: center;
-    margin-bottom: 16px;
-    color: var(--iris-glaze);
-    font-size: 1.1rem;
-    font-weight: 600;
-  }
-
-  .feature-list .check {
-    background-color: var(--psico-accent);
-    color: var(--deep-eggplant);
-    width: 26px;
-    height: 26px;
-    border-radius: 50%;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    margin-right: 12px;
-    font-size: 0.9rem;
-    font-weight: bold;
-  }
-
-  .feature-visual {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  .browser-mockup {
-    background-color: var(--white);
-    border: 1px solid var(--border-color);
-    border-radius: 16px;
-    overflow: hidden;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
-    max-width: 500px;
-    margin: 0 auto;
-  }
-
-  .browser-header {
-    background-color: var(--psico-accent);
-    padding: 12px 16px;
-    display: flex;
-    align-items: center;
-    position: relative;
-  }
-
-  .browser-dots {
-    display: flex;
-    gap: 6px;
-    position: absolute;
-    left: 16px;
-  }
-
-  .browser-dots span {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-  }
-  .dot-red {
-    background-color: #ff5f56;
-  }
-  .dot-yellow {
-    background-color: #ffbd2e;
-  }
-  .dot-green {
-    background-color: #27c93f;
-  }
-
-  .browser-url {
-    background: rgba(0, 0, 0, 0.233);
-    color: var(--iris-glaze);
-    font-size: 0.75rem;
-    padding: 4px 12px;
-    border-radius: 20px;
-    font-family: monospace;
-    margin-left: 10px;
-    display: flex;
-  }
-
-  .mockup-img-browser {
-    width: 100%;
-    display: block;
-  }
-
-  /* ==========================================
-   SECCIÓN FUNCIONES - NICHO PSICOLOGÍA
-   ========================================== */
-  .funciones-section {
-    padding: 80px 20px;
-    background-color: var(--fondo-claro);
-    text-align: center;
-  }
-
-  .funciones-container {
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-
-  .funciones-title {
-    text-align: center;
-    font-size: 2.25rem;
-    font-weight: 800;
-    margin-bottom: 50px;
-    color: var(--iris-glaze);
-    letter-spacing: 0.05em;
-  }
-
-  .funciones-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 30px;
-  }
-
-  .funciones-card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
-    background-color: var(--white);
-    border: 1px solid var(--border-color);
-    border-radius: 16px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.185);
-    transition: all 0.4s ease;
-  }
-
-  .funciones-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 15px 35px rgba(163, 177, 166, 0.425);
-    border-color: var(--psico-accent);
-  }
-
-  .funciones-icon {
-    font-size: 1.6rem;
-    color: var(--psico-primary);
-    background-color: var(--psico-light);
-    width: 70px;
-    height: 70px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    margin-bottom: 25px;
-    transition: all 0.4s ease;
-  }
-
-  .funciones-card:hover .funciones-icon {
-    background-color: var(--psico-primary);
-    color: var(--white);
-    transform: scale(1.1);
-  }
-
-  .funciones-card h3 {
-    font-family: var(--font-titulos);
-    font-size: 1.15rem;
-    color: var(--text-primary);
-    margin-bottom: 15px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-  }
-
-  .funciones-card p {
-    color: var(--text-primary);
-    font-size: 1.15rem;
-    margin-bottom: 24px;
-  }
-
-  /* ==========================================
-   SECCIÓN INTEGRACIÓN CRM / ERP
-   ========================================== */
-  .integracion-section {
-    background-color: var(--psico-light);
-    border-top: 1px solid #5e707138;
-    border-bottom: 1px solid #5e707138;
-    padding: 80px 25px;
-  }
-
-  .integracion-container {
-    max-width: 900px;
-    text-align: center;
-  }
-
-  .integracion-content .section-title {
-    margin-bottom: 10px;
-    text-align: center;
-    font-size: 2.25rem;
-    font-weight: 800;
-    color: var(--iris-glaze);
-  }
-
-  .integracion-description {
-    color: var(--white-iris);
-    font-size: 1.15rem;
-    margin-bottom: 30px;
-    line-height: 1.6;
-    padding-top: 35px;
-  }
-
-  .integracion-badges {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 15px;
-  }
-
-  .badge {
-    background-color: var(--fondo-claro);
-    color: var(--text-primary);
-    padding: 12px 20px;
-    border-radius: 50px;
-    font-size: 0.9rem;
-    font-weight: 600;
-    border: 1px solid #5e707165;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-
-  .badge i {
-    color: var(--psico-primary);
-  }
-  .cta-box {
-    margin: 50px auto 0 auto;
-    max-width: 700px;
-    background-color: var(--fondo-claro);
-    padding: 40px 20px;
-    border-radius: 20px;
-    border: 1px solid #5e707165;
-    text-align: center;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-  }
-
-  .cta-box h3 {
-    font-family: var(--font-titulos);
-    font-size: 1.5rem;
-    color: var(--text-primary);
-    margin-bottom: 15px;
-  }
-
-  .cta-box p {
-    color: var(--text-primary);
-    max-width: 600px;
-    margin: 0 auto 25px;
-    font-size: 1.15rem;
-  }
-
-  .btn-metodologia {
-    color: #fcfbff;
-    background-color: #8aa3b3;
-    border: 1px solid #8aa3b3;
-    border-radius: 8px;
-    padding: 1rem 2.5rem;
-    font-size: 1.1rem;
-    font-weight: 700;
-    text-decoration: none;
-    transition: all 0.3s;
-    display: inline-block;
-    box-shadow: 0 10px 25px #5e7071;
-    transition: background 0.3s ease;
-  }
-
-  .btn-metodologia:hover {
-    color: #fcfbff;
-    background-color: var(--text-muted);
-    transform: translateY(-2px);
-  }
-
-  /* ==========================================
-   METODOLOGÍA 
-   ========================================== */
-  .metodologia-section {
-    padding: 80px 25px;
-    background-color: var(--fondo-claro);
-  }
-
-  .metodologia-container {
-    max-width: 900px;
-    margin: 0 auto;
-  }
-
-  .section-title {
-    margin-bottom: 40px;
-  }
-
-  .metodologia-lead {
-    font-size: 1.3rem;
-    color: var(--text-primary);
-    line-height: 1.6;
-    max-width: 700px;
-    margin: 0 auto 50px;
-    padding-top: 20px;
-  }
-
-  .metodologia-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 40px;
-  }
-
-  .metodologia-bloque {
-    border-left: 2px solid var(--psico-primary);
-    padding-left: 30px;
-  }
-
-  .metodologia-bloque h3 {
-    font-size: 1.5rem;
-    color: var(--text-primary);
-    margin-bottom: 15px;
-    font-family: var(--font-titulos);
-  }
-
-  .metodologia-bloque p {
-    font-size: 1.15rem;
-    margin-bottom: 24px;
-    line-height: 1.6;
-    color: var(--text-primary);
-    font-family: var(--font-texto);
-  }
-
-  .metodologia-bloque:hover {
-    border-left-color: var(--psico-accent);
-  }
-
-  /* ==========================================
-   Consultor
-   ========================================== */
-
-  .inversion-section {
-    background-color: var(--psico-light);
-    padding: 40px 25px 40px;
-  }
-
-  .inversion-lead {
-    max-width: 800px;
-    margin: 0 auto 40px;
-    text-align: center;
-    color: var(--white-iris);
-    font-size: 1.15rem;
-    line-height: 1.6;
-    padding-top: 20px;
-  }
-
-  .escalabilidad-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 40px;
-  }
-
-  .factor-card {
-    padding: 30px;
-    border: 1px solid #5e707165;
-    border-radius: 20px;
-    text-align: center;
-    background-color: var(--fondo-claro);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.185);
-    transition: all 0.4s ease;
-  }
-
-  .factor-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 15px 35px rgba(163, 177, 166, 0.425);
-    border-color: var(--psico-accent);
-  }
-
-  .factor-card i {
-    font-size: 2.5rem;
-    color: var(--psico-primary);
-    margin-bottom: 20px;
-  }
-
-  .factor-card h3 {
-    font-family: var(--font-titulos);
-    margin-bottom: 15px;
-    font-size: 1.15rem;
-    color: var(--text-primary);
-  }
-
-  .factor-card p {
-    color: var(--white-iris);
-    font-size: 1.15rem;
-    line-height: 1.6;
-  }
-
-  /* ==========================================
-   CCONTACTO
-   ========================================== */
-
-  .contacto-section {
-    background-color: var(--psico-light);
-    padding: 80px 25px 40px;
-  }
-
-  .text-center {
-    text-align: left;
-  }
-
-  .section-main-title {
-    font-size: 2.5rem;
-    color: var(--iris-glaze);
-    margin-bottom: 50px;
-    font-family: "Montserrat", sans-serif;
-    font-weight: 800;
-    line-height: 1.2;
-    letter-spacing: 0.03em;
-  }
-
-  .contacto-grid {
-    display: grid;
-    grid-template-columns: 1.1fr 0.9fr;
-    gap: 60px;
-    align-items: start;
-  }
-
-  .cal-widget {
-    margin: 2rem 0 0 0;
-    width: 100%;
-    height: 400px;
-    background: var(--psico-light);
-    border: 2px solid rgba(166, 114, 255, 0.15);
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-    position: relative;
-  }
-
-  .calendar-iframe {
-    width: 125%;
-    height: 570px;
-    border: none;
-    display: block;
-    transform: scale(0.8);
-    transform-origin: top left;
-  }
-
-  .beneficios-lista {
-    list-style: none;
-    padding-top: 10px;
-    font-size: 1.1rem;
-  }
-
-  .check-icon-circle {
-    font-size: 1.4rem;
-    margin-right: 10px;
-    color: #7e57c2;
-  }
-
-  .formulario {
-    border: 1px solid #5e707165;
-    border-radius: 20px;
-    background-color: var(--fondo-claro);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.185);
-    padding: 40px;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
-
-  .form-grupo {
-    font-family: "Nunito", system-ui, sans-serif;
-  }
-
-  .formulario h3 {
-    margin: 0;
-    font-size: 1.5rem;
-  }
-  .form-subtext {
-    color: var(--white-iris);
-    font-size: 1.1rem;
-    margin-bottom: 10px;
-  }
-
-  .form-grupo label {
-    display: block;
-    font-weight: bold;
-    margin-bottom: 8px;
-    font-size: 1rem;
-  }
-
-  .form-grupo input,
-  .form-grupo textarea {
-    width: 100%;
-    padding: 12px 16px;
-    border: 1px solid var(--border-color, #e2d8f5);
-    border-radius: 12px;
-    font-size: 1rem;
-    font-family: inherit;
-  }
-
-  .btn-final-glow {
-    color: #fcfbff;
-    background-color: #8aa3b3;
-    border: 1px solid #8aa3b3;
-    border-radius: 8px;
-    padding: 1rem 2.5rem;
-    font-size: 1.1rem;
-    font-weight: 700;
-    text-decoration: none;
-    transition: all 0.3s;
-    display: inline-block;
-    box-shadow: 0 10px 25px #5e707188;
-    transition: background 0.3s ease;
-    font-family: "Nunito", system-ui, sans-serif;
-  }
-
-  .btn-final-glow:hover {
-    color: #fcfbff;
-    background-color: var(--text-muted);
-    transform: translateY(-2px);
-  }
-
-  .privacy-note {
-    text-align: center;
-    font-size: 0.85rem;
-    color: #888;
-  }
-
-  .formulario select {
-    width: 100%;
-
-    padding: 12px 40px 12px 16px;
-    border: 1px solid var(--border-color, #e2d8f5);
-    border-radius: 12px;
-    background-color: var(--white);
-    color: var(--text-primary);
-    font-family: "Nunito", system-ui, sans-serif;
-    cursor: pointer;
-    font-size: 1rem;
-
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-
-    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%238aa3b3' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
-    background-repeat: no-repeat;
-    background-position: right 16px center;
-    background-size: 16px;
-  }
-
-  .formulario select::-ms-expand {
-    display: none;
-  }
-
-  /* ==========================================
-   TESTIMONIOS Y DEMOS
-   ========================================== */
-
-  .demos-testimonios-section {
-    background-color: var(--psico-light);
-    padding: 80px 25px 40px;
-    overflow: hidden;
-  }
-
-  .demo-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 0px;
-    align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-
-  .demo-wrapper {
-    text-align: center;
-    width: 100%;
-  }
-
-  .section-title {
-    margin-bottom: 20px;
-  }
-
-  .demos-row {
-    display: flex;
-    justify-content: center;
-    gap: 60px;
-    margin-top: 50px;
-    flex-wrap: wrap;
-  }
-
-  .demo-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-  }
-
-  .iphone-mockup {
-    width: 230px;
-    height: 450px;
-    background: #111;
-    border-radius: 35px;
-    border: 8px solid #333;
-    overflow: hidden;
-    position: relative;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-  }
-
-  .screen {
-    width: 100%;
-    height: 100%;
-    background-size: 100% auto;
-    background-position: top;
-    transition: background-position 20s ease-in-out;
-  }
-
-  .iphone-mockup:hover .screen {
-    background-position: bottom;
-  }
-
-  .phone-notch {
-    position: absolute;
-    top: 12px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 90px;
-    height: 20px;
-    background-color: #000000;
-    border-radius: 20px;
-    z-index: 2;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    padding-right: 8px;
-  }
-
-  .phone-notch::after {
-    content: "";
-    width: 12px;
-    height: 12px;
-    background-color: #111;
-    border-radius: 50%;
-    box-shadow: inset -2px -2px 4px rgba(255, 255, 255, 0.15);
-  }
-
-  .scroll-indicator {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    background-color: #ffffff90;
-    color: var(--text-muted);
-    padding: 10px 25px;
-    border-radius: 50px;
-    font-size: 0.95rem;
-    font-weight: 600;
-    margin-top: 20px;
-    border: 1px solid var(--border-color);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
-  }
-
-  .scroll-indicator i {
-    color: var(--psico-primary);
-    font-size: 1.2rem;
-  }
-
-  .btn-demo {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 12px 24px;
-    background-color: transparent;
-    color: var(--text-primary);
-    border: 2px solid var(--border-color);
-    border-radius: 50px;
-    font-size: 0.95rem;
-    font-weight: 700;
-    text-decoration: none;
-    transition: all 0.3s ease;
-  }
-
-  .btn-demo i {
-    font-size: 0.85rem;
-    color: var(--psico-primary);
-    transition: color 0.3s ease;
-  }
-
-  .btn-demo:hover {
-    background-color: var(--psico-primary);
-    border-color: var(--psico-primary);
-    color: var(--white);
-    transform: translateY(-2px);
-  }
-
-  .btn-demo:hover i {
-    color: var(--white);
-  }
-
-  .testimonios-wrapper {
-    width: 100%;
-    text-align: center;
-    overflow: hidden;
-    -webkit-mask-image: linear-gradient(
-      to right,
-      transparent,
-      black 10%,
-      black 90%,
-      transparent
-    );
-    mask-image: linear-gradient(
-      to right,
-      transparent,
-      black 10%,
-      black 90%,
-      transparent
-    );
-    margin-top: 60px;
-  }
-
-  .carousel {
-    display: flex;
-    gap: 25px;
-    padding: 10px 0;
-  }
-
-  .carousel-track {
-    display: flex;
-    gap: 25px;
-    flex-shrink: 0;
-    animation: scrollTestimonios 35s linear infinite;
-  }
-
-  .carousel:hover .carousel-track {
-    animation-play-state: paused;
-  }
-
-  .testimonio-card {
-    width: 320px;
-    height: 220px;
-    padding: 25px;
-    background: var(--fondo-claro);
-    border-radius: 16px;
-    border: 1px solid #5e707165;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.04);
-    text-align: left;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
-
-  .stars {
-    color: #f59e0b;
-    font-size: 1.2rem;
-    margin-bottom: 10px;
-    letter-spacing: 2px;
-  }
-
-  .testimonio-card p {
-    font-style: italic;
-    color: var(--text-primary);
-    font-size: 1.05rem;
-    line-height: 1.6;
-    margin: 0;
-    flex-grow: 1;
-    display: flex;
-    align-items: center;
-  }
-
-  .author {
-    display: flex;
-    align-items: center;
-    font-weight: 600;
-    color: var(--text-muted);
-    font-size: 0.9rem;
-    margin-top: 15px;
-  }
-
-  .author i {
-    margin-left: 8px;
-    font-size: 1.1rem;
-  }
-
-  @keyframes scrollTestimonios {
-    0% {
-      transform: translateX(0);
-    }
-    100% {
-      transform: translateX(calc(-100% - 25px));
-    }
-  }
-
-  /* ==========================================
-   FAQ
-   ========================================== */
-  .faq-section {
-    background-color: var(--psico-light);
-    padding: 40px 25px 80px;
-    width: 100%;
-  }
-
-  .faq-container {
-    max-width: 800px;
-    margin: 0 auto;
-  }
-
-  .faq-section .section-title {
-    color: var(--text-primary);
-    margin-bottom: 50px;
-    text-align: center;
-  }
-
-  .faq-list {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-  }
-
-  .faq-item {
-    background: var(--fondo-claro);
-    border: 1px solid #5e707165;
-    border-radius: 12px;
-    overflow: hidden;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
-  }
-
-  .faq-item[open] {
-    border-color: var(--psico-primary);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
-  }
-
-  .faq-item summary {
-    padding: 25px 30px;
-    font-family: var(--font-titulos);
-    font-weight: 600;
-    font-size: 1.1rem;
-    color: var(--text-primary);
-    cursor: pointer;
-    list-style: none;
-    position: relative;
-    outline: none;
-    transition: color 0.3s;
-  }
-
-  .faq-item summary:hover {
-    color: var(--psico-primary);
-  }
-
-  .faq-item summary::after {
-    content: "+";
-    position: absolute;
-    right: 25px;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 1.5rem;
-    color: var(--psico-primary);
-    transition: transform 0.3s ease;
-  }
-
-  .faq-item[open] summary::after {
-    content: "−";
-    transform: translateY(-50%) rotate(180deg);
-  }
-
-  .faq-item summary::-webkit-details-marker {
-    display: none;
-  }
-
-  .faq-item p {
-    padding: 0 30px 25px 30px;
-    color: var(--white-iris);
-    font-size: 1.15rem;
-    line-height: 1.6;
-    margin: 0;
-  }
-
-  /* ==========================================
-   FOOTER MINIMAL (Estilo Psicología)
-   ========================================== */
-  .footer-minimal {
-    padding: 30px 25px;
-    background-color: var(--fondo-claro);
-    color: var(--text-muted);
-    border-top: 1px solid #5e707138;
-  }
-
-  .footer-content {
-    display: grid;
-    grid-template-columns: 1fr auto 1fr;
-    align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-
-  .footer-contact {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    text-align: left;
-  }
-
-  .correo-gigante {
-    color: var(--text-primary);
-    text-decoration: none;
-    font-weight: 600;
-    transition: color 0.3s;
-  }
-
-  .correo-gigante:hover {
-    color: var(--psico-primary);
-  }
-
-  .footer-links {
-    display: flex;
-    gap: 30px;
-    justify-content: center;
-    font-size: 1.15rem;
-  }
-
-  .footer-links a {
-    color: var(--text-muted);
-    text-decoration: none;
-    transition: color 0.3s;
-    font-size: 1rem;
-  }
-
-  .footer-links a:hover {
-    color: var(--psico-primary);
-  }
-
-  .footer-copyright {
-    text-align: right;
-    font-size: 0.9rem;
-    color: var(--text-muted);
-  }
-
-  /* ==========================================
-   BANNER COOKIES
-   ========================================== */
-
-  .cookie-card-uiverse {
-    width: 480px;
-    min-height: 240px;
-    background-color: var(--psico-light);
-    border: 1px solid #5e707138;
-    border-radius: 16px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 30px 40px;
-    gap: 18px;
-    position: fixed;
-    bottom: 30px;
-    left: 30px;
-    z-index: 999999;
-    box-shadow: 30px 30px 30px 30px rgba(0, 0, 0, 0.349);
-    font-family: "Nunito", sans-serif;
-  }
-
-  #cookieSvg {
-    width: 60px;
-  }
-
-  #cookieSvg g path {
-    fill: #2c3a3b;
-  }
-
-  .cookieHeading {
-    font-size: 1.8em;
-    font-weight: 800;
-    color: #2c3a3b;
-    margin: 0;
-    font-family: "Montserrat", sans-serif;
-  }
-
-  .cookieDescription {
-    text-align: center;
-    font-size: 1.1em;
-    font-weight: 600;
-    font-family: "Nunito", sans-serif;
-    color: var(--text-primary);
-    margin: 0;
-    line-height: 1.6;
-  }
-
-  .cookielink {
-    color: #2c3a3b;
-    text-decoration: none;
-    font-weight: 700;
-    display: block;
-    margin-top: 15px;
-  }
-
-  .cookielink:hover {
-    text-decoration-line: underline;
-  }
-
-  .cookieDescription a {
-    color: #2c3a3b;
-    text-decoration: none;
-    font-weight: 700;
-  }
-
-  .cookieDescription a:hover {
-    text-decoration-line: underline;
-  }
-
-  .buttonContainer {
-    display: flex;
-    gap: 15px;
-    flex-direction: row;
-    margin-top: 10px;
-    width: 100%;
-    justify-content: center;
-  }
-
-  .acceptButton {
-    width: 140px;
-    height: 40px;
-    background-color: #2c3a3b;
-    border: none;
-    color: white;
-    cursor: pointer;
-    font-weight: 700;
-    border-radius: 20px;
-    box-shadow: 0 10px 25px #5e7071;
-    transition: all 0.3s ease;
-    font-size: 1em;
-    font-family: "Nunito", sans-serif;
-  }
-
-  .acceptButton:hover {
-    background-color: #2c3a3b;
-    transform: translateY(-2px);
-  }
-
-  .declineButton {
-    width: 140px;
-    height: 40px;
-    background-color: #fcfbff;
-    border: 1px solid #5e7071d0;
-    color: #555;
-    border: none;
-    cursor: pointer;
-    font-weight: 700;
-    border-radius: 20px;
-    transition: all 0.3s ease;
-    font-size: 1em;
-    font-family: "Nunito", sans-serif;
-  }
-
-  .declineButton:hover {
-    background-color: #fcfbff;
-    transform: translateY(-2px);
-  }
-
-  /* ==========================================
-   SECCIÓN ESCALERA DE VALOR (FASES 1 Y 2)
-========================================== */
-  .fases-section {
-    background-color: var(--fondo-claro);
-    padding: 40px 25px 80px;
-  }
-  .fases-header {
-    max-width: 800px;
-    margin: 0 auto 50px;
-    text-align: center;
-  }
-  .fases-lead {
-    color: var(--text-muted);
-    font-size: 1.15rem;
-    line-height: 1.6;
-  }
-  .fases-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 40px;
-    align-items: stretch;
-  }
-  .fase-card {
-    border: 2px solid var(--border-color);
-    border-radius: 20px;
-    padding: 40px 30px;
-    background: var(--white);
-    position: relative;
-    transition: all 0.3s ease;
-  }
-  .fase-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 35px rgba(45, 106, 79, 0.1);
-    border-color: var(--psico-primary);
-  }
-  .fase-badge {
-    background: var(--psico-light);
-    color: var(--psico-primary);
-    font-weight: 800;
-    padding: 8px 16px;
-    border-radius: 50px;
-    display: inline-block;
-    margin-bottom: 20px;
-    font-size: 0.9rem;
-  }
-  .fase-card h3 {
-    font-family: var(--font-titulos);
-    font-size: 1.5rem;
-    color: var(--text-primary);
-    margin-bottom: 15px;
-  }
-  .fase-card p {
-    color: var(--text-muted);
-    margin-bottom: 25px;
-    line-height: 1.5;
-  }
-  .fase-card ul {
-    list-style: none;
-    padding: 0;
-    color: var(--text-primary);
-    font-weight: 600;
-    line-height: 2;
-  }
-  .fase-card ul i {
-    color: var(--psico-primary);
-    margin-right: 10px;
-  }
-
-  .premium-card {
-    border: 2px solid var(--psico-primary);
-    background: var(--psico-primary);
-    box-shadow: 0 15px 35px rgba(45, 106, 79, 0.2);
-  }
-  .premium-card:hover {
-    border-color: var(--psico-light);
-    box-shadow: 0 15px 35px rgba(255, 189, 46, 0.2);
-  }
-  .premium-tag {
-    position: absolute;
-    top: -15px;
-    right: 30px;
-    background: var(--psico-light);
-    color: #1b2b22;
-    font-weight: 800;
-    font-size: 0.8rem;
-    padding: 5px 15px;
-    border-radius: 20px;
-    text-transform: uppercase;
-  }
-  .premium-badge {
-    background: rgba(255, 255, 255, 0.15);
-    color: var(--white);
-  }
-  .premium-card h3,
-  .premium-card p,
-  .premium-card ul {
-    color: var(--white);
-  }
-  .premium-card ul i {
-    color: var(--psico-light);
-  }
-
-  /* ==========================================
-   DETALLE PACK WORDPRESS (FASE 1)
-========================================== */
-  .wp-pack-section {
-    background-color: var(--psico-light);
-    padding: 60px 25px 80px;
-  }
-  .wp-pack-container {
-    max-width: 1000px;
-    margin: 0 auto;
-    background: var(--white);
-    border-radius: 24px;
-    padding: 50px;
-    border: 1px solid var(--border-color);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
-  }
-  .wp-pack-header {
-    text-align: center;
-    margin-bottom: 40px;
-  }
-  .wp-pack-title {
-    font-family: var(--font-titulos);
-    font-size: 2rem;
-    color: var(--text-primary);
-    margin-bottom: 15px;
-  }
-  .wp-pack-price {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    background: var(--fondo-claro);
-    border: 2px solid var(--psico-primary);
-    padding: 10px 25px;
-    border-radius: 50px;
-    margin-bottom: 20px;
-  }
-  .price-label {
-    font-weight: 600;
-    color: var(--text-muted);
-    text-transform: uppercase;
-    font-size: 0.9rem;
-  }
-  .price-amount {
-    font-weight: 900;
-    color: var(--psico-primary);
-    font-size: 1.5rem;
-  }
-  .wp-pack-desc {
-    font-size: 1.15rem;
-    color: var(--text-muted);
-    max-width: 700px;
-    margin: 0 auto;
-  }
-  .wp-pack-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 40px;
-  }
-  .wp-pack-box {
-    background: var(--fondo-claro);
-    padding: 30px;
-    border-radius: 16px;
-    border: 1px solid var(--border-color);
-  }
-  .wp-pack-box h3 {
-    font-family: var(--font-titulos);
-    font-size: 1.3rem;
-    color: var(--psico-primary);
-    margin-bottom: 20px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    border-bottom: 2px solid var(--psico-light);
-    padding-bottom: 15px;
-  }
-  .wp-pack-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-  .wp-pack-list li {
-    margin-bottom: 15px;
-    color: var(--text-muted);
-    font-size: 1.05rem;
-    line-height: 1.5;
-  }
-  .wp-pack-list li strong {
-    color: var(--text-primary);
-    display: block;
-    margin-bottom: 3px;
-  }
-
-  /* ==========================================
-     RESPONSIVE (MEDIA QUERIES)
-  ========================================== */
-  @media (max-width: 480px) {
-    .cookie-card-uiverse {
-      bottom: 10px;
-
-      left: 10px;
-      right: auto;
-      transform: none;
-
-      width: calc(100% - 70px);
-      max-width: 300px;
-
-      padding: 20px;
-      min-height: auto;
-      gap: 8px;
-      border-radius: 12px;
-      align-items: flex-start;
-    }
-
-    #cookieSvg {
-      display: none;
-    }
-
-    .cookieHeading {
-      font-size: 1.1em;
-      text-align: left;
-    }
-
-    .cookieDescription {
-      font-size: 0.8em;
-      line-height: 1.2;
-      text-align: left;
-    }
-
-    .cookielink {
-      margin-top: 8px;
-      margin-bottom: 8px;
-      font-size: 0.8em;
-      display: inline-block;
-    }
-
-    .buttonContainer {
-      margin-top: 5px;
-      gap: 8px;
-      justify-content: flex-start;
-    }
-
-    .acceptButton,
-    .declineButton {
-      width: auto;
-      padding: 0 15px;
-      height: 30px;
-      font-size: 0.8em;
-    }
-
-    .wp-pack-container {
-      padding: 30px 20px;
-    }
-    .wp-pack-grid {
-      grid-template-columns: 1fr;
-      gap: 25px;
-    }
-    .wp-pack-title {
-      font-size: 1.6rem;
-    }
-  }
-
-  /* ==========================================
-   RESPONSIVE HERO SECTION (TABLET Y MÓVIL)
-   ========================================== */
-
-  @media (max-width: 992px) {
-    .wp-pack-section {
-      background-color: var(--psico-light);
-      padding: 60px 25px 40px;
-    }
-
-    .wp-pack-container {
-      padding: 30px 20px;
-    }
-    .wp-pack-grid {
-      grid-template-columns: 1fr;
-      gap: 25px;
-    }
-    .wp-pack-title {
-      font-size: 1.6rem;
-    }
-
-    .hero-section {
-      padding: 120px 120px;
-    }
-
-    .hero-grid {
-      grid-template-columns: 1fr;
-      text-align: center;
-      gap: 50px;
-    }
-
-    .hero-description {
-      max-width: 100%;
-      margin: 0 auto;
-    }
-
-    .btn-content {
-      justify-content: center;
-    }
-
-    .hero-visuals {
-      height: auto;
-      padding-top: 20px;
-    }
-
-    .mac-mockup {
-      position: relative;
-      width: 90%;
-      left: 25;
-      margin: 0 auto;
-    }
-
-    .mobile-mockup {
-      bottom: -15px;
-      left: 5%;
-      width: 25%;
-    }
-
-    .features-section {
-      padding: 60px 25px 60px;
-    }
-
-    .section-title {
-      font-size: 2rem;
-    }
-
-    .feature-row {
-      grid-template-columns: 1fr;
-      gap: 40px;
-      margin-bottom: 60px;
-    }
-
-    .feature-text {
-      order: 1;
-      text-align: center;
-    }
-
-    .feature-visual {
-      order: 2;
-    }
-
-    .feature-list li {
-      justify-content: center;
-    }
-
-    .contacto-grid {
-      grid-template-columns: 1fr;
-      gap: 50px;
-    }
-
-    .text-center {
-      text-align: center;
-    }
-
-    .section-main-title {
-      font-size: 2.2rem;
-      margin-bottom: 30px;
-    }
-
-    .cal-widget {
-      margin: 0 auto;
-    }
-  }
-
-  @media (max-width: 768px) {
-    .wp-pack-section {
-      background-color: var(--psico-light);
-      padding: 60px 25px 40px;
-    }
-
-    .metodologia-section {
-      padding: 80px 25px 40px;
-      background-color: var(--fondo-claro);
-    }
-    .wp-pack-container {
-      padding: 30px 20px;
-    }
-    .wp-pack-grid {
-      grid-template-columns: 1fr;
-      gap: 25px;
-    }
-    .wp-pack-title {
-      font-size: 1.6rem;
-    }
-
-    .hero-section {
-      padding: 120px 24px 60px;
-    }
-
-    .hero-grid {
-      grid-template-columns: 1fr;
-      text-align: center;
-      gap: 30px;
-    }
-
-    .tag {
-      font-size: 0.75rem;
-      padding: 0.4rem 1rem;
-      margin-bottom: 20px;
-    }
-
-    .hero-title {
-      font-size: 2.25rem;
-      letter-spacing: -0.5px;
-    }
-
-    .btn-content {
-      flex-direction: column;
-      gap: 20px;
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin-top: 30px;
-    }
-
-    .btn-primary,
-    .btn-secondary {
-      width: 70%;
-      padding: 1rem;
-      max-width: 320px;
-      text-align: center;
-      margin-top: 0;
-    }
-
-    .mobile-mockup {
-      width: 30%;
-      bottom: -20px;
-      left: 0;
-    }
-
-    .funciones-section {
-      padding: 60px 25px;
-      background-color: var(--fondo-claro);
-      text-align: center;
-    }
-
-    .section-title {
-      font-size: 2.25rem;
-      margin-bottom: 40px;
-      margin-top: 0px;
-      padding: 0 10px;
-    }
-
-    .feature-text h3 {
-      font-size: 1.6rem;
-    }
-
-    .feature-list li {
-      font-size: 1rem;
-      justify-content: flex-start;
-      text-align: left;
-    }
-
-    .feature-text {
-      text-align: left;
-    }
-
-    .browser-url {
-      font-size: 0.65rem;
-      padding: 4px 8px;
-    }
-
-    .contacto-section {
-      padding: 40px 15px 40px;
-    }
-
-    .section-main-title {
-      font-size: 2.25rem;
-      padding: 0 10px;
-    }
-
-    .cal-widget {
-      height: 520px;
-      border-radius: 20px;
-    }
-
-    .calendar-iframe {
-      width: 100%;
-      height: 100%;
-      transform: scale(1);
-      transform-origin: center;
-    }
-
-    .testimonio-card {
-      width: 260px;
-      height: 190px;
-      padding: 20px;
-    }
-
-    .carousel {
-      gap: 15px;
-    }
-
-    .carousel-track {
-      gap: 15px;
-
-      animation-duration: 25s;
-    }
-
-    .testimonio-card p {
-      font-size: 0.95rem;
-    }
-
-    .stars {
-      font-size: 1rem;
-      margin-bottom: 5px;
-    }
-
-    .author {
-      font-size: 0.8rem;
-      margin-top: 10px;
-    }
-
-    .formulario {
-      padding: 25px 20px;
-      gap: 15px;
-    }
-
-    .formulario h3 {
-      text-align: center;
-    }
-
-    .form-subtext {
-      text-align: center;
-    }
-
-    .btn-final-glow {
-      width: 100%;
-      text-align: center;
-      padding: 1rem;
-      margin-top: 15px;
-    }
-
-    .footer-minimal {
-      padding: 40px 20px;
-      background-color: var(--fondo-claro);
-      color: var(--text-muted);
-      border-top: 1px solid #5e707138;
-    }
-
-    .footer-content {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 30px;
-      max-width: 1200px;
-      margin: 0 auto;
-      text-align: center;
-    }
-  }
-</style>

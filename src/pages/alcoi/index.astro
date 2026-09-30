@@ -1,13 +1,113 @@
 ---
+import "./tailwind.css";
 import "./style.css";
+
+/* Preguntes freqüents: una sola font per al HTML visible i per al Schema.
+   La resposta admet <strong>; al Schema s'envia sense etiquetes. */
+const faqs = [
+  [
+    "Haurem de deixar d'usar el nostre ERP o els nostres Excel?",
+    "No. Normalment connectem el nou software amb el que ja feu servir (Sage, A3, Holded, Odoo…) o importem les dades dels vostres fulls d'Excel. L'objectiu és que les dades s'introduïsquen <strong>una sola vegada</strong> i arriben soles a cada departament.",
+  ],
+  [
+    "La posada en marxa pararà la nostra activitat?",
+    "No. Treballem <strong>per fases</strong>: cada part es prova amb el vostre equip i es posa en marxa quan funciona, en paral·lel al sistema actual. Així la producció no s'atura en cap moment.",
+  ],
+  [
+    'La web serà meua 100% o he de pagar un "lloguer" per sempre?',
+    "La web i el domini són <strong>totalment teus</strong> des del primer minut. Treballem amb plataformes lliures i estàndards com WordPress o Shopify. Si algun dia decideixes treballar amb una altra agència, et donem les claus i te l'emportes sense penalitzacions ni lletra menuda.",
+  ],
+  [
+    "Què passa si tinc un problema tècnic o vull fer canvis en un futur?",
+    'Ens tens a Cocentaina per a allò que necessites, no som un "call center" anònim. Oferim plans de <strong>manteniment web mensual</strong> on ens encarreguem de les actualitzacions, la seguretat i xicotets canvis perquè tu només et preocupes del teu negoci.',
+  ],
+  [
+    "Puc rebre reserves directes o vendre sense dependre de tercers?",
+    "I tant! Integrem sistemes complets de reserves (per a clíniques, restaurants o consultories) i botigues online totalment automatitzades. Dissenyem plataformes preparades per a convertir visites en clients reals, sincronitzades amb el teu calendari i passarel·les de pagament segures.",
+  ],
+  [
+    "Apareixeré a Google si algú busca els meus serveis a la zona?",
+    "Totes les nostres webs s'entreguen amb una optimització SEO tècnica de base. Si vols millorar la visibilitat del teu negoci a les cerques locals, també oferim estratègies específiques de SEO local i optimització del Perfil d'Empresa de Google.",
+  ],
+  [
+    "Quant de temps tardeu a tindre la web preparada?",
+    "Depén de la complexitat, però normalment una web corporativa està llesta entre <strong>3 i 5 setmanes</strong> des que ens facilites els textos i imatges inicials. Treballem de forma àgil i t'anem ensenyant els progressos perquè veges com agafa forma el teu projecte.",
+  ],
+];
+
+const pageUrl = "https://mndesignweb.es/alcoi/";
+const seoTitle = "Software a Mida i Automatització de Processos a Alcoi | MN Design Web";
+const schema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": `${pageUrl}#webpage`,
+      url: pageUrl,
+      name: seoTitle,
+      description:
+        "Software a mida i automatització de processos per a empreses i indústries d'Alcoi i Cocentaina. També webs corporatives i botigues online.",
+      inLanguage: "ca-ES-valencia",
+      about: { "@id": `${pageUrl}#servei` },
+      breadcrumb: { "@id": `${pageUrl}#breadcrumb` },
+    },
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://mndesignweb.es/#empresa",
+      name: "MN Design Web",
+      image: "https://mndesignweb.es/logo.webp",
+      url: "https://mndesignweb.es/",
+      telephone: "+34645854934",
+      email: "info@mndesignweb.es",
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: "Avinguda Passeig del Comtat, 75, 5º 1º",
+        postalCode: "03820",
+        addressLocality: "Cocentaina",
+        addressRegion: "Alicante",
+        addressCountry: "ES",
+      },
+      areaServed: ["Alcoi", "Cocentaina", "Muro d'Alcoi", "Ontinyent", "Alcoià", "El Comtat"],
+      priceRange: "$",
+    },
+    {
+      "@type": "Service",
+      "@id": `${pageUrl}#servei`,
+      name: "Software a mida i automatització de processos",
+      serviceType: "Desenvolupament de software a mida",
+      image: "https://mndesignweb.es/alcoi/imagen-miniatura-alcoi.webp",
+      description:
+        "Software a mida per a empreses i indústries: connexió entre departaments (comandes, producció, magatzem i facturació), portals de clients i proveïdors, reserves de molls de càrrega, quadres de comandament i integració amb ERP. També webs corporatives, botigues online i branding.",
+      provider: { "@id": "https://mndesignweb.es/#empresa" },
+      areaServed: ["Alcoi", "Cocentaina"],
+    },
+    {
+      "@type": "FAQPage",
+      "@id": `${pageUrl}#faq`,
+      mainEntity: faqs.map(([q, a]) => ({
+        "@type": "Question",
+        name: q,
+        acceptedAnswer: { "@type": "Answer", text: a.replace(/<[^>]+>/g, "") },
+      })),
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": `${pageUrl}#breadcrumb`,
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Inici MN Design Web", item: "https://mndesignweb.es/" },
+        { "@type": "ListItem", position: 2, name: "Estudi de Disseny Web a Alcoi", item: pageUrl },
+      ],
+    },
+  ],
+};
 ---
 
 <!doctype html>
-<html lang="ca" class="scroll-smooth">
+<html lang="ca-ES-valencia" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Estudi de Disseny Web i Desenvolupament a Alcoi | MN Design</title>
+    <title>{seoTitle}</title>
 
     <meta
       name="theme-color"
@@ -21,25 +121,25 @@ import "./style.css";
     />
     <meta name="apple-mobile-web-app-status-bar-style" content="default" />
 
-    <link rel="canonical" href="https://mndesignweb.es/alcoi" />
+    <link rel="canonical" href="https://mndesignweb.es/alcoi/" />
     <link rel="icon" type="image/webp" href="/favicon_v2.webp" />
     <meta name="robots" content="index, follow" />
 
     <meta
       name="description"
-      content="Estudi de disseny web i desenvolupament a mida a Alcoi, Cocentaina i comarques. Creem botigues online, plataformes SaaS i webs corporatives d'alt rendiment."
+      content="Software a mida i automatització de processos per a empreses i indústries d'Alcoi, Cocentaina i comarques. Connectem comandes, producció, magatzem i facturació. També webs i botigues online."
     />
     <meta name="author" content="MN Design Web" />
 
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://mndesignweb.es/alcoi" />
+    <meta property="og:url" content="https://mndesignweb.es/alcoi/" />
     <meta
       property="og:title"
-      content="Estudi de Disseny Web i Desenvolupament a Alcoi | MN Design"
+      content={seoTitle}
     />
     <meta
       property="og:description"
-      content="Estudi de disseny web a Alcoi i Cocentaina. Creem botigues online, plataformes SaaS i webs corporatives d'alt rendiment. Acompanyament tecnològic proper i sense intermediaris."
+      content="Software a mida i automatització de processos per a empreses i indústries de l'Alcoià i el Comtat. Diagnosi presencial a la teua empresa, des de Cocentaina."
     />
     <meta
       property="og:image"
@@ -48,22 +148,20 @@ import "./style.css";
     <meta property="og:locale" content="ca_ES" />
 
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:url" content="https://mndesignweb.es/alcoi" />
+    <meta name="twitter:url" content="https://mndesignweb.es/alcoi/" />
     <meta
       name="twitter:title"
-      content="Estudi de Disseny Web i Desenvolupament a Alcoi | MN Design"
+      content={seoTitle}
     />
     <meta
       name="twitter:description"
-      content="Estudi de disseny web a Alcoi i Cocentaina. Creem botigues online, plataformes SaaS i webs corporatives d'alt rendiment."
+      content="Software a mida i automatització de processos per a empreses i indústries de l'Alcoià i el Comtat."
     />
     <meta
       name="twitter:image"
       content="https://mndesignweb.es/alcoi/imagen-miniatura-alcoi.webp"
     />
 
-    <script is:inline src="https://cdn.tailwindcss.com"></script>
-    <script is:inline src="https://unpkg.com/lucide@latest"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -71,127 +169,9 @@ import "./style.css";
       rel="stylesheet"
     />
 
-    <script is:inline>
-      tailwind.config = {
-        theme: {
-          extend: {
-            fontFamily: { sans: ["Plus Jakarta Sans", "sans-serif"] },
-            colors: {
-              saas: {
-                violet: "#8B5CF6",
-                fuchsia: "#D946EF",
-                mint: "#34D399",
-                dark: "#0F172A",
-                bg: "#FAFAFC",
-              },
-            },
-            boxShadow: {
-              card: "0 4px 24px -6px rgba(0, 0, 0, 0.03), 0 12px 32px -4px rgba(0, 0, 0, 0.04)",
-              float: "0 20px 40px -10px rgba(139, 92, 246, 0.15)",
-            },
-            borderRadius: { "3xl": "1.75rem", "4xl": "2.5rem" },
-          },
-        },
-      };
-    </script>
 
-    <script type="application/ld+json">
-      [
-        {
-          "@context": "https://schema.org",
-          "@type": "WebPage",
-          "name": "Estudi de Disseny Web i Desenvolupament a Alcoi | MN Design",
-          "description": "Estudi de disseny web a Alcoi i Cocentaina. Creem botigues online, plataformes SaaS i webs corporatives d'alt rendiment."
-        },
-        {
-          "@context": "https://schema.org",
-          "@type": "ProfessionalService",
-          "name": "MN Design Web",
-          "image": "https://mndesignweb.es/logo.webp",
-          "url": "https://mndesignweb.es/",
-          "address": {
-            "@type": "PostalAddress",
-            "streetAddress": "Passeig del Comtat nº 75",
-            "addressLocality": "Cocentaina",
-            "addressRegion": "Alicante",
-            "addressCountry": "ES"
-          },
-          "areaServed": ["Alcoi", "Cocentaina"],
-          "priceRange": "$$"
-        },
-        {
-          "@context": "https://schema.org/",
-          "@type": "Service",
-          "name": "Disseny i Desenvolupament Web",
-          "image": "https://mndesignweb.es/alcoi/imagen-miniatura-alcoi.webp",
-          "description": "Solucions digitals a mida: WordPress autogestionable, botigues online E-commerce amb Shopify/WooCommerce, plataformes SaaS i Branding."
-        },
-        {
-          "@context": "https://schema.org",
-          "@type": "FAQPage",
-          "mainEntity": [
-            {
-              "@type": "Question",
-              "name": "La web serà meua 100% o he de pagar un lloguer per sempre?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "La web i el domini són totalment teus des del primer minut. Treballem amb plataformes lliures i estàndards com WordPress o Shopify. Si algun dia decideixes treballar amb una altra agència, et donem les claus i te l'emportes sense penalitzacions ni lletra menuda."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Què passa si tinc un problema tècnic o vull fer canvis en un futur?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Ens tens a Cocentaina per a allò que necessites, no som un call center anònim. Oferim plans de manteniment web mensual on ens encarreguem de les actualitzacions, la seguretat i xicotets canvis."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Puc rebre reserves directes o vendre sense dependre de tercers?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "I tant! Integrem sistemes complets de reserves i botigues online totalment automatitzades, sincronitzades amb el teu calendari i passarel·les de pagament segures."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Apareixeré a Google si algú busca els meus serveis a la zona?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Totes les nostres webs s'entreguen amb una optimització SEO tècnica de base. A més, oferim estratègies específiques de SEO Local i configuració avançada de Google Business Profile per dominar l'Alcoià i el Comtat."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Quant de temps trigueu a tindre el disseny a punt?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Normalment una web corporativa està llesta entre 3 i 5 setmanes des que ens facilites els textos i imatges inicials."
-              }
-            }
-          ]
-        },
-        {
-          "@context": "https://schema.org",
-          "@type": "BreadcrumbList",
-          "itemListElement": [
-            {
-              "@type": "ListItem",
-              "position": 1,
-              "name": "Inici MN Design Web",
-              "item": "https://mndesignweb.es/"
-            },
-            {
-              "@type": "ListItem",
-              "position": 2,
-              "name": "Estudi de Disseny Web a Alcoi",
-              "item": "https://mndesignweb.es/alcoi/"
-            }
-          ]
-        }
-      ]
-    </script>
+    <!-- Schema.org: un únic bloc generat des del frontmatter -->
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(schema)} />
 
     <script is:inline>
       window.dataLayer = window.dataLayer || [];
@@ -251,9 +231,11 @@ import "./style.css";
         "https://connect.facebook.net/en_US/fbevents.js",
       );
 
-      // CAMBIADO AQUÍ TAMBIÉN
+      // Sense consentiment, el píxel queda bloquejat (no envia res a Meta)
       var localConsent = localStorage.getItem("cookie_consent");
-      if (localConsent === "accepted") {
+      if (localConsent !== "accepted") {
+        fbq("consent", "revoke");
+      } else {
         fbq("consent", "grant");
       }
 
@@ -261,19 +243,24 @@ import "./style.css";
       fbq("track", "PageView");
     </script>
 
+    <!-- Clarity: només es carrega si ja hi ha consentiment (si no, el carrega el bàner en acceptar) -->
     <script is:inline type="text/javascript">
-      (function (c, l, a, r, i, t, y) {
-        c[a] =
-          c[a] ||
-          function () {
-            (c[a].q = c[a].q || []).push(arguments);
-          };
-        t = l.createElement(r);
-        t.async = 1;
-        t.src = "https://www.clarity.ms/tag/" + i;
-        y = l.getElementsByTagName(r)[0];
-        y.parentNode.insertBefore(t, y);
-      })(window, document, "clarity", "script", "wuzaxaifa0");
+      if (localStorage.getItem("cookie_consent") === "accepted") {
+        (function (c, l, a, r, i, t, y) {
+          c[a] =
+            c[a] ||
+            function () {
+              (c[a].q = c[a].q || []).push(arguments);
+            };
+          t = l.createElement(r);
+          t.async = 1;
+          t.src = "https://www.clarity.ms/tag/" + i;
+          y = l.getElementsByTagName(r)[0];
+          y.parentNode.insertBefore(t, y);
+        })(window, document, "clarity", "script", "wuzaxaifa0");
+        // Clarity exigeix el senyal de consentiment a la UE per a usar cookies
+        clarity("consent");
+      }
     </script>
   </head>
   <body
@@ -309,6 +296,9 @@ import "./style.css";
         <nav
           class="hidden md:flex items-center gap-8 font-semibold text-sm text-slate-600"
         >
+          <a href="#automatitzacio" class="hover:text-saas-violet transition-colors"
+            >Automatització</a
+          >
           <a href="#serveis" class="hover:text-saas-violet transition-colors"
             >Serveis</a
           >
@@ -316,7 +306,7 @@ import "./style.css";
             >Branding</a
           >
           <a href="#portfolio" class="hover:text-saas-violet transition-colors"
-            >Casos d'èxit</a
+            >Projectes</a
           >
           <a href="#nosaltres" class="hover:text-saas-violet transition-colors"
             >Nosaltres</a
@@ -328,7 +318,7 @@ import "./style.css";
             href="#contacte"
             class="hidden sm:inline-flex bg-saas-dark hover:bg-black text-white px-6 py-2.5 rounded-full font-bold text-sm transition-all shadow hover:shadow-lg hover:-translate-y-0.5"
           >
-            Reserva
+            Diagnosi gratuïta
           </a>
 
           <button
@@ -346,6 +336,11 @@ import "./style.css";
         class="hidden absolute top-full left-0 w-full bg-white/95 backdrop-blur-xl border-b border-slate-200 shadow-2xl px-6 py-8 flex-col gap-2 text-center md:hidden"
       >
         <a
+          href="#automatitzacio"
+          class="mobile-link w-full py-3.5 text-lg font-bold text-slate-700 hover:text-saas-violet hover:bg-slate-50 rounded-2xl transition-colors"
+          >Automatització</a
+        >
+        <a
           href="#serveis"
           class="mobile-link w-full py-3.5 text-lg font-bold text-slate-700 hover:text-saas-violet hover:bg-slate-50 rounded-2xl transition-colors"
           >Serveis</a
@@ -358,7 +353,7 @@ import "./style.css";
         <a
           href="#portfolio"
           class="mobile-link w-full py-3.5 text-lg font-bold text-slate-700 hover:text-saas-violet hover:bg-slate-50 rounded-2xl transition-colors"
-          >Casos d'èxit</a
+          >Projectes</a
         >
         <a
           href="#nosaltres"
@@ -370,7 +365,7 @@ import "./style.css";
           href="#contacte"
           class="mobile-link w-full mt-4 bg-saas-dark hover:bg-black text-white px-8 py-4 rounded-2xl font-bold text-base transition-all shadow-lg shadow-slate-900/20"
         >
-          Reserva consultoria
+          Diagnosi gratuïta
         </a>
       </div>
     </header>
@@ -397,6 +392,7 @@ import "./style.css";
         </div>
       </div>
 
+      <!-- CAPÇALERA: software a mida i automatització per a la indústria local -->
       <section
         class="relative max-w-7xl mx-auto px-6 pt-36 pb-20 flex flex-col items-center text-center z-10"
       >
@@ -405,118 +401,373 @@ import "./style.css";
         >
           <span class="w-2 h-2 rounded-full bg-saas-violet animate-pulse"
           ></span>
-          Disseny web a Alcoi i Cocentaina
+          Des de Cocentaina · Alcoi i comarques
         </div>
         <h1
-          class="text-4xl sm:text-[4rem] lg:text-[5rem] font-extrabold leading-[1.1] sm:leading-[1.05] tracking-tighter text-saas-dark mb-6 max-w-4xl mx-auto break-words"
+          class="text-4xl sm:text-5xl lg:text-[4.25rem] font-extrabold leading-[1.1] sm:leading-[1.05] tracking-tighter text-saas-dark mb-6 max-w-5xl mx-auto break-words"
         >
-          Disseny i Desenvolupament Web<br class="hidden md:block" /><span
-            class="md:hidden"
-          >
-          </span>
-          <span class="text-saas-violet">d'Alt Rendiment</span>
+          Software a mida i automatització de processos per a{" "}
+          <span class="text-saas-violet">empreses i indústries de l'Alcoià i el Comtat</span>
         </h1>
         <p
           class="text-lg md:text-xl text-slate-500 max-w-2xl mx-auto leading-relaxed mb-10 font-medium"
         >
-          Hola! Som un estudi local de disseny i desenvolupament web amb seu a
-          Cocentaina i especialitzat en empreses d’Alcoi i les comarques veïnes.
-          Construïm solucions digitals a mida per a empreses de les nostres
-          comarques, oferint un acompanyament tecnològic proper, transparent i
-          sense intermediaris.
+          Connectem comandes, producció, magatzem i facturació perquè els
+          vostres departaments deixen de passar-se dades en fulls d'Excel. Venim
+          a la vostra empresa, entenem com treballeu i automatitzem el que ara
+          feu a mà.
         </p>
         <div
-          class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16 w-full sm:w-auto"
+          class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12 w-full sm:w-auto"
         >
           <a
             href="#contacte"
             class="inline-flex justify-center items-center w-full sm:w-auto bg-saas-dark hover:bg-black text-white px-8 py-4 rounded-full font-semibold text-base transition-all shadow-float hover:shadow-2xl hover:-translate-y-1"
           >
-            Reserva consultoria
+            Sol·licita una diagnosi gratuïta
           </a>
           <a
-            href="#serveis"
-            class="inline-flex justify-center items-center w-full sm:w-auto bg-white hover:bg-slate-50 border border-slate-200 text-saas-dark px-8 py-4 rounded-full font-semibold text-base transition-all shadow-sm hover:shadow-md"
+            href="https://mndesignweb.es/supplyconnect"
+            target="_blank"
+            rel="noopener"
+            class="inline-flex justify-center items-center gap-2 w-full sm:w-auto bg-white hover:bg-slate-50 border border-slate-200 text-saas-dark px-8 py-4 rounded-full font-semibold text-base transition-all shadow-sm hover:shadow-md"
           >
-            Servicis
+            Prova la demo d'un ERP industrial
+            <i data-lucide="external-link" class="w-4 h-4"></i>
           </a>
         </div>
-        <div
-          class="flex flex-wrap items-center justify-center gap-8 md:gap-12 mb-16 opacity-40 grayscale"
+        <ul
+          class="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 mb-16 text-sm font-semibold text-slate-600"
         >
-          <span class="font-bold text-xl tracking-tight">WordPress</span>
-          <span class="font-bold text-xl tracking-tight">WooCommerce</span>
-          <span class="font-bold text-xl tracking-tight">Shopify</span>
-          <span class="font-bold text-xl tracking-tight">PrestaShop</span>
-          <span class="font-bold text-xl tracking-tight">SaaS</span>
-          <span class="font-bold text-xl tracking-tight">App</span>
-          <span class="font-bold text-xl tracking-tight">Astro</span>
-          <span class="font-bold text-xl tracking-tight">React</span>
-          <span class="font-bold text-xl tracking-tight">Node.js</span>
-        </div>
+          <li class="flex items-center gap-2">
+            <i data-lucide="map-pin" class="w-4 h-4 text-saas-violet"></i> Visita presencial a la teua empresa
+          </li>
+          <li class="flex items-center gap-2">
+            <i data-lucide="plug" class="w-4 h-4 text-saas-violet"></i> Connectat amb el vostre ERP
+          </li>
+          <li class="flex items-center gap-2">
+            <i data-lucide="shield-check" class="w-4 h-4 text-saas-violet"></i> Software 100% vostre, sense llicències
+          </li>
+        </ul>
         <div
           class="relative w-full max-w-5xl mx-auto rounded-3xl sm:rounded-[2rem] bg-white/60 backdrop-blur-md border border-slate-200 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.1)] p-2 sm:p-4 anim-float"
         >
           <img
             src="/alcoi/software-nutricion.webp"
-            alt="Plataforma de Nutrició - MN Design Web"
+            width="1280"
+            height="720"
+            fetchpriority="high"
+            alt="Panell de control d'un ERP industrial a mida: comandes actives, qualitat, entregues i alertes de subministrament"
             class="w-full h-auto rounded-2xl sm:rounded-3xl shadow-sm border border-slate-100 block"
           />
         </div>
-        <div class="mt-20 max-w-3xl mx-auto flex flex-col items-center">
-          <p
-            class="text-xl sm:text-2xl font-semibold text-saas-dark tracking-tight leading-snug mb-8"
-          >
-            "Aquesta plataforma ha transformat la nostra presència digital amb
-            un disseny impecable i un acompanyament que ens ha fet estalviar
-            hores de feina."
-          </p>
-          <div class="flex items-center gap-4">
+        <div
+          class="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 mt-14 text-slate-400"
+        >
+          <span class="text-xs font-bold uppercase tracking-widest">Ens connectem amb</span>
+          <span class="font-bold text-lg tracking-tight">Sage</span>
+          <span class="font-bold text-lg tracking-tight">A3</span>
+          <span class="font-bold text-lg tracking-tight">Holded</span>
+          <span class="font-bold text-lg tracking-tight">Odoo</span>
+          <span class="font-bold text-lg tracking-tight">Excel</span>
+          <span class="font-bold text-lg tracking-tight">Google Workspace</span>
+          <span class="font-bold text-lg tracking-tight">API a mida</span>
+          <span class="font-bold text-lg tracking-tight">WordPress</span>
+          <span class="font-bold text-lg tracking-tight">Shopify</span>
+        </div>
+      </section>
+
+      <!-- AUTOMATITZACIÓ: casos que un gerent reconeix -->
+      <section id="automatitzacio" class="relative py-20 z-10 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-6">
+          <div class="text-center mb-14 max-w-3xl mx-auto">
             <div
-              class="w-12 h-12 rounded-full bg-slate-200 overflow-hidden flex items-center justify-center"
+              class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-saas-violet/20 bg-saas-violet/5 text-xs font-bold text-saas-violet tracking-wide uppercase mb-4"
             >
-              <img
-                src="/alcoi/nutrimente.webp"
-                alt="Nutrimente"
-                class="w-full h-full object-cover"
-              />
+              <i data-lucide="workflow" class="w-4 h-4"></i> Automatització de processos
             </div>
-            <div class="text-left">
-              <p class="font-bold text-saas-dark text-sm">Nutrimente</p>
-              <p class="text-slate-500 text-sm">Nutricion Integrativa Jaén</p>
+            <h2 class="text-3xl md:text-5xl font-extrabold tracking-tighter text-saas-dark mb-6">
+              Automatitzem el que ara feu a mà
+            </h2>
+            <p class="text-lg text-slate-500 font-medium">
+              Si una mateixa dada es copia en tres llocs diferents, hi ha un
+              procés que es pot automatitzar. Aquests són els que més veiem a les
+              empreses de la zona.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <!-- Flux entre departaments (targeta destacada) -->
+            <div
+              class="md:col-span-3 rounded-4xl p-8 lg:p-10 bg-gradient-to-br from-saas-violet to-saas-fuchsia text-white relative overflow-hidden"
+            >
+              <div class="absolute -right-20 -top-20 w-96 h-96 bg-white opacity-10 blur-[80px] rounded-full pointer-events-none"></div>
+              <div class="relative z-10 grid lg:grid-cols-2 gap-8 items-center">
+                <div>
+                  <h3 class="text-2xl lg:text-3xl font-extrabold tracking-tight mb-4">
+                    De la comanda a la factura, sense tornar a teclejar res
+                  </h3>
+                  <p class="text-white/85 font-medium leading-relaxed text-lg">
+                    Quan entra una comanda, producció la veu al moment, el
+                    magatzem sap què ha de preparar i administració factura amb
+                    les dades que ja existeixen. Sense correus, sense Excels
+                    duplicats i sense errors de transcripció.
+                  </p>
+                </div>
+                <ol class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-center">
+                  <li class="rounded-2xl bg-white/15 border border-white/25 backdrop-blur-sm p-4">
+                    <i data-lucide="clipboard-check" class="w-6 h-6 mx-auto mb-2"></i>
+                    <span class="block text-xs uppercase tracking-wider opacity-80">1</span>
+                    <span class="font-bold">Comanda</span>
+                  </li>
+                  <li class="rounded-2xl bg-white/15 border border-white/25 backdrop-blur-sm p-4">
+                    <i data-lucide="factory" class="w-6 h-6 mx-auto mb-2"></i>
+                    <span class="block text-xs uppercase tracking-wider opacity-80">2</span>
+                    <span class="font-bold">Producció</span>
+                  </li>
+                  <li class="rounded-2xl bg-white/15 border border-white/25 backdrop-blur-sm p-4">
+                    <i data-lucide="truck" class="w-6 h-6 mx-auto mb-2"></i>
+                    <span class="block text-xs uppercase tracking-wider opacity-80">3</span>
+                    <span class="font-bold">Magatzem</span>
+                  </li>
+                  <li class="rounded-2xl bg-white text-saas-dark p-4 shadow-lg">
+                    <i data-lucide="badge-euro" class="w-6 h-6 mx-auto mb-2 text-saas-violet"></i>
+                    <span class="block text-xs uppercase tracking-wider text-slate-400">4</span>
+                    <span class="font-bold">Facturació</span>
+                  </li>
+                </ol>
+              </div>
+            </div>
+
+            <div class="rounded-4xl p-8 bg-white border border-slate-200 shadow-card flex flex-col ">
+              <div class="w-12 h-12 rounded-2xl bg-saas-violet/10 text-saas-violet flex items-center justify-center mb-5">
+                <i data-lucide="users" class="w-6 h-6"></i>
+              </div>
+              <h3 class="text-xl font-extrabold tracking-tight text-slate-900 mb-3">Portal per a clients i proveïdors</h3>
+              <p class="text-slate-600 font-medium leading-relaxed">Els vostres clients consulten l'estat de les comandes, descarreguen albarans i factures, i els proveïdors confirmen entregues. Menys telefonades preguntant «com va lo meu?».</p>
+            </div>
+
+            <div class="rounded-4xl p-8 bg-white border border-slate-200 shadow-card flex flex-col ">
+              <div class="w-12 h-12 rounded-2xl bg-emerald-500/10 text-emerald-600 flex items-center justify-center mb-5">
+                <i data-lucide="truck" class="w-6 h-6"></i>
+              </div>
+              <h3 class="text-xl font-extrabold tracking-tight text-slate-900 mb-3">Reserva de molls de càrrega</h3>
+              <p class="text-slate-600 font-medium leading-relaxed">Els transportistes reserven hora de càrrega i descàrrega en línia. Adéu a les cues de camions a la porta i al quadern de recepció.</p>
+            </div>
+
+            <div class="rounded-4xl p-8 bg-white border border-slate-200 shadow-card flex flex-col ">
+              <div class="w-12 h-12 rounded-2xl bg-orange-500/10 text-orange-600 flex items-center justify-center mb-5">
+                <i data-lucide="chart-column" class="w-6 h-6"></i>
+              </div>
+              <h3 class="text-xl font-extrabold tracking-tight text-slate-900 mb-3">Informes i quadres de comandament</h3>
+              <p class="text-slate-600 font-medium leading-relaxed">Vendes, producció, estoc i marges actualitzats sols, en una pantalla per a direcció. Sense esperar que algú prepare l'informe del mes.</p>
+            </div>
+
+            <div class="rounded-4xl p-8 bg-white border border-slate-200 shadow-card flex flex-col md:col-span-2">
+              <div class="w-12 h-12 rounded-2xl bg-cyan-500/10 text-cyan-600 flex items-center justify-center mb-5">
+                <i data-lucide="plug" class="w-6 h-6"></i>
+              </div>
+              <h3 class="text-xl font-extrabold tracking-tight text-slate-900 mb-3">Connexió amb el vostre ERP</h3>
+              <p class="text-slate-600 font-medium leading-relaxed">Integrem el nou software amb Sage, A3, Holded, Odoo o el sistema que ja useu. No cal canviar de programa per a començar a automatitzar.</p>
+            </div>
+
+            <div class="rounded-4xl p-8 bg-white border border-slate-200 shadow-card flex flex-col ">
+              <div class="w-12 h-12 rounded-2xl bg-lime-500/10 text-lime-700 flex items-center justify-center mb-5">
+                <i data-lucide="file-spreadsheet" class="w-6 h-6"></i>
+              </div>
+              <h3 class="text-xl font-extrabold tracking-tight text-slate-900 mb-3">Dels fulls d'Excel a una aplicació</h3>
+              <p class="text-slate-600 font-medium leading-relaxed">Aquell Excel que només entén una persona es converteix en una aplicació web amb permisos, historial i còpies de seguretat.</p>
             </div>
           </div>
         </div>
       </section>
 
-      <section id="serveis" class="relative py-10 z-10 bg-slate-50">
+      <!-- DEMOS: prova el software abans de parlar -->
+      <section id="demos" class="relative py-20 z-10">
         <div class="max-w-7xl mx-auto px-6">
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="text-center mb-14 max-w-3xl mx-auto">
+            <h2 class="text-3xl md:text-5xl font-extrabold tracking-tighter text-saas-dark mb-6">
+              Prova-ho abans de parlar amb nosaltres
+            </h2>
+            <p class="text-lg text-slate-500 font-medium">
+              Dues demos funcionals pensades per a la indústria de la zona.
+              Obri-les, tria un rol i navega com si fores part de l'empresa.
+            </p>
+          </div>
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <!-- Per a afegir xifres reals quan hi haja clients: problema · solució · resultat -->
+            <article class="rounded-4xl bg-white border border-slate-200 shadow-card overflow-hidden flex flex-col">
+              <img
+                src="/alcoi/demo-industria.webp"
+                width="1280"
+                height="720"
+                loading="lazy"
+                decoding="async"
+                alt="Demo de SupplyConnect, ERP industrial amb compres, vendes, logística i finances"
+                class="w-full aspect-video object-cover object-top border-b border-slate-100"
+              />
+              <div class="p-8 flex flex-col flex-1">
+                <span class="text-xs font-bold uppercase tracking-wider text-saas-violet mb-2">ERP industrial · Demo</span>
+                <h3 class="text-2xl font-extrabold tracking-tight text-slate-900 mb-3">SupplyConnect</h3>
+                <p class="text-slate-600 font-medium leading-relaxed mb-5">
+                  Un ERP a mida per a una fàbrica: els quatre departaments
+                  treballen sobre les mateixes dades i cadascú veu només el que
+                  necessita.
+                </p>
+                <ul class="space-y-2 text-sm text-slate-600 font-medium mb-7">
+                  <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-saas-violet shrink-0 mt-0.5"></i> Compres: proveïdors, autoritzacions i estoc</li>
+                  <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-saas-violet shrink-0 mt-0.5"></i> Vendes: clients, comandes i facturació</li>
+                  <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-saas-violet shrink-0 mt-0.5"></i> Logística: magatzem i transportistes</li>
+                  <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-saas-violet shrink-0 mt-0.5"></i> Finances: comptabilitat, tresoreria i RRHH</li>
+                </ul>
+                <a
+                  href="https://mndesignweb.es/supplyconnect"
+                  target="_blank"
+                  rel="noopener"
+                  class="mt-auto inline-flex justify-center items-center gap-2 bg-saas-dark hover:bg-black text-white px-6 py-3.5 rounded-full font-semibold transition-all"
+                  >Provar la demo <i data-lucide="external-link" class="w-4 h-4"></i></a
+                >
+              </div>
+            </article>
+            <article class="rounded-4xl bg-white border border-slate-200 shadow-card overflow-hidden flex flex-col">
+              <img
+                src="/alcoi/demo-logistica.webp"
+                width="1280"
+                height="720"
+                loading="lazy"
+                decoding="async"
+                alt="Demo de portal industrial amb reserva de molls de càrrega i descàrrega"
+                class="w-full aspect-video object-cover object-top border-b border-slate-100"
+              />
+              <div class="p-8 flex flex-col flex-1">
+                <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 mb-2">Portal industrial · Demo</span>
+                <h3 class="text-2xl font-extrabold tracking-tight text-slate-900 mb-3">Reserves logístiques</h3>
+                <p class="text-slate-600 font-medium leading-relaxed mb-5">
+                  La web d'una empresa tèxtil que treballa per a ella: organitza
+                  molls, visites i candidatures sense passar per recepció.
+                </p>
+                <ul class="space-y-2 text-sm text-slate-600 font-medium mb-7">
+                  <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-600 shrink-0 mt-0.5"></i> Reserva de franges als molls de càrrega i descàrrega</li>
+                  <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-600 shrink-0 mt-0.5"></i> Visites comercials i accés a mostres per a clients B2B</li>
+                  <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-600 shrink-0 mt-0.5"></i> Candidatures per a llocs de producció</li>
+                </ul>
+                <a
+                  href="https://mnmryk.github.io/novoteix/"
+                  target="_blank"
+                  rel="noopener"
+                  class="mt-auto inline-flex justify-center items-center gap-2 bg-saas-dark hover:bg-black text-white px-6 py-3.5 rounded-full font-semibold transition-all"
+                  >Provar la demo <i data-lucide="external-link" class="w-4 h-4"></i></a
+                >
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- COM TREBALLEM: diagnosi presencial com a porta d'entrada + ajudes -->
+      <section id="diagnosi" class="relative py-20 z-10 bg-slate-900 text-white overflow-hidden">
+        <div class="absolute -left-20 -top-20 w-80 h-80 bg-saas-mint opacity-20 blur-[100px] rounded-full pointer-events-none"></div>
+        <div class="absolute -right-20 -bottom-20 w-80 h-80 bg-saas-violet opacity-25 blur-[100px] rounded-full pointer-events-none"></div>
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+          <div class="text-center mb-14 max-w-3xl mx-auto">
+            <h2 class="text-3xl md:text-5xl font-extrabold tracking-tighter mb-6">
+              Comencem amb una visita a la vostra empresa
+            </h2>
+            <p class="text-lg text-slate-300 font-medium">
+              Una agència de fora us enviarà un pressupost per correu. Nosaltres
+              estem a Cocentaina: venim, parlem amb cada departament i veiem
+              com treballeu de veritat.
+            </p>
+          </div>
+          <ol class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+            <li class="rounded-3xl bg-white/5 border border-white/10 p-7">
+              <span class="text-saas-mint font-black text-sm">01</span>
+              <h3 class="text-lg font-extrabold mt-2 mb-2">Diagnosi presencial</h3>
+              <p class="text-slate-300 text-sm leading-relaxed">Visitem l'empresa i detectem les tasques repetitives i els punts on es perd informació. Sense cost ni compromís.</p>
+            </li>
+            <li class="rounded-3xl bg-white/5 border border-white/10 p-7">
+              <span class="text-saas-mint font-black text-sm">02</span>
+              <h3 class="text-lg font-extrabold mt-2 mb-2">Proposta per fases</h3>
+              <p class="text-slate-300 text-sm leading-relaxed">Us presentem què automatitzar primer, amb pressupost tancat per a cada fase i les prioritats clares.</p>
+            </li>
+            <li class="rounded-3xl bg-white/5 border border-white/10 p-7">
+              <span class="text-saas-mint font-black text-sm">03</span>
+              <h3 class="text-lg font-extrabold mt-2 mb-2">Posada en marxa</h3>
+              <p class="text-slate-300 text-sm leading-relaxed">Desenvolupem i provem cada part amb el vostre equip, en paral·lel al sistema actual, sense aturar la producció.</p>
+            </li>
+            <li class="rounded-3xl bg-white/5 border border-white/10 p-7">
+              <span class="text-saas-mint font-black text-sm">04</span>
+              <h3 class="text-lg font-extrabold mt-2 mb-2">Formació i suport</h3>
+              <p class="text-slate-300 text-sm leading-relaxed">Formem l'equip i quedem a prop per a millores i incidències. El software és vostre.</p>
+            </li>
+          </ol>
+          <div class="rounded-3xl bg-white text-slate-800 p-8 lg:p-10 flex flex-col lg:flex-row gap-6 lg:items-center">
+            <div class="w-14 h-14 rounded-2xl bg-saas-mint/15 text-emerald-600 flex items-center justify-center shrink-0">
+              <i data-lucide="badge-euro" class="w-7 h-7"></i>
+            </div>
+            <div class="flex-1">
+              <h3 class="text-xl font-extrabold text-saas-dark mb-2">El projecte pot optar a ajudes a la digitalització</h3>
+              <p class="text-slate-600 font-medium leading-relaxed">
+                Programes com <strong>Digitaliza CV</strong> de l'IVACE+i
+                subvencionen fins al 45&nbsp;% dels projectes de digitalització de
+                xicotetes empreses industrials i de serveis a la indústria de la
+                Comunitat Valenciana. En la diagnosi us diem si el vostre projecte
+                hi encaixa i quan s'obri la pròxima convocatòria.
+              </p>
+            </div>
+            <a
+              href="#contacte"
+              class="shrink-0 inline-flex justify-center items-center bg-saas-dark hover:bg-black text-white px-7 py-4 rounded-full font-semibold transition-all"
+              >Demanar la diagnosi</a
+            >
+          </div>
+        </div>
+      </section>
+
+      <!-- WEBS I BOTIGUES ONLINE: la resta de serveis -->
+      <div class="relative z-10 bg-slate-50 pt-20">
+        <div class="max-w-3xl mx-auto px-6 text-center">
+          <h2 class="text-3xl md:text-5xl font-extrabold tracking-tighter text-saas-dark mb-6">
+            També fem la vostra web i la vostra botiga online
+          </h2>
+          <p class="text-lg text-slate-500 font-medium">
+            Webs corporatives, botigues online, acadèmies i SEO local amb el
+            mateix acompanyament proper, des de Cocentaina.
+          </p>
+        </div>
+      </div>
+
+      <section id="serveis" class="relative pt-10 pb-12 z-10 bg-slate-50">
+        <div class="max-w-6xl mx-auto px-6">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
             <div
-              class="rounded-4xl p-8 lg:p-10 flex flex-col relative overflow-hidden group bg-gradient-to-br from-violet-100 via-fuchsia-50 to-white border border-violet-200 hover:shadow-[0_20px_40px_-10px_rgba(139,92,246,0.2)] transition-all duration-300"
+              class="rounded-3xl p-6 lg:p-7 flex flex-col relative overflow-hidden group bg-gradient-to-br from-violet-100 via-fuchsia-50 to-white border border-violet-200 hover:shadow-[0_20px_40px_-10px_rgba(139,92,246,0.2)] transition-all duration-300"
             >
               <div
-                class="w-16 h-16 rounded-2xl bg-[#21759B]/10 flex items-center justify-center mb-6 shadow-sm group-hover:scale-110 transition-transform p-3"
+                class="w-12 h-12 rounded-xl bg-[#21759B]/10 flex items-center justify-center mb-4 shadow-sm group-hover:scale-110 transition-transform p-2.5"
               >
                 <img
                   src="/alcoi/wordpress.webp"
+                  width="160"
+                  height="160"
+                  loading="lazy" decoding="async"
                   alt="WordPress"
                   class="w-full h-full object-contain"
                 />
               </div>
               <div class="flex items-center justify-between mb-3">
                 <h3
-                  class="text-2xl font-extrabold tracking-tight text-slate-900"
+                  class="text-xl font-extrabold tracking-tight text-slate-900"
                 >
                   WordPress Autogestionable
                 </h3>
               </div>
               <div
-                class="text-saas-violet font-black text-lg mb-3 tracking-tight"
+                class="text-saas-violet font-black text-base mb-2 tracking-tight"
               >
                 Des de 500€
               </div>
-              <p class="text-slate-600 font-medium leading-relaxed">
+              <p class="text-slate-600 text-sm font-medium leading-relaxed">
                 Webs corporatives d’alt impacte, amb disseny a mida, càrrega
                 ràpida i
                 <strong class="text-saas-violet"> 3 hores de formació</strong> perquè
@@ -525,67 +776,76 @@ import "./style.css";
             </div>
 
             <div
-              class="rounded-4xl p-8 lg:p-10 flex flex-col relative overflow-hidden group bg-gradient-to-br from-lime-100 via-emerald-50 to-white border border-lime-200 hover:shadow-[0_20px_40px_-10px_rgba(16,185,129,0.2)] transition-all duration-300"
+              class="rounded-3xl p-6 lg:p-7 flex flex-col relative overflow-hidden group bg-gradient-to-br from-lime-100 via-emerald-50 to-white border border-lime-200 hover:shadow-[0_20px_40px_-10px_rgba(16,185,129,0.2)] transition-all duration-300"
             >
-              <div class="flex items-center gap-3 mb-6">
+              <div class="flex items-center gap-3 mb-4">
                 <div
-                  class="w-16 h-16 rounded-2xl bg-[#95BF47]/10 flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform p-3"
+                  class="w-12 h-12 rounded-xl bg-[#95BF47]/10 flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform p-2.5"
                 >
                   <img
-                    src="/alcoi/shopify.webp"
+                  src="/alcoi/shopify.webp"
+                  width="160"
+                  height="160"
+                  loading="lazy" decoding="async"
                     alt="Shopify"
                     class="w-full h-full object-contain"
                   />
                 </div>
                 <div
-                  class="w-16 h-16 rounded-2xl bg-[#96588A]/10 flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform p-3"
+                  class="w-12 h-12 rounded-xl bg-[#96588A]/10 flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform p-2.5"
                 >
                   <img
-                    src="/alcoi/woocommerce.webp"
+                  src="/alcoi/woocommerce.webp"
+                  width="160"
+                  height="160"
+                  loading="lazy" decoding="async"
                     alt="WooCommerce"
                     class="w-full h-full object-contain"
                   />
                 </div>
               </div>
               <h3
-                class="text-2xl font-extrabold tracking-tight text-slate-900 mb-3 mt-auto"
+                class="text-xl font-extrabold tracking-tight text-slate-900 mb-2 mt-auto"
               >
                 E-commerce & Botigues Online
               </h3>
               <div
-                class="text-saas-violet font-black text-lg mb-3 tracking-tight"
+                class="text-saas-violet font-black text-base mb-2 tracking-tight"
               >
                 Des de 790€
               </div>
-              <p class="text-slate-600 font-medium leading-relaxed">
+              <p class="text-slate-600 text-sm font-medium leading-relaxed">
                 Botigues online pensades per a vendre, amb pagaments segurs,
                 gestió d’estoc i enviaments integrats.
               </p>
             </div>
 
             <div
-              class="rounded-4xl p-8 lg:p-10 flex flex-col relative overflow-hidden group bg-gradient-to-br from-cyan-100 via-sky-50 to-white border border-cyan-200 hover:shadow-[0_20px_40px_-10px_rgba(6,182,212,0.2)] transition-all duration-300"
+              class="rounded-3xl p-6 lg:p-7 flex flex-col relative overflow-hidden group bg-gradient-to-br from-cyan-100 via-sky-50 to-white border border-cyan-200 hover:shadow-[0_20px_40px_-10px_rgba(6,182,212,0.2)] transition-all duration-300"
             >
               <div
-                class="w-16 h-16 rounded-2xl bg-emerald-500/10 flex items-center justify-center mb-6 shadow-sm group-hover:scale-110 transition-transform p-3"
+                class="w-12 h-12 rounded-xl bg-emerald-500/10 flex items-center justify-center mb-4 shadow-sm group-hover:scale-110 transition-transform p-2.5"
               >
                 <img
                   src="/alcoi/academia.webp"
+                  width="160"
+                  height="160"
+                  loading="lazy" decoding="async"
                   alt="Academies Online"
                   class="w-full h-full object-contain"
                 />
               </div>
               <h3
-                class="text-2xl font-extrabold tracking-tight text-slate-900 mb-3 mt-auto"
+                class="text-xl font-extrabold tracking-tight text-slate-900 mb-2 mt-auto"
               >
                 Acadèmies Online
               </h3>
               <div
-                class="text-saas-violet font-black text-lg mb-3 tracking-tight"
+                class="text-saas-violet font-black text-base mb-2 tracking-tight"
               >
                 Des de 790€
               </div>
-              <p class="text-slate-600 font-medium leading-relaxed">
+              <p class="text-slate-600 text-sm font-medium leading-relaxed">
                 Plataformes e-learning 100% teues. Sense comissions per alumne i
                 disseny orientat a vendre. Gestiona subscripcions, cursos,
                 vídeos i avaluacions.
@@ -593,7 +853,7 @@ import "./style.css";
             </div>
 
             <div
-              class="rounded-4xl p-8 lg:p-10 md:col-span-2 flex flex-col md:flex-row gap-8 items-center relative overflow-hidden group bg-gradient-to-br from-saas-violet to-saas-fuchsia text-white hover:shadow-[0_20px_40px_-10px_rgba(139,92,246,0.4)] transition-all duration-300 border border-white/10"
+              class="rounded-3xl p-6 lg:p-8 md:col-span-2 flex flex-col md:flex-row gap-8 items-center relative overflow-hidden group bg-gradient-to-br from-saas-violet to-saas-fuchsia text-white hover:shadow-[0_20px_40px_-10px_rgba(139,92,246,0.4)] transition-all duration-300 border border-white/10"
             >
               <div
                 class="absolute -right-20 -top-20 w-96 h-96 bg-white opacity-10 blur-[80px] rounded-full pointer-events-none"
@@ -603,28 +863,28 @@ import "./style.css";
                 <div
                   class="inline-flex px-4 py-1.5 rounded-full bg-white/20 backdrop-blur-md text-white text-xs font-bold tracking-wider uppercase mb-5 border border-white/30"
                 >
-                  La nostra especialitat
+                  Software a mida
                 </div>
                 <h3
-                  class="text-3xl lg:text-4xl font-extrabold tracking-tight mb-4 text-white"
+                  class="text-2xl lg:text-3xl font-extrabold tracking-tight mb-3 text-white"
                 >
                   Plataformes SaaS & Codi
                 </h3>
-                <p class="text-white/80 font-medium leading-relaxed text-lg">
+                <p class="text-white/80 font-medium leading-relaxed">
                   Desenvolupament avançat de software a mida. Solucions
                   tecnològiques escalables per a digitalitzar i automatitzar els
                   processos del teu negoci.
                 </p>
               </div>
               <div
-                class="w-full md:w-2/5 bg-white rounded-2xl p-4 shadow-2xl z-10 transform group-hover:-translate-y-2 transition-transform duration-300"
+                class="w-full md:w-1/3 bg-white rounded-2xl p-4 shadow-xl z-10 transform group-hover:-translate-y-2 transition-transform duration-300"
               >
                 <div class="flex gap-1.5 mb-4">
                   <div class="w-2.5 h-2.5 rounded-full bg-slate-200"></div>
                   <div class="w-2.5 h-2.5 rounded-full bg-slate-200"></div>
                 </div>
                 <div
-                  class="flex items-end gap-2 h-24 mb-4 border-b border-slate-100 pb-2"
+                  class="flex items-end gap-2 h-16 mb-3 border-b border-slate-100 pb-2"
                 >
                   <div class="w-full bg-saas-violet/20 rounded-t-sm h-1/3">
                   </div>
@@ -642,28 +902,31 @@ import "./style.css";
             </div>
 
             <div
-              class="rounded-4xl p-8 lg:p-10 flex flex-col relative overflow-hidden group bg-gradient-to-br from-orange-100 via-amber-50 to-white border border-orange-200 hover:shadow-[0_20px_40px_-10px_rgba(249,115,22,0.2)] transition-all duration-300"
+              class="rounded-3xl p-6 lg:p-7 flex flex-col relative overflow-hidden group bg-gradient-to-br from-orange-100 via-amber-50 to-white border border-orange-200 hover:shadow-[0_20px_40px_-10px_rgba(249,115,22,0.2)] transition-all duration-300"
             >
               <div
-                class="w-16 h-16 rounded-2xl bg-orange-500/10 flex items-center justify-center mb-6 shadow-sm group-hover:scale-110 transition-transform p-3"
+                class="w-12 h-12 rounded-xl bg-orange-500/10 flex items-center justify-center mb-4 shadow-sm group-hover:scale-110 transition-transform p-2.5"
               >
                 <img
                   src="/alcoi/seo.webp"
-                  alt="SEO Local y GEO"
+                  width="160"
+                  height="160"
+                  loading="lazy" decoding="async"
+                  alt="SEO local i GEO"
                   class="w-full h-full object-contain"
                 />
               </div>
               <h3
-                class="text-2xl font-extrabold tracking-tight text-slate-900 mb-3 mt-auto"
+                class="text-xl font-extrabold tracking-tight text-slate-900 mb-2 mt-auto"
               >
                 SEO Local, GEO & SEM
               </h3>
               <div
-                class="text-saas-violet font-black text-lg mb-3 tracking-tight"
+                class="text-saas-violet font-black text-base mb-2 tracking-tight"
               >
                 Des de 200€
               </div>
-              <p class="text-slate-600 font-medium leading-relaxed">
+              <p class="text-slate-600 text-sm font-medium leading-relaxed">
                 Estratègies de SEO local, GEO i SEM per a aparéixer davant dels
                 teus clients potencials a Alcoi, Cocentaina, Alacant i les
                 comarques veïnes.
@@ -671,7 +934,7 @@ import "./style.css";
             </div>
 
             <div
-              class="bg-slate-900 text-white rounded-4xl p-8 lg:p-12 md:col-span-3 flex flex-col md:flex-row items-center justify-start gap-8 lg:gap-16 shadow-2xl relative overflow-hidden border border-slate-700"
+              class="bg-slate-900 text-white rounded-3xl p-6 lg:p-8 md:col-span-3 flex flex-col md:flex-row items-center justify-start gap-6 lg:gap-12 shadow-lg relative overflow-hidden border border-slate-700"
             >
               <div
                 class="absolute -left-20 -top-20 w-64 h-64 bg-saas-mint opacity-20 blur-[80px] rounded-full pointer-events-none"
@@ -691,17 +954,17 @@ import "./style.css";
                   >
                 </div>
                 <h3
-                  class="text-2xl lg:text-3xl font-extrabold tracking-tight mb-4 text-white"
+                  class="text-xl lg:text-2xl font-extrabold tracking-tight mb-3 text-white"
                 >
                   Hosting i domini sempre inclosos.
                 </h3>
-                <p class="text-slate-300 font-medium leading-relaxed text-lg">
+                <p class="text-slate-300 font-medium leading-relaxed">
                   El nostre acompanyament no acaba quan entreguem la web. Tots
                   els projectes inclouen allotjament i domini. També oferim
                   serveis de
                   <span
-                    class="bg-saas-mint/20 text-saas-mint px-2 py-0.5 rounded font-bold border border-saas-mint/30"
-                    >manteniment web des de 65€/mensual</span
+                    class="bg-saas-mint/20 text-saas-mint px-2 py-0.5 rounded font-bold border border-saas-mint/30 sm:whitespace-nowrap"
+                    >manteniment web des de 65&nbsp;€/mes</span
                   >
                   perquè la teua web estiga sempre segura, actualitzada i optimitzada.
                 </p>
@@ -709,7 +972,7 @@ import "./style.css";
               <div class="z-10 shrink-0 md:ml-5">
                 <a
                   href="#contacte"
-                  class="inline-block text-center bg-white hover:bg-slate-100 text-slate-900 px-8 py-4 rounded-full font-extrabold transition-all shadow-[0_0_20px_rgba(255,255,255,0.3)] hover:shadow-[0_0_30px_rgba(255,255,255,0.5)] hover:-translate-y-1"
+                  class="inline-block text-center bg-white hover:bg-slate-100 text-slate-900 px-7 py-3.5 rounded-full font-extrabold transition-all shadow-[0_0_20px_rgba(255,255,255,0.3)] hover:shadow-[0_0_30px_rgba(255,255,255,0.5)] hover:-translate-y-1"
                 >
                   Consultar plans
                 </a>
@@ -719,13 +982,43 @@ import "./style.css";
         </div>
       </section>
 
-<section id="portfolio" class="relative py-20 z-10">
+      <div class="relative z-10 bg-slate-50 pb-20 px-6">
+        <div class="max-w-3xl mx-auto flex flex-col items-center text-center pt-12 border-t border-slate-200">
+          <p
+            class="text-lg sm:text-xl font-semibold text-saas-dark tracking-tight leading-snug mb-6"
+          >
+            "Aquesta plataforma ha transformat la nostra presència digital amb
+            un disseny impecable i un acompanyament que ens ha fet estalviar
+            hores de feina."
+          </p>
+          <div class="flex items-center gap-4">
+            <div
+              class="w-12 h-12 rounded-full bg-slate-200 overflow-hidden flex items-center justify-center"
+            >
+              <img
+                  src="/alcoi/nutrimente.webp"
+                  width="144"
+                  height="130"
+                  loading="lazy" decoding="async"
+                alt="Nutrimente"
+                class="w-full h-full object-cover"
+              />
+            </div>
+            <div class="text-left">
+              <p class="font-bold text-saas-dark text-sm">Nutrimente</p>
+              <p class="text-slate-500 text-sm">Nutricion Integrativa Jaén</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <section id="portfolio" class="relative py-20 z-10">
         <div class="max-w-7xl mx-auto px-6">
           <div class="text-center mb-16 max-w-3xl mx-auto">
             <div
               class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-saas-violet/20 bg-saas-violet/5 text-xs font-bold text-saas-violet tracking-wide uppercase mb-4"
             >
-              <i data-lucide="monitor" class="w-4 h-4"></i> Casos d'Èxit
+              <i data-lucide="monitor" class="w-4 h-4"></i> Projectes i demos
             </div>
             <h2
               class="text-3xl md:text-5xl font-extrabold tracking-tighter text-saas-dark mb-6"
@@ -754,6 +1047,9 @@ import "./style.css";
               >
                 <img
                   src="/alcoi/demo-nutricion.webp"
+                  width="800"
+                  height="365"
+                  loading="lazy" decoding="async"
                   alt="Demo Nutrició"
                   class="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
                 />
@@ -796,6 +1092,9 @@ import "./style.css";
               >
                 <img
                   src="/alcoi/demo-evento-b2b.webp"
+                  width="800"
+                  height="365"
+                  loading="lazy" decoding="async"
                   alt="NEXUS X"
                   class="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
                 />
@@ -815,7 +1114,7 @@ import "./style.css";
                   NEXUS X - 10º Aniversari
                 </h3>
                 <p class="text-sm text-slate-500 mb-4 line-clamp-3">
-                  Landing page d'alt impacte orientada a la conversió i registre d'assistents per a esdeveniments corporatius.
+                  Landing page d'alt impacte orientada a la conversió i al registre d'assistents per a esdeveniments corporatius.
                 </p>
                 <div
                   class="mt-auto flex items-center gap-1.5 text-slate-600 text-sm font-semibold group-hover:text-saas-violet transition-colors"
@@ -838,7 +1137,10 @@ import "./style.css";
               >
                 <img
                   src="/alcoi/demo-micropigmentacion.webp"
-                  alt="Lucia Micropigmentación"
+                  width="1862"
+                  height="862"
+                  loading="lazy" decoding="async"
+                  alt="Lucia Micropigmentació"
                   class="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
                 />
                 <div
@@ -880,6 +1182,9 @@ import "./style.css";
               >
                 <img
                   src="/alcoi/demo-evento-gastronomico.webp"
+                  width="800"
+                  height="365"
+                  loading="lazy" decoding="async"
                   alt="UMAMI | Secret Supper Club"
                   class="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
                 />
@@ -923,6 +1228,9 @@ import "./style.css";
                 <!-- ¡CAMBIA ESTA IMAGEN! -->
                 <img
                   src="/alcoi/demo-portal-salud.webp"
+                  width="1280"
+                  height="720"
+                  loading="lazy" decoding="async"
                   alt="Portal Salud per a Clíniques"
                   class="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
                 />
@@ -966,6 +1274,9 @@ import "./style.css";
                 <!-- ¡CAMBIA ESTA IMAGEN! -->
                 <img
                   src="/alcoi/demo-industria.webp"
+                  width="1280"
+                  height="720"
+                  loading="lazy" decoding="async"
                   alt="Software Gestió Indústria"
                   class="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
                 />
@@ -985,7 +1296,7 @@ import "./style.css";
                   Gestió per Indústria
                 </h3>
                 <p class="text-sm text-slate-500 mb-4 line-clamp-3">
-                  Sistema de gestió interna creat a mida per optimitzar els processos de producció i flux de treball a fàbriques.
+                  Sistema de gestió interna creat a mida per a optimitzar els processos de producció i flux de treball a fàbriques.
                 </p>
                 <div
                   class="mt-auto flex items-center gap-1.5 text-slate-600 text-sm font-semibold group-hover:text-saas-violet transition-colors"
@@ -1009,6 +1320,9 @@ import "./style.css";
                 <!-- ¡CAMBIA ESTA IMAGEN! -->
                 <img
                   src="/alcoi/demo-logistica.webp"
+                  width="1280"
+                  height="720"
+                  loading="lazy" decoding="async"
                   alt="Reserves Logística i Oficines"
                   class="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
                 />
@@ -1052,6 +1366,9 @@ import "./style.css";
                 <!-- ¡CAMBIA ESTA IMAGEN! -->
                 <img
                   src="/alcoi/demo-elearning.webp"
+                  width="1280"
+                  height="720"
+                  loading="lazy" decoding="async"
                   alt="Software Acadèmies Online"
                   class="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
                 />
@@ -1104,7 +1421,7 @@ import "./style.css";
               class="text-[20px] text-slate-600 max-w-2xl mx-auto font-medium leading-relaxed"
             >
               Creem identitats visuals úniques des dels fonaments. Un servei de
-              branding clau en mà amb tot el necessari per destacar des del
+              branding clau en mà amb tot el necessari per a destacar des del
               primer dia.
             </p>
           </div>
@@ -1142,7 +1459,7 @@ import "./style.css";
                     >Paleta de colors corporativa</strong
                   >
                   <span class="text-sm text-slate-500"
-                    >Codis exacts HEX, RGB i CMYK.</span
+                    >Codis exactes HEX, RGB i CMYK.</span
                   >
                 </div>
               </div>
@@ -1214,7 +1531,10 @@ import "./style.css";
             class="hidden md:block absolute top-0 left-2 lg:-left-24 w-32 h-56 md:w-52 md:h-72 bg-slate-200 rounded-[2rem] overflow-hidden shadow-2xl -rotate-6 anim-float z-30 border-[4px] border-white"
           >
             <img
-              src="/alcoi/portfolio-1.webp"
+                  src="/alcoi/portfolio-1.webp"
+                  width="560"
+                  height="995"
+                  loading="lazy" decoding="async"
               alt="Projecte Branding 1"
               class="w-full h-full object-cover object-top"
             />
@@ -1224,7 +1544,10 @@ import "./style.css";
             class="hidden md:block absolute top-12 right-2 lg:-right-16 w-36 h-36 md:w-48 md:h-48 bg-slate-200 rounded-[2rem] overflow-hidden shadow-xl rotate-3 anim-float-delay z-30 border-[4px] border-white"
           >
             <img
-              src="/alcoi/paleta-1.webp"
+                  src="/alcoi/paleta-1.webp"
+                  width="520"
+                  height="520"
+                  loading="lazy" decoding="async"
               alt="Paleta de colors 1"
               class="w-full h-full object-cover"
             />
@@ -1234,7 +1557,10 @@ import "./style.css";
             class="hidden lg:block absolute -bottom-10 left-2 lg:-left-12 w-40 h-40 md:w-52 md:h-52 bg-slate-200 rounded-[2rem] overflow-hidden shadow-2xl -rotate-3 anim-float z-30 border-[4px] border-white"
           >
             <img
-              src="/alcoi/paleta-2.webp"
+                  src="/alcoi/paleta-2.webp"
+                  width="520"
+                  height="520"
+                  loading="lazy" decoding="async"
               alt="Paleta de colors 2"
               class="w-full h-full object-cover"
             />
@@ -1244,7 +1570,10 @@ import "./style.css";
             class="hidden md:block absolute -bottom-16 right-2 lg:-right-24 w-40 h-64 md:w-56 md:h-80 bg-slate-200 rounded-[2rem] overflow-hidden shadow-2xl rotate-6 anim-float-delay z-30 border-[4px] border-white"
           >
             <img
-              src="/alcoi/portfolio-2.webp"
+                  src="/alcoi/portfolio-2.webp"
+                  width="560"
+                  height="995"
+                  loading="lazy" decoding="async"
               alt="Projecte Branding 2"
               class="w-full h-full object-cover object-top"
             />
@@ -1255,7 +1584,10 @@ import "./style.css";
               class="w-full h-44 bg-slate-200 rounded-2xl overflow-hidden shadow-md border-[3px] border-white"
             >
               <img
-                src="/alcoi/portfolio-1.webp"
+                  src="/alcoi/portfolio-1.webp"
+                  width="560"
+                  height="995"
+                  loading="lazy" decoding="async"
                 alt="Projecte Branding 1"
                 class="w-full h-full object-cover object-top"
               />
@@ -1264,7 +1596,10 @@ import "./style.css";
               class="w-full h-44 bg-slate-200 rounded-2xl overflow-hidden shadow-md border-[3px] border-white"
             >
               <img
-                src="/alcoi/paleta-1.webp"
+                  src="/alcoi/paleta-1.webp"
+                  width="520"
+                  height="520"
+                  loading="lazy" decoding="async"
                 alt="Paleta de colors 1"
                 class="w-full h-full object-cover"
               />
@@ -1273,7 +1608,10 @@ import "./style.css";
               class="w-full h-44 bg-slate-200 rounded-2xl overflow-hidden shadow-md border-[3px] border-white"
             >
               <img
-                src="/alcoi/paleta-2.webp"
+                  src="/alcoi/paleta-2.webp"
+                  width="520"
+                  height="520"
+                  loading="lazy" decoding="async"
                 alt="Paleta de colors 2"
                 class="w-full h-full object-cover"
               />
@@ -1282,7 +1620,10 @@ import "./style.css";
               class="w-full h-44 bg-slate-200 rounded-2xl overflow-hidden shadow-md border-[3px] border-white"
             >
               <img
-                src="/alcoi/portfolio-2.webp"
+                  src="/alcoi/portfolio-2.webp"
+                  width="560"
+                  height="995"
+                  loading="lazy" decoding="async"
                 alt="Projecte Branding 2"
                 class="w-full h-full object-cover object-top"
               />
@@ -1309,13 +1650,13 @@ import "./style.css";
         <p
           class="text-lg md:text-xl text-slate-500 font-medium leading-relaxed max-w-4xl mx-auto"
         >
-          No som una agència genèrica. Per entendre de veritat la teva marca i
+          No som una agència genèrica. Per a entendre de veritat la teua marca i
           oferir-te un servei de màxima qualitat, ens agrada aprofundir en cada
           projecte i parlar en persona. T’atendrem presencialment, tant al teu
           negoci com a la nostra oficina de Cocentaina (<strong
             class="text-slate-800">Passeig del Comtat nº 75</strong
           >) i Alcoi. Un acompanyament proper i de confiança, amb hosting i
-          suport tècnic inclosos perquè tu només et preocupis de créixer.
+          suport tècnic inclosos perquè tu només et preocupes de créixer.
         </p>
       </section>
 
@@ -1402,123 +1743,22 @@ import "./style.css";
         </div>
 
         <div class="space-y-4">
-          <details
-            class="group bg-white border border-slate-200 rounded-3xl shadow-sm hover:shadow-md transition-all duration-300 [&_summary::-webkit-details-marker]:hidden"
-          >
-            <summary
-              class="flex justify-between items-center font-bold text-lg text-slate-900 p-6 cursor-pointer list-none"
-            >
-              La web serà meua 100% o he de pagar un "lloguer" per sempre?
-              <span
-                class="transition duration-300 group-open:rotate-180 text-saas-violet shrink-0 ml-4"
-              >
-                <i data-lucide="chevron-down" class="w-6 h-6"></i>
-              </span>
-            </summary>
-            <div
-              class="px-6 pb-6 text-slate-600 font-medium leading-relaxed border-t border-slate-100 pt-4 mt-2"
-            >
-              La web i el domini són <strong>totalment teus</strong> des del primer
-              minut. Treballem amb plataformes lliures i estàndards com WordPress
-              o Shopify. Si algun dia decideixes treballar amb una altra agència,
-              et donem les claus i te l'emportes sense penalitzacions ni lletra menuda.
-            </div>
-          </details>
-
-          <details
-            class="group bg-white border border-slate-200 rounded-3xl shadow-sm hover:shadow-md transition-all duration-300 [&_summary::-webkit-details-marker]:hidden"
-          >
-            <summary
-              class="flex justify-between items-center font-bold text-lg text-slate-900 p-6 cursor-pointer list-none"
-            >
-              Què passa si tinc un problema tècnic o vull fer canvis en un
-              futur?
-              <span
-                class="transition duration-300 group-open:rotate-180 text-saas-violet shrink-0 ml-4"
-              >
-                <i data-lucide="chevron-down" class="w-6 h-6"></i>
-              </span>
-            </summary>
-            <div
-              class="px-6 pb-6 text-slate-600 font-medium leading-relaxed border-t border-slate-100 pt-4 mt-2"
-            >
-              Ens tens a Cocentaina per a allò que necessites, no som un "call
-              center" anònim. Oferim plans de <strong
-                >manteniment web mensual</strong
-              > on ens encarreguem de les actualitzacions, la seguretat i xicotets
-              canvis perquè tu només et preocupes del teu negoci.
-            </div>
-          </details>
-
-          <details
-            class="group bg-white border border-slate-200 rounded-3xl shadow-sm hover:shadow-md transition-all duration-300 [&_summary::-webkit-details-marker]:hidden"
-          >
-            <summary
-              class="flex justify-between items-center font-bold text-lg text-slate-900 p-6 cursor-pointer list-none"
-            >
-              Puc rebre reserves directes o vendre sense dependre de tercers?
-              <span
-                class="transition duration-300 group-open:rotate-180 text-saas-violet shrink-0 ml-4"
-              >
-                <i data-lucide="chevron-down" class="w-6 h-6"></i>
-              </span>
-            </summary>
-            <div
-              class="px-6 pb-6 text-slate-600 font-medium leading-relaxed border-t border-slate-100 pt-4 mt-2"
-            >
-              I tant! Integrem sistemes complets de reserves (per a clíniques,
-              restaurants o consultories) i botigues online totalment
-              automatitzades. Dissenyem plataformes preparades per a convertir
-              visites en clients reals, sincronitzades amb el teu calendari i
-              passarel·les de pagament segures.
-            </div>
-          </details>
-
-          <details
-            class="group bg-white border border-slate-200 rounded-3xl shadow-sm hover:shadow-md transition-all duration-300 [&_summary::-webkit-details-marker]:hidden"
-          >
-            <summary
-              class="flex justify-between items-center font-bold text-lg text-slate-900 p-6 cursor-pointer list-none"
-            >
-              Apareixeré a Google si algú busca els meus serveis a la zona?
-              <span
-                class="transition duration-300 group-open:rotate-180 text-saas-violet shrink-0 ml-4"
-              >
-                <i data-lucide="chevron-down" class="w-6 h-6"></i>
-              </span>
-            </summary>
-            <div
-              class="px-6 pb-6 text-slate-600 font-medium leading-relaxed border-t border-slate-100 pt-4 mt-2"
-            >
-              Totes les nostres webs s’entreguen amb una optimització SEO
-              tècnica de base. Si vols millorar la visibilitat del teu negoci a
-              les cerques locals, també oferim estratègies específiques de SEO
-              local i optimització del Perfil d’Empresa de Google.
-            </div>
-          </details>
-
-          <details
-            class="group bg-white border border-slate-200 rounded-3xl shadow-sm hover:shadow-md transition-all duration-300 [&_summary::-webkit-details-marker]:hidden"
-          >
-            <summary
-              class="flex justify-between items-center font-bold text-lg text-slate-900 p-6 cursor-pointer list-none"
-            >
-              Quant de temps tardeu a tindre la web preparada?
-              <span
-                class="transition duration-300 group-open:rotate-180 text-saas-violet shrink-0 ml-4"
-              >
-                <i data-lucide="chevron-down" class="w-6 h-6"></i>
-              </span>
-            </summary>
-            <div
-              class="px-6 pb-6 text-slate-600 font-medium leading-relaxed border-t border-slate-100 pt-4 mt-2"
-            >
-              Depén de la complexitat, però normalment una web corporativa està
-              llesta entre <strong>3 i 5 setmanes</strong> des que ens facilites els
-              textos i imatges inicials. Treballem de forma àgil i et anem ensenyant
-              els progressos perquè veges com agafa forma el teu projecte.
-            </div>
-          </details>
+          {
+            faqs.map(([q, a]) => (
+              <details class="group bg-white border border-slate-200 rounded-3xl shadow-sm hover:shadow-md transition-all duration-300 [&_summary::-webkit-details-marker]:hidden">
+                <summary class="flex justify-between items-center font-bold text-lg text-slate-900 p-6 cursor-pointer list-none">
+                  {q}
+                  <span class="transition duration-300 group-open:rotate-180 text-saas-violet shrink-0 ml-4">
+                    <i data-lucide="chevron-down" class="w-6 h-6"></i>
+                  </span>
+                </summary>
+                <div
+                  class="px-6 pb-6 text-slate-600 font-medium leading-relaxed border-t border-slate-100 pt-4 mt-2"
+                  set:html={a}
+                />
+              </details>
+            ))
+          }
         </div>
       </section>
 
@@ -1535,12 +1775,12 @@ import "./style.css";
               <h3
                 class="text-3xl font-extrabold tracking-tight text-saas-dark mb-3"
               >
-                Parlem del teu projecte
+                Sol·licita la diagnosi gratuïta
               </h3>
               <p class="text-slate-500 mb-8 font-medium">
-                Ompli el formulari o tria una data al calendari. Trobaràs
-                diverses opcions de reunió: presencial, per telèfon o per
-                videotrucada..
+                Conta'ns què voleu automatitzar o tria una data al calendari.
+                Podem vindre a la vostra empresa, parlar per telèfon o fer una
+                videotrucada.
               </p>
               <form id="formulario" class="space-y-4">
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -1548,31 +1788,85 @@ import "./style.css";
                     id="nombre"
                     type="text"
                     required
+                    autocomplete="name"
                     placeholder="Nom complet"
+                    aria-label="Nom complet"
+                    class="w-full bg-slate-50 border border-slate-200 text-saas-dark text-sm rounded-2xl focus:ring-2 focus:ring-saas-violet focus:border-transparent block p-4 outline-none transition-all placeholder-slate-400 font-medium"
+                  />
+                  <input
+                    id="empresa"
+                    type="text"
+                    autocomplete="organization"
+                    placeholder="Empresa"
+                    aria-label="Empresa"
+                    class="w-full bg-slate-50 border border-slate-200 text-saas-dark text-sm rounded-2xl focus:ring-2 focus:ring-saas-violet focus:border-transparent block p-4 outline-none transition-all placeholder-slate-400 font-medium"
+                  />
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <input
+                    id="email"
+                    type="email"
+                    required
+                    autocomplete="email"
+                    placeholder="Correu electrònic"
+                    aria-label="Correu electrònic"
                     class="w-full bg-slate-50 border border-slate-200 text-saas-dark text-sm rounded-2xl focus:ring-2 focus:ring-saas-violet focus:border-transparent block p-4 outline-none transition-all placeholder-slate-400 font-medium"
                   />
                   <input
                     id="telefono"
                     type="tel"
                     required
+                    autocomplete="tel"
                     placeholder="Telèfon"
+                    aria-label="Telèfon"
                     class="w-full bg-slate-50 border border-slate-200 text-saas-dark text-sm rounded-2xl focus:ring-2 focus:ring-saas-violet focus:border-transparent block p-4 outline-none transition-all placeholder-slate-400 font-medium"
                   />
                 </div>
-                <input
-                  id="email"
-                  type="email"
-                  required
-                  placeholder="Correu electrònic"
-                  class="w-full bg-slate-50 border border-slate-200 text-saas-dark text-sm rounded-2xl focus:ring-2 focus:ring-saas-violet focus:border-transparent block p-4 outline-none transition-all placeholder-slate-400 font-medium"
-                />
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <select id="sector" aria-label="Sector" class="w-full bg-slate-50 border border-slate-200 text-saas-dark text-sm rounded-2xl focus:ring-2 focus:ring-saas-violet focus:border-transparent block p-4 outline-none transition-all placeholder-slate-400 font-medium text-slate-500">
+                    <option value="">Sector</option>
+                    <option>Tèxtil</option>
+                    <option>Metall i maquinària</option>
+                    <option>Paper i cartó</option>
+                    <option>Plàstic i química</option>
+                    <option>Cosmètica</option>
+                    <option>Alimentació</option>
+                    <option>Logística i transport</option>
+                    <option>Comerç i serveis</option>
+                    <option>Altres</option>
+                  </select>
+                  <select id="treballadors" aria-label="Nombre de treballadors" class="w-full bg-slate-50 border border-slate-200 text-saas-dark text-sm rounded-2xl focus:ring-2 focus:ring-saas-violet focus:border-transparent block p-4 outline-none transition-all placeholder-slate-400 font-medium text-slate-500">
+                    <option value="">Nombre de treballadors</option>
+                    <option>1-9</option>
+                    <option>10-49</option>
+                    <option>50-249</option>
+                    <option>250 o més</option>
+                  </select>
+                </div>
                 <textarea
                   id="mensaje"
                   rows="4"
                   required
-                  placeholder="Com et podem ajudar?"
+                  aria-label="Què voleu automatitzar?"
+                  placeholder="Què voleu automatitzar o millorar? (per exemple: passem les comandes a mà de l'Excel a l'ERP)"
                   class="w-full bg-slate-50 border border-slate-200 text-saas-dark text-sm rounded-2xl focus:ring-2 focus:ring-saas-violet focus:border-transparent block p-4 outline-none transition-all placeholder-slate-400 font-medium resize-none"
                 ></textarea>
+                <label class="flex items-start gap-3 text-sm text-slate-500 font-medium cursor-pointer">
+                  <input
+                    id="privacidad"
+                    type="checkbox"
+                    required
+                    class="mt-0.5 w-4 h-4 shrink-0 accent-saas-violet cursor-pointer"
+                  />
+                  <span
+                    >He llegit i accepte la <a
+                      href="https://mndesignweb.es/privacidad/"
+                      target="_blank"
+                      rel="noopener"
+                      class="text-saas-violet font-bold hover:underline">política de privacitat</a
+                    >.</span
+                  >
+                </label>
                 <button
                   id="btn-submit"
                   type="submit"
@@ -1580,23 +1874,43 @@ import "./style.css";
                 >
                   Enviar missatge
                 </button>
+                <!-- Primera capa d'informació RGPD (art. 13 RGPD i art. 11 LOPDGDD) -->
+                <p class="text-[11px] leading-relaxed text-slate-400 pt-4 border-t border-slate-100">
+                  <b class="text-slate-500">Responsable:</b> MN Design Web.
+                  <b class="text-slate-500">Finalitat:</b> respondre a la teua
+                  sol·licitud. <b class="text-slate-500">Legitimació:</b> el teu
+                  consentiment.{" "}
+                  <b class="text-slate-500">Destinataris:</b> no cedim les teues
+                  dades; les tracten els nostres proveïdors de formularis i
+                  automatització (Web3Forms i Make) com a encarregats del
+                  tractament. <b class="text-slate-500">Drets:</b> accés,
+                  rectificació, supressió i la resta de drets a
+                  info@mndesignweb.es. Més informació en la nostra <a
+                    href="https://mndesignweb.es/privacidad/"
+                    target="_blank"
+                    rel="noopener"
+                    class="text-saas-violet font-bold hover:underline">política de privacitat</a
+                  >.
+                </p>
               </form>
             </div>
             <div
               class="bg-slate-50 border border-slate-200 rounded-3xl p-2 flex flex-col min-h-[400px]"
             >
+              <!-- Cal.com en línia: el munta el JS en acostar-se a la secció (mesura les reserves) -->
               <div
-                class="cal-widget w-full h-full rounded-2xl overflow-hidden bg-white flex-1"
-              >
-                <iframe
-                  src="https://cal.com/mndesignweb/reunio-30-min?embed=true"
-                  title="Reserva tu cita"
-                  class="calendar-iframe w-full h-full min-h-[530px]"
-                  width="100%"
-                  height="100%"
-                  frameborder="0"
-                  loading="lazy"></iframe>
-              </div>
+                id="cal-inline"
+                aria-label="Reserva la teua reunió"
+                class="cal-widget w-full h-[560px] rounded-2xl overflow-y-auto bg-white flex-1"
+              ></div>
+              <p class="text-sm text-slate-500 font-medium px-3 py-2">
+                No veus el calendari? <a
+                  href="https://cal.com/mndesignweb/reunio-30-min"
+                  target="_blank"
+                  rel="noopener"
+                  class="text-saas-violet font-bold hover:underline">Obri'l en una pestanya nova</a
+                >.
+              </p>
             </div>
           </div>
         </div>
@@ -1635,7 +1949,7 @@ import "./style.css";
             intermediaris.
           </p>
           <p class="text-sm text-slate-500 font-medium">
-            📍 Passeig del Comtat nº 75, Cocentaina (Alacant)
+            📍 Av. Passeig del Comtat, 75, 5º 1º · 03820 Cocentaina (Alacant)
           </p>
         </div>
 
@@ -1765,27 +2079,9 @@ import "./style.css";
 
         <div class="flex items-center gap-5">
           <a
-            href="#"
-            aria-label="Facebook"
-            class="text-slate-400 hover:text-[#1877F2] transition-colors hover:-translate-y-1 transform duration-300"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="20"
-              height="20"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              ><path
-                d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"
-              ></path></svg
-            >
-          </a>
-          <a
-            href="#"
+            href="https://www.instagram.com/mndesignweb/"
+            target="_blank"
+            rel="noopener noreferrer"
             aria-label="Instagram"
             class="text-slate-400 hover:text-saas-fuchsia transition-colors hover:-translate-y-1 transform duration-300"
           >
@@ -1805,7 +2101,9 @@ import "./style.css";
             >
           </a>
           <a
-            href="#"
+            href="https://www.linkedin.com/in/mar%C3%ADa-nadal-masi%C3%A1-080a77315/"
+            target="_blank"
+            rel="noopener noreferrer"
             aria-label="LinkedIn"
             class="text-slate-400 hover:text-[#0A66C2] transition-colors hover:-translate-y-1 transform duration-300"
           >
@@ -1827,32 +2125,62 @@ import "./style.css";
                 r="2"></circle></svg
             >
           </a>
-          <a
-            href="#"
-            aria-label="GitHub"
-            class="text-slate-400 hover:text-slate-900 transition-colors hover:-translate-y-1 transform duration-300"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="20"
-              height="20"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              ><path
-                d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"
-              ></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg
-            >
-          </a>
         </div>
       </div>
     </footer>
 
-    <script is:inline>
-      lucide.createIcons();
+    <!-- Icones Lucide empaquetades: només les que usa la pàgina -->
+    <script>
+      import {
+        createIcons,
+        ArrowRight,
+        Check,
+        ChevronDown,
+        Mail,
+        MapPinned,
+        Menu,
+        MessageCircle,
+        Monitor,
+        PhoneCall,
+        ShieldCheck,
+        BadgeEuro,
+        ChartColumn,
+        ClipboardCheck,
+        ExternalLink,
+        Factory,
+        FileSpreadsheet,
+        MapPin,
+        Plug,
+        Truck,
+        Users,
+        Workflow,
+      } from "lucide";
+
+      createIcons({
+        icons: {
+          ArrowRight,
+          Check,
+          ChevronDown,
+          Mail,
+          MapPinned,
+          Menu,
+          MessageCircle,
+          Monitor,
+          PhoneCall,
+          ShieldCheck,
+          BadgeEuro,
+          ChartColumn,
+          ClipboardCheck,
+          ExternalLink,
+          Factory,
+          FileSpreadsheet,
+          MapPin,
+          Plug,
+          Truck,
+          Users,
+          Workflow,
+        },
+      });
     </script>
 
     <div
@@ -1861,43 +2189,50 @@ import "./style.css";
     >
     </div>
 
+    <!-- Bàner de cookies compacte (el JS el mostra només si no hi ha resposta guardada) -->
     <div
       id="cookie-banner"
-      class="fixed bottom-4 left-4 sm:bottom-6 sm:left-6 z-[999999] w-[calc(100%-2rem)] sm:w-[480px] bg-white border border-slate-200 rounded-3xl p-8 flex flex-col items-center justify-center gap-2 shadow-[0_20px_40px_-10px_rgba(139,92,246,0.15)] transform transition-transform duration-500 translate-y-0"
+      style="display: none"
+      role="dialog"
+      aria-labelledby="cookie-title"
+      aria-describedby="cookie-desc"
+      class="fixed left-3 right-3 bottom-3 sm:left-6 sm:right-auto sm:bottom-6 z-[999999] sm:w-[400px] bg-white/95 backdrop-blur-xl border border-slate-200 rounded-3xl p-5 flex-wrap items-start gap-x-4 gap-y-3 shadow-[0_20px_40px_-10px_rgba(15,23,42,0.25)] transform transition-all duration-500"
     >
-      <svg
-        xml:space="preserve"
-        viewBox="0 0 122.88 122.25"
-        class="w-14 h-14 text-saas-violet fill-current mb-2"
+      <span
+        aria-hidden="true"
+        class="w-11 h-11 shrink-0 rounded-2xl bg-saas-violet/10 text-saas-violet flex items-center justify-center"
       >
-        <path
-          d="M101.77,49.38c2.09,3.1,4.37,5.11,6.86,5.78c2.45,0.66,5.32,0.06,8.7-2.01c1.36-0.84,3.14-0.41,3.97,0.95 c0.28,0.46,0.42,0.96,0.43,1.47c0.13,1.4,0.21,2.82,0.24,4.26c0.03,1.46,0.02,2.91-0.05,4.35h0v0c0,0.13-0.01,0.26-0.03,0.38 c-0.91,16.72-8.47,31.51-20,41.93c-11.55,10.44-27.06,16.49-43.82,15.69v0.01h0c-0.13,0-0.26-0.01-0.38-0.03 c-16.72-0.91-31.51-8.47-41.93-20C5.31,90.61-0.73,75.1,0.07,58.34H0.07v0c0-0.13,0.01-0.26,0.03-0.38 C1,41.22,8.81,26.35,20.57,15.87C32.34,5.37,48.09-0.73,64.85,0.07V0.07h0c1.6,0,2.89,1.29,2.89,2.89c0,0.4-0.08,0.78-0.23,1.12 c-1.17,3.81-1.25,7.34-0.27,10.14c0.89,2.54,2.7,4.51,5.41,5.52c1.44,0.54,2.2,2.1,1.74,3.55l0.01,0 c-1.83,5.89-1.87,11.08-0.52,15.26c0.82,2.53,2.14,4.69,3.88,6.4c1.74,1.72,3.9,3,6.39,3.78c4.04,1.26,8.94,1.18,14.31-0.55 C99.73,47.78,101.08,48.3,101.77,49.38L101.77,49.38z M59.28,57.86c2.77,0,5.01,2.24,5.01,5.01c0,2.77-2.24,5.01-5.01,5.01 c-2.77,0-5.01-2.24-5.01-5.01C54.27,60.1,56.52,57.86,59.28,57.86L59.28,57.86z M37.56,78.49c3.37,0,6.11,2.73,6.11,6.11 s-2.73,6.11-6.11,6.11s-6.11-2.73-6.11-6.11S34.18,78.49,37.56,78.49L37.56,78.49z M50.72,31.75c2.65,0,4.79,2.14,4.79,4.79 c0,2.65-2.14,4.79-4.79,4.79c-2.65,0-4.79-2.14-4.79-4.79C45.93,33.89,48.08,31.75,50.72,31.75L50.72,31.75z M119.3,32.4 c1.98,0,3.58,1.6,3.58,3.58c0,1.98-1.6,3.58-3.58,3.58s-3.58-1.6-3.58-3.58C115.71,34.01,117.32,32.4,119.3,32.4L119.3,32.4z M93.62,22.91c2.98,0,5.39,2.41,5.39,5.39c0,2.98-2.41,5.39-5.39,5.39c-2.98,0-5.39-2.41-5.39-5.39 C88.23,25.33,90.64,22.91,93.62,22.91L93.62,22.91z M97.79,0.59c3.19,0,5.78,2.59,5.78,5.78c0,3.19-2.59,5.78-5.78,5.78 c-3.19,0-5.78-2.59-5.78-5.78C92.02,3.17,94.6,0.59,97.79,0.59L97.79,0.59z M76.73,80.63c4.43,0,8.03,3.59,8.03,8.03 c0,4.43-3.59,8.03-8.03,8.03s-8.03-3.59-8.03-8.03C68.7,84.22,72.29,80.63,76.73,80.63L76.73,80.63z M31.91,46.78 c4.8,0,8.69,3.89,8.69,8.69c0,4.8-3.89,8.69-8.69,8.69s-8.69-3.89-8.69-8.69C23.22,50.68,27.11,46.78,31.91,46.78L31.91,46.78z M107.13,60.74c-3.39-0.91-6.35-3.14-8.95-6.48c-5.78,1.52-11.16,1.41-15.76-0.02c-3.37-1.05-6.32-2.81-8.71-5.18 c-2.39-2.37-4.21-5.32-5.32-8.75c-1.51-4.66-1.69-10.2-0.18-16.32c-3.1-1.8-5.25-4.53-6.42-7.88c-1.06-3.05-1.28-6.59-0.61-10.35 C47.27,5.95,34.3,11.36,24.41,20.18C13.74,29.69,6.66,43.15,5.84,58.29l0,0.05v0h0l-0.01,0.13v0C5.07,73.72,10.55,87.82,20.02,98.3 c9.44,10.44,22.84,17.29,38,18.1l0.05,0h0v0l0.13,0.01h0c15.24,0.77,29.35-4.71,39.83-14.19c10.44-9.44,17.29-22.84,18.1-38l0-0.05 v0h0l0.01-0.13v0c0.07-1.34,0.09-2.64,0.06-3.91C112.98,61.34,109.96,61.51,107.13,60.74L107.13,60.74z"
-        ></path>
-      </svg>
-
-      <p class="text-xl font-extrabold text-saas-dark mb-1">
-        Utilitzem cookies
-      </p>
-      <p class="text-center font-medium text-slate-500 leading-relaxed">
-        Utilitzem cookies per donar-te la millor experiència a la nostra web. <br
-        />
-        <a
-          href="https://mndesignweb.es/cookies/"
-          class="text-saas-violet font-bold hover:text-saas-dark hover:underline transition-colors"
-          >Veure polítiques de cookies</a
-        >
-      </p>
-
-      <div class="flex gap-4 w-full justify-center mt-4">
-        <button
-          id="btn-accept-cookies"
-          class="w-36 h-11 bg-saas-violet hover:bg-saas-dark text-white font-bold rounded-full shadow-lg shadow-saas-violet/30 transition-all hover:-translate-y-1"
-          >Permetre</button
-        >
+        <svg viewBox="0 0 122.88 122.25" class="w-6 h-6 fill-current">
+          <path
+            d="M101.77,49.38c2.09,3.1,4.37,5.11,6.86,5.78c2.45,0.66,5.32,0.06,8.7-2.01c1.36-0.84,3.14-0.41,3.97,0.95 c0.28,0.46,0.42,0.96,0.43,1.47c0.13,1.4,0.21,2.82,0.24,4.26c0.03,1.46,0.02,2.91-0.05,4.35h0v0c0,0.13-0.01,0.26-0.03,0.38 c-0.91,16.72-8.47,31.51-20,41.93c-11.55,10.44-27.06,16.49-43.82,15.69v0.01h0c-0.13,0-0.26-0.01-0.38-0.03 c-16.72-0.91-31.51-8.47-41.93-20C5.31,90.61-0.73,75.1,0.07,58.34H0.07v0c0-0.13,0.01-0.26,0.03-0.38 C1,41.22,8.81,26.35,20.57,15.87C32.34,5.37,48.09-0.73,64.85,0.07V0.07h0c1.6,0,2.89,1.29,2.89,2.89c0,0.4-0.08,0.78-0.23,1.12 c-1.17,3.81-1.25,7.34-0.27,10.14c0.89,2.54,2.7,4.51,5.41,5.52c1.44,0.54,2.2,2.1,1.74,3.55l0.01,0 c-1.83,5.89-1.87,11.08-0.52,15.26c0.82,2.53,2.14,4.69,3.88,6.4c1.74,1.72,3.9,3,6.39,3.78c4.04,1.26,8.94,1.18,14.31-0.55 C99.73,47.78,101.08,48.3,101.77,49.38L101.77,49.38z M59.28,57.86c2.77,0,5.01,2.24,5.01,5.01c0,2.77-2.24,5.01-5.01,5.01 c-2.77,0-5.01-2.24-5.01-5.01C54.27,60.1,56.52,57.86,59.28,57.86L59.28,57.86z M37.56,78.49c3.37,0,6.11,2.73,6.11,6.11 s-2.73,6.11-6.11,6.11s-6.11-2.73-6.11-6.11S34.18,78.49,37.56,78.49L37.56,78.49z M50.72,31.75c2.65,0,4.79,2.14,4.79,4.79 c0,2.65-2.14,4.79-4.79,4.79c-2.65,0-4.79-2.14-4.79-4.79C45.93,33.89,48.08,31.75,50.72,31.75L50.72,31.75z M119.3,32.4 c1.98,0,3.58,1.6,3.58,3.58c0,1.98-1.6,3.58-3.58,3.58s-3.58-1.6-3.58-3.58C115.71,34.01,117.32,32.4,119.3,32.4L119.3,32.4z M93.62,22.91c2.98,0,5.39,2.41,5.39,5.39c0,2.98-2.41,5.39-5.39,5.39c-2.98,0-5.39-2.41-5.39-5.39 C88.23,25.33,90.64,22.91,93.62,22.91L93.62,22.91z M97.79,0.59c3.19,0,5.78,2.59,5.78,5.78c0,3.19-2.59,5.78-5.78,5.78 c-3.19,0-5.78-2.59-5.78-5.78C92.02,3.17,94.6,0.59,97.79,0.59L97.79,0.59z M76.73,80.63c4.43,0,8.03,3.59,8.03,8.03 c0,4.43-3.59,8.03-8.03,8.03s-8.03-3.59-8.03-8.03C68.7,84.22,72.29,80.63,76.73,80.63L76.73,80.63z M31.91,46.78 c4.8,0,8.69,3.89,8.69,8.69c0,4.8-3.89,8.69-8.69,8.69s-8.69-3.89-8.69-8.69C23.22,50.68,27.11,46.78,31.91,46.78L31.91,46.78z M107.13,60.74c-3.39-0.91-6.35-3.14-8.95-6.48c-5.78,1.52-11.16,1.41-15.76-0.02c-3.37-1.05-6.32-2.81-8.71-5.18 c-2.39-2.37-4.21-5.32-5.32-8.75c-1.51-4.66-1.69-10.2-0.18-16.32c-3.1-1.8-5.25-4.53-6.42-7.88c-1.06-3.05-1.28-6.59-0.61-10.35 C47.27,5.95,34.3,11.36,24.41,20.18C13.74,29.69,6.66,43.15,5.84,58.29l0,0.05v0h0l-0.01,0.13v0C5.07,73.72,10.55,87.82,20.02,98.3 c9.44,10.44,22.84,17.29,38,18.1l0.05,0h0v0l0.13,0.01h0c15.24,0.77,29.35-4.71,39.83-14.19c10.44-9.44,17.29-22.84,18.1-38l0-0.05 v0h0l0.01-0.13v0c0.07-1.34,0.09-2.64,0.06-3.91C112.98,61.34,109.96,61.51,107.13,60.74L107.13,60.74z"
+          ></path>
+        </svg>
+      </span>
+      <div class="flex-1 min-w-0">
+        <p id="cookie-title" class="text-base font-extrabold text-saas-dark mb-0.5">
+          Utilitzem cookies
+        </p>
+        <p id="cookie-desc" class="text-sm font-medium text-slate-500 leading-relaxed">
+          Per a oferir-te la millor experiència a la nostra web.
+          <a
+            href="https://mndesignweb.es/cookies/"
+            class="block w-fit mt-1 text-saas-violet font-bold hover:underline"
+            >Veure la política de cookies</a
+          >
+        </p>
+      </div>
+      <div class="flex gap-2.5 w-full">
         <button
           id="btn-decline-cookies"
-          class="w-36 h-11 bg-transparent border border-slate-200 text-slate-500 hover:text-slate-900 hover:border-slate-300 font-bold rounded-full transition-all hover:-translate-y-1"
+          type="button"
+          class="flex-1 h-10 bg-transparent border border-slate-200 text-slate-600 hover:text-slate-900 hover:border-slate-300 font-bold text-sm rounded-full transition-colors"
           >Rebutjar</button
+        >
+        <button
+          id="btn-accept-cookies"
+          type="button"
+          class="flex-1 h-10 bg-saas-violet hover:bg-saas-dark text-white font-bold text-sm rounded-full shadow-lg shadow-saas-violet/30 transition-colors"
+          >Permetre</button
         >
       </div>
     </div>
@@ -1940,11 +2275,8 @@ import "./style.css";
         const declineBtn = document.getElementById("btn-decline-cookies");
 
         if (cookieBanner && acceptBtn && declineBtn) {
-          // CAMBIADO
           if (!localStorage.getItem("cookie_consent")) {
-            cookieBanner.classList.remove("translate-y-[150%]", "opacity-0");
-          } else {
-            cookieBanner.style.display = "none";
+            cookieBanner.style.display = "flex";
           }
 
           const hideBanner = () => {
@@ -1969,11 +2301,38 @@ import "./style.css";
             if (typeof fbq === "function") {
               fbq("consent", "grant");
             }
+
+            // Clarity no es carrega sense consentiment: el carreguem ara i donem el senyal
+            if (typeof window.clarity === "undefined") {
+              (function (c, l, a, r, i, t, y) {
+                c[a] =
+                  c[a] ||
+                  function () {
+                    (c[a].q = c[a].q || []).push(arguments);
+                  };
+                t = l.createElement(r);
+                t.async = 1;
+                t.src = "https://www.clarity.ms/tag/" + i;
+                y = l.getElementsByTagName(r)[0];
+                y.parentNode.insertBefore(t, y);
+              })(window, document, "clarity", "script", "wuzaxaifa0");
+            }
+            window.clarity("consent");
           });
 
           declineBtn.addEventListener("click", () => {
             localStorage.setItem("cookie_consent", "declined");
             hideBanner();
+
+            if (typeof gtag === "function") {
+              gtag("consent", "update", {
+                ad_storage: "denied",
+                ad_user_data: "denied",
+                ad_personalization: "denied",
+                analytics_storage: "denied",
+              });
+            }
+            if (typeof fbq === "function") fbq("consent", "revoke");
           });
         }
 
@@ -1991,11 +2350,15 @@ import "./style.css";
 
             const data = {
               access_key: "1bc2d285-71cb-4fe3-806f-530066ab6e15",
-              subject: "Nuevo Lead: Landing Web Alcoi",
+              subject: "Nuevo Lead: Alcoi · Software y automatización",
               nombre: document.getElementById("nombre").value,
               email: document.getElementById("email").value,
               telefono: document.getElementById("telefono").value,
               mensaje: document.getElementById("mensaje").value,
+              empresa: document.getElementById("empresa").value,
+              sector: document.getElementById("sector").value,
+              treballadors: document.getElementById("treballadors").value,
+              privacidad: "Aceptada",
             };
 
             Promise.all([
@@ -2051,7 +2414,103 @@ import "./style.css";
               });
           });
         }
-        // 4. LÓGICA DEL MENÚ MÓVIL
+        // 4. CAL.COM (embed oficial) + MESURAMENT DE RESERVES
+        // Es carrega en acostar-se a la secció de contacte per no alentir la càrrega inicial
+        const calBox = document.getElementById("cal-inline");
+        if (calBox) {
+          let calLoaded = false;
+          let booked = false;
+
+          const onBooked = () => {
+            // Cal.com emet l'esdeveniment antic i el V2: només comptem una reserva
+            if (booked) return;
+            booked = true;
+            if (typeof gtag === "function")
+              gtag("event", "book_call", { method: "cal_com" });
+            if (typeof fbq === "function") fbq("track", "Schedule");
+            if (typeof window.clarity === "function")
+              window.clarity("set", "lead", "reunio_alcoi");
+          };
+
+          const loadCal = () => {
+            if (calLoaded) return;
+            calLoaded = true;
+            (function (C, A, L) {
+              const p = function (a, ar) {
+                a.q.push(ar);
+              };
+              const d = C.document;
+              C.Cal =
+                C.Cal ||
+                function () {
+                  const cal = C.Cal;
+                  const ar = arguments;
+                  if (!cal.loaded) {
+                    cal.ns = {};
+                    cal.q = cal.q || [];
+                    d.head.appendChild(d.createElement("script")).src = A;
+                    cal.loaded = true;
+                  }
+                  if (ar[0] === L) {
+                    const api = function () {
+                      p(api, arguments);
+                    };
+                    const namespace = ar[1];
+                    api.q = api.q || [];
+                    if (typeof namespace === "string") {
+                      cal.ns[namespace] = cal.ns[namespace] || api;
+                      p(cal.ns[namespace], ar);
+                      p(cal, ["initNamespace", namespace]);
+                    } else p(cal, ar);
+                    return;
+                  }
+                  p(cal, ar);
+                };
+            })(window, "https://app.cal.com/embed/embed.js", "init");
+
+            Cal("init", "reunio", { origin: "https://cal.com" });
+            Cal.ns.reunio("inline", {
+              elementOrSelector: "#cal-inline",
+              calLink: "mndesignweb/reunio-30-min",
+              config: { layout: "month_view" },
+            });
+            Cal.ns.reunio("ui", { hideEventTypeDetails: false, layout: "month_view" });
+            Cal.ns.reunio("on", { action: "bookingSuccessfulV2", callback: onBooked });
+            Cal.ns.reunio("on", { action: "bookingSuccessful", callback: onBooked });
+          };
+
+          if ("IntersectionObserver" in window) {
+            const calObserver = new IntersectionObserver(
+              (entries) => {
+                if (entries[0].isIntersecting) {
+                  loadCal();
+                  calObserver.disconnect();
+                }
+              },
+              { rootMargin: "800px 0px" },
+            );
+            calObserver.observe(calBox);
+          } else {
+            loadCal();
+          }
+        }
+
+        // 5. MESURAMENT DE CLICS EN TELÈFON, WHATSAPP I EMAIL
+        document.addEventListener("click", (e) => {
+          const link = e.target.closest && e.target.closest("a[href]");
+          if (!link) return;
+          const href = link.getAttribute("href");
+          let tipo = null;
+          if (href.startsWith("tel:")) tipo = "phone";
+          else if (href.includes("wa.me") || href.includes("whatsapp")) tipo = "whatsapp";
+          else if (href.startsWith("mailto:")) tipo = "email";
+          if (!tipo) return;
+          if (typeof gtag === "function")
+            gtag("event", "click_" + tipo, { link_url: href });
+          if (typeof fbq === "function") fbq("track", "Contact", { content_name: tipo });
+        });
+
+        // 6. LÓGICA DEL MENÚ MÓVIL
         const btnMenu = document.getElementById("mobile-menu-btn");
         const dropdownMenu = document.getElementById("mobile-dropdown");
         const mobileLinks = document.querySelectorAll(".mobile-link");

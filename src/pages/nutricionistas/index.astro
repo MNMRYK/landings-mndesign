@@ -1,5 +1,107 @@
 ---
 import "./style.css";
+
+// FAQ: una sola fuente para el HTML visible y para el Schema (deben coincidir)
+const faqs = [
+  [
+    "¿En qué os diferenciáis de una agencia de diseño web tradicional?",
+    "Las agencias generalistas hacen webs bonitas; yo diseño ecosistemas de salud. Entiendo cómo funciona la normativa RGPD para datos médicos, qué necesita un software clínico (ERP) para sincronizarse y cómo debe fluir un paciente para reservar sin fricción. Hablamos tu mismo idioma desde el minuto uno.",
+  ],
+  [
+    "¿Tendré que pagar cuotas ocultas o depender de ti para cada cambio?",
+    "Cero secuestros digitales. La web y la infraestructura son 100% tuyas. Te entrego el proyecto \"llave en mano\" con videotutoriales grabados sobre tu propia plataforma para que tú y tu equipo podáis modificar textos, subir dietas o gestionar agendas con total autonomía.",
+  ],
+  [
+    "He tenido malas experiencias con plazos, ¿cuánto tardaremos en lanzar?",
+    "Trabajo con metodologías ágiles y fechas bloqueadas por contrato. Una Fase 1 (Web y Agenda) suele estar lista en 3-4 semanas desde que recibimos tu material. Si optamos por el Ecosistema Total, el cronograma es de 6 a 8 semanas. Sin retrasos, sorpresas ni excusas.",
+  ],
+  [
+    "Mis pacientes no son muy tecnológicos, ¿les costará usar el portal?",
+    "Diseño pensando en la \"paciencia cero\" del usuario. La interfaz móvil de reservas y el portal del paciente están creados con la máxima usabilidad (UX/UI). Si tus pacientes saben enviar un mensaje por WhatsApp, sabrán entrar a su videoconsulta, descargar su dieta o pagar su suscripción en un par de clics.",
+  ],
+  [
+    "¿Qué pasa si la web se cae o tengo un problema tras el lanzamiento?",
+    "No te dejo sola frente a una pantalla en blanco. Ofrezco planes opcionales de soporte y mantenimiento técnico donde me encargo de las actualizaciones, seguridad y resolución de incidencias. Tu único trabajo es pasar consulta; del código y los servidores me encargo yo.",
+  ],
+];
+
+// Schema.org (JSON-LD) en un único bloque, generado para que siempre sea válido
+const pageUrl = "https://mndesignweb.es/nutricionistas/";
+const seoTitle = "Diseño Web para Nutricionistas y Dietistas | MN Design Web";
+const schema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": `${pageUrl}#webpage`,
+      url: pageUrl,
+      name: seoTitle,
+      description:
+        "Desarrollo web a medida para nutricionistas y dietistas. Centraliza reservas, expedientes y venta de cursos en tu propio dominio sin plataformas externas.",
+      inLanguage: "es-ES",
+      about: { "@id": `${pageUrl}#servicio` },
+      breadcrumb: { "@id": `${pageUrl}#breadcrumb` },
+    },
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://mndesignweb.es/#empresa",
+      name: "MN Design Web",
+      image: "https://mndesignweb.es/logo.webp",
+      url: "https://mndesignweb.es/",
+      telephone: "+34645854934",
+      email: "info@mndesignweb.es",
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: "Avinguda Passeig del Comtat, 75, 5º 1º",
+        postalCode: "03820",
+        addressLocality: "Cocentaina",
+        addressRegion: "Alicante",
+        addressCountry: "ES",
+      },
+      priceRange: "$$",
+    },
+    {
+      "@type": "Service",
+      "@id": `${pageUrl}#servicio`,
+      name: "Digitalización de Consultas de Nutrición",
+      image: "https://mndesignweb.es/nutri/imagen-miniatura-nutricion.webp",
+      description:
+        "Construcción de ecosistemas digitales completos en WordPress: diseño web estratégico, software de reservas, portal del paciente y academia online 100% en propiedad.",
+      provider: { "@id": "https://mndesignweb.es/#empresa" },
+      audience: {
+        "@type": "Audience",
+        audienceType: "Nutricionistas, dietistas y clínicas de nutrición",
+      },
+    },
+    {
+      "@type": "FAQPage",
+      "@id": `${pageUrl}#faq`,
+      mainEntity: faqs.map(([q, a]) => ({
+        "@type": "Question",
+        name: q,
+        acceptedAnswer: { "@type": "Answer", text: a },
+      })),
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": `${pageUrl}#breadcrumb`,
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Inicio MN Design Web",
+          item: "https://mndesignweb.es/",
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Diseño Web para Nutricionistas",
+          item: pageUrl,
+        },
+      ],
+    },
+  ],
+};
 ---
 
 <!doctype html>
@@ -86,198 +188,8 @@ import "./style.css";
       content="https://mndesignweb.es/nutri/imagen-miniatura-nutricion.webp"
     />
 
-    <script type="application/ld+json">
-      [
-        {
-          "@context": "https://schema.org",
-          "@type": "WebPage",
-          "name": "Diseño Web para Nutricionistas y Dietistas | MN Design Web",
-          "description": "Desarrollo web a medida para nutricionistas y dietistas. Centraliza reservas, expedientes y venta de cursos en tu propio dominio."
-        },
-        {
-          "@context": "https://schema.org",
-          "@type": "ProfessionalService",
-          "name": "MN Design Web",
-          "image": "https://mndesignweb.es/nutri/logo.webp",
-          "url": "https://mndesignweb.es/",
-          "address": {
-            "@type": "PostalAddress",
-            "streetAddress": "Avenida Passeig del Comtat n75",
-            "addressLocality": "Cocentaina",
-            "addressRegion": "Alicante",
-            "postalCode": "03820",
-            "addressCountry": "ES"
-          },
-          "priceRange": "$$$"
-        },
-        {
-          "@context": "https://schema.org/",
-          "@type": "Service",
-          "name": "Digitalización de Consultas de Nutrición",
-          "image": "https://mndesignweb.es/nutri/imagen-miniatura-nutricion.webp",
-          "description": "Ecosistemas digitales completos en WordPress: diseño web estratégico, software de reservas, portal del paciente y academia online."
-        },
-        {
-          "@context": "https://schema.org",
-          "@type": "FAQPage",
-          "mainEntity": [
-            {
-              "@type": "Question",
-              "name": "¿En qué os diferenciáis de una agencia de diseño web tradicional?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Las agencias generalistas hacen webs bonitas; yo diseño ecosistemas de salud. Entiendo la normativa RGPD para datos médicos y cómo debe fluir un paciente para reservar sin fricción."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "¿Tendré que pagar cuotas ocultas o depender de ti para cada cambio?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Cero secuestros digitales. La web y la infraestructura son 100% tuyas, en tu propio dominio. Te entrego el proyecto llave en mano con videotutoriales."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "He tenido malas experiencias con plazos, ¿cuánto tardaremos en lanzar?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Una Fase 1 (Web y Agenda) suele estar lista en 3-4 semanas. Si optamos por el Ecosistema Total, el cronograma es de 6 a 8 semanas con fechas bloqueadas por contrato."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Mis pacientes no son muy tecnológicos, ¿les costará usar el portal?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "La interfaz móvil de reservas y el portal privado están creados con la máxima usabilidad. Si saben usar WhatsApp, sabrán descargar su dieta."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "¿Qué pasa si la web se cae o tengo un problema tras el lanzamiento?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Ofrezco planes opcionales de soporte y mantenimiento técnico donde me encargo de las actualizaciones, seguridad y resolución de incidencias."
-              }
-            }
-          ]
-        },
-        {
-          "@context": "https://schema.org",
-          "@type": "BreadcrumbList",
-          "itemListElement": [
-            {
-              "@type": "ListItem",
-              "position": 1,
-              "name": "Inicio MN Design Web",
-              "item": "https://mndesignweb.es/"
-            },
-            {
-              "@type": "ListItem",
-              "position": 2,
-              "name": "Diseño Web para Nutricionistas",
-              "item": "https://mndesignweb.es/nutricionistas/"
-            }
-          ]
-        }
-      ]
-    </script>
-
-    <script type="application/ld+json">
-      [
-        {
-          "@context": "https://schema.org",
-          "@type": "WebPage",
-          "name": "Diseño Web y Digitalización de Consultas para Nutricionistas y Dietistas | MN Design Web",
-          "description": "Desarrollo web a medida para nutricionistas y dietistas. Centraliza reservas, expedientes y venta de cursos en tu propio dominio sin plataformas externas."
-        },
-        {
-          "@context": "https://schema.org",
-          "@type": "ProfessionalService",
-          "name": "MN Design Web",
-          "image": "https://mndesignweb.es/nutri/logo.webp",
-          "url": "https://mndesignweb.es/",
-          "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "Alicante",
-            "addressCountry": "ES"
-          },
-          "priceRange": "$$$"
-        },
-        {
-          "@context": "https://schema.org/",
-          "@type": "Service",
-          "name": "Digitalización de Consultas de Nutrición",
-          "image": "https://mndesignweb.es/nutri/imagen-miniatura-nutricion.webp",
-          "description": "Construcción de ecosistemas digitales completos en WordPress: diseño web estratégico, software de reservas, portal del paciente y academia online 100% en propiedad."
-        },
-        {
-          "@context": "https://schema.org",
-          "@type": "FAQPage",
-          "mainEntity": [
-            {
-              "@type": "Question",
-              "name": "¿En qué os diferenciáis de una agencia de diseño web tradicional?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Las agencias generalistas hacen webs bonitas; yo diseño ecosistemas de salud. Entiendo la normativa RGPD para datos médicos, cómo integrar un software y cómo debe fluir un paciente para reservar sin fricción."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "¿Tendré que pagar cuotas ocultas o depender de ti para cada cambio?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Cero secuestros digitales. La web y la infraestructura son 100% tuyas, en tu propio dominio. Te entrego el proyecto llave en mano con videotutoriales para que gestiones tu consulta con total autonomía."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "He tenido malas experiencias con plazos, ¿cuánto tardaremos en lanzar?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Una Fase 1 (Web y Agenda) suele estar lista en 3-4 semanas. Si optamos por el Ecosistema Total (Portal y Academia), el cronograma es de 6 a 8 semanas con fechas bloqueadas por contrato."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Mis pacientes no son muy tecnológicos, ¿les costará usar el portal?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Diseñamos pensando en la paciencia cero del usuario. La interfaz móvil de reservas y el portal privado están creados con la máxima usabilidad. Si saben usar WhatsApp, sabrán descargar su dieta."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "¿Qué pasa si la web se cae o tengo un problema tras el lanzamiento?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "No te dejo sola. Ofrezco planes opcionales de soporte y mantenimiento técnico donde me encargo de las actualizaciones, seguridad y resolución de incidencias. Tu único trabajo es pasar consulta."
-              }
-            }
-          ]
-        },
-        {
-          "@context": "https://schema.org",
-          "@type": "BreadcrumbList",
-          "itemListElement": [
-            {
-              "@type": "ListItem",
-              "position": 1,
-              "name": "Inicio MN Design Web",
-              "item": "https://mndesignweb.es/"
-            },
-            {
-              "@type": "ListItem",
-              "position": 2,
-              "name": "Diseño Web para Nutricionistas",
-              "item": "https://mndesignweb.es/nutricionistas/"
-            }
-          ]
-        }
-      ]
-    </script>
+    <!-- Schema.org: un único bloque generado desde el frontmatter -->
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(schema)} />
 
     <script is:inline>
       window.dataLayer = window.dataLayer || [];
@@ -335,9 +247,11 @@ import "./style.css";
         "https://connect.facebook.net/en_US/fbevents.js",
       );
 
+      // Sin consentimiento, el píxel queda bloqueado (no envía nada a Meta)
       var localConsent = localStorage.getItem("cookie_consent");
-
-      if (localConsent === "accepted") {
+      if (localConsent !== "accepted") {
+        fbq("consent", "revoke");
+      } else {
         fbq("consent", "grant");
       }
 
@@ -345,19 +259,24 @@ import "./style.css";
       fbq("track", "PageView");
     </script>
 
+    <!-- Clarity: solo se carga si ya hay consentimiento (si no, lo carga el banner al aceptar) -->
     <script is:inline type="text/javascript">
-      (function (c, l, a, r, i, t, y) {
-        c[a] =
-          c[a] ||
-          function () {
-            (c[a].q = c[a].q || []).push(arguments);
-          };
-        t = l.createElement(r);
-        t.async = 1;
-        t.src = "https://www.clarity.ms/tag/" + i;
-        y = l.getElementsByTagName(r)[0];
-        y.parentNode.insertBefore(t, y);
-      })(window, document, "clarity", "script", "wuzaxaifa0");
+      if (localStorage.getItem("cookie_consent") === "accepted") {
+        (function (c, l, a, r, i, t, y) {
+          c[a] =
+            c[a] ||
+            function () {
+              (c[a].q = c[a].q || []).push(arguments);
+            };
+          t = l.createElement(r);
+          t.async = 1;
+          t.src = "https://www.clarity.ms/tag/" + i;
+          y = l.getElementsByTagName(r)[0];
+          y.parentNode.insertBefore(t, y);
+        })(window, document, "clarity", "script", "wuzaxaifa0");
+        // Clarity exige la señal de consentimiento en la UE para usar cookies
+        clarity("consent");
+      }
     </script>
   </head>
   <body>
@@ -1353,18 +1272,15 @@ import "./style.css";
               Da el paso definitivo para digitalizar tu consulta
             </h2>
 
-            <div class="cal-widget">
-              <iframe
-                src="https://cal.com/mndesignweb/reunion-30-min?embed=true"
-                title="Reserva tu cita"
-                class="calendar-iframe"
-                width="100%"
-                height="100%"
-                frameborder="0"
-                loading="lazy"
-              >
-              </iframe>
-            </div>
+            <!-- Cal.com inline: lo monta el JS al acercarse a la sección (mide las reservas) -->
+            <div class="cal-widget" id="cal-inline" aria-label="Reserva tu cita"></div>
+            <p class="cal-alt">
+              ¿No ves el calendario? <a
+                href="https://cal.com/mndesignweb/reunion-30-min"
+                target="_blank"
+                rel="noopener">Ábrelo en una pestaña nueva</a
+              >.
+            </p>
 
             <div class="contact-info-box">
               <h4>
@@ -1431,6 +1347,17 @@ import "./style.css";
                   ></textarea>
                 </div>
 
+                <label class="form-check">
+                  <input id="privacidad" name="privacidad" type="checkbox" required />
+                  <span
+                    >He leído y acepto la <a
+                      href="https://mndesignweb.es/privacidad/"
+                      target="_blank"
+                      rel="noopener">política de privacidad</a
+                    >.</span
+                  >
+                </label>
+
                 <button type="submit" id="btn-submit" class="form-submit-btn">
                   Enviar solicitud de auditoría
                   <i class="fa-solid fa-paper-plane"></i>
@@ -1440,6 +1367,17 @@ import "./style.css";
                   <i class="fa-solid fa-lock"></i> Analizaré tu caso personalmente
                   de forma 100% confidencial.
                 </div>
+
+                <!-- Primera capa de información RGPD (art. 13 RGPD y art. 11 LOPDGDD) -->
+                <p class="form-rgpd">
+                  <b>Responsable:</b> MN Design Web. <b>Finalidad:</b> responder a
+                  tu solicitud. <b>Legitimación:</b> tu consentimiento.{" "}
+                  Más información en nuestra <a
+                    href="https://mndesignweb.es/privacidad/"
+                    target="_blank"
+                    rel="noopener">política de privacidad</a
+                  >.
+                </p>
               </form>
             </div>
           </div>
@@ -1456,88 +1394,19 @@ import "./style.css";
         </div>
 
         <div class="faq-container reveal">
-          <details class="faq-item">
-            <summary>
-              ¿En qué os diferenciáis de una agencia de diseño web tradicional?
-              <span class="faq-icon">+</span>
-            </summary>
-            <div class="faq-content">
-              <p>
-                Las agencias generalistas hacen webs bonitas; yo diseño
-                ecosistemas de salud. Entiendo cómo funciona la normativa RGPD
-                para datos médicos, qué necesita un software clínico (ERP) para
-                sincronizarse y cómo debe fluir un paciente para reservar sin
-                fricción. Hablamos tu mismo idioma desde el minuto uno.
-              </p>
-            </div>
-          </details>
-
-          <details class="faq-item">
-            <summary>
-              ¿Tendré que pagar cuotas ocultas o depender de ti para cada
-              cambio?
-              <span class="faq-icon">+</span>
-            </summary>
-            <div class="faq-content">
-              <p>
-                Cero secuestros digitales. La web y la infraestructura son 100%
-                tuyas. Te entrego el proyecto "llave en mano" con
-                videotutoriales grabados sobre tu propia plataforma para que tú
-                y tu equipo podáis modificar textos, subir dietas o gestionar
-                agendas con total autonomía.
-              </p>
-            </div>
-          </details>
-
-          <details class="faq-item">
-            <summary>
-              He tenido malas experiencias con plazos, ¿cuánto tardaremos en
-              lanzar? <span class="faq-icon">+</span>
-            </summary>
-            <div class="faq-content">
-              <p>
-                Trabajo con metodologías ágiles y fechas bloqueadas por
-                contrato. Una Fase 1 (Web y Agenda) suele estar lista en 3-4
-                semanas desde que recibimos tu material. Si optamos por el
-                Ecosistema Total, el cronograma es de 6 a 8 semanas. Sin
-                retrasos, sorpresas ni excusas.
-              </p>
-            </div>
-          </details>
-
-          <details class="faq-item">
-            <summary>
-              Mis pacientes no son muy tecnológicos, ¿les costará usar el
-              portal?
-              <span class="faq-icon">+</span>
-            </summary>
-            <div class="faq-content">
-              <p>
-                Diseño pensando en la "paciencia cero" del usuario. La interfaz
-                móvil de reservas y el portal del paciente están creados con la
-                máxima usabilidad (UX/UI). Si tus pacientes saben enviar un
-                mensaje por WhatsApp, sabrán entrar a su videoconsulta,
-                descargar su dieta o pagar su suscripción en un par de clics.
-              </p>
-            </div>
-          </details>
-
-          <details class="faq-item">
-            <summary>
-              ¿Qué pasa si la web se cae o tengo un problema tras el
-              lanzamiento?
-              <span class="faq-icon">+</span>
-            </summary>
-            <div class="faq-content">
-              <p>
-                No te dejo sola frente a una pantalla en blanco. Ofrezco planes
-                opcionales de soporte y mantenimiento técnico donde me encargo
-                de las actualizaciones, seguridad y resolución de incidencias.
-                Tu único trabajo es pasar consulta; del código y los servidores
-                me encargo yo.
-              </p>
-            </div>
-          </details>
+          {
+            faqs.map(([q, a]) => (
+              <details class="faq-item">
+                <summary>
+                  {q}
+                  <span class="faq-icon">+</span>
+                </summary>
+                <div class="faq-content">
+                  <p>{a}</p>
+                </div>
+              </details>
+            ))
+          }
         </div>
       </section>
     </main>
@@ -1555,6 +1424,7 @@ import "./style.css";
             <a
               href="https://wa.me/34645854934"
               target="_blank"
+              rel="noopener noreferrer"
               class="footer-contact-btn"
             >
               <i class="fa-brands fa-whatsapp"></i> Contactanos por WhatsApp
@@ -1569,8 +1439,8 @@ import "./style.css";
           <h4>Navegación</h4>
           <a href="#web-inicial">Diseño Web</a>
           <a href="#modulos">Ecosistema Modular</a>
-          <a href="#precios">Inversión</a>
-          <a href="#contacto">Agendar Consultoría</a>
+          <a href="#inversion">Inversión</a>
+          <a href="#agendar-consultoria">Agendar Consultoría</a>
         </div>
 
         <div class="footer-links-col">
@@ -1584,9 +1454,9 @@ import "./style.css";
 
         <div class="footer-links-col">
           <h4>Legal</h4>
-          <a href="#">Aviso Legal</a>
-          <a href="#">Política de Privacidad</a>
-          <a href="#">Política de Cookies</a>
+          <a href="https://mndesignweb.es/aviso-legal/">Aviso Legal</a>
+          <a href="https://mndesignweb.es/privacidad/">Política de Privacidad</a>
+          <a href="https://mndesignweb.es/cookies/">Política de Cookies</a>
         </div>
       </div>
 
@@ -1604,29 +1474,36 @@ import "./style.css";
       </div>
     </footer>
 
-    <div id="cookie-banner" class="cookie-card-uiverse" style="display: none">
-      <svg
-        xml:space="preserve"
-        viewBox="0 0 122.88 122.25"
-        id="cookieSvg"
-        version="1.1"
-      >
-        <g>
+    <!-- Banner de cookies (lo muestra el JS si no hay consentimiento guardado) -->
+    <div
+      id="cookie-banner"
+      class="cookie-banner"
+      role="dialog"
+      aria-labelledby="cookie-title"
+      aria-describedby="cookie-desc"
+      style="display: none"
+    >
+      <span class="cookie-ico" aria-hidden="true">
+        <svg viewBox="0 0 122.88 122.25">
           <path
             d="M101.77,49.38c2.09,3.1,4.37,5.11,6.86,5.78c2.45,0.66,5.32,0.06,8.7-2.01c1.36-0.84,3.14-0.41,3.97,0.95 c0.28,0.46,0.42,0.96,0.43,1.47c0.13,1.4,0.21,2.82,0.24,4.26c0.03,1.46,0.02,2.91-0.05,4.35h0v0c0,0.13-0.01,0.26-0.03,0.38 c-0.91,16.72-8.47,31.51-20,41.93c-11.55,10.44-27.06,16.49-43.82,15.69v0.01h0c-0.13,0-0.26-0.01-0.38-0.03 c-16.72-0.91-31.51-8.47-41.93-20C5.31,90.61-0.73,75.1,0.07,58.34H0.07v0c0-0.13,0.01-0.26,0.03-0.38 C1,41.22,8.81,26.35,20.57,15.87C32.34,5.37,48.09-0.73,64.85,0.07V0.07h0c1.6,0,2.89,1.29,2.89,2.89c0,0.4-0.08,0.78-0.23,1.12 c-1.17,3.81-1.25,7.34-0.27,10.14c0.89,2.54,2.7,4.51,5.41,5.52c1.44,0.54,2.2,2.1,1.74,3.55l0.01,0 c-1.83,5.89-1.87,11.08-0.52,15.26c0.82,2.53,2.14,4.69,3.88,6.4c1.74,1.72,3.9,3,6.39,3.78c4.04,1.26,8.94,1.18,14.31-0.55 C99.73,47.78,101.08,48.3,101.77,49.38L101.77,49.38z M59.28,57.86c2.77,0,5.01,2.24,5.01,5.01c0,2.77-2.24,5.01-5.01,5.01 c-2.77,0-5.01-2.24-5.01-5.01C54.27,60.1,56.52,57.86,59.28,57.86L59.28,57.86z M37.56,78.49c3.37,0,6.11,2.73,6.11,6.11 s-2.73,6.11-6.11,6.11s-6.11-2.73-6.11-6.11S34.18,78.49,37.56,78.49L37.56,78.49z M50.72,31.75c2.65,0,4.79,2.14,4.79,4.79 c0,2.65-2.14,4.79-4.79,4.79c-2.65,0-4.79-2.14-4.79-4.79C45.93,33.89,48.08,31.75,50.72,31.75L50.72,31.75z M119.3,32.4 c1.98,0,3.58,1.6,3.58,3.58c0,1.98-1.6,3.58-3.58,3.58s-3.58-1.6-3.58-3.58C115.71,34.01,117.32,32.4,119.3,32.4L119.3,32.4z M93.62,22.91c2.98,0,5.39,2.41,5.39,5.39c0,2.98-2.41,5.39-5.39,5.39c-2.98,0-5.39-2.41-5.39-5.39 C88.23,25.33,90.64,22.91,93.62,22.91L93.62,22.91z M97.79,0.59c3.19,0,5.78,2.59,5.78,5.78c0,3.19-2.59,5.78-5.78,5.78 c-3.19,0-5.78-2.59-5.78-5.78C92.02,3.17,94.6,0.59,97.79,0.59L97.79,0.59z M76.73,80.63c4.43,0,8.03,3.59,8.03,8.03 c0,4.43-3.59,8.03-8.03,8.03s-8.03-3.59-8.03-8.03C68.7,84.22,72.29,80.63,76.73,80.63L76.73,80.63z M31.91,46.78 c4.8,0,8.69,3.89,8.69,8.69c0,4.8-3.89,8.69-8.69,8.69s-8.69-3.89-8.69-8.69C23.22,50.68,27.11,46.78,31.91,46.78L31.91,46.78z M107.13,60.74c-3.39-0.91-6.35-3.14-8.95-6.48c-5.78,1.52-11.16,1.41-15.76-0.02c-3.37-1.05-6.32-2.81-8.71-5.18 c-2.39-2.37-4.21-5.32-5.32-8.75c-1.51-4.66-1.69-10.2-0.18-16.32c-3.1-1.8-5.25-4.53-6.42-7.88c-1.06-3.05-1.28-6.59-0.61-10.35 C47.27,5.95,34.3,11.36,24.41,20.18C13.74,29.69,6.66,43.15,5.84,58.29l0,0.05v0h0l-0.01,0.13v0C5.07,73.72,10.55,87.82,20.02,98.3 c9.44,10.44,22.84,17.29,38,18.1l0.05,0h0v0l0.13,0.01h0c15.24,0.77,29.35-4.71,39.83-14.19c10.44-9.44,17.29-22.84,18.1-38l0-0.05 v0h0l0.01-0.13v0c0.07-1.34,0.09-2.64,0.06-3.91C112.98,61.34,109.96,61.51,107.13,60.74L107.13,60.74z"
           ></path>
-        </g>
-      </svg>
-      <p class="cookieHeading">Usamos cookies</p>
-      <p class="cookieDescription">
-        Utilizamos cookies para darte la mejor experiencia en nuestra web.<br />
-        <a class="cookielink" href="https://mndesignweb.es/cookies/"
-          >Ver políticas de cookies</a
-        >
-      </p>
-      <div class="buttonContainer">
-        <button id="btn-accept-cookies" class="acceptButton">Permitir</button>
-        <button id="btn-decline-cookies" class="declineButton">Rechazar</button>
+        </svg>
+      </span>
+      <div class="cookie-txt">
+        <p class="cookie-title" id="cookie-title">Usamos cookies</p>
+        <p class="cookie-desc" id="cookie-desc">
+          Utilizamos cookies para darte la mejor experiencia en nuestra web.
+          <a href="https://mndesignweb.es/cookies/">Ver política de cookies</a>
+        </p>
+      </div>
+      <div class="cookie-actions">
+        <button id="btn-decline-cookies" class="cookie-btn cookie-btn-ghost" type="button">
+          Rechazar
+        </button>
+        <button id="btn-accept-cookies" class="cookie-btn cookie-btn-main" type="button">
+          Permitir
+        </button>
       </div>
     </div>
 
@@ -1695,7 +1572,22 @@ import "./style.css";
               analytics_storage: "granted",
             });
           }
-          if (typeof clarity === "function") clarity("consent");
+          // Clarity no se carga sin consentimiento: lo cargamos ahora y damos la señal
+          if (typeof window.clarity === "undefined") {
+            (function (c, l, a, r, i, t, y) {
+              c[a] =
+                c[a] ||
+                function () {
+                  (c[a].q = c[a].q || []).push(arguments);
+                };
+              t = l.createElement(r);
+              t.async = 1;
+              t.src = "https://www.clarity.ms/tag/" + i;
+              y = l.getElementsByTagName(r)[0];
+              y.parentNode.insertBefore(t, y);
+            })(window, document, "clarity", "script", "wuzaxaifa0");
+          }
+          window.clarity("consent");
           if (typeof fbq === "function") fbq("consent", "grant");
         });
       }
@@ -1713,8 +1605,110 @@ import "./style.css";
               analytics_storage: "denied",
             });
           }
+          if (typeof fbq === "function") fbq("consent", "revoke");
         });
       }
+
+      // ==========================================
+      // CAL.COM (embed oficial) + MEDICIÓN DE RESERVAS
+      // Se carga al acercarse a la sección de contacto para no frenar la carga inicial
+      // ==========================================
+      const calBox = document.getElementById("cal-inline");
+      if (calBox) {
+        let calLoaded = false;
+        let booked = false;
+
+        const onBooked = () => {
+          // Cal.com emite el evento antiguo y el V2: solo contamos una reserva
+          if (booked) return;
+          booked = true;
+          if (typeof gtag === "function")
+            gtag("event", "book_call", { method: "cal_com" });
+          if (typeof fbq === "function") fbq("track", "Schedule");
+          if (typeof window.clarity === "function")
+            window.clarity("set", "lead", "llamada_nutricion");
+        };
+
+        const loadCal = () => {
+          if (calLoaded) return;
+          calLoaded = true;
+          (function (C, A, L) {
+            const p = function (a, ar) {
+              a.q.push(ar);
+            };
+            const d = C.document;
+            C.Cal =
+              C.Cal ||
+              function () {
+                const cal = C.Cal;
+                const ar = arguments;
+                if (!cal.loaded) {
+                  cal.ns = {};
+                  cal.q = cal.q || [];
+                  d.head.appendChild(d.createElement("script")).src = A;
+                  cal.loaded = true;
+                }
+                if (ar[0] === L) {
+                  const api = function () {
+                    p(api, arguments);
+                  };
+                  const namespace = ar[1];
+                  api.q = api.q || [];
+                  if (typeof namespace === "string") {
+                    cal.ns[namespace] = cal.ns[namespace] || api;
+                    p(cal.ns[namespace], ar);
+                    p(cal, ["initNamespace", namespace]);
+                  } else p(cal, ar);
+                  return;
+                }
+                p(cal, ar);
+              };
+          })(window, "https://app.cal.com/embed/embed.js", "init");
+
+          const Cal = window.Cal;
+          Cal("init", "llamada", { origin: "https://cal.com" });
+          Cal.ns.llamada("inline", {
+            elementOrSelector: "#cal-inline",
+            calLink: "mndesignweb/reunion-30-min",
+            config: { layout: "month_view" },
+          });
+          Cal.ns.llamada("ui", { hideEventTypeDetails: false, layout: "month_view" });
+          Cal.ns.llamada("on", { action: "bookingSuccessfulV2", callback: onBooked });
+          Cal.ns.llamada("on", { action: "bookingSuccessful", callback: onBooked });
+        };
+
+        if ("IntersectionObserver" in window) {
+          const calObserver = new IntersectionObserver(
+            (entries) => {
+              if (entries[0].isIntersecting) {
+                loadCal();
+                calObserver.disconnect();
+              }
+            },
+            { rootMargin: "800px 0px" },
+          );
+          calObserver.observe(calBox);
+        } else {
+          loadCal();
+        }
+      }
+
+      // ==========================================
+      // MEDICIÓN DE CLICS EN TELÉFONO, WHATSAPP Y EMAIL
+      // ==========================================
+      document.addEventListener("click", (e) => {
+        const link = e.target.closest && e.target.closest("a[href]");
+        if (!link) return;
+        const href = link.getAttribute("href");
+        let tipo = null;
+        if (href.startsWith("tel:")) tipo = "phone";
+        else if (href.includes("wa.me") || href.includes("whatsapp")) tipo = "whatsapp";
+        else if (href.startsWith("mailto:")) tipo = "email";
+        if (!tipo) return;
+        if (typeof gtag === "function")
+          gtag("event", "click_" + tipo, { link_url: href });
+        if (typeof fbq === "function") fbq("track", "Contact", { content_name: tipo });
+      });
 
       function mostrarToast(titulo, mensaje, tipo = "success") {
         const container = document.getElementById("toast-container");
@@ -1763,6 +1757,7 @@ import "./style.css";
               email: document.getElementById("email").value,
               telefono: document.getElementById("telefono").value,
               mensaje: document.getElementById("mensaje").value,
+              privacidad: "Aceptada",
             };
 
             Promise.all([

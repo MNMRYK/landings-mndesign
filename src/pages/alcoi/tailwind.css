@@ -1,0 +1,4 @@
+/* Tailwind compilado para la landing de Alcoi (sustituye al CDN, que no es apto para producción) */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
