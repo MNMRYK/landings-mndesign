@@ -2125,6 +2125,46 @@
         letter-spacing: 0;
         color: var(--muted);
       }
+      .price .from {
+        font: 600 1rem var(--f-body);
+        letter-spacing: 0;
+        color: var(--muted);
+        margin-right: 4px;
+      }
+      .plan-extras {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+        max-width: 960px;
+        margin: 22px auto 0;
+        text-align: left;
+      }
+      .plan-extras .px {
+        display: flex;
+        gap: 14px;
+        align-items: center;
+        padding: 18px 22px;
+        border-radius: 20px;
+        background: var(--surface);
+        border: 1px solid var(--line);
+      }
+      .plan-extras .ico-box {
+        flex: none;
+        margin: 0;
+      }
+      .plan-extras b {
+        display: block;
+        font-size: 1rem;
+      }
+      .plan-extras span:not(.ico-box) {
+        font-size: 0.9rem;
+        color: var(--muted);
+      }
+      .plan-note {
+        margin-top: 18px;
+        font-size: 0.92rem;
+        color: var(--muted);
+      }
       .plan > p {
         margin-bottom: 22px;
       }
@@ -2447,6 +2487,87 @@
         transform: translate(3px, -3px);
       }
 
+      /* 15.1 QUIÉNES SOMOS + GARANTÍAS */
+      .about {
+        display: grid;
+        grid-template-columns: 0.85fr 1.15fr;
+        gap: 64px;
+        align-items: center;
+      }
+      .about-photo {
+        position: relative;
+        margin: 0;
+      }
+      .about-photo img {
+        display: block;
+        width: 100%;
+        height: auto;
+        aspect-ratio: 929 / 904;
+        object-fit: cover;
+        border-radius: 28px;
+        box-shadow: var(--sh-lg);
+      }
+      .about-photo figcaption {
+        position: absolute;
+        left: 16px;
+        right: 16px;
+        bottom: 16px;
+        display: flex;
+        gap: 12px;
+        align-items: center;
+        padding: 12px 16px;
+        border-radius: 18px;
+        background: color-mix(in srgb, var(--surface) 88%, transparent);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid var(--line);
+        font-size: 0.84rem;
+        line-height: 1.4;
+        color: var(--muted);
+      }
+      .about-photo figcaption .i {
+        flex: none;
+        color: var(--brand);
+      }
+      .about-photo figcaption b {
+        display: block;
+        color: var(--ink);
+      }
+      .about-txt p {
+        color: var(--muted);
+        font-size: 1.05rem;
+        margin-bottom: 16px;
+        max-width: 580px;
+      }
+      .about-map {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        margin-top: 8px;
+        color: var(--brand);
+        font-weight: 600;
+        text-decoration: none;
+      }
+      .about-map:hover {
+        text-decoration: underline;
+        text-underline-offset: 3px;
+      }
+      .guarantees {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 18px;
+        margin-top: 64px;
+      }
+      .guarantees .card {
+        padding: 26px;
+      }
+      .guarantees h3 {
+        font-size: 1.08rem;
+      }
+      .guarantees p {
+        font-size: 0.92rem;
+      }
+
       /* 16. FAQ (dos columnas como la referencia) */
       .faq-grid {
         display: grid;
@@ -2583,6 +2704,9 @@
         box-shadow: var(--sh-lg);
         border: 1px solid var(--line);
       }
+      #cal-inline {
+        overflow-y: auto;
+      }
       .cal iframe {
         width: 100%;
         height: 100%;
@@ -2618,7 +2742,8 @@
         margin-bottom: 6px;
       }
       input,
-      select {
+      select,
+      textarea {
         width: 100%;
         padding: 13px 16px;
         border: 1px solid var(--line);
@@ -2633,11 +2758,13 @@
           background 0.25s;
       }
       input:hover,
-      select:hover {
+      select:hover,
+      textarea:hover {
         border-color: color-mix(in srgb, var(--brand) 35%, var(--line));
       }
       input:focus,
-      select:focus {
+      select:focus,
+      textarea:focus {
         outline: 0;
         background: var(--surface);
         border-color: var(--brand);
@@ -2654,6 +2781,124 @@
         padding: 14px 18px;
         border-radius: 14px;
         font-weight: 600;
+      }
+      .ok-msg a {
+        color: inherit;
+        text-decoration: underline;
+      }
+      textarea {
+        resize: vertical;
+        min-height: 92px;
+        line-height: 1.5;
+      }
+      label .opt {
+        font-weight: 400;
+        color: var(--muted);
+      }
+      /* Casilla de aceptación de privacidad */
+      .chk {
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        margin: 0;
+        font-weight: 400;
+        font-size: 0.86rem;
+        line-height: 1.45;
+        color: var(--muted);
+        cursor: pointer;
+      }
+      .chk input {
+        width: 18px;
+        height: 18px;
+        flex: none;
+        margin-top: 1px;
+        padding: 0;
+        accent-color: var(--brand);
+        cursor: pointer;
+      }
+      .chk a,
+      .rgpd-info a {
+        color: var(--brand);
+        font-weight: 600;
+      }
+      /* Primera capa informativa RGPD */
+      .rgpd-info {
+        font-size: 0.74rem;
+        line-height: 1.5;
+        color: var(--muted);
+        padding-top: 14px;
+        border-top: 1px solid var(--line);
+      }
+      .rgpd-info b {
+        color: var(--ink2);
+        font-weight: 600;
+      }
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0 0 0 0);
+        white-space: nowrap;
+        border: 0;
+      }
+
+      /* 17.1 IMÁN DE CAPTACIÓN: checklist RGPD */
+      .magnet {
+        margin-top: 24px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 24px 40px;
+        align-items: center;
+        text-align: left;
+        padding: 32px 36px;
+        border-radius: 26px;
+        background: var(--surface);
+        border: 1px dashed color-mix(in srgb, var(--brand) 40%, var(--line));
+      }
+      .magnet-txt {
+        display: flex;
+        gap: 16px;
+        align-items: flex-start;
+      }
+      .magnet-txt .ico-box {
+        flex: none;
+        margin: 0;
+      }
+      .magnet h3 {
+        font-size: 1.2rem;
+        margin-bottom: 6px;
+      }
+      .magnet p {
+        color: var(--muted);
+        font-size: 0.95rem;
+      }
+      .magnet p b {
+        color: var(--ink);
+      }
+      /* El formulario del imán no lleva la tarjeta del formulario general */
+      .magnet-form {
+        background: none;
+        border: 0;
+        box-shadow: none;
+        padding: 0;
+        border-radius: 0;
+        gap: 12px;
+      }
+      .magnet-row {
+        display: flex;
+        gap: 10px;
+      }
+      .magnet-row input {
+        flex: 1;
+        min-width: 0;
+      }
+      .magnet-form .btn {
+        width: auto;
+        margin: 0;
+        flex: none;
       }
 
       /* 18. FOOTER + CTA MÓVIL */
@@ -2684,6 +2929,87 @@
       }
       .sticky-cta {
         display: none;
+      }
+
+      /* 18.1 BANNER DE COOKIES
+         JS-6 cambia el display inline (none ↔ flex); la animación se lanza al mostrarse */
+      .cookie-banner {
+        position: fixed;
+        left: 24px;
+        bottom: calc(24px + env(safe-area-inset-bottom, 0px));
+        z-index: 60;
+        width: min(440px, calc(100% - 48px));
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-start;
+        gap: 14px 16px;
+        padding: 20px;
+        border-radius: 22px;
+        background: color-mix(in srgb, var(--surface) 90%, transparent);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border: 1px solid var(--line);
+        box-shadow: var(--sh-lg);
+        color: var(--ink);
+        font-family: var(--f-body);
+        animation: cookie-in 0.6s var(--ease) 0.8s both;
+      }
+      @keyframes cookie-in {
+        from {
+          opacity: 0;
+          transform: translateY(24px) scale(0.98);
+        }
+      }
+      .cookie-ico {
+        flex: none;
+        display: grid;
+        place-items: center;
+        width: 44px;
+        height: 44px;
+        border-radius: 14px;
+        background: var(--sky);
+        color: var(--brand);
+      }
+      .cookie-ico svg {
+        width: 24px;
+        height: 24px;
+        fill: currentColor;
+      }
+      .cookie-txt {
+        flex: 1 1 0;
+        min-width: 0;
+      }
+      .cookie-title {
+        font: 700 1.02rem/1.25 var(--f-title);
+        letter-spacing: -0.01em;
+        margin-bottom: 4px;
+      }
+      .cookie-desc {
+        font-size: 0.86rem;
+        line-height: 1.5;
+        color: var(--muted);
+      }
+      .cookie-desc a {
+        display: block;
+        width: fit-content;
+        margin-top: 4px;
+        color: var(--brand);
+        font-weight: 600;
+        text-decoration: underline;
+        text-underline-offset: 3px;
+      }
+      .cookie-actions {
+        flex: 1 1 100%;
+        display: flex;
+        gap: 10px;
+      }
+      .cookie-actions .btn {
+        flex: 1;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .cookie-banner {
+          animation: none;
+        }
       }
 
       /* 19. RESPONSIVE
@@ -3183,6 +3509,7 @@
           right: 0;
           bottom: 0;
           z-index: 40;
+          border-radius: 50px;
           padding: 12px 16px calc(12px + env(safe-area-inset-bottom, 0px));
           background: color-mix(in srgb, var(--bg) 88%, transparent);
           backdrop-filter: blur(14px);
@@ -3204,8 +3531,55 @@
         }
       }
 
+      /* Nuevas secciones en tablet (≤900 px) */
+      @media (max-width: 900px) {
+        .about {
+          grid-template-columns: 1fr;
+          gap: 36px;
+        }
+        .about-photo {
+          max-width: 440px;
+        }
+        .guarantees {
+          grid-template-columns: 1fr 1fr;
+          margin-top: 40px;
+        }
+        .magnet {
+          grid-template-columns: 1fr;
+        }
+      }
+
       /* 19.4 Móvil: todo a una columna fluida */
       @media (max-width: 640px) {
+        .plan-extras,
+        .guarantees {
+          grid-template-columns: 1fr;
+        }
+        .magnet {
+          padding: 22px 18px;
+          border-radius: 20px;
+        }
+        .magnet-row {
+          flex-direction: column;
+        }
+        .magnet-form .btn {
+          width: 100%;
+        }
+        /* Banner de cookies: tarjeta inferior a lo ancho, por encima del CTA fijo */
+        .cookie-banner {
+          left: 12px;
+          right: 12px;
+          bottom: calc(12px + env(safe-area-inset-bottom, 0px));
+          width: auto;
+          padding: 16px;
+          border-radius: 20px;
+        }
+        .cookie-ico {
+          width: 38px;
+          height: 38px;
+          border-radius: 12px;
+        }
+
         section {
           padding: 64px 0;
         }
@@ -3219,7 +3593,7 @@
         .nav,
         .top .nav {
           height: 58px;
-          padding: 0 7px 0 14px;
+          padding: 0 17px 0 24px;
         }
         .mnav {
           padding-left: 10px;

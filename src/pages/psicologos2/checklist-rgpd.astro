@@ -1,0 +1,404 @@
+---
+/* =========================================================
+   CHECKLIST RGPD PARA CONSULTAS DE PSICOLOGÍA
+   Imán de captación: se entrega tras dejar el email en la landing.
+   No indexable. Se puede imprimir o guardar como PDF.
+   ========================================================= */
+
+const blocks = [
+  {
+    t: "Documentación",
+    items: [
+      [
+        "Tienes un registro de actividades de tratamiento",
+        "Es obligatorio aunque trabajes sola, porque tratas datos de salud. Recoge qué datos tratas, para qué, cuánto tiempo y quién accede.",
+      ],
+      [
+        "Informas a tus pacientes de cómo tratas sus datos",
+        "Cláusula informativa por escrito en la primera visita y en todos los formularios de tu web: responsable, finalidad, base legal, destinatarios y derechos.",
+      ],
+      [
+        "Recoges el consentimiento informado para la intervención",
+        "Firmado antes de empezar, como pide el código deontológico. En menores, firmado por sus progenitores o tutores legales.",
+      ],
+      [
+        "Has firmado un contrato de encargado con cada proveedor",
+        "Hosting, email, videollamada, agenda online, gestoría o informático: cualquiera que pueda acceder a datos de tus pacientes.",
+      ],
+      [
+        "Tus colaboradores han firmado un compromiso de confidencialidad",
+        "Recepción, otros profesionales del centro o personal en prácticas.",
+      ],
+    ],
+  },
+  {
+    t: "Historia clínica y seguridad",
+    items: [
+      [
+        "Conservas la historia clínica al menos 5 años",
+        "Desde la última asistencia, como marca la Ley 41/2002, y la eliminas de forma segura cuando ya no sea necesaria.",
+      ],
+      [
+        "Solo tú accedes a las notas de sesión",
+        "Contraseñas robustas, verificación en dos pasos y bloqueo automático de pantalla en ordenador y móvil.",
+      ],
+      [
+        "Tus dispositivos y copias de seguridad están cifrados",
+        "Si pierdes el portátil o el móvil, nadie puede leer los datos. Comprueba de vez en cuando que las copias se pueden restaurar.",
+      ],
+      [
+        "El papel está bajo llave y se destruye de forma segura",
+        "Archivador cerrado y destructora o empresa certificada. Nada de papeleras.",
+      ],
+    ],
+  },
+  {
+    t: "Terapia online y comunicaciones",
+    items: [
+      [
+        "Haces las videoconsultas con una herramienta cifrada",
+        "Con contrato de encargado y servidores en la UE. Evita tu WhatsApp o tu cuenta personal para las sesiones.",
+      ],
+      [
+        "No envías informes por canales sin protección",
+        "Los documentos clínicos se comparten cifrados o desde un portal privado del paciente, no como adjunto sin más.",
+      ],
+      [
+        "Tu web cumple: aviso legal, privacidad y cookies",
+        "Con un banner que permite rechazar las cookies tan fácilmente como aceptarlas, y formularios con casilla de privacidad.",
+      ],
+    ],
+  },
+  {
+    t: "Derechos y brechas",
+    items: [
+      [
+        "Sabes cómo responder a una solicitud de derechos",
+        "Acceso, rectificación, supresión… Tienes un mes para contestar. Ojo: la historia clínica no se puede borrar antes del plazo legal de conservación.",
+      ],
+      [
+        "Tienes un protocolo ante brechas de seguridad",
+        "Las registras siempre y las notificas a la AEPD en 72 horas cuando supongan un riesgo para tus pacientes.",
+      ],
+      [
+        "Has valorado si necesitas Delegado de Protección de Datos",
+        "Es obligatorio para centros sanitarios, pero no para profesionales que ejercen a título individual. Si tu centro crece, revísalo.",
+      ],
+    ],
+  },
+];
+let n = 0;
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Checklist RGPD para consultas de psicología | MN Design Web</title>
+    <meta name="robots" content="noindex, nofollow" />
+    <link rel="icon" type="image/webp" href="/favicon_v2.webp" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #f5f9fd;
+        --surface: #ffffff;
+        --ink: #0b1220;
+        --muted: #5d6b80;
+        --line: #e5ecf4;
+        --brand: #2f7cf6;
+        --sky: #e7f2ff;
+        --mint: #1fbf9f;
+        --mint-bg: #dcf6ef;
+        --grad: linear-gradient(95deg, #2f7cf6 0%, #52a8ff 45%, #1fbf9f 100%);
+      }
+      @media (prefers-color-scheme: dark) {
+        :root:not([data-theme="light"]) {
+          --bg: #070d18;
+          --surface: #0f1a2b;
+          --ink: #eef3fa;
+          --muted: #9aabc2;
+          --line: #1d2b40;
+          --brand: #5aa2ff;
+          --sky: #0e1d33;
+          --mint-bg: #0f3a31;
+        }
+      }
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+      }
+      body {
+        background: var(--bg);
+        color: var(--ink);
+        font: 400 16px/1.55 "Inter", system-ui, sans-serif;
+        padding: 48px 16px 64px;
+      }
+      .sheet {
+        max-width: 780px;
+        margin: 0 auto;
+      }
+      header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 16px;
+        flex-wrap: wrap;
+        margin-bottom: 36px;
+      }
+      .logo {
+        font: 800 1.05rem "Inter Tight", sans-serif;
+        color: var(--ink);
+        text-decoration: none;
+      }
+      .logo i {
+        font-style: normal;
+        background: var(--grad);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        margin-right: 4px;
+      }
+      .print {
+        font: 600 0.92rem "Inter", sans-serif;
+        padding: 10px 18px;
+        border-radius: 999px;
+        border: 1px solid var(--line);
+        background: var(--surface);
+        color: var(--ink);
+        cursor: pointer;
+      }
+      .print:hover {
+        border-color: var(--brand);
+        color: var(--brand);
+      }
+      h1 {
+        font: 800 clamp(1.9rem, 5vw, 2.6rem) / 1.1 "Inter Tight", sans-serif;
+        letter-spacing: -0.03em;
+        margin-bottom: 14px;
+      }
+      h1 span {
+        background: var(--grad);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+      .intro {
+        color: var(--muted);
+        font-size: 1.05rem;
+        max-width: 620px;
+        margin-bottom: 20px;
+      }
+      .progress {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-size: 0.9rem;
+        color: var(--muted);
+        margin-bottom: 36px;
+      }
+      .bar {
+        flex: 1;
+        max-width: 260px;
+        height: 8px;
+        border-radius: 99px;
+        background: var(--line);
+        overflow: hidden;
+      }
+      .bar i {
+        display: block;
+        height: 100%;
+        width: 0;
+        background: var(--grad);
+        transition: width 0.4s;
+      }
+      h2 {
+        font: 700 0.8rem "Inter", sans-serif;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: var(--brand);
+        margin: 32px 0 12px;
+      }
+      ol {
+        list-style: none;
+        padding: 0;
+        display: grid;
+        gap: 10px;
+      }
+      label.item {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: 14px;
+        padding: 18px 20px;
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        cursor: pointer;
+        transition: border-color 0.2s, background 0.2s;
+      }
+      label.item:hover {
+        border-color: color-mix(in srgb, var(--brand) 40%, var(--line));
+      }
+      label.item input {
+        width: 22px;
+        height: 22px;
+        margin-top: 2px;
+        accent-color: var(--mint);
+        cursor: pointer;
+      }
+      label.item:has(input:checked) {
+        background: var(--mint-bg);
+        border-color: transparent;
+      }
+      .num {
+        color: var(--muted);
+        font-weight: 600;
+        margin-right: 6px;
+      }
+      .item b {
+        display: block;
+        font-weight: 600;
+        margin-bottom: 4px;
+      }
+      .item p {
+        color: var(--muted);
+        font-size: 0.93rem;
+      }
+      .cta {
+        margin-top: 44px;
+        padding: 28px;
+        border-radius: 22px;
+        background: var(--sky);
+        border: 1px solid var(--line);
+      }
+      .cta h3 {
+        font: 700 1.25rem "Inter Tight", sans-serif;
+        margin-bottom: 8px;
+      }
+      .cta p {
+        color: var(--muted);
+        margin-bottom: 18px;
+      }
+      .cta a {
+        display: inline-block;
+        padding: 13px 22px;
+        border-radius: 999px;
+        background: var(--ink);
+        color: var(--bg);
+        font-weight: 600;
+        text-decoration: none;
+      }
+      .legal {
+        margin-top: 28px;
+        font-size: 0.8rem;
+        color: var(--muted);
+      }
+      @media print {
+        body {
+          background: #fff;
+          padding: 0;
+          font-size: 12px;
+        }
+        .print,
+        .progress,
+        .cta a {
+          display: none;
+        }
+        label.item {
+          break-inside: avoid;
+          padding: 10px 14px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="sheet">
+      <header>
+        <a class="logo" href="/psicologos2/"><i>MN</i>Design Web</a>
+        <button class="print" type="button" onclick="window.print()">
+          Imprimir o guardar en PDF
+        </button>
+      </header>
+
+      <h1>Checklist RGPD para <span>consultas de psicología</span></h1>
+      <p class="intro">
+        15 puntos para comprobar en 10 minutos si tu consulta protege como
+        debe los datos de tus pacientes. Marca los que ya cumples: los que
+        queden sin marcar son tu lista de tareas.
+      </p>
+      <div class="progress" aria-live="polite">
+        <div class="bar"><i id="bar"></i></div>
+        <span id="count">0 de 15 cumplidos</span>
+      </div>
+
+      {
+        blocks.map((b) => (
+          <section>
+            <h2>{b.t}</h2>
+            <ol>
+              {b.items.map(([t, p]) => {
+                n++;
+                return (
+                  <li>
+                    <label class="item">
+                      <input type="checkbox" />
+                      <span>
+                        <b>
+                          <span class="num">{String(n).padStart(2, "0")}</span>
+                          {t}
+                        </b>
+                        <p>{p}</p>
+                      </span>
+                    </label>
+                  </li>
+                );
+              })}
+            </ol>
+          </section>
+        ))
+      }
+
+      <div class="cta">
+        <h3>¿Te han quedado puntos sin marcar?</h3>
+        <p>
+          Muchos se resuelven con una web y un software propios: videoconsulta
+          cifrada, portal del paciente, consentimiento digital y servidores en
+          la UE. Te lo explicamos en una llamada gratuita de 30 minutos.
+        </p>
+        <a href="/psicologos2/#contacto">Agendar llamada gratuita</a>
+      </div>
+
+      <p class="legal">
+        Este checklist es orientativo y no sustituye el asesoramiento de un
+        profesional en protección de datos. © MN Design Web · Cocentaina
+        (Alicante) · info@mndesignweb.es
+      </p>
+    </main>
+
+    <script is:inline>
+      (function () {
+        var boxes = document.querySelectorAll(".item input");
+        var bar = document.getElementById("bar");
+        var count = document.getElementById("count");
+        function update() {
+          var done = 0;
+          boxes.forEach(function (b) {
+            if (b.checked) done++;
+          });
+          bar.style.width = (done / boxes.length) * 100 + "%";
+          count.textContent = done + " de " + boxes.length + " cumplidos";
+        }
+        boxes.forEach(function (b) {
+          b.addEventListener("change", update);
+        });
+      })();
+    </script>
+  </body>
+</html>

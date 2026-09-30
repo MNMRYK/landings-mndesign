@@ -29,7 +29,35 @@ const ic: Record<string, string> = {
   mail: '<rect x="3" y="5" width="18" height="14" rx="3"/><path d="m3.5 6.5 8.5 6 8.5-6"/>',
   ext: '<path d="M14 4h6v6M20 4l-9 9M18 14v4a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4"/>',
   plus: '<path d="M12 5v14M5 12h14"/>',
+  pin: '<path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/>',
+  server:
+    '<rect x="3.5" y="4" width="17" height="7" rx="2"/><rect x="3.5" y="13" width="17" height="7" rx="2"/><path d="M7.5 7.5h.01M7.5 16.5h.01"/>',
+  key: '<circle cx="8" cy="15" r="4"/><path d="m11 12 9-9M17 6l3 3M14.5 8.5l2 2"/>',
 };
+
+// Garantías sobre los datos (sección Quiénes somos)
+const guarantees = [
+  {
+    i: "file",
+    t: "Contrato de encargado del tratamiento",
+    p: "Lo firmamos contigo antes de empezar, como exige el RGPD cuando tratamos datos de tus pacientes.",
+  },
+  {
+    i: "server",
+    t: "Servidores en la Unión Europea",
+    p: "Tu web y la base de datos de pacientes se alojan en la UE. Sin transferencias fuera del espacio europeo.",
+  },
+  {
+    i: "shield",
+    t: "Historia clínica protegida",
+    p: "Notas de sesión con acceso solo para ti, según el código deontológico de la psicología.",
+  },
+  {
+    i: "key",
+    t: "Todo es tuyo",
+    p: "La web, el software y los datos te pertenecen. Si un día te vas, te lo llevas todo, sin permanencias.",
+  },
+];
 
 // Tira de funciones (marquee del hero)
 const features = [
@@ -110,7 +138,7 @@ const steps = [
   {
     w: "Semanas 2-5",
     t: "Diseño, reservas y pruebas de seguridad",
-    p: "Construyo tu web y tu software de gestión de pacientes: agenda, cobros y videoconsulta en un mismo sitio. En 3-5 semanas está funcionando.",
+    p: "Construimos tu web y tu software de gestión de pacientes: agenda, cobros y videoconsulta en un mismo sitio. En 3-5 semanas está funcionando.",
     d: [
       "Diseño a medida en móvil y escritorio",
       "Agenda, pagos y videoconsulta conectados",
@@ -120,7 +148,7 @@ const steps = [
   {
     w: "Después",
     t: "Formación y soporte continuo",
-    p: "Te enseño a gestionar todo y me quedo como socio técnico: copias, seguridad y mejoras.",
+    p: "Te enseñamos a gestionarlo todo y nos quedamos como tu equipo técnico: copias, seguridad y mejoras.",
     d: [
       "Sesión de formación grabada",
       "Copias diarias y actualizaciones",
@@ -152,28 +180,28 @@ const demos = [
     t: "Psicología especializada",
     u: "https://mnmryk.github.io/psicologia-especializada/",
     h: 212,
-    image: "/demos/psicologia-especializada.webp",
+    image: "/psicologos/psicologia-especializada.webp",
     alt: "Ejemplo de web para psicólogo especializado con reserva de citas online",
   },
   {
     t: "Psicología y bienestar",
     u: "https://mnmryk.github.io/demo-psicologia-bienestar/",
     h: 168,
-    image: "/demos/psicologia-bienestar.webp",
+    image: "/psicologos/psicologia-bienestar.webp",
     alt: "Ejemplo de web de psicología y bienestar emocional para psicóloga",
   },
   {
     t: "Psicología clínica",
     u: "https://mnmryk.github.io/demo-psicologia-clinica/",
     h: 256,
-    image: "/demos/psicologia-clinica.webp",
+    image: "/psicologos/psicologia-clinica.webp",
     alt: "Ejemplo de web para clínica de psicología con agenda online y terapia online",
   },
   {
     t: "Consulta de nutrición",
     u: "https://mnmryk.github.io/demo-nutricion/",
     h: 142,
-    image: "/demos/nutricion.webp",
+    image: "/psicologos/nutricion.webp",
     alt: "Ejemplo de web para consulta de nutrición con reserva de citas online",
   },
 ];
@@ -181,11 +209,19 @@ const demos = [
 const faqs = [
   [
     "¿Puedo tener mi propio software para psicólogos en lugar de pagar uno externo?",
-    "Sí. Desarrollo una plataforma de pacientes a medida integrada en tu propia web: agenda, cobros, videoconsulta y documentos en tu software de gestión, sin pagar cuotas a terceros ni externalizar herramientas. Si ya usas un gestor clínico, un CRM (HubSpot, Salesforce) o un calendario (Google Calendar, Outlook), lo conecto por API.",
+    "Sí. Desarrollamos una plataforma de pacientes a medida integrada en tu propia web: agenda, cobros, videoconsulta y documentos en tu software de gestión, sin pagar cuotas a terceros ni externalizar herramientas. Si ya usas un gestor clínico, un CRM (HubSpot, Salesforce) o un calendario (Google Calendar, Outlook), lo conectamos por API.",
   ],
   [
     "¿Cumple el RGPD con datos de salud mental?",
-    "Sí. Uso SSL, bases de datos cifradas y cookies conformes a la normativa europea, incluido el RGPD sanitario. Al estar la plataforma en tu propia web, los datos de tus pacientes no pasan por herramientas de terceros.",
+    "Sí. Usamos SSL, bases de datos cifradas y servidores ubicados en la Unión Europea, y firmamos contigo el contrato de encargado del tratamiento que exige el RGPD para datos de salud. Al estar la plataforma en tu propia web, los datos de tus pacientes no pasan por herramientas de terceros.",
+  ],
+  [
+    "¿La web y los datos de mis pacientes son míos?",
+    "Sí. La web, el software y la base de datos son tuyos desde el primer día. Si un día decides cambiar de proveedor, te entregamos el código y una exportación completa de tus datos, sin permanencias ni penalizaciones.",
+  ],
+  [
+    "¿Cómo se protegen la historia clínica y las notas de sesión?",
+    "Solo tú (y los profesionales que autorices) podéis acceder a ellas, con acceso cifrado y registro de accesos. La plataforma se diseña siguiendo el código deontológico del Consejo General de la Psicología y la normativa de conservación de la historia clínica.",
   ],
   [
     "¿Puedo hacer terapia online desde mi web de psicólogo?",
@@ -193,7 +229,7 @@ const faqs = [
   ],
   [
     "¿En qué se diferencia de Wix o Squarespace?",
-    "No uso plantillas. Construyo tu web y tu software a medida para tu consulta de psicología, optimizados para SEO local y pensados para generar confianza y convertir visitas en pacientes.",
+    "No usamos plantillas. Construimos tu web y tu software a medida para tu consulta de psicología, optimizados para SEO local y pensados para generar confianza y convertir visitas en pacientes.",
   ],
   [
     "¿Cuánto tarda en estar lista?",
@@ -201,15 +237,15 @@ const faqs = [
   ],
   [
     "¿Necesito conocimientos técnicos para gestionar mis citas o el blog?",
-    "No. Te dejo el panel configurado y una sesión de formación para ti o tu equipo, para que gestionéis la agenda de pacientes y publiquéis en el blog sin ayuda.",
+    "No. Te dejamos el panel configurado y una sesión de formación para ti o tu equipo, para que gestionéis la agenda de pacientes y publiquéis en el blog sin ayuda.",
   ],
   [
     "¿Y si algo falla o quiero cambios?",
-    "Ofrezco mantenimiento mensual con actualizaciones de seguridad, copias diarias y pequeñas modificaciones, para que tú solo te ocupes de tus pacientes.",
+    "Nuestro mantenimiento activo cuesta 65 €/mes e incluye actualizaciones de seguridad, copias diarias y pequeñas modificaciones, para que tú solo te ocupes de tus pacientes. Si solo necesitas revisar algo puntual, las auditorías empiezan en 30 €.",
   ],
   [
-    "¿Me ayudas a aparecer en Google en mi ciudad?",
-    "Sí. Aplico SEO local desde el código, optimizo la velocidad de carga y conecto la web con tu perfil de Google Business Profile (Maps) para atraer pacientes de tu zona que buscan psicólogo.",
+    "¿Me ayudáis a aparecer en Google en mi ciudad?",
+    "Sí. Aplicamos SEO local desde el código, optimizamos la velocidad de carga y conectamos la web con tu perfil de Google Business Profile (Maps) para atraer pacientes de tu zona que buscan psicólogo.",
   ],
 ];
 
@@ -245,7 +281,10 @@ const schema = {
       email: "info@mndesignweb.es",
       address: {
         "@type": "PostalAddress",
-        addressLocality: "Alicante",
+        streetAddress: "Avinguda Passeig del Comtat, 75, 5º 1º",
+        postalCode: "03820",
+        addressLocality: "Cocentaina",
+        addressRegion: "Alicante",
         addressCountry: "ES",
       },
       priceRange: "$$",
@@ -282,7 +321,26 @@ const schema = {
             "@type": "Offer",
             name: "Fase 2 · Software para psicólogos a medida",
             description:
-              "Plataforma de pacientes a medida integrada en tu web: portal privado del paciente, agente de IA, recordatorios automáticos, aula virtual, cobros recurrentes y sincronización con tu ERP o gestor. Presupuesto según el caso.",
+              "Plataforma de pacientes a medida integrada en tu web: portal privado del paciente, agente de IA, recordatorios automáticos, aula virtual, cobros recurrentes y sincronización con tu ERP o gestor.",
+            priceSpecification: {
+              "@type": "PriceSpecification",
+              minPrice: 1350,
+              priceCurrency: "EUR",
+              valueAddedTaxIncluded: false,
+            },
+          },
+          {
+            "@type": "Offer",
+            name: "Mantenimiento activo mensual",
+            description:
+              "Actualizaciones de seguridad, copias de seguridad diarias y pequeñas modificaciones de la web y el software.",
+            priceSpecification: {
+              "@type": "UnitPriceSpecification",
+              price: 65,
+              priceCurrency: "EUR",
+              unitText: "MONTH",
+              valueAddedTaxIncluded: false,
+            },
           },
         ],
       },
@@ -398,6 +456,7 @@ const schema = {
           t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
           y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
         })(window, document, "clarity", "script", "wuzaxaifa0");
+        clarity("consent");
       }
     </script>
   </head>
@@ -412,6 +471,7 @@ const schema = {
           <a href="#proceso">Proceso</a>
           <a href="#planes">Planes</a>
           <a href="#opiniones">Opiniones</a>
+          <a href="#nosotros">Nosotros</a>
         </nav>
         <a class="btn btn-main btn-sm nav-cta" href="#contacto">
           Agendar llamada <svg
@@ -475,6 +535,13 @@ const schema = {
           >
           <a href="#opiniones"
             ><span>Opiniones</span><svg
+              class="i"
+              viewBox="0 0 24 24"
+              set:html={ic.arrow}
+            /></a
+          >
+          <a href="#nosotros"
+            ><span>Nosotros</span><svg
               class="i"
               viewBox="0 0 24 24"
               set:html={ic.arrow}
@@ -1188,7 +1255,7 @@ const schema = {
                 <h3>Tu propia herramienta de gestión</h3>
                 <p>
                   Sin cuotas a terceros ni herramientas externalizadas. Y si ya
-                  usas un CRM, ERP o gestor clínico, lo conecto para que no
+                  usas un CRM, ERP o gestor clínico, lo conectamos para que no
                   trabajes dos veces.
                 </p>
               </div>
@@ -1329,7 +1396,9 @@ const schema = {
               <span class="ptag">Más elegida</span>
               <h3>Fase 2 · Software para psicólogos a medida</h3>
               <div class="price">
-                Según tu caso <small>presupuesto tras la llamada</small>
+                <span class="from">Desde</span> 1.350 € <small
+                  >IVA no incluido · presupuesto cerrado tras la llamada</small
+                >
               </div>
               <p>
                 Tu propia plataforma de pacientes para clínicas de psicología y
@@ -1356,6 +1425,31 @@ const schema = {
               >
             </div>
           </div>
+          <!-- Servicios complementarios con precio -->
+          <div class="plan-extras rv">
+            <div class="px">
+              <span class="ico-box"
+                ><svg class="i" viewBox="0 0 24 24" set:html={ic.shield} /></span
+              >
+              <div>
+                <b>Mantenimiento activo · 65 €/mes</b>
+                <span>Seguridad, copias diarias y pequeños cambios incluidos.</span>
+              </div>
+            </div>
+            <div class="px">
+              <span class="ico-box"
+                ><svg class="i" viewBox="0 0 24 24" set:html={ic.spark} /></span
+              >
+              <div>
+                <b>Auditorías · desde 30 €</b>
+                <span>Revisamos tu web actual: velocidad, SEO local y RGPD.</span>
+              </div>
+            </div>
+          </div>
+          <p class="plan-note rv">
+            Sin permanencia. La web, el software y los datos son tuyos desde el
+            primer día.
+          </p>
         </div>
       </section>
 
@@ -1519,6 +1613,73 @@ const schema = {
         </div>
       </section>
 
+      <!-- HTML-9b · QUIÉNES SOMOS + garantías sobre los datos -->
+      <section id="nosotros">
+        <div class="wrap about">
+          <figure class="about-photo rv">
+            <img
+              src="/psicologos/mndesignweb.webp"
+              alt="Integrante del equipo de MN Design Web en la oficina de Cocentaina"
+              width="929"
+              height="904"
+              loading="lazy"
+            />
+            <figcaption>
+              <svg class="i" viewBox="0 0 24 24" set:html={ic.pin} />
+              <span
+                ><b>MN Design Web</b>Avinguda Passeig del Comtat, 75, 5º 1º ·
+                03820 Cocentaina (Alicante)</span
+              >
+            </figcaption>
+          </figure>
+          <div class="about-txt">
+            <span class="eyebrow rv">Quiénes somos</span>
+            <h2 class="rv">
+              Un equipo cercano que <span class="grad"
+                >entiende tu consulta</span>
+            </h2>
+            <p class="rv">
+              Somos MN Design Web, un estudio de diseño y desarrollo en
+              Cocentaina (Alicante). Creamos webs y software a medida para
+              psicólogos y profesionales de la salud de toda España, en persona
+              o en remoto.
+            </p>
+            <p class="rv">
+              Trabajamos con psicólogos porque tu día a día tiene necesidades
+              que las herramientas genéricas no cubren: datos de salud que
+              exigen el máximo cuidado, pacientes que buscan confianza antes de
+              reservar y una agenda que no puede depender de mensajes.
+            </p>
+            <a
+              class="about-map rv"
+              href="https://www.google.com/maps/search/?api=1&query=MN+Design+Web+Cocentaina"
+              target="_blank"
+              rel="noopener"
+              >Ver nuestra ficha en Google Maps <svg
+                class="i"
+                viewBox="0 0 24 24"
+                set:html={ic.ext}
+              /></a
+            >
+          </div>
+        </div>
+        <div class="wrap">
+          <div class="guarantees">
+            {
+              guarantees.map((g, idx) => (
+                <div class="card rv" data-spot style={`--d:${idx * 0.06}s`}>
+                  <span class="ico-box">
+                    <svg class="i" viewBox="0 0 24 24" set:html={ic[g.i]} />
+                  </span>
+                  <h3>{g.t}</h3>
+                  <p>{g.p}</p>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+      </section>
+
       <!-- HTML-10 · FAQ (dos columnas) -->
       <section>
         <div class="wrap faq-grid">
@@ -1528,7 +1689,7 @@ const schema = {
               Preguntas comunes, <span class="grad">respuestas claras</span>
             </h2>
             <p class="rv" style="color:var(--muted)">
-              Lo que suelen preguntarme los psicólogos antes de empezar.
+              Lo que suelen preguntarnos los psicólogos antes de empezar.
             </p>
             <div class="card ask rv" data-spot>
               <h3>¿Te queda alguna duda?</h3>
@@ -1569,7 +1730,7 @@ const schema = {
             </h2>
             <p class="lead rv">
               Nos cuentas cómo trabajas en tu consulta y te decimos qué
-              automatizaría primero en tu software. Sin compromiso.
+              automatizaríamos primero en tu software. Sin compromiso.
             </p>
             <div class="direct-contact-grid rv">
               <!-- Botón Email -->
@@ -1628,12 +1789,8 @@ const schema = {
             </div>
             <div class="cgrid">
               <div class="rv">
-                <div class="cal">
-                  <iframe
-                    class="calendar-iframe"
-                    src="https://cal.com/mndesignweb/reunion-30-min?embed=true"
-                    title="Reserva tu llamada"
-                    loading="lazy"></iframe>
+                <!-- Cal.com inline: lo monta JS-7 al acercarse a la sección (mide las reservas) -->
+                <div class="cal" id="cal-inline" aria-label="Reserva tu llamada">
                 </div>
                 <p class="cal-alt">
                   ¿No ves el calendario? <a
@@ -1646,28 +1803,31 @@ const schema = {
               <form id="formulario" class="rv" style="--d:.1s">
                 <h3>¿Prefieres que te escribamos nosotros?</h3>
                 <p class="micro" style="margin:0">
-                  Déjame tus datos y te contestamos en menos de 24 h.
+                  Déjanos tus datos y te contestamos en menos de 24 h.
                 </p>
                 <div>
                   <label for="nombre">Tu nombre o el de tu clínica</label>
-                  <input id="nombre" type="text" required />
+                  <input id="nombre" type="text" autocomplete="name" required />
                 </div>
                 <div>
                   <label for="email">Email</label>
                   <input
                     id="email"
                     type="email"
+                    autocomplete="email"
                     placeholder="consulta@clinica.es"
                     required
                   />
                 </div>
                 <div>
-                  <label for="telefono">Teléfono </label>
+                  <label for="telefono"
+                    >Teléfono <span class="opt">(opcional)</span></label
+                  >
                   <input
                     id="telefono"
                     type="tel"
+                    autocomplete="tel"
                     placeholder="+34 600 000 000"
-                    required
                   />
                 </div>
                 <div>
@@ -1682,25 +1842,110 @@ const schema = {
                     <option value="sistema-reservas"
                       >Automatizar mis reservas</option
                     >
+                    <option value="software-medida"
+                      >Mi propio software de gestión</option
+                    >
                     <option value="aula-virtual"
                       >Crear un aula virtual o cursos</option
                     >
                     <option value="integracion-crm">Conectar mi CRM/ERP</option>
                   </select>
                 </div>
+                <div>
+                  <label for="mensaje"
+                    >Cuéntanos tu caso <span class="opt">(opcional)</span></label
+                  >
+                  <textarea
+                    id="mensaje"
+                    rows="3"
+                    placeholder="Ej.: trabajo sola, hago terapia online y pierdo mucho tiempo cuadrando citas por WhatsApp."
+                  ></textarea>
+                </div>
+                <label class="chk">
+                  <input id="privacidad" type="checkbox" required />
+                  <span
+                    >He leído y acepto la <a
+                      href="https://mndesignweb.es/privacidad/"
+                      target="_blank"
+                      rel="noopener">política de privacidad</a
+                    >.</span
+                  >
+                </label>
                 <button type="submit" id="btn-submit" class="btn btn-brand">
-                  Quiero mi auditoría gratuita <svg
+                  Quiero que me contactéis <svg
                     class="i i-arrow"
                     viewBox="0 0 24 24"
                     set:html={ic.arrow}
                   />
                 </button>
                 <p class="ok-msg" id="ok-msg">
-                  ¡Recibido! Analizaré tu caso personalmente y te escribo
-                  pronto.
+                  ¡Recibido! Analizamos tu caso y te escribimos
+                  en menos de 24 h.
                 </p>
-                <p class="micro" style="margin:0;text-align:center">
-                  Tus datos son confidenciales y solo los uso para responderte.
+                <!-- Primera capa de información RGPD (art. 13 RGPD y art. 11 LOPDGDD) -->
+                <p class="rgpd-info">
+                  <b>Responsable:</b> MN Design Web. <b>Finalidad:</b> responder a
+                  tu solicitud. <b>Legitimación:</b> tu consentimiento.{" "}
+                  <b>Destinatarios:</b> no
+                  cedemos tus datos; los procesan nuestros proveedores de
+                  formularios y automatización (Web3Forms y Make) como encargados
+                  del tratamiento. <b>Derechos:</b> acceso, rectificación,
+                  supresión y demás derechos en info@mndesignweb.es. Más
+                  información en nuestra <a
+                    href="https://mndesignweb.es/privacidad/"
+                    target="_blank"
+                    rel="noopener">política de privacidad</a
+                  >.
+                </p>
+              </form>
+            </div>
+
+            <!-- Imán de captación: checklist RGPD a cambio del email -->
+            <div class="magnet rv">
+              <div class="magnet-txt">
+                <span class="ico-box"
+                  ><svg class="i" viewBox="0 0 24 24" set:html={ic.file} /></span
+                >
+                <div>
+                  <h3>¿Aún no estás listo para hablar?</h3>
+                  <p>
+                    Descarga gratis el <b>Checklist RGPD para consultas de
+                    psicología</b>: 15 puntos para comprobar en 10 minutos si
+                    tu consulta cumple con los datos de tus pacientes.
+                  </p>
+                </div>
+              </div>
+              <form id="form-checklist" class="magnet-form">
+                <label for="email-checklist" class="sr-only">Tu email</label>
+                <div class="magnet-row">
+                  <input
+                    id="email-checklist"
+                    type="email"
+                    autocomplete="email"
+                    placeholder="tu@email.com"
+                    required
+                  />
+                  <button type="submit" id="btn-checklist" class="btn btn-main">
+                    Descargar checklist
+                  </button>
+                </div>
+                <label class="chk">
+                  <input id="privacidad-checklist" type="checkbox" required />
+                  <span
+                    >Acepto la <a
+                      href="https://mndesignweb.es/privacidad/"
+                      target="_blank"
+                      rel="noopener">política de privacidad</a
+                    >. Usaremos tu email solo para enviarte el
+                    checklist.</span
+                  >
+                </label>
+                <p class="ok-msg" id="ok-checklist">
+                  ¡Listo! <a
+                    href="/psicologos2/checklist-rgpd/"
+                    target="_blank"
+                    rel="noopener">Abre aquí tu checklist</a
+                  >.
                 </p>
               </form>
             </div>
@@ -1716,6 +1961,7 @@ const schema = {
         <nav aria-label="Contacto">
           <a href="tel:+34645854934">+34 645 854 934</a>
           <a href="mailto:info@mndesignweb.es">info@mndesignweb.es</a>
+          <span>Av. Passeig del Comtat, 75, 5º 1º · 03820 Cocentaina</span>
         </nav>
         <nav aria-label="Legal">
           <a href="https://mndesignweb.es/aviso-legal/">Aviso legal</a>
@@ -1735,6 +1981,39 @@ const schema = {
           set:html={ic.arrow}
         /></a
       >
+    </div>
+
+    <!-- HTML-14 · BANNER DE COOKIES (lo muestra JS-6 si no hay consentimiento guardado) -->
+    <div
+      id="cookie-banner"
+      class="cookie-banner"
+      role="dialog"
+      aria-labelledby="cookie-title"
+      aria-describedby="cookie-desc"
+      style="display: none;"
+    >
+      <span class="cookie-ico" aria-hidden="true">
+        <svg viewBox="0 0 122.88 122.25">
+          <path
+            d="M101.77,49.38c2.09,3.1,4.37,5.11,6.86,5.78c2.45,0.66,5.32,0.06,8.7-2.01c1.36-0.84,3.14-0.41,3.97,0.95 c0.28,0.46,0.42,0.96,0.43,1.47c0.13,1.4,0.21,2.82,0.24,4.26c0.03,1.46,0.02,2.91-0.05,4.35h0v0c0,0.13-0.01,0.26-0.03,0.38 c-0.91,16.72-8.47,31.51-20,41.93c-11.55,10.44-27.06,16.49-43.82,15.69v0.01h0c-0.13,0-0.26-0.01-0.38-0.03 c-16.72-0.91-31.51-8.47-41.93-20C5.31,90.61-0.73,75.1,0.07,58.34H0.07v0c0-0.13,0.01-0.26,0.03-0.38 C1,41.22,8.81,26.35,20.57,15.87C32.34,5.37,48.09-0.73,64.85,0.07V0.07h0c1.6,0,2.89,1.29,2.89,2.89c0,0.4-0.08,0.78-0.23,1.12 c-1.17,3.81-1.25,7.34-0.27,10.14c0.89,2.54,2.7,4.51,5.41,5.52c1.44,0.54,2.2,2.1,1.74,3.55l0.01,0 c-1.83,5.89-1.87,11.08-0.52,15.26c0.82,2.53,2.14,4.69,3.88,6.4c1.74,1.72,3.9,3,6.39,3.78c4.04,1.26,8.94,1.18,14.31-0.55 C99.73,47.78,101.08,48.3,101.77,49.38L101.77,49.38z M59.28,57.86c2.77,0,5.01,2.24,5.01,5.01c0,2.77-2.24,5.01-5.01,5.01 c-2.77,0-5.01-2.24-5.01-5.01C54.27,60.1,56.52,57.86,59.28,57.86L59.28,57.86z M37.56,78.49c3.37,0,6.11,2.73,6.11,6.11 s-2.73,6.11-6.11,6.11s-6.11-2.73-6.11-6.11S34.18,78.49,37.56,78.49L37.56,78.49z M50.72,31.75c2.65,0,4.79,2.14,4.79,4.79 c0,2.65-2.14,4.79-4.79,4.79c-2.65,0-4.79-2.14-4.79-4.79C45.93,33.89,48.08,31.75,50.72,31.75L50.72,31.75z M119.3,32.4 c1.98,0,3.58,1.6,3.58,3.58c0,1.98-1.6,3.58-3.58,3.58s-3.58-1.6-3.58-3.58C115.71,34.01,117.32,32.4,119.3,32.4L119.3,32.4z M93.62,22.91c2.98,0,5.39,2.41,5.39,5.39c0,2.98-2.41,5.39-5.39,5.39c-2.98,0-5.39-2.41-5.39-5.39 C88.23,25.33,90.64,22.91,93.62,22.91L93.62,22.91z M97.79,0.59c3.19,0,5.78,2.59,5.78,5.78c0,3.19-2.59,5.78-5.78,5.78 c-3.19,0-5.78-2.59-5.78-5.78C92.02,3.17,94.6,0.59,97.79,0.59L97.79,0.59z M76.73,80.63c4.43,0,8.03,3.59,8.03,8.03 c0,4.43-3.59,8.03-8.03,8.03s-8.03-3.59-8.03-8.03C68.7,84.22,72.29,80.63,76.73,80.63L76.73,80.63z M31.91,46.78 c4.8,0,8.69,3.89,8.69,8.69c0,4.8-3.89,8.69-8.69,8.69s-8.69-3.89-8.69-8.69C23.22,50.68,27.11,46.78,31.91,46.78L31.91,46.78z M107.13,60.74c-3.39-0.91-6.35-3.14-8.95-6.48c-5.78,1.52-11.16,1.41-15.76-0.02c-3.37-1.05-6.32-2.81-8.71-5.18 c-2.39-2.37-4.21-5.32-5.32-8.75c-1.51-4.66-1.69-10.2-0.18-16.32c-3.1-1.8-5.25-4.53-6.42-7.88c-1.06-3.05-1.28-6.59-0.61-10.35 C47.27,5.95,34.3,11.36,24.41,20.18C13.74,29.69,6.66,43.15,5.84,58.29l0,0.05v0h0l-0.01,0.13v0C5.07,73.72,10.55,87.82,20.02,98.3 c9.44,10.44,22.84,17.29,38,18.1l0.05,0h0v0l0.13,0.01h0c15.24,0.77,29.35-4.71,39.83-14.19c10.44-9.44,17.29-22.84,18.1-38l0-0.05 v0h0l0.01-0.13v0c0.07-1.34,0.09-2.64,0.06-3.91C112.98,61.34,109.96,61.51,107.13,60.74L107.13,60.74z"
+          ></path>
+        </svg>
+      </span>
+      <div class="cookie-txt">
+        <p class="cookie-title" id="cookie-title">Usamos cookies</p>
+        <p class="cookie-desc" id="cookie-desc">
+          Utilizamos cookies para darte la mejor experiencia en nuestra web.
+          <a href="https://mndesignweb.es/cookies/">Ver política de cookies</a>
+        </p>
+      </div>
+      <div class="cookie-actions">
+        <button id="btn-decline-cookies" class="btn btn-ghost btn-sm" type="button">
+          Rechazar
+        </button>
+        <button id="btn-accept-cookies" class="btn btn-main btn-sm" type="button">
+          Permitir
+        </button>
+      </div>
     </div>
 
     <!-- ===== ARCHIVO JS ===== -->
@@ -1896,17 +2175,284 @@ const schema = {
           });
         });
 
-        /* JS-5 · SOLO VISTA PREVIA del formulario. En tu proyecto conserva tu script original
-           (Web3Forms + Make + gtag/fbq/clarity + banner de cookies): los ids no han cambiado. */
-        var form = document.getElementById("formulario");
-        if (form) {
-          form.addEventListener("submit", function (e) {
+        /* JS-5 · Envío del formulario de contacto */
+        var formClinica = document.getElementById("formulario");
+        if (formClinica) {
+          formClinica.addEventListener("submit", function (e) {
             e.preventDefault();
-            document.getElementById("ok-msg").style.display = "block";
-            form.reset();
+            var btn = document.getElementById("btn-submit");
+            var originalText = btn.innerHTML; // Guardamos el texto original con el icono SVG
+            btn.innerText = "Enviando...";
+            btn.disabled = true;
+
+            var data = {
+              access_key: "1bc2d285-71cb-4fe3-806f-530066ab6e15",
+              subject: "Nuevo Lead: Psicólogos / Clínicas",
+              nombre: document.getElementById("nombre").value,
+              email: document.getElementById("email").value,
+              telefono: document.getElementById("telefono").value,
+              servicio: document.getElementById("servicio").value,
+              mensaje: document.getElementById("mensaje").value,
+              privacidad: "Aceptada",
+            };
+
+            Promise.all([
+              fetch("https://api.web3forms.com/submit", {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                  Accept: "application/json",
+                },
+                body: JSON.stringify(data),
+              }),
+              fetch(
+                "https://hook.eu1.make.com/mxvqg7gwne43yab165v2uhtyw5yh115r",
+                {
+                  method: "POST",
+                  headers: { "Content-Type": "application/json" },
+                  body: JSON.stringify(data),
+                },
+              ),
+            ])
+              .then(async (results) => {
+                const result = await results[0].json();
+                if (result.success) {
+                  if (typeof gtag === "function")
+                    gtag("event", "generate_lead", {
+                      currency: "EUR",
+                      value: 0,
+                    });
+                  if (typeof fbq === "function") fbq("track", "Lead");
+                  if (typeof clarity === "function")
+                    clarity("set", "lead", "clinica");
+
+                  document.getElementById("ok-msg").style.display = "block";
+                  formClinica.reset();
+                } else {
+                  throw new Error("Error en el envío");
+                }
+              })
+              .catch(() => {
+                alert("Hubo un error. Por favor, inténtalo de nuevo.");
+              })
+              .finally(() => {
+                btn.innerHTML = originalText;
+                btn.disabled = false;
+              });
           });
         }
       })();
+
+      /* JS-5b · Checklist RGPD: capta el email y muestra el enlace de descarga */
+      (function () {
+        var formCheck = document.getElementById("form-checklist");
+        if (!formCheck) return;
+        formCheck.addEventListener("submit", function (e) {
+          e.preventDefault();
+          var btn = document.getElementById("btn-checklist");
+          var originalText = btn.innerHTML;
+          btn.innerText = "Enviando...";
+          btn.disabled = true;
+
+          var data = {
+            access_key: "1bc2d285-71cb-4fe3-806f-530066ab6e15",
+            subject: "Nuevo Lead: Checklist RGPD Psicólogos",
+            email: document.getElementById("email-checklist").value,
+            origen: "checklist-rgpd",
+            privacidad: "Aceptada",
+          };
+
+          fetch("https://api.web3forms.com/submit", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Accept: "application/json",
+            },
+            body: JSON.stringify(data),
+          })
+            .then(function (r) {
+              return r.json();
+            })
+            .then(function (result) {
+              if (!result.success) throw new Error("Error en el envío");
+              // Copia a Make sin bloquear la descarga si falla
+              fetch("https://hook.eu1.make.com/mxvqg7gwne43yab165v2uhtyw5yh115r", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(data),
+              }).catch(function () {});
+
+              if (typeof gtag === "function")
+                gtag("event", "download_checklist", { method: "checklist_rgpd" });
+              if (typeof fbq === "function") fbq("track", "Lead", { content_name: "Checklist RGPD" });
+
+              document.getElementById("ok-checklist").style.display = "block";
+              formCheck.reset();
+            })
+            .catch(function () {
+              alert("Hubo un error. Por favor, inténtalo de nuevo.");
+            })
+            .finally(function () {
+              btn.innerHTML = originalText;
+              btn.disabled = false;
+            });
+        });
+      })();
+
+      /* JS-7 · Calendario de Cal.com (embed oficial) + medición de reservas.
+         Se carga al acercarse a la sección de contacto para no frenar la carga inicial. */
+      (function () {
+        var box = document.getElementById("cal-inline");
+        if (!box) return;
+        var loaded = false;
+
+        function loadCal() {
+          if (loaded) return;
+          loaded = true;
+          (function (C, A, L) {
+            var p = function (a, ar) { a.q.push(ar); };
+            var d = C.document;
+            C.Cal = C.Cal || function () {
+              var cal = C.Cal;
+              var ar = arguments;
+              if (!cal.loaded) {
+                cal.ns = {};
+                cal.q = cal.q || [];
+                d.head.appendChild(d.createElement("script")).src = A;
+                cal.loaded = true;
+              }
+              if (ar[0] === L) {
+                var api = function () { p(api, arguments); };
+                var namespace = ar[1];
+                api.q = api.q || [];
+                if (typeof namespace === "string") {
+                  cal.ns[namespace] = cal.ns[namespace] || api;
+                  p(cal.ns[namespace], ar);
+                  p(cal, ["initNamespace", namespace]);
+                } else p(cal, ar);
+                return;
+              }
+              p(cal, ar);
+            };
+          })(window, "https://app.cal.com/embed/embed.js", "init");
+
+          Cal("init", "llamada", { origin: "https://cal.com" });
+          Cal.ns.llamada("inline", {
+            elementOrSelector: "#cal-inline",
+            calLink: "mndesignweb/reunion-30-min",
+            config: { layout: "month_view" },
+          });
+          Cal.ns.llamada("ui", { hideEventTypeDetails: false, layout: "month_view" });
+
+          // Conversión principal: reserva completada. Cal.com emite el evento
+          // antiguo y el V2; escuchamos los dos y solo contamos una vez.
+          var booked = false;
+          function onBooked() {
+            if (booked) return;
+            booked = true;
+            if (typeof gtag === "function")
+              gtag("event", "book_call", { method: "cal_com" });
+            if (typeof fbq === "function") fbq("track", "Schedule");
+            if (typeof clarity === "function") clarity("set", "lead", "llamada");
+          }
+          Cal.ns.llamada("on", { action: "bookingSuccessfulV2", callback: onBooked });
+          Cal.ns.llamada("on", { action: "bookingSuccessful", callback: onBooked });
+        }
+
+        if ("IntersectionObserver" in window) {
+          var io = new IntersectionObserver(
+            function (entries) {
+              if (entries[0].isIntersecting) {
+                loadCal();
+                io.disconnect();
+              }
+            },
+            { rootMargin: "800px 0px" },
+          );
+          io.observe(box);
+        } else {
+          loadCal();
+        }
+      })();
+
+      /* JS-8 · Medición de clics en teléfono, WhatsApp y email */
+      document.addEventListener("click", function (e) {
+        var a = e.target.closest && e.target.closest("a[href]");
+        if (!a) return;
+        var href = a.getAttribute("href");
+        var tipo = null;
+        if (href.indexOf("tel:") === 0) tipo = "phone";
+        else if (href.indexOf("wa.me") !== -1 || href.indexOf("whatsapp") !== -1) tipo = "whatsapp";
+        else if (href.indexOf("mailto:") === 0) tipo = "email";
+        if (!tipo) return;
+        if (typeof gtag === "function")
+          gtag("event", "click_" + tipo, { link_url: href });
+        if (typeof fbq === "function") fbq("track", "Contact", { content_name: tipo });
+      });
+
+      /* JS-6 · Lógica del banner de cookies */
+      window.addEventListener("DOMContentLoaded", () => {
+        const cookieBanner = document.getElementById("cookie-banner");
+        const acceptBtn = document.getElementById("btn-accept-cookies");
+        const declineBtn = document.getElementById("btn-decline-cookies");
+
+        const consent = localStorage.getItem("cookie_consent");
+
+        if (!consent && cookieBanner) {
+          cookieBanner.style.display = "flex";
+        }
+
+        if (acceptBtn) {
+          acceptBtn.addEventListener("click", () => {
+            localStorage.setItem("cookie_consent", "accepted");
+            cookieBanner.style.display = "none";
+
+            if (typeof gtag === "function") {
+              gtag("consent", "update", {
+                ad_storage: "granted",
+                ad_user_data: "granted",
+                ad_personalization: "granted",
+                analytics_storage: "granted",
+              });
+            }
+
+            if (typeof clarity === "undefined") {
+              (function (c, l, a, r, i, t, y) {
+                c[a] =
+                  c[a] ||
+                  function () {
+                    (c[a].q = c[a].q || []).push(arguments);
+                  };
+                t = l.createElement(r);
+                t.async = 1;
+                t.src = "https://www.clarity.ms/tag/" + i;
+                y = l.getElementsByTagName(r)[0];
+                y.parentNode.insertBefore(t, y);
+              })(window, document, "clarity", "script", "wuzaxaifa0");
+            }
+            // Clarity exige la señal de consentimiento en la UE para usar cookies
+            clarity("consent");
+
+            if (typeof fbq === "function") fbq("consent", "grant");
+          });
+        }
+
+        if (declineBtn) {
+          declineBtn.addEventListener("click", () => {
+            localStorage.setItem("cookie_consent", "declined");
+            cookieBanner.style.display = "none";
+
+            if (typeof gtag === "function") {
+              gtag("consent", "update", {
+                ad_storage: "denied",
+                ad_user_data: "denied",
+                ad_personalization: "denied",
+                analytics_storage: "denied",
+              });
+            }
+          });
+        }
+      });
     </script>
   </body>
 </html>
