@@ -1,4 +1,6 @@
 ---
+import "./style.css";
+
 /* =========================================================
    LANDING PSICÓLOGOS · v2 (estética premium / startup médica)
    Datos de la página: edita aquí textos repetidos sin tocar el HTML.
@@ -12,15 +14,18 @@ const ic: Record<string, string> = {
   bell: '<path d="M6 16V11a6 6 0 1 1 12 0v5l1.5 2h-15z"/><path d="M10 20.5a2 2 0 0 0 4 0"/>',
   card: '<rect x="2.5" y="5" width="19" height="14" rx="3"/><path d="M2.5 10h19M6.5 15h4"/>',
   file: '<path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h4"/>',
-  video: '<rect x="2.5" y="6" width="13" height="12" rx="3"/><path d="M15.5 10.5 21 7.5v9l-5.5-3"/>',
+  video:
+    '<rect x="2.5" y="6" width="13" height="12" rx="3"/><path d="M15.5 10.5 21 7.5v9l-5.5-3"/>',
   lock: '<rect x="4.5" y="10.5" width="15" height="10" rx="2.5"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/>',
   plug: '<path d="M9 3v5M15 3v5M6 8h12v3a6 6 0 0 1-12 0zM12 17v4"/>',
   check: '<path d="m5 12.5 4.5 4.5L19 7.5"/>',
   star: '<path d="m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z" fill="currentColor" stroke="none"/>',
-  shield: '<path d="M12 3 4.5 6v5.5c0 4.6 3.2 8.4 7.5 9.5 4.3-1.1 7.5-4.9 7.5-9.5V6z"/><path d="m8.8 12 2.3 2.3 4.3-4.6"/>',
+  shield:
+    '<path d="M12 3 4.5 6v5.5c0 4.6 3.2 8.4 7.5 9.5 4.3-1.1 7.5-4.9 7.5-9.5V6z"/><path d="m8.8 12 2.3 2.3 4.3-4.6"/>',
   chat: '<path d="M4 5.5h16v10H9l-5 4z"/>',
   clock: '<circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/>',
-  spark: '<path d="M12 3v4M12 17v4M3 12h4M17 12h4M5.6 5.6l2.8 2.8M15.6 15.6l2.8 2.8M5.6 18.4l2.8-2.8M15.6 8.4l2.8-2.8"/>',
+  spark:
+    '<path d="M12 3v4M12 17v4M3 12h4M17 12h4M5.6 5.6l2.8 2.8M15.6 15.6l2.8 2.8M5.6 18.4l2.8-2.8M15.6 8.4l2.8-2.8"/>',
   mail: '<rect x="3" y="5" width="18" height="14" rx="3"/><path d="m3.5 6.5 8.5 6 8.5-6"/>',
   ext: '<path d="M14 4h6v6M20 4l-9 9M18 14v4a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4"/>',
   plus: '<path d="M12 5v14M5 12h14"/>',
@@ -28,25 +33,25 @@ const ic: Record<string, string> = {
 
 // Tira de funciones (marquee del hero)
 const features = [
-  ['cal', 'Agenda online 24/7'],
-  ['video', 'Videoconsulta cifrada'],
-  ['bell', 'Recordatorios automáticos'],
-  ['card', 'Cobro antes de la sesión'],
-  ['file', 'Consentimiento digital'],
-  ['shield', 'RGPD sanitario'],
-  ['plug', 'Conectada a tu CRM'],
-  ['spark', 'Diseño a medida'],
+  ["cal", "Agenda online 24/7"],
+  ["video", "Terapia online cifrada"],
+  ["bell", "Recordatorios automáticos"],
+  ["card", "Cobro antes de la sesión"],
+  ["file", "Consentimiento digital"],
+  ["shield", "RGPD sanitario"],
+  ["plug", "Tu propio software, sin cuotas"],
+  ["spark", "Diseño a medida"],
 ];
 
 // PLACEHOLDERS de logos: sustitúyelos por logos reales (SVG/PNG) con permiso de cada clínica.
 const logos = [
-  { name: 'Clínica Aurora', shape: 'circle' },
-  { name: 'Centro Serena', shape: 'leaf' },
-  { name: 'Mente Clara', shape: 'drop' },
-  { name: 'Kinetix', shape: 'square' },
-  { name: 'Instituto Equilibrio', shape: 'ring' },
-  { name: 'Psicología Nórdica', shape: 'tri' },
-  { name: 'Espacio Calma', shape: 'wave' },
+  { name: "Clínica Aurora", shape: "circle" },
+  { name: "Centro Serena", shape: "leaf" },
+  { name: "Mente Clara", shape: "drop" },
+  { name: "Kinetix", shape: "square" },
+  { name: "Instituto Equilibrio", shape: "ring" },
+  { name: "Psicología Nórdica", shape: "tri" },
+  { name: "Espacio Calma", shape: "wave" },
 ];
 const shapes: Record<string, string> = {
   circle: '<circle cx="12" cy="12" r="9"/>',
@@ -59,3450 +64,342 @@ const shapes: Record<string, string> = {
 };
 
 const pains = [
-  { t: 'Pierdes horas cuadrando citas por mensaje', p: 'Cada paciente nuevo son 6 o 7 mensajes para acordar un hueco. Tiempo que no facturas.', v: 'chat' },
-  { t: 'Las ausencias te dejan huecos sin cobrar', p: 'Sin recordatorios ni pago previo, una sesión perdida es una hora de tu agenda tirada.', v: 'miss' },
-  { t: 'Tu web no transmite la confianza que tú generas', p: 'Una plantilla genérica no convence a alguien que está decidiendo a quién contarle algo íntimo.', v: 'wf' },
-  { t: 'Te preocupa dónde acaban los datos de tus pacientes', p: 'Videollamadas sin garantías y formularios sin cifrar son un riesgo con el RGPD.', v: 'lock' },
+  {
+    t: "Pierdes horas cuadrando citas por mensaje",
+    p: "Cada paciente nuevo son 6 o 7 mensajes para acordar un hueco. Horas de tu consulta de psicología que no facturas.",
+    v: "chat",
+  },
+  {
+    t: "Las ausencias te dejan huecos sin cobrar",
+    p: "Sin recordatorios ni pago previo, una sesión perdida es una hora de tu agenda tirada.",
+    v: "miss",
+  },
+  {
+    t: "Tu web no transmite la confianza que tú generas",
+    p: "Una plantilla genérica no convence a quien busca psicólogo y está decidiendo a quién contarle algo íntimo.",
+    v: "wf",
+  },
+  {
+    t: "Te preocupa dónde acaban los datos de tus pacientes",
+    p: "Videollamadas sin garantías, formularios sin cifrar y herramientas de terceros ponen en riesgo datos de salud mental protegidos por el RGPD.",
+    v: "lock",
+  },
 ];
 
 const steps = [
-  { w: 'Semana 1', t: 'Auditoría de tu consulta', p: 'Analizamos cómo trabajas y dónde pierdes tiempo. Ahí decidimos qué automatizar.', d: ['Mapa de tu flujo de citas y cobros', 'Lista de tareas a automatizar', 'Objetivos medibles para tu web'] },
-  { w: 'Semanas 1-2', t: 'Elegimos la tecnología', p: 'WordPress si quieres autogestión completa, o una aplicación a medida para funciones únicas.', d: ['Propuesta técnica clara', 'Presupuesto cerrado por fases', 'Estructura y textos de la web'] },
-  { w: 'Semanas 2-5', t: 'Diseño, reservas y pruebas de seguridad', p: 'Construyo tu web y la conecto con tu agenda, tus cobros y tu software. En 3-5 semanas está funcionando.', d: ['Diseño a medida en móvil y escritorio', 'Agenda, pagos y videoconsulta conectados', 'Pruebas de cifrado y RGPD'] },
-  { w: 'Después', t: 'Formación y soporte continuo', p: 'Te enseño a gestionar todo y me quedo como socio técnico: copias, seguridad y mejoras.', d: ['Sesión de formación grabada', 'Copias diarias y actualizaciones', 'Mejoras cuando tu consulta crezca'] },
+  {
+    w: "Semana 1",
+    t: "Auditoría de tu consulta de psicología",
+    p: "Analizamos cómo trabajas y dónde pierdes tiempo. Ahí decidimos qué automatizar.",
+    d: [
+      "Mapa de tu flujo de citas y cobros",
+      "Lista de tareas a automatizar",
+      "Objetivos medibles para tu web",
+    ],
+  },
+  {
+    w: "Semanas 1-2",
+    t: "Elegimos la tecnología",
+    p: "WordPress si quieres autogestión completa, o tu propia plataforma de pacientes a medida para funciones únicas.",
+    d: [
+      "Propuesta técnica clara",
+      "Presupuesto cerrado por fases",
+      "Estructura y textos de la web",
+    ],
+  },
+  {
+    w: "Semanas 2-5",
+    t: "Diseño, reservas y pruebas de seguridad",
+    p: "Construyo tu web y tu software de gestión de pacientes: agenda, cobros y videoconsulta en un mismo sitio. En 3-5 semanas está funcionando.",
+    d: [
+      "Diseño a medida en móvil y escritorio",
+      "Agenda, pagos y videoconsulta conectados",
+      "Pruebas de cifrado y RGPD",
+    ],
+  },
+  {
+    w: "Después",
+    t: "Formación y soporte continuo",
+    p: "Te enseño a gestionar todo y me quedo como socio técnico: copias, seguridad y mejoras.",
+    d: [
+      "Sesión de formación grabada",
+      "Copias diarias y actualizaciones",
+      "Mejoras cuando tu consulta crezca",
+    ],
+  },
 ];
 
 const quotes = [
-  { q: 'La web ha transformado mi consulta, ahora todo está automatizado.', n: 'Dra. Elena M.', i: 'EM' },
-  { q: 'La automatización de mi agenda me ha ahorrado horas de gestión administrativa.', n: 'Dra. Sonia O.', i: 'SO' },
-  { q: 'Por fin tengo un calendario que no me da problemas.', n: 'Centro Kinetix', i: 'CK' },
+  {
+    q: "La web ha transformado mi consulta, ahora todo está automatizado.",
+    n: "Dra. Elena M.",
+    i: "EM",
+  },
+  {
+    q: "La automatización de mi agenda me ha ahorrado horas de gestión administrativa.",
+    n: "Dra. Sonia O.",
+    i: "SO",
+  },
+  {
+    q: "Por fin tengo un calendario que no me da problemas.",
+    n: "Centro Kinetix",
+    i: "CK",
+  },
 ];
 
 const demos = [
-  { 
-    t: 'Psicología especializada', 
-    u: 'https://mnmryk.github.io/psicologia-especializada/', 
-    h: 212, 
-    image: '/demos/psicologia-especializada.webp' 
+  {
+    t: "Psicología especializada",
+    u: "https://mnmryk.github.io/psicologia-especializada/",
+    h: 212,
+    image: "/demos/psicologia-especializada.webp",
+    alt: "Ejemplo de web para psicólogo especializado con reserva de citas online",
   },
-  { 
-    t: 'Psicología y bienestar', 
-    u: 'https://mnmryk.github.io/demo-psicologia-bienestar/', 
-    h: 168, 
-    image: '/demos/psicologia-bienestar.webp' 
+  {
+    t: "Psicología y bienestar",
+    u: "https://mnmryk.github.io/demo-psicologia-bienestar/",
+    h: 168,
+    image: "/demos/psicologia-bienestar.webp",
+    alt: "Ejemplo de web de psicología y bienestar emocional para psicóloga",
   },
-  { 
-    t: 'Psicología clínica', 
-    u: 'https://mnmryk.github.io/demo-psicologia-clinica/', 
-    h: 256, 
-    image: '/demos/psicologia-clinica.webp' 
+  {
+    t: "Psicología clínica",
+    u: "https://mnmryk.github.io/demo-psicologia-clinica/",
+    h: 256,
+    image: "/demos/psicologia-clinica.webp",
+    alt: "Ejemplo de web para clínica de psicología con agenda online y terapia online",
   },
-  { 
-    t: 'Consulta de nutrición', 
-    u: 'https://mnmryk.github.io/demo-nutricion/', 
-    h: 142, 
-    image: '/demos/nutricion.webp' 
+  {
+    t: "Consulta de nutrición",
+    u: "https://mnmryk.github.io/demo-nutricion/",
+    h: 142,
+    image: "/demos/nutricion.webp",
+    alt: "Ejemplo de web para consulta de nutrición con reserva de citas online",
   },
 ];
 
 const faqs = [
-  ['¿Se integra con el software que ya uso?', 'Sí. Conecto la web por API con los principales gestores clínicos, CRM (HubSpot, Salesforce) y calendarios (Google Calendar, Outlook).'],
-  ['¿Cumple el RGPD con datos de salud?', 'Sí. Uso SSL, bases de datos cifradas y cookies conformes a la normativa europea, incluido el RGPD sanitario.'],
-  ['¿Puedo dar terapia online desde mi web?', 'Sí. El paciente reserva, paga y recibe el enlace de su sesión automáticamente.'],
-  ['¿En qué se diferencia de Wix o Squarespace?', 'No uso plantillas. Construyo una web a medida, optimizada para SEO local y pensada para generar confianza y convertir visitas en pacientes.'],
-  ['¿Cuánto tarda y necesito conocimientos técnicos?', 'Entre 3 y 5 semanas. Te dejo el panel configurado y una sesión de formación para que gestiones citas y blog sin ayuda.'],
-  ['¿Y si algo falla o quiero cambios?', 'Ofrezco mantenimiento mensual con actualizaciones de seguridad, copias diarias y pequeñas modificaciones.'],
+  [
+    "¿Puedo tener mi propio software para psicólogos en lugar de pagar uno externo?",
+    "Sí. Desarrollo una plataforma de pacientes a medida integrada en tu propia web: agenda, cobros, videoconsulta y documentos en tu software de gestión, sin pagar cuotas a terceros ni externalizar herramientas. Si ya usas un gestor clínico, un CRM (HubSpot, Salesforce) o un calendario (Google Calendar, Outlook), lo conecto por API.",
+  ],
+  [
+    "¿Cumple el RGPD con datos de salud mental?",
+    "Sí. Uso SSL, bases de datos cifradas y cookies conformes a la normativa europea, incluido el RGPD sanitario. Al estar la plataforma en tu propia web, los datos de tus pacientes no pasan por herramientas de terceros.",
+  ],
+  [
+    "¿Puedo hacer terapia online desde mi web de psicólogo?",
+    "Sí. El paciente reserva en tu agenda online, paga con pasarela segura (Stripe, Redsys) y recibe automáticamente el enlace a su videoconsulta cifrada.",
+  ],
+  [
+    "¿En qué se diferencia de Wix o Squarespace?",
+    "No uso plantillas. Construyo tu web y tu software a medida para tu consulta de psicología, optimizados para SEO local y pensados para generar confianza y convertir visitas en pacientes.",
+  ],
+  [
+    "¿Cuánto tarda en estar lista?",
+    "Entre 3 y 5 semanas, según las funciones: diseño, integración de la agenda y los cobros y pruebas de seguridad incluidos.",
+  ],
+  [
+    "¿Necesito conocimientos técnicos para gestionar mis citas o el blog?",
+    "No. Te dejo el panel configurado y una sesión de formación para ti o tu equipo, para que gestionéis la agenda de pacientes y publiquéis en el blog sin ayuda.",
+  ],
+  [
+    "¿Y si algo falla o quiero cambios?",
+    "Ofrezco mantenimiento mensual con actualizaciones de seguridad, copias diarias y pequeñas modificaciones, para que tú solo te ocupes de tus pacientes.",
+  ],
+  [
+    "¿Me ayudas a aparecer en Google en mi ciudad?",
+    "Sí. Aplico SEO local desde el código, optimizo la velocidad de carga y conecto la web con tu perfil de Google Business Profile (Maps) para atraer pacientes de tu zona que buscan psicólogo.",
+  ],
 ];
+
+// SEO: título y descripciones compartidos por <title>, Open Graph, Twitter y Schema
+const pageUrl = "https://mndesignweb.es/psicologos/";
+const seoTitle = "Software y Web para Psicólogos a Medida | MN Design Web";
+const seoDescription =
+  "Tu web de psicólogo con software propio de gestión de pacientes: agenda online, terapia online cifrada y cobros. Sin cuotas a terceros y con RGPD incluido.";
+const socialDescription =
+  "Web para psicólogos y clínicas de psicología con tu propia plataforma de pacientes a medida: agenda, recordatorios, cobros y videoconsulta cifrada sin pagar cuotas a terceros.";
+
+// Schema.org (JSON-LD). Se genera con JSON.stringify para que siempre sea válido
+// y las FAQ coincidan exactamente con las que se ven en la página.
+const schema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": `${pageUrl}#webpage`,
+      url: pageUrl,
+      name: seoTitle,
+      description: seoDescription,
+      inLanguage: "es-ES",
+      about: { "@id": `${pageUrl}#servicio` },
+    },
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://mndesignweb.es/#empresa",
+      name: "MN Design Web",
+      image: "https://mndesignweb.es/logo.webp",
+      url: "https://mndesignweb.es/",
+      telephone: "+34645854934",
+      email: "info@mndesignweb.es",
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: "Alicante",
+        addressCountry: "ES",
+      },
+      priceRange: "$$",
+    },
+    {
+      "@type": "Service",
+      "@id": `${pageUrl}#servicio`,
+      name: "Web y software para psicólogos a medida",
+      serviceType: "Software para psicólogos y diseño web",
+      description:
+        "Desarrollo de webs para psicólogos, psicoterapeutas y clínicas de psicología con una plataforma de pacientes a medida integrada: agenda online, recordatorios automáticos, terapia online por videoconsulta cifrada, cobro antes de la sesión, consentimiento digital y portal del paciente. El profesional tiene su propio software de gestión, sin pagar cuotas a terceros y cumpliendo el RGPD para datos de salud mental.",
+      provider: { "@id": "https://mndesignweb.es/#empresa" },
+      audience: {
+        "@type": "Audience",
+        audienceType: "Psicólogos, psicoterapeutas y clínicas de psicología",
+      },
+      hasOfferCatalog: {
+        "@type": "OfferCatalog",
+        name: "Planes de web y software para psicólogos",
+        itemListElement: [
+          {
+            "@type": "Offer",
+            name: "Fase 1 · Web en WordPress para psicólogos",
+            description:
+              "Web profesional de 5 páginas con calendario de citas, formulario de captación de pacientes, videoconsulta cifrada, firma de documentos, botón de WhatsApp, SEO básico y panel autogestionable.",
+            priceSpecification: {
+              "@type": "PriceSpecification",
+              price: 500,
+              priceCurrency: "EUR",
+              valueAddedTaxIncluded: false,
+            },
+          },
+          {
+            "@type": "Offer",
+            name: "Fase 2 · Software para psicólogos a medida",
+            description:
+              "Plataforma de pacientes a medida integrada en tu web: portal privado del paciente, agente de IA, recordatorios automáticos, aula virtual, cobros recurrentes y sincronización con tu ERP o gestor. Presupuesto según el caso.",
+          },
+        ],
+      },
+    },
+    {
+      "@type": "Product",
+      "@id": `${pageUrl}#producto`,
+      name: "Web y software para psicólogos a medida",
+      image: "https://mndesignweb.es/psicologos/imagen-miniatura-psicologos.webp",
+      description:
+        "Web profesional para psicólogos con plataforma de gestión de pacientes propia: agenda online, terapia online cifrada, cobros automáticos y RGPD sanitario, sin cuotas a terceros.",
+      brand: { "@type": "Brand", name: "MN Design Web" },
+      aggregateRating: {
+        "@type": "AggregateRating",
+        ratingValue: "5.0",
+        bestRating: "5",
+        ratingCount: "32",
+      },
+    },
+    {
+      "@type": "FAQPage",
+      "@id": `${pageUrl}#faq`,
+      mainEntity: faqs.map(([q, a]) => ({
+        "@type": "Question",
+        name: q,
+        acceptedAnswer: { "@type": "Answer", text: a },
+      })),
+    },
+  ],
+};
 ---
 
 <!doctype html>
 <html lang="es">
-  <head>
+ <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-    <title>Diseño Web para Psicólogos | MN Design Web</title>
-    <meta
-      name="description"
-      content="Web para psicólogos con agenda online, videoconsulta cifrada y RGPD. Deja de gestionar citas por WhatsApp y llena tu agenda."
-    />
+    <title>{seoTitle}</title>
+    <meta name="description" content={seoDescription} />
     <meta name="theme-color" content="#EAF4FF" />
     <link rel="icon" type="image/webp" href="/favicon_v2.webp" />
+    <link rel="canonical" href="https://mndesignweb.es/psicologos/" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Fuentes del nuevo diseño (Inter) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@600;700;800&display=swap"
-      rel="stylesheet"
-    />
-    <!-- Activa animaciones solo si hay JS (sin JS todo se ve igual, sin ocultar nada) -->
-    <script is:inline>document.documentElement.classList.add("js");</script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
-    <!-- ===== ARCHIVO CSS ===== -->
-    <style is:global>
-      /* 1. TOKENS */
-      :root {
-        --bg: #ffffff;
-        --soft: #f5f9fd;
-        --sky: #e7f2ff;
-        --sky2: #d3e8ff;
-        --surface: #ffffff;
-        --ink: #0b1220;
-        --ink2: #1d2939;
-        --muted: #5d6b80;
-        --line: #e5ecf4;
-        --brand: #2f7cf6;
-        --brand2: #62b6ff;
-        --mint: #1fbf9f;
-        --mint-bg: #dcf6ef;
-        --mint-ink: #0b6b58;
-        --btn: #0b1220;
-        --btn-ink: #ffffff;
-        --grad: linear-gradient(95deg, #2f7cf6 0%, #52a8ff 45%, #1fbf9f 100%);
-        --sh-sm: 0 1px 2px rgba(15, 35, 70, 0.04), 0 8px 24px -8px rgba(15, 35, 70, 0.1);
-        --sh-md: 0 2px 6px rgba(15, 35, 70, 0.05), 0 24px 48px -18px rgba(20, 60, 130, 0.22);
-        --sh-lg: 0 4px 10px rgba(15, 35, 70, 0.06), 0 50px 90px -30px rgba(20, 70, 150, 0.4);
-        --f-title: "Inter Tight", "Inter", system-ui, sans-serif;
-        --f-body: "Inter", system-ui, sans-serif;
-        --ease: cubic-bezier(0.22, 1, 0.36, 1);
-      }
-      @media (prefers-color-scheme: dark) {
-        :root:not([data-theme="light"]) {
-          --bg: #070d18;
-          --soft: #0b1422;
-          --sky: #0e1d33;
-          --sky2: #12294a;
-          --surface: #0f1a2b;
-          --ink: #eef3fa;
-          --ink2: #d7e1ee;
-          --muted: #9aabc2;
-          --line: #1d2b40;
-          --brand: #5aa2ff;
-          --mint-bg: #0f3a31;
-          --mint-ink: #7fe0c6;
-          --btn: #ffffff;
-          --btn-ink: #0b1220;
-        }
-      }
-      :root[data-theme="dark"] {
-        --bg: #070d18;
-        --soft: #0b1422;
-        --sky: #0e1d33;
-        --sky2: #12294a;
-        --surface: #0f1a2b;
-        --ink: #eef3fa;
-        --ink2: #d7e1ee;
-        --muted: #9aabc2;
-        --line: #1d2b40;
-        --brand: #5aa2ff;
-        --mint-bg: #0f3a31;
-        --mint-ink: #7fe0c6;
-        --btn: #ffffff;
-        --btn-ink: #0b1220;
-      }
+    <!-- Open Graph / Redes Sociales -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://mndesignweb.es/psicologos/" />
+    <meta property="og:title" content={seoTitle} />
+    <meta property="og:description" content={socialDescription} />
+    <meta property="og:image" content="https://mndesignweb.es/psicologos/imagen-miniatura-psicologos.webp" />
+    <meta property="og:locale" content="es_ES" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://mndesignweb.es/psicologos/" />
+    <meta name="twitter:title" content={seoTitle} />
+    <meta name="twitter:description" content={socialDescription} />
+    <meta name="twitter:image" content="https://mndesignweb.es/psicologos/imagen-miniatura-psicologos.webp" />
 
-      /* 2. BASE */
-      *,
-      *::before,
-      *::after {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-      }
-      html {
-        scroll-behavior: smooth;
-        scroll-padding-top: 96px;
-      }
-      body {
-        background: var(--bg);
-        color: var(--ink);
-        font: 400 1.03rem/1.65 var(--f-body);
-        -webkit-font-smoothing: antialiased;
-        overflow-x: hidden;
-      }
-      h1,
-      h2,
-      h3,
-      h4 {
-        font-family: var(--f-title);
-        font-weight: 700;
-        line-height: 1.08;
-        letter-spacing: -0.035em;
-      }
-      a {
-        color: inherit;
-      }
-      svg.i {
-        width: 1.15em;
-        height: 1.15em;
-        fill: none;
-        stroke: currentColor;
-        stroke-width: 1.8;
-        stroke-linecap: round;
-        stroke-linejoin: round;
-        flex: none;
-      }
-      .wrap {
-        max-width: 1280px;
-        margin: 0 auto;
-        padding: 0 24px;
-      }
-      section {
-        padding: 120px 0;
-        position: relative;
-      }
-      .center {
-        text-align: center;
-      }
-      .center .lead,
-      .center h2 {
-        margin-left: auto;
-        margin-right: auto;
-      }
-      .eyebrow {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        font: 600 0.8rem var(--f-body);
-        letter-spacing: 0.06em;
-        text-transform: uppercase;
-        color: var(--brand);
-        margin-bottom: 16px;
-      }
-      .eyebrow::before {
-        content: "";
-        width: 18px;
-        height: 2px;
-        border-radius: 2px;
-        background: var(--grad);
-      }
-      h2 {
-        font-size: clamp(2rem, 4.2vw, 3.1rem);
-        margin-bottom: 18px;
-        max-width: 780px;
-      }
-      .lead {
-        color: var(--muted);
-        font-size: 1.12rem;
-        max-width: 600px;
-        margin-bottom: 60px;
-      }
-      .grad {
-        background: var(--grad);
-        -webkit-background-clip: text;
-        background-clip: text;
-        color: transparent;
-      }
-      .muted-word {
-        color: #a5b3c6;
-      }
-      :focus-visible {
-        outline: 3px solid color-mix(in srgb, var(--brand) 45%, transparent);
-        outline-offset: 3px;
-        border-radius: 8px;
-      }
+    <!-- JS para activar animaciones -->
+    <script is:inline>
+      document.documentElement.classList.add("js");
+    </script>
 
-      /* 3. BOTONES (microinteracciones: elevación, brillo y flecha) */
-      .btn {
-        --bb: var(--btn);
-        --bi: var(--btn-ink);
-        position: relative;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        gap: 10px;
-        padding: 15px 26px;
-        border-radius: 999px;
-        font: 600 0.98rem var(--f-body);
-        text-decoration: none;
-        border: 1px solid transparent;
-        cursor: pointer;
-        overflow: hidden;
-        isolation: isolate;
-        background: var(--bb);
-        color: var(--bi);
-        transition:
-          transform 0.35s var(--ease),
-          box-shadow 0.35s var(--ease),
-          background 0.25s,
-          border-color 0.25s,
-          color 0.25s;
-      }
-      .btn::after {
-        content: "";
-        position: absolute;
-        inset: 0;
-        z-index: -1;
-        background: linear-gradient(110deg, transparent 30%, rgba(255, 255, 255, 0.35) 50%, transparent 70%);
-        transform: translateX(-110%);
-        transition: transform 0.8s var(--ease);
-      }
-      .btn:hover::after {
-        transform: translateX(110%);
-      }
-      .btn:hover {
-        transform: translateY(-2px);
-      }
-      .btn:active {
-        transform: translateY(0) scale(0.98);
-      }
-      .btn .i {
-        transition: transform 0.35s var(--ease);
-      }
-      .btn:hover .i-arrow {
-        transform: translateX(4px);
-      }
-      .btn-main {
-        box-shadow: 0 10px 24px -10px rgba(11, 18, 32, 0.55);
-      }
-      .btn-main:hover {
-        box-shadow:
-          0 18px 36px -12px rgba(47, 124, 246, 0.55),
-          0 0 0 4px color-mix(in srgb, var(--brand) 14%, transparent);
-      }
-      .btn-brand {
-        --bb: var(--brand);
-        --bi: #fff;
-        box-shadow: 0 12px 26px -10px rgba(47, 124, 246, 0.7);
-      }
-      .btn-ghost {
-        --bb: color-mix(in srgb, var(--surface) 80%, transparent);
-        --bi: var(--ink);
-        border-color: var(--line);
-        backdrop-filter: blur(8px);
-      }
-      .btn-ghost:hover {
-        border-color: color-mix(in srgb, var(--brand) 50%, var(--line));
-        color: var(--brand);
-        box-shadow: var(--sh-sm);
-      }
-      .btn-ghost .play {
-        display: grid;
-        place-items: center;
-        width: 26px;
-        height: 26px;
-        border-radius: 50%;
-        background: var(--sky);
-        color: var(--brand);
-        font-size: 0.8rem;
-        transition: transform 0.35s var(--ease);
-      }
-      .btn-ghost:hover .play {
-        transform: scale(1.12);
-      }
-      .btn-sm {
-        padding: 10px 18px;
-        font-size: 0.9rem;
-      }
-      .micro {
-        font-size: 0.88rem;
-        color: var(--muted);
-        margin-top: 16px;
-      }
+    <!-- Schema.org -->
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(schema)} />
 
-      /* 4. NAVEGACIÓN (píldora de cristal) */
-      .top {
-        position: sticky;
-        top: 12px;
-        z-index: 50;
-        padding: 0 16px;
+    <!-- Google Analytics -->
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { dataLayer.push(arguments); }
+      var localConsent = localStorage.getItem("cookie_consent");
+      if (localConsent === "accepted") {
+        gtag("consent", "default", {
+          ad_storage: "granted", ad_user_data: "granted", ad_personalization: "granted", analytics_storage: "granted",
+        });
+      } else {
+        gtag("consent", "default", {
+          ad_storage: "denied", ad_user_data: "denied", ad_personalization: "denied", analytics_storage: "denied", wait_for_update: 500,
+        });
       }
-      .nav {
-        max-width: 1100px;
-        margin: 0 auto;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 16px;
-        height: 64px;
-        padding: 0 20px 0 32px;
-        border-radius: 999px;
-        background: color-mix(in srgb, var(--surface) 72%, transparent);
-        border: 1px solid color-mix(in srgb, var(--line) 80%, transparent);
-        backdrop-filter: blur(18px) saturate(1.4);
-        box-shadow: var(--sh-sm);
-        transition: box-shadow 0.3s, background 0.3s;
-      }
-      .top.scrolled .nav {
-        box-shadow: var(--sh-md);
-        background: color-mix(in srgb, var(--surface) 88%, transparent);
-      }
-      .logo {
-        display: flex;
-        align-items: center;
-        gap: 9px;
-        font: 700 1.2rem var(--f-title);
-        letter-spacing: -0.02em;
-        text-decoration: none;
-      }
-      .logo i {
-        width: 36px;
-        height: 36px;
-        border-radius: 8px;
-        background: var(--grad);
-        display: grid;
-        place-items: center;
-        color: #fff;
-        font: 800 1rem var(--f-title);
-        font-style: normal;
-      }
-      .logo span {
-        color: var(--muted);
-        font-weight: 500;
-      }
-      .links {
-        display: flex;
-        gap: 4px;
-      }
-      .links a {
-        text-decoration: none;
-        font-size: 0.92rem;
-        font-weight: 500;
-        color: var(--muted);
-        padding: 8px 14px;
-        border-radius: 999px;
-        transition: background 0.25s, color 0.25s;
-      }
-      .links a:hover {
-        background: var(--sky);
-        color: var(--ink);
-      }
+      gtag("js", new Date());
+      gtag("config", "G-36WYJMYT3Z");
+    </script>
+    <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-36WYJMYT3Z"></script>
 
-      /* Menú móvil: hamburguesa + panel flotante */
-      .burger {
-        display: none;
-        position: relative;
-        width: 44px;
-        height: 44px;
-        border-radius: 50%;
-        border: 1px solid var(--line);
-        background: var(--surface);
-        color: var(--ink);
-        cursor: pointer;
-        flex: none;
-        transition: background 0.25s, border-color 0.25s, transform 0.25s var(--ease);
-      }
-      .burger:hover {
-        border-color: color-mix(in srgb, var(--brand) 40%, var(--line));
-      }
-      .burger:active {
-        transform: scale(0.94);
-      }
-      .burger span {
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        width: 18px;
-        height: 2px;
-        margin-left: -9px;
-        border-radius: 2px;
-        background: currentColor;
-        transition: transform 0.4s var(--ease), opacity 0.25s, width 0.3s var(--ease);
-      }
-      .burger span:nth-child(1) {
-        transform: translateY(-6px);
-      }
-      .burger span:nth-child(3) {
-        width: 12px;
-        transform: translateY(6px);
-      }
-      .burger[aria-expanded="true"] {
-        background: var(--btn);
-        color: var(--btn-ink);
-        border-color: var(--btn);
-      }
-      .burger[aria-expanded="true"] span:nth-child(1) {
-        transform: rotate(45deg);
-      }
-      .burger[aria-expanded="true"] span:nth-child(2) {
-        opacity: 0;
-      }
-      .burger[aria-expanded="true"] span:nth-child(3) {
-        width: 18px;
-        transform: rotate(-45deg);
-      }
-      .mnav {
-        display: none;
-      }
+    <!-- Facebook Pixel -->
+    <script is:inline>
+      !(function (f, b, e, v, n, t, s) {
+        if (f.fbq) return;
+        n = f.fbq = function () { n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments); };
+        if (!f._fbq) f._fbq = n;
+        n.push = n; n.loaded = !0; n.version = "2.0"; n.queue = [];
+        t = b.createElement(e); t.async = !0; t.src = v;
+        s = b.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t, s);
+      })(window, document, "script", "https://connect.facebook.net/en_US/fbevents.js");
+      var localConsent = localStorage.getItem("cookie_consent");
+      if (localConsent !== "accepted") { fbq("consent", "revoke"); } else { fbq("consent", "grant"); }
+      fbq("init", "1627135808585120");
+      fbq("track", "PageView");
+    </script>
 
-      /* 5. HERO CENTRADO + TRÍO DE IPHONES */
-      .hero {
-        margin-top: -76px;
-        padding: 150px 0 40px;
-        text-align: center;
-        overflow: hidden;
-        background:
-          radial-gradient(60% 50% at 50% 0%, var(--sky2), transparent 70%),
-          linear-gradient(180deg, var(--sky) 0%, var(--bg) 78%);
-      }
-      .hero::before {
-        /* nubes suaves de color */
-        content: "";
-        position: absolute;
-        inset: 0;
-        background:
-          radial-gradient(420px 260px at 12% 30%, rgba(98, 182, 255, 0.22), transparent 70%),
-          radial-gradient(420px 260px at 88% 22%, rgba(31, 191, 159, 0.14), transparent 70%);
-        pointer-events: none;
-      }
-      .badge {
-        display: inline-flex;
-        align-items: center;
-        gap: 10px;
-        padding: 6px 6px 6px 8px;
-        border-radius: 999px;
-        background: color-mix(in srgb, var(--surface) 80%, transparent);
-        border: 1px solid var(--line);
-        box-shadow: var(--sh-sm);
-        font-size: 0.86rem;
-        font-weight: 500;
-        margin-bottom: 28px;
-        text-decoration: none;
-        transition: transform 0.35s var(--ease), box-shadow 0.35s;
-      }
-      .badge:hover {
-        transform: translateY(-2px);
-        box-shadow: var(--sh-md);
-      }
-      .avs {
-        display: flex;
-      }
-      .avs b {
-        width: 26px;
-        height: 26px;
-        border-radius: 50%;
-        border: 2px solid var(--surface);
-        margin-left: -8px;
-        display: grid;
-        place-items: center;
-        font-size: 0.6rem;
-        color: #fff;
-      }
-      .avs b:first-child {
-        margin-left: 0;
-      }
-      .badge .stars {
-        color: #f5b21b;
-        display: inline-flex;
-      }
-      .badge em {
-        font-style: normal;
-        background: var(--brand);
-        color: #fff;
-        padding: 4px 12px;
-        border-radius: 999px;
-        font-weight: 600;
-        font-size: 0.8rem;
-      }
-      .hero h1 {
-        font-size: clamp(2.4rem, 6.2vw, 4.6rem);
-        max-width: 960px;
-        margin: 0 auto 24px;
-        letter-spacing: -0.045em;
-      }
-      .hero .sub {
-        font-size: 1.16rem;
-        color: var(--muted);
-        max-width: 620px;
-        margin: 0 auto 36px;
-      }
-      .cta-row {
-        display: flex;
-        gap: 12px;
-        flex-wrap: wrap;
-        justify-content: center;
-      }
-      .stage {
-        position: relative;
-        height: 560px;
-        margin-top: 64px;
-        perspective: 1400px;
-        overflow: hidden;
-      }
-      .halo {
-        position: absolute;
-        left: 50%;
-        top: 60px;
-        width: 760px;
-        height: 760px;
-        transform: translateX(-50%);
-        border-radius: 50%;
-        background:
-          radial-gradient(circle, rgba(255, 255, 255, 0.9) 0 28%, transparent 29%),
-          radial-gradient(circle, color-mix(in srgb, var(--brand2) 45%, transparent), transparent 62%);
-        opacity: 0.8;
-      }
-      .halo::after {
-        content: "";
-        position: absolute;
-        inset: 90px;
-        border-radius: 50%;
-        border: 1px dashed color-mix(in srgb, var(--brand) 30%, transparent);
-        animation: spin 60s linear infinite;
-      }
-      @keyframes spin {
-        to {
-          transform: rotate(360deg);
-        }
-      }
-      .trio {
-        position: absolute;
-        inset: 0;
-        transform-style: preserve-3d;
-        transition: transform 0.6s var(--ease);
-      }
-      .trio .iphone {
-        position: absolute;
-        top: 30px;
-        left: 50%;
-      }
-      .trio .p-l {
-        --w: 230px;
-        transform: translateX(-138%) translateY(70px) rotate(-9deg);
-      }
-      .trio .p-r {
-        --w: 230px;
-        transform: translateX(38%) translateY(70px) rotate(9deg);
-      }
-      .trio .p-c {
-        --w: 262px;
-        top: 0;
-        transform: translateX(-50%);
-        z-index: 2;
-        box-shadow: var(--sh-lg);
-      }
-      .float {
-        position: absolute;
-        z-index: 3;
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        padding: 10px 14px 10px 10px;
-        border-radius: 16px;
-        background: color-mix(in srgb, var(--surface) 88%, transparent);
-        backdrop-filter: blur(12px);
-        border: 1px solid var(--line);
-        box-shadow: var(--sh-md);
-        text-align: left;
-        font-size: 0.8rem;
-        line-height: 1.3;
-        animation: bob 6s ease-in-out infinite;
-      }
-      .float b {
-        display: block;
-        font-size: 0.86rem;
-      }
-      .float span {
-        color: var(--muted);
-      }
-      .float .ico {
-        width: 34px;
-        height: 34px;
-        border-radius: 11px;
-        display: grid;
-        place-items: center;
-        color: #fff;
-        background: var(--grad);
-      }
-      .float.f1 {
-        left: 4%;
-        top: 90px;
-      }
-      .float.f2 {
-        right: 3%;
-        top: 200px;
-        animation-delay: -2s;
-      }
-      .float.f3 {
-        left: 9%;
-        top: 360px;
-        animation-delay: -4s;
-      }
-      .float.f2 .ico {
-        background: linear-gradient(135deg, #1fbf9f, #52d6b8);
-      }
-      .float.f3 .ico {
-        background: linear-gradient(135deg, #0b1220, #33415c);
-      }
-      @keyframes bob {
-        50% {
-          transform: translateY(-10px);
-        }
-      }
-      .stage-fade {
-        position: absolute;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        height: 180px;
-        z-index: 4;
-        background: linear-gradient(transparent, var(--bg));
-        pointer-events: none;
-      }
-
-      /* Tira de funciones (marquee) */
-      .ticker-t {
-        font-size: 0.86rem;
-        color: var(--muted);
-        margin: 28px 0 18px;
-        position: relative;
-        z-index: 5;
-      }
-      .marquee {
-        position: relative;
-        overflow: hidden;
-        -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
-        mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
-      }
-      .track {
-        display: flex;
-        gap: 12px;
-        width: max-content;
-        animation: slide 38s linear infinite;
-      }
-      .marquee:hover .track {
-        animation-play-state: paused;
-      }
-      @keyframes slide {
-        to {
-          transform: translateX(-50%);
-        }
-      }
-      .pill {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        padding: 10px 18px;
-        border-radius: 999px;
-        background: var(--surface);
-        border: 1px solid var(--line);
-        font-size: 0.9rem;
-        font-weight: 500;
-        white-space: nowrap;
-        transition: transform 0.3s var(--ease), border-color 0.3s, box-shadow 0.3s;
-      }
-      .pill .i {
-        color: var(--brand);
-      }
-      .pill:hover {
-        transform: translateY(-2px);
-        border-color: color-mix(in srgb, var(--brand) 40%, var(--line));
-        box-shadow: var(--sh-sm);
-      }
-
-      /* 6. LOGOS DE CLÍNICAS (placeholders) */
-      .logos {
-        padding: 56px 0 24px;
-      }
-      .logos p {
-        text-align: center;
-        font-size: 0.86rem;
-        color: var(--muted);
-        margin-bottom: 26px;
-      }
-      .logos .track {
-        gap: 56px;
-        animation-duration: 44s;
-      }
-      .lg {
-        display: inline-flex;
-        align-items: center;
-        gap: 10px;
-        font: 700 1.12rem var(--f-title);
-        letter-spacing: -0.02em;
-        color: #9aa8bb;
-        white-space: nowrap;
-        filter: grayscale(1);
-        opacity: 0.8;
-        transition: color 0.3s, opacity 0.3s, filter 0.3s, transform 0.3s var(--ease);
-      }
-      .lg svg {
-        width: 26px;
-        height: 26px;
-        fill: currentColor;
-      }
-      .lg:hover {
-        color: var(--brand);
-        filter: none;
-        opacity: 1;
-        transform: scale(1.05);
-      }
-
-      /* 7. COMPONENTES DE DISPOSITIVO (reutilizables)
-         Para usar capturas reales: sustituye el contenido de .scr por
-         <img src="/tu-captura.webp" alt="..." /> (object-fit: cover ya está aplicado). */
-      .iphone {
-        --w: 240px;
-        position: relative;
-        width: var(--w);
-        aspect-ratio: 9 / 19.3;
-        font-size: calc(var(--w) * 0.05);
-        border-radius: calc(var(--w) * 0.17);
-        padding: calc(var(--w) * 0.035);
-        background: linear-gradient(145deg, #2a3342, #0b1220 40%, #1b2331);
-        box-shadow: var(--sh-md), inset 0 0 0 1.5px rgba(255, 255, 255, 0.14);
-        transition: transform 0.6s var(--ease), box-shadow 0.6s var(--ease);
-      }
-      .iphone::before {
-        /* isla dinámica */
-        content: "";
-        position: absolute;
-        top: calc(var(--w) * 0.06);
-        left: 50%;
-        transform: translateX(-50%);
-        width: 30%;
-        height: calc(var(--w) * 0.075);
-        border-radius: 99px;
-        background: #05080f;
-        z-index: 3;
-      }
-      .scr {
-        position: relative;
-        width: 100%;
-        height: 100%;
-        overflow: hidden;
-        border-radius: calc(var(--w) * 0.14);
-        background: linear-gradient(180deg, #eef6ff, #ffffff 40%);
-        color: #0b1220;
-        padding: 3.4em 1.1em 1.1em;
-        text-align: left;
-        line-height: 1.35;
-        font-family: var(--f-body);
-      }
-      .scr img,
-      .lscr img,
-      .tscr img {
-        position: absolute;
-        inset: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
-      .sb {
-        position: absolute;
-        top: 1.05em;
-        left: 1.6em;
-        right: 1.6em;
-        display: flex;
-        justify-content: space-between;
-        font-size: 0.78em;
-        font-weight: 600;
-      }
-      .scr small {
-        font-size: 0.78em;
-        color: #6b7a90;
-      }
-      .scr h4 {
-        font-size: 1.35em;
-        letter-spacing: -0.03em;
-        margin: 0.1em 0 0.7em;
-      }
-      .ui-card {
-        background: #fff;
-        border: 1px solid #e6edf5;
-        border-radius: 1.1em;
-        padding: 0.8em;
-        margin-bottom: 0.6em;
-        box-shadow: 0 4px 14px -8px rgba(20, 50, 100, 0.25);
-      }
-      .ui-row {
-        display: flex;
-        align-items: center;
-        gap: 0.6em;
-        font-size: 0.82em;
-        padding: 0.55em 0;
-        border-bottom: 1px solid #edf2f7;
-      }
-      .ui-row:last-child {
-        border-bottom: 0;
-      }
-      .ui-row b {
-        flex: 1;
-        font-weight: 600;
-      }
-      .ui-row time {
-        font-weight: 700;
-        color: #2f7cf6;
-        width: 3.2em;
-      }
-      .tag {
-        font-size: 0.8em;
-        font-weight: 700;
-        padding: 0.2em 0.7em;
-        border-radius: 99px;
-        background: #e7f2ff;
-        color: #2f7cf6;
-        white-space: nowrap;
-      }
-      .tag.ok {
-        background: #dcf6ef;
-        color: #0b6b58;
-      }
-      .tag.warn {
-        background: #fff3d6;
-        color: #9a6500;
-      }
-      .next {
-        background: linear-gradient(135deg, #2f7cf6, #62b6ff);
-        color: #fff;
-        border-radius: 1.2em;
-        padding: 1em;
-        margin-bottom: 0.7em;
-        box-shadow: 0 10px 24px -10px rgba(47, 124, 246, 0.8);
-      }
-      .next small {
-        color: #dcecff;
-      }
-      .next b {
-        display: block;
-        font: 700 1.3em var(--f-title);
-        letter-spacing: -0.02em;
-        margin: 0.15em 0 0.7em;
-      }
-      .next span {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 0.4em;
-        background: #fff;
-        color: #2f7cf6;
-        border-radius: 99px;
-        font-size: 0.85em;
-        font-weight: 700;
-        padding: 0.55em;
-      }
-      .ui-btn {
-        display: block;
-        text-align: center;
-        background: #0b1220;
-        color: #fff;
-        border-radius: 99px;
-        font-weight: 700;
-        font-size: 0.85em;
-        padding: 0.75em;
-        margin-top: 0.6em;
-      }
-      .days {
-        display: grid;
-        grid-template-columns: repeat(5, 1fr);
-        gap: 0.35em;
-        margin-bottom: 0.8em;
-      }
-      .days span {
-        text-align: center;
-        border-radius: 0.8em;
-        padding: 0.45em 0;
-        font-size: 0.75em;
-        background: #fff;
-        border: 1px solid #e6edf5;
-        line-height: 1.2;
-      }
-      .days span b {
-        display: block;
-        font-size: 1.3em;
-      }
-      .days span.on {
-        background: #0b1220;
-        color: #fff;
-        border-color: #0b1220;
-      }
-      .slots {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 0.4em;
-      }
-      .slots span {
-        text-align: center;
-        font-size: 0.8em;
-        font-weight: 600;
-        padding: 0.6em 0;
-        border-radius: 0.8em;
-        background: #fff;
-        border: 1px solid #e6edf5;
-      }
-      .slots span.on {
-        background: #e7f2ff;
-        border-color: #2f7cf6;
-        color: #2f7cf6;
-      }
-      .slots span.off {
-        color: #b6c1cf;
-        text-decoration: line-through;
-      }
-      .noti {
-        display: flex;
-        gap: 0.6em;
-        align-items: flex-start;
-        background: rgba(255, 255, 255, 0.85);
-        border-radius: 1.1em;
-        padding: 0.7em;
-        margin-bottom: 0.5em;
-        font-size: 0.8em;
-        box-shadow: 0 6px 16px -10px rgba(10, 30, 70, 0.4);
-      }
-      .noti i {
-        width: 2.2em;
-        height: 2.2em;
-        border-radius: 0.7em;
-        flex: none;
-        display: grid;
-        place-items: center;
-        color: #fff;
-        font-style: normal;
-        background: linear-gradient(135deg, #2f7cf6, #62b6ff);
-      }
-      .noti i svg {
-        width: 1.2em;
-        height: 1.2em;
-      }
-      .noti b {
-        display: block;
-      }
-      .noti span {
-        color: #5d6b80;
-      }
-      .scr.lock {
-        background: linear-gradient(160deg, #a9d3ff, #e7f2ff 45%, #d6f5ec);
-      }
-      .clock-big {
-        text-align: center;
-        font: 700 3.4em/1 var(--f-title);
-        letter-spacing: -0.04em;
-        color: #0b1220;
-        margin: 0.2em 0 0.1em;
-      }
-      .scr.lock .date {
-        text-align: center;
-        font-size: 0.85em;
-        font-weight: 600;
-        margin-bottom: 1.4em;
-        color: #33415c;
-      }
-      .scr.vid {
-        background: #0b1220;
-        color: #fff;
-        padding: 0;
-      }
-      .vid-main {
-        position: absolute;
-        inset: 0;
-        background:
-          radial-gradient(60% 45% at 50% 38%, #3d6fb8, transparent 70%),
-          linear-gradient(180deg, #1c3354, #0b1220);
-        display: grid;
-        place-items: center;
-      }
-      .av-big {
-        width: 7em;
-        height: 7em;
-        border-radius: 50%;
-        display: grid;
-        place-items: center;
-        font: 700 2.2em var(--f-title);
-        background: linear-gradient(135deg, #8ab8ff, #2f7cf6);
-        box-shadow: 0 0 0 0.5em rgba(255, 255, 255, 0.08), 0 0 0 1.1em rgba(255, 255, 255, 0.04);
-      }
-      .vid-self {
-        position: absolute;
-        right: 1em;
-        top: 3.4em;
-        width: 32%;
-        aspect-ratio: 3/4;
-        border-radius: 1em;
-        background: linear-gradient(160deg, #7ad9c1, #1fbf9f);
-        border: 2px solid rgba(255, 255, 255, 0.4);
-        display: grid;
-        place-items: center;
-        font: 700 1.2em var(--f-title);
-      }
-      .vid-top {
-        position: absolute;
-        top: 3.2em;
-        left: 1em;
-        font-size: 0.78em;
-      }
-      .vid-top b {
-        display: block;
-        font-size: 1.15em;
-      }
-      .e2e {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.35em;
-        margin-top: 0.4em;
-        padding: 0.25em 0.7em;
-        border-radius: 99px;
-        background: rgba(31, 191, 159, 0.22);
-        color: #7fe0c6;
-        font-weight: 600;
-      }
-      .e2e svg {
-        width: 1em;
-        height: 1em;
-      }
-      .vid-ctrl {
-        position: absolute;
-        bottom: 1.6em;
-        left: 0;
-        right: 0;
-        display: flex;
-        justify-content: center;
-        gap: 0.7em;
-      }
-      .vid-ctrl span {
-        width: 2.8em;
-        height: 2.8em;
-        border-radius: 50%;
-        display: grid;
-        place-items: center;
-        background: rgba(255, 255, 255, 0.14);
-        backdrop-filter: blur(6px);
-      }
-      .vid-ctrl span svg {
-        width: 1.2em;
-        height: 1.2em;
-      }
-      .vid-ctrl span.end {
-        background: #ef4444;
-        width: 3.6em;
-        border-radius: 99px;
-      }
-      .field {
-        background: #fff;
-        border: 1px solid #e6edf5;
-        border-radius: 0.8em;
-        padding: 0.55em 0.75em;
-        font-size: 0.78em;
-        margin-bottom: 0.45em;
-      }
-      .field small {
-        display: block;
-        font-size: 0.85em;
-      }
-      .field b {
-        font-weight: 600;
-      }
-      .sign {
-        height: 4.2em;
-        border: 1.5px dashed #b9cbe2;
-        border-radius: 0.9em;
-        display: grid;
-        place-items: center;
-        margin: 0.5em 0;
-        background: #fbfdff;
-      }
-      .sign svg {
-        width: 70%;
-        height: 70%;
-        stroke: #2f7cf6;
-        stroke-width: 2;
-        fill: none;
-        stroke-linecap: round;
-      }
-      .pay-amt {
-        text-align: center;
-        font: 700 2.6em var(--f-title);
-        letter-spacing: -0.04em;
-        margin: 0.3em 0 0.1em;
-      }
-      .pay-ok {
-        display: grid;
-        place-items: center;
-        width: 3.4em;
-        height: 3.4em;
-        border-radius: 50%;
-        margin: 0.4em auto 0.6em;
-        background: #dcf6ef;
-        color: #0b6b58;
-      }
-      .pay-ok svg {
-        width: 1.6em;
-        height: 1.6em;
-        stroke-width: 2.4;
-      }
-
-      /* Portátil */
-      .laptop {
-        position: relative;
-        width: 100%;
-      }
-      .lid {
-        background: linear-gradient(160deg, #2a3342, #0b1220);
-        border-radius: 18px 18px 6px 6px;
-        padding: 12px 12px 14px;
-        box-shadow: inset 0 0 0 1.5px rgba(255, 255, 255, 0.12);
-      }
-      .lscr {
-        position: relative;
-        aspect-ratio: 16 / 10;
-        border-radius: 8px;
-        overflow: hidden;
-        background: #f6f9fd;
-        color: #0b1220;
-        display: grid;
-        grid-template-columns: 17% 1fr;
-        font-size: clamp(8px, 1vw, 12px);
-      }
-      .base {
-        height: 14px;
-        width: 116%;
-        margin-left: -8%;
-        background: linear-gradient(#e3e9f0, #a9b6c3);
-        border-radius: 0 0 20px 20px;
-        position: relative;
-      }
-      .base::before {
-        content: "";
-        position: absolute;
-        left: 50%;
-        top: 0;
-        transform: translateX(-50%);
-        width: 16%;
-        height: 5px;
-        border-radius: 0 0 8px 8px;
-        background: #c3ccd7;
-      }
-      .side {
-        background: #0f1b2e;
-        padding: 1.4em 1em;
-        display: flex;
-        flex-direction: column;
-        gap: 0.9em;
-      }
-      .side i {
-        display: block;
-        height: 0.8em;
-        border-radius: 99px;
-        background: rgba(255, 255, 255, 0.14);
-      }
-      .side i:first-child {
-        width: 60%;
-        height: 1.6em;
-        border-radius: 0.5em;
-        background: var(--grad);
-        margin-bottom: 0.6em;
-      }
-      .side i:nth-child(2) {
-        background: rgba(98, 182, 255, 0.6);
-      }
-      .dash {
-        padding: 1.4em 1.6em;
-        overflow: hidden;
-      }
-      .dash-h {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 1.1em;
-      }
-      .dash-h b {
-        font: 700 1.4em var(--f-title);
-        letter-spacing: -0.02em;
-      }
-      .kpis {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 0.8em;
-        margin-bottom: 1em;
-      }
-      .kpi {
-        background: #fff;
-        border: 1px solid #e6edf5;
-        border-radius: 0.9em;
-        padding: 0.8em 1em;
-      }
-      .kpi b {
-        display: block;
-        font: 700 1.5em var(--f-title);
-        letter-spacing: -0.03em;
-      }
-      .kpi span {
-        font-size: 0.85em;
-        color: #6b7a90;
-      }
-      .kpi .bar {
-        height: 0.35em;
-        border-radius: 99px;
-        background: #edf2f7;
-        margin-top: 0.5em;
-        overflow: hidden;
-      }
-      .kpi .bar i {
-        display: block;
-        height: 100%;
-        border-radius: 99px;
-        background: var(--grad);
-      }
-      .dash .ui-row {
-        background: #fff;
-        border: 1px solid #e6edf5;
-        border-radius: 0.8em;
-        padding: 0.65em 0.9em;
-        margin-bottom: 0.45em;
-        font-size: 1em;
-      }
-      .dash .ui-row.free {
-        border-style: dashed;
-        color: #6b7a90;
-        background: transparent;
-      }
-
-      /* Tablet (horizontal) */
-      .tablet {
-        position: relative;
-        border-radius: 28px;
-        padding: 12px;
-        background: linear-gradient(145deg, #2a3342, #0b1220 45%, #1b2331);
-        box-shadow: var(--sh-md), inset 0 0 0 1.5px rgba(255, 255, 255, 0.12);
-      }
-      .tscr {
-        position: relative;
-        aspect-ratio: 4 / 3;
-        border-radius: 18px;
-        overflow: hidden;
-        font-size: clamp(8px, 1vw, 12px);
-      }
-
-      /* 8. REVELADO AL HACER SCROLL */
-      html.js .rv {
-        opacity: 0;
-        transform: translateY(28px);
-        transition:
-          opacity 0.9s var(--ease),
-          transform 0.9s var(--ease);
-        transition-delay: var(--d, 0s);
-      }
-      html.js .rv.in {
-        opacity: 1;
-        transform: none;
-      }
-
-      /* 9. TARJETAS (hover con foco de luz que sigue al cursor) */
-      .card {
-        position: relative;
-        background: var(--surface);
-        border: 1px solid var(--line);
-        border-radius: 28px;
-        padding: 32px;
-        overflow: hidden;
-        isolation: isolate;
-        transition:
-          transform 0.5s var(--ease),
-          box-shadow 0.5s var(--ease),
-          border-color 0.4s;
-      }
-      .card::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        z-index: -1;
-        opacity: 0;
-        transition: opacity 0.4s;
-        background: radial-gradient(360px circle at var(--mx, 50%) var(--my, 0%), color-mix(in srgb, var(--brand2) 16%, transparent), transparent 70%);
-      }
-      .card:hover {
-        transform: translateY(-6px);
-        box-shadow: var(--sh-md);
-        border-color: color-mix(in srgb, var(--brand) 28%, var(--line));
-      }
-      .card:hover::before {
-        opacity: 1;
-      }
-      .card h3 {
-        font-size: 1.28rem;
-        letter-spacing: -0.025em;
-        margin-bottom: 10px;
-      }
-      .card p {
-        color: var(--muted);
-        font-size: 0.98rem;
-      }
-      .ico-box {
-        width: 44px;
-        height: 44px;
-        border-radius: 14px;
-        display: grid;
-        place-items: center;
-        background: var(--sky);
-        color: var(--brand);
-        margin-bottom: 18px;
-        transition: transform 0.5s var(--ease), background 0.3s, color 0.3s;
-      }
-      .card:hover .ico-box {
-        transform: rotate(-8deg) scale(1.08);
-        background: var(--brand);
-        color: #fff;
-      }
-
-      /* 10. PROBLEMA */
-      .audience {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
-        justify-content: center;
-        margin: -24px 0 64px;
-      }
-      .audience span {
-        padding: 8px 16px;
-        border-radius: 999px;
-        background: var(--soft);
-        border: 1px solid var(--line);
-        font-size: 0.9rem;
-        font-weight: 500;
-        transition: all 0.3s var(--ease);
-        cursor: default;
-      }
-      .audience span:hover {
-        background: var(--ink);
-        color: var(--bg);
-        transform: translateY(-2px);
-      }
-      .pains {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 18px;
-        text-align: left;
-      }
-      .pains .card {
-        padding: 22px 22px 28px;
-      }
-      .mini {
-        min-height: 150px;
-        border-radius: 18px;
-        margin-bottom: 22px;
-        background: linear-gradient(160deg, var(--sky), var(--soft));
-        padding: 16px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        gap: 6px;
-        overflow: hidden;
-        font-size: 0.78rem;
-        color: #0b1220;
-      }
-      .bub {
-        max-width: 82%;
-        padding: 6px 11px;
-        border-radius: 14px;
-        background: #fff;
-        box-shadow: 0 3px 10px -6px rgba(10, 30, 70, 0.4);
-        transition: transform 0.5s var(--ease);
-      }
-      .bub.out {
-        align-self: flex-end;
-        background: #2f7cf6;
-        color: #fff;
-      }
-      .card:hover .bub:nth-child(odd) {
-        transform: translateX(4px);
-      }
-      .card:hover .bub:nth-child(even) {
-        transform: translateX(-4px);
-      }
-      .slot {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        background: #fff;
-        border-radius: 10px;
-        padding: 8px 10px;
-        font-weight: 600;
-      }
-      .slot.x {
-        color: #b4432f;
-      }
-      .slot.x s {
-        text-decoration-color: #b4432f88;
-      }
-      .wfm {
-        background: #fff;
-        border-radius: 12px;
-        padding: 12px;
-      }
-      .wfm i {
-        display: block;
-        height: 8px;
-        border-radius: 6px;
-        background: #e6edf5;
-        margin-bottom: 7px;
-      }
-      .wfm i:nth-child(1) {
-        width: 45%;
-        background: #cfd9e4;
-      }
-      .wfm i:nth-child(3) {
-        width: 70%;
-      }
-      .wfm small {
-        color: #6b7a90;
-        font-size: 0.72rem;
-      }
-      .lockv {
-        align-items: center;
-        text-align: center;
-        gap: 10px;
-      }
-      .lockv .big {
-        width: 56px;
-        height: 56px;
-        border-radius: 18px;
-        display: grid;
-        place-items: center;
-        background: #fff;
-        color: #b4432f;
-        box-shadow: 0 8px 20px -10px rgba(180, 67, 47, 0.6);
-        transition: transform 0.5s var(--ease), color 0.3s;
-      }
-      .lockv .big svg {
-        width: 26px;
-        height: 26px;
-      }
-      .card:hover .lockv .big {
-        transform: scale(1.1) rotate(-6deg);
-        color: #0b6b58;
-      }
-      .bridge {
-        text-align: center;
-        font: 600 1.35rem/1.4 var(--f-title);
-        letter-spacing: -0.02em;
-        max-width: 640px;
-        margin: 64px auto 0;
-      }
-
-      /* 11. BENEFICIOS: ABANICO DE 5 MÓVILES */
-      .benefits {
-        overflow: hidden;
-        background:
-          radial-gradient(50% 60% at 50% 70%, var(--sky2), transparent 75%),
-          linear-gradient(180deg, var(--bg), var(--sky) 60%, var(--bg));
-      }
-      .fan {
-        position: relative;
-        display: flex;
-        justify-content: center;
-        align-items: flex-end;
-        gap: 0;
-        margin-top: 10px;
-        padding: 30px 0 10px;
-      }
-      .fan figure {
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin: 0 -18px;
-        transition: transform 0.6s var(--ease), z-index 0s;
-        cursor: pointer;
-      }
-      .fan figure:nth-child(1) {
-        transform: translateY(70px) rotate(-6deg);
-        z-index: 1;
-      }
-      .fan figure:nth-child(2) {
-        transform: translateY(30px) rotate(-3deg);
-        z-index: 2;
-      }
-      .fan figure:nth-child(3) {
-        z-index: 3;
-      }
-      .fan figure:nth-child(4) {
-        transform: translateY(30px) rotate(3deg);
-        z-index: 2;
-      }
-      .fan figure:nth-child(5) {
-        transform: translateY(70px) rotate(6deg);
-        z-index: 1;
-      }
-      .fan figure:nth-child(odd):not(:nth-child(3)) .iphone {
-        --w: 200px;
-      }
-      .fan figure:nth-child(even) .iphone {
-        --w: 224px;
-      }
-      .fan figure:nth-child(3) .iphone {
-        --w: 256px;
-        box-shadow: var(--sh-lg);
-      }
-      .fan figure:hover {
-        z-index: 5;
-        transform: translateY(-14px) rotate(0) scale(1.03);
-      }
-      .fan figure:hover .iphone {
-        box-shadow: var(--sh-lg);
-      }
-      .fan figcaption {
-        margin-top: 18px;
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        padding: 8px 16px;
-        border-radius: 999px;
-        background: var(--surface);
-        border: 1px solid var(--line);
-        font-size: 0.86rem;
-        font-weight: 600;
-        box-shadow: var(--sh-sm);
-        transition: background 0.3s, color 0.3s;
-      }
-      .fan figcaption .i {
-        color: var(--brand);
-      }
-      .fan figure:hover figcaption {
-        background: var(--ink);
-        color: var(--bg);
-      }
-      .fan figure:hover figcaption .i {
-        color: var(--brand2);
-      }
-      .ben-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 18px;
-        margin-top: 100px;
-      }
-      .cap-note {
-        text-align: center;
-        font-size: 0.8rem;
-        color: var(--muted);
-        margin-top: 18px;
-      }
-
-      /* 12. CONSULTA DIGITAL: BENTO CON DISPOSITIVOS */
-      .bento {
-        display: grid;
-        grid-template-columns: repeat(6, 1fr);
-        gap: 18px;
-      }
-      .bento .card {
-        padding: 34px;
-      }
-      .s2 {
-        grid-column: span 2;
-      }
-      .s3 {
-        grid-column: span 3;
-      }
-      .s4 {
-        grid-column: span 4;
-      }
-      .s6 {
-        grid-column: span 6;
-      }
-      .bx-hero {
-        display: grid;
-        grid-template-columns: 0.8fr 1.2fr;
-        gap: 36px;
-        align-items: center;
-        background:
-          radial-gradient(500px 300px at 90% 10%, var(--sky2), transparent 70%),
-          linear-gradient(160deg, var(--sky), var(--surface) 70%);
-      }
-      .dev-stack {
-        position: relative;
-        padding: 10px 40px 24px 0;
-        transition: transform 0.7s var(--ease);
-      }
-      .card:hover .dev-stack {
-        transform: translateY(-4px) scale(1.01);
-      }
-      .dev-stack .iphone {
-        --w: 132px;
-        position: absolute;
-        right: 0;
-        bottom: -6px;
-        box-shadow: var(--sh-lg);
-        transition: transform 0.7s var(--ease);
-      }
-      .card:hover .dev-stack .iphone {
-        transform: translateY(-10px) rotate(3deg);
-      }
-      .bx-dark {
-        background: linear-gradient(165deg, #0b1220, #14264a);
-        border: 0;
-        color: #fff;
-      }
-      .bx-dark h3 {
-        color: #fff;
-      }
-      .bx-dark p {
-        color: #a9bcd6;
-      }
-      .bx-dark .ico-box {
-        background: rgba(255, 255, 255, 0.08);
-        color: #7fe0c6;
-      }
-      .bx-dark .tablet {
-        margin-top: 26px;
-        transition: transform 0.7s var(--ease);
-      }
-      .bx-dark:hover .tablet {
-        transform: translateY(-6px) rotate(-1deg);
-      }
-      .vid-grid {
-        position: absolute;
-        inset: 0;
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 0.5em;
-        padding: 0.5em;
-        background: #0b1220;
-      }
-      .vid-grid > div {
-        position: relative;
-        border-radius: 0.9em;
-        display: grid;
-        place-items: center;
-        font: 700 2em var(--f-title);
-        color: #fff;
-      }
-      .vid-grid > div:nth-child(1) {
-        background: radial-gradient(circle at 50% 40%, #4e86d8, #1c3354);
-      }
-      .vid-grid > div:nth-child(2) {
-        background: radial-gradient(circle at 50% 40%, #56cfb2, #144a45);
-      }
-      .vid-grid small {
-        position: absolute;
-        left: 0.7em;
-        top: 0.6em;
-        font: 600 0.4em var(--f-body);
-        background: rgba(0, 0, 0, 0.35);
-        padding: 0.3em 0.7em;
-        border-radius: 99px;
-      }
-      .tscr .vid-ctrl {
-        bottom: 1em;
-        font-size: 0.9em;
-        color: #fff;
-      }
-      .tscr .e2e {
-        position: absolute;
-        bottom: 4.2em;
-        left: 50%;
-        transform: translateX(-50%);
-        margin: 0;
-        background: rgba(11, 18, 32, 0.6);
-        backdrop-filter: blur(6px);
-        font-size: 0.85em;
-        white-space: nowrap;
-      }
-      .toast-demo {
-        margin-top: 22px;
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
-        font-size: 12px;
-      }
-      .toast-demo .noti {
-        background: var(--soft);
-        border: 1px solid var(--line);
-        box-shadow: none;
-        color: var(--ink);
-        transition: transform 0.5s var(--ease);
-      }
-      .toast-demo .noti span {
-        color: var(--muted);
-      }
-      .card:hover .toast-demo .noti:first-child {
-        transform: translateX(6px);
-      }
-      .card:hover .toast-demo .noti:last-child {
-        transform: translateX(-6px);
-      }
-      .bx-mint {
-        background: linear-gradient(160deg, var(--mint-bg), var(--surface));
-      }
-      .bx-mint .ico-box {
-        background: var(--surface);
-        color: var(--mint-ink);
-      }
-      .pay-demo {
-        margin-top: 22px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 10px;
-        padding: 14px 16px;
-        border-radius: 16px;
-        background: var(--surface);
-        border: 1px solid var(--line);
-        font-size: 0.9rem;
-      }
-      .pay-demo b {
-        font: 700 1.3rem var(--f-title);
-      }
-      .form-demo {
-        margin-top: 22px;
-        font-size: 12px;
-        color: #0b1220;
-      }
-      .form-demo .field {
-        background: var(--soft);
-        border-color: var(--line);
-        color: var(--ink);
-      }
-      .progress {
-        height: 6px;
-        border-radius: 99px;
-        background: var(--line);
-        overflow: hidden;
-        margin-top: 10px;
-      }
-      .progress i {
-        display: block;
-        height: 100%;
-        width: 66%;
-        border-radius: 99px;
-        background: var(--grad);
-        transition: width 1s var(--ease);
-      }
-      .card:hover .progress i {
-        width: 100%;
-      }
-      .bx-int {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 36px;
-        align-items: center;
-        background: linear-gradient(120deg, var(--sky), var(--soft));
-      }
-      .hub {
-        position: relative;
-        height: 210px;
-      }
-      .hub .core {
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
-        width: 76px;
-        height: 76px;
-        border-radius: 24px;
-        display: grid;
-        place-items: center;
-        color: #fff;
-        font: 800 1.2rem var(--f-title);
-        background: var(--grad);
-        box-shadow: 0 0 0 10px color-mix(in srgb, var(--brand) 12%, transparent), var(--sh-md);
-        z-index: 2;
-      }
-      .hub .ring {
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        width: 190px;
-        height: 190px;
-        margin: -95px 0 0 -95px;
-        border-radius: 50%;
-        border: 1px dashed color-mix(in srgb, var(--brand) 40%, transparent);
-        animation: spin 40s linear infinite;
-      }
-      .hub .pill {
-        position: absolute;
-        font-size: 0.8rem;
-        padding: 7px 13px;
-        box-shadow: var(--sh-sm);
-      }
-      .hub .pill:nth-of-type(1) {
-        left: 2%;
-        top: 12%;
-      }
-      .hub .pill:nth-of-type(2) {
-        right: 0;
-        top: 6%;
-      }
-      .hub .pill:nth-of-type(3) {
-        left: 0;
-        bottom: 12%;
-      }
-      .hub .pill:nth-of-type(4) {
-        right: 4%;
-        bottom: 6%;
-      }
-      .hub .pill:nth-of-type(5) {
-        left: 50%;
-        bottom: -8px;
-        transform: translateX(-50%);
-      }
-      .hub .pill:nth-of-type(5):hover {
-        transform: translateX(-50%) translateY(-2px);
-      }
-      .opt {
-        margin-top: 28px;
-        text-align: center;
-        font-size: 0.95rem;
-        color: var(--muted);
-      }
-      .opt b {
-        color: var(--ink);
-      }
-
-      /* 13. TIMELINE VERTICAL INTERACTIVO */
-      .process {
-        background:
-          radial-gradient(700px 400px at 0% 10%, var(--sky), transparent 70%),
-          radial-gradient(600px 400px at 100% 90%, color-mix(in srgb, var(--mint-bg) 70%, transparent), transparent 70%),
-          var(--soft);
-      }
-      .tl {
-        --p: 0;
-        position: relative;
-        max-width: 980px;
-        margin: 0 auto;
-      }
-      .tl-line {
-        position: absolute;
-        left: 50%;
-        top: 0;
-        bottom: 0;
-        width: 3px;
-        margin-left: -1.5px;
-        border-radius: 3px;
-        background: var(--line);
-      }
-      .tl-line i {
-        display: block;
-        width: 100%;
-        height: calc(var(--p) * 100%);
-        border-radius: 3px;
-        background: linear-gradient(180deg, #2f7cf6, #62b6ff, #1fbf9f);
-        box-shadow: 0 0 16px rgba(47, 124, 246, 0.55);
-        position: relative;
-      }
-      .tl-line i::after {
-        /* cometa en la punta de la línea */
-        content: "";
-        position: absolute;
-        bottom: -6px;
-        left: 50%;
-        width: 12px;
-        height: 12px;
-        margin-left: -6px;
-        border-radius: 50%;
-        background: #fff;
-        box-shadow: 0 0 0 4px rgba(47, 124, 246, 0.35), 0 0 22px 6px rgba(47, 124, 246, 0.6);
-      }
-      .tl-item {
-        position: relative;
-        width: 50%;
-        padding: 0 56px 56px 0;
-      }
-      .tl-item:nth-child(odd) {
-        margin-left: 50%;
-        padding: 0 0 56px 56px;
-      }
-      .tl-item:last-child {
-        padding-bottom: 0;
-      }
-      .tl-item + .tl-item {
-        margin-top: -120px; /* escalonado: cada tarjeta empieza a media altura de la anterior */
-      }
-      .tl-node {
-        position: absolute;
-        top: 26px;
-        right: -22px;
-        width: 44px;
-        height: 44px;
-        border-radius: 50%;
-        display: grid;
-        place-items: center;
-        font: 700 0.95rem var(--f-title);
-        background: var(--surface);
-        border: 2px solid var(--line);
-        color: var(--muted);
-        z-index: 2;
-        transition: all 0.5s var(--ease);
-      }
-      .tl-item:nth-child(odd) .tl-node {
-        right: auto;
-        left: -22px;
-      }
-      .tl-item.on .tl-node {
-        background: var(--brand);
-        border-color: var(--brand);
-        color: #fff;
-        box-shadow:
-          0 0 0 7px color-mix(in srgb, var(--brand) 18%, transparent),
-          0 0 24px color-mix(in srgb, var(--brand) 60%, transparent);
-      }
-      .tl-item.current .tl-node::after {
-        content: "";
-        position: absolute;
-        inset: -8px;
-        border-radius: 50%;
-        border: 2px solid var(--brand);
-        animation: ping 1.8s var(--ease) infinite;
-      }
-      @keyframes ping {
-        from {
-          transform: scale(0.8);
-          opacity: 0.9;
-        }
-        to {
-          transform: scale(1.6);
-          opacity: 0;
-        }
-      }
-      .tl-card {
-        width: 100%;
-        text-align: left;
-        font: inherit;
-        color: inherit;
-        cursor: pointer;
-        opacity: 0.55;
-        transform: translateY(12px) scale(0.98);
-        transition:
-          opacity 0.6s var(--ease),
-          transform 0.6s var(--ease),
-          box-shadow 0.5s var(--ease),
-          border-color 0.4s;
-      }
-      html:not(.js) .tl-card,
-      .tl-item.on .tl-card {
-        opacity: 1;
-        transform: none;
-      }
-      .tl-item.on .tl-card:hover {
-        transform: translateY(-6px);
-      }
-      .tl-item.current .tl-card {
-        border-color: color-mix(in srgb, var(--brand) 40%, var(--line));
-        box-shadow: var(--sh-md);
-      }
-      .tl-card .wk {
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-        font-size: 0.8rem;
-        font-weight: 600;
-        color: var(--brand);
-        background: var(--sky);
-        padding: 5px 12px;
-        border-radius: 99px;
-        margin-bottom: 14px;
-      }
-      .tl-more {
-        display: grid;
-        grid-template-rows: 0fr;
-        transition: grid-template-rows 0.5s var(--ease);
-      }
-      .tl-more > div {
-        overflow: hidden;
-      }
-      .tl-card[aria-expanded="true"] .tl-more {
-        grid-template-rows: 1fr;
-      }
-      .tl-more ul {
-        list-style: none;
-        padding-top: 16px;
-        margin-top: 16px;
-        border-top: 1px solid var(--line);
-      }
-      .tl-more li {
-        display: flex;
-        gap: 10px;
-        align-items: center;
-        font-size: 0.93rem;
-        padding: 4px 0;
-      }
-      .tl-more li .i {
-        color: var(--mint);
-      }
-      .tl-toggle {
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-        margin-top: 14px;
-        font-size: 0.86rem;
-        font-weight: 600;
-        color: var(--brand);
-      }
-      .tl-toggle .i {
-        transition: transform 0.4s var(--ease);
-      }
-      .tl-card[aria-expanded="true"] .tl-toggle .i {
-        transform: rotate(45deg);
-      }
-      .tl-count {
-        text-align: center;
-        margin-top: 56px;
-        font-size: 0.9rem;
-        color: var(--muted);
-      }
-      .tl-count b {
-        color: var(--ink);
-      }
-
-      /* 14. PLANES */
-      .plans {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 22px;
-        max-width: 960px;
-        margin: 0 auto;
-        text-align: left;
-      }
-      .plan {
-        padding: 40px;
-        display: flex;
-        flex-direction: column;
-      }
-      .plan .ptag {
-        align-self: flex-start;
-        background: var(--sky);
-        color: var(--brand);
-        font-weight: 600;
-        font-size: 0.8rem;
-        padding: 5px 14px;
-        border-radius: 99px;
-        margin-bottom: 20px;
-      }
-      .plan h3 {
-        font-size: 1.4rem;
-      }
-      .price {
-        font: 800 2.6rem var(--f-title);
-        letter-spacing: -0.04em;
-        margin: 14px 0 6px;
-      }
-      .price small {
-        display: block;
-        font: 400 0.92rem var(--f-body);
-        letter-spacing: 0;
-        color: var(--muted);
-      }
-      .plan > p {
-        margin-bottom: 22px;
-      }
-      .plan ul {
-        list-style: none;
-        margin-bottom: 30px;
-        flex: 1;
-      }
-      .plan li {
-        display: flex;
-        gap: 12px;
-        padding: 8px 0;
-        font-size: 0.97rem;
-      }
-      .plan li .ck {
-        width: 22px;
-        height: 22px;
-        border-radius: 50%;
-        flex: none;
-        display: grid;
-        place-items: center;
-        background: var(--mint-bg);
-        color: var(--mint-ink);
-        font-size: 0.8rem;
-        margin-top: 2px;
-      }
-      .plan .btn {
-        width: 100%;
-      }
-      .plan.hot {
-        background:
-          radial-gradient(400px 260px at 100% 0%, rgba(98, 182, 255, 0.35), transparent 70%),
-          linear-gradient(165deg, #0b1220, #172a4d);
-        border: 0;
-        color: #fff;
-        box-shadow: var(--sh-lg);
-      }
-      .plan.hot p,
-      .plan.hot .price small {
-        color: #a9bcd6;
-      }
-      .plan.hot .ptag {
-        background: var(--grad);
-        color: #fff;
-      }
-      .plan.hot li .ck {
-        background: rgba(127, 224, 198, 0.18);
-        color: #7fe0c6;
-      }
-      .plan.hot .btn {
-        --bb: #fff;
-        --bi: #0b1220;
-      }
-
-      /* 15. AUTORIDAD: TESTIMONIOS + DEMOS */
-      .proof-grid {
-        display: grid;
-        grid-template-columns: 0.9fr 1.3fr 1fr;
-        grid-template-rows: auto auto;
-        gap: 18px;
-        text-align: left;
-      }
-      .rating {
-        grid-row: span 2;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        background:
-          radial-gradient(300px 200px at 0% 0%, var(--sky2), transparent 70%),
-          var(--surface);
-      }
-      .rating .score {
-        font: 800 4.6rem/1 var(--f-title);
-        letter-spacing: -0.05em;
-      }
-      .rating .score span {
-        font-size: 1.4rem;
-        color: var(--muted);
-        letter-spacing: 0;
-      }
-      .stars5 {
-        display: flex;
-        gap: 3px;
-        color: #f5b21b;
-        margin: 12px 0 8px;
-        font-size: 1.1rem;
-      }
-      .g-badge {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        padding: 14px;
-        border-radius: 16px;
-        background: var(--soft);
-        border: 1px solid var(--line);
-        margin-top: 28px;
-        font-size: 0.86rem;
-        line-height: 1.35;
-      }
-      .g-badge .g {
-        width: 36px;
-        height: 36px;
-        border-radius: 10px;
-        background: #fff;
-        display: grid;
-        place-items: center;
-        font: 800 1.1rem var(--f-title);
-        box-shadow: var(--sh-sm);
-        flex: none;
-      }
-      .g-badge .g span {
-        background: conic-gradient(#ea4335 0 25%, #fbbc05 0 50%, #34a853 0 75%, #4285f4 0);
-        -webkit-background-clip: text;
-        background-clip: text;
-        color: transparent;
-      }
-      .trust-list {
-        list-style: none;
-        margin-top: 22px;
-        display: grid;
-        gap: 10px;
-        font-size: 0.92rem;
-      }
-      .trust-list li {
-        display: flex;
-        gap: 10px;
-        align-items: center;
-      }
-      .trust-list .i {
-        color: var(--mint);
-      }
-      .quote.feat {
-        grid-row: span 2;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        background: linear-gradient(160deg, #0b1220, #172a4d);
-        color: #fff;
-        border: 0;
-      }
-      .quote.feat blockquote {
-        font: 600 clamp(1.4rem, 2.4vw, 1.9rem) / 1.3 var(--f-title);
-        letter-spacing: -0.025em;
-        margin: 22px 0 32px;
-      }
-      .qmark {
-        font: 800 5rem/0.6 var(--f-title);
-        background: var(--grad);
-        -webkit-background-clip: text;
-        background-clip: text;
-        color: transparent;
-        height: 40px;
-      }
-      .quote blockquote {
-        font-size: 1.04rem;
-        margin: 12px 0 22px;
-      }
-      .who {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-      }
-      .who .av {
-        width: 46px;
-        height: 46px;
-        border-radius: 50%;
-        display: grid;
-        place-items: center;
-        color: #fff;
-        font: 700 0.95rem var(--f-title);
-        background: var(--grad);
-        flex: none;
-        transition: transform 0.4s var(--ease);
-      }
-      .quote:hover .who .av {
-        transform: scale(1.08);
-      }
-      .who b {
-        display: block;
-        font-size: 0.98rem;
-      }
-      .who span {
-        font-size: 0.84rem;
-        color: var(--muted);
-        display: inline-flex;
-        gap: 6px;
-        align-items: center;
-      }
-      .quote.feat .who span {
-        color: #a9bcd6;
-      }
-      .verified {
-        color: var(--mint);
-      }
-      .quote .stars5 {
-        margin: 0;
-        font-size: 0.95rem;
-      }
-
-      .demos-h {
-        display: flex;
-        justify-content: space-between;
-        align-items: end;
-        gap: 20px;
-        margin: 90px 0 26px;
-        text-align: left;
-        flex-wrap: wrap;
-      }
-      .demos-h h3 {
-        font-size: 1.6rem;
-      }
-      .demos {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 18px;
-        text-align: left;
-      }
-      .demo {
-        padding: 12px 12px 18px;
-        text-decoration: none;
-        border-radius: 22px;
-      }
-      .browser {
-        border-radius: 14px;
-        overflow: hidden;
-        border: 1px solid var(--line);
-        margin-bottom: 16px;
-        background: var(--soft);
-      }
-      .browser .bar {
-        display: flex;
-        gap: 5px;
-        align-items: center;
-        padding: 8px 10px;
-        background: var(--surface);
-        border-bottom: 1px solid var(--line);
-      }
-      .browser .bar i {
-        width: 7px;
-        height: 7px;
-        border-radius: 50%;
-        background: #d6dee8;
-      }
-      .browser .bar span {
-        flex: 1;
-        height: 12px;
-        margin-left: 6px;
-        border-radius: 99px;
-        background: var(--soft);
-      }
-      /* Placeholder de captura: sustituye .site por <img src="/captura-demo.webp"> */
-      .site {
-        aspect-ratio: 16 / 11;
-        padding: 12px;
-        display: flex;
-        flex-direction: column;
-        gap: 6px;
-        background: linear-gradient(160deg, hsl(var(--h) 70% 94%), hsl(var(--h) 55% 86%));
-        transition: transform 0.7s var(--ease);
-      }
-      .demo:hover .site {
-        transform: scale(1.04);
-      }
-      .site i {
-        display: block;
-        height: 7px;
-        border-radius: 6px;
-        background: hsl(var(--h) 35% 40% / 0.35);
-      }
-      .site i:nth-child(1) {
-        width: 30%;
-        margin-bottom: 8px;
-      }
-      .site i:nth-child(2) {
-        width: 80%;
-        height: 12px;
-        background: hsl(var(--h) 40% 25% / 0.7);
-      }
-      .site i:nth-child(3) {
-        width: 60%;
-      }
-      .site i:nth-child(4) {
-        width: 34%;
-        height: 16px;
-        border-radius: 99px;
-        margin-top: 6px;
-        background: hsl(var(--h) 60% 45%);
-      }
-      .site i:nth-child(5) {
-        flex: 1;
-        margin-top: 8px;
-        border-radius: 10px;
-        background: hsl(var(--h) 50% 98% / 0.8);
-      }
-      .demo b {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 0 6px;
-        font-size: 0.97rem;
-      }
-      .demo b .i {
-        color: var(--brand);
-        transition: transform 0.4s var(--ease);
-      }
-      .demo:hover b .i {
-        transform: translate(3px, -3px);
-      }
-
-      /* 16. FAQ (dos columnas como la referencia) */
-      .faq-grid {
-        display: grid;
-        grid-template-columns: 0.8fr 1.2fr;
-        gap: 60px;
-        align-items: start;
-      }
-      .faq-side {
-        position: sticky;
-        top: 110px;
-      }
-      .ask {
-        margin-top: 30px;
-        background:
-          radial-gradient(260px 180px at 100% 0%, var(--sky2), transparent 70%),
-          var(--surface);
-      }
-      .ask h3 {
-        font-size: 1.2rem;
-      }
-      .ask .btn {
-        margin-top: 18px;
-      }
-      details {
-        background: var(--surface);
-        border: 1px solid var(--line);
-        border-radius: 18px;
-        margin-bottom: 10px;
-        transition: border-color 0.3s, box-shadow 0.4s var(--ease), transform 0.4s var(--ease);
-      }
-      details:hover {
-        border-color: color-mix(in srgb, var(--brand) 30%, var(--line));
-        transform: translateX(4px);
-      }
-      details[open] {
-        box-shadow: var(--sh-md);
-        border-color: color-mix(in srgb, var(--brand) 30%, var(--line));
-        transform: none;
-      }
-      summary {
-        cursor: pointer;
-        list-style: none;
-        padding: 20px 64px 20px 24px;
-        font: 600 1.02rem var(--f-title);
-        letter-spacing: -0.01em;
-        position: relative;
-      }
-      summary::-webkit-details-marker {
-        display: none;
-      }
-      summary::after {
-        content: "+";
-        position: absolute;
-        right: 18px;
-        top: 50%;
-        width: 30px;
-        height: 30px;
-        margin-top: -15px;
-        border-radius: 50%;
-        display: grid;
-        place-items: center;
-        background: var(--sky);
-        color: var(--brand);
-        font: 400 1.3rem/1 var(--f-body);
-        transition: transform 0.4s var(--ease), background 0.3s, color 0.3s;
-      }
-      details[open] summary::after {
-        transform: rotate(45deg);
-        background: var(--brand);
-        color: #fff;
-      }
-      details p {
-        padding: 0 24px 22px;
-        color: var(--muted);
-      }
-      details[open] p {
-        animation: fadeUp 0.5s var(--ease);
-      }
-      @keyframes fadeUp {
-        from {
-          opacity: 0;
-          transform: translateY(-6px);
-        }
-      }
-
-      /* 17. CONTACTO (tarjeta degradada tipo referencia) */
-      .contact {
-        padding-top: 40px;
-      }
-      .cbox {
-        border-radius: 40px;
-        padding: 80px 56px;
-        overflow: hidden;
-        position: relative;
-        background:
-          radial-gradient(600px 380px at 100% 0%, rgba(98, 182, 255, 0.45), transparent 70%),
-          radial-gradient(500px 320px at 0% 100%, rgba(31, 191, 159, 0.22), transparent 70%),
-          linear-gradient(170deg, var(--sky), var(--soft));
-        border: 1px solid var(--line);
-      }
-      .trust-row {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
-        justify-content: center;
-        margin: -30px 0 48px;
-      }
-      .cgrid {
-        display: grid;
-        grid-template-columns: 1.1fr 0.9fr;
-        gap: 24px;
-        align-items: start;
-        text-align: left;
-      }
-      .cal {
-        background: #fff;
-        border-radius: 26px;
-        overflow: hidden;
-        height: 560px;
-        box-shadow: var(--sh-lg);
-        border: 1px solid var(--line);
-      }
-      .cal iframe {
-        width: 100%;
-        height: 100%;
-        border: 0;
-      }
-      .cal-alt {
-        margin-top: 14px;
-        font-size: 0.92rem;
-        color: var(--muted);
-      }
-      .cal-alt a {
-        color: var(--brand);
-        font-weight: 600;
-      }
-      form {
-        background: var(--surface);
-        color: var(--ink);
-        border-radius: 26px;
-        padding: 36px;
-        display: flex;
-        flex-direction: column;
-        gap: 16px;
-        box-shadow: var(--sh-lg);
-        border: 1px solid var(--line);
-      }
-      form h3 {
-        font-size: 1.35rem;
-      }
-      label {
-        font-weight: 600;
-        font-size: 0.88rem;
-        display: block;
-        margin-bottom: 6px;
-      }
-      input,
-      select {
-        width: 100%;
-        padding: 13px 16px;
-        border: 1px solid var(--line);
-        border-radius: 14px;
-        font: inherit;
-        font-size: 0.97rem;
-        background: var(--soft);
-        color: var(--ink);
-        transition: border-color 0.25s, box-shadow 0.25s, background 0.25s;
-      }
-      input:hover,
-      select:hover {
-        border-color: color-mix(in srgb, var(--brand) 35%, var(--line));
-      }
-      input:focus,
-      select:focus {
-        outline: 0;
-        background: var(--surface);
-        border-color: var(--brand);
-        box-shadow: 0 0 0 4px color-mix(in srgb, var(--brand) 16%, transparent);
-      }
-      form .btn {
-        width: 100%;
-        margin-top: 4px;
-      }
-      .ok-msg {
-        display: none;
-        background: var(--mint-bg);
-        color: var(--mint-ink);
-        padding: 14px 18px;
-        border-radius: 14px;
-        font-weight: 600;
-      }
-
-      /* 18. FOOTER + CTA MÓVIL */
-      footer {
-        padding: 56px 0 40px;
-        font-size: 0.92rem;
-        color: var(--muted);
-        margin-top: 80px;
-      }
-      footer .wrap {
-        display: flex;
-        justify-content: space-between;
-        gap: 24px;
-        flex-wrap: wrap;
-        align-items: center;
-      }
-      footer nav {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 6px 20px;
-      }
-      footer a {
-        text-decoration: none;
-        transition: color 0.2s;
-      }
-      footer a:hover {
-        color: var(--brand);
-      }
-      .sticky-cta {
-        display: none;
-      }
-
-      /* 19. RESPONSIVE
-         Escala fluida (sin media query) + cortes:
-         ≤1080 tablet horizontal · ≤900 tablet vertical y menú hamburguesa · ≤640 móvil · ≤400 móvil estrecho */
-
-      /* 19.1 Tipografía fluida y protección contra desbordes */
-      h1,
-      h2 {
-        text-wrap: balance;
-        overflow-wrap: break-word;
-      }
-      .hero h1 {
-        font-size: clamp(2rem, 0.9rem + 5.4vw, 4.6rem);
-      }
-      h2 {
-        font-size: clamp(1.7rem, 1.1rem + 2.6vw, 3.1rem);
-      }
-      .lead {
-        font-size: clamp(1rem, 0.95rem + 0.3vw, 1.12rem);
-      }
-      img,
-      iframe {
-        max-width: 100%;
-      }
-      /* Los hijos de un grid no deben imponer su ancho mínimo (evita scroll horizontal) */
-      .pains > *,
-      .ben-grid > *,
-      .bento > *,
-      .plans > *,
-      .proof-grid > *,
-      .demos > *,
-      .faq-grid > *,
-      .cgrid > *,
-      .bx-hero > *,
-      .bx-int > * {
-        min-width: 0;
-      }
-
-      /* 19.2 Tablet horizontal */
-      @media (max-width: 1080px) {
-        section {
-          padding: 96px 0;
-        }
-        .pains {
-          grid-template-columns: 1fr 1fr;
-        }
-        .demos {
-          grid-template-columns: 1fr 1fr;
-        }
-        .proof-grid {
-          grid-template-columns: 1fr 1fr;
-        }
-        .rating {
-          grid-row: auto;
-          grid-column: span 2;
-        }
-        .quote.feat {
-          grid-row: auto;
-          grid-column: span 2;
-          order: -1;
-        }
-        .fan figure:nth-child(1),
-        .fan figure:nth-child(5) {
-          display: none;
-        }
-        .float.f3 {
-          left: 2%;
-        }
-        .bx-hero {
-          gap: 24px;
-        }
-        .faq-grid {
-          gap: 40px;
-        }
-      }
-
-      /* 19.3 Tablet vertical: menú hamburguesa y rejillas a 1-2 columnas */
-      @media (max-width: 900px) {
-        section {
-          padding: 80px 0;
-        }
-        .lead {
-          margin-bottom: 44px;
-        }
-
-        /* Navegación */
-        .links,
-        .nav-cta {
-          display: none;
-        }
-        .burger {
-          display: block;
-        }
-        .top .nav {
-          position: relative;
-          z-index: 3;
-          padding-right: 10px;
-        }
-        /* Panel a pantalla completa: fixed respecto al viewport, se abre donde esté el usuario */
-        .top.open {
-          z-index: 1000;
-        }
-        .mnav {
-          display: flex;
-          flex-direction: column;
-          position: fixed;
-          inset: 0;
-          width: 100%;
-          height: 100vh;
-          height: 100dvh;
-          z-index: 1000;
-          padding: calc(12px + env(safe-area-inset-top, 0px)) 16px calc(20px + env(safe-area-inset-bottom, 0px));
-          overflow-y: auto;
-          overscroll-behavior: contain;
-          background:
-            radial-gradient(500px 320px at 100% 0%, color-mix(in srgb, var(--brand2) 22%, transparent), transparent 70%),
-            radial-gradient(420px 300px at 0% 100%, color-mix(in srgb, var(--mint) 14%, transparent), transparent 70%),
-            var(--bg);
-          opacity: 0;
-          visibility: hidden;
-          transform: translateY(-12px);
-          transition:
-            opacity 0.3s var(--ease),
-            transform 0.4s var(--ease),
-            visibility 0s linear 0.4s;
-        }
-        .top.open .mnav {
-          opacity: 1;
-          visibility: visible;
-          transform: none;
-          transition:
-            opacity 0.3s var(--ease),
-            transform 0.4s var(--ease),
-            visibility 0s;
-        }
-        .mnav-head {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          height: 64px;
-          padding: 0 10px 0 22px;
-          margin: 0 auto 28px;
-          width: 100%;
-          max-width: 1100px;
-          border-radius: 999px;
-          background: var(--surface);
-          border: 1px solid var(--line);
-          box-shadow: var(--sh-sm);
-        }
-        .mnav-close {
-          width: 44px;
-          height: 44px;
-          border-radius: 50%;
-          border: 0;
-          display: grid;
-          place-items: center;
-          background: var(--btn);
-          color: var(--btn-ink);
-          cursor: pointer;
-          transition: transform 0.3s var(--ease);
-        }
-        .mnav-close:hover {
-          transform: rotate(90deg);
-        }
-        .mnav-close:active {
-          transform: scale(0.94);
-        }
-        .mnav-close .i {
-          width: 20px;
-          height: 20px;
-        }
-        .mnav-links {
-          display: flex;
-          flex-direction: column;
-          width: 100%;
-          max-width: 560px;
-          margin: 0 auto;
-        }
-        .mnav-links a {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          padding: 18px 8px;
-          border-bottom: 1px solid var(--line);
-          text-decoration: none;
-          font: 700 clamp(1.5rem, 1.2rem + 1.4vw, 2rem) var(--f-title);
-          letter-spacing: -0.03em;
-          opacity: 0;
-          transform: translateY(10px);
-          transition:
-            color 0.25s,
-            padding 0.3s var(--ease),
-            opacity 0.4s var(--ease),
-            transform 0.4s var(--ease);
-        }
-        .top.open .mnav-links a {
-          opacity: 1;
-          transform: none;
-        }
-        .top.open .mnav-links a:nth-child(1) {
-          transition-delay: 0.06s;
-        }
-        .top.open .mnav-links a:nth-child(2) {
-          transition-delay: 0.1s;
-        }
-        .top.open .mnav-links a:nth-child(3) {
-          transition-delay: 0.14s;
-        }
-        .top.open .mnav-links a:nth-child(4) {
-          transition-delay: 0.18s;
-        }
-        .mnav-links a .i {
-          color: var(--muted);
-          transition: transform 0.3s var(--ease), color 0.25s;
-        }
-        .mnav-links a:hover,
-        .mnav-links a:focus-visible {
-          color: var(--brand);
-          padding-left: 14px;
-        }
-        .mnav-links a:hover .i {
-          color: var(--brand);
-          transform: translateX(4px);
-        }
-        .mnav-foot {
-          width: 100%;
-          max-width: 560px;
-          margin: auto auto 0;
-          padding-top: 32px;
-        }
-        .mnav-foot .btn {
-          width: 100%;
-        }
-        .mnav-note {
-          text-align: center;
-          font-size: 0.84rem;
-          color: var(--muted);
-          padding-top: 12px;
-        }
-        /* Bloquea el scroll de fondo solo en <html>: si también se aplica a <body>,
-           body pasa a ser contenedor de scroll y la cabecera sticky salta arriba */
-        html.menu-open {
-          overflow: hidden;
-        }
-
-        /* Hero */
-        .hero {
-          padding: 124px 0 24px;
-        }
-        .hero .sub {
-          margin-bottom: 28px;
-        }
-        .stage {
-          height: 430px;
-          margin-top: 40px;
-        }
-        .halo {
-          width: 520px;
-          height: 520px;
-        }
-        .trio .p-c {
-          --w: 200px;
-        }
-        .trio .p-l,
-        .trio .p-r {
-          --w: 170px;
-        }
-        .trio .p-l {
-          transform: translateX(-122%) translateY(60px) rotate(-9deg);
-        }
-        .trio .p-r {
-          transform: translateX(22%) translateY(60px) rotate(9deg);
-        }
-        .float.f1 {
-          left: 0;
-          top: 40px;
-        }
-        .float.f2 {
-          right: 0;
-          top: 150px;
-        }
-        .float.f3 {
-          display: none;
-        }
-        .logos {
-          padding: 40px 0 8px;
-        }
-
-        /* Rejillas: bento a 2 columnas, el resto a 1 */
-        .bento {
-          grid-template-columns: 1fr 1fr;
-          gap: 14px;
-        }
-        .bento .s6,
-        .bento .s4,
-        .bento .s2 {
-          grid-column: span 2;
-        }
-        .bento .s3 {
-          grid-column: span 1;
-        }
-        .bx-dark {
-          display: flex;
-          flex-direction: column;
-        }
-        .bx-dark .tablet {
-          margin-top: auto;
-        }
-        .bx-dark p {
-          margin-bottom: 24px;
-        }
-        .bx-hero,
-        .bx-int,
-        .ben-grid,
-        .plans,
-        .faq-grid,
-        .cgrid {
-          grid-template-columns: 1fr;
-        }
-        .ben-grid {
-          margin-top: 56px;
-          gap: 14px;
-        }
-        .pains,
-        .demos,
-        .proof-grid {
-          gap: 14px;
-        }
-        .audience {
-          margin: -12px 0 44px;
-        }
-        .bridge {
-          margin-top: 44px;
-          font-size: 1.2rem;
-        }
-        .demos-h {
-          margin: 64px 0 22px;
-        }
-        .faq-grid {
-          gap: 32px;
-        }
-        .faq-side {
-          position: static;
-        }
-        .ask {
-          display: none;
-        }
-
-        /* Timeline: línea a la izquierda */
-        .tl-line {
-          left: 21px;
-        }
-        .tl-item + .tl-item {
-          margin-top: 0;
-        }
-        .tl-item,
-        .tl-item:nth-child(odd) {
-          width: 100%;
-          margin-left: 0;
-          padding: 0 0 24px 64px;
-        }
-        .tl-node,
-        .tl-item:nth-child(odd) .tl-node {
-          left: 0;
-          right: auto;
-        }
-        .tl-count {
-          margin-top: 36px;
-        }
-
-        /* Contacto y pie */
-        .contact {
-          padding-top: 16px;
-        }
-        .cbox {
-          padding: 56px 24px;
-          border-radius: 28px;
-        }
-        .trust-row {
-          margin: -16px 0 36px;
-        }
-        .cal {
-          height: 500px;
-        }
-        form,
-        .plan {
-          padding: 28px;
-        }
-        footer {
-          margin-top: 48px;
-          padding: 40px 0 110px;
-        }
-        .sticky-cta {
-          display: block;
-          position: fixed;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          z-index: 40;
-          padding: 12px 16px calc(12px + env(safe-area-inset-bottom, 0px));
-          background: color-mix(in srgb, var(--bg) 88%, transparent);
-          backdrop-filter: blur(14px);
-          border-top: 1px solid var(--line);
-          transform: translateY(110%);
-          transition: transform 0.5s var(--ease);
-        }
-        .sticky-cta.show {
-          transform: none;
-        }
-        html:not(.js) .sticky-cta {
-          transform: none;
-        }
-        html.menu-open .sticky-cta {
-          transform: translateY(110%);
-        }
-        .sticky-cta .btn {
-          width: 100%;
-        }
-      }
-
-      /* 19.4 Móvil: todo a una columna fluida */
-      @media (max-width: 640px) {
-        section {
-          padding: 64px 0;
-        }
-        .wrap {
-          padding: 0 16px;
-        }
-        .top {
-          top: 8px;
-          padding: 0 10px;
-        }
-        .nav,
-        .top .nav {
-          height: 58px;
-          padding: 0 7px 0 14px;
-        }
-        .mnav {
-          padding-left: 10px;
-          padding-right: 10px;
-        }
-        .mnav-head {
-          height: 58px;
-          padding: 0 7px 0 14px;
-        }
-        .logo {
-          font-size: 1.05rem;
-        }
-        .logo i {
-          width: 32px;
-          height: 32px;
-          font-size: 0.9rem;
-        }
-        .eyebrow {
-          margin-bottom: 12px;
-        }
-        h2 {
-          margin-bottom: 14px;
-        }
-        .lead {
-          margin-bottom: 36px;
-        }
-        .badge em {
-          display: none;
-        }
-        .badge {
-          padding-right: 14px;
-          font-size: 0.8rem;
-        }
-
-        /* Hero */
-        .hero {
-          padding: 108px 0 16px;
-        }
-        .hero h1 {
-          margin-bottom: 18px;
-          letter-spacing: -0.04em;
-        }
-        .hero .sub {
-          font-size: 1.02rem;
-          margin-bottom: 24px;
-        }
-        .cta-row {
-          flex-direction: column;
-          gap: 10px;
-        }
-        .cta-row .btn {
-          width: 100%;
-        }
-        .stage {
-          height: 380px;
-          margin-top: 32px;
-        }
-        .halo {
-          width: 420px;
-          height: 420px;
-          top: 40px;
-        }
-        .trio .p-c {
-          --w: 176px;
-        }
-        .trio .p-l,
-        .trio .p-r {
-          --w: 146px;
-        }
-        .float {
-          font-size: 0.72rem;
-          padding: 8px 10px 8px 8px;
-          gap: 8px;
-        }
-        .float b {
-          font-size: 0.78rem;
-        }
-        .float .ico {
-          width: 28px;
-          height: 28px;
-        }
-        .float.f1 {
-          top: 10px;
-        }
-        .float.f2 {
-          top: 250px;
-        }
-        .ticker-t {
-          margin-top: 16px;
-        }
-        .pill {
-          padding: 8px 14px;
-          font-size: 0.84rem;
-        }
-        .logos .track {
-          gap: 36px;
-        }
-        .lg {
-          font-size: 1rem;
-        }
-
-        /* Rejillas a una sola columna */
-        .pains,
-        .proof-grid,
-        .bento {
-          grid-template-columns: 1fr;
-        }
-        .rating {
-          grid-column: auto;
-        }
-        .demos {
-          grid-template-columns: 1fr 1fr;
-          gap: 10px;
-        }
-        .demo,
-        .demos .card {
-          padding: 8px 8px 12px;
-          border-radius: 18px;
-        }
-        .browser {
-          margin-bottom: 10px;
-          border-radius: 10px;
-        }
-        .demo b {
-          font-size: 0.82rem;
-          line-height: 1.3;
-          gap: 6px;
-          padding: 0 4px;
-        }
-        .bento .s2,
-        .bento .s3,
-        .bento .s4,
-        .bento .s6 {
-          grid-column: auto;
-        }
-        .quote.feat {
-          grid-column: auto;
-        }
-        .card,
-        .bento .card,
-        .pains .card {
-          padding: 22px;
-          border-radius: 22px;
-        }
-        .card h3 {
-          font-size: 1.16rem;
-        }
-        .mini {
-          min-height: 0;
-          margin-bottom: 18px;
-        }
-        .audience {
-          gap: 8px;
-          margin: -8px 0 32px;
-        }
-        .audience span {
-          padding: 6px 12px;
-          font-size: 0.84rem;
-        }
-        .bridge {
-          margin-top: 32px;
-          font-size: 1.08rem;
-        }
-
-        /* Abanico de móviles */
-        .fan {
-          padding-top: 10px;
-        }
-        .fan figure:nth-child(2) .iphone,
-        .fan figure:nth-child(4) .iphone {
-          --w: 130px;
-        }
-        .fan figure:nth-child(3) .iphone {
-          --w: 160px;
-        }
-        .fan figure {
-          margin: 0 -14px;
-        }
-        .fan figure:nth-child(2) {
-          transform: translateY(24px) rotate(-3deg);
-        }
-        .fan figure:nth-child(4) {
-          transform: translateY(24px) rotate(3deg);
-        }
-        .fan figcaption {
-          font-size: 0.72rem;
-          padding: 6px 10px;
-          margin-top: 12px;
-        }
-        .ben-grid {
-          margin-top: 40px;
-        }
-
-        /* Bento con dispositivos */
-        .dev-stack {
-          padding: 0 20px 16px 0;
-        }
-        .dev-stack .iphone {
-          --w: 92px;
-        }
-        .kpis {
-          grid-template-columns: 1fr 1fr;
-        }
-        .kpi:nth-child(3) {
-          display: none;
-        }
-        .bx-dark .tablet {
-          margin-top: 20px;
-          border-radius: 20px;
-          padding: 8px;
-        }
-        .tscr {
-          border-radius: 14px;
-        }
-        /* Integraciones: de órbita a etiquetas en fila */
-        .hub {
-          height: auto;
-          display: flex;
-          flex-wrap: wrap;
-          gap: 8px;
-          margin-top: 4px;
-        }
-        .hub .ring,
-        .hub .core {
-          display: none;
-        }
-        .hub .pill,
-        .hub .pill:nth-of-type(n) {
-          position: static;
-          transform: none;
-          font-size: 0.8rem;
-        }
-        .opt {
-          margin-top: 20px;
-          font-size: 0.9rem;
-        }
-
-        /* Timeline */
-        .tl-line {
-          left: 17px;
-        }
-        .tl-item,
-        .tl-item:nth-child(odd) {
-          padding: 0 0 18px 50px;
-        }
-        .tl-node {
-          top: 22px;
-          width: 36px;
-          height: 36px;
-          font-size: 0.82rem;
-        }
-
-        /* Planes, opiniones y FAQ */
-        .plan,
-        form {
-          padding: 24px;
-        }
-        .price {
-          font-size: 2.2rem;
-        }
-        .rating .score {
-          font-size: 3.8rem;
-        }
-        .quote.feat blockquote {
-          margin: 14px 0 24px;
-        }
-        .demos-h {
-          margin: 48px 0 18px;
-        }
-        .demos-h h3 {
-          font-size: 1.3rem;
-        }
-        summary {
-          padding: 17px 56px 17px 18px;
-          font-size: 0.98rem;
-        }
-        summary::after {
-          right: 14px;
-        }
-        details p {
-          padding: 0 18px 18px;
-        }
-        details:hover {
-          transform: none;
-        }
-
-        /* Contacto y pie */
-        .cbox {
-          padding: 44px 14px 14px;
-          border-radius: 24px;
-        }
-        .trust-row {
-          margin: -8px 0 28px;
-          gap: 8px;
-        }
-        .trust-row .pill {
-          font-size: 0.78rem;
-          padding: 7px 12px;
-        }
-        .cgrid {
-          gap: 16px;
-        }
-        .cal {
-          height: 460px;
-          border-radius: 20px;
-        }
-        .cal-alt {
-          padding: 0 6px;
-        }
-        footer {
-          margin-top: 32px;
-        }
-        footer .wrap {
-          flex-direction: column;
-          align-items: flex-start;
-          gap: 16px;
-        }
-      }
-
-      /* 19.5 Móvil estrecho (≤400 px, p. ej. iPhone SE) */
-      @media (max-width: 400px) {
-        .stage {
-          height: 340px;
-        }
-        .trio .p-c {
-          --w: 156px;
-        }
-        .trio .p-l,
-        .trio .p-r {
-          --w: 128px;
-        }
-        .float.f2 {
-          top: 220px;
-        }
-        .fan figure:nth-child(2) .iphone,
-        .fan figure:nth-child(4) .iphone {
-          --w: 112px;
-        }
-        .fan figure:nth-child(3) .iphone {
-          --w: 138px;
-        }
-        .fan figure {
-          margin: 0 -12px;
-        }
-        .fan figcaption .i {
-          display: none;
-        }
-        .btn {
-          padding: 14px 18px;
-          font-size: 0.92rem;
-          gap: 8px;
-        }
-      }
-      @media (prefers-reduced-motion: reduce) {
-        *,
-        *::before,
-        *::after {
-          animation: none !important;
-          transition: none !important;
-          scroll-behavior: auto !important;
-        }
-        html.js .rv,
-        .tl-card {
-          opacity: 1;
-          transform: none;
-        }
-      }
-    </style>
+    <!-- Clarity -->
+    <script is:inline type="text/javascript">
+      var localConsent = localStorage.getItem("cookie_consent");
+      if (localConsent === "accepted") {
+        (function (c, l, a, r, i, t, y) {
+          c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments); };
+          t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+          y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+        })(window, document, "clarity", "script", "wuzaxaifa0");
+      }
+    </script>
   </head>
 
   <body>
@@ -3517,10 +414,21 @@ const faqs = [
           <a href="#opiniones">Opiniones</a>
         </nav>
         <a class="btn btn-main btn-sm nav-cta" href="#contacto">
-          Agendar llamada <svg class="i i-arrow" viewBox="0 0 24 24" set:html={ic.arrow} />
+          Agendar llamada <svg
+            class="i i-arrow"
+            viewBox="0 0 24 24"
+            set:html={ic.arrow}
+          />
         </a>
         <!-- Botón hamburguesa (solo tablet/móvil) -->
-        <button class="burger" id="burger" type="button" aria-label="Abrir menú" aria-controls="mnav" aria-expanded="false">
+        <button
+          class="burger"
+          id="burger"
+          type="button"
+          aria-label="Abrir menú"
+          aria-controls="mnav"
+          aria-expanded="false"
+        >
           <span></span><span></span><span></span>
         </button>
       </div>
@@ -3529,19 +437,57 @@ const faqs = [
       <nav class="mnav" id="mnav" aria-label="Menú móvil">
         <div class="mnav-head">
           <a class="logo" href="#"><i>MN</i><span>Design Web</span></a>
-          <button class="mnav-close" id="mnav-close" type="button" aria-label="Cerrar menú">
-            <svg class="i" viewBox="0 0 24 24" set:html={ic.plus} style="transform:rotate(45deg)" />
+          <button
+            class="mnav-close"
+            id="mnav-close"
+            type="button"
+            aria-label="Cerrar menú"
+          >
+            <svg
+              class="i"
+              viewBox="0 0 24 24"
+              set:html={ic.plus}
+              style="transform:rotate(45deg)"
+            />
           </button>
         </div>
         <div class="mnav-links">
-          <a href="#funciones"><span>Funciones</span><svg class="i" viewBox="0 0 24 24" set:html={ic.arrow} /></a>
-          <a href="#proceso"><span>Proceso</span><svg class="i" viewBox="0 0 24 24" set:html={ic.arrow} /></a>
-          <a href="#planes"><span>Planes</span><svg class="i" viewBox="0 0 24 24" set:html={ic.arrow} /></a>
-          <a href="#opiniones"><span>Opiniones</span><svg class="i" viewBox="0 0 24 24" set:html={ic.arrow} /></a>
+          <a href="#funciones"
+            ><span>Funciones</span><svg
+              class="i"
+              viewBox="0 0 24 24"
+              set:html={ic.arrow}
+            /></a
+          >
+          <a href="#proceso"
+            ><span>Proceso</span><svg
+              class="i"
+              viewBox="0 0 24 24"
+              set:html={ic.arrow}
+            /></a
+          >
+          <a href="#planes"
+            ><span>Planes</span><svg
+              class="i"
+              viewBox="0 0 24 24"
+              set:html={ic.arrow}
+            /></a
+          >
+          <a href="#opiniones"
+            ><span>Opiniones</span><svg
+              class="i"
+              viewBox="0 0 24 24"
+              set:html={ic.arrow}
+            /></a
+          >
         </div>
         <div class="mnav-foot">
           <a class="btn btn-main" href="#contacto">
-            Agendar llamada gratuita <svg class="i i-arrow" viewBox="0 0 24 24" set:html={ic.arrow} />
+            Agendar llamada gratuita <svg
+              class="i i-arrow"
+              viewBox="0 0 24 24"
+              set:html={ic.arrow}
+            />
           </a>
           <p class="mnav-note">Sin compromiso · Respuesta en menos de 24 h</p>
         </div>
@@ -3553,99 +499,107 @@ const faqs = [
       <section class="hero">
         <div class="wrap">
           <h1 class="rv" style="--d:.08s">
-            Que tus pacientes reserven solos y tú vuelvas a <span class="grad">centrarte en terapia</span>
+            Tu propio software para psicólogos para que vuelvas a <span class="grad"
+              >centrarte en terapia</span
+            >
           </h1>
           <p class="sub rv" style="--d:.16s">
-            Diseño tu web profesional con agenda online, videoconsulta cifrada y RGPD incluido. Sin plantillas, sin
-            mensajes interminables para cuadrar horarios.
+            Construimos tu web con una plataforma de pacientes a medida integrada:
+            agenda online, terapia online cifrada y cobros en tu propio software
+            de gestión. Sin cuotas a terceros y con RGPD incluido.
           </p>
           <div class="cta-row rv" style="--d:.24s">
             <a class="btn btn-main" href="#contacto">
-              Agendar llamada gratuita de 30 min <svg class="i i-arrow" viewBox="0 0 24 24" set:html={ic.arrow} />
+              Agendar llamada gratuita de 30 min <svg
+                class="i i-arrow"
+                viewBox="0 0 24 24"
+                set:html={ic.arrow}
+              />
             </a>
             <a class="btn btn-ghost" href="#demos">
-              <span class="play"><svg class="i" viewBox="0 0 24 24" set:html={ic.play} /></span> Ver webs reales
+              <span class="play"
+                ><svg class="i" viewBox="0 0 24 24" set:html={ic.play} /></span
+              > Ver webs reales
             </a>
           </div>
-          <p class="micro rv" style="--d:.3s">Sin compromiso · Te respondo personalmente en menos de 24 h · 3-5 semanas de idea a web</p>
+          <p class="micro rv" style="--d:.3s">
+            Sin compromiso · Te respondemos personalmente en menos de 24 h · 3-5
+            semanas de idea a web
+          </p>
 
           <!-- Escenario de mockups. Cada .scr admite una <img> real en lugar del UI de ejemplo -->
-          <div class="stage rv" style="--d:.35s" aria-label="Ejemplo del portal: agenda del profesional, portal del paciente y reserva online">
+          <div
+            class="stage rv"
+            style="--d:.35s"
+            aria-label="Ejemplo de software para psicólogos: agenda del psicólogo, portal del paciente y reserva de cita online"
+          >
             <div class="halo" aria-hidden="true"></div>
             <div class="trio" id="trio">
               <!-- Móvil izquierdo · agenda del profesional -->
               <div class="iphone p-l" aria-hidden="true">
                 <div class="scr">
-                  <div class="sb"><span>9:41</span><span>●●●</span></div>
-                  <small>Jueves, 12 de junio</small>
-                  <h4>Agenda de hoy</h4>
-                  <div class="ui-card">
-                    <div class="ui-row"><time>10:00</time><b>Primera sesión</b><span class="tag ok">Pagada</span></div>
-                    <div class="ui-row"><time>11:30</time><b>Seguimiento</b><span class="tag">Online</span></div>
-                    <div class="ui-row"><time>13:00</time><b style="color:#8a98ab">Hueco libre</b></div>
-                    <div class="ui-row"><time>17:00</time><b>Pareja</b><span class="tag ok">Recordada</span></div>
-                  </div>
-                  <div class="ui-card" style="display:flex;justify-content:space-between;font-size:.8em">
-                    <span><b style="font-size:1.4em;display:block">8</b>citas hoy</span>
-                    <span><b style="font-size:1.4em;display:block">0</b>mensajes</span>
-                  </div>
+                  <img
+                    src="/psicologos/software-agenda-psicologo.webp"
+                    alt="Agenda del día en el software para psicólogos: citas, sesiones online y huecos libres"
+                  />
                 </div>
               </div>
               <!-- Móvil central · portal del paciente -->
               <div class="iphone p-c" aria-hidden="true">
                 <div class="scr">
-                  <div class="sb"><span>9:41</span><span>●●●</span></div>
-                  <small>Hola, Laura 👋</small>
-                  <h4>Tu espacio de terapia</h4>
-                  <div class="next">
-                    <small>Próxima sesión</small><b>Jueves · 10:00</b>
-                    <span><svg class="i" viewBox="0 0 24 24" set:html={ic.video} /> Entrar a videoconsulta</span>
-                  </div>
-                  <div class="ui-card">
-                    <div class="ui-row"><b>Cuestionario previo</b><span class="tag ok">✓</span></div>
-                    <div class="ui-row"><b>Consentimiento firmado</b><span class="tag ok">✓</span></div>
-                    <div class="ui-row"><b>Factura de mayo</b><span class="tag">PDF</span></div>
-                  </div>
+                  <img
+                    src="/psicologos/software-portal-paciente.webp"
+                    alt="Portal del paciente de la plataforma a medida: próxima sesión de terapia online, consentimiento y facturas"
+                  />
                 </div>
               </div>
               <!-- Móvil derecho · reserva -->
               <div class="iphone p-r" aria-hidden="true">
                 <div class="scr">
-                  <div class="sb"><span>9:41</span><span>●●●</span></div>
-                  <small>Reserva tu sesión</small>
-                  <h4>Elige día y hora</h4>
-                  <div class="days">
-                    <span>Lu<b>9</b></span><span>Ma<b>10</b></span><span class="on">Mi<b>11</b></span><span>Ju<b>12</b></span><span>Vi<b>13</b></span>
-                  </div>
-                  <div class="slots">
-                    <span class="off">09:00</span><span>10:00</span><span class="on">11:30</span><span>13:00</span><span class="off">16:00</span><span>17:00</span>
-                  </div>
-                  <span class="ui-btn">Confirmar · 60 €</span>
+                  <img
+                    src="/psicologos/software-reserva-cita.webp"
+                    alt="Reserva de cita online con el psicólogo: el paciente elige día y hora en la agenda"
+                  />
                 </div>
               </div>
             </div>
 
             <div class="float f1" aria-hidden="true">
-              <span class="ico"><svg class="i" viewBox="0 0 24 24" set:html={ic.cal} /></span>
+              <span class="ico"
+                ><svg class="i" viewBox="0 0 24 24" set:html={ic.cal} /></span
+              >
               <div><b>Nueva reserva</b><span>Miércoles · 11:30</span></div>
             </div>
             <div class="float f2" aria-hidden="true">
-              <span class="ico"><svg class="i" viewBox="0 0 24 24" set:html={ic.check} /></span>
-              <div><b>Recordatorio enviado</b><span>24 h antes, automático</span></div>
+              <span class="ico"
+                ><svg class="i" viewBox="0 0 24 24" set:html={ic.check} /></span
+              >
+              <div>
+                <b>Recordatorio enviado</b><span>24 h antes, automático</span>
+              </div>
             </div>
             <div class="float f3" aria-hidden="true">
-              <span class="ico"><svg class="i" viewBox="0 0 24 24" set:html={ic.lock} /></span>
-              <div><b>Cifrado extremo a extremo</b><span>RGPD sanitario</span></div>
+              <span class="ico"
+                ><svg class="i" viewBox="0 0 24 24" set:html={ic.lock} /></span
+              >
+              <div>
+                <b>Cifrado extremo a extremo</b><span>RGPD sanitario</span>
+              </div>
             </div>
             <div class="stage-fade" aria-hidden="true"></div>
           </div>
 
-          <p class="ticker-t">Todo lo que incluye tu consulta digital</p>
+          <p class="ticker-t">Todo lo que incluye tu software para psicólogos</p>
           <div class="marquee" aria-hidden="true">
             <div class="track">
-              {[...features, ...features].map(([k, t]) => (
-                <span class="pill"><svg class="i" viewBox="0 0 24 24" set:html={ic[k]} />{t}</span>
-              ))}
+              {
+                [...features, ...features].map(([k, t]) => (
+                  <span class="pill">
+                    <svg class="i" viewBox="0 0 24 24" set:html={ic[k]} />
+                    {t}
+                  </span>
+                ))
+              }
             </div>
           </div>
         </div>
@@ -3654,14 +608,20 @@ const faqs = [
       <!-- HTML-3 · TIRA DE LOGOS (PLACEHOLDERS: sustituir por logos reales con permiso) -->
       <div class="logos">
         <div class="wrap">
-          <p>Consultas y centros que ya trabajan con su agenda automatizada</p>
+          <p>Consultas de psicología y centros de salud mental que ya trabajan con su agenda automatizada</p>
           <div class="marquee">
-            <div class="track">
-              {[...logos, ...logos].map((l, idx) => (
-                <span class="lg" aria-hidden={idx >= logos.length ? 'true' : undefined}>
-                  <svg viewBox="0 0 24 24" set:html={shapes[l.shape]} />{l.name}
-                </span>
-              ))}
+            <div class="track reverse">
+              {
+                [...logos, ...logos].map((l, idx) => (
+                  <span
+                    class="lg"
+                    aria-hidden={idx >= logos.length ? "true" : undefined}
+                  >
+                    <svg viewBox="0 0 24 24" set:html={shapes[l.shape]} />
+                    {l.name}
+                  </span>
+                ))
+              }
             </div>
           </div>
         </div>
@@ -3672,49 +632,82 @@ const faqs = [
         <div class="wrap">
           <span class="eyebrow rv">El problema</span>
           <h2 class="rv">
-            Si tu web te da trabajo <span class="muted-word">en lugar de quitártelo,</span> <span class="grad">hay un problema</span>
+            Si tu web te da trabajo <span class="muted-word"
+              >en lugar de quitártelo,</span
+            >
+            <span class="grad">hay un problema</span>
           </h2>
-          <p class="lead rv">Esto es lo que nos cuentan la mayoría de psicólogos antes de empezar.</p>
+          <p class="lead rv">
+            Esto es lo que nos cuentan la mayoría de psicólogos y
+            psicoterapeutas antes de empezar.
+          </p>
           <div class="audience rv" aria-label="Para quién es">
-            <span># Psicología clínica</span><span># Terapia de pareja</span><span># Infanto-juvenil</span><span
-              ># Terapia online</span
-            ><span># Centros con varios profesionales</span>
+            <span># Psicología clínica</span><span># Terapia de pareja</span
+            ><span># Infanto-juvenil</span><span># Terapia online</span><span
+              ># Centros con varios profesionales</span
+            >
           </div>
           <div class="pains">
-            {pains.map((p, idx) => (
-              <article class="card rv" data-spot style={`--d:${idx * 0.08}s`}>
-                {p.v === 'chat' && (
-                  <div class="mini" aria-hidden="true">
-                    <div class="bub">¿Tienes hueco esta semana?</div>
-                    <div class="bub out">Martes a las 10, ¿te va?</div>
-                    <div class="bub">Uf, mejor jueves…</div>
-                    <div class="bub out">Jueves solo a las 17:00</div>
-                  </div>
-                )}
-                {p.v === 'miss' && (
-                  <div class="mini" aria-hidden="true">
-                    <div class="slot x"><s>Lun 10:00</s><span class="tag warn">Ausencia</span></div>
-                    <div class="slot"><span>Mié 11:30</span><span class="tag ok">Recordado</span></div>
-                    <div class="slot"><span>Jue 17:00</span><span class="tag ok">Pagado</span></div>
-                  </div>
-                )}
-                {p.v === 'wf' && (
-                  <div class="mini" aria-hidden="true">
-                    <div class="wfm"><i></i><i></i><i></i><i></i><small>Plantilla genérica · igual que otras 1.000 webs</small></div>
-                  </div>
-                )}
-                {p.v === 'lock' && (
-                  <div class="mini lockv" aria-hidden="true">
-                    <span class="big"><svg class="i" viewBox="0 0 24 24" set:html={ic.lock} /></span>
-                    <span class="tag warn">WhatsApp y formularios sin cifrar</span>
-                  </div>
-                )}
-                <h3>{p.t}</h3>
-                <p>{p.p}</p>
-              </article>
-            ))}
+            {
+              pains.map((p, idx) => (
+                <article class="card rv" data-spot style={`--d:${idx * 0.08}s`}>
+                  {p.v === "chat" && (
+                    <div class="mini" aria-hidden="true">
+                      <div class="bub">¿Tienes hueco esta semana?</div>
+                      <div class="bub out">Martes a las 10, ¿te va?</div>
+                      <div class="bub">Uf, mejor jueves…</div>
+                      <div class="bub out">Jueves solo a las 17:00</div>
+                    </div>
+                  )}
+                  {p.v === "miss" && (
+                    <div class="mini" aria-hidden="true">
+                      <div class="slot x">
+                        <s>Lun 10:00</s>
+                        <span class="tag warn">Ausencia</span>
+                      </div>
+                      <div class="slot">
+                        <span>Mié 11:30</span>
+                        <span class="tag ok">Recordado</span>
+                      </div>
+                      <div class="slot">
+                        <span>Jue 17:00</span>
+                        <span class="tag ok">Pagado</span>
+                      </div>
+                    </div>
+                  )}
+                  {p.v === "wf" && (
+                    <div class="mini" aria-hidden="true">
+                      <div class="wfm">
+                        <i />
+                        <i />
+                        <i />
+                        <i />
+                        <small>
+                          Plantilla genérica · igual que otras 1.000 webs
+                        </small>
+                      </div>
+                    </div>
+                  )}
+                  {p.v === "lock" && (
+                    <div class="mini lockv" aria-hidden="true">
+                      <span class="big">
+                        <svg class="i" viewBox="0 0 24 24" set:html={ic.lock} />
+                      </span>
+                      <span class="tag warn">
+                        WhatsApp y formularios sin cifrar
+                      </span>
+                    </div>
+                  )}
+                  <h3>{p.t}</h3>
+                  <p>{p.p}</p>
+                </article>
+              ))
+            }
           </div>
-          <p class="bridge rv">Todo esto se resuelve con una web bien pensada. <span class="grad">Así es como la construimos.</span></p>
+          <p class="bridge rv">
+            Todo esto se resuelve con una web y un software propios. <span class="grad"
+              >Así es como la construimos.</span>
+          </p>
         </div>
       </section>
 
@@ -3722,8 +715,14 @@ const faqs = [
       <section class="benefits center" id="funciones">
         <div class="wrap">
           <span class="eyebrow rv">Beneficios</span>
-          <h2 class="rv">Tu consulta, <span class="grad">funcionando sola</span> en el bolsillo de cada paciente</h2>
-          <p class="lead rv">Reservar, recordar, cobrar, firmar y conectar: cinco pasos que hoy haces a mano y mañana ocurren solos.</p>
+          <h2 class="rv">
+            Tu consulta, <span class="grad">funcionando sola</span> en el bolsillo
+            de cada paciente
+          </h2>
+          <p class="lead rv">
+            Reservar, recordar, cobrar, firmar y conectar: cinco tareas de tu
+            consulta de psicología que hoy haces a mano y mañana ocurren solas.
+          </p>
 
           <div class="fan rv">
             <figure>
@@ -3733,15 +732,22 @@ const faqs = [
                   <small>Paso 1</small>
                   <h4>Reserva online</h4>
                   <div class="days">
-                    <span>Lu<b>9</b></span><span class="on">Ma<b>10</b></span><span>Mi<b>11</b></span><span>Ju<b>12</b></span><span>Vi<b>13</b></span>
+                    <span>Lu<b>9</b></span><span class="on">Ma<b>10</b></span
+                    ><span>Mi<b>11</b></span><span>Ju<b>12</b></span><span
+                      >Vi<b>13</b></span
+                    >
                   </div>
                   <div class="slots">
-                    <span>10:00</span><span class="on">11:30</span><span class="off">13:00</span><span>17:00</span>
+                    <span>10:00</span><span class="on">11:30</span><span
+                      class="off">13:00</span
+                    ><span>17:00</span>
                   </div>
                   <span class="ui-btn">Reservar</span>
                 </div>
               </div>
-              <figcaption><svg class="i" viewBox="0 0 24 24" set:html={ic.cal} />Reservas</figcaption>
+              <figcaption>
+                <svg class="i" viewBox="0 0 24 24" set:html={ic.cal} />Reservas
+              </figcaption>
             </figure>
             <figure>
               <div class="iphone">
@@ -3750,16 +756,40 @@ const faqs = [
                   <div class="clock-big">9:41</div>
                   <div class="date">Miércoles, 11 de junio</div>
                   <div class="noti">
-                    <i><svg class="i" viewBox="0 0 24 24" set:html={ic.bell} /></i>
-                    <div><b>Mañana, 11:30</b><span>Tu sesión con Laura. ¿Confirmas?</span></div>
+                    <i
+                      ><svg
+                        class="i"
+                        viewBox="0 0 24 24"
+                        set:html={ic.bell}
+                      /></i
+                    >
+                    <div>
+                      <b>Mañana, 11:30</b><span
+                        >Tu sesión con Laura. ¿Confirmas?</span>
+                    </div>
                   </div>
                   <div class="noti">
-                    <i style="background:linear-gradient(135deg,#1fbf9f,#52d6b8)"><svg class="i" viewBox="0 0 24 24" set:html={ic.check} /></i>
-                    <div><b>Asistencia confirmada</b><span>Hace 2 min</span></div>
+                    <i
+                      style="background:linear-gradient(135deg,#1fbf9f,#52d6b8)"
+                      ><svg
+                        class="i"
+                        viewBox="0 0 24 24"
+                        set:html={ic.check}
+                      /></i
+                    >
+                    <div>
+                      <b>Asistencia confirmada</b><span>Hace 2 min</span>
+                    </div>
                   </div>
                 </div>
               </div>
-              <figcaption><svg class="i" viewBox="0 0 24 24" set:html={ic.bell} />Recordatorios</figcaption>
+              <figcaption>
+                <svg
+                  class="i"
+                  viewBox="0 0 24 24"
+                  set:html={ic.bell}
+                />Recordatorios
+              </figcaption>
             </figure>
             <figure>
               <div class="iphone">
@@ -3768,32 +798,75 @@ const faqs = [
                   <div class="vid-self">L</div>
                   <div class="vid-top">
                     <b>Sesión · 50 min</b>
-                    <span class="e2e"><svg class="i" viewBox="0 0 24 24" set:html={ic.lock} />Cifrada</span>
+                    <span class="e2e"
+                      ><svg
+                        class="i"
+                        viewBox="0 0 24 24"
+                        set:html={ic.lock}
+                      />Cifrada</span
+                    >
                   </div>
                   <div class="vid-ctrl">
-                    <span><svg class="i" viewBox="0 0 24 24" set:html={ic.video} /></span>
-                    <span><svg class="i" viewBox="0 0 24 24" set:html={ic.chat} /></span>
-                    <span class="end"><svg class="i" viewBox="0 0 24 24" set:html={ic.plus} style="transform:rotate(45deg)" /></span>
+                    <span
+                      ><svg
+                        class="i"
+                        viewBox="0 0 24 24"
+                        set:html={ic.video}
+                      /></span
+                    >
+                    <span
+                      ><svg
+                        class="i"
+                        viewBox="0 0 24 24"
+                        set:html={ic.chat}
+                      /></span
+                    >
+                    <span class="end"
+                      ><svg
+                        class="i"
+                        viewBox="0 0 24 24"
+                        set:html={ic.plus}
+                        style="transform:rotate(45deg)"
+                      /></span
+                    >
                   </div>
                 </div>
               </div>
-              <figcaption><svg class="i" viewBox="0 0 24 24" set:html={ic.video} />Videoconsulta</figcaption>
+              <figcaption>
+                <svg
+                  class="i"
+                  viewBox="0 0 24 24"
+                  set:html={ic.video}
+                />Videoconsulta
+              </figcaption>
             </figure>
             <figure>
               <div class="iphone">
                 <div class="scr">
                   <div class="sb"><span>9:41</span><span>●●●</span></div>
                   <small>Sesión individual · 50 min</small>
-                  <div class="pay-ok"><svg class="i" viewBox="0 0 24 24" set:html={ic.check} /></div>
+                  <div class="pay-ok">
+                    <svg class="i" viewBox="0 0 24 24" set:html={ic.check} />
+                  </div>
                   <div class="pay-amt">60,00 €</div>
-                  <p style="text-align:center;font-size:.8em;color:#6b7a90;margin-bottom:1em">Pago completado</p>
+                  <p
+                    style="text-align:center;font-size:.8em;color:#6b7a90;margin-bottom:1em"
+                  >
+                    Pago completado
+                  </p>
                   <div class="ui-card">
-                    <div class="ui-row"><b>Bono 4 sesiones</b><span class="tag">Activo</span></div>
-                    <div class="ui-row"><b>Factura</b><span class="tag ok">Enviada</span></div>
+                    <div class="ui-row">
+                      <b>Bono 4 sesiones</b><span class="tag">Activo</span>
+                    </div>
+                    <div class="ui-row">
+                      <b>Factura</b><span class="tag ok">Enviada</span>
+                    </div>
                   </div>
                 </div>
               </div>
-              <figcaption><svg class="i" viewBox="0 0 24 24" set:html={ic.card} />Cobros</figcaption>
+              <figcaption>
+                <svg class="i" viewBox="0 0 24 24" set:html={ic.card} />Cobros
+              </figcaption>
             </figure>
             <figure>
               <div class="iphone">
@@ -3801,34 +874,61 @@ const faqs = [
                   <div class="sb"><span>9:41</span><span>●●●</span></div>
                   <small>Antes de tu primera sesión</small>
                   <h4>Admisión</h4>
-                  <div class="field"><small>Motivo de consulta</small><b>Ansiedad</b></div>
+                  <div class="field">
+                    <small>Motivo de consulta</small><b>Ansiedad</b>
+                  </div>
                   <div class="field"><small>Modalidad</small><b>Online</b></div>
                   <div class="sign">
-                    <svg viewBox="0 0 120 40"><path d="M6 28c10-18 18-20 20-8s6 14 14-2 12-10 14 0 10 8 18-6 14-6 20 4 12 6 22-2" /></svg>
+                    <svg viewBox="0 0 120 40"
+                      ><path
+                        d="M6 28c10-18 18-20 20-8s6 14 14-2 12-10 14 0 10 8 18-6 14-6 20 4 12 6 22-2"
+                      ></path></svg
+                    >
                   </div>
                   <span class="ui-btn">Firmar consentimiento</span>
                 </div>
               </div>
-              <figcaption><svg class="i" viewBox="0 0 24 24" set:html={ic.file} />Admisión</figcaption>
+              <figcaption>
+                <svg class="i" viewBox="0 0 24 24" set:html={ic.file} />Admisión
+              </figcaption>
             </figure>
           </div>
           <p class="cap-note">Pantallas de ejemplo ilustrativas del portal.</p>
 
           <div class="ben-grid" style="text-align:left">
             <article class="card rv" data-spot>
-              <span class="ico-box"><svg class="i" viewBox="0 0 24 24" set:html={ic.clock} /></span>
+              <span class="ico-box"
+                ><svg class="i" viewBox="0 0 24 24" set:html={ic.clock} /></span
+              >
               <h3>Recuperas horas cada semana</h3>
-              <p>Tus pacientes ven tu disponibilidad real y reservan solos. Adiós al ping-pong de mensajes.</p>
+              <p>
+                Tus pacientes ven tu disponibilidad real y reservan solos en tu
+                agenda online. Adiós al ping-pong de mensajes.
+              </p>
             </article>
             <article class="card rv" data-spot style="--d:.08s">
-              <span class="ico-box"><svg class="i" viewBox="0 0 24 24" set:html={ic.bell} /></span>
+              <span class="ico-box"
+                ><svg class="i" viewBox="0 0 24 24" set:html={ic.bell} /></span
+              >
               <h3>Menos huecos sin cobrar</h3>
-              <p>Recordatorios automáticos y pago previo para que cada hora de tu agenda cuente.</p>
+              <p>
+                Recordatorios automáticos y pago previo para que cada hora de tu
+                agenda cuente.
+              </p>
             </article>
             <article class="card rv" data-spot style="--d:.16s">
-              <span class="ico-box"><svg class="i" viewBox="0 0 24 24" set:html={ic.shield} /></span>
-              <h3>Confianza desde el primer clic</h3>
-              <p>Un diseño a medida y un entorno cifrado que transmiten la misma calma que tu consulta.</p>
+              <span class="ico-box"
+                ><svg
+                  class="i"
+                  viewBox="0 0 24 24"
+                  set:html={ic.shield}
+                /></span
+              >
+              <h3>Tu software, sin cuotas a terceros</h3>
+              <p>
+                La plataforma de pacientes vive en tu web: es tuya, está cifrada y
+                no dependes de herramientas externas.
+              </p>
             </article>
           </div>
         </div>
@@ -3839,34 +939,124 @@ const faqs = [
         <div class="wrap">
           <div class="center">
             <span class="eyebrow rv">Consulta digital</span>
-            <h2 class="rv">Una consulta digital que <span class="grad">trabaja mientras tú atiendes</span></h2>
-            <p class="lead rv">Cada función existe para ahorrarte tiempo, reducir ausencias o proteger a tus pacientes.</p>
+            <h2 class="rv">
+              Un software para psicólogos que <span class="grad"
+                >trabaja mientras tú atiendes</span>
+            </h2>
+            <p class="lead rv">
+              Tu plataforma de pacientes a medida, integrada en tu web: cada
+              función existe para ahorrarte tiempo, reducir ausencias o proteger
+              los datos de salud de tus pacientes.
+            </p>
           </div>
 
           <div class="bento">
             <!-- Tarjeta principal: portátil + móvil -->
             <article class="card bx-hero s6 rv" data-spot>
               <div>
-                <span class="ico-box"><svg class="i" viewBox="0 0 24 24" set:html={ic.cal} /></span>
+                <span class="ico-box"
+                  ><svg class="i" viewBox="0 0 24 24" set:html={ic.cal} /></span
+                >
                 <h3>Reservas sin intercambio de mensajes</h3>
                 <p>
-                  Tus pacientes ven tu disponibilidad real y eligen hueco. Se sincroniza con tu calendario y tú lo ves todo
-                  en un panel claro.
+                  Una agenda para psicólogos en la que tus pacientes ven tu
+                  disponibilidad real y eligen hueco. Se sincroniza con tu
+                  calendario y tú lo ves todo en un panel claro.
                 </p>
+                <ul
+                  style="list-style: none; padding: 0; margin: 2rem 0; display: flex; flex-direction: column; gap: 1rem;"
+                >
+                  <li
+                    style="display: flex; align-items: center; gap: 10px; font-size: 0.95rem; color: var(--muted);"
+                  >
+                    <svg
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      style="color: #1fbf9f;"
+                      ><polyline points="20 6 9 17 4 12"></polyline></svg
+                    >
+                    Sincronización bidireccional (Google Calendar)
+                  </li>
+                  <li
+                    style="display: flex; align-items: center; gap: 10px; font-size: 0.95rem; color: var(--muted);"
+                  >
+                    <svg
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      style="color: #1fbf9f;"
+                      ><polyline points="20 6 9 17 4 12"></polyline></svg
+                    >
+                    Gestión automática de zonas horarias
+                  </li>
+                  <li
+                    style="display: flex; align-items: center; gap: 10px; font-size: 0.95rem; color: var(--muted);"
+                  >
+                    <svg
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      style="color: #1fbf9f;"
+                      ><polyline points="20 6 9 17 4 12"></polyline></svg
+                    >
+                    Bloqueo de descansos y urgencias
+                  </li>
+                </ul>
+
+                <!-- Novedad 2: Badge de autoridad/ahorro -->
+                <div
+                  style="display: inline-flex; align-items: center; gap: 12px; background: var(--surface); padding: 12px 16px; border-radius: 12px; border: 1px solid var(--line); width: fit-content; box-shadow: 0 4px 14px rgba(0,0,0,0.03);"
+                >
+                  <span
+                    style="font-weight: 800; color: #1fbf9f; font-size: 1.2rem;"
+                    >+4h</span
+                  >
+                  <span
+                    style="font-size: 0.85rem; color: var(--muted); line-height: 1.2;"
+                    >ahorradas a la semana<br />en cuadrar horarios</span
+                  >
+                </div>
               </div>
-              <div class="dev-stack" aria-label="Panel del profesional en portátil y notificación en móvil">
+              <div
+                class="dev-stack"
+                aria-label="Panel del profesional en portátil y notificación en móvil"
+              >
                 <div class="laptop">
                   <div class="lid">
                     <!-- Sustituible por <img src="/captura-panel.webp" alt="Panel del profesional"> -->
                     <div class="lscr">
-                       <img src="/captura-panel.webp" alt="Panel del profesional">
+                      <img
+                        src="/psicologos/software-panel-escritorio.webp"
+                        alt="Panel del software para psicólogos con la agenda del día y las reservas online de pacientes"
+                        loading="lazy"
+                      />
                     </div>
                   </div>
                   <div class="base"></div>
                 </div>
                 <div class="iphone">
                   <div class="scr lock">
-                    <img src="/captura-panel.webp" alt="Panel del profesional">
+                    <img
+                      src="/psicologos/software-panel-movil.webp"
+                      alt="Plataforma de pacientes a medida del psicólogo vista desde el móvil"
+                      loading="lazy"
+                    />
                   </div>
                 </div>
               </div>
@@ -3874,9 +1064,14 @@ const faqs = [
 
             <!-- Videoconsulta en tablet -->
             <article class="card bx-dark s3 rv" data-spot>
-              <span class="ico-box"><svg class="i" viewBox="0 0 24 24" set:html={ic.lock} /></span>
+              <span class="ico-box"
+                ><svg class="i" viewBox="0 0 24 24" set:html={ic.lock} /></span
+              >
               <h3>Videoconsulta cifrada</h3>
-              <p>Sala privada en tu web, cifrada de extremo a extremo y sin instalar nada.</p>
+              <p>
+                Haz terapia online en una sala privada de tu web, cifrada de
+                extremo a extremo y sin instalar nada.
+              </p>
               <div class="tablet" aria-hidden="true">
                 <!-- Sustituible por <img src="/captura-videoconsulta.webp"> -->
                 <div class="tscr">
@@ -3884,55 +1079,118 @@ const faqs = [
                     <div>MN<small>Tú · Psicóloga</small></div>
                     <div>L<small>Laura</small></div>
                   </div>
-                  <span class="e2e"><svg class="i" viewBox="0 0 24 24" set:html={ic.lock} />Cifrado extremo a extremo</span>
+                  <span class="e2e"
+                    ><svg
+                      class="i"
+                      viewBox="0 0 24 24"
+                      set:html={ic.lock}
+                    />Cifrado extremo a extremo</span
+                  >
                   <div class="vid-ctrl">
-                    <span><svg class="i" viewBox="0 0 24 24" set:html={ic.video} /></span>
-                    <span><svg class="i" viewBox="0 0 24 24" set:html={ic.chat} /></span>
-                    <span class="end"><svg class="i" viewBox="0 0 24 24" set:html={ic.plus} style="transform:rotate(45deg)" /></span>
+                    <span
+                      ><svg
+                        class="i"
+                        viewBox="0 0 24 24"
+                        set:html={ic.video}
+                      /></span
+                    >
+                    <span
+                      ><svg
+                        class="i"
+                        viewBox="0 0 24 24"
+                        set:html={ic.chat}
+                      /></span
+                    >
+                    <span class="end"
+                      ><svg
+                        class="i"
+                        viewBox="0 0 24 24"
+                        set:html={ic.plus}
+                        style="transform:rotate(45deg)"
+                      /></span
+                    >
                   </div>
                 </div>
               </div>
             </article>
 
             <article class="card s3 rv" data-spot style="--d:.08s">
-              <span class="ico-box"><svg class="i" viewBox="0 0 24 24" set:html={ic.bell} /></span>
+              <span class="ico-box"
+                ><svg class="i" viewBox="0 0 24 24" set:html={ic.bell} /></span
+              >
               <h3>Menos ausencias</h3>
-              <p>Recordatorios automáticos por email o WhatsApp antes de cada sesión.</p>
+              <p>
+                Recordatorios automáticos por email o WhatsApp antes de cada
+                sesión.
+              </p>
               <div class="toast-demo" aria-hidden="true">
                 <div class="noti">
-                  <i><svg class="i" viewBox="0 0 24 24" set:html={ic.mail} /></i>
-                  <div><b>Recordatorio · 24 h antes</b><span>Enviado a laura@… ✓</span></div>
+                  <i><svg class="i" viewBox="0 0 24 24" set:html={ic.mail} /></i
+                  >
+                  <div>
+                    <b>Recordatorio · 24 h antes</b><span
+                      >Enviado a laura@… ✓</span>
+                  </div>
                 </div>
                 <div class="noti">
-                  <i style="background:linear-gradient(135deg,#1fbf9f,#52d6b8)"><svg class="i" viewBox="0 0 24 24" set:html={ic.chat} /></i>
-                  <div><b>WhatsApp · 2 h antes</b><span>Confirmada por el paciente ✓</span></div>
+                  <i style="background:linear-gradient(135deg,#1fbf9f,#52d6b8)"
+                    ><svg class="i" viewBox="0 0 24 24" set:html={ic.chat} /></i
+                  >
+                  <div>
+                    <b>WhatsApp · 2 h antes</b><span
+                      >Confirmada por el paciente ✓</span>
+                  </div>
                 </div>
               </div>
 
               <div style="height:18px"></div>
-              <span class="ico-box"><svg class="i" viewBox="0 0 24 24" set:html={ic.file} /></span>
+              <span class="ico-box"
+                ><svg class="i" viewBox="0 0 24 24" set:html={ic.file} /></span
+              >
               <h3>Admisión digital</h3>
-              <p>El paciente rellena su formulario y consentimiento antes de la primera sesión.</p>
+              <p>
+                El paciente rellena su formulario y consentimiento antes de la
+                primera sesión.
+              </p>
               <div class="form-demo" aria-hidden="true">
-                <div class="field"><small>Consentimiento informado</small><b>Firmado · 11/06</b></div>
+                <div class="field">
+                  <small>Consentimiento informado</small><b>Firmado · 11/06</b>
+                </div>
                 <div class="progress"><i></i></div>
               </div>
             </article>
 
             <article class="card bx-mint s2 rv" data-spot>
-              <span class="ico-box"><svg class="i" viewBox="0 0 24 24" set:html={ic.card} /></span>
+              <span class="ico-box"
+                ><svg class="i" viewBox="0 0 24 24" set:html={ic.card} /></span
+              >
               <h3>Cobros antes de la sesión</h3>
-              <p>Pago por sesión o bono mensual con pasarela segura (Stripe, Redsys).</p>
+              <p>
+                Pago por sesión o bono mensual con pasarela segura (Stripe,
+                Redsys).
+              </p>
               <div class="pay-demo" aria-hidden="true">
-                <span>Sesión individual</span><b>60 €</b><span class="tag ok">Pagado</span>
+                <span>Sesión individual</span><b>60 €</b><span class="tag ok"
+                  >Pagado</span
+                >
               </div>
             </article>
 
             <article class="card bx-int s4 rv" data-spot style="--d:.08s">
               <div>
-                <span class="ico-box"><svg class="i" viewBox="0 0 24 24" set:html={ic.plug} /></span>
-                <h3>Conectada a tu software</h3>
-                <p>Se integra con tu CRM, ERP o gestor clínico para que no trabajes dos veces.</p>
+                <span class="ico-box"
+                  ><svg
+                    class="i"
+                    viewBox="0 0 24 24"
+                    set:html={ic.plug}
+                  /></span
+                >
+                <h3>Tu propio software de gestión</h3>
+                <p>
+                  Sin cuotas a terceros ni herramientas externalizadas. Y si ya
+                  usas un CRM, ERP o gestor clínico, lo conecto para que no
+                  trabajes dos veces.
+                </p>
               </div>
               <div class="hub" aria-hidden="true">
                 <div class="ring"></div>
@@ -3946,7 +1204,8 @@ const faqs = [
             </article>
           </div>
           <p class="opt">
-            <b>Opcional:</b> aula virtual para vender cursos, ejercicios guiados o material descargable.
+            <b>Opcional:</b> aula virtual para vender cursos, ejercicios guiados o
+            material descargable.
           </p>
         </div>
       </section>
@@ -3956,33 +1215,64 @@ const faqs = [
         <div class="wrap">
           <div class="center">
             <span class="eyebrow rv">Proceso</span>
-            <h2 class="rv">Trabajamos contigo, <span class="grad">no te entregamos una plantilla</span></h2>
-            <p class="lead rv">Un proceso claro, con una persona al otro lado de principio a fin. Pulsa cada paso para ver qué recibes.</p>
+            <h2 class="rv">
+              Trabajamos contigo, <span class="grad"
+                >no te entregamos una plantilla</span>
+            </h2>
+            <p class="lead rv">
+              Un proceso claro, con una persona al otro lado de principio a fin.
+              Pulsa cada paso para ver qué recibes.
+            </p>
           </div>
           <div class="tl" id="tl">
             <div class="tl-line" aria-hidden="true"><i></i></div>
-            {steps.map((s, idx) => (
-              <div class="tl-item">
-                <span class="tl-node" aria-hidden="true">{String(idx + 1).padStart(2, '0')}</span>
-                <button class="card tl-card" type="button" aria-expanded="false" data-spot>
-                  <span class="wk"><svg class="i" viewBox="0 0 24 24" set:html={ic.clock} />{s.w}</span>
-                  <h3>{s.t}</h3>
-                  <p>{s.p}</p>
-                  <div class="tl-more">
-                    <div>
-                      <ul>
-                        {s.d.map((d) => (
-                          <li><svg class="i" viewBox="0 0 24 24" set:html={ic.check} />{d}</li>
-                        ))}
-                      </ul>
+            {
+              steps.map((s, idx) => (
+                <div class="tl-item">
+                  <span class="tl-node" aria-hidden="true">
+                    {String(idx + 1).padStart(2, "0")}
+                  </span>
+                  <button
+                    class="card tl-card"
+                    type="button"
+                    aria-expanded="false"
+                    data-spot
+                  >
+                    <span class="wk">
+                      <svg class="i" viewBox="0 0 24 24" set:html={ic.clock} />
+                      {s.w}
+                    </span>
+                    <h3>{s.t}</h3>
+                    <p>{s.p}</p>
+                    <div class="tl-more">
+                      <div>
+                        <ul>
+                          {s.d.map((d) => (
+                            <li>
+                              <svg
+                                class="i"
+                                viewBox="0 0 24 24"
+                                set:html={ic.check}
+                              />
+                              {d}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
                     </div>
-                  </div>
-                  <span class="tl-toggle"><svg class="i" viewBox="0 0 24 24" set:html={ic.plus} />Qué recibes</span>
-                </button>
-              </div>
-            ))}
+                    <span class="tl-toggle">
+                      <svg class="i" viewBox="0 0 24 24" set:html={ic.plus} />
+                      Qué recibes
+                    </span>
+                  </button>
+                </div>
+              ))
+            }
           </div>
-          <p class="tl-count" aria-live="polite">Paso <b id="tl-now">1</b> de {steps.length} · Web funcionando en <b>3-5 semanas</b></p>
+          <p class="tl-count" aria-live="polite">
+            Paso <b id="tl-now">1</b> de {steps.length} · Web funcionando en <b
+              >3-5 semanas</b>
+          </p>
         </div>
       </section>
 
@@ -3990,66 +1280,140 @@ const faqs = [
       <section class="center" id="planes">
         <div class="wrap">
           <span class="eyebrow rv">Planes</span>
-          <h2 class="rv">Empieza pequeño y <span class="grad">crece cuando tu consulta lo pida</span></h2>
-          <p class="lead rv">No necesitas una gran inversión inicial. Elige por dónde empezar y amplía después.</p>
+          <h2 class="rv">
+            Empieza pequeño y <span class="grad"
+              >crece cuando tu consulta lo pida</span>
+          </h2>
+          <p class="lead rv">
+            No necesitas una gran inversión inicial. Empieza con tu web de
+            psicólogo y amplía a tu propio software cuando lo necesites.
+          </p>
           <div class="plans">
             <div class="card plan rv" data-spot>
               <span class="ptag">Para empezar hoy</span>
               <h3>Fase 1 · Web en WordPress</h3>
               <div class="price">500 € <small>IVA no incluido</small></div>
-              <p>Para captar tus primeros pacientes con una presencia profesional.</p>
+              <p>
+                Para psicólogos que quieren captar sus primeros pacientes con
+                una presencia profesional.
+              </p>
               <ul>
-                <li><span class="ck">✓</span>5 páginas: inicio, sobre mí, servicios, blog y contacto</li>
-                <li><span class="ck">✓</span>Calendario y formulario de captación</li>
-                <li><span class="ck">✓</span>Funciones de Videoconsulta Cifrada, Firma de Documentos Legales y Documentos Compartidos</li>
-                <li><span class="ck">✓</span>Botón de WhatsApp y diseño para móvil</li>
-                <li><span class="ck">✓</span>SEO básico y panel para editar tú mismo</li>
+                <li>
+                  <span class="ck">✓</span>5 páginas: inicio, sobre mí,
+                  servicios, blog y contacto
+                </li>
+                <li>
+                  <span class="ck">✓</span>Calendario y formulario de captación
+                </li>
+                <li>
+                  <span class="ck">✓</span>Funciones de Videoconsulta Cifrada,
+                  Firma de Documentos Legales y Documentos Compartidos
+                </li>
+                <li>
+                  <span class="ck">✓</span>Botón de WhatsApp y diseño para móvil
+                </li>
+                <li>
+                  <span class="ck">✓</span>SEO básico y panel para editar tú
+                  mismo
+                </li>
               </ul>
-              <a class="btn btn-ghost" href="#contacto">Quiero la Fase 1 <svg class="i i-arrow" viewBox="0 0 24 24" set:html={ic.arrow} /></a>
+              <a class="btn btn-ghost" href="#contacto"
+                >Quiero la Fase 1 <svg
+                  class="i i-arrow"
+                  viewBox="0 0 24 24"
+                  set:html={ic.arrow}
+                /></a
+              >
             </div>
             <div class="card plan hot rv" style="--d:.1s">
               <span class="ptag">Más elegida</span>
-              <h3>Fase 2 · Portal clínico a medida</h3>
-              <div class="price">Según tu caso <small>presupuesto tras la llamada</small></div>
-              <p>Para consultas consolidadas que quieren automatizar su gestión diaria.</p>
+              <h3>Fase 2 · Software para psicólogos a medida</h3>
+              <div class="price">
+                Según tu caso <small>presupuesto tras la llamada</small>
+              </div>
+              <p>
+                Tu propia plataforma de pacientes para clínicas de psicología y
+                consultas consolidadas. Sin cuotas a terceros.
+              </p>
               <ul>
                 <li><span class="ck">✓</span>Todo lo de la Fase 1</li>
                 <li><span class="ck">✓</span>Portal privado del paciente</li>
                 <li><span class="ck">✓</span>Agente de IA integrado</li>
                 <li><span class="ck">✓</span>Notificaciones y recordatorios</li>
-                <li><span class="ck">✓</span>Aula virtual y cobros recurrentes</li>
-                <li><span class="ck">✓</span>Sincronización con tu ERP o gestor</li>
+                <li>
+                  <span class="ck">✓</span>Aula virtual y cobros recurrentes
+                </li>
+                <li>
+                  <span class="ck">✓</span>Sincronización con tu ERP o gestor
+                </li>
               </ul>
-              <a class="btn btn-main" href="#contacto">Pedir presupuesto <svg class="i i-arrow" viewBox="0 0 24 24" set:html={ic.arrow} /></a>
+              <a class="btn btn-main" href="#contacto"
+                >Pedir presupuesto <svg
+                  class="i i-arrow"
+                  viewBox="0 0 24 24"
+                  set:html={ic.arrow}
+                /></a
+              >
             </div>
           </div>
         </div>
       </section>
 
       <!-- HTML-9 · AUTORIDAD: valoración + testimonios + demos reales -->
-      <section class="soft-bg center" id="opiniones" style="background:var(--soft)">
+      <section
+        class="soft-bg center"
+        id="opiniones"
+        style="background:var(--soft)"
+      >
         <div class="wrap">
           <span class="eyebrow rv">Opiniones</span>
-          <h2 class="rv">Psicólogos que ya trabajan con <span class="grad">su agenda automatizada</span></h2>
-          <p class="lead rv">Valoraciones reales en Google y webs que puedes abrir ahora mismo.</p>
+          <h2 class="rv">
+            Psicólogos que ya trabajan con <span class="grad"
+              >su agenda automatizada</span>
+          </h2>
+          <p class="lead rv">
+            Valoraciones reales en Google y webs que puedes abrir ahora mismo.
+          </p>
 
           <div class="proof-grid">
             <div class="card rating rv" data-spot>
               <div>
                 <div class="score">5,0<span> / 5</span></div>
                 <div class="stars5" aria-label="5 estrellas">
-                  {[0, 1, 2, 3, 4].map(() => <svg class="i" viewBox="0 0 24 24" set:html={ic.star} />)}
+                  {
+                    [0, 1, 2, 3, 4].map(() => (
+                      <svg class="i" viewBox="0 0 24 24" set:html={ic.star} />
+                    ))
+                  }
                 </div>
                 <p>Media de 32 valoraciones</p>
                 <ul class="trust-list">
-                  <li><svg class="i" viewBox="0 0 24 24" set:html={ic.check} />Trato directo, sin intermediarios</li>
-                  <li><svg class="i" viewBox="0 0 24 24" set:html={ic.check} />Web funcionando en 3-5 semanas</li>
-                  <li><svg class="i" viewBox="0 0 24 24" set:html={ic.check} />Datos cifrados de serie</li>
+                  <li>
+                    <svg
+                      class="i"
+                      viewBox="0 0 24 24"
+                      set:html={ic.check}
+                    />Trato directo, sin intermediarios
+                  </li>
+                  <li>
+                    <svg class="i" viewBox="0 0 24 24" set:html={ic.check} />Web
+                    funcionando en 3-5 semanas
+                  </li>
+                  <li>
+                    <svg
+                      class="i"
+                      viewBox="0 0 24 24"
+                      set:html={ic.check}
+                    />Datos cifrados de serie
+                  </li>
                 </ul>
               </div>
               <div class="g-badge">
                 <span class="g"><span>G</span></span>
-                <div><b>Reseñas verificadas</b><br /><span style="color:var(--muted)">Publicadas en Google</span></div>
+                <div>
+                  <b>Reseñas verificadas</b><br /><span
+                    style="color:var(--muted)">Publicadas en Google</span>
+                </div>
               </div>
             </div>
 
@@ -4062,45 +1426,95 @@ const faqs = [
                 <span class="av">{quotes[0].i}</span>
                 <div>
                   <b>{quotes[0].n}</b>
-                  <span><svg class="i verified" viewBox="0 0 24 24" set:html={ic.shield} />Reseña de Google · ★★★★★</span>
+                  <span
+                    ><svg
+                      class="i verified"
+                      viewBox="0 0 24 24"
+                      set:html={ic.shield}
+                    />Reseña de Google · ★★★★★</span
+                  >
                 </div>
               </figcaption>
             </figure>
 
-            {quotes.slice(1).map((q, idx) => (
-              <figure class="card quote rv" data-spot style={`--d:${0.16 + idx * 0.08}s`}>
-                <div class="stars5" aria-label="5 estrellas">
-                  {[0, 1, 2, 3, 4].map(() => <svg class="i" viewBox="0 0 24 24" set:html={ic.star} />)}
-                </div>
-                <blockquote>“{q.q}”</blockquote>
-                <figcaption class="who">
-                  <span class="av">{q.i}</span>
-                  <div>
-                    <b>{q.n}</b>
-                    <span><svg class="i verified" viewBox="0 0 24 24" set:html={ic.shield} />Reseña de Google</span>
+            {
+              quotes.slice(1).map((q, idx) => (
+                <figure
+                  class="card quote rv"
+                  data-spot
+                  style={`--d:${0.16 + idx * 0.08}s`}
+                >
+                  <div class="stars5" aria-label="5 estrellas">
+                    {[0, 1, 2, 3, 4].map(() => (
+                      <svg class="i" viewBox="0 0 24 24" set:html={ic.star} />
+                    ))}
                   </div>
-                </figcaption>
-              </figure>
-            ))}
+                  <blockquote>“{q.q}”</blockquote>
+                  <figcaption class="who">
+                    <span class="av">{q.i}</span>
+                    <div>
+                      <b>{q.n}</b>
+                      <span>
+                        <svg
+                          class="i verified"
+                          viewBox="0 0 24 24"
+                          set:html={ic.shield}
+                        />
+                        Reseña de Google
+                      </span>
+                    </div>
+                  </figcaption>
+                </figure>
+              ))
+            }
           </div>
 
           <div class="demos-h" id="demos">
             <div>
               <span class="eyebrow">Demos</span>
-              <h3>Webs reales que puedes abrir ahora mismo</h3>
+              <h3>Webs reales de psicología que puedes abrir ahora mismo</h3>
             </div>
-            <a class="btn btn-ghost btn-sm" href="#contacto">Quiero una así <svg class="i i-arrow" viewBox="0 0 24 24" set:html={ic.arrow} /></a>
+            <a class="btn btn-ghost btn-sm" href="#contacto"
+              >Quiero una así <svg
+                class="i i-arrow"
+                viewBox="0 0 24 24"
+                set:html={ic.arrow}
+              /></a
+            >
           </div>
           <div class="demos">
-            {demos.map((d, idx) => (
-              <a class="card demo rv" data-spot href={d.u} target="_blank" rel="noopener" style={`--h:${d.h};--d:${idx * 0.06}s`}>
-                <div class="browser" aria-hidden="true">
-                  <div class="bar"><i></i><i></i><i></i><span></span></div>
-                  <img src={d.image} alt={d.t} style="width: 100%; height: 100%; object-fit: cover; display: block;" />
-                </div>
-                <b>{d.t}<svg class="i" viewBox="0 0 24 24" set:html={ic.ext} /></b>
-              </a>
-            ))}
+            {
+              demos.map((d, idx) => (
+                <a
+                  class="card demo rv"
+                  data-spot
+                  href={d.u}
+                  target="_blank"
+                  rel="noopener"
+                  style={`--h:${d.h};--d:${idx * 0.06}s`}
+                >
+                  <div class="browser" aria-hidden="true">
+                    <div class="bar">
+                      <>
+                        <i />
+                        <i />
+                        <i />
+                        <span />
+                      </>
+                    </div>
+                    <img
+                      src={d.image}
+                      alt={d.alt}
+                      style="width: 100%; height: 100%; object-fit: cover; display: block;"
+                    />
+                  </div>
+                  <b>
+                    {d.t}
+                    <svg class="i" viewBox="0 0 24 24" set:html={ic.ext} />
+                  </b>
+                </a>
+              ))
+            }
           </div>
         </div>
       </section>
@@ -4110,21 +1524,36 @@ const faqs = [
         <div class="wrap faq-grid">
           <div class="faq-side">
             <span class="eyebrow rv">FAQ</span>
-            <h2 class="rv">Preguntas comunes, <span class="grad">respuestas claras</span></h2>
-            <p class="rv" style="color:var(--muted)">Lo que suelen preguntarme antes de empezar.</p>
+            <h2 class="rv">
+              Preguntas comunes, <span class="grad">respuestas claras</span>
+            </h2>
+            <p class="rv" style="color:var(--muted)">
+              Lo que suelen preguntarme los psicólogos antes de empezar.
+            </p>
             <div class="card ask rv" data-spot>
               <h3>¿Te queda alguna duda?</h3>
-              <p>Cuéntanoslo en una llamada de 30 minutos y salimos con un plan concreto.</p>
-              <a class="btn btn-main btn-sm" href="#contacto">Hablemos <svg class="i i-arrow" viewBox="0 0 24 24" set:html={ic.arrow} /></a>
+              <p>
+                Cuéntanoslo en una llamada de 30 minutos y salimos con un plan
+                concreto.
+              </p>
+              <a class="btn btn-main btn-sm" href="#contacto"
+                >Hablemos <svg
+                  class="i i-arrow"
+                  viewBox="0 0 24 24"
+                  set:html={ic.arrow}
+                /></a
+              >
             </div>
           </div>
           <div class="faq">
-            {faqs.map(([q, a], idx) => (
-              <details class="rv" style={`--d:${idx * 0.05}s`}>
-                <summary>{q}</summary>
-                <p>{a}</p>
-              </details>
-            ))}
+            {
+              faqs.map(([q, a], idx) => (
+                <details class="rv" style={`--d:${idx * 0.05}s`}>
+                  <summary>{q}</summary>
+                  <p>{a}</p>
+                </details>
+              ))
+            }
           </div>
         </div>
       </section>
@@ -4134,54 +1563,145 @@ const faqs = [
         <div class="wrap">
           <div class="cbox center">
             <span class="eyebrow rv">Llamada gratuita</span>
-            <h2 class="rv">Empieza con una llamada gratuita <span class="grad">de 30 minutos</span></h2>
-            <p class="lead rv">Nos cuentas cómo trabajas y te decimos qué automatizaría primero. Sin compromiso.</p>
+            <h2 class="rv">
+              Empieza con una llamada gratuita <span class="grad"
+                >de 30 minutos</span>
+            </h2>
+            <p class="lead rv">
+              Nos cuentas cómo trabajas en tu consulta y te decimos qué
+              automatizaría primero en tu software. Sin compromiso.
+            </p>
+            <div class="direct-contact-grid rv">
+              <!-- Botón Email -->
+              <a href="mailto:info@mndesignweb.es" class="dc-card dc-mail">
+                <div class="dc-icon">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
+                </div>
+                <div class="dc-content">
+                  <span class="dc-label">Escríbenos</span>
+                  <span class="dc-value">info@mndesignweb.es</span>
+                </div>
+              </a>
+
+              <!-- Botón Teléfono -->
+              <a href="tel:+34645854934" class="dc-card dc-phone">
+                <div class="dc-icon">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                </div>
+                <div class="dc-content">
+                  <span class="dc-label">Llámanos ahora</span>
+                  <span class="dc-value">+34 645 854 934</span>
+                </div>
+              </a>
+
+              <!-- Botón WhatsApp -->
+              <a href="https://wa.me/34645854934?text=Hola,%20me%20gustaría%20hablar%20sobre%20un%20proyecto%20web." target="_blank" rel="noopener noreferrer" class="dc-card dc-wa">
+                <div class="dc-icon">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9L3 21"></path><path d="M9 10a.5.5 0 0 0 1 0V9a.5.5 0 0 0-1 0v1a5 5 0 0 0 5 5h1a.5.5 0 0 0 0-1h-1a.5.5 0 0 0 0 1"></path></svg>
+                </div>
+                <div class="dc-content">
+                  <span class="dc-label">Chat directo</span>
+                  <span class="dc-value">WhatsApp</span>
+                </div>
+              </a>
+            </div>
             <div class="trust-row rv">
-              <span class="pill"><svg class="i" viewBox="0 0 24 24" set:html={ic.shield} />RGPD sanitario</span>
-              <span class="pill"><svg class="i" viewBox="0 0 24 24" set:html={ic.lock} />SSL y datos cifrados</span>
-              <span class="pill"><svg class="i" viewBox="0 0 24 24" set:html={ic.clock} />Respuesta en menos de 24 h</span>
-              <span class="pill"><svg class="i" viewBox="0 0 24 24" set:html={ic.star} />5,0 en Google</span>
+              <span class="pill"
+                ><svg class="i" viewBox="0 0 24 24" set:html={ic.shield} />RGPD
+                sanitario</span
+              >
+              <span class="pill"
+                ><svg class="i" viewBox="0 0 24 24" set:html={ic.lock} />SSL y
+                datos cifrados</span
+              >
+              <span class="pill"
+                ><svg
+                  class="i"
+                  viewBox="0 0 24 24"
+                  set:html={ic.clock}
+                />Respuesta en menos de 24 h</span
+              >
+              <span class="pill"
+                ><svg class="i" viewBox="0 0 24 24" set:html={ic.star} />5,0 en
+                Google</span
+              >
             </div>
             <div class="cgrid">
               <div class="rv">
                 <div class="cal">
-                  <iframe src="https://cal.com/mndesignweb/reunion-30-min?embed=true" title="Reserva tu llamada" loading="lazy"></iframe>
+                  <iframe
+                    class="calendar-iframe"
+                    src="https://cal.com/mndesignweb/reunion-30-min?embed=true"
+                    title="Reserva tu llamada"
+                    loading="lazy"></iframe>
                 </div>
                 <p class="cal-alt">
-                  ¿No ves el calendario? <a href="https://cal.com/mndesignweb/reunion-30-min" target="_blank" rel="noopener"
-                    >Ábrelo en una pestaña nueva</a>.
+                  ¿No ves el calendario? <a
+                    href="https://cal.com/mndesignweb/reunion-30-min"
+                    target="_blank"
+                    rel="noopener">Ábrelo en una pestaña nueva</a
+                  >.
                 </p>
               </div>
               <form id="formulario" class="rv" style="--d:.1s">
                 <h3>¿Prefieres que te escribamos nosotros?</h3>
-                <p class="micro" style="margin:0">Déjame tus datos y te contestamos en menos de 24 h.</p>
+                <p class="micro" style="margin:0">
+                  Déjame tus datos y te contestamos en menos de 24 h.
+                </p>
                 <div>
                   <label for="nombre">Tu nombre o el de tu clínica</label>
                   <input id="nombre" type="text" required />
                 </div>
                 <div>
                   <label for="email">Email</label>
-                  <input id="email" type="email" placeholder="consulta@clinica.es" required />
+                  <input
+                    id="email"
+                    type="email"
+                    placeholder="consulta@clinica.es"
+                    required
+                  />
                 </div>
                 <div>
-                  <label for="telefono">Teléfono (opcional)</label>
-                  <input id="telefono" type="tel" placeholder="+34 600 000 000" />
+                  <label for="telefono">Teléfono </label>
+                  <input
+                    id="telefono"
+                    type="tel"
+                    placeholder="+34 600 000 000"
+                    required
+                  />
                 </div>
                 <div>
-                  <label for="servicio">¿Qué te gustaría resolver primero?</label>
+                  <label for="servicio"
+                    >¿Qué te gustaría resolver primero?</label
+                  >
                   <select id="servicio" required>
                     <option value="">Selecciona una opción</option>
-                    <option value="web-corporativa">Tener una web profesional</option>
-                    <option value="sistema-reservas">Automatizar mis reservas</option>
-                    <option value="aula-virtual">Crear un aula virtual o cursos</option>
+                    <option value="web-corporativa"
+                      >Tener una web profesional</option
+                    >
+                    <option value="sistema-reservas"
+                      >Automatizar mis reservas</option
+                    >
+                    <option value="aula-virtual"
+                      >Crear un aula virtual o cursos</option
+                    >
                     <option value="integracion-crm">Conectar mi CRM/ERP</option>
                   </select>
                 </div>
                 <button type="submit" id="btn-submit" class="btn btn-brand">
-                  Quiero mi auditoría gratuita <svg class="i i-arrow" viewBox="0 0 24 24" set:html={ic.arrow} />
+                  Quiero mi auditoría gratuita <svg
+                    class="i i-arrow"
+                    viewBox="0 0 24 24"
+                    set:html={ic.arrow}
+                  />
                 </button>
-                <p class="ok-msg" id="ok-msg">¡Recibido! Analizaré tu caso personalmente y te escribo pronto.</p>
-                <p class="micro" style="margin:0;text-align:center">Tus datos son confidenciales y solo los uso para responderte.</p>
+                <p class="ok-msg" id="ok-msg">
+                  ¡Recibido! Analizaré tu caso personalmente y te escribo
+                  pronto.
+                </p>
+                <p class="micro" style="margin:0;text-align:center">
+                  Tus datos son confidenciales y solo los uso para responderte.
+                </p>
               </form>
             </div>
           </div>
@@ -4208,13 +1728,21 @@ const faqs = [
 
     <!-- HTML-13 · CTA FIJO EN MÓVIL (aparece al pasar el hero) -->
     <div class="sticky-cta" id="sticky-cta">
-      <a class="btn btn-main" href="#contacto">Agendar llamada gratuita <svg class="i i-arrow" viewBox="0 0 24 24" set:html={ic.arrow} /></a>
+      <a class="btn btn-main" href="#contacto"
+        >Agendar llamada gratuita <svg
+          class="i i-arrow"
+          viewBox="0 0 24 24"
+          set:html={ic.arrow}
+        /></a
+      >
     </div>
 
     <!-- ===== ARCHIVO JS ===== -->
     <script is:inline>
       (function () {
-        var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        var reduce = window.matchMedia(
+          "(prefers-reduced-motion: reduce)",
+        ).matches;
 
         /* JS-1 · Revelado al hacer scroll */
         var rv = document.querySelectorAll(".rv");
@@ -4228,11 +1756,15 @@ const faqs = [
                 }
               });
             },
-            { rootMargin: "0px 0px -8% 0px", threshold: 0.12 }
+            { rootMargin: "0px 0px -8% 0px", threshold: 0.12 },
           );
-          rv.forEach(function (el) { io.observe(el); });
+          rv.forEach(function (el) {
+            io.observe(el);
+          });
         } else {
-          rv.forEach(function (el) { el.classList.add("in"); });
+          rv.forEach(function (el) {
+            el.classList.add("in");
+          });
         }
 
         /* JS-MENU · Menú hamburguesa (tablet/móvil) */
@@ -4245,10 +1777,16 @@ const faqs = [
             header.classList.toggle("open", open);
             document.documentElement.classList.toggle("menu-open", open);
             burger.setAttribute("aria-expanded", open ? "true" : "false");
-            burger.setAttribute("aria-label", open ? "Cerrar menú" : "Abrir menú");
+            burger.setAttribute(
+              "aria-label",
+              open ? "Cerrar menú" : "Abrir menú",
+            );
             if (open) {
               var first = mnav.querySelector(".mnav-links a");
-              if (first) setTimeout(function () { first.focus({ preventScroll: true }); }, 60);
+              if (first)
+                setTimeout(function () {
+                  first.focus({ preventScroll: true });
+                }, 60);
             } else if (restoreFocus) {
               burger.focus();
             }
@@ -4258,16 +1796,24 @@ const faqs = [
           });
           // Al pulsar un enlace se cierra el menú y el navegador baja a la sección
           mnav.querySelectorAll("a").forEach(function (a) {
-            a.addEventListener("click", function () { setMenu(false); });
+            a.addEventListener("click", function () {
+              setMenu(false);
+            });
           });
-          if (mclose) mclose.addEventListener("click", function () { setMenu(false, true); });
+          if (mclose)
+            mclose.addEventListener("click", function () {
+              setMenu(false, true);
+            });
           document.addEventListener("keydown", function (e) {
-            if (e.key === "Escape" && header.classList.contains("open")) setMenu(false, true);
+            if (e.key === "Escape" && header.classList.contains("open"))
+              setMenu(false, true);
           });
           // Si se amplía la ventana a escritorio con el menú abierto, se cierra
-          window.matchMedia("(min-width: 901px)").addEventListener("change", function (e) {
-            if (e.matches) setMenu(false);
-          });
+          window
+            .matchMedia("(min-width: 901px)")
+            .addEventListener("change", function (e) {
+              if (e.matches) setMenu(false);
+            });
         }
 
         /* JS-2 · Foco de luz que sigue al cursor en las tarjetas */
@@ -4287,7 +1833,8 @@ const faqs = [
             var r = stage.getBoundingClientRect();
             var x = (e.clientX - r.left) / r.width - 0.5;
             var y = (e.clientY - r.top) / r.height - 0.5;
-            trio.style.transform = "rotateY(" + x * 8 + "deg) rotateX(" + -y * 6 + "deg)";
+            trio.style.transform =
+              "rotateY(" + x * 8 + "deg) rotateX(" + -y * 6 + "deg)";
           });
           stage.addEventListener("pointerleave", function () {
             trio.style.transform = "";
@@ -4305,7 +1852,10 @@ const faqs = [
           var mark = window.innerHeight * 0.6;
           if (tl) {
             var r = tl.getBoundingClientRect();
-            tl.style.setProperty("--p", Math.min(1, Math.max(0, (mark - r.top) / r.height)));
+            tl.style.setProperty(
+              "--p",
+              Math.min(1, Math.max(0, (mark - r.top) / r.height)),
+            );
             var cur = -1;
             items.forEach(function (it, i) {
               var on = it.getBoundingClientRect().top < mark;
@@ -4318,7 +1868,11 @@ const faqs = [
             if (now) now.textContent = Math.max(1, cur + 1);
           }
           if (top) top.classList.toggle("scrolled", window.scrollY > 20);
-          if (sticky) sticky.classList.toggle("show", window.scrollY > window.innerHeight * 0.7);
+          if (sticky)
+            sticky.classList.toggle(
+              "show",
+              window.scrollY > window.innerHeight * 0.7,
+            );
           ticking = false;
         }
         function req() {
@@ -4335,7 +1889,10 @@ const faqs = [
         items.forEach(function (it) {
           var btn = it.querySelector(".tl-card");
           btn.addEventListener("click", function () {
-            btn.setAttribute("aria-expanded", btn.getAttribute("aria-expanded") === "true" ? "false" : "true");
+            btn.setAttribute(
+              "aria-expanded",
+              btn.getAttribute("aria-expanded") === "true" ? "false" : "true",
+            );
           });
         });
 
