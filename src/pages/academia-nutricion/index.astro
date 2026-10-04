@@ -100,12 +100,18 @@ import "./style.css";
         {
           "@context": "https://schema.org",
           "@type": "ProfessionalService",
+          "@id": "https://mndesignweb.es/#empresa",
           "name": "MN Design Web",
           "image": "https://mndesignweb.es/logo.webp",
           "url": "https://mndesignweb.es/",
+          "telephone": "+34645854934",
+          "email": "info@mndesignweb.es",
           "address": {
             "@type": "PostalAddress",
-            "addressLocality": "Alicante",
+            "streetAddress": "Avinguda Passeig del Comtat, 75, 5º 1º",
+            "postalCode": "03820",
+            "addressLocality": "Cocentaina",
+            "addressRegion": "Alicante",
             "addressCountry": "ES"
           },
           "priceRange": "$$"
@@ -115,7 +121,8 @@ import "./style.css";
           "@type": "Service",
           "name": "Software de Academia Online para Nutricionistas y Profesionales de la Salud",
           "image": "https://mndesignweb.es/imagen-miniatura-academia.webp",
-          "description": "Sistemas LMS a medida con pasarelas de pago (Stripe/Mercado Pago), protección de contenidos audiovisuales y foros privados para alumnos."
+          "description": "Sistemas LMS a medida con pasarelas de pago (Stripe/Mercado Pago), protección de contenidos audiovisuales y foros privados para alumnos.",
+          "provider": { "@id": "https://mndesignweb.es/#empresa" }
         },
         {
           "@context": "https://schema.org",

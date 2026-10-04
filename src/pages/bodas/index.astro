@@ -76,12 +76,18 @@
         {
           "@context": "https://schema.org",
           "@type": "ProfessionalService",
+          "@id": "https://mndesignweb.es/#empresa",
           "name": "MN Design Web",
           "image": "https://mndesignweb.es/logo.webp",
           "url": "https://mndesignweb.es/",
+          "telephone": "+34645854934",
+          "email": "info@mndesignweb.es",
           "address": {
             "@type": "PostalAddress",
-            "addressLocality": "Alicante",
+            "streetAddress": "Avinguda Passeig del Comtat, 75, 5º 1º",
+            "postalCode": "03820",
+            "addressLocality": "Cocentaina",
+            "addressRegion": "Alicante",
             "addressCountry": "ES"
           },
           "priceRange": "$$"
@@ -106,16 +112,11 @@
         },
         {
           "@context": "https://schema.org/",
-          "@type": "Product",
+          "@type": "Service",
           "name": "Invitaciones Digitales Interactivas para Bodas",
           "image": "https://mndesignweb.es/imagen-miniatura.webp",
           "description": "Diseño de invitaciones digitales Premium para eventos con confirmación de asistencia (RSVP) automatizada y Seating Plan interactivo.",
-          "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "5.0",
-            "bestRating": "5",
-            "ratingCount": "47"
-          }
+          "provider": { "@id": "https://mndesignweb.es/#empresa" }
         },
         {
           "@context": "https://schema.org",

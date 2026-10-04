@@ -79,6 +79,7 @@
         {
           "@context": "https://schema.org",
           "@type": "ProfessionalService",
+          "@id": "https://mndesignweb.es/#empresa",
           "name": "MN Design Web",
           "image": "https://mndesignweb.es/logo.webp",
           "url": "https://mndesignweb.es/",
@@ -86,19 +87,19 @@
           "email": "info@mndesignweb.es",
           "address": {
             "@type": "PostalAddress",
-            "addressLocality": "Alicante",
+            "streetAddress": "Avinguda Passeig del Comtat, 75, 5º 1º",
+            "postalCode": "03820",
+            "addressLocality": "Cocentaina",
+            "addressRegion": "Alicante",
             "addressCountry": "ES"
           },
-          "priceRange": "49€ - 1050€"
+          "priceRange": "$$"
         },
         {
           "@context": "https://schema.org/",
           "@type": "Service",
           "name": "Desarrollo y Mentoría Técnica Shopify",
-          "provider": {
-            "@type": "ProfessionalService",
-            "name": "MN Design Web"
-          },
+          "provider": { "@id": "https://mndesignweb.es/#empresa" },
           "image": "https://mndesignweb.es/shopify/imagen-miniatura-shopify.webp",
           "description": "Consultoría técnica en directo para resolver problemas de configuración en Shopify y creación de tiendas online desde cero con formación incluida.",
           "offers": [
