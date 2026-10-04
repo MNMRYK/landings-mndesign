@@ -1,0 +1,129 @@
+---
+// Cookies de todo el dominio (Google Consent Mode v2, modo básico). Va dentro del <head>.
+// Es el mismo código que el index.html de ReactMNDESIGN: si cambias uno, cambia el otro.
+//  - Ningún tracker se carga hasta que el usuario acepta: Google Analytics, Microsoft Clarity
+//    y el Píxel de Meta están dentro de window.cargarTrackers(), que llama el banner
+//    (CookieBanner.astro) al aceptar, o este script al entrar si ya aceptó antes.
+//  - La decisión se guarda en localStorage "cookieConsent", compartida con la web de React.
+//  - window.enviarEvento() solo envía eventos a GA4 si hay consentimiento.
+---
+
+<script is:inline>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag("consent", "default", {
+    ad_storage: "denied",
+    ad_user_data: "denied",
+    ad_personalization: "denied",
+    analytics_storage: "denied",
+  });
+
+  window.cargarTrackers = function () {
+    if (window.__trackersCargados || window.__PRERENDER__) return;
+    window.__trackersCargados = true;
+
+    // Google Analytics
+    gtag("consent", "update", {
+      ad_storage: "granted",
+      ad_user_data: "granted",
+      ad_personalization: "granted",
+      analytics_storage: "granted",
+    });
+    gtag("js", new Date());
+    gtag("config", "G-36WYJMYT3Z");
+    var ga = document.createElement("script");
+    ga.async = true;
+    ga.src = "https://www.googletagmanager.com/gtag/js?id=G-36WYJMYT3Z";
+    document.head.appendChild(ga);
+
+    // Microsoft Clarity
+    (function (c, l, a, r, i, t, y) {
+      c[a] =
+        c[a] ||
+        function () {
+          (c[a].q = c[a].q || []).push(arguments);
+        };
+      t = l.createElement(r);
+      t.async = 1;
+      t.src = "https://www.clarity.ms/tag/" + i;
+      y = l.getElementsByTagName(r)[0];
+      y.parentNode.insertBefore(t, y);
+    })(window, document, "clarity", "script", "wuzaxaifa0");
+    window.clarity("consentv2", {
+      ad_Storage: "granted",
+      analytics_Storage: "granted",
+    });
+
+    // Píxel de Meta
+    !(function (f, b, e, v, n, t, s) {
+      if (f.fbq) return;
+      n = f.fbq = function () {
+        n.callMethod
+          ? n.callMethod.apply(n, arguments)
+          : n.queue.push(arguments);
+      };
+      if (!f._fbq) f._fbq = n;
+      n.push = n;
+      n.loaded = !0;
+      n.version = "2.0";
+      n.queue = [];
+      t = b.createElement(e);
+      t.async = !0;
+      t.src = v;
+      s = b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t, s);
+    })(
+      window,
+      document,
+      "script",
+      "https://connect.facebook.net/en_US/fbevents.js",
+    );
+    window.fbq("init", "1627135808585120");
+    window.fbq("track", "PageView");
+  };
+
+  // Las landings guardaban la decisión en "cookie_consent": se pasa a la clave común
+  try {
+    var antigua = localStorage.getItem("cookie_consent");
+    if (antigua && !localStorage.getItem("cookieConsent")) {
+      localStorage.setItem("cookieConsent", antigua);
+    }
+    localStorage.removeItem("cookie_consent");
+  } catch (e) {}
+
+  try {
+    if (localStorage.getItem("cookieConsent") === "accepted") {
+      window.cargarTrackers();
+    }
+  } catch (e) {}
+
+  // Eventos de GA4 (conversiones importadas en Google Ads). Solo se envían si el usuario
+  // ha aceptado: sin consentimiento no se encola nada que se pudiera enviar después.
+  window.enviarEvento = function (nombre, parametros) {
+    if (!window.__trackersCargados) return;
+    var datos = { pagina: location.pathname };
+    for (var k in parametros) datos[k] = parametros[k];
+    gtag("event", nombre, datos);
+  };
+
+  // Clics en WhatsApp, teléfono y reservas de Cal.com, en cualquier enlace de la web
+  document.addEventListener(
+    "click",
+    function (e) {
+      var enlace = e.target.closest && e.target.closest("a[href]");
+      if (!enlace) return;
+      var href = enlace.getAttribute("href") || "";
+      var nombre = /^tel:/i.test(href)
+        ? "click_telefono"
+        : /wa\.me\//i.test(href)
+          ? "click_whatsapp"
+          : /cal\.com\//i.test(href)
+            ? "click_reserva"
+            : null;
+      if (nombre) window.enviarEvento(nombre, { link_url: href });
+    },
+    true,
+  );
+</script>

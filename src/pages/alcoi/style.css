@@ -121,7 +121,7 @@ html {
   transition-delay: var(--d, 0ms);
 }
 
-/* 3. Els efectes lligats al scroll estan en un <style is:inline> de index.astro:
+/* 3. Els efectes lligats al scroll estan en un \3c style is:inline> de index.astro:
    el minificador fusionava animation-timeline dins de la propietat animation
    i el navegador descartava la regla. */
 
