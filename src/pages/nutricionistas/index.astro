@@ -52,7 +52,7 @@ const schema = {
       email: "info@mndesignweb.es",
       address: {
         "@type": "PostalAddress",
-        streetAddress: "Avinguda Passeig del Comtat, 75, 5º 1º",
+        streetAddress: "Passeig del Comtat, 75, 5º 1º",
         postalCode: "03820",
         addressLocality: "Cocentaina",
         addressRegion: "Alicante",
@@ -1457,6 +1457,7 @@ const schema = {
           <a href="https://mndesignweb.es/aviso-legal/">Aviso Legal</a>
           <a href="https://mndesignweb.es/privacidad/">Política de Privacidad</a>
           <a href="https://mndesignweb.es/cookies/">Política de Cookies</a>
+          <a href="https://mndesignweb.es/cookies/" onclick="if (localStorage.getItem('cookie_consent') === 'accepted') { localStorage.removeItem('cookie_consent'); location.reload(); } else { document.getElementById('cookie-banner').style.display = 'flex'; } return false;">Configurar cookies</a>
         </div>
       </div>
 

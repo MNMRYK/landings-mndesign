@@ -281,7 +281,7 @@ const schema = {
       email: "info@mndesignweb.es",
       address: {
         "@type": "PostalAddress",
-        streetAddress: "Avinguda Passeig del Comtat, 75, 5º 1º",
+        streetAddress: "Passeig del Comtat, 75, 5º 1º",
         postalCode: "03820",
         addressLocality: "Cocentaina",
         addressRegion: "Alicante",
@@ -346,6 +346,24 @@ const schema = {
           },
         ],
       },
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": `${pageUrl}#breadcrumb`,
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Inicio",
+          item: "https://mndesignweb.es/",
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Web y software para psicólogos",
+          item: pageUrl,
+        },
+      ],
     },
     {
       "@type": "FAQPage",
@@ -1614,7 +1632,7 @@ const schema = {
             <figcaption>
               <svg class="i" viewBox="0 0 24 24" set:html={ic.pin} />
               <span
-                ><b>MN Design Web</b>Avinguda Passeig del Comtat, 75, 5º 1º ·
+                ><b>MN Design Web</b>Passeig del Comtat, 75, 5º 1º ·
                 03820 Cocentaina (Alicante)</span
               >
             </figcaption>
@@ -1924,12 +1942,13 @@ const schema = {
         <nav aria-label="Contacto">
           <a href="tel:+34645854934">+34 645 854 934</a>
           <a href="mailto:info@mndesignweb.es">info@mndesignweb.es</a>
-          <span>Av. Passeig del Comtat, 75, 5º 1º · 03820 Cocentaina</span>
+          <span>Passeig del Comtat, 75, 5º 1º · 03820 Cocentaina</span>
         </nav>
         <nav aria-label="Legal">
           <a href="https://mndesignweb.es/aviso-legal/">Aviso legal</a>
           <a href="https://mndesignweb.es/privacidad/">Privacidad</a>
           <a href="https://mndesignweb.es/cookies/">Cookies</a>
+          <a href="https://mndesignweb.es/cookies/" onclick="if (localStorage.getItem('cookie_consent') === 'accepted') { localStorage.removeItem('cookie_consent'); location.reload(); } else { document.getElementById('cookie-banner').style.display = 'flex'; } return false;">Configurar cookies</a>
           <span>© MN Design Web</span>
         </nav>
       </div>
