@@ -14,24 +14,24 @@ const faqs = [
     "No. Treballem <strong>per fases</strong>: cada part es prova amb el vostre equip i es posa en marxa quan funciona, en paral·lel al sistema actual. Així la producció no s'atura en cap moment.",
   ],
   [
-    'La web serà meua 100% o he de pagar un "lloguer" per sempre?',
-    "La web i el domini són <strong>totalment teus</strong> des del primer minut. Treballem amb plataformes lliures i estàndards com WordPress o Shopify. Si algun dia decideixes treballar amb una altra agència, et donem les claus i te l'emportes sense penalitzacions ni lletra menuda.",
+    'La web serà nostra al 100% o haurem de pagar un "lloguer" per sempre?',
+    "La web i el domini són <strong>totalment vostres</strong> des del primer minut. Treballem amb plataformes lliures i estàndards com WordPress o Shopify. Si algun dia decidiu treballar amb una altra agència, us donem les claus i us l'emporteu sense penalitzacions ni lletra menuda.",
   ],
   [
-    "Què passa si tinc un problema tècnic o vull fer canvis en un futur?",
-    'Ens tens a Cocentaina per a allò que necessites, no som un "call center" anònim. Oferim plans de <strong>manteniment web mensual</strong> on ens encarreguem de les actualitzacions, la seguretat i xicotets canvis perquè tu només et preocupes del teu negoci.',
+    "Què passa si tenim un problema tècnic o volem fer canvis en un futur?",
+    'Ens teniu a Cocentaina per a allò que necessiteu, no som un "call center" anònim. Oferim plans de <strong>manteniment web mensual</strong> on ens encarreguem de les actualitzacions, la seguretat i xicotets canvis perquè vosaltres només us preocupeu del vostre negoci.',
   ],
   [
-    "Puc rebre reserves directes o vendre sense dependre de tercers?",
-    "I tant! Integrem sistemes complets de reserves (per a clíniques, restaurants o consultories) i botigues online totalment automatitzades. Dissenyem plataformes preparades per a convertir visites en clients reals, sincronitzades amb el teu calendari i passarel·les de pagament segures.",
+    "Podem rebre reserves directes o vendre sense dependre de tercers?",
+    "I tant! Integrem sistemes complets de reserves (per a clíniques, restaurants o consultories) i botigues online totalment automatitzades. Dissenyem plataformes preparades per a convertir visites en clients reals, sincronitzades amb el vostre calendari i passarel·les de pagament segures.",
   ],
   [
-    "Apareixeré a Google si algú busca els meus serveis a la zona?",
-    "Totes les nostres webs s'entreguen amb una optimització SEO tècnica de base. Si vols millorar la visibilitat del teu negoci a les cerques locals, també oferim estratègies específiques de SEO local i optimització del Perfil d'Empresa de Google.",
+    "Apareixerem a Google si algú busca els nostres serveis a la zona?",
+    "Totes les nostres webs s'entreguen amb una optimització SEO tècnica de base. Si voleu millorar la visibilitat del vostre negoci a les cerques locals, també oferim estratègies específiques de SEO local i optimització del Perfil d'Empresa de Google.",
   ],
   [
     "Quant de temps tardeu a tindre la web preparada?",
-    "Depén de la complexitat, però normalment una web corporativa està llesta entre <strong>3 i 5 setmanes</strong> des que ens facilites els textos i imatges inicials. Treballem de forma àgil i t'anem ensenyant els progressos perquè veges com agafa forma el teu projecte.",
+    "Depén de la complexitat, però normalment una web corporativa està llesta entre <strong>3 i 5 setmanes</strong> des que ens faciliteu els textos i imatges inicials. Treballem de forma àgil i us anem ensenyant els progressos perquè vegeu com agafa forma el vostre projecte.",
   ],
 ];
 
@@ -139,7 +139,7 @@ const schema = {
     />
     <meta
       property="og:description"
-      content="Software a mida i automatització de processos per a empreses i indústries de l'Alcoià i el Comtat. Diagnosi presencial a la teua empresa, des de Cocentaina."
+      content="Software a mida i automatització de processos per a empreses i indústries de l'Alcoià i el Comtat. Diagnosi presencial a la vostra empresa, des de Cocentaina."
     />
     <meta
       property="og:image"
@@ -262,6 +262,63 @@ const schema = {
         clarity("consent");
       }
     </script>
+    <!-- Efectes lligats al scroll (scroll-driven animations, només CSS).
+         Inline perquè el minificador no fusione animation-timeline dins d'animation. -->
+    <style is:inline>
+      /* 3. Efectes lligats al scroll: només CSS (scroll-driven animations).
+         Els navegadors que no els suporten simplement no els mostren. */
+      .scroll-progress {
+        display: none;
+      }
+      @supports (animation-timeline: scroll()) {
+        /* Barra de progrés de lectura sota el menú */
+        .scroll-progress {
+          display: block;
+          position: absolute;
+          left: 0;
+          bottom: -1px;
+          width: 100%;
+          height: 3px;
+          background: linear-gradient(90deg, #8b5cf6, #d946ef);
+          transform-origin: 0 50%;
+          animation: scroll-progress linear both;
+          animation-timeline: scroll(root);
+        }
+        @keyframes scroll-progress {
+          from { transform: scaleX(0); }
+          to { transform: scaleX(1); }
+        }
+
+        /* Parallax suau dels brillants de fons del hero */
+        .hero-glow {
+          animation: hero-glow linear both;
+          animation-timeline: scroll(root);
+          animation-range: 0 700px;
+        }
+        @keyframes hero-glow {
+          to { transform: translateY(160px); opacity: 0.35; }
+        }
+
+        /* El panell de l'ERP "s'endreça" mentre entra en pantalla */
+        .hero-tilt {
+          transform-origin: 50% 100%;
+          animation: hero-tilt linear both;
+          animation-timeline: view();
+          animation-range: entry 0% cover 45%;
+        }
+        @keyframes hero-tilt {
+          from { transform: perspective(1400px) rotateX(14deg) scale(0.94); }
+          to { transform: none; }
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .hero-glow,
+        .hero-tilt,
+        .scroll-progress {
+          animation: none !important;
+        }
+      }
+    </style>
   </head>
   <body
     class="text-slate-800 antialiased selection:bg-saas-violet selection:text-white"
@@ -294,7 +351,7 @@ const schema = {
         </a>
 
         <nav
-          class="hidden md:flex items-center gap-8 font-semibold text-sm text-slate-600"
+          class="hidden lg:flex items-center gap-8 font-semibold text-sm text-slate-600"
         >
           <a href="#automatitzacio" class="hover:text-saas-violet transition-colors"
             >Automatització</a
@@ -316,7 +373,7 @@ const schema = {
         <div class="flex items-center gap-4">
           <a
             href="#contacte"
-            class="hidden sm:inline-flex bg-saas-dark hover:bg-black text-white px-6 py-2.5 rounded-full font-bold text-sm transition-all shadow hover:shadow-lg hover:-translate-y-0.5"
+            class="hidden sm:inline-flex whitespace-nowrap bg-saas-dark hover:bg-black text-white px-6 py-2.5 rounded-full font-bold text-sm transition-all shadow hover:shadow-lg hover:-translate-y-0.5"
           >
             Diagnosi gratuïta
           </a>
@@ -324,7 +381,9 @@ const schema = {
           <button
             id="mobile-menu-btn"
             aria-label="Obrir menú"
-            class="md:hidden flex items-center justify-center w-10 h-10 bg-slate-50 border border-slate-200 rounded-xl text-slate-600 hover:text-saas-violet hover:bg-violet-50 transition-colors"
+            aria-expanded="false"
+            aria-controls="mobile-dropdown"
+            class="lg:hidden flex items-center justify-center w-10 h-10 bg-slate-50 border border-slate-200 rounded-xl text-slate-600 hover:text-saas-violet hover:bg-violet-50 transition-colors"
           >
             <i data-lucide="menu" class="w-5 h-5"></i>
           </button>
@@ -333,7 +392,7 @@ const schema = {
 
       <div
         id="mobile-dropdown"
-        class="hidden absolute top-full left-0 w-full bg-white/95 backdrop-blur-xl border-b border-slate-200 shadow-2xl px-6 py-8 flex-col gap-2 text-center md:hidden"
+        class="hidden absolute top-full left-0 w-full bg-white border-b border-slate-200 shadow-2xl px-6 py-6 flex-col gap-1 text-center lg:hidden max-h-[calc(100dvh-5rem)] overflow-y-auto"
       >
         <a
           href="#automatitzacio"
@@ -368,11 +427,13 @@ const schema = {
           Diagnosi gratuïta
         </a>
       </div>
+      <!-- Barra de progreso de lectura (solo CSS, scroll-driven animations) -->
+      <div class="scroll-progress" aria-hidden="true"></div>
     </header>
 
     <main>
       <div
-        class="absolute top-0 left-0 w-full h-[500px] overflow-hidden -z-10 pointer-events-none"
+        class="hero-glow absolute top-0 left-0 w-full h-[500px] overflow-hidden -z-10 pointer-events-none"
       >
         <div
           class="absolute top-[-30%] left-[-10%] w-[50%] h-[400px] rounded-[100%] bg-saas-mint opacity-25 blur-[100px]"
@@ -394,23 +455,26 @@ const schema = {
 
       <!-- CAPÇALERA: software a mida i automatització per a la indústria local -->
       <section
-        class="relative max-w-7xl mx-auto px-6 pt-36 pb-20 flex flex-col items-center text-center z-10"
+        class="relative max-w-7xl mx-auto px-6 pt-28 sm:pt-36 pb-16 sm:pb-20 flex flex-col items-center text-center z-10"
       >
         <div
-          class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-slate-200 bg-white/80 backdrop-blur-sm shadow-sm mb-8 text-xs font-bold text-slate-600 tracking-wide uppercase"
+          style="--d: 0ms"
+          class="hero-in inline-flex items-center gap-2 px-4 py-2 rounded-full border border-slate-200 bg-white/80 backdrop-blur-sm shadow-sm mb-6 sm:mb-8 text-[11px] sm:text-xs font-bold text-slate-600 tracking-wide uppercase"
         >
           <span class="w-2 h-2 rounded-full bg-saas-violet animate-pulse"
           ></span>
           Des de Cocentaina · Alcoi i comarques
         </div>
         <h1
-          class="text-4xl sm:text-5xl lg:text-[4.25rem] font-extrabold leading-[1.1] sm:leading-[1.05] tracking-tighter text-saas-dark mb-6 max-w-5xl mx-auto break-words"
+          style="--d: 60ms"
+          class="hero-in hero-in-move text-[2rem] sm:text-5xl lg:text-[4.25rem] font-extrabold leading-[1.12] sm:leading-[1.05] tracking-tighter text-saas-dark mb-6 max-w-5xl mx-auto break-words"
         >
           Software a mida i automatització de processos per a{" "}
           <span class="text-saas-violet">empreses i indústries de l'Alcoià i el Comtat</span>
         </h1>
         <p
-          class="text-lg md:text-xl text-slate-500 max-w-2xl mx-auto leading-relaxed mb-10 font-medium"
+          style="--d: 140ms"
+          class="hero-in hero-in-move text-base sm:text-lg md:text-xl text-slate-500 max-w-2xl mx-auto leading-relaxed mb-8 sm:mb-10 font-medium"
         >
           Connectem comandes, producció, magatzem i facturació perquè els
           vostres departaments deixen de passar-se dades en fulls d'Excel. Venim
@@ -418,29 +482,31 @@ const schema = {
           feu a mà.
         </p>
         <div
-          class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12 w-full sm:w-auto"
+          style="--d: 220ms"
+          class="hero-in flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mb-10 sm:mb-12 w-full sm:w-auto"
         >
           <a
             href="#contacte"
-            class="inline-flex justify-center items-center w-full sm:w-auto bg-saas-dark hover:bg-black text-white px-8 py-4 rounded-full font-semibold text-base transition-all shadow-float hover:shadow-2xl hover:-translate-y-1"
+            class="inline-flex justify-center items-center w-full sm:w-auto bg-saas-dark hover:bg-black text-white px-6 sm:px-8 py-4 rounded-full font-semibold text-[15px] sm:text-base transition-all shadow-float hover:shadow-2xl hover:-translate-y-1"
           >
-            Sol·licita una diagnosi gratuïta
+            Sol·liciteu una diagnosi gratuïta
           </a>
           <a
-            href="https://mndesignweb.es/supplyconnect"
+            href="https://mndesignweb.es/supplyconnect/"
             target="_blank"
             rel="noopener"
-            class="inline-flex justify-center items-center gap-2 w-full sm:w-auto bg-white hover:bg-slate-50 border border-slate-200 text-saas-dark px-8 py-4 rounded-full font-semibold text-base transition-all shadow-sm hover:shadow-md"
+            class="inline-flex justify-center items-center gap-2 w-full sm:w-auto bg-white hover:bg-slate-50 border border-slate-200 text-saas-dark px-6 sm:px-8 py-4 rounded-full font-semibold text-[15px] sm:text-base transition-all shadow-sm hover:shadow-md"
           >
-            Prova la demo d'un ERP industrial
+            Proveu la demo d'un ERP industrial
             <i data-lucide="external-link" class="w-4 h-4"></i>
           </a>
         </div>
         <ul
-          class="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 mb-16 text-sm font-semibold text-slate-600"
+          style="--d: 300ms"
+          class="hero-in flex flex-col sm:flex-row sm:flex-wrap items-start sm:items-center justify-center gap-x-8 gap-y-2.5 mb-12 sm:mb-16 text-sm font-semibold text-slate-600 text-left"
         >
           <li class="flex items-center gap-2">
-            <i data-lucide="map-pin" class="w-4 h-4 text-saas-violet"></i> Visita presencial a la teua empresa
+            <i data-lucide="map-pin" class="w-4 h-4 text-saas-violet"></i> Visita presencial a la vostra empresa
           </li>
           <li class="flex items-center gap-2">
             <i data-lucide="plug" class="w-4 h-4 text-saas-violet"></i> Connectat amb el vostre ERP
@@ -453,34 +519,34 @@ const schema = {
           class="relative w-full max-w-5xl mx-auto rounded-3xl sm:rounded-[2rem] bg-white/60 backdrop-blur-md border border-slate-200 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.1)] p-2 sm:p-4 anim-float"
         >
           <img
-            src="/alcoi/software-nutricion.webp"
+            src="/alcoi/demo-industria.webp"
             width="1280"
             height="720"
             fetchpriority="high"
             alt="Panell de control d'un ERP industrial a mida: comandes actives, qualitat, entregues i alertes de subministrament"
-            class="w-full h-auto rounded-2xl sm:rounded-3xl shadow-sm border border-slate-100 block"
+            class="hero-tilt w-full h-auto rounded-2xl sm:rounded-3xl shadow-sm border border-slate-100 block"
           />
         </div>
         <div
-          class="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 mt-14 text-slate-400"
+          class="flex flex-wrap items-center justify-center gap-x-5 sm:gap-x-8 gap-y-2 sm:gap-y-3 mt-10 sm:mt-14 text-slate-400"
         >
-          <span class="text-xs font-bold uppercase tracking-widest">Ens connectem amb</span>
-          <span class="font-bold text-lg tracking-tight">Sage</span>
-          <span class="font-bold text-lg tracking-tight">A3</span>
-          <span class="font-bold text-lg tracking-tight">Holded</span>
-          <span class="font-bold text-lg tracking-tight">Odoo</span>
-          <span class="font-bold text-lg tracking-tight">Excel</span>
-          <span class="font-bold text-lg tracking-tight">Google Workspace</span>
-          <span class="font-bold text-lg tracking-tight">API a mida</span>
-          <span class="font-bold text-lg tracking-tight">WordPress</span>
-          <span class="font-bold text-lg tracking-tight">Shopify</span>
+          <span class="w-full sm:w-auto text-center text-xs font-bold uppercase tracking-widest">Ens connectem amb</span>
+          <span class="font-bold text-base sm:text-lg tracking-tight">Sage</span>
+          <span class="font-bold text-base sm:text-lg tracking-tight">A3</span>
+          <span class="font-bold text-base sm:text-lg tracking-tight">Holded</span>
+          <span class="font-bold text-base sm:text-lg tracking-tight">Odoo</span>
+          <span class="font-bold text-base sm:text-lg tracking-tight">Excel</span>
+          <span class="font-bold text-base sm:text-lg tracking-tight">Google Workspace</span>
+          <span class="font-bold text-base sm:text-lg tracking-tight">API a mida</span>
+          <span class="font-bold text-base sm:text-lg tracking-tight">WordPress</span>
+          <span class="font-bold text-base sm:text-lg tracking-tight">Shopify</span>
         </div>
       </section>
 
       <!-- AUTOMATITZACIÓ: casos que un gerent reconeix -->
-      <section id="automatitzacio" class="relative py-20 z-10 bg-slate-50">
+      <section id="automatitzacio" class="relative py-16 sm:py-20 z-10 bg-slate-50">
         <div class="max-w-7xl mx-auto px-6">
-          <div class="text-center mb-14 max-w-3xl mx-auto">
+          <div class="text-center mb-10 sm:mb-14 max-w-3xl mx-auto">
             <div
               class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-saas-violet/20 bg-saas-violet/5 text-xs font-bold text-saas-violet tracking-wide uppercase mb-4"
             >
@@ -489,7 +555,7 @@ const schema = {
             <h2 class="text-3xl md:text-5xl font-extrabold tracking-tighter text-saas-dark mb-6">
               Automatitzem el que ara feu a mà
             </h2>
-            <p class="text-lg text-slate-500 font-medium">
+            <p class="text-base sm:text-lg text-slate-500 font-medium">
               Si una mateixa dada es copia en tres llocs diferents, hi ha un
               procés que es pot automatitzar. Aquests són els que més veiem a les
               empreses de la zona.
@@ -499,7 +565,7 @@ const schema = {
           <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
             <!-- Flux entre departaments (targeta destacada) -->
             <div
-              class="md:col-span-3 rounded-4xl p-8 lg:p-10 bg-gradient-to-br from-saas-violet to-saas-fuchsia text-white relative overflow-hidden"
+              class="md:col-span-3 rounded-3xl sm:rounded-4xl p-6 sm:p-8 lg:p-10 bg-gradient-to-br from-saas-violet to-saas-fuchsia text-white relative overflow-hidden"
             >
               <div class="absolute -right-20 -top-20 w-96 h-96 bg-white opacity-10 blur-[80px] rounded-full pointer-events-none"></div>
               <div class="relative z-10 grid lg:grid-cols-2 gap-8 items-center">
@@ -507,14 +573,14 @@ const schema = {
                   <h3 class="text-2xl lg:text-3xl font-extrabold tracking-tight mb-4">
                     De la comanda a la factura, sense tornar a teclejar res
                   </h3>
-                  <p class="text-white/85 font-medium leading-relaxed text-lg">
+                  <p class="text-white/85 font-medium leading-relaxed text-base sm:text-lg">
                     Quan entra una comanda, producció la veu al moment, el
                     magatzem sap què ha de preparar i administració factura amb
                     les dades que ja existeixen. Sense correus, sense Excels
                     duplicats i sense errors de transcripció.
                   </p>
                 </div>
-                <ol class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-center">
+                <ol class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-3 text-center">
                   <li class="rounded-2xl bg-white/15 border border-white/25 backdrop-blur-sm p-4">
                     <i data-lucide="clipboard-check" class="w-6 h-6 mx-auto mb-2"></i>
                     <span class="block text-xs uppercase tracking-wider opacity-80">1</span>
@@ -539,7 +605,7 @@ const schema = {
               </div>
             </div>
 
-            <div class="rounded-4xl p-8 bg-white border border-slate-200 shadow-card flex flex-col ">
+            <div class="rounded-3xl sm:rounded-4xl p-6 sm:p-8 bg-white border border-slate-200 shadow-card flex flex-col ">
               <div class="w-12 h-12 rounded-2xl bg-saas-violet/10 text-saas-violet flex items-center justify-center mb-5">
                 <i data-lucide="users" class="w-6 h-6"></i>
               </div>
@@ -547,7 +613,7 @@ const schema = {
               <p class="text-slate-600 font-medium leading-relaxed">Els vostres clients consulten l'estat de les comandes, descarreguen albarans i factures, i els proveïdors confirmen entregues. Menys telefonades preguntant «com va lo meu?».</p>
             </div>
 
-            <div class="rounded-4xl p-8 bg-white border border-slate-200 shadow-card flex flex-col ">
+            <div class="rounded-3xl sm:rounded-4xl p-6 sm:p-8 bg-white border border-slate-200 shadow-card flex flex-col ">
               <div class="w-12 h-12 rounded-2xl bg-emerald-500/10 text-emerald-600 flex items-center justify-center mb-5">
                 <i data-lucide="truck" class="w-6 h-6"></i>
               </div>
@@ -555,7 +621,7 @@ const schema = {
               <p class="text-slate-600 font-medium leading-relaxed">Els transportistes reserven hora de càrrega i descàrrega en línia. Adéu a les cues de camions a la porta i al quadern de recepció.</p>
             </div>
 
-            <div class="rounded-4xl p-8 bg-white border border-slate-200 shadow-card flex flex-col ">
+            <div class="rounded-3xl sm:rounded-4xl p-6 sm:p-8 bg-white border border-slate-200 shadow-card flex flex-col ">
               <div class="w-12 h-12 rounded-2xl bg-orange-500/10 text-orange-600 flex items-center justify-center mb-5">
                 <i data-lucide="chart-column" class="w-6 h-6"></i>
               </div>
@@ -563,7 +629,7 @@ const schema = {
               <p class="text-slate-600 font-medium leading-relaxed">Vendes, producció, estoc i marges actualitzats sols, en una pantalla per a direcció. Sense esperar que algú prepare l'informe del mes.</p>
             </div>
 
-            <div class="rounded-4xl p-8 bg-white border border-slate-200 shadow-card flex flex-col md:col-span-2">
+            <div class="rounded-3xl sm:rounded-4xl p-6 sm:p-8 bg-white border border-slate-200 shadow-card flex flex-col md:col-span-2">
               <div class="w-12 h-12 rounded-2xl bg-cyan-500/10 text-cyan-600 flex items-center justify-center mb-5">
                 <i data-lucide="plug" class="w-6 h-6"></i>
               </div>
@@ -571,7 +637,7 @@ const schema = {
               <p class="text-slate-600 font-medium leading-relaxed">Integrem el nou software amb Sage, A3, Holded, Odoo o el sistema que ja useu. No cal canviar de programa per a començar a automatitzar.</p>
             </div>
 
-            <div class="rounded-4xl p-8 bg-white border border-slate-200 shadow-card flex flex-col ">
+            <div class="rounded-3xl sm:rounded-4xl p-6 sm:p-8 bg-white border border-slate-200 shadow-card flex flex-col ">
               <div class="w-12 h-12 rounded-2xl bg-lime-500/10 text-lime-700 flex items-center justify-center mb-5">
                 <i data-lucide="file-spreadsheet" class="w-6 h-6"></i>
               </div>
@@ -583,20 +649,20 @@ const schema = {
       </section>
 
       <!-- DEMOS: prova el software abans de parlar -->
-      <section id="demos" class="relative py-20 z-10">
+      <section id="demos" class="relative py-16 sm:py-20 z-10">
         <div class="max-w-7xl mx-auto px-6">
-          <div class="text-center mb-14 max-w-3xl mx-auto">
+          <div class="text-center mb-10 sm:mb-14 max-w-3xl mx-auto">
             <h2 class="text-3xl md:text-5xl font-extrabold tracking-tighter text-saas-dark mb-6">
-              Prova-ho abans de parlar amb nosaltres
+              Proveu-ho abans de parlar amb nosaltres
             </h2>
-            <p class="text-lg text-slate-500 font-medium">
+            <p class="text-base sm:text-lg text-slate-500 font-medium">
               Dues demos funcionals pensades per a la indústria de la zona.
-              Obri-les, tria un rol i navega com si fores part de l'empresa.
+              Obriu-les, trieu un rol i navegueu com si fóreu part de l'empresa.
             </p>
           </div>
           <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
             <!-- Per a afegir xifres reals quan hi haja clients: problema · solució · resultat -->
-            <article class="rounded-4xl bg-white border border-slate-200 shadow-card overflow-hidden flex flex-col">
+            <article class="rounded-3xl sm:rounded-4xl bg-white border border-slate-200 shadow-card overflow-hidden flex flex-col">
               <img
                 src="/alcoi/demo-industria.webp"
                 width="1280"
@@ -606,7 +672,7 @@ const schema = {
                 alt="Demo de SupplyConnect, ERP industrial amb compres, vendes, logística i finances"
                 class="w-full aspect-video object-cover object-top border-b border-slate-100"
               />
-              <div class="p-8 flex flex-col flex-1">
+              <div class="p-6 sm:p-8 flex flex-col flex-1">
                 <span class="text-xs font-bold uppercase tracking-wider text-saas-violet mb-2">ERP industrial · Demo</span>
                 <h3 class="text-2xl font-extrabold tracking-tight text-slate-900 mb-3">SupplyConnect</h3>
                 <p class="text-slate-600 font-medium leading-relaxed mb-5">
@@ -621,7 +687,7 @@ const schema = {
                   <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-saas-violet shrink-0 mt-0.5"></i> Finances: comptabilitat, tresoreria i RRHH</li>
                 </ul>
                 <a
-                  href="https://mndesignweb.es/supplyconnect"
+                  href="https://mndesignweb.es/supplyconnect/"
                   target="_blank"
                   rel="noopener"
                   class="mt-auto inline-flex justify-center items-center gap-2 bg-saas-dark hover:bg-black text-white px-6 py-3.5 rounded-full font-semibold transition-all"
@@ -629,7 +695,7 @@ const schema = {
                 >
               </div>
             </article>
-            <article class="rounded-4xl bg-white border border-slate-200 shadow-card overflow-hidden flex flex-col">
+            <article class="rounded-3xl sm:rounded-4xl bg-white border border-slate-200 shadow-card overflow-hidden flex flex-col">
               <img
                 src="/alcoi/demo-logistica.webp"
                 width="1280"
@@ -639,7 +705,7 @@ const schema = {
                 alt="Demo de portal industrial amb reserva de molls de càrrega i descàrrega"
                 class="w-full aspect-video object-cover object-top border-b border-slate-100"
               />
-              <div class="p-8 flex flex-col flex-1">
+              <div class="p-6 sm:p-8 flex flex-col flex-1">
                 <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 mb-2">Portal industrial · Demo</span>
                 <h3 class="text-2xl font-extrabold tracking-tight text-slate-900 mb-3">Reserves logístiques</h3>
                 <p class="text-slate-600 font-medium leading-relaxed mb-5">
@@ -665,43 +731,43 @@ const schema = {
       </section>
 
       <!-- COM TREBALLEM: diagnosi presencial com a porta d'entrada + ajudes -->
-      <section id="diagnosi" class="relative py-20 z-10 bg-slate-900 text-white overflow-hidden">
+      <section id="diagnosi" class="relative py-16 sm:py-20 z-10 bg-slate-900 text-white overflow-hidden">
         <div class="absolute -left-20 -top-20 w-80 h-80 bg-saas-mint opacity-20 blur-[100px] rounded-full pointer-events-none"></div>
         <div class="absolute -right-20 -bottom-20 w-80 h-80 bg-saas-violet opacity-25 blur-[100px] rounded-full pointer-events-none"></div>
         <div class="max-w-7xl mx-auto px-6 relative z-10">
-          <div class="text-center mb-14 max-w-3xl mx-auto">
+          <div class="text-center mb-10 sm:mb-14 max-w-3xl mx-auto">
             <h2 class="text-3xl md:text-5xl font-extrabold tracking-tighter mb-6">
               Comencem amb una visita a la vostra empresa
             </h2>
-            <p class="text-lg text-slate-300 font-medium">
+            <p class="text-base sm:text-lg text-slate-300 font-medium">
               Una agència de fora us enviarà un pressupost per correu. Nosaltres
               estem a Cocentaina: venim, parlem amb cada departament i veiem
               com treballeu de veritat.
             </p>
           </div>
           <ol class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-            <li class="rounded-3xl bg-white/5 border border-white/10 p-7">
+            <li class="rounded-3xl bg-white/5 border border-white/10 p-6 sm:p-7">
               <span class="text-saas-mint font-black text-sm">01</span>
               <h3 class="text-lg font-extrabold mt-2 mb-2">Diagnosi presencial</h3>
               <p class="text-slate-300 text-sm leading-relaxed">Visitem l'empresa i detectem les tasques repetitives i els punts on es perd informació. Sense cost ni compromís.</p>
             </li>
-            <li class="rounded-3xl bg-white/5 border border-white/10 p-7">
+            <li class="rounded-3xl bg-white/5 border border-white/10 p-6 sm:p-7">
               <span class="text-saas-mint font-black text-sm">02</span>
               <h3 class="text-lg font-extrabold mt-2 mb-2">Proposta per fases</h3>
               <p class="text-slate-300 text-sm leading-relaxed">Us presentem què automatitzar primer, amb pressupost tancat per a cada fase i les prioritats clares.</p>
             </li>
-            <li class="rounded-3xl bg-white/5 border border-white/10 p-7">
+            <li class="rounded-3xl bg-white/5 border border-white/10 p-6 sm:p-7">
               <span class="text-saas-mint font-black text-sm">03</span>
               <h3 class="text-lg font-extrabold mt-2 mb-2">Posada en marxa</h3>
               <p class="text-slate-300 text-sm leading-relaxed">Desenvolupem i provem cada part amb el vostre equip, en paral·lel al sistema actual, sense aturar la producció.</p>
             </li>
-            <li class="rounded-3xl bg-white/5 border border-white/10 p-7">
+            <li class="rounded-3xl bg-white/5 border border-white/10 p-6 sm:p-7">
               <span class="text-saas-mint font-black text-sm">04</span>
               <h3 class="text-lg font-extrabold mt-2 mb-2">Formació i suport</h3>
               <p class="text-slate-300 text-sm leading-relaxed">Formem l'equip i quedem a prop per a millores i incidències. El software és vostre.</p>
             </li>
           </ol>
-          <div class="rounded-3xl bg-white text-slate-800 p-8 lg:p-10 flex flex-col lg:flex-row gap-6 lg:items-center">
+          <div class="rounded-3xl bg-white text-slate-800 p-6 sm:p-8 lg:p-10 flex flex-col lg:flex-row gap-6 lg:items-center">
             <div class="w-14 h-14 rounded-2xl bg-saas-mint/15 text-emerald-600 flex items-center justify-center shrink-0">
               <i data-lucide="badge-euro" class="w-7 h-7"></i>
             </div>
@@ -725,12 +791,12 @@ const schema = {
       </section>
 
       <!-- WEBS I BOTIGUES ONLINE: la resta de serveis -->
-      <div class="relative z-10 bg-slate-50 pt-20">
+      <div class="relative z-10 bg-slate-50 pt-16 sm:pt-20">
         <div class="max-w-3xl mx-auto px-6 text-center">
           <h2 class="text-3xl md:text-5xl font-extrabold tracking-tighter text-saas-dark mb-6">
             També fem la vostra web i la vostra botiga online
           </h2>
-          <p class="text-lg text-slate-500 font-medium">
+          <p class="text-base sm:text-lg text-slate-500 font-medium">
             Webs corporatives, botigues online, acadèmies i SEO local amb el
             mateix acompanyament proper, des de Cocentaina.
           </p>
@@ -771,7 +837,7 @@ const schema = {
                 Webs corporatives d’alt impacte, amb disseny a mida, càrrega
                 ràpida i
                 <strong class="text-saas-violet"> 3 hores de formació</strong> perquè
-                tingues el control total de la teua web.
+                tingueu el control total de la vostra web.
               </p>
             </div>
 
@@ -846,8 +912,8 @@ const schema = {
                 Des de 790€
               </div>
               <p class="text-slate-600 text-sm font-medium leading-relaxed">
-                Plataformes e-learning 100% teues. Sense comissions per alumne i
-                disseny orientat a vendre. Gestiona subscripcions, cursos,
+                Plataformes e-learning 100% vostres. Sense comissions per alumne i
+                disseny orientat a vendre. Gestioneu subscripcions, cursos,
                 vídeos i avaluacions.
               </p>
             </div>
@@ -873,11 +939,11 @@ const schema = {
                 <p class="text-white/80 font-medium leading-relaxed">
                   Desenvolupament avançat de software a mida. Solucions
                   tecnològiques escalables per a digitalitzar i automatitzar els
-                  processos del teu negoci.
+                  processos del vostre negoci.
                 </p>
               </div>
               <div
-                class="w-full md:w-1/3 bg-white rounded-2xl p-4 shadow-xl z-10 transform group-hover:-translate-y-2 transition-transform duration-300"
+                class="hidden md:block md:w-1/3 bg-white rounded-2xl p-4 shadow-xl z-10 transform group-hover:-translate-y-2 transition-transform duration-300"
               >
                 <div class="flex gap-1.5 mb-4">
                   <div class="w-2.5 h-2.5 rounded-full bg-slate-200"></div>
@@ -928,13 +994,13 @@ const schema = {
               </div>
               <p class="text-slate-600 text-sm font-medium leading-relaxed">
                 Estratègies de SEO local, GEO i SEM per a aparéixer davant dels
-                teus clients potencials a Alcoi, Cocentaina, Alacant i les
+                vostres clients potencials a Alcoi, Cocentaina, Alacant i les
                 comarques veïnes.
               </p>
             </div>
 
             <div
-              class="bg-slate-900 text-white rounded-3xl p-6 lg:p-8 md:col-span-3 flex flex-col md:flex-row items-center justify-start gap-6 lg:gap-12 shadow-lg relative overflow-hidden border border-slate-700"
+              class="bg-slate-900 text-white rounded-3xl p-6 lg:p-8 md:col-span-3 flex flex-col md:flex-row items-start md:items-center justify-start gap-6 lg:gap-12 shadow-lg relative overflow-hidden border border-slate-700"
             >
               <div
                 class="absolute -left-20 -top-20 w-64 h-64 bg-saas-mint opacity-20 blur-[80px] rounded-full pointer-events-none"
@@ -963,16 +1029,16 @@ const schema = {
                   els projectes inclouen allotjament i domini. També oferim
                   serveis de
                   <span
-                    class="bg-saas-mint/20 text-saas-mint px-2 py-0.5 rounded font-bold border border-saas-mint/30 sm:whitespace-nowrap"
+                    class="bg-saas-mint/20 text-saas-mint px-2 py-0.5 rounded font-bold border border-saas-mint/30 whitespace-nowrap"
                     >manteniment web des de 65&nbsp;€/mes</span
                   >
-                  perquè la teua web estiga sempre segura, actualitzada i optimitzada.
+                  perquè la vostra web estiga sempre segura, actualitzada i optimitzada.
                 </p>
               </div>
-              <div class="z-10 shrink-0 md:ml-5">
+              <div class="z-10 shrink-0 w-full sm:w-auto md:ml-5">
                 <a
                   href="#contacte"
-                  class="inline-block text-center bg-white hover:bg-slate-100 text-slate-900 px-7 py-3.5 rounded-full font-extrabold transition-all shadow-[0_0_20px_rgba(255,255,255,0.3)] hover:shadow-[0_0_30px_rgba(255,255,255,0.5)] hover:-translate-y-1"
+                  class="block sm:inline-block text-center bg-white hover:bg-slate-100 text-slate-900 px-7 py-3.5 rounded-full font-extrabold transition-all shadow-[0_0_20px_rgba(255,255,255,0.3)] hover:shadow-[0_0_30px_rgba(255,255,255,0.5)] hover:-translate-y-1"
                 >
                   Consultar plans
                 </a>
@@ -982,7 +1048,7 @@ const schema = {
         </div>
       </section>
 
-      <div class="relative z-10 bg-slate-50 pb-20 px-6">
+      <div class="relative z-10 bg-slate-50 pb-16 sm:pb-20 px-6">
         <div class="max-w-3xl mx-auto flex flex-col items-center text-center pt-12 border-t border-slate-200">
           <p
             class="text-lg sm:text-xl font-semibold text-saas-dark tracking-tight leading-snug mb-6"
@@ -1012,9 +1078,9 @@ const schema = {
         </div>
       </div>
 
-      <section id="portfolio" class="relative py-20 z-10">
+      <section id="portfolio" class="relative py-16 sm:py-20 z-10">
         <div class="max-w-7xl mx-auto px-6">
-          <div class="text-center mb-16 max-w-3xl mx-auto">
+          <div class="text-center mb-10 sm:mb-16 max-w-3xl mx-auto">
             <div
               class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-saas-violet/20 bg-saas-violet/5 text-xs font-bold text-saas-violet tracking-wide uppercase mb-4"
             >
@@ -1025,22 +1091,22 @@ const schema = {
             >
               L'aparador dels nostres projectes web
             </h2>
-            <p class="text-lg text-slate-500 font-medium">
-              Descobreix alguns dels projectes que hem creat per a empreses i
+            <p class="text-base sm:text-lg text-slate-500 font-medium">
+              Descobriu alguns dels projectes que hem creat per a empreses i
               professionals. Disseny, tecnologia i experiència d’usuari pensats
               per a aconseguir resultats.
             </p>
           </div>
 
           <!-- Grid de proyectos: Al tener 8, se harán 2 filas de 4 en escritorio -->
-          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="no-scrollbar flex sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 overflow-x-auto sm:overflow-visible snap-x snap-mandatory scroll-px-6 sm:scroll-px-0 -mx-6 px-6 sm:mx-0 sm:px-0 pt-2 pb-4 sm:py-0">
             
             <!-- 1. Nutrición (Original) -->
             <a
               href="https://mnmryk.github.io/demo-nutricion/"
               target="_blank"
               rel="noopener noreferrer"
-              class="group flex flex-col bg-slate-50 rounded-3xl border border-slate-200 overflow-hidden hover:shadow-[0_20px_40px_-10px_rgba(139,92,246,0.15)] transition-all duration-300 hover:-translate-y-2"
+              class="group w-[80%] max-w-[320px] shrink-0 snap-start sm:w-auto sm:max-w-none flex flex-col bg-slate-50 rounded-3xl border border-slate-200 overflow-hidden hover:shadow-[0_20px_40px_-10px_rgba(139,92,246,0.15)] transition-all duration-300 hover:-translate-y-2"
             >
               <div
                 class="w-full aspect-video bg-slate-200 overflow-hidden relative"
@@ -1085,7 +1151,7 @@ const schema = {
               href="https://mnmryk.github.io/demo-evento-B2B/"
               target="_blank"
               rel="noopener noreferrer"
-              class="group flex flex-col bg-slate-50 rounded-3xl border border-slate-200 overflow-hidden hover:shadow-[0_20px_40px_-10px_rgba(139,92,246,0.15)] transition-all duration-300 hover:-translate-y-2"
+              class="group w-[80%] max-w-[320px] shrink-0 snap-start sm:w-auto sm:max-w-none flex flex-col bg-slate-50 rounded-3xl border border-slate-200 overflow-hidden hover:shadow-[0_20px_40px_-10px_rgba(139,92,246,0.15)] transition-all duration-300 hover:-translate-y-2"
             >
               <div
                 class="w-full aspect-video bg-slate-200 overflow-hidden relative"
@@ -1130,7 +1196,7 @@ const schema = {
               href="https://mnmryk.github.io/demo-micropigmentacion/"
               target="_blank"
               rel="noopener noreferrer"
-              class="group flex flex-col bg-slate-50 rounded-3xl border border-slate-200 overflow-hidden hover:shadow-[0_20px_40px_-10px_rgba(139,92,246,0.15)] transition-all duration-300 hover:-translate-y-2"
+              class="group w-[80%] max-w-[320px] shrink-0 snap-start sm:w-auto sm:max-w-none flex flex-col bg-slate-50 rounded-3xl border border-slate-200 overflow-hidden hover:shadow-[0_20px_40px_-10px_rgba(139,92,246,0.15)] transition-all duration-300 hover:-translate-y-2"
             >
               <div
                 class="w-full aspect-video bg-slate-200 overflow-hidden relative"
@@ -1175,7 +1241,7 @@ const schema = {
               href="https://mnmryk.github.io/demo-evento-gastronimico/"
               target="_blank"
               rel="noopener noreferrer"
-              class="group flex flex-col bg-slate-50 rounded-3xl border border-slate-200 overflow-hidden hover:shadow-[0_20px_40px_-10px_rgba(139,92,246,0.15)] transition-all duration-300 hover:-translate-y-2"
+              class="group w-[80%] max-w-[320px] shrink-0 snap-start sm:w-auto sm:max-w-none flex flex-col bg-slate-50 rounded-3xl border border-slate-200 overflow-hidden hover:shadow-[0_20px_40px_-10px_rgba(139,92,246,0.15)] transition-all duration-300 hover:-translate-y-2"
             >
               <div
                 class="w-full aspect-video bg-slate-200 overflow-hidden relative"
@@ -1220,7 +1286,7 @@ const schema = {
               href="https://portalsalud-academia.mndesignweb.es/"
               target="_blank"
               rel="noopener noreferrer"
-              class="group flex flex-col bg-slate-50 rounded-3xl border border-slate-200 overflow-hidden hover:shadow-[0_20px_40px_-10px_rgba(139,92,246,0.15)] transition-all duration-300 hover:-translate-y-2"
+              class="group w-[80%] max-w-[320px] shrink-0 snap-start sm:w-auto sm:max-w-none flex flex-col bg-slate-50 rounded-3xl border border-slate-200 overflow-hidden hover:shadow-[0_20px_40px_-10px_rgba(139,92,246,0.15)] transition-all duration-300 hover:-translate-y-2"
             >
               <div
                 class="w-full aspect-video bg-slate-200 overflow-hidden relative"
@@ -1263,10 +1329,10 @@ const schema = {
 
             <!-- 6. Software Industria (NUEVO) -->
             <a
-              href="https://mndesignweb.es/supplyconnect"
+              href="https://mndesignweb.es/supplyconnect/"
               target="_blank"
               rel="noopener noreferrer"
-              class="group flex flex-col bg-slate-50 rounded-3xl border border-slate-200 overflow-hidden hover:shadow-[0_20px_40px_-10px_rgba(139,92,246,0.15)] transition-all duration-300 hover:-translate-y-2"
+              class="group w-[80%] max-w-[320px] shrink-0 snap-start sm:w-auto sm:max-w-none flex flex-col bg-slate-50 rounded-3xl border border-slate-200 overflow-hidden hover:shadow-[0_20px_40px_-10px_rgba(139,92,246,0.15)] transition-all duration-300 hover:-translate-y-2"
             >
               <div
                 class="w-full aspect-video bg-slate-200 overflow-hidden relative"
@@ -1312,7 +1378,7 @@ const schema = {
               href="https://mnmryk.github.io/novoteix/"
               target="_blank"
               rel="noopener noreferrer"
-              class="group flex flex-col bg-slate-50 rounded-3xl border border-slate-200 overflow-hidden hover:shadow-[0_20px_40px_-10px_rgba(139,92,246,0.15)] transition-all duration-300 hover:-translate-y-2"
+              class="group w-[80%] max-w-[320px] shrink-0 snap-start sm:w-auto sm:max-w-none flex flex-col bg-slate-50 rounded-3xl border border-slate-200 overflow-hidden hover:shadow-[0_20px_40px_-10px_rgba(139,92,246,0.15)] transition-all duration-300 hover:-translate-y-2"
             >
               <div
                 class="w-full aspect-video bg-slate-200 overflow-hidden relative"
@@ -1358,7 +1424,7 @@ const schema = {
               href="https://mnmryk.github.io/nutrilearn-pro"
               target="_blank"
               rel="noopener noreferrer"
-              class="group flex flex-col bg-slate-50 rounded-3xl border border-slate-200 overflow-hidden hover:shadow-[0_20px_40px_-10px_rgba(139,92,246,0.15)] transition-all duration-300 hover:-translate-y-2"
+              class="group w-[80%] max-w-[320px] shrink-0 snap-start sm:w-auto sm:max-w-none flex flex-col bg-slate-50 rounded-3xl border border-slate-200 overflow-hidden hover:shadow-[0_20px_40px_-10px_rgba(139,92,246,0.15)] transition-all duration-300 hover:-translate-y-2"
             >
               <div
                 class="w-full aspect-video bg-slate-200 overflow-hidden relative"
@@ -1405,20 +1471,20 @@ const schema = {
 
       <section
         id="branding"
-        class="relative py-24 overflow-visible z-10 bg-[#efeaf1]"
+        class="relative py-16 sm:py-24 overflow-visible z-10 bg-[#efeaf1]"
       >
         <div
           class="max-w-6xl mx-auto px-6 relative flex flex-col items-center justify-center"
         >
-          <div class="relative z-20 text-center mb-16 max-w-4xl mx-auto">
+          <div class="relative z-20 text-center mb-10 sm:mb-16 max-w-4xl mx-auto">
             <h2
-              class="text-[3rem] sm:text-[4rem] lg:text-[5.5rem] font-extrabold tracking-tighter text-saas-dark leading-[0.95] mb-6"
+              class="text-[2.4rem] sm:text-[4rem] lg:text-[5.5rem] font-extrabold tracking-tighter text-saas-dark leading-[0.95] mb-6"
             >
               Una web no només ha de ser bonica: <br />
               <span class="text-saas-violet">ha de funcionar.</span>
             </h2>
             <p
-              class="text-[20px] text-slate-600 max-w-2xl mx-auto font-medium leading-relaxed"
+              class="text-base sm:text-[20px] text-slate-600 max-w-2xl mx-auto font-medium leading-relaxed"
             >
               Creem identitats visuals úniques des dels fonaments. Un servei de
               branding clau en mà amb tot el necessari per a destacar des del
@@ -1427,12 +1493,12 @@ const schema = {
           </div>
 
           <div
-            class="relative z-20 w-full max-w-4xl bg-white/90 backdrop-blur-md rounded-[2.5rem] p-10 lg:p-12 border border-slate-200/80 shadow-2xl mb-12"
+            class="relative z-20 w-full max-w-4xl bg-white/90 backdrop-blur-md rounded-3xl sm:rounded-[2.5rem] p-6 sm:p-10 lg:p-12 border border-slate-200/80 shadow-2xl mb-12"
           >
-            <h3 class="text-2xl font-extrabold text-saas-dark mb-8 text-center">
+            <h3 class="text-xl sm:text-2xl font-extrabold text-saas-dark mb-6 sm:mb-8 text-center">
               Què inclou el Pack d’identitat de marca?
             </h3>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 text-left">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6 text-left">
               <div class="flex items-start gap-4">
                 <div
                   class="w-7 h-7 rounded-full bg-saas-violet/10 text-saas-violet flex items-center justify-center shrink-0 mt-1"
@@ -1579,9 +1645,9 @@ const schema = {
             />
           </div>
 
-          <div class="grid grid-cols-2 gap-4 w-full mt-4 md:hidden">
+          <div class="grid grid-cols-2 gap-3 w-full md:hidden">
             <div
-              class="w-full h-44 bg-slate-200 rounded-2xl overflow-hidden shadow-md border-[3px] border-white"
+              class="w-full h-40 sm:h-44 bg-slate-200 rounded-2xl overflow-hidden shadow-md border-[3px] border-white"
             >
               <img
                   src="/alcoi/portfolio-1.webp"
@@ -1593,7 +1659,7 @@ const schema = {
               />
             </div>
             <div
-              class="w-full h-44 bg-slate-200 rounded-2xl overflow-hidden shadow-md border-[3px] border-white"
+              class="w-full h-40 sm:h-44 bg-slate-200 rounded-2xl overflow-hidden shadow-md border-[3px] border-white"
             >
               <img
                   src="/alcoi/paleta-1.webp"
@@ -1605,7 +1671,7 @@ const schema = {
               />
             </div>
             <div
-              class="w-full h-44 bg-slate-200 rounded-2xl overflow-hidden shadow-md border-[3px] border-white"
+              class="w-full h-40 sm:h-44 bg-slate-200 rounded-2xl overflow-hidden shadow-md border-[3px] border-white"
             >
               <img
                   src="/alcoi/paleta-2.webp"
@@ -1617,7 +1683,7 @@ const schema = {
               />
             </div>
             <div
-              class="w-full h-44 bg-slate-200 rounded-2xl overflow-hidden shadow-md border-[3px] border-white"
+              class="w-full h-40 sm:h-44 bg-slate-200 rounded-2xl overflow-hidden shadow-md border-[3px] border-white"
             >
               <img
                   src="/alcoi/portfolio-2.webp"
@@ -1634,10 +1700,10 @@ const schema = {
 
       <section
         id="nosaltres"
-        class="max-w-6xl mx-auto px-6 pt-24 pb-10 text-center relative z-10"
+        class="max-w-6xl mx-auto px-6 pt-16 sm:pt-24 pb-10 text-center relative z-10"
       >
         <div
-          class="inline-flex items-center justify-center w-24 h-24 rounded-full bg-white border border-slate-200 shadow-sm mb-6 text-saas-violet"
+          class="inline-flex items-center justify-center w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-white border border-slate-200 shadow-sm mb-6 text-saas-violet"
         >
           <i data-lucide="map-pinned" class="w-10 h-10"></i>
         </div>
@@ -1648,23 +1714,23 @@ const schema = {
           de l’Alcoià i el Comtat.
         </h2>
         <p
-          class="text-lg md:text-xl text-slate-500 font-medium leading-relaxed max-w-4xl mx-auto"
+          class="text-base sm:text-lg md:text-xl text-slate-500 font-medium leading-relaxed max-w-4xl mx-auto"
         >
-          No som una agència genèrica. Per a entendre de veritat la teua marca i
-          oferir-te un servei de màxima qualitat, ens agrada aprofundir en cada
-          projecte i parlar en persona. T’atendrem presencialment, tant al teu
-          negoci com a la nostra oficina de Cocentaina (<strong
+          No som una agència genèrica. Per a entendre de veritat la vostra
+          empresa i oferir-vos un servei de màxima qualitat, ens agrada aprofundir
+          en cada projecte i parlar en persona. Us atendrem presencialment, tant a
+          la vostra empresa com a la nostra oficina de Cocentaina (<strong
             class="text-slate-800">Passeig del Comtat nº 75</strong
           >) i Alcoi. Un acompanyament proper i de confiança, amb hosting i
-          suport tècnic inclosos perquè tu només et preocupes de créixer.
+          suport tècnic inclosos perquè vosaltres només us preocupeu de créixer.
         </p>
       </section>
 
       <div class="max-w-7xl mx-auto px-6 pb-16">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
           <a
             href="mailto:info@mndesignweb.es"
-            class="group bg-white border border-slate-200/80 rounded-3xl p-6 flex items-center gap-5 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+            class="group bg-white border border-slate-200/80 rounded-3xl p-5 sm:p-6 flex items-center gap-4 sm:gap-5 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
           >
             <div
               class="w-14 h-14 rounded-2xl bg-saas-violet/10 text-saas-violet flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform"
@@ -1674,7 +1740,7 @@ const schema = {
             <div>
               <span
                 class="text-xs font-bold uppercase tracking-wider text-slate-400 block mb-1"
-                >Escriu-nos</span
+                >Escriviu-nos</span
               >
               <span
                 class="text-base font-extrabold text-slate-900 group-hover:text-saas-violet transition-colors"
@@ -1685,7 +1751,7 @@ const schema = {
 
           <a
             href="tel:+34645854934"
-            class="group bg-white border border-slate-200/80 rounded-3xl p-6 flex items-center gap-5 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+            class="group bg-white border border-slate-200/80 rounded-3xl p-5 sm:p-6 flex items-center gap-4 sm:gap-5 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
           >
             <div
               class="w-14 h-14 rounded-2xl bg-emerald-500/10 text-emerald-600 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform"
@@ -1695,7 +1761,7 @@ const schema = {
             <div>
               <span
                 class="text-xs font-bold uppercase tracking-wider text-slate-400 block mb-1"
-                >Truca'ns ara</span
+                >Truqueu-nos ara</span
               >
               <span
                 class="text-base font-extrabold text-slate-900 group-hover:text-emerald-600 transition-colors"
@@ -1708,7 +1774,7 @@ const schema = {
             href="https://wa.me/34645854934?text=Hola,%20m'agradaria%20parlar%20sobre%20un%20projecte%20web."
             target="_blank"
             rel="noopener noreferrer"
-            class="group bg-white border border-slate-200/80 rounded-3xl p-6 flex items-center gap-5 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+            class="group bg-white border border-slate-200/80 rounded-3xl p-5 sm:p-6 flex items-center gap-4 sm:gap-5 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
           >
             <div
               class="w-14 h-14 rounded-2xl bg-[#25D366]/10 text-[#25D366] flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform"
@@ -1718,7 +1784,7 @@ const schema = {
             <div>
               <span
                 class="text-xs font-bold uppercase tracking-wider text-slate-400 block mb-1"
-                >Xateja directament</span
+                >Parlem per xat</span
               >
               <span
                 class="text-base font-extrabold text-slate-900 group-hover:text-[#25D366] transition-colors"
@@ -1729,16 +1795,16 @@ const schema = {
         </div>
       </div>
 
-      <section class="max-w-4xl mx-auto px-6 pb-20 pt-16 z-10 relative">
-        <div class="text-center mb-12">
+      <section class="max-w-4xl mx-auto px-6 pb-16 sm:pb-20 pt-12 sm:pt-16 z-10 relative">
+        <div class="text-center mb-8 sm:mb-12">
           <h2
-            class="text-3xl font-extrabold tracking-tight text-saas-dark mb-4"
+            class="text-2xl sm:text-3xl font-extrabold tracking-tight text-saas-dark mb-4"
           >
             Dubtes freqüents abans de començar
           </h2>
           <p class="text-slate-500 font-medium">
-            Transparència total. Ací tens el que ens pregunten la majoria de
-            negocis de la zona.
+            Transparència total. Ací teniu el que ens pregunten la majoria
+            d'empreses de la zona.
           </p>
         </div>
 
@@ -1746,14 +1812,14 @@ const schema = {
           {
             faqs.map(([q, a]) => (
               <details class="group bg-white border border-slate-200 rounded-3xl shadow-sm hover:shadow-md transition-all duration-300 [&_summary::-webkit-details-marker]:hidden">
-                <summary class="flex justify-between items-center font-bold text-lg text-slate-900 p-6 cursor-pointer list-none">
+                <summary class="flex justify-between items-center font-bold text-base sm:text-lg text-slate-900 p-5 sm:p-6 cursor-pointer list-none">
                   {q}
                   <span class="transition duration-300 group-open:rotate-180 text-saas-violet shrink-0 ml-4">
                     <i data-lucide="chevron-down" class="w-6 h-6"></i>
                   </span>
                 </summary>
                 <div
-                  class="px-6 pb-6 text-slate-600 font-medium leading-relaxed border-t border-slate-100 pt-4 mt-2"
+                  class="px-5 sm:px-6 pb-5 sm:pb-6 text-slate-600 font-medium leading-relaxed border-t border-slate-100 pt-4 mt-2"
                   set:html={a}
                 />
               </details>
@@ -1762,23 +1828,23 @@ const schema = {
         </div>
       </section>
 
-      <section id="contacte" class="max-w-7xl mx-auto px-6 pt-16 pb-20">
+      <section id="contacte" class="max-w-7xl mx-auto px-4 sm:px-6 pt-8 sm:pt-16 pb-16 sm:pb-20">
         <div
-          class="bg-white border border-slate-200 rounded-4xl p-8 lg:p-12 shadow-card relative overflow-hidden"
+          class="bg-white border border-slate-200 rounded-3xl sm:rounded-4xl p-5 sm:p-8 lg:p-12 shadow-card relative overflow-hidden"
         >
           <div
             class="absolute -top-40 -right-40 w-96 h-96 bg-saas-violet opacity-10 blur-[100px] rounded-full pointer-events-none"
           >
           </div>
-          <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 relative z-10">
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 relative z-10">
             <div class="flex flex-col justify-center">
               <h3
-                class="text-3xl font-extrabold tracking-tight text-saas-dark mb-3"
+                class="text-2xl sm:text-3xl font-extrabold tracking-tight text-saas-dark mb-3"
               >
-                Sol·licita la diagnosi gratuïta
+                Sol·liciteu la diagnosi gratuïta
               </h3>
-              <p class="text-slate-500 mb-8 font-medium">
-                Conta'ns què voleu automatitzar o tria una data al calendari.
+              <p class="text-slate-500 mb-6 sm:mb-8 font-medium">
+                Conteu-nos què voleu automatitzar o trieu una data al calendari.
                 Podem vindre a la vostra empresa, parlar per telèfon o fer una
                 videotrucada.
               </p>
@@ -1791,7 +1857,7 @@ const schema = {
                     autocomplete="name"
                     placeholder="Nom complet"
                     aria-label="Nom complet"
-                    class="w-full bg-slate-50 border border-slate-200 text-saas-dark text-sm rounded-2xl focus:ring-2 focus:ring-saas-violet focus:border-transparent block p-4 outline-none transition-all placeholder-slate-400 font-medium"
+                    class="w-full bg-slate-50 border border-slate-200 text-saas-dark text-base sm:text-sm rounded-2xl focus:ring-2 focus:ring-saas-violet focus:border-transparent block p-4 outline-none transition-all placeholder-slate-400 font-medium"
                   />
                   <input
                     id="empresa"
@@ -1799,7 +1865,7 @@ const schema = {
                     autocomplete="organization"
                     placeholder="Empresa"
                     aria-label="Empresa"
-                    class="w-full bg-slate-50 border border-slate-200 text-saas-dark text-sm rounded-2xl focus:ring-2 focus:ring-saas-violet focus:border-transparent block p-4 outline-none transition-all placeholder-slate-400 font-medium"
+                    class="w-full bg-slate-50 border border-slate-200 text-saas-dark text-base sm:text-sm rounded-2xl focus:ring-2 focus:ring-saas-violet focus:border-transparent block p-4 outline-none transition-all placeholder-slate-400 font-medium"
                   />
                 </div>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -1810,7 +1876,7 @@ const schema = {
                     autocomplete="email"
                     placeholder="Correu electrònic"
                     aria-label="Correu electrònic"
-                    class="w-full bg-slate-50 border border-slate-200 text-saas-dark text-sm rounded-2xl focus:ring-2 focus:ring-saas-violet focus:border-transparent block p-4 outline-none transition-all placeholder-slate-400 font-medium"
+                    class="w-full bg-slate-50 border border-slate-200 text-saas-dark text-base sm:text-sm rounded-2xl focus:ring-2 focus:ring-saas-violet focus:border-transparent block p-4 outline-none transition-all placeholder-slate-400 font-medium"
                   />
                   <input
                     id="telefono"
@@ -1819,11 +1885,11 @@ const schema = {
                     autocomplete="tel"
                     placeholder="Telèfon"
                     aria-label="Telèfon"
-                    class="w-full bg-slate-50 border border-slate-200 text-saas-dark text-sm rounded-2xl focus:ring-2 focus:ring-saas-violet focus:border-transparent block p-4 outline-none transition-all placeholder-slate-400 font-medium"
+                    class="w-full bg-slate-50 border border-slate-200 text-saas-dark text-base sm:text-sm rounded-2xl focus:ring-2 focus:ring-saas-violet focus:border-transparent block p-4 outline-none transition-all placeholder-slate-400 font-medium"
                   />
                 </div>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <select id="sector" aria-label="Sector" class="w-full bg-slate-50 border border-slate-200 text-saas-dark text-sm rounded-2xl focus:ring-2 focus:ring-saas-violet focus:border-transparent block p-4 outline-none transition-all placeholder-slate-400 font-medium text-slate-500">
+                  <select id="sector" aria-label="Sector" class="w-full bg-slate-50 border border-slate-200 text-saas-dark text-base sm:text-sm rounded-2xl focus:ring-2 focus:ring-saas-violet focus:border-transparent block p-4 outline-none transition-all placeholder-slate-400 font-medium text-slate-500">
                     <option value="">Sector</option>
                     <option>Tèxtil</option>
                     <option>Metall i maquinària</option>
@@ -1835,7 +1901,7 @@ const schema = {
                     <option>Comerç i serveis</option>
                     <option>Altres</option>
                   </select>
-                  <select id="treballadors" aria-label="Nombre de treballadors" class="w-full bg-slate-50 border border-slate-200 text-saas-dark text-sm rounded-2xl focus:ring-2 focus:ring-saas-violet focus:border-transparent block p-4 outline-none transition-all placeholder-slate-400 font-medium text-slate-500">
+                  <select id="treballadors" aria-label="Nombre de treballadors" class="w-full bg-slate-50 border border-slate-200 text-saas-dark text-base sm:text-sm rounded-2xl focus:ring-2 focus:ring-saas-violet focus:border-transparent block p-4 outline-none transition-all placeholder-slate-400 font-medium text-slate-500">
                     <option value="">Nombre de treballadors</option>
                     <option>1-9</option>
                     <option>10-49</option>
@@ -1849,7 +1915,7 @@ const schema = {
                   required
                   aria-label="Què voleu automatitzar?"
                   placeholder="Què voleu automatitzar o millorar? (per exemple: passem les comandes a mà de l'Excel a l'ERP)"
-                  class="w-full bg-slate-50 border border-slate-200 text-saas-dark text-sm rounded-2xl focus:ring-2 focus:ring-saas-violet focus:border-transparent block p-4 outline-none transition-all placeholder-slate-400 font-medium resize-none"
+                  class="w-full bg-slate-50 border border-slate-200 text-saas-dark text-base sm:text-sm rounded-2xl focus:ring-2 focus:ring-saas-violet focus:border-transparent block p-4 outline-none transition-all placeholder-slate-400 font-medium resize-none"
                 ></textarea>
                 <label class="flex items-start gap-3 text-sm text-slate-500 font-medium cursor-pointer">
                   <input
@@ -1877,15 +1943,10 @@ const schema = {
                 <!-- Primera capa d'informació RGPD (art. 13 RGPD i art. 11 LOPDGDD) -->
                 <p class="text-[11px] leading-relaxed text-slate-400 pt-4 border-t border-slate-100">
                   <b class="text-slate-500">Responsable:</b> MN Design Web.
-                  <b class="text-slate-500">Finalitat:</b> respondre a la teua
-                  sol·licitud. <b class="text-slate-500">Legitimació:</b> el teu
+                  <b class="text-slate-500">Finalitat:</b> respondre a la vostra
+                  sol·licitud. <b class="text-slate-500">Legitimació:</b> el vostre
                   consentiment.{" "}
-                  <b class="text-slate-500">Destinataris:</b> no cedim les teues
-                  dades; les tracten els nostres proveïdors de formularis i
-                  automatització (Web3Forms i Make) com a encarregats del
-                  tractament. <b class="text-slate-500">Drets:</b> accés,
-                  rectificació, supressió i la resta de drets a
-                  info@mndesignweb.es. Més informació en la nostra <a
+                  Més informació en la nostra <a
                     href="https://mndesignweb.es/privacidad/"
                     target="_blank"
                     rel="noopener"
@@ -1895,20 +1956,20 @@ const schema = {
               </form>
             </div>
             <div
-              class="bg-slate-50 border border-slate-200 rounded-3xl p-2 flex flex-col min-h-[400px]"
+              class="bg-slate-50 border border-slate-200 rounded-3xl p-1.5 sm:p-2 flex flex-col min-h-[400px]"
             >
               <!-- Cal.com en línia: el munta el JS en acostar-se a la secció (mesura les reserves) -->
               <div
                 id="cal-inline"
-                aria-label="Reserva la teua reunió"
-                class="cal-widget w-full h-[560px] rounded-2xl overflow-y-auto bg-white flex-1"
+                aria-label="Reserveu la vostra reunió"
+                class="cal-widget w-full h-[640px] sm:h-[560px] rounded-2xl overflow-y-auto bg-white flex-1"
               ></div>
               <p class="text-sm text-slate-500 font-medium px-3 py-2">
-                No veus el calendari? <a
+                No veieu el calendari? <a
                   href="https://cal.com/mndesignweb/reunio-30-min"
                   target="_blank"
                   rel="noopener"
-                  class="text-saas-violet font-bold hover:underline">Obri'l en una pestanya nova</a
+                  class="text-saas-violet font-bold hover:underline">Obriu-lo en una pestanya nova</a
                 >.
               </p>
             </div>
@@ -1963,32 +2024,32 @@ const schema = {
             <li>
               <a
                 href="https://mndesignweb.es/contacto/"
-                class="hover:text-saas-violet transition-colors">Contacte</a
+                class="inline-block py-1 hover:text-saas-violet transition-colors">Contacte</a
               >
             </li>
             <li>
               <a
                 href="https://mndesignweb.es/nosotros/"
-                class="hover:text-saas-violet transition-colors">Nosaltres</a
+                class="inline-block py-1 hover:text-saas-violet transition-colors">Nosaltres</a
               >
             </li>
             <li>
               <a
                 href="https://mndesignweb.es/blog/"
-                class="hover:text-saas-violet transition-colors">Blog</a
+                class="inline-block py-1 hover:text-saas-violet transition-colors">Blog</a
               >
             </li>
             <li>
               <a
                 href="https://mndesignweb.es/disenoweb/"
-                class="hover:text-saas-violet transition-colors"
+                class="inline-block py-1 hover:text-saas-violet transition-colors"
                 >Disseny i desenvolupament web</a
               >
             </li>
             <li>
               <a
                 href="https://mndesignweb.es/e-commerce/"
-                class="hover:text-saas-violet transition-colors"
+                class="inline-block py-1 hover:text-saas-violet transition-colors"
                 >E-commerce / botigues online</a
               >
             </li>
@@ -2005,28 +2066,28 @@ const schema = {
             <li>
               <a
                 href="https://mndesignweb.es/academia-nutricion/"
-                class="hover:text-saas-violet transition-colors"
+                class="inline-block py-1 hover:text-saas-violet transition-colors"
                 >Acadèmies Online</a
               >
             </li>
             <li>
               <a
                 href="https://mndesignweb.es/clinicas/"
-                class="hover:text-saas-violet transition-colors"
+                class="inline-block py-1 hover:text-saas-violet transition-colors"
                 >Clíniques amb Pacients</a
               >
             </li>
             <li>
               <a
                 href="https://mndesignweb.es/nutricionistas/"
-                class="hover:text-saas-violet transition-colors"
+                class="inline-block py-1 hover:text-saas-violet transition-colors"
                 >Nutricionistes</a
               >
             </li>
             <li>
               <a
                 href="https://mndesignweb.es/psicologos/"
-                class="hover:text-saas-violet transition-colors">Psicòlegs</a
+                class="inline-block py-1 hover:text-saas-violet transition-colors">Psicòlegs</a
               >
             </li>
           </ul>
@@ -2042,20 +2103,20 @@ const schema = {
             <li>
               <a
                 href="https://mndesignweb.es/aviso-legal/"
-                class="hover:text-saas-violet transition-colors">Avís Legal</a
+                class="inline-block py-1 hover:text-saas-violet transition-colors">Avís Legal</a
               >
             </li>
             <li>
               <a
                 href="https://mndesignweb.es/privacidad/"
-                class="hover:text-saas-violet transition-colors"
+                class="inline-block py-1 hover:text-saas-violet transition-colors"
                 >Política de Privacitat</a
               >
             </li>
             <li>
               <a
                 href="https://mndesignweb.es/cookies/"
-                class="hover:text-saas-violet transition-colors"
+                class="inline-block py-1 hover:text-saas-violet transition-colors"
                 >Política de Cookies</a
               >
             </li>
@@ -2077,13 +2138,13 @@ const schema = {
           </p>
         </div>
 
-        <div class="flex items-center gap-5">
+        <div class="flex items-center gap-2">
           <a
             href="https://www.instagram.com/mndesignweb/"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Instagram"
-            class="text-slate-400 hover:text-saas-fuchsia transition-colors hover:-translate-y-1 transform duration-300"
+            class="p-2.5 text-slate-400 hover:text-saas-fuchsia transition-colors hover:-translate-y-1 transform duration-300"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -2105,7 +2166,7 @@ const schema = {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="LinkedIn"
-            class="text-slate-400 hover:text-[#0A66C2] transition-colors hover:-translate-y-1 transform duration-300"
+            class="p-2.5 text-slate-400 hover:text-[#0A66C2] transition-colors hover:-translate-y-1 transform duration-300"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -2185,7 +2246,7 @@ const schema = {
 
     <div
       id="toast-container"
-      class="fixed top-5 right-5 sm:top-auto sm:bottom-5 sm:right-5 z-[9999999] flex flex-col gap-3 pointer-events-none"
+      class="fixed top-24 left-4 right-4 sm:left-auto sm:top-auto sm:bottom-5 sm:right-5 z-[9999999] flex flex-col gap-3 pointer-events-none"
     >
     </div>
 
@@ -2213,7 +2274,7 @@ const schema = {
           Utilitzem cookies
         </p>
         <p id="cookie-desc" class="text-sm font-medium text-slate-500 leading-relaxed">
-          Per a oferir-te la millor experiència a la nostra web.
+          Per a oferir-vos la millor experiència a la nostra web.
           <a
             href="https://mndesignweb.es/cookies/"
             class="block w-fit mt-1 text-saas-violet font-bold hover:underline"
@@ -2392,7 +2453,7 @@ const schema = {
                     clarity("set", "lead", "web");
 
                   showToast(
-                    "Missatge enviat correctament! Et contactarem prompte.",
+                    "Missatge enviat correctament! Us contactarem prompte.",
                     "success",
                   );
                   formWeb.reset();
@@ -2404,7 +2465,7 @@ const schema = {
                 console.error(error);
 
                 showToast(
-                  "Hi ha hagut un error. Torna a intentar-ho.",
+                  "Hi ha hagut un error. Torneu a intentar-ho.",
                   "error",
                 );
               })
@@ -2510,22 +2571,99 @@ const schema = {
           if (typeof fbq === "function") fbq("track", "Contact", { content_name: tipo });
         });
 
-        // 6. LÓGICA DEL MENÚ MÓVIL
+        // 6. APARICIÓ EN FER SCROLL
+        // Només als elements que encara no es veuen (sense parpelleig a dalt)
+        // i res si l'usuari té activat "reduir moviment".
+        if (
+          "IntersectionObserver" in window &&
+          !window.matchMedia("(prefers-reduced-motion: reduce)").matches
+        ) {
+          const isMobile = window.matchMedia("(max-width: 639px)").matches;
+          const targets = new Set();
+          // Capçalera de cada secció (el bloc que conté el h2), excepte el hero
+          document.querySelectorAll("main h2").forEach((h) => targets.add(h.parentElement));
+          [
+            "#automatitzacio .grid > *",
+            "#demos article",
+            "#diagnosi ol > li",
+            "#diagnosi ol + div",
+            "#serveis .grid > *",
+            "#serveis + div > div",
+            // En mòbil el portfolio és un carrusel horitzontal: s'anima sencer
+            isMobile ? "#portfolio .no-scrollbar" : "#portfolio .no-scrollbar > a",
+            "#branding h3",
+            "#nosaltres + div a",
+            "main details",
+            "#contacte > div",
+          ].forEach((sel) => document.querySelectorAll(sel).forEach((el) => targets.add(el)));
+          // La caixa del pack de branding, no només el seu títol
+          const brandingTitle = document.querySelector("#branding h3");
+          if (brandingTitle) {
+            targets.delete(brandingTitle);
+            targets.add(brandingTitle.parentElement);
+          }
+
+          const revealObserver = new IntersectionObserver(
+            (entries) => {
+              entries.forEach((entry) => {
+                if (!entry.isIntersecting) return;
+                const el = entry.target;
+                el.classList.add("is-in");
+                revealObserver.unobserve(el);
+                // En acabar, traiem les classes perquè tornen els hovers originals
+                const done = (e) => {
+                  // Ignorem les transicions dels fills (p. ex. hover d'un botó)
+                  if (e.target !== el) return;
+                  el.removeEventListener("transitionend", done);
+                  el.classList.remove("reveal", "is-in");
+                  el.style.removeProperty("--d");
+                };
+                el.addEventListener("transitionend", done);
+              });
+            },
+            { rootMargin: "0px 0px -8% 0px", threshold: 0.12 },
+          );
+
+          targets.forEach((el) => {
+            if (!el || el.getBoundingClientRect().top < window.innerHeight) return;
+            // Retard escalonat entre germans (màxim 4 passos)
+            const index = Math.min(
+              [...el.parentElement.children].filter((c) => targets.has(c)).indexOf(el),
+              4,
+            );
+            if (index > 0) el.style.setProperty("--d", `${index * 90}ms`);
+            el.classList.add("reveal");
+            revealObserver.observe(el);
+          });
+        }
+
+        // 7. LÓGICA DEL MENÚ MÓVIL
         const btnMenu = document.getElementById("mobile-menu-btn");
         const dropdownMenu = document.getElementById("mobile-dropdown");
         const mobileLinks = document.querySelectorAll(".mobile-link");
 
         if (btnMenu && dropdownMenu) {
-          btnMenu.addEventListener("click", () => {
-            dropdownMenu.classList.toggle("hidden");
-            dropdownMenu.classList.toggle("flex");
+          const setMenu = (open) => {
+            dropdownMenu.classList.toggle("hidden", !open);
+            dropdownMenu.classList.toggle("flex", open);
+            btnMenu.setAttribute("aria-expanded", String(open));
+          };
+
+          btnMenu.addEventListener("click", (e) => {
+            e.stopPropagation();
+            setMenu(dropdownMenu.classList.contains("hidden"));
           });
 
           mobileLinks.forEach((link) => {
-            link.addEventListener("click", () => {
-              dropdownMenu.classList.add("hidden");
-              dropdownMenu.classList.remove("flex");
-            });
+            link.addEventListener("click", () => setMenu(false));
+          });
+
+          // Tancar en tocar fora del menú o amb la tecla Escape
+          document.addEventListener("click", (e) => {
+            if (!dropdownMenu.contains(e.target)) setMenu(false);
+          });
+          document.addEventListener("keydown", (e) => {
+            if (e.key === "Escape") setMenu(false);
           });
         }
       });

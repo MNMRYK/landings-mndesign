@@ -3155,6 +3155,155 @@ iframe {
   color: #25d366;
 }
 
+/* --- CSS: FOOTER LIMPIO TIPO PORTAL SALUD --- */
+.site-footer {
+  /* Fondo transparente para que se funda con la web y mucho espacio superior */
+  background-color: transparent;
+  padding: 100px 20px 40px 20px; 
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.footer-grid {
+  display: grid;
+  /* 4 columnas: La de la marca ocupa más (2fr) y las otras 3 son iguales (1fr) */
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 40px;
+  margin-bottom: 60px;
+}
+
+/* Estilos de la marca y contacto */
+.footer-brand .logo {
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: #000;
+  text-decoration: none;
+  margin-bottom: 15px;
+}
+
+.footer-brand .logo-icon {
+  background-color: #0d47a1; /* Azul de tu logo */
+  color: white;
+  padding: 5px 10px;
+  border-radius: 8px;
+  margin-right: 10px;
+  font-size: 0.9rem;
+}
+
+.footer-brand p {
+  color: #666;
+  font-size: 0.95rem;
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+
+.contact-info a, .contact-info span {
+  display: block;
+  color: #666;
+  text-decoration: none;
+  font-size: 0.9rem;
+  margin-bottom: 8px;
+}
+
+/* Estilos de las columnas de enlaces */
+.footer-col h4 {
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  margin-bottom: 20px;
+  color: #000;
+}
+
+.footer-col ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-col ul li {
+  margin-bottom: 12px;
+}
+
+.footer-col ul li a {
+  text-decoration: none;
+  color: #666;
+  font-size: 0.95rem;
+  transition: color 0.2s ease;
+}
+
+.footer-col ul li a:hover {
+  color: #000;
+}
+
+/* Fila inferior (Copyright y Redes) */
+.footer-bottom {
+  border-top: 1px solid #eaeaea; /* Una línea muy finita y sutil */
+  padding-top: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.85rem;
+  color: #888;
+}
+
+/* Estilo y transiciones para los iconos de redes sociales */
+.social-icons {
+  display: flex;
+  gap: 20px;
+}
+
+.social-icons a {
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition:
+    transform 0.3s ease,
+    color 0.3s ease;
+}
+
+.social-icons svg {
+  width: 20px;
+  height: 20px;
+}
+
+.social-icons a:hover {
+  color: var(--primary-dark);
+  transform: translateY(-3px);
+}
+
+
+/* Adaptación para móviles */
+@media (max-width: 900px) {
+  .footer-grid {
+    /* En tablets pasamos a 2 columnas */
+    grid-template-columns: 1fr 1fr; 
+  }
+}
+
+@media (max-width: 600px) {
+  .site-footer {
+    padding-top: 60px;
+  }
+  .footer-grid {
+    /* En móviles todo en 1 columna */
+    grid-template-columns: 1fr; 
+    gap: 30px;
+  }
+  .footer-bottom {
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+  }
+  .social-icons a {
+    margin: 0 10px;
+  }
+}
+
 /* 19.2 Tablet horizontal */
 @media (max-width: 1080px) {
   section {

@@ -1,6 +1,30 @@
+/* La capçalera fixa fa 80px: els enllaços #secció no queden tapats */
+html {
+  scroll-padding-top: 5.5rem;
+}
 body {
   background-color: #fafafc;
   overflow-x: hidden;
+}
+
+/* Carrusel de projectes en mòbil: lliscant, sense barra visible */
+.no-scrollbar {
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Qui té activat "reduir moviment" no veu les animacions flotants */
+@media (prefers-reduced-motion: reduce) {
+  .anim-float,
+  .anim-float-delay {
+    animation: none;
+  }
+  html.scroll-smooth {
+    scroll-behavior: auto;
+  }
 }
 .glass-card {
   background: #ffffff;
@@ -59,4 +83,56 @@ body {
 html {
   scrollbar-width: thin;
   scrollbar-color: rgba(139, 92, 246, 0.5) transparent;
+}
+/* =========================================
+   EFECTES DE MOVIMENT (sense llibreries)
+   Només transform i opacity: els anima la GPU i no
+   recalculen el disseny, així que no alenteixen la càrrega.
+   ========================================= */
+
+/* 1. Entrada del hero en carregar. El titular i el paràgraf només es
+   desplacen (sense opacitat) perquè no endarrerisquen l'LCP. */
+@keyframes hero-in {
+  from { opacity: 0; transform: translateY(18px); }
+}
+@keyframes hero-move {
+  from { transform: translateY(18px); }
+}
+.hero-in {
+  animation: hero-in 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  animation-delay: var(--d, 0ms);
+}
+.hero-in-move {
+  animation-name: hero-move;
+}
+
+/* 2. Aparició en fer scroll (classe afegida pel JS només als elements
+   que encara no es veuen; sense JS tot es mostra igual). */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+}
+.reveal.is-in {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity 0.7s ease,
+    transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
+  transition-delay: var(--d, 0ms);
+}
+
+/* 3. Els efectes lligats al scroll estan en un <style is:inline> de index.astro:
+   el minificador fusionava animation-timeline dins de la propietat animation
+   i el navegador descartava la regla. */
+
+/* Qui té activat "reduir moviment" no veu cap d'aquests efectes */
+@media (prefers-reduced-motion: reduce) {
+  .hero-in,
+  .hero-in-move {
+    animation: none !important;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
 }

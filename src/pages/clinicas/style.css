@@ -975,7 +975,7 @@ html {
 }
 .pricing-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 24px;
   align-items: stretch;
 }
@@ -1973,10 +1973,10 @@ details[open] summary::after {
   }
   .pricing-grid,
   .addons-bottom-row {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
   .addons-top-row {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
   .contact-grid {
     grid-template-columns: 1fr;
@@ -2118,5 +2118,184 @@ details[open] summary::after {
   .hero-buttons {
     flex-direction: column;
     padding: 0 16px;
+  }
+}
+
+/* =========================================
+   AJUSTES 2026-10: ORIENTACIÓN A CLÍNICAS (PYMES)
+   ========================================= */
+
+/* La cabecera fija no tapa el título al saltar a una sección */
+html {
+  scroll-padding-top: 90px;
+}
+
+/* Antetítulo y argumentos de confianza del hero */
+.hero-eyebrow {
+  display: inline-block;
+  margin-bottom: 16px;
+  padding: 6px 14px;
+  border-radius: var(--radius-pill);
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid var(--border-color);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.hero-trust {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px 24px;
+  margin: -32px auto 48px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+.hero-trust li::before {
+  content: "✓";
+  margin-right: 6px;
+  color: #10b981;
+  font-weight: 800;
+}
+
+/* Lista en dos columnas de la tarjeta "Facturación y fidelización" */
+.bento-list-2col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.bento-list-2col .span-2 {
+  grid-column: span 2;
+}
+
+/* Prefijo "Desde" de los precios */
+.price-from {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 2px;
+}
+
+/* Formulario: fila de dos campos, desplegable, consentimiento y aviso RGPD */
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.form-group select {
+  width: 100%;
+  padding: 14px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  border-radius: 12px;
+  font-family: inherit;
+  font-size: 0.95rem;
+  outline: none;
+  background-color: rgba(255, 255, 255, 0.7);
+  color: var(--text-main);
+}
+.form-group select:focus {
+  border-color: #3b82f6;
+  background-color: #ffffff;
+}
+.form-consent {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  cursor: pointer;
+}
+.form-consent input {
+  width: 18px;
+  height: 18px;
+  margin-top: 1px;
+  flex-shrink: 0;
+  accent-color: var(--primary-dark);
+}
+.form-consent a,
+.form-legal a {
+  color: var(--primary-dark);
+  font-weight: 700;
+}
+.form-legal {
+  font-size: 0.72rem;
+  line-height: 1.5;
+  color: var(--text-muted);
+  padding-top: 12px;
+  border-top: 1px solid var(--border-color);
+}
+.form-legal b {
+  color: var(--primary-dark);
+  font-weight: 600;
+}
+
+/* "/ pago único" no se parte en dos líneas */
+.price-amount span {
+  white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+  .hero-eyebrow {
+    font-size: 0.7rem;
+    letter-spacing: 0.04em;
+    padding: 6px 12px;
+  }
+  /* En móvil, lista alineada a la izquierda y separada del mockup */
+  .hero-trust {
+    flex-direction: column;
+    align-items: flex-start;
+    width: fit-content;
+    text-align: left;
+    font-size: 0.85rem;
+    margin: -24px auto 64px;
+  }
+  /* El formulario, antes que el calendario: es el camino más corto para pedir el diagnóstico */
+  .contact-right {
+    order: -1;
+  }
+  .bento-list-2col {
+    grid-template-columns: 1fr;
+  }
+  .bento-list-2col .span-2 {
+    grid-column: auto;
+  }
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+  /* 16px: por debajo, Safari de iPhone hace zoom al tocar el campo */
+  .form-group input,
+  .form-group textarea,
+  .form-group select {
+    font-size: 16px;
+  }
+}
+
+/* Quien tiene activado "reducir movimiento" no ve animaciones ni marquee */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .marquee-track {
+    animation: none !important;
+  }
+}
+
+/* Red de seguridad: nunca scroll horizontal en la página (clip no rompe position: fixed/sticky) */
+html,
+body {
+  overflow-x: clip;
+}
+
+/* Móviles muy estrechos (≤ 360px): el titular no roza el borde de la tarjeta */
+@media (max-width: 360px) {
+  .hero h1 {
+    font-size: 2.15rem;
   }
 }

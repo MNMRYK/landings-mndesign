@@ -1,5 +1,141 @@
 ---
 import "./style.css";
+
+/* Preguntas frecuentes: una sola fuente para el HTML visible y para el Schema.
+   La respuesta admite <strong>; al Schema se envía sin etiquetas. */
+const faqs = [
+  [
+    "¿Cómo se paga el software y cuánto cuesta para nuestra clínica?",
+    "Con una <strong>inversión inicial de pago único</strong>. Los precios de los planes son de partida: tras el diagnóstico gratuito te enviamos un presupuesto cerrado por fases según el tamaño de tu equipo y las funciones que necesitéis. El software es vuestro, así que no pagáis licencias por profesional ni cuotas a terceros.",
+  ],
+  [
+    "¿Sirve para una clínica con varios profesionales y especialidades?",
+    "Sí, está pensado para eso. Cada profesional tiene su agenda, recepción gestiona las citas de todo el centro y los <strong>roles y permisos</strong> deciden quién ve cada historia clínica. Adaptamos los tipos de cita, los formularios y los consentimientos a vuestras especialidades: fisioterapia, nutrición, psicología, medicina estética, odontología…",
+  ],
+  [
+    "¿Cumple el RGPD con datos de salud?",
+    "Sí. Usamos SSL, bases de datos cifradas, copias de seguridad y servidores ubicados en la Unión Europea, y <strong>firmamos con la clínica el contrato de encargado del tratamiento</strong> que exige el RGPD para datos de salud. Al estar la plataforma en vuestra propia web, los datos de los pacientes no pasan por herramientas de terceros.",
+  ],
+  [
+    "¿Cómo migramos los datos de nuestro programa actual?",
+    "Importamos pacientes, citas e historial desde CSV o Excel, o desde la exportación de tu programa actual. En los planes Portal Paciente y Portal + Academia <strong>hacemos la migración nosotros</strong> sin coste adicional.",
+  ],
+  [
+    "¿Se conecta con nuestra facturación, calendario o ERP?",
+    "Sí. Conectamos la plataforma con Google Calendar u Outlook, pasarelas de pago (Stripe, Redsys), WhatsApp para recordatorios y vuestro programa de facturación o ERP (Holded, Sage, A3, Odoo). La facturación electrónica se prepara para <strong>Verifactu</strong>.",
+  ],
+  [
+    "¿Hay permanencia o contratos a largo plazo?",
+    "No. El desarrollo se paga una vez y el software, la web y la base de datos son vuestros desde el primer día. El mantenimiento es mensual y sin permanencia; si un día decidís cambiar de proveedor, os entregamos el código y una exportación completa de los datos.",
+  ],
+  [
+    "¿Cuánto tarda en estar en marcha?",
+    "Normalmente <strong>entre 3 y 5 semanas</strong> por fase, según las funciones. Trabajamos por fases para que la clínica no deje de atender: primero la agenda y el área de pacientes, después la facturación y el resto de módulos.",
+  ],
+  [
+    "¿Quién forma al equipo y resuelve las incidencias?",
+    "Nosotros. Incluimos formación para recepción y profesionales, y con el mantenimiento activo nos ocupamos de las actualizaciones de seguridad, las copias diarias y los pequeños cambios para que el equipo solo se ocupe de los pacientes.",
+  ],
+];
+
+const pageUrl = "https://mndesignweb.es/clinicas/";
+const seoTitle = "Software de gestión para clínicas en tu propia web | Portal Salud";
+const seoDescription =
+  "Software de gestión para clínicas con equipo: agenda por profesional, recepción, portal del paciente, facturación Verifactu y RGPD sanitario. Pago único y en propiedad, sin licencias por profesional.";
+const ogDescription =
+  "Portal Salud: el software de gestión de tu clínica dentro de tu propia web. Agenda del equipo, portal del paciente, cobros y facturación, sin cuotas a terceros.";
+
+// Franja de integraciones (se duplica en el HTML para el bucle del marquee)
+const integrations = [
+  "Google Calendar", "Outlook", "Stripe", "Redsys", "WhatsApp", "Holded",
+  "Sage", "A3", "Odoo", "Verifactu", "Excel / CSV",
+];
+const capabilities = [
+  "Agenda por profesional", "Recepción", "Historia clínica", "Consentimientos firmados",
+  "Recordatorios automáticos", "Videoconsulta", "Bonos y suscripciones",
+  "Roles y permisos", "Copias diarias", "Servidores en la UE",
+];
+
+const plans = [
+  ["Primera Presencia", 790],
+  ["Portal Paciente", 1350],
+  ["Portal + Academia", 2190],
+];
+
+const schema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": `${pageUrl}#webpage`,
+      url: pageUrl,
+      name: seoTitle,
+      description: seoDescription,
+      inLanguage: "es-ES",
+      about: { "@id": `${pageUrl}#software` },
+      breadcrumb: { "@id": `${pageUrl}#breadcrumb` },
+    },
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://mndesignweb.es/#empresa",
+      name: "MN Design Web",
+      image: "https://mndesignweb.es/logo.webp",
+      url: "https://mndesignweb.es/",
+      telephone: "+34645854934",
+      email: "info@mndesignweb.es",
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: "Avinguda Passeig del Comtat, 75, 5º 1º",
+        postalCode: "03820",
+        addressLocality: "Cocentaina",
+        addressRegion: "Alicante",
+        addressCountry: "ES",
+      },
+      areaServed: "ES",
+      priceRange: "€€",
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": `${pageUrl}#software`,
+      name: "Portal Salud",
+      operatingSystem: "Web",
+      applicationCategory: "BusinessApplication",
+      applicationSubCategory: "Software de gestión clínica",
+      description: seoDescription,
+      image: "https://mndesignweb.es/imagen-miniatura-clinicas.webp",
+      provider: { "@id": "https://mndesignweb.es/#empresa" },
+      offers: plans.map(([name, price]) => ({
+        "@type": "Offer",
+        name,
+        priceCurrency: "EUR",
+        priceSpecification: {
+          "@type": "PriceSpecification",
+          minPrice: price,
+          priceCurrency: "EUR",
+          valueAddedTaxIncluded: false,
+        },
+        description: "Pago único. Precio de partida; presupuesto cerrado tras el diagnóstico.",
+      })),
+    },
+    {
+      "@type": "FAQPage",
+      "@id": `${pageUrl}#faq`,
+      mainEntity: faqs.map(([q, a]) => ({
+        "@type": "Question",
+        name: q,
+        acceptedAnswer: { "@type": "Answer", text: a.replace(/<[^>]+>/g, "") },
+      })),
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": `${pageUrl}#breadcrumb`,
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Inicio MN Design Web", item: "https://mndesignweb.es/" },
+        { "@type": "ListItem", position: 2, name: "Software de gestión para clínicas", item: pageUrl },
+      ],
+    },
+  ],
+};
 ---
 
 <!doctype html>
@@ -7,7 +143,7 @@ import "./style.css";
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Portal Salud - Gestión de Consultas</title>
+    <title>{seoTitle}</title>
 
     <meta
       name="theme-color"
@@ -34,16 +170,16 @@ import "./style.css";
 
     <meta
       name="description"
-      content="Software de gestión clínica con pago único. Agenda inteligente, portal del paciente, facturación y academias online para tu centro de salud sin cuotas mensuales."
+      content={seoDescription}
     />
     <meta name="author" content="MN Design Web" />
 
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://mndesignweb.es/clinicas/" />
-    <meta property="og:title" content="Portal Salud - Gestión de Consultas" />
+    <meta property="og:title" content={seoTitle} />
     <meta
       property="og:description"
-      content="Ecosistema digital para profesionales de la salud mediante inversión inicial de pago único. Agenda, videoconsulta y academia online a tu medida."
+      content={ogDescription}
     />
     <meta
       property="og:image"
@@ -53,126 +189,18 @@ import "./style.css";
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:url" content="https://mndesignweb.es/clinicas/" />
-    <meta name="twitter:title" content="Portal Salud - Gestión de Consultas" />
+    <meta name="twitter:title" content={seoTitle} />
     <meta
       name="twitter:description"
-      content="Ecosistema digital para profesionales de la salud mediante inversión inicial de pago único. Agenda, videoconsulta y academia online a tu medida."
+      content={ogDescription}
     />
     <meta
       name="twitter:image"
       content="https://mndesignweb.es/imagen-miniatura-clinicas.webp"
     />
 
-    <script type="application/ld+json">
-      [
-        {
-          "@context": "https://schema.org",
-          "@type": "WebPage",
-          "name": "Portal Salud - Software de Gestión para Clínicas | MN Design Web",
-          "description": "Desarrollo y software de gestión clínica en propiedad con pago único. Portal del paciente y academia para el sector salud."
-        },
-        {
-          "@context": "https://schema.org",
-          "@type": "SoftwareApplication",
-          "name": "Portal Salud Consultas",
-          "operatingSystem": "All",
-          "applicationCategory": "BusinessApplication",
-          "description": "Software integral para la gestión de clínicas con inversión inicial de pago único.",
-          "offers": [
-            {
-              "@type": "Offer",
-              "name": "Primera Presencia",
-              "price": "790",
-              "priceCurrency": "EUR",
-              "description": "Pago único"
-            },
-            {
-              "@type": "Offer",
-              "name": "Portal Paciente",
-              "price": "1350",
-              "priceCurrency": "EUR",
-              "description": "Pago único"
-            },
-            {
-              "@type": "Offer",
-              "name": "Portal + Academia",
-              "price": "2190",
-              "priceCurrency": "EUR",
-              "description": "Pago único"
-            }
-          ]
-        },
-        {
-          "@context": "https://schema.org",
-          "@type": "ProfessionalService",
-          "name": "MN Design Web",
-          "image": "https://mndesignweb.es/logo.webp",
-          "url": "https://mndesignweb.es/",
-          "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "Alicante",
-            "addressCountry": "ES"
-          },
-          "priceRange": "€€"
-        },
-        {
-          "@context": "https://schema.org",
-          "@type": "FAQPage",
-          "mainEntity": [
-            {
-              "@type": "Question",
-              "name": "¿Cómo se realiza el pago del software y la web?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Funciona mediante una inversión inicial de pago único según el plan elegido (Primera Presencia, Portal Paciente o Portal + Academia). No existen cuotas mensuales de software, tan solo un mantenimiento opcional si se requiere activo."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "¿Cómo migro los datos de mi clínica actual?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Ofrecemos herramientas de importación masiva mediante CSV o Excel. Nuestro equipo de soporte se encarga de realizar la migración por ti sin coste adicional en los planes avanzados."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "¿Cumplen con las normativas de protección de datos?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Sí, Portal Salud cumple con GDPR y las normativas sanitarias europeas. La información está encriptada de extremo a extremo con estrictos protocolos de seguridad."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "¿Puedo integrar Portal Salud con otras aplicaciones?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Sí, contamos con integraciones nativas para calendarios, pasarelas de pago como Stripe, herramientas de videoconsulta y conexión con tu ERP."
-              }
-            }
-          ]
-        },
-        {
-          "@context": "https://schema.org",
-          "@type": "BreadcrumbList",
-          "itemListElement": [
-            {
-              "@type": "ListItem",
-              "position": 1,
-              "name": "Inicio MN Design Web",
-              "item": "https://mndesignweb.es/"
-            },
-            {
-              "@type": "ListItem",
-              "position": 2,
-              "name": "Portal Salud - Software para Clínicas",
-              "item": "https://mndesignweb.es/clinicas/"
-            }
-          ]
-        }
-      ]
-    </script>
+    <!-- Schema.org: un único bloque generado desde el frontmatter -->
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(schema)} />
 
     <script is:inline>
       window.dataLayer = window.dataLayer || [];
@@ -231,9 +259,11 @@ import "./style.css";
         "https://connect.facebook.net/en_US/fbevents.js",
       );
 
+      // Sin consentimiento, el píxel queda bloqueado (no envía nada a Meta)
       var localConsent = localStorage.getItem("cookie_consent");
-
-      if (localConsent === "accepted") {
+      if (localConsent !== "accepted") {
+        fbq("consent", "revoke");
+      } else {
         fbq("consent", "grant");
       }
 
@@ -241,44 +271,58 @@ import "./style.css";
       fbq("track", "PageView");
     </script>
 
+    <!-- Clarity: solo se carga si ya hay consentimiento (si no, lo carga el banner al aceptar) -->
     <script is:inline type="text/javascript">
-      (function (c, l, a, r, i, t, y) {
-        c[a] =
-          c[a] ||
-          function () {
-            (c[a].q = c[a].q || []).push(arguments);
-          };
-        t = l.createElement(r);
-        t.async = 1;
-        t.src = "https://www.clarity.ms/tag/" + i;
-        y = l.getElementsByTagName(r)[0];
-        y.parentNode.insertBefore(t, y);
-      })(window, document, "clarity", "script", "wuzaxaifa0");
+      function loadClarity() {
+        if (typeof window.clarity === "function") return;
+        (function (c, l, a, r, i, t, y) {
+          c[a] =
+            c[a] ||
+            function () {
+              (c[a].q = c[a].q || []).push(arguments);
+            };
+          t = l.createElement(r);
+          t.async = 1;
+          t.src = "https://www.clarity.ms/tag/" + i;
+          y = l.getElementsByTagName(r)[0];
+          y.parentNode.insertBefore(t, y);
+        })(window, document, "clarity", "script", "wuzaxaifa0");
+        // Clarity exige la señal de consentimiento en la UE para usar cookies
+        window.clarity("consent");
+      }
+      if (localStorage.getItem("cookie_consent") === "accepted") loadClarity();
     </script>
   </head>
   <body>
     <header class="navbar" id="main-nav">
       <div class="navbar-container">
-        <a href="#" class="logo">
+        <a href="#" class="logo" aria-label="Portal Salud, volver arriba">
           <div class="logo-icon">MN</div>
-          Portal Salud Consultas
+          Portal Salud
         </a>
 
         <nav class="desktop-nav">
           <a href="#funciones" class="nav-link">Funciones</a>
           <a href="#inversion" class="nav-link">Inversión</a>
-          <a href="#mejoras" class="nav-link">Mejoras</a>
+          <a href="#mejoras" class="nav-link">Servicios</a>
+          <a href="#faq" class="nav-link">Dudas</a>
         </nav>
 
         <div class="desktop-cta-container">
           <a
-            href="#empezar-proyecto"
+            href="#solicitar-auditoria"
             class="btn btn-primary"
-            style="padding: 10px 24px;">Empezar Proyecto &gt;</a
+            style="padding: 10px 24px;">Diagnóstico gratuito</a
           >
         </div>
 
-        <button id="menu-toggle" class="menu-toggle" aria-label="Abrir menú">
+        <button
+          id="menu-toggle"
+          class="menu-toggle"
+          aria-label="Abrir menú"
+          aria-expanded="false"
+          aria-controls="mobile-dropdown"
+        >
           <svg
             viewBox="0 0 24 24"
             width="26"
@@ -299,10 +343,11 @@ import "./style.css";
       <div id="mobile-dropdown" class="mobile-dropdown">
         <a href="#funciones" class="mobile-link">Funciones</a>
         <a href="#inversion" class="mobile-link">Inversión</a>
-        <a href="#mejoras" class="mobile-link">Mejoras</a>
+        <a href="#mejoras" class="mobile-link">Servicios</a>
+        <a href="#faq" class="mobile-link">Dudas</a>
 
-        <a href="#empezar-proyecto" class="btn btn-primary mobile-cta-btn"
-          >Empezar Proyecto &gt;</a
+        <a href="#solicitar-auditoria" class="btn btn-primary mobile-cta-btn"
+          >Diagnóstico gratuito</a
         >
       </div>
     </header>
@@ -311,22 +356,32 @@ import "./style.css";
       <div class="hero-wrapper">
         <div class="hero-bg-gradient"></div>
         <section class="hero">
-          <h1 class="hero-reveal">Simplifica la gestión de tu consulta en una sola plataforma</h1>
+          <span class="hero-eyebrow hero-reveal">Software de gestión para clínicas</span>
+          <h1 class="hero-reveal">Toda tu clínica en una sola plataforma, dentro de tu propia web</h1>
           <p class="hero-reveal hero-delay-1">
-            Destaca en el sector salud con una herramienta que optimiza tu
-            tiempo, fideliza a tus pacientes y hace crecer tus ingresos
-            automáticamente.
+            Agenda por profesional, recepción, portal del paciente, cobros y
+            facturación conectados. Desarrollamos el software a medida de tu
+            equipo y es vuestro: sin licencias por profesional ni cuotas a
+            terceros.
           </p>
 
           <div class="hero-buttons hero-reveal hero-delay-2">
             <a href="#solicitar-auditoria" class="btn btn-primary"
-              >Solicitar auditoría</a
+              >Solicitar diagnóstico gratuito</a
             >
             <a
               href="https://portalsalud-academia.mndesignweb.es/"
-              class="btn btn-secondary">Ver demostración</a
+              target="_blank"
+              rel="noopener"
+              class="btn btn-secondary">Ver la demo</a
             >
           </div>
+
+          <ul class="hero-trust hero-reveal hero-delay-2">
+            <li>Para clínicas con varios profesionales</li>
+            <li>RGPD sanitario y servidores en la UE</li>
+            <li>Facturación preparada para Verifactu</li>
+          </ul>
 
           
           <div class="hero-mockup hero-reveal hero-delay-3">
@@ -343,7 +398,9 @@ import "./style.css";
                 
                 <img
                   src="/avatar-maria.webp"
-                  alt="Paciente María González"
+                  alt=""
+                  width="40"
+                  height="40"
                   style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 1px solid var(--border-color);"
                 />
 
@@ -352,7 +409,7 @@ import "./style.css";
                     María González
                   </div>
                   <div style="font-size: 0.75rem; color: var(--text-muted);">
-                    Dietista - 10:30 AM
+                    Fisioterapia · Sala 2 · 10:30
                   </div>
                 </div>
               </div>
@@ -369,12 +426,12 @@ import "./style.css";
               <div
                 style="font-size: 0.875rem; color: var(--text-muted); margin-bottom: 4px;"
               >
-                Ingresos del mes
+                Facturación del mes
               </div>
               <div
                 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 12px;"
               >
-                $18,450.00
+                18.450 €
               </div>
               <div
                 style="display: flex; gap: 4px; align-items: flex-end; height: 60px;"
@@ -405,83 +462,42 @@ import "./style.css";
             
             <img
               src="/vista-paciente.webp"
-              alt="Interfaz del Portal del Paciente en Tablet"
+              alt="Portal del paciente de Portal Salud en una tablet: tareas, consentimientos y diario de síntomas"
+              width="1400"
+              height="937"
+              fetchpriority="high"
               class="mockup-main-image"
             />
           </div>
         </section>
       </div>
 
+      <!-- Franja de integraciones: lo que ya usa la clínica (no tecnologías internas) -->
       <section class="tech-stack reveal">
         <div class="container">
           <p class="tech-title">
-            Tecnologías de vanguardia que impulsan nuestra plataforma
+            Se conecta con las herramientas que ya usa tu clínica
           </p>
 
           <div class="marquee-container">
-            <div class="marquee-track track-left">
-              <div class="tech-tag">React</div>
-              <div class="tech-tag">Node.js</div>
-              <div class="tech-tag">Supabase</div>
-              <div class="tech-tag">Astro</div>
-              <div class="tech-tag">AWS Cloud</div>
-              <div class="tech-tag">Vercel</div>
-              <div class="tech-tag">Tailwind CSS</div>
-              <div class="tech-tag">TypeScript</div>
-              <div class="tech-tag">GraphQL</div>
-              <div class="tech-tag">Figma</div>
-              <div class="tech-tag">Stripe Payments</div>
-
-              <div class="tech-tag">React</div>
-              <div class="tech-tag">Node.js</div>
-              <div class="tech-tag">Supabase</div>
-              <div class="tech-tag">Astro</div>
-              <div class="tech-tag">AWS Cloud</div>
-              <div class="tech-tag">Vercel</div>
-              <div class="tech-tag">Tailwind CSS</div>
-              <div class="tech-tag">TypeScript</div>
-              <div class="tech-tag">GraphQL</div>
-              <div class="tech-tag">Figma</div>
-              <div class="tech-tag">Stripe Payments</div>
-            </div>
-
-            <div class="marquee-track track-right">
-              <div class="tech-tag">Nginx</div>
-              <div class="tech-tag">Responsive Design</div>
-              <div class="tech-tag">UX/UI Avanzado</div>
-              <div class="tech-tag">Seguridad SSL</div>
-              <div class="tech-tag">PostgreSQL</div>
-              <div class="tech-tag">Docker</div>
-              <div class="tech-tag">Redis</div>
-              <div class="tech-tag">Prisma ORM</div>
-              <div class="tech-tag">Next.js</div>
-              <div class="tech-tag">Google Cloud</div>
-              <div class="tech-tag">WebSockets</div>
-
-              <div class="tech-tag">Nginx</div>
-              <div class="tech-tag">Responsive Design</div>
-              <div class="tech-tag">UX/UI Avanzado</div>
-              <div class="tech-tag">Seguridad SSL</div>
-              <div class="tech-tag">PostgreSQL</div>
-              <div class="tech-tag">Docker</div>
-              <div class="tech-tag">Redis</div>
-              <div class="tech-tag">Prisma ORM</div>
-              <div class="tech-tag">Next.js</div>
-              <div class="tech-tag">Google Cloud</div>
-              <div class="tech-tag">WebSockets</div>
-            </div>
+            {[integrations, capabilities].map((list, i) => (
+              <div class={`marquee-track ${i === 0 ? "track-left" : "track-right"}`}>
+                {list.map((t) => <div class="tech-tag">{t}</div>)}
+                {list.map((t) => <div class="tech-tag" aria-hidden="true">{t}</div>)}
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
       <section id="funciones" class="features container reveal">
         <div class="section-header">
-          <h2>Nuestras funciones exclusivas</h2>
+          <h2>Todo lo que necesita una clínica con equipo</h2>
           <p class="text-muted">
-            Destaca en un entorno competitivo con herramientas diseñadas para la
-            eficiencia clínica. Esto no es un software genérico, es una solución
-            pensada para la salud y la gestión de pacientes, que integra todo lo
-            que necesitas en un solo lugar.
+            Recepción, profesionales y dirección trabajando sobre los mismos
+            datos. No es un software genérico con licencias por usuario: lo
+            adaptamos a vuestras especialidades, vuestros tipos de cita y
+            vuestra forma de trabajar.
           </p>
         </div>
 
@@ -506,30 +522,33 @@ import "./style.css";
                 ></line></svg
               >
             </div>
-            <h3>Agenda y Admisión Inteligente</h3>
+            <h3>Agenda del equipo y admisión</h3>
             <ul class="bento-list">
               <li>
-                <strong>Sistema de reservas automatizado</strong>Los pacientes
-                eligen horarios disponibles, sincronizándose en tiempo real con
-                la agenda del centro.
+                <strong>Una agenda por profesional</strong>Los pacientes reservan
+                online con el profesional y el servicio que necesitan, y
+                recepción ve y gestiona las citas de todo el centro en tiempo
+                real.
               </li>
               <li>
-                <strong>Admisión Digital</strong>Formularios de evaluación
-                previa y consentimientos informados digitalizados para agilizar
-                el alta antes de la primera visita.
+                <strong>Admisión digital</strong>Formularios de evaluación previa
+                y consentimientos informados firmados antes de la primera
+                visita, sin papeles en recepción.
               </li>
               <li>
-                <strong>Gestión de Alertas</strong>Sistema inteligente de avisos
-                bidireccionales entre paciente y equipo ante cambios o
-                incidencias.
+                <strong>Recordatorios y avisos</strong>Recordatorios automáticos
+                para reducir ausencias y avisos entre paciente y equipo ante
+                cambios o incidencias.
               </li>
             </ul>
 
-            
+
             <div class="bento-visual">
               <img
                 src="/reserva.webp"
-                alt="Agenda y Admisión"
+                alt="Agenda de la clínica con citas del día y tipos de servicio"
+                loading="lazy"
+                decoding="async"
                 class="bento-img"
               />
             </div>
@@ -550,28 +569,29 @@ import "./style.css";
                 ></path><circle cx="12" cy="7" r="4"></circle></svg
               >
             </div>
-            <h3>Portal del Paciente</h3>
+            <h3>Portal del paciente</h3>
             <ul class="bento-list">
               <li>
-                <strong>Espacio privado y seguro</strong>Acceso centralizado al
-                historial, enlaces a sesiones y facturas.
+                <strong>Espacio privado y seguro</strong>Cada paciente accede a
+                sus citas, documentos, enlaces de videoconsulta y facturas.
               </li>
               <li>
-                <strong>Diario y Seguimiento</strong>Control de fases de
-                recuperación y diario de síntomas para la evolución entre
-                consultas.
+                <strong>Diario y seguimiento</strong>Fases del tratamiento y
+                diario de síntomas para seguir la evolución entre consultas.
               </li>
               <li>
-                <strong>Analíticas y Gráficas</strong>Visualización de progreso
-                mediante cuestionarios y métricas de salud.
+                <strong>Analíticas y gráficas</strong>Progreso visible mediante
+                cuestionarios y métricas de salud.
               </li>
             </ul>
 
-            
+
             <div class="bento-visual">
               <img
                 src="/ficha.webp"
-                alt="Portal del Paciente"
+                alt="Ficha de paciente con resumen clínico y próxima cita"
+                loading="lazy"
+                decoding="async"
                 class="bento-img"
               />
             </div>
@@ -592,27 +612,31 @@ import "./style.css";
                 ></path></svg
               >
             </div>
-            <h3>Gestión Clínica y Legal</h3>
+            <h3>Gestión clínica y legal</h3>
             <ul class="bento-list">
               <li>
-                <strong>Privacidad y RGPD</strong>Salas E2EE y protocolos
-                estrictos que garantizan la normativa sanitaria europea.
+                <strong>RGPD sanitario</strong>Videoconsulta cifrada, servidores
+                en la UE, registro de accesos y contrato de encargado del
+                tratamiento firmado con la clínica.
               </li>
               <li>
-                <strong>Roles del Equipo</strong>Asignación de permisos
-                personalizados entre profesionales.
+                <strong>Roles del equipo</strong>Recepción, profesionales y
+                dirección con permisos distintos: cada uno ve solo lo que
+                necesita.
               </li>
               <li>
-                <strong>Prescripción y Firma</strong>Recetas médicas y firma
-                electrónica con validez legal.
+                <strong>Historia clínica y firma</strong>Historial de consultas
+                por paciente y firma electrónica de consentimientos e informes.
               </li>
             </ul>
 
-            
+
             <div class="bento-visual">
               <img
                 src="/historial.webp"
-                alt="Gestión Clínica Legal"
+                alt="Historial de consultas de un paciente"
+                loading="lazy"
+                decoding="async"
                 class="bento-img"
               />
             </div>
@@ -636,31 +660,29 @@ import "./style.css";
                   y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg
               >
             </div>
-            <h3>Evolución y Fidelización</h3>
-            <ul
-              class="bento-list"
-              style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;"
-            >
+            <h3>Facturación y fidelización</h3>
+            <ul class="bento-list bento-list-2col">
               <li>
-                
-                <strong>Analíticas y Cuestionarios</strong>Gráficos visuales de
-                evolución basados en cuestionarios para evaluar progreso.
+                <strong>Cuadro de mando</strong>Ingresos, gastos y pagos
+                pendientes de la clínica en una sola pantalla para dirección.
               </li>
               <li>
-                <strong>Bonos y Suscripciones</strong>Gestión avanzada de
+                <strong>Bonos y suscripciones</strong>Bonos de sesiones y
                 membresías con cobros recurrentes automatizados.
               </li>
-              <li style="grid-column: span 2;">
-                <strong>Aula y Masterclasses</strong>Plataforma formativa con
-                recursos clínicos premium y soporte en directo.
+              <li class="span-2">
+                <strong>Aula y masterclasses</strong>Plataforma formativa para
+                pacientes o alumnos, con recursos y sesiones en directo.
               </li>
             </ul>
 
-            
+
             <div class="bento-visual">
               <img
                 src="/facturacion.webp"
-                alt="Fidelización y Métricas"
+                alt="Panel de facturación y finanzas de la clínica"
+                loading="lazy"
+                decoding="async"
                 class="bento-img"
               />
             </div>
@@ -673,14 +695,14 @@ import "./style.css";
         <div class="billing-container">
           <div class="billing-left">
             <span class="badge-small">• Integración Total</span>
-            <h2>Facturación Electrónica y<br />conexión ERP</h2>
+            <h2>Facturación electrónica y conexión con tu ERP</h2>
             <p>
-              Automatización de cobros, pasarelas de pago y emisión de facturas
-              conectadas de forma fluida con el software de gestión fiscal de la
-              clínica y Verifactu.
+              Cobros online, pasarelas de pago y emisión de facturas preparadas
+              para Verifactu, conectadas con el programa de facturación o el ERP
+              que ya usa la clínica (Holded, Sage, A3, Odoo).
             </p>
-            <a href="#" class="btn btn-primary" style="margin-top: 16px;"
-              >Ver integraciones</a
+            <a href="#solicitar-auditoria" class="btn btn-primary" style="margin-top: 16px;"
+              >Consultar mi caso</a
             >
           </div>
 
@@ -723,8 +745,8 @@ import "./style.css";
               </div>
               <h4>Sincronización Fiscal</h4>
               <p>
-                Exporta fácilmente los datos para tu gestoría o conéctalo con tu
-                ERP actual de forma segura.
+                Exporta los datos para tu gestoría o conéctalos con tu ERP
+                actual de forma segura.
               </p>
             </div>
           </div>
@@ -763,6 +785,9 @@ import "./style.css";
               <img
                 src="/avatar-carlos.webp"
                 alt="Dr. Carlos Mendoza"
+                width="48"
+                height="48"
+                loading="lazy"
                 class="author-avatar-img"
               />
               <div class="author-info">
@@ -781,6 +806,9 @@ import "./style.css";
               <img
                 src="/avatar-laura.webp"
                 alt="Dra. Laura Jiménez"
+                width="48"
+                height="48"
+                loading="lazy"
                 class="author-avatar-img"
               />
               <div class="author-info">
@@ -794,11 +822,13 @@ import "./style.css";
 
       <section class="pricing container reveal" id="inversion">
         <div class="section-header">
-          <h2>Nuestros planes de inversión</h2>
+          <h2>Inversión de partida, presupuesto cerrado</h2>
           <p class="pricing-subtitle">
-            Soluciones adaptadas al tamaño de tu clínica. Todos los planes
-            incluyen Dominio y VPS/Hosting.<br />
-            <small>* Precios sin IVA incluido.</small>
+            Cada clínica es distinta: estos son precios de partida. Tras el
+            diagnóstico gratuito te enviamos un presupuesto cerrado por fases
+            según tu equipo y las funciones que necesitéis. Todos los planes
+            incluyen dominio y servidor.<br />
+            <small>* Pago único. IVA no incluido.</small>
           </p>
         </div>
 
@@ -806,12 +836,12 @@ import "./style.css";
           <div class="pricing-card">
             <div class="pricing-top">
               <h3>Primera Presencia</h3>
-              <div class="price-amount">790€<span> / pago único</span></div>
+              <div class="price-amount"><small class="price-from">Desde</small>790&nbsp;€ <span>/ pago único</span></div>
               <p class="text-muted">
-                Ideal para profesionales independientes que inician su
-                digitalización.
+                Para centros que empiezan a digitalizar la agenda y la atención
+                a sus pacientes.
               </p>
-              <a href="https://wa.me/34645854934?text=Hola!%20Me%20interesa%20empezar%20mi%20proyecto%20con%20el%20plan%20Primera%20Presencia%20de%20Portal%20Salud." target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Empezar proyecto &gt;</a>
+              <a href="https://wa.me/34645854934?text=Hola!%20Tenemos%20una%20cl%C3%ADnica%20y%20nos%20interesa%20el%20plan%20Primera%20Presencia%20de%20Portal%20Salud." target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Pedir presupuesto</a>
             </div>
             <div class="pricing-bottom">
               <p class="features-title">Características incluidas:</p>
@@ -869,7 +899,7 @@ import "./style.css";
                       stroke-width="3"
                       ><polyline points="20 6 9 17 4 12"></polyline></svg
                     ></span
-                  > Videoconsulta Segura (WebRTC)
+                  > Videoconsulta cifrada
                 </li>
                 <li>
                   <span class="check-icon"
@@ -908,12 +938,12 @@ import "./style.css";
             <div class="pricing-top">
               <div class="pro-badge">Más popular</div>
               <h3>Portal Paciente</h3>
-              <div class="price-amount">1.350€<span> / pago único</span></div>
+              <div class="price-amount"><small class="price-from">Desde</small>1.350&nbsp;€ <span>/ pago único</span></div>
               <p class="text-muted">
-                Digitalización completa y gestión avanzada para clínicas
-                consolidadas.
+                Digitalización completa para clínicas con equipo: agenda,
+                pacientes, documentos y facturación en un solo sistema.
               </p>
-              <a href="https://wa.me/34645854934?text=Hola!%20Me%20interesa%20empezar%20mi%20proyecto%20con%20el%20plan%20Portal%20Paciente%20(El%20M%C3%A1s%20Popular)." target="_blank" rel="noopener noreferrer" class="btn btn-primary">Empezar proyecto &gt;</a>
+              <a href="https://wa.me/34645854934?text=Hola!%20Tenemos%20una%20cl%C3%ADnica%20y%20nos%20interesa%20el%20plan%20Portal%20Paciente%20de%20Portal%20Salud." target="_blank" rel="noopener noreferrer" class="btn btn-primary">Pedir presupuesto</a>
             </div>
             <div class="pricing-bottom">
               <p class="features-title">Todas las funciones incluidas:</p>
@@ -971,7 +1001,7 @@ import "./style.css";
                       stroke-width="3"
                       ><polyline points="20 6 9 17 4 12"></polyline></svg
                     ></span
-                  > Formularios y Firma Legal LOPD
+                  > Formularios y firma de consentimientos (RGPD)
                 </li>
                 <li>
                   <span class="check-icon"
@@ -982,7 +1012,29 @@ import "./style.css";
                       stroke-width="3"
                       ><polyline points="20 6 9 17 4 12"></polyline></svg
                     ></span
-                  > Videoconsulta Segura y API Citas
+                  > Roles y permisos para recepción y profesionales
+                </li>
+                <li>
+                  <span class="check-icon"
+                    ><svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="3"
+                      ><polyline points="20 6 9 17 4 12"></polyline></svg
+                    ></span
+                  > Migración de datos incluida
+                </li>
+                <li>
+                  <span class="check-icon"
+                    ><svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="3"
+                      ><polyline points="20 6 9 17 4 12"></polyline></svg
+                    ></span
+                  > Videoconsulta cifrada y API de citas
                 </li>
                 <li>
                   <span class="check-icon"
@@ -1020,11 +1072,12 @@ import "./style.css";
           <div class="pricing-card">
             <div class="pricing-top">
               <h3>Portal + Academia</h3>
-              <div class="price-amount">2.190€<span> / pago único</span></div>
+              <div class="price-amount"><small class="price-from">Desde</small>2.190&nbsp;€ <span>/ pago único</span></div>
               <p class="text-muted">
-                Escala tu clínica integrando una academia formativa.
+                Todo el Portal Paciente más una academia online para formar a
+                pacientes, alumnos o profesionales.
               </p>
-              <a href="https://wa.me/34645854934?text=Hola!%20Me%20interesa%20empezar%20mi%20proyecto%20y%20escalar%20mi%20cl%C3%ADnica%20con%20el%20plan%20Portal%20+%20Academia." target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Empezar proyecto &gt;</a>
+              <a href="https://wa.me/34645854934?text=Hola!%20Tenemos%20una%20cl%C3%ADnica%20y%20nos%20interesa%20el%20plan%20Portal%20%2B%20Academia%20de%20Portal%20Salud." target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Pedir presupuesto</a>
             </div>
             <div class="pricing-bottom">
               <p class="features-title">Portal Paciente + Academia:</p>
@@ -1143,10 +1196,11 @@ import "./style.css";
 
       <section class="pricing-addons container reveal" id="mejoras">
         <div class="section-header">
-          <h2>Mejoras para tu Consulta</h2>
+          <h2>Servicios adicionales para tu clínica</h2>
           <p class="text-muted">
-            Potencia tu plataforma con servicios adicionales diseñados para
-            escalar tu negocio al máximo nivel.
+            Amplía la plataforma cuando la clínica lo necesite, o déjanos
+            también el mantenimiento para que el equipo solo se ocupe de los
+            pacientes.
           </p>
         </div>
 
@@ -1166,10 +1220,10 @@ import "./style.css";
                   ></line></svg
                 >
               </div>
-              <h3>Mantenimiento Integral 1 Año</h3>
+              <h3>Desarrollo + mantenimiento integral 1 año</h3>
               <p>
-                Plan especial que incluye el desarrollo más el mantenimiento
-                completo de la plataforma durante un año entero.
+                Plan especial que incluye el desarrollo de la plataforma completa
+                y su mantenimiento durante un año entero, con un solo pago.
               </p>
               <ul class="addon-feature-list">
                 <li>
@@ -1209,14 +1263,16 @@ import "./style.css";
                   > Alojamiento y CDN Vídeo
                 </li>
               </ul>
-              <div class="addon-price-big">2.890€</div>
-              <a href="https://wa.me/34645854934?text=Hola!%20Me%20interesa%20el%20plan%20de%20Mantenimiento%20Integral%201%20A%C3%B1o%20para%20mi%20plataforma%20Portal%20Salud." target="_blank" rel="noopener noreferrer" class="btn btn-primary">Añadir Mantenimiento</a>
+              <div class="addon-price-big"><small class="price-from">Desde</small>2.890&nbsp;€</div>
+              <a href="https://wa.me/34645854934?text=Hola!%20Tenemos%20una%20cl%C3%ADnica%20y%20nos%20interesa%20el%20plan%20de%20desarrollo%20%2B%20mantenimiento%20integral%201%20a%C3%B1o%20de%20Portal%20Salud." target="_blank" rel="noopener noreferrer" class="btn btn-primary">Pedir presupuesto</a>
             </div>
 
             <div class="addon-mockup-card">
               <img
                 src="/plataforma.webp"
-                alt="Vista de la plataforma"
+                alt="Panel principal de Portal Salud con acciones rápidas y evolución de pacientes"
+                loading="lazy"
+                decoding="async"
                 class="custom-mockup-img"
               />
               <div class="mockup-floating-widget">
@@ -1279,8 +1335,9 @@ import "./style.css";
                 <span>+390€</span>
               </div>
               <p>
-                Ayudante inteligente para elaborar dietas, menús, interpretar
-                analíticas y generar gráficos automáticos.
+                Asistente inteligente que prepara pautas y planes
+                personalizados, interpreta analíticas y genera informes y
+                gráficos para que el profesional los revise.
               </p>
             </div>
 
@@ -1288,17 +1345,17 @@ import "./style.css";
               <div class="addon-visual-box visual-centered">
                 <img
                   src="/branding-1.webp"
-                  alt="Branding 1"
+                  alt="" loading="lazy" decoding="async"
                   class="brand-card card-back"
                 />
                 <img
                   src="/branding-2.webp"
-                  alt="Branding 2"
+                  alt="" loading="lazy" decoding="async"
                   class="brand-card card-mid"
                 />
                 <img
                   src="/branding-3.webp"
-                  alt="Branding 3"
+                  alt="Ejemplo de identidad de marca: tarjetas de visita" loading="lazy" decoding="async"
                   class="brand-card card-front"
                 />
               </div>
@@ -1308,7 +1365,7 @@ import "./style.css";
               </div>
               <p>
                 Una tecnología de alto valor no puede vestir un diseño mediocre.
-                Logotipo, paleta psicológica y tipografías.
+                Logotipo, paleta de color y tipografías para toda la clínica.
               </p>
             </div>
 
@@ -1352,52 +1409,27 @@ import "./style.css";
                 <span>+350€</span>
               </div>
               <p>
-                Escaparate optimizado para captación de leads y estructura
-                persuasiva para vender servicios clínicos.
+                Página de captación optimizada para SEO local y pensada para
+                convertir visitas en pacientes de la clínica.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      <section class="faq container reveal">
+      <section class="faq container reveal" id="faq">
         <div class="section-header">
-          <h2>Encuentra la respuesta que necesitas</h2>
+          <h2>Dudas frecuentes de las clínicas</h2>
         </div>
 
-        <details>
-          <summary>¿Cómo migro los datos de mi clínica actual?</summary>
-          <div class="faq-content">
-            Ofrecemos herramientas de importación masiva mediante CSV o Excel.
-            Si tienes el plan Pro o Experto, nuestro equipo de soporte se
-            encarga de realizar la migración por ti sin costo adicional.
-          </div>
-        </details>
-        <details>
-          <summary>¿Cumplen con las normativas de protección de datos?</summary>
-          <div class="faq-content">
-            Sí, Portal Salud cumple con GDPR, HIPAA y las leyes de protección de
-            datos locales. La información está encriptada de extremo a extremo y
-            hacemos copias de seguridad diarias.
-          </div>
-        </details>
-        <details>
-          <summary>¿Puedo integrar Portal Salud con otras aplicaciones?</summary
-          >
-          <div class="faq-content">
-            Claro, contamos con integraciones nativas para Google Calendar,
-            WhatsApp, Stripe y Zoom para telemedicina. Además, ofrecemos una API
-            abierta en el plan Experto.
-          </div>
-        </details>
-        <details>
-          <summary>¿Hay contratos a largo plazo?</summary>
-          <div class="faq-content">
-            No, puedes cancelar tu suscripción en cualquier momento. Cobramos
-            mes a mes, o si prefieres, puedes optar por un plan anual con un 20%
-            de descuento.
-          </div>
-        </details>
+        {
+          faqs.map(([q, a]) => (
+            <details>
+              <summary>{q}</summary>
+              <div class="faq-content" set:html={a} />
+            </details>
+          ))
+        }
       </section>
 
       <section id="empezar-proyecto" class="contact-section container reveal">
@@ -1405,10 +1437,11 @@ import "./style.css";
           <div class="contact-bg-gradient"></div>
 
           <div class="section-header">
-            <h2>Agenda una demostración</h2>
+            <h2>Diagnóstico gratuito para tu clínica</h2>
             <p class="pricing-subtitle">
-              Descubre en directo cómo Portal Salud puede digitalizar tu
-              consulta. Cuéntanos tu caso o reserva un hueco en nuestra agenda.
+              Te enseñamos Portal Salud por dentro, analizamos cómo trabaja tu
+              equipo y te enviamos un presupuesto cerrado por fases. Reserva un
+              hueco en la agenda o cuéntanos tu caso.
             </p>
           </div>
 
@@ -1417,7 +1450,7 @@ import "./style.css";
               <div class="cal-widget">
                 <iframe
                   src="https://cal.com/mndesignweb/reunion-30-min?embed=true"
-                  title="Reserva tu cita"
+                  title="Reserva tu diagnóstico gratuito"
                   class="calendar-iframe"
                   width="100%"
                   height="100%"
@@ -1446,9 +1479,10 @@ import "./style.css";
                 <div class="reason-text">
                   <h4>¿Qué veremos en la sesión?</h4>
                   <p>
-                    Te mostraremos la plataforma por dentro, analizaremos tus
-                    procesos actuales y trazaremos un plan de digitalización a
-                    medida sin compromiso.
+                    Te mostramos la plataforma por dentro, revisamos cómo
+                    gestionáis hoy la agenda, los pacientes y la facturación, y
+                    trazamos un plan de digitalización por fases, sin
+                    compromiso.
                   </p>
                 </div>
               </div>
@@ -1469,8 +1503,9 @@ import "./style.css";
                   645 854 934
                 </a>
                 <a
-                  href="https://wa.me/34645854934"
+                  href="https://wa.me/34645854934?text=Hola!%20Tenemos%20una%20cl%C3%ADnica%20y%20queremos%20informaci%C3%B3n%20sobre%20Portal%20Salud."
                   target="_blank"
+                  rel="noopener noreferrer"
                   class="direct-btn wa-btn"
                 >
                   <svg viewBox="0 0 24 24" fill="currentColor"
@@ -1502,22 +1537,46 @@ import "./style.css";
 
             <div class="contact-right">
               <div class="form-wrapper" id="solicitar-auditoria">
-                <h3>Solicitar información</h3>
+                <h3>Cuéntanos tu caso</h3>
                 <form id="formulario" class="main-form">
                   <div class="form-group">
-                    <label for="nombre">Nombre de la clínica o centro</label>
+                    <label for="nombre">Nombre y apellidos</label>
                     <input
                       type="text"
                       id="nombre"
-                      placeholder="Ej. Clínica San Martín"
+                      autocomplete="name"
+                      placeholder="Ej. Ana Martínez"
                       required
                     />
+                  </div>
+                  <div class="form-row">
+                    <div class="form-group">
+                      <label for="clinica">Clínica o centro</label>
+                      <input
+                        type="text"
+                        id="clinica"
+                        autocomplete="organization"
+                        placeholder="Ej. Clínica San Martín"
+                        required
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label for="profesionales">Profesionales</label>
+                      <select id="profesionales" required>
+                        <option value="">Selecciona</option>
+                        <option>2-5</option>
+                        <option>6-15</option>
+                        <option>16-50</option>
+                        <option>Más de 50</option>
+                      </select>
+                    </div>
                   </div>
                   <div class="form-group">
                     <label for="email">Email corporativo</label>
                     <input
                       type="email"
                       id="email"
+                      autocomplete="email"
                       placeholder="hola@tuclinica.com"
                       required
                     />
@@ -1527,6 +1586,7 @@ import "./style.css";
                     <input
                       type="tel"
                       id="telefono"
+                      autocomplete="tel"
                       placeholder="+34 600 000 000"
                       required
                     />
@@ -1536,16 +1596,26 @@ import "./style.css";
                     <textarea
                       id="mensaje"
                       rows="4"
-                      placeholder="Cuéntanos cuántos profesionales sois o si te interesa integrar la academia..."
+                      placeholder="¿Qué programa usáis ahora y qué os gustaría mejorar? (agenda, facturación, portal del paciente…)"
                       required></textarea>
                   </div>
+                  <label class="form-consent">
+                    <input id="privacidad" type="checkbox" required />
+                    <span
+                      >He leído y acepto la <a
+                        href="https://mndesignweb.es/privacidad/"
+                        target="_blank"
+                        rel="noopener">política de privacidad</a
+                      >.</span
+                    >
+                  </label>
                   <button
                     type="submit"
                     id="btn-submit"
                     class="btn btn-primary"
                     style="width: 100%; margin-top: 8px;"
                   >
-                    Enviar solicitud
+                    Solicitar diagnóstico
                   </button>
                   <p class="form-privacy">
                     <svg
@@ -1557,6 +1627,17 @@ import "./style.css";
                       ></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg
                     >
                     Tus datos están protegidos y son confidenciales.
+                  </p>
+                  <!-- Primera capa de información RGPD (art. 13 RGPD y art. 11 LOPDGDD) -->
+                  <p class="form-legal">
+                    <b>Responsable:</b> MN Design Web.{" "}
+                    <b>Finalidad:</b> responder a tu solicitud.{" "}
+                    <b>Legitimación:</b> tu consentimiento.{" "}
+                    Más información en nuestra <a
+                      href="https://mndesignweb.es/privacidad/"
+                      target="_blank"
+                      rel="noopener">política de privacidad</a
+                    >.
                   </p>
                 </form>
               </div>
@@ -1570,17 +1651,19 @@ import "./style.css";
       <div class="container">
         <div class="footer-grid">
           <div class="footer-brand">
-            <a href="#" class="logo">
+            <a href="#" class="logo" aria-label="Portal Salud, volver arriba">
               <div class="logo-icon">MN</div>
-              Portal Salud Consultas
+              Portal Salud
             </a>
             <p>
-              Simplificando la gestión médica en todo el mundo mediante
-              tecnología de vanguardia.
+              Software de gestión para clínicas desarrollado por MN Design Web
+              desde Cocentaina (Alicante) para centros de toda España.
             </p>
             <a
               href="https://portalsalud-academia.mndesignweb.es/"
-              class="btn btn-primary">Ver demostración</a
+              target="_blank"
+              rel="noopener"
+              class="btn btn-primary">Ver la demo</a
             >
           </div>
 
@@ -1589,7 +1672,7 @@ import "./style.css";
             <ul>
               <li><a href="#facturacion">Facturación</a></li>
               <li><a href="#agenda">Agenda y Admisión</a></li>
-              <li><a href="#historial">Historial Clínico</a></li>
+              <li><a href="#historial">Portal del paciente</a></li>
               <li><a href="#inversion">Planes y Precios</a></li>
             </ul>
           </div>
@@ -1621,9 +1704,7 @@ import "./style.css";
                 <a href="https://mndesignweb.es/nosotros/">Sobre nosotros</a>
               </li>
               <li>
-                <a href="http://mndesignweb.es/digitalizatuconsulta#contacto"
-                  >Contacto</a
-                >
+                <a href="#solicitar-auditoria">Contacto</a>
               </li>
               <li>
                 <a href="https://mndesignweb.es/aviso-legal/">Aviso Legal</a>
@@ -1632,6 +1713,9 @@ import "./style.css";
                 <a href="https://mndesignweb.es/privacidad/"
                   >Política de Privacidad</a
                 >
+              </li>
+              <li>
+                <a href="https://mndesignweb.es/cookies/">Política de Cookies</a>
               </li>
             </ul>
           </div>
@@ -1759,8 +1843,10 @@ import "./style.css";
           ".mobile-link, .mobile-cta-btn",
         );
 
-        menuBtn?.addEventListener("click", () => {
+        menuBtn?.addEventListener("click", (e) => {
+          e.stopPropagation();
           mobileDropdown.classList.toggle("open");
+          menuBtn.setAttribute("aria-expanded", String(mobileDropdown.classList.contains("open")));
           if (mobileDropdown.classList.contains("open")) {
             menuBtn.innerHTML =
               '<svg viewBox="0 0 24 24" width="26" height="26" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>';
@@ -1770,12 +1856,20 @@ import "./style.css";
           }
         });
 
-        mobileLinks.forEach((link) => {
-          link.addEventListener("click", () => {
-            mobileDropdown.classList.remove("open");
-            menuBtn.innerHTML =
-              '<svg viewBox="0 0 24 24" width="26" height="26" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>';
-          });
+        const closeMenu = () => {
+          if (!mobileDropdown?.classList.contains("open")) return;
+          mobileDropdown.classList.remove("open");
+          menuBtn.setAttribute("aria-expanded", "false");
+          menuBtn.innerHTML =
+            '<svg viewBox="0 0 24 24" width="26" height="26" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>';
+        };
+        mobileLinks.forEach((link) => link.addEventListener("click", closeMenu));
+        // Cerrar al tocar fuera del menú o con la tecla Escape
+        document.addEventListener("click", (e) => {
+          if (mobileDropdown && !mobileDropdown.contains(e.target)) closeMenu();
+        });
+        document.addEventListener("keydown", (e) => {
+          if (e.key === "Escape") closeMenu();
         });
 
         // ==========================================
@@ -1824,11 +1918,14 @@ import "./style.css";
 
             const data = {
               access_key: "1bc2d285-71cb-4fe3-806f-530066ab6e15",
-              subject: "Nuevo Lead: Portal Salud Consultas",
+              subject: "Nuevo Lead: Portal Salud Clínicas",
               nombre: document.getElementById("nombre").value,
+              clinica: document.getElementById("clinica").value,
+              profesionales: document.getElementById("profesionales").value,
               email: document.getElementById("email").value,
               telefono: document.getElementById("telefono").value,
               mensaje: document.getElementById("mensaje").value,
+              privacidad: "Aceptada",
             };
 
             Promise.all([
@@ -1859,11 +1956,11 @@ import "./style.css";
                     });
                   if (typeof fbq === "function") fbq("track", "Lead");
                   if (typeof clarity === "function")
-                    clarity("set", "lead", "portal_salud_consultas");
+                    clarity("set", "lead", "portal_salud_clinicas");
 
                   mostrarToast(
                     "¡Solicitud recibida con éxito!",
-                    "Analizaré tu caso personalmente y te contactaré muy pronto con los siguientes pasos.",
+                    "Analizaremos tu caso y te contactaremos muy pronto para preparar el diagnóstico.",
                   );
 
                   formAuditoria.reset();
@@ -1880,7 +1977,7 @@ import "./style.css";
                 );
               })
               .finally(() => {
-                btn.innerHTML = "Enviar solicitud";
+                btn.innerHTML = "Solicitar diagnóstico";
                 btn.disabled = false;
               });
           });
@@ -1913,6 +2010,8 @@ import "./style.css";
           if (typeof fbq === "function") {
             fbq("consent", "grant");
           }
+          // Clarity no se carga sin consentimiento: lo cargamos ahora
+          if (typeof window.loadClarity === "function") window.loadClarity();
 
           mostrarToast(
             "¡Preferencias guardadas!",
@@ -1923,6 +2022,15 @@ import "./style.css";
         declineBtn?.addEventListener("click", () => {
           localStorage.setItem("cookie_consent", "declined");
           if (cookieBanner) cookieBanner.style.display = "none";
+          if (typeof gtag === "function") {
+            gtag("consent", "update", {
+              ad_storage: "denied",
+              ad_user_data: "denied",
+              ad_personalization: "denied",
+              analytics_storage: "denied",
+            });
+          }
+          if (typeof fbq === "function") fbq("consent", "revoke");
           mostrarToast(
             "Preferencias guardadas",
             "Has rechazado las cookies opcionales.",
