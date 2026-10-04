@@ -380,9 +380,12 @@ const schema = {
 
 <!doctype html>
 <html lang="es">
- <head>
+  <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
     <title>{seoTitle}</title>
     <meta name="description" content={seoDescription} />
     <meta name="theme-color" content="#EAF4FF" />
@@ -393,21 +396,33 @@ const schema = {
     <!-- Fuentes del nuevo diseño (Inter) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@600;700;800&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
 
     <!-- Open Graph / Redes Sociales -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://mndesignweb.es/psicologos/" />
     <meta property="og:title" content={seoTitle} />
     <meta property="og:description" content={socialDescription} />
-    <meta property="og:image" content="https://mndesignweb.es/psicologos/imagen-miniatura-psicologos.webp" />
+    <meta
+      property="og:image"
+      content="https://mndesignweb.es/psicologos/imagen-miniatura-psicologos.webp"
+    />
     <meta property="og:locale" content="es_ES" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:url" content="https://mndesignweb.es/psicologos/" />
     <meta name="twitter:title" content={seoTitle} />
     <meta name="twitter:description" content={socialDescription} />
-    <meta name="twitter:image" content="https://mndesignweb.es/psicologos/imagen-miniatura-psicologos.webp" />
+    <meta
+      name="twitter:image"
+      content="https://mndesignweb.es/psicologos/imagen-miniatura-psicologos.webp"
+    />
 
     <!-- JS para activar animaciones -->
     <script is:inline>
@@ -415,39 +430,74 @@ const schema = {
     </script>
 
     <!-- Schema.org -->
-    <script type="application/ld+json" is:inline set:html={JSON.stringify(schema)} />
+    <script
+      type="application/ld+json"
+      is:inline
+      set:html={JSON.stringify(schema)}
+    />
 
     <!-- Google Analytics -->
     <script is:inline>
       window.dataLayer = window.dataLayer || [];
-      function gtag() { dataLayer.push(arguments); }
+      function gtag() {
+        dataLayer.push(arguments);
+      }
       var localConsent = localStorage.getItem("cookie_consent");
       if (localConsent === "accepted") {
         gtag("consent", "default", {
-          ad_storage: "granted", ad_user_data: "granted", ad_personalization: "granted", analytics_storage: "granted",
+          ad_storage: "granted",
+          ad_user_data: "granted",
+          ad_personalization: "granted",
+          analytics_storage: "granted",
         });
       } else {
         gtag("consent", "default", {
-          ad_storage: "denied", ad_user_data: "denied", ad_personalization: "denied", analytics_storage: "denied", wait_for_update: 500,
+          ad_storage: "denied",
+          ad_user_data: "denied",
+          ad_personalization: "denied",
+          analytics_storage: "denied",
+          wait_for_update: 500,
         });
       }
       gtag("js", new Date());
       gtag("config", "G-36WYJMYT3Z");
     </script>
-    <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-36WYJMYT3Z"></script>
+    <script
+      is:inline
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-36WYJMYT3Z"></script>
 
     <!-- Facebook Pixel -->
     <script is:inline>
       !(function (f, b, e, v, n, t, s) {
         if (f.fbq) return;
-        n = f.fbq = function () { n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments); };
+        n = f.fbq = function () {
+          n.callMethod
+            ? n.callMethod.apply(n, arguments)
+            : n.queue.push(arguments);
+        };
         if (!f._fbq) f._fbq = n;
-        n.push = n; n.loaded = !0; n.version = "2.0"; n.queue = [];
-        t = b.createElement(e); t.async = !0; t.src = v;
-        s = b.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t, s);
-      })(window, document, "script", "https://connect.facebook.net/en_US/fbevents.js");
+        n.push = n;
+        n.loaded = !0;
+        n.version = "2.0";
+        n.queue = [];
+        t = b.createElement(e);
+        t.async = !0;
+        t.src = v;
+        s = b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t, s);
+      })(
+        window,
+        document,
+        "script",
+        "https://connect.facebook.net/en_US/fbevents.js",
+      );
       var localConsent = localStorage.getItem("cookie_consent");
-      if (localConsent !== "accepted") { fbq("consent", "revoke"); } else { fbq("consent", "grant"); }
+      if (localConsent !== "accepted") {
+        fbq("consent", "revoke");
+      } else {
+        fbq("consent", "grant");
+      }
       fbq("init", "1627135808585120");
       fbq("track", "PageView");
     </script>
@@ -457,9 +507,16 @@ const schema = {
       var localConsent = localStorage.getItem("cookie_consent");
       if (localConsent === "accepted") {
         (function (c, l, a, r, i, t, y) {
-          c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments); };
-          t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
-          y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+          c[a] =
+            c[a] ||
+            function () {
+              (c[a].q = c[a].q || []).push(arguments);
+            };
+          t = l.createElement(r);
+          t.async = 1;
+          t.src = "https://www.clarity.ms/tag/" + i;
+          y = l.getElementsByTagName(r)[0];
+          y.parentNode.insertBefore(t, y);
         })(window, document, "clarity", "script", "wuzaxaifa0");
         clarity("consent");
       }
@@ -571,14 +628,15 @@ const schema = {
       <section class="hero">
         <div class="wrap">
           <h1 class="rv" style="--d:.08s">
-            Tu propio software para psicólogos para que vuelvas a <span class="grad"
-              >centrarte en terapia</span
+            Tu propio software para psicólogos para que vuelvas a <span
+              class="grad">centrarte en terapia</span
             >
           </h1>
           <p class="sub rv" style="--d:.16s">
-            Construimos tu web con una plataforma de pacientes a medida integrada:
-            agenda online, terapia online cifrada y cobros en tu propio software
-            de gestión. Sin cuotas a terceros y con RGPD incluido.
+            Construimos tu web con una plataforma de pacientes a medida
+            integrada: agenda online, terapia online cifrada y cobros en tu
+            propio software de gestión. Sin cuotas a terceros y con RGPD
+            incluido.
           </p>
           <div class="cta-row rv" style="--d:.24s">
             <a class="btn btn-main" href="#contacto">
@@ -661,7 +719,9 @@ const schema = {
             <div class="stage-fade" aria-hidden="true"></div>
           </div>
 
-          <p class="ticker-t">Todo lo que incluye tu software para psicólogos</p>
+          <p class="ticker-t">
+            Todo lo que incluye tu software para psicólogos
+          </p>
           <div class="marquee" aria-hidden="true">
             <div class="track">
               {
@@ -680,7 +740,10 @@ const schema = {
       <!-- HTML-3 · TIRA DE LOGOS (PLACEHOLDERS: sustituir por logos reales con permiso) -->
       <div class="logos">
         <div class="wrap">
-          <p>Consultas de psicología y centros de salud mental que ya trabajan con su agenda automatizada</p>
+          <p>
+            Consultas de psicología y centros de salud mental que ya trabajan
+            con su agenda automatizada
+          </p>
           <div class="marquee">
             <div class="track reverse">
               {
@@ -777,8 +840,9 @@ const schema = {
             }
           </div>
           <p class="bridge rv">
-            Todo esto se resuelve con una web y un software propios. <span class="grad"
-              >Así es como la construimos.</span>
+            Todo esto se resuelve con una web y un software propios. <span
+              class="grad">Así es como la construimos.</span
+            >
           </p>
         </div>
       </section>
@@ -837,7 +901,8 @@ const schema = {
                     >
                     <div>
                       <b>Mañana, 11:30</b><span
-                        >Tu sesión con Laura. ¿Confirmas?</span>
+                        >Tu sesión con Laura. ¿Confirmas?</span
+                      >
                     </div>
                   </div>
                   <div class="noti">
@@ -998,8 +1063,8 @@ const schema = {
               >
               <h3>Tu software, sin cuotas a terceros</h3>
               <p>
-                La plataforma de pacientes vive en tu web: es tuya, está cifrada y
-                no dependes de herramientas externas.
+                La plataforma de pacientes vive en tu web: es tuya, está cifrada
+                y no dependes de herramientas externas.
               </p>
             </article>
           </div>
@@ -1013,7 +1078,8 @@ const schema = {
             <span class="eyebrow rv">Consulta digital</span>
             <h2 class="rv">
               Un software para psicólogos que <span class="grad"
-                >trabaja mientras tú atiendes</span>
+                >trabaja mientras tú atiendes</span
+              >
             </h2>
             <p class="lead rv">
               Tu plataforma de pacientes a medida, integrada en tu web: cada
@@ -1201,7 +1267,8 @@ const schema = {
                   >
                   <div>
                     <b>Recordatorio · 24 h antes</b><span
-                      >Enviado a laura@… ✓</span>
+                      >Enviado a laura@… ✓</span
+                    >
                   </div>
                 </div>
                 <div class="noti">
@@ -1210,7 +1277,8 @@ const schema = {
                   >
                   <div>
                     <b>WhatsApp · 2 h antes</b><span
-                      >Confirmada por el paciente ✓</span>
+                      >Confirmada por el paciente ✓</span
+                    >
                   </div>
                 </div>
               </div>
@@ -1289,7 +1357,8 @@ const schema = {
             <span class="eyebrow rv">Proceso</span>
             <h2 class="rv">
               Trabajamos contigo, <span class="grad"
-                >no te entregamos una plantilla</span>
+                >no te entregamos una plantilla</span
+              >
             </h2>
             <p class="lead rv">
               Un proceso claro, con una persona al otro lado de principio a fin.
@@ -1343,7 +1412,8 @@ const schema = {
           </div>
           <p class="tl-count" aria-live="polite">
             Paso <b id="tl-now">1</b> de {steps.length} · Web funcionando en <b
-              >3-5 semanas</b>
+              >3-5 semanas</b
+            >
           </p>
         </div>
       </section>
@@ -1354,7 +1424,8 @@ const schema = {
           <span class="eyebrow rv">Planes</span>
           <h2 class="rv">
             Empieza pequeño y <span class="grad"
-              >crece cuando tu consulta lo pida</span>
+              >crece cuando tu consulta lo pida</span
+            >
           </h2>
           <p class="lead rv">
             No necesitas una gran inversión inicial. Empieza con tu web de
@@ -1434,11 +1505,17 @@ const schema = {
           <div class="plan-extras rv">
             <div class="px">
               <span class="ico-box"
-                ><svg class="i" viewBox="0 0 24 24" set:html={ic.shield} /></span
+                ><svg
+                  class="i"
+                  viewBox="0 0 24 24"
+                  set:html={ic.shield}
+                /></span
               >
               <div>
                 <b>Mantenimiento activo · 65 €/mes</b>
-                <span>Seguridad, copias diarias y pequeños cambios incluidos.</span>
+                <span
+                  >Seguridad, copias diarias y pequeños cambios incluidos.</span
+                >
               </div>
             </div>
             <div class="px">
@@ -1447,7 +1524,9 @@ const schema = {
               >
               <div>
                 <b>Auditorías · desde 30 €</b>
-                <span>Revisamos tu web actual: velocidad, SEO local y RGPD.</span>
+                <span
+                  >Revisamos tu web actual: velocidad, SEO local y RGPD.</span
+                >
               </div>
             </div>
           </div>
@@ -1468,7 +1547,8 @@ const schema = {
           <span class="eyebrow rv">Opiniones</span>
           <h2 class="rv">
             Psicólogos que ya trabajan con <span class="grad"
-              >su agenda automatizada</span>
+              >su agenda automatizada</span
+            >
           </h2>
           <p class="lead rv">
             Valoraciones reales en Google y webs que puedes abrir ahora mismo.
@@ -1511,7 +1591,8 @@ const schema = {
                 <span class="g"><span>G</span></span>
                 <div>
                   <b>Reseñas verificadas</b><br /><span
-                    style="color:var(--muted)">Publicadas en Google</span>
+                    style="color:var(--muted)">Publicadas en Google</span
+                  >
                 </div>
               </div>
             </div>
@@ -1641,7 +1722,8 @@ const schema = {
             <span class="eyebrow rv">Quiénes somos</span>
             <h2 class="rv">
               Un equipo cercano que <span class="grad"
-                >entiende tu consulta</span>
+                >entiende tu consulta</span
+              >
             </h2>
             <p class="rv">
               Somos MN Design Web, un estudio de diseño y desarrollo en
@@ -1731,7 +1813,8 @@ const schema = {
             <span class="eyebrow rv">Llamada gratuita</span>
             <h2 class="rv">
               Empieza con una llamada gratuita <span class="grad"
-                >de 30 minutos</span>
+                >de 30 minutos</span
+              >
             </h2>
             <p class="lead rv">
               Nos cuentas cómo trabajas en tu consulta y te decimos qué
@@ -1741,7 +1824,19 @@ const schema = {
               <!-- Botón Email -->
               <a href="mailto:info@mndesignweb.es" class="dc-card dc-mail">
                 <div class="dc-icon">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
+                  <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    ><rect width="20" height="16" x="2" y="4" rx="2"
+                    ></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"
+                    ></path></svg
+                  >
                 </div>
                 <div class="dc-content">
                   <span class="dc-label">Escríbenos</span>
@@ -1752,7 +1847,19 @@ const schema = {
               <!-- Botón Teléfono -->
               <a href="tel:+34645854934" class="dc-card dc-phone">
                 <div class="dc-icon">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                  <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    ><path
+                      d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"
+                    ></path></svg
+                  >
                 </div>
                 <div class="dc-content">
                   <span class="dc-label">Llámanos ahora</span>
@@ -1761,9 +1868,27 @@ const schema = {
               </a>
 
               <!-- Botón WhatsApp -->
-              <a href="https://wa.me/34645854934?text=Hola,%20me%20gustaría%20hablar%20sobre%20un%20proyecto%20web." target="_blank" rel="noopener noreferrer" class="dc-card dc-wa">
+              <a
+                href="https://wa.me/34645854934?text=Hola,%20me%20gustaría%20hablar%20sobre%20un%20proyecto%20web."
+                target="_blank"
+                rel="noopener noreferrer"
+                class="dc-card dc-wa"
+              >
                 <div class="dc-icon">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9L3 21"></path><path d="M9 10a.5.5 0 0 0 1 0V9a.5.5 0 0 0-1 0v1a5 5 0 0 0 5 5h1a.5.5 0 0 0 0-1h-1a.5.5 0 0 0 0 1"></path></svg>
+                  <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    ><path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9L3 21"
+                    ></path><path
+                      d="M9 10a.5.5 0 0 0 1 0V9a.5.5 0 0 0-1 0v1a5 5 0 0 0 5 5h1a.5.5 0 0 0 0-1h-1a.5.5 0 0 0 0 1"
+                    ></path></svg
+                  >
                 </div>
                 <div class="dc-content">
                   <span class="dc-label">Chat directo</span>
@@ -1795,7 +1920,11 @@ const schema = {
             <div class="cgrid">
               <div class="rv">
                 <!-- Cal.com inline: lo monta JS-7 al acercarse a la sección (mide las reservas) -->
-                <div class="cal" id="cal-inline" aria-label="Reserva tu llamada">
+                <div
+                  class="cal"
+                  id="cal-inline"
+                  aria-label="Reserva tu llamada"
+                >
                 </div>
                 <p class="cal-alt">
                   ¿No ves el calendario? <a
@@ -1825,9 +1954,7 @@ const schema = {
                   />
                 </div>
                 <div>
-                  <label for="telefono"
-                    >Teléfono </label
-                  >
+                  <label for="telefono">Teléfono </label>
                   <input
                     id="telefono"
                     type="tel"
@@ -1844,8 +1971,7 @@ const schema = {
                     id="mensaje"
                     rows="3"
                     placeholder="Ej.: trabajo sola, hago terapia online y pierdo mucho tiempo cuadrando citas por WhatsApp."
-                    required
-                  ></textarea>
+                    required></textarea>
                 </div>
                 <label class="chk">
                   <input id="privacidad" type="checkbox" required />
@@ -1865,14 +1991,14 @@ const schema = {
                   />
                 </button>
                 <p class="ok-msg" id="ok-msg">
-                  ¡Recibido! Analizamos tu caso y te escribimos
-                  en menos de 24 h.
+                  ¡Recibido! Analizamos tu caso y te escribimos en menos de 24
+                  h.
                 </p>
                 <!-- Primera capa de información RGPD (art. 13 RGPD y art. 11 LOPDGDD) -->
                 <p class="rgpd-info">
                   <b>Responsable:</b> MN Design Web. <b>Finalidad:</b> responder a
                   tu solicitud. <b>Legitimación:</b> tu consentimiento.{" "}
-                   <a
+                  <a
                     href="https://mndesignweb.es/privacidad/"
                     target="_blank"
                     rel="noopener">política de privacidad</a
@@ -1885,14 +2011,19 @@ const schema = {
             <div class="magnet rv">
               <div class="magnet-txt">
                 <span class="ico-box"
-                  ><svg class="i" viewBox="0 0 24 24" set:html={ic.file} /></span
+                  ><svg
+                    class="i"
+                    viewBox="0 0 24 24"
+                    set:html={ic.file}
+                  /></span
                 >
                 <div>
                   <h3>¿Aún no estás listo para hablar?</h3>
                   <p>
-                    Descarga gratis el <b>Checklist RGPD para consultas de
-                    psicología</b>: 15 puntos para comprobar en 10 minutos si
-                    tu consulta cumple con los datos de tus pacientes.
+                    Descarga gratis el <b
+                      >Checklist RGPD para consultas de psicología</b
+                    >: 15 puntos para comprobar en 10 minutos si tu consulta
+                    cumple con los datos de tus pacientes.
                   </p>
                 </div>
               </div>
@@ -1917,8 +2048,7 @@ const schema = {
                       href="https://mndesignweb.es/privacidad/"
                       target="_blank"
                       rel="noopener">política de privacidad</a
-                    >. Usaremos tu email solo para enviarte el
-                    checklist.</span
+                    >. Usaremos tu email solo para enviarte el checklist.</span
                   >
                 </label>
                 <p class="ok-msg" id="ok-checklist">
@@ -1935,22 +2065,133 @@ const schema = {
       </section>
     </main>
 
-    <!-- HTML-12 · FOOTER -->
-    <footer>
-      <div class="wrap">
-        <a class="logo" href="#"><i>MN</i><span>Design Web</span></a>
-        <nav aria-label="Contacto">
-          <a href="tel:+34645854934">+34 645 854 934</a>
-          <a href="mailto:info@mndesignweb.es">info@mndesignweb.es</a>
-          <span>Passeig del Comtat, 75, 5º 1º · 03820 Cocentaina</span>
-        </nav>
-        <nav aria-label="Legal">
-          <a href="https://mndesignweb.es/aviso-legal/">Aviso legal</a>
-          <a href="https://mndesignweb.es/privacidad/">Privacidad</a>
-          <a href="https://mndesignweb.es/cookies/">Cookies</a>
-          <a href="https://mndesignweb.es/cookies/" onclick="if (localStorage.getItem('cookie_consent') === 'accepted') { localStorage.removeItem('cookie_consent'); location.reload(); } else { document.getElementById('cookie-banner').style.display = 'flex'; } return false;">Configurar cookies</a>
-          <span>© MN Design Web</span>
-        </nav>
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-grid">
+          <!-- Columna 1: Marca y Contacto -->
+          <div class="footer-brand">
+            <a class="logo" href="#" aria-label="MN Design Web, volver arriba">
+              <i>MN</i>
+              <span>Design Web</span>
+            </a>
+            <p>
+              Diseño web y estrategias digitales para psicólogos y profesionales de la salud mental.
+            </p>
+            <div class="contact-info">
+              <a href="tel:+34645854934">+34 645 854 934</a>
+              <a href="mailto:info@mndesignweb.es">info@mndesignweb.es</a>
+              <span>Passeig del Comtat, 75, 5º 1º · 03820 Cocentaina</span>
+            </div>
+          </div>
+
+          <!-- Columna 2: Servicios -->
+          <div class="footer-col">
+            <h4>Servicios</h4>
+            <ul>
+              <li><a href="https://mndesignweb.es/psicologos/#funciones">Funciones</a></li>
+              <li><a href="https://mndesignweb.es/psicologos/#proceso">Proceso</a></li>
+              <li><a href="https://mndesignweb.es/psicologos/#planes">Planes</a></li>
+              <li><a href="https://mndesignweb.es/psicologos/#opiniones">Opiniones</a></li>
+            </ul>
+          </div>
+
+          <!-- Columna 3: Recursos (Adaptado de tu ejemplo) -->
+          <div class="footer-col">
+            <h4>Recursos</h4>
+            <ul>
+              <li><a href="https://mndesignweb.es/blog/">Blog</a></li>
+              <li><a href="https://mndesignweb.es/nutricionistas/">Nutricionistas</a></li>
+              <li><a href="https://mndesignweb.es/clinicas/">Clinicas</a></li>
+              <li><a href="https://mndesignweb.es/academia-nutricion/">Academias E-Learning</a></li>
+            </ul>
+          </div>
+
+          <!-- Columna 4: Legal -->
+          <div class="footer-col">
+            <h4>Compañía</h4>
+            <ul>
+              <li>
+                <a href="https://mndesignweb.es/aviso-legal/">Aviso Legal</a>
+              </li>
+              <li>
+                <a href="https://mndesignweb.es/privacidad/">Privacidad</a>
+              </li>
+              <li><a href="https://mndesignweb.es/cookies/">Cookies</a></li>
+              <li><a href="https://mndesignweb.es/cookies/" onclick="if (localStorage.getItem('cookie_consent') === 'accepted') { localStorage.removeItem('cookie_consent'); location.reload(); } else { document.getElementById('cookie-banner').style.display = 'flex'; } return false;">Configurar cookies</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <div class="copyright">
+            &copy; 2026 MN Design Web. Todos los derechos reservados.
+          </div>F
+          <div class="social-icons">
+            <a
+              href="https://www.facebook.com/people/MN-Design-Web/61588142654941/?locale=es_ES"
+              aria-label="Facebook"
+              ><svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                ><path
+                  d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"
+                ></path></svg
+              ></a
+            >
+            <a
+              href="https://www.instagram.com/mndesignweb/"
+              aria-label="Instagram"
+              ><svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                ><rect x="2" y="2" width="20" height="20" rx="5" ry="5"
+                ></rect><path
+                  d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"
+                ></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"
+                ></line></svg
+              ></a
+            >
+            <a
+              href="https://www.linkedin.com/in/mar%C3%ADa-nadal-masi%C3%A1-080a77315/"
+              aria-label="LinkedIn"
+              ><svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                ><path
+                  d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"
+                ></path><rect x="2" y="9" width="4" height="12"></rect><circle
+                  cx="4"
+                  cy="4"
+                  r="2"></circle></svg
+              ></a
+            >
+            <a href="https://github.com/MNMRYK" aria-label="GitHub"
+              ><svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                ><path
+                  d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"
+                ></path></svg
+              ></a
+            >
+          </div>
+        </div>
       </div>
     </footer>
 
@@ -1989,10 +2230,18 @@ const schema = {
         </p>
       </div>
       <div class="cookie-actions">
-        <button id="btn-decline-cookies" class="btn btn-ghost btn-sm" type="button">
+        <button
+          id="btn-decline-cookies"
+          class="btn btn-ghost btn-sm"
+          type="button"
+        >
           Rechazar
         </button>
-        <button id="btn-accept-cookies" class="btn btn-main btn-sm" type="button">
+        <button
+          id="btn-accept-cookies"
+          class="btn btn-main btn-sm"
+          type="button"
+        >
           Permitir
         </button>
       </div>
@@ -2258,15 +2507,21 @@ const schema = {
             .then(function (result) {
               if (!result.success) throw new Error("Error en el envío");
               // Copia a Make sin bloquear la descarga si falla
-              fetch("https://hook.eu1.make.com/mxvqg7gwne43yab165v2uhtyw5yh115r", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(data),
-              }).catch(function () {});
+              fetch(
+                "https://hook.eu1.make.com/mxvqg7gwne43yab165v2uhtyw5yh115r",
+                {
+                  method: "POST",
+                  headers: { "Content-Type": "application/json" },
+                  body: JSON.stringify(data),
+                },
+              ).catch(function () {});
 
               if (typeof gtag === "function")
-                gtag("event", "download_checklist", { method: "checklist_rgpd" });
-              if (typeof fbq === "function") fbq("track", "Lead", { content_name: "Checklist RGPD" });
+                gtag("event", "download_checklist", {
+                  method: "checklist_rgpd",
+                });
+              if (typeof fbq === "function")
+                fbq("track", "Lead", { content_name: "Checklist RGPD" });
 
               document.getElementById("ok-checklist").style.display = "block";
               formCheck.reset();
@@ -2292,30 +2547,36 @@ const schema = {
           if (loaded) return;
           loaded = true;
           (function (C, A, L) {
-            var p = function (a, ar) { a.q.push(ar); };
-            var d = C.document;
-            C.Cal = C.Cal || function () {
-              var cal = C.Cal;
-              var ar = arguments;
-              if (!cal.loaded) {
-                cal.ns = {};
-                cal.q = cal.q || [];
-                d.head.appendChild(d.createElement("script")).src = A;
-                cal.loaded = true;
-              }
-              if (ar[0] === L) {
-                var api = function () { p(api, arguments); };
-                var namespace = ar[1];
-                api.q = api.q || [];
-                if (typeof namespace === "string") {
-                  cal.ns[namespace] = cal.ns[namespace] || api;
-                  p(cal.ns[namespace], ar);
-                  p(cal, ["initNamespace", namespace]);
-                } else p(cal, ar);
-                return;
-              }
-              p(cal, ar);
+            var p = function (a, ar) {
+              a.q.push(ar);
             };
+            var d = C.document;
+            C.Cal =
+              C.Cal ||
+              function () {
+                var cal = C.Cal;
+                var ar = arguments;
+                if (!cal.loaded) {
+                  cal.ns = {};
+                  cal.q = cal.q || [];
+                  d.head.appendChild(d.createElement("script")).src = A;
+                  cal.loaded = true;
+                }
+                if (ar[0] === L) {
+                  var api = function () {
+                    p(api, arguments);
+                  };
+                  var namespace = ar[1];
+                  api.q = api.q || [];
+                  if (typeof namespace === "string") {
+                    cal.ns[namespace] = cal.ns[namespace] || api;
+                    p(cal.ns[namespace], ar);
+                    p(cal, ["initNamespace", namespace]);
+                  } else p(cal, ar);
+                  return;
+                }
+                p(cal, ar);
+              };
           })(window, "https://app.cal.com/embed/embed.js", "init");
 
           Cal("init", "llamada", { origin: "https://cal.com" });
@@ -2324,7 +2585,10 @@ const schema = {
             calLink: "mndesignweb/reunion-30-min",
             config: { layout: "month_view" },
           });
-          Cal.ns.llamada("ui", { hideEventTypeDetails: false, layout: "month_view" });
+          Cal.ns.llamada("ui", {
+            hideEventTypeDetails: false,
+            layout: "month_view",
+          });
 
           // Conversión principal: reserva completada. Cal.com emite el evento
           // antiguo y el V2; escuchamos los dos y solo contamos una vez.
@@ -2335,10 +2599,17 @@ const schema = {
             if (typeof gtag === "function")
               gtag("event", "book_call", { method: "cal_com" });
             if (typeof fbq === "function") fbq("track", "Schedule");
-            if (typeof clarity === "function") clarity("set", "lead", "llamada");
+            if (typeof clarity === "function")
+              clarity("set", "lead", "llamada");
           }
-          Cal.ns.llamada("on", { action: "bookingSuccessfulV2", callback: onBooked });
-          Cal.ns.llamada("on", { action: "bookingSuccessful", callback: onBooked });
+          Cal.ns.llamada("on", {
+            action: "bookingSuccessfulV2",
+            callback: onBooked,
+          });
+          Cal.ns.llamada("on", {
+            action: "bookingSuccessful",
+            callback: onBooked,
+          });
         }
 
         if ("IntersectionObserver" in window) {
@@ -2364,12 +2635,17 @@ const schema = {
         var href = a.getAttribute("href");
         var tipo = null;
         if (href.indexOf("tel:") === 0) tipo = "phone";
-        else if (href.indexOf("wa.me") !== -1 || href.indexOf("whatsapp") !== -1) tipo = "whatsapp";
+        else if (
+          href.indexOf("wa.me") !== -1 ||
+          href.indexOf("whatsapp") !== -1
+        )
+          tipo = "whatsapp";
         else if (href.indexOf("mailto:") === 0) tipo = "email";
         if (!tipo) return;
         if (typeof gtag === "function")
           gtag("event", "click_" + tipo, { link_url: href });
-        if (typeof fbq === "function") fbq("track", "Contact", { content_name: tipo });
+        if (typeof fbq === "function")
+          fbq("track", "Contact", { content_name: tipo });
       });
 
       /* JS-6 · Lógica del banner de cookies */
