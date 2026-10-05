@@ -1776,11 +1776,142 @@ details[open] summary::after {
 }
 
 /* ========================================= */
+/* --- BANNER DE COOKIES (Estilo SaaS Mesh) --- */
 /* ========================================= */
+.cookie-card-uiverse {
+  position: fixed;
+  bottom: 30px;
+  left: 30px;
+  z-index: 10000;
+  width: 100%;
+  max-width: 340px;
+  border-radius: 28px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  overflow: hidden;
+  padding: 6px; /* Espacio para que el degradado luzca en los bordes */
+  animation: slideUpCookie 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes slideUpCookie {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
 
 /* Fondo degradado translúcido idéntico al Hero */
+.cookie-bg-gradient {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background:
+    radial-gradient(
+      circle at 10% 40%,
+      rgba(166, 195, 248, 0.918) 0%,
+      transparent 50%
+    ),
+    radial-gradient(circle at 90% 40%, rgba(251, 230, 243) 0%, transparent 50%),
+    linear-gradient(to bottom, transparent 50%, #ffffff 85%);
+  filter: blur(40px);
+  z-index: 0;
+  pointer-events: none;
+}
 
 /* Caja de contenido interior (Efecto Cristal Nítido) */
+.cookie-content {
+  position: relative;
+  z-index: 1;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-radius: 22px;
+  border: 1px solid rgba(255, 255, 255, 1);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+#cookieSvg {
+  width: 36px;
+  height: 36px;
+  fill: var(--primary-dark); /* Galleta en negro corporativo o azul */
+}
+
+.cookieHeading {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--primary-dark);
+  margin: 0;
+  letter-spacing: -0.5px;
+}
+
+.cookieDescription {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.cookielink {
+  color: #3b82f6; /* Azul corporativo SaaS */
+  text-decoration: underline;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.cookielink:hover {
+  color: var(--primary-dark);
+}
+
+.buttonContainer {
+  display: flex;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+.acceptButton {
+  flex: 1;
+  background-color: var(--primary-dark);
+  color: #ffffff;
+  border: none;
+  padding: 12px 0;
+  border-radius: 10px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.acceptButton:hover {
+  background-color: #27272a;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.declineButton {
+  flex: 1;
+  background-color: var(--surface-color);
+  color: var(--text-main);
+  border: 1px solid var(--border-color);
+  padding: 12px 0;
+  border-radius: 10px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.declineButton:hover {
+  background-color: #e4e4e7;
+}
 
 /* ========================================= */
 /* --- TOAST NOTIFICATIONS --- */
@@ -1823,6 +1954,14 @@ details[open] summary::after {
 }
 
 /* Responsive para móvil pequeño */
+@media (max-width: 600px) {
+  .cookie-card-uiverse {
+    bottom: 16px;
+    left: 16px;
+    right: 16px;
+    max-width: calc(100% - 32px);
+  }
+}
 
 /* =========================================
    RESPONSIVE (MÓVIL Y TABLET SEGURO)

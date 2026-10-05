@@ -1993,6 +1993,102 @@ html {
   box-sizing: border-box;
 }
 
+
+/* ==========================================
+   8. COOKIE BANNER PREMIUM (Adaptado B2B)
+========================================== */
+.cookie-card-uiverse {
+  position: fixed;
+  bottom: 24px;
+  left: 24px;
+  max-width: 360px;
+  background: linear-gradient(
+    135deg,
+    #080f1e 0%,
+    #0f172a 50%,
+    var(--accent) 100%
+  );
+  color: var(--white);
+  padding: 24px;
+  border-radius: 16px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+#cookieSvg {
+  width: 36px;
+  height: 36px;
+  fill: #598eff; 
+}
+
+.cookieHeading {
+  font-size: 1.25rem;
+  font-weight: 800;
+  margin: 0;
+  color: var(--white);
+  font-family: var(--font-titulos);
+}
+
+.cookieDescription {
+  font-size: 0.9rem;
+  opacity: 0.85;
+  margin: 0;
+  line-height: 1.6;
+}
+
+.cookielink {
+  color: #93c5fd; 
+  text-decoration: underline;
+  font-weight: 600;
+  transition: opacity 0.3s ease;
+}
+
+.cookielink:hover {
+  opacity: 0.8;
+}
+
+.buttonContainer {
+  display: flex;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.acceptButton,
+.declineButton {
+  flex: 1;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: inherit;
+}
+
+.acceptButton {
+  background-color: var(--white);
+  color: var(--accent);
+}
+
+.acceptButton:hover {
+  background-color: var(--accent-light);
+  transform: translateY(-2px);
+}
+
+.declineButton {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: var(--white);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.declineButton:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
 /* ==========================================
    TOAST NOTIFICACIONES NATIVAS
 ========================================== */
@@ -2271,6 +2367,18 @@ html {
 
   .cta-final-box h2 {
     margin-top: 0px;
+  }
+
+  .cookie-card-uiverse {
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    max-width: 100%;
+    border-radius: 20px 20px 0 0;
+    border-left: none;
+    border-right: none;
+    border-bottom: none;
+    padding: 20px 20px 30px 20px; 
   }
 }
 
