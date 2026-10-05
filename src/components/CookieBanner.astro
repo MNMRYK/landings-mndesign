@@ -45,6 +45,41 @@
     } catch (e) {}
     if (!decision) mostrar();
 
+    // Cookies y almacenamiento de GA4 (_ga, _ga_*, _gid, _gat*, _gcl_*), Clarity (_clck, _clsk)
+    // y Meta (_fbp, _fbc). No toca cookieConsent.
+    var DE_TRACKERS = /^(_ga|_gid|_gat|_gcl_|_cl[a-z]{2}$|_fb[pc]$|clarity)/i;
+
+    function borrarDatosTrackers() {
+      // Dominios donde pueden estar: sin dominio (solo este host), el host y cada dominio padre,
+      // con y sin punto delante (www.mndesignweb.es, mndesignweb.es, .mndesignweb.es…)
+      var partes = location.hostname.split(".");
+      var dominios = [""];
+      for (var i = 0; i < partes.length - 1 || i === 0; i++) {
+        var d = partes.slice(i).join(".");
+        dominios.push("; domain=" + d, "; domain=." + d);
+      }
+      var rutas = ["; path=/", "; path=" + location.pathname.replace(/[^/]*$/, ""), ""];
+      var caduca = "=; expires=Thu, 01 Jan 1970 00:00:00 GMT; max-age=0";
+
+      document.cookie.split(";").forEach(function (c) {
+        var nombre = c.split("=")[0].trim();
+        if (!nombre || !DE_TRACKERS.test(nombre)) return;
+        dominios.forEach(function (dominio) {
+          rutas.forEach(function (ruta) {
+            document.cookie = nombre + caduca + ruta + dominio;
+          });
+        });
+      });
+
+      [window.localStorage, window.sessionStorage].forEach(function (almacen) {
+        try {
+          Object.keys(almacen).forEach(function (clave) {
+            if (clave !== "cookieConsent" && DE_TRACKERS.test(clave)) almacen.removeItem(clave);
+          });
+        } catch (e) {}
+      });
+    }
+
     function elegir(valor) {
       try {
         localStorage.setItem("cookieConsent", valor);
@@ -54,7 +89,9 @@
       if (valor === "accepted") {
         window.cargarTrackers();
       } else if (window.__trackersCargados) {
-        // Había aceptado antes y los trackers ya están cargados: recargamos para pararlos
+        // Había aceptado antes y los trackers ya están cargados: borramos lo que dejaron
+        // y recargamos para pararlos
+        borrarDatosTrackers();
         location.reload();
       }
     }
