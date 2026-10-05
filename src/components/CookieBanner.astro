@@ -80,6 +80,10 @@
       });
     }
 
+    // GA4 vuelve a escribir _ga_<ID> al cerrarse la página (evento user_engagement), justo
+    // después del borrado y antes de la recarga: con la elección "declined" se limpia al cargar
+    if (decision === "declined") borrarDatosTrackers();
+
     function elegir(valor) {
       try {
         localStorage.setItem("cookieConsent", valor);
