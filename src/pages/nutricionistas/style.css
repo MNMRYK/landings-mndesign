@@ -1207,8 +1207,8 @@ html {
   background-color: var(--primary);
   position: relative;
   z-index: 2;
-  clip-path: none; 
-  margin-top: -2;
+  clip-path: none;
+  margin-top: -2px;
 }
 
 .strategy-header {
@@ -1970,6 +1970,7 @@ html {
   position: relative;
   z-index: 2; 
   clip-path: polygon(0 0, 100% 0, 100% calc(100% - 60px), 0 100%);
+  margin-top: -2px; /* tapa la línea del antialiasing del clip-path con testimonios */
   margin-bottom: -62px;
 }
 
@@ -1998,21 +1999,21 @@ html {
 
 
 .cal-widget {
+  margin: 2rem 0 0 0;
   width: 100%;
   height: 540px;
-  overflow-y: auto;
-  background: #FFFFFF;
-  border-radius: 16px;
-  overflow: hidden;
-  box-shadow: 0 10px 30px rgba(102, 112, 85, 0.08); 
+  overflow-y: auto; /* altura fija: al elegir un día las horas se ven haciendo scroll dentro */
+  background: #fff;
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  position: relative;
 }
-
 .calendar-iframe {
-  width: 125%; 
-  height: 540px; 
+  width: 125%;
+  height: 540px;
   border: none;
   display: block;
-  transform: scale(0.8); 
+  transform: scale(0.8);
   transform-origin: top left;
 }
 
@@ -2759,7 +2760,7 @@ html {
 
 
   .cal-widget {
-    height: 520px; 
+    height: 520px;
     border-radius: 20px;
   }
 
