@@ -604,18 +604,6 @@
   }
 }
 
-/* Hero: la captura se recorre sola, despacio, con pausas arriba y abajo */
-@media (prefers-reduced-motion: no-preference) {
-  .hero-shot img {
-    animation: hero-scroll 26s ease-in-out 1.5s infinite;
-  }
-}
-@keyframes hero-scroll {
-  0%, 12% { transform: translateY(0); }
-  48%, 60% { transform: translateY(var(--travel, 0%)); }
-  96%, 100% { transform: translateY(0); }
-}
-
 /* Flotación suave (solo escritorio: en móvil haría re-desenfocar el cristal) */
 @media (min-width: 768px) and (prefers-reduced-motion: no-preference) {
   .float {

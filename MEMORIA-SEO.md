@@ -34,6 +34,17 @@ Búsquedas objetivo de Alcoy (mismo periodo):
 Orden cronológico inverso (lo más reciente arriba). Formato de cada entrada:
 fecha · qué se ha cambiado (archivos y URLs) · intención / por qué · objetivo · cómo medirlo · estado (hecho / publicado / pendiente de indexar).
 
+### 14/10/2026 · Demo "Norvia Suministros" en el hero y el carrusel de /alcoi/
+- **Qué** (`src/pages/alcoi/index.astro`, `src/pages/alcoi/iris.css`, `public/alcoi/demos/`; misma URL /alcoi/):
+  - Hero: la captura de micropigmentación se sustituye por la primera pantalla de la demo Norvia Suministros (ficticia: almacén de material eléctrico, fontanería y suministro industrial en Alcoy). Imágenes optimizadas con sharp a partir de la @2x: `suministros-hero-720.webp` (31 KB), `-1440` (80 KB) y `-2880` (154 KB) con srcset (antes 106 y 261 KB). Barra de direcciones: mnmryk.github.io/demo-suministros. La captura ya es 16:10 como el marco, así que deja de desplazarse (fuera la animación `.hero-shot`/`hero-scroll` de iris.css).
+  - Tarjetas flotantes: "Reserva online" y "Pago recibido" pasan a "Pedido repetido · En 1 clic" (icono Repeat) y "Tarifa profesional · Aplicada" (icono Tag). Recolocadas para no tapar el titular de la demo (abajo a la izquierda y arriba a la derecha) y visibles solo desde 1280 px (entre 1024 y 1279 se cortaban contra el borde).
+  - Carrusel de proyectos: Norvia Suministros entra la primera, con la etiqueta "Demo · Distribuidor industrial". Captura de página completa provisional (`suministros.webp` 1280 px y `suministros-640.webp`).
+  - Los originales que se dejaron en `public/alcoi/` (`portada-hero-1440x900*.webp`, `portada-completa-1280.webp`, `muestra-ilustraciones.png`) no se usan en la página, pero se publican con el despliegue.
+- **Comprobado con Playwright (build de producción):** imagen que elige cada pantalla (412 px a 1,75x → 720; 390 px a 3x y 1440 px a 1x → 1440; 1440 px a 2x → 2880), tarjetas flotantes enteras de 1280 a 1920 px, sin scroll horizontal y capturas del hero a 390 y 1440 px.
+- **Intención:** que la primera imagen de la landing de Alcoy hable al tipo de empresa de la zona (industria y suministros), en vez de un estudio de estética.
+- **Objetivo / cómo medirlo:** más contactos desde /alcoi/: `generate_lead` y `book_call` con `pagina=/alcoi/` en GA4 y clics en el carrusel en Clarity, 2 semanas después de publicar.
+- **Estado:** hecho en local, sin publicar. Pendiente: captura completa definitiva y publicar la demo (ver Pendientes).
+
 ### 14/10/2026 · Página de software en valenciano: carpeta renombrada a /software-a-mida-alcoi/ y estilos recuperados
 - **Qué:**
   - La página se mueve a `src/pages/software-a-mida-alcoi/` → https://mndesignweb.es/software-a-mida-alcoi/. Actualizados canonical, og:url, twitter:url y `pageUrl` (schema WebPage, servicio, FAQ y BreadcrumbList), y las etiquetas de medición (`formulario: "software-a-mida-alcoi"`, Clarity `reunio_software_a_mida_alcoi`).
@@ -137,7 +148,8 @@ fecha · qué se ha cambiado (archivos y URLs) · intención / por qué · objet
 - [PENDIENTE: miniatura OG en castellano para /alcoi/] La actual (`public/alcoi/imagen-miniatura-alcoi.webp`) está en valenciano y pesa 344 KB.
 - [PENDIENTE: proyecto o cliente real de Alcoy] Cuando lo haya, va el primero del carrusel de /alcoi/.
 - [PENDIENTE: texto original en castellano del testimonio de Nutrimente] En /alcoi/ va traducido del valenciano.
-- [PENDIENTE: demo de suministros industriales, eléctricos y fontanería de la zona de Alcoy] Para sustituir la captura del hero de /alcoi/ (ahora la de micropigmentación). Diseñarla para que combine con la paleta lila; después, captura de página completa a 1280 px en `public/alcoi/demos/` (versiones de 1280 y 640 px).
+- [PENDIENTE: captura de página completa definitiva de Norvia Suministros] Cuando estén todas las ilustraciones de producto: sustituir `public/alcoi/demos/suministros.webp` (1280 px) y `suministros-640.webp` y ajustar `alto` en `demos` de `src/pages/alcoi/index.astro`. La actual es provisional (dos productos con icono de caja).
+- [PENDIENTE: publicar la demo en https://mnmryk.github.io/demo-suministros/] El 14/10/2026 daba 404: el enlace del carrusel de /alcoi/ está roto hasta que se publique.
 - [PENDIENTE: revisar el carrusel de demos] Más adelante, ver cómo conviven las capturas oscuras (UMAMI, NEXUS X) con las claras.
 - Enlaces que apuntan a /alcoi/ pensando en la página de software (sin cambiar, a la espera de decisión): `ReactMNDESIGN/src/Inicio/Footer.jsx` ("Diseño Web Alcoi" y "Diseño Web Cocentaina") y `ReactMNDESIGN/public/llms.txt` ("Software a medida en Alcoi / Cocentaina").
 

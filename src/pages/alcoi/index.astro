@@ -23,8 +23,10 @@ import {
   Phone,
   Plus,
   Quote,
+  Repeat,
   ShoppingBag,
   Sparkles,
+  Tag,
   Users,
   Workflow,
   X,
@@ -49,6 +51,16 @@ const shot = (alto: number) => {
 };
 
 const demos = [
+  {
+    // Captura provisional: faltan ilustraciones de producto. Sustituir cuando llegue la definitiva.
+    file: "suministros",
+    alto: 3074,
+    url: "https://mnmryk.github.io/demo-suministros/",
+    tipo: "Distribuidor industrial",
+    titulo: "Norvia Suministros",
+    texto: "Web de un almacén de material eléctrico y fontanería con buscador por referencia, tarifa profesional y área de clientes.",
+    alt: "Demo de web para un almacén distribuidor de material eléctrico, fontanería y suministro industrial",
+  },
   {
     file: "micropigmentacion",
     alto: 2085,
@@ -616,41 +628,42 @@ const marquee = [
             <div class="rounded-[22px] overflow-hidden bg-white/70 border border-white">
               <div class="browser-bar" aria-hidden="true">
                 <i></i><i></i><i></i>
-                <span class="browser-url">mnmryk.github.io/demo-micropigmentacion</span>
+                <span class="browser-url">mnmryk.github.io/demo-suministros</span>
               </div>
-              <div class="shot hero-shot" style={shot(2085)}>
+              <!-- Primera pantalla de la demo (1440×900, mismo 16:10 que el marco: no se desplaza) -->
+              <div class="shot">
                 <img
-                  src="/alcoi/demos/micropigmentacion-640.webp"
-                  srcset="/alcoi/demos/micropigmentacion-640.webp 640w, /alcoi/demos/micropigmentacion.webp 1280w"
+                  src="/alcoi/demos/suministros-hero-1440.webp"
+                  srcset="/alcoi/demos/suministros-hero-720.webp 720w, /alcoi/demos/suministros-hero-1440.webp 1440w, /alcoi/demos/suministros-hero-2880.webp 2880w"
                   sizes="(min-width: 1024px) 1000px, 92vw"
-                  width="640"
-                  height="1042"
+                  width="1440"
+                  height="900"
                   fetchpriority="high"
                   decoding="async"
-                  alt="Demo de página web diseñada por MN Design Web: web corporativa de un estudio de micropigmentación"
+                  alt="Demo de página web diseñada por MN Design Web: web de Norvia Suministros, almacén de material eléctrico, fontanería y suministro industrial"
                 />
               </div>
             </div>
           </div>
-          <!-- Avisos flotantes: ilustran funciones que integramos (decorativos) -->
+          <!-- Avisos flotantes: ilustran funciones que integramos (decorativos). Colocados donde no tapan texto de la captura: abajo a la izquierda (zona vacía) y arriba a la derecha (sobre la foto) -->
           <div
             aria-hidden="true"
-            class="glass float-delay hidden lg:flex absolute -left-14 top-1/3 items-center gap-3 rounded-2xl px-4 py-3 text-left"
+            class="glass float-delay hidden xl:flex absolute -left-14 bottom-3 items-center gap-3 rounded-2xl px-4 py-3 text-left"
           >
-            <span class="icon-iris !w-10 !h-10" set:html={icon(CalendarCheck, "w-5 h-5")} />
+            <span class="icon-iris !w-10 !h-10" set:html={icon(Repeat, "w-5 h-5")} />
             <span>
-              <span class="block text-sm font-extrabold">Reserva online</span>
-              <span class="block text-xs font-semibold text-saas-muted">Confirmada al momento</span>
+              <span class="block text-sm font-extrabold">Pedido repetido</span>
+              <span class="block text-xs font-semibold text-saas-muted">En 1 clic</span>
             </span>
           </div>
           <div
             aria-hidden="true"
-            class="glass float hidden lg:flex absolute -right-12 top-2/3 items-center gap-3 rounded-2xl px-4 py-3 text-left"
+            class="glass float hidden xl:flex absolute -right-12 top-[30%] items-center gap-3 rounded-2xl px-4 py-3 text-left"
           >
-            <span class="icon-iris !w-10 !h-10" set:html={icon(CreditCard, "w-5 h-5")} />
+            <span class="icon-iris !w-10 !h-10" set:html={icon(Tag, "w-5 h-5")} />
             <span>
-              <span class="block text-sm font-extrabold">Pago recibido</span>
-              <span class="block text-xs font-semibold text-saas-muted">Con tarjeta, desde tu web</span>
+              <span class="block text-sm font-extrabold">Tarifa profesional</span>
+              <span class="block text-xs font-semibold text-saas-muted">Aplicada</span>
             </span>
           </div>
         </div>
