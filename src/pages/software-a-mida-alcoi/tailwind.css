@@ -1,0 +1,6 @@
+/* Tailwind compilado para la página de software en valenciano (antes en /alcoi/).
+   Config propia para que los cambios de la landing de Alcoy no la alteren. */
+@config "../../../tailwind.software-a-mida-alcoi.config.mjs";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

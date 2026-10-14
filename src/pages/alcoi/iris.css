@@ -1,0 +1,996 @@
+/* =========================================
+   IRIDESCENT GLASS · landing de diseño web en Alcoy
+   Todo el efecto iridiscente es CSS: sin imágenes 3D ni formas descargadas.
+   Los acentos #7C5CFF, #E25FD0 y #6EE7F0 son solo decorativos; el texto usa
+   tonos oscurecidos que cumplen AA (ver tailwind.config.mjs).
+   Las animaciones ligadas al scroll van en un <style is:inline> de index.astro
+   (el minificador rompe animation-timeline).
+   ========================================= */
+
+@property --angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
+:root {
+  --ink: #1e1446;
+  --iris-ink: #5b3fd9;
+  --grad-text: linear-gradient(100deg, #6a45f5 0%, #c23bb0 40%, #0e7c93 70%, #6a45f5 100%);
+  --grad-text-light: linear-gradient(100deg, #c4b5fd 0%, #f5a6e6 40%, #8eeff6 70%, #c4b5fd 100%);
+  --ring: conic-gradient(from var(--angle), #7c5cff, #e25fd0, #6ee7f0, #a78bfa, #7c5cff);
+  --glass-bg: rgba(255, 255, 255, 0.62);
+  --glass-border: rgba(255, 255, 255, 0.78);
+  --glass-shadow: 0 12px 40px -14px rgba(91, 63, 217, 0.25), 0 2px 8px -2px rgba(30, 20, 70, 0.06);
+  --blur: 20px;
+  interpolate-size: allow-keywords;
+}
+@media (max-width: 767px) {
+  :root {
+    --blur: 12px;
+  }
+}
+
+/* ---------- Base: casi blanco + grano. Sin manchas globales: el color va por secciones ---------- */
+:root {
+  --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+.iris-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -10;
+  pointer-events: none;
+  background: #f8f6ff;
+}
+.iris-bg::after,
+.veil::after {
+  /* Grano muy sutil para que el fondo no parezca plano */
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.07;
+  background-image: var(--grain);
+  background-size: 160px;
+}
+
+/* ---------- Velos de color de cada sección (hero y contacto) ----------
+   Manchas con radial-gradient de borde muy suave (el efecto de un blur de 100px+
+   sin el coste de filter: blur) y bordes del velo fundidos con mask-image:
+   así no hay cortes de color entre secciones. */
+.veil {
+  position: absolute;
+  z-index: -1;
+  pointer-events: none;
+  left: 0;
+  right: 0;
+  -webkit-mask-image: linear-gradient(to bottom, transparent, #000 14%, #000 72%, transparent);
+  mask-image: linear-gradient(to bottom, transparent, #000 14%, #000 72%, transparent);
+}
+.veil i {
+  position: absolute;
+  border-radius: 50%;
+  will-change: transform;
+}
+.veil-hero {
+  top: -6rem;
+  bottom: -12rem;
+  -webkit-mask-image: linear-gradient(to bottom, #000 70%, transparent);
+  mask-image: linear-gradient(to bottom, #000 70%, transparent);
+}
+.veil-hero i:nth-child(1) {
+  width: 62vmax;
+  height: 62vmax;
+  left: -20vmax;
+  top: -14vmax;
+  background: radial-gradient(closest-side, rgba(201, 184, 255, 0.85), rgba(201, 184, 255, 0));
+  animation: drift-1 44s ease-in-out infinite alternate;
+}
+.veil-hero i:nth-child(2) {
+  width: 56vmax;
+  height: 56vmax;
+  right: -18vmax;
+  top: -6vmax;
+  background: radial-gradient(closest-side, rgba(249, 198, 233, 0.85), rgba(249, 198, 233, 0));
+  animation: drift-2 52s ease-in-out infinite alternate;
+}
+.veil-hero i:nth-child(3) {
+  width: 50vmax;
+  height: 50vmax;
+  left: 20%;
+  top: 48%;
+  background: radial-gradient(closest-side, rgba(170, 238, 245, 0.6), rgba(199, 218, 255, 0));
+  animation: drift-3 48s ease-in-out infinite alternate;
+}
+.veil-contacto {
+  top: -4rem;
+  bottom: -2rem;
+}
+.veil-contacto i:nth-child(1) {
+  width: 46vmax;
+  height: 46vmax;
+  left: -6vmax;
+  top: 10%;
+  background: radial-gradient(closest-side, rgba(201, 184, 255, 0.75), rgba(201, 184, 255, 0));
+}
+.veil-contacto i:nth-child(2) {
+  width: 42vmax;
+  height: 42vmax;
+  right: -8vmax;
+  top: 22%;
+  background: radial-gradient(closest-side, rgba(249, 198, 233, 0.7), rgba(249, 198, 233, 0));
+}
+.veil-contacto i:nth-child(3) {
+  width: 40vmax;
+  height: 40vmax;
+  left: 30%;
+  bottom: 0;
+  background: radial-gradient(closest-side, rgba(170, 238, 245, 0.55), rgba(170, 238, 245, 0));
+}
+@keyframes drift-1 {
+  to { transform: translate(12vmax, 8vmax) scale(1.08); }
+}
+@keyframes drift-2 {
+  to { transform: translate(-10vmax, 10vmax) scale(0.94); }
+}
+@keyframes drift-3 {
+  to { transform: translate(-8vmax, -6vmax) scale(1.1); }
+}
+/* Móvil: manchas quietas y sin la tercera del hero (el cristal no re-desenfoca cada frame) */
+@media (max-width: 767px) {
+  .veil i {
+    animation: none;
+  }
+  .veil-hero i:nth-child(3) {
+    display: none;
+  }
+}
+
+/* ---------- Toques de color localizados (resto de secciones) ----------
+   Muy sutiles, solo detrás de lo importante, para que el cristal se note. */
+.halo {
+  position: absolute;
+  z-index: -1;
+  pointer-events: none;
+  border-radius: 50%;
+}
+.halo-servicios {
+  width: 46rem;
+  height: 34rem;
+  right: -8rem;
+  bottom: -4rem;
+  background: radial-gradient(closest-side, rgba(201, 184, 255, 0.45), rgba(249, 198, 233, 0.18) 55%, transparent);
+}
+.halo-porque {
+  width: 40rem;
+  height: 34rem;
+  left: -12rem;
+  top: 20%;
+  background: radial-gradient(closest-side, rgba(170, 238, 245, 0.35), transparent);
+}
+.halo-resenas {
+  width: 56rem;
+  height: 30rem;
+  left: 50%;
+  top: 45%;
+  translate: -50% -50%;
+  background: radial-gradient(closest-side, rgba(249, 198, 233, 0.4), rgba(201, 184, 255, 0.18) 60%, transparent);
+}
+
+/* ---------- Reseñas: carrusel táctil en móvil, 2×2 en tablet, una fila de 4 en escritorio ---------- */
+.resena {
+  padding: 1.25rem;
+}
+@media (min-width: 640px) {
+  .resena {
+    padding: 1.5rem;
+  }
+}
+.resena-texto {
+  font-size: 15px;
+  line-height: 1.55;
+  font-weight: 500;
+  color: #1e1446;
+}
+.pill-resena {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  flex-shrink: 0;
+  white-space: nowrap;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(124, 92, 255, 0.18);
+  padding: 0.25rem 0.6rem;
+  font-size: 11px;
+  font-weight: 700;
+  color: #1e1446;
+}
+.resenas {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: var(--gutter);
+  padding: 0.5rem var(--gutter) 1rem;
+  scrollbar-width: none;
+  overscroll-behavior-x: contain;
+}
+.resenas::-webkit-scrollbar {
+  display: none;
+}
+.resenas > li {
+  flex: 0 0 auto;
+  width: min(84vw, 360px);
+  scroll-snap-align: start;
+}
+/* En el carrusel, las tarjetas que quedan fuera por la derecha no esperan a la animación
+   de entrada (se verían vacías al deslizar) */
+@media (max-width: 767px) {
+  .resenas > .reveal:not(.is-in) {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+}
+@media (min-width: 768px) {
+  .resenas {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-auto-rows: 1fr; /* mismo alto también entre filas */
+    gap: 1.25rem;
+    max-width: 52rem;
+    margin-inline: auto;
+    padding: 0.5rem var(--gutter) 0;
+    overflow: visible;
+  }
+  .resenas > li {
+    width: auto;
+  }
+}
+@media (min-width: 1200px) {
+  .resenas {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    max-width: 80rem;
+  }
+}
+.stars {
+  display: inline-flex;
+  gap: 0.15rem;
+  /* Ámbar oscurecido: 3:1 sobre blanco (contraste de elementos gráficos) */
+  fill: #d97706;
+}
+.halo-precio {
+  /* Móvil: la destacada va primera, arriba */
+  left: -10%;
+  top: -4%;
+  width: 120%;
+  height: 34%;
+  background: radial-gradient(closest-side, rgba(201, 184, 255, 0.6), rgba(170, 238, 245, 0.25) 60%, transparent);
+}
+@media (min-width: 640px) {
+  .halo-precio {
+    left: -8%;
+    top: -10%;
+    width: 64%;
+    height: 70%;
+  }
+}
+@media (min-width: 1024px) {
+  .halo-precio {
+    left: -8%;
+    top: -14%;
+    width: 42%;
+    height: 128%;
+  }
+}
+
+/* ---------- Aurora iridiscente (conic-gradient + blur) ---------- */
+.aurora {
+  position: absolute;
+  left: 50%;
+  top: 3rem;
+  width: min(1100px, 140vw);
+  aspect-ratio: 1.7;
+  translate: -50% 0;
+  pointer-events: none;
+  z-index: -1;
+}
+.aurora::before {
+  content: "";
+  position: absolute;
+  inset: 8% 12%;
+  border-radius: 50%;
+  background: conic-gradient(from 0deg, #a78bfa, #f0abfc, #67e8f9, #c4b5fd, #f9a8d4, #93c5fd, #a78bfa);
+  filter: blur(72px);
+  opacity: 0.6;
+  animation: aurora-spin 30s linear infinite;
+  will-change: transform;
+}
+/* Aurora de la sección oscura: detrás del contenido (z-index 0, el contenido va en z-10) */
+.aurora-dark {
+  top: 50%;
+  translate: -50% -50%;
+  z-index: 0;
+  width: min(1000px, 130vw);
+}
+.aurora-dark::before {
+  opacity: 0.38;
+  filter: blur(90px);
+}
+@keyframes aurora-spin {
+  to { transform: rotate(1turn); }
+}
+@media (max-width: 767px) {
+  .aurora {
+    width: 150vw;
+  }
+  .aurora::before {
+    filter: blur(48px);
+    animation: none;
+  }
+}
+
+/* ---------- Texto en degradado con brillo ---------- */
+.text-iris,
+.text-iris-light {
+  background-image:
+    linear-gradient(100deg, transparent 42%, rgba(255, 255, 255, 0.5) 50%, transparent 58%),
+    var(--grad-text);
+  background-size: 250% 100%, 200% 100%;
+  background-position: 120% 0, 0 0;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+.text-iris-light {
+  background-image:
+    linear-gradient(100deg, transparent 42%, rgba(255, 255, 255, 0.55) 50%, transparent 58%),
+    var(--grad-text-light);
+}
+@media (min-width: 768px) and (prefers-reduced-motion: no-preference) {
+  .text-iris,
+  .text-iris-light {
+    animation: shimmer 9s ease-in-out infinite;
+  }
+}
+@keyframes shimmer {
+  0% { background-position: 120% 0, 0 0; }
+  50% { background-position: -20% 0, 100% 0; }
+  100% { background-position: 120% 0, 0 0; }
+}
+
+/* ---------- Cristal ---------- */
+.glass {
+  background: var(--glass-bg);
+  -webkit-backdrop-filter: blur(var(--blur)) saturate(140%);
+  backdrop-filter: blur(var(--blur)) saturate(140%);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+}
+.glass-dark {
+  background: rgba(255, 255, 255, 0.08);
+  -webkit-backdrop-filter: blur(var(--blur));
+  backdrop-filter: blur(var(--blur));
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .glass {
+    background: rgba(255, 255, 255, 0.88);
+  }
+  .glass-dark {
+    background: rgba(255, 255, 255, 0.1);
+  }
+}
+
+/* ---------- Borde iridiscente (anillo con máscara) ---------- */
+.ring {
+  position: relative;
+  isolation: isolate;
+}
+.ring::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  z-index: 2;
+  border-radius: inherit;
+  padding: var(--ring-w, 1.5px);
+  background: var(--ring);
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: var(--ring-o, 1);
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+@media (min-width: 768px) and (prefers-reduced-motion: no-preference) {
+  .ring-spin::before {
+    animation: ring-spin 6s linear infinite;
+  }
+}
+@keyframes ring-spin {
+  to { --angle: 360deg; }
+}
+
+/* ---------- Tarjetas interactivas: elevación, brillo que sigue al ratón y tilt ---------- */
+.card {
+  position: relative;
+  isolation: isolate;
+  transform: perspective(1000px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) translateY(var(--lift, 0px));
+  transition:
+    transform 0.5s cubic-bezier(0.2, 0.7, 0.2, 1),
+    box-shadow 0.4s ease;
+}
+.card.is-tilting {
+  transition:
+    transform 0.12s linear,
+    box-shadow 0.4s ease;
+}
+.card > * {
+  position: relative;
+  z-index: 1;
+}
+.card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border-radius: inherit;
+  background: radial-gradient(
+    380px circle at var(--x, 50%) var(--y, 50%),
+    rgba(167, 139, 250, 0.24),
+    rgba(240, 171, 252, 0.12) 40%,
+    transparent 65%
+  );
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+}
+.card:not(.ring-always) {
+  --ring-o: 0;
+}
+@media (hover: hover) and (pointer: fine) {
+  .card:hover {
+    --lift: -6px;
+    --ring-o: 1;
+    box-shadow: 0 30px 60px -22px rgba(91, 63, 217, 0.4), 0 2px 8px -2px rgba(30, 20, 70, 0.06);
+  }
+  .card:hover::after {
+    opacity: 1;
+  }
+}
+/* Táctil: sin hover, borde iridiscente fijo y suave */
+@media (hover: none) {
+  .card:not(.ring-always) {
+    --ring-o: 0.5;
+  }
+}
+
+/* ---------- Botones píldora ---------- */
+.btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 999px;
+  font-weight: 700;
+  padding: 1rem 1.75rem;
+  line-height: 1.2;
+  translate: var(--mx, 0px) var(--my, 0px);
+  transition:
+    transform 0.3s ease,
+    translate 0.25s ease-out,
+    box-shadow 0.35s ease,
+    background-position 0.7s ease;
+}
+.btn-primary {
+  --ring-w: 2px;
+  background: #1e1446;
+  color: #fff;
+  box-shadow: 0 12px 30px -12px rgba(91, 63, 217, 0.7);
+}
+.btn-primary:hover {
+  box-shadow:
+    0 0 0 6px rgba(167, 139, 250, 0.2),
+    0 18px 44px -12px rgba(226, 95, 208, 0.6);
+}
+.btn-grad {
+  color: #fff;
+  background: linear-gradient(110deg, #6a45f5 0%, #c23bb0 50%, #6a45f5 100%) 0 0 / 200% 100%;
+  box-shadow: 0 10px 26px -12px rgba(194, 59, 176, 0.7);
+}
+.btn-grad:hover {
+  background-position: 100% 0;
+  box-shadow:
+    0 0 0 6px rgba(240, 171, 252, 0.22),
+    0 16px 40px -12px rgba(106, 69, 245, 0.6);
+}
+.btn-glass {
+  color: #1e1446;
+  background: rgba(255, 255, 255, 0.6);
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  box-shadow: 0 8px 24px -12px rgba(91, 63, 217, 0.3);
+}
+.btn-glass:hover {
+  background: rgba(255, 255, 255, 0.85);
+  box-shadow:
+    0 0 0 6px rgba(167, 139, 250, 0.15),
+    0 14px 30px -12px rgba(91, 63, 217, 0.35);
+}
+.btn:active {
+  transform: scale(0.98);
+}
+
+/* ---------- Icono en círculo iridiscente ---------- */
+.icon-iris {
+  width: 3.25rem;
+  height: 3.25rem;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  color: #fff;
+  background: conic-gradient(from 210deg, #6a45f5, #c23bb0, #0e7c93, #6a45f5);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.45),
+    0 10px 22px -8px rgba(124, 92, 255, 0.6);
+}
+
+/* ---------- Marco de navegador (CSS) ---------- */
+.browser-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.65rem 0.9rem;
+  border-bottom: 1px solid rgba(124, 92, 255, 0.12);
+}
+.browser-bar i {
+  width: 0.6rem;
+  height: 0.6rem;
+  border-radius: 999px;
+  background: rgba(30, 20, 70, 0.15);
+}
+.browser-bar i:first-child {
+  background: #f9a8d4;
+}
+.browser-bar i:nth-child(2) {
+  background: #c4b5fd;
+}
+.browser-bar i:nth-child(3) {
+  background: #8eeff6;
+}
+.browser-url {
+  margin-left: 0.6rem;
+  flex: 1;
+  max-width: 22rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #4b4468;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 999px;
+  padding: 0.25rem 0.8rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Captura dentro del marco: la imagen es una página completa y se desplaza
+   (--travel se calcula en index.astro a partir del alto de cada captura) */
+.shot {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: #efeafd;
+}
+.shot img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  transition: transform 1.2s cubic-bezier(0.2, 0.7, 0.2, 1);
+  will-change: transform;
+}
+@media (hover: hover) and (pointer: fine) {
+  .project:hover .shot img,
+  .project:focus-visible .shot img {
+    transform: translateY(var(--travel, 0%));
+    transition: transform var(--dur, 7s) linear;
+  }
+}
+
+/* Hero: la captura se recorre sola, despacio, con pausas arriba y abajo */
+@media (prefers-reduced-motion: no-preference) {
+  .hero-shot img {
+    animation: hero-scroll 26s ease-in-out 1.5s infinite;
+  }
+}
+@keyframes hero-scroll {
+  0%, 12% { transform: translateY(0); }
+  48%, 60% { transform: translateY(var(--travel, 0%)); }
+  96%, 100% { transform: translateY(0); }
+}
+
+/* Flotación suave (solo escritorio: en móvil haría re-desenfocar el cristal) */
+@media (min-width: 768px) and (prefers-reduced-motion: no-preference) {
+  .float {
+    animation: float 7s ease-in-out infinite;
+  }
+  .float-delay {
+    animation: float 8s ease-in-out 1.5s infinite;
+  }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+/* ---------- Marquee ---------- */
+.marquee {
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 48s linear infinite;
+}
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+.marquee-list {
+  display: flex;
+  align-items: center;
+  gap: 2.25rem;
+  padding-right: 2.25rem;
+  white-space: nowrap;
+}
+.marquee-list li {
+  display: flex;
+  align-items: center;
+  gap: 2.25rem;
+}
+.marquee-list li::after {
+  content: "";
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 999px;
+  background: conic-gradient(#7c5cff, #e25fd0, #6ee7f0, #7c5cff);
+}
+@keyframes marquee {
+  to { transform: translateX(-50%); }
+}
+
+/* ---------- Carrusel de proyectos ---------- */
+.carousel {
+  /* La primera tarjeta empieza en el margen global; el carrusel sangra hasta el borde.
+     100% (ancho de la sección) y no 100vw: con barra de scroll, 100vw la incluye y descuadra la tarjeta */
+  --pad: max(var(--gutter), calc((100% - 80rem) / 2 + var(--gutter)));
+  display: flex;
+  gap: 1.5rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: var(--pad);
+  padding: 1rem var(--pad) 2.5rem;
+  scrollbar-width: none;
+  overscroll-behavior-x: contain;
+}
+.carousel::-webkit-scrollbar {
+  display: none;
+}
+.carousel > * {
+  scroll-snap-align: start;
+  flex: 0 0 auto;
+  width: min(80vw, 400px);
+}
+@media (min-width: 1024px) {
+  .carousel {
+    cursor: grab;
+  }
+  .carousel > * {
+    width: 420px;
+  }
+}
+.carousel.is-dragging {
+  cursor: grabbing;
+  scroll-snap-type: none;
+  user-select: none;
+}
+.carousel.is-dragging a {
+  pointer-events: none;
+}
+.project {
+  border-radius: 28px;
+  overflow: hidden;
+  transition:
+    transform 0.4s cubic-bezier(0.2, 0.7, 0.2, 1),
+    box-shadow 0.4s ease;
+}
+@media (hover: hover) and (pointer: fine) {
+  .project:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 30px 60px -22px rgba(91, 63, 217, 0.4);
+  }
+}
+.arrow:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+/* ---------- "Por qué elegirnos": tarjeta activa al pasar por el centro ---------- */
+.why-card,
+.faq {
+  --ring-o: 0;
+}
+.why-card {
+  transition:
+    box-shadow 0.5s ease,
+    background-color 0.5s ease;
+}
+.why-card.is-active {
+  --ring-o: 1;
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 30px 60px -24px rgba(91, 63, 217, 0.45);
+}
+
+/* ---------- Proceso: línea de progreso que se rellena con el scroll ---------- */
+.steps {
+  --p: 0;
+  position: relative;
+}
+.steps-track {
+  position: absolute;
+  border-radius: 999px;
+  background: rgba(124, 92, 255, 0.15);
+  overflow: hidden;
+}
+.steps-fill {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+}
+/* Móvil: línea vertical a la izquierda */
+.steps-track {
+  left: calc(1.75rem - 2px);
+  top: 1.75rem;
+  bottom: 3rem;
+  width: 4px;
+}
+.steps-fill {
+  background: linear-gradient(180deg, #7c5cff, #e25fd0, #6ee7f0);
+  transform-origin: top;
+  transform: scaleY(var(--p));
+}
+@media (min-width: 1024px) {
+  .steps-track {
+    left: 12.5%;
+    right: 12.5%;
+    top: calc(1.75rem - 2px);
+    bottom: auto;
+    width: auto;
+    height: 4px;
+  }
+  .steps-fill {
+    background: linear-gradient(90deg, #7c5cff, #e25fd0, #6ee7f0);
+    transform-origin: left;
+    transform: scaleX(var(--p));
+  }
+}
+.step-dot {
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  font-weight: 800;
+  color: #5b3fd9;
+  transition:
+    color 0.4s ease,
+    box-shadow 0.4s ease,
+    background 0.4s ease;
+}
+.step.is-on .step-dot {
+  color: #fff;
+  background: linear-gradient(135deg, #6a45f5, #c23bb0);
+  box-shadow:
+    0 0 0 6px rgba(167, 139, 250, 0.2),
+    0 12px 26px -10px rgba(194, 59, 176, 0.7);
+}
+
+/* ---------- FAQ: acordeón de cristal con apertura animada ---------- */
+.faq summary {
+  list-style: none;
+  cursor: pointer;
+}
+.faq summary::-webkit-details-marker {
+  display: none;
+}
+.faq-icon {
+  transition: transform 0.35s ease;
+}
+.faq[open] .faq-icon {
+  transform: rotate(45deg);
+}
+.faq[open] {
+  --ring-o: 1;
+}
+/* Chrome/Edge: la respuesta se despliega; Safari/Firefox abren al instante */
+.faq::details-content {
+  block-size: 0;
+  overflow: hidden;
+  transition:
+    block-size 0.4s cubic-bezier(0.2, 0.7, 0.2, 1),
+    content-visibility 0.4s allow-discrete;
+}
+.faq[open]::details-content {
+  block-size: auto;
+}
+
+/* ---------- Formulario ---------- */
+.field {
+  width: 100%;
+  display: block;
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(124, 92, 255, 0.25);
+  border-radius: 16px;
+  padding: 0.9rem 1rem;
+  color: #1e1446;
+  font-size: 1rem;
+  font-weight: 500;
+  transition:
+    box-shadow 0.3s ease,
+    border-color 0.3s ease,
+    background-color 0.3s ease;
+}
+.field::placeholder {
+  color: #6b6489;
+}
+.field:focus {
+  outline: none;
+  border-color: #7c5cff;
+  background: #fff;
+  box-shadow:
+    0 0 0 4px rgba(124, 92, 255, 0.18),
+    0 0 26px 2px rgba(110, 231, 240, 0.45);
+}
+.field:focus-visible {
+  outline: 2px solid #5b3fd9;
+  outline-offset: 2px;
+}
+
+/* ---------- Sección oscura de software ----------
+   Fondo #1E1446 a todo el ancho; arriba y abajo se funde con el casi blanco
+   de la página pasando por lilas para que no haya un corte brusco. */
+.section-dark {
+  --fade: 150px;
+  background-color: #1e1446;
+  /* Transición por tonos lila (no por grises) hacia el fondo oscuro y de vuelta */
+  background-image: linear-gradient(
+    to bottom,
+    #f8f6ff,
+    #e4dcfb calc(var(--fade) * 0.22),
+    #9a8ad4 calc(var(--fade) * 0.5),
+    #3b2c7c calc(var(--fade) * 0.78),
+    #1e1446 var(--fade),
+    #1e1446 calc(100% - var(--fade)),
+    #3b2c7c calc(100% - var(--fade) * 0.78),
+    #9a8ad4 calc(100% - var(--fade) * 0.5),
+    #e4dcfb calc(100% - var(--fade) * 0.22),
+    #f8f6ff
+  );
+  padding-block: calc(var(--fade) + 3.5rem);
+}
+@media (max-width: 767px) {
+  .section-dark {
+    --fade: 72px;
+    padding-block: calc(var(--fade) + 2.5rem);
+  }
+}
+
+/* ---------- Menú móvil: panel propio (hermano del header, no hijo) ---------- */
+.mobile-panel {
+  position: fixed;
+  top: 5rem;
+  left: 0;
+  right: 0;
+  z-index: 99;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  max-height: calc(100dvh - 5rem);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 1.25rem var(--gutter) 1.5rem;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.88);
+  -webkit-backdrop-filter: blur(20px) saturate(150%);
+  backdrop-filter: blur(20px) saturate(150%);
+  border-bottom: 1px solid rgba(124, 92, 255, 0.15);
+  box-shadow: 0 30px 60px -20px rgba(30, 20, 70, 0.35);
+}
+.mobile-panel[hidden] {
+  display: none;
+}
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .mobile-panel {
+    background: #fff;
+  }
+}
+.mobile-link:not(.btn) {
+  display: block;
+  padding: 0.85rem 1rem;
+  border-radius: 1rem;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #1e1446;
+}
+.mobile-link:not(.btn):hover {
+  background: rgba(124, 92, 255, 0.08);
+}
+/* Scroll de la página bloqueado mientras el menú está abierto */
+html.menu-open {
+  overflow: hidden;
+}
+.menu-btn .i-close,
+.menu-btn[aria-expanded="true"] .i-menu {
+  display: none;
+}
+.menu-btn[aria-expanded="true"] .i-close {
+  display: block;
+}
+
+/* ---------- Cabecera ---------- */
+.header-glass {
+  background: rgba(248, 246, 255, 0.72);
+  -webkit-backdrop-filter: blur(18px) saturate(150%);
+  backdrop-filter: blur(18px) saturate(150%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.8);
+}
+
+/* ---------- "Reducir movimiento": nada se mueve solo ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .veil i,
+  .aurora::before,
+  .marquee-track,
+  .ring-spin::before {
+    animation: none !important;
+  }
+  .marquee {
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+  .marquee-track {
+    width: auto;
+    justify-content: center;
+  }
+  .marquee-list {
+    flex-wrap: wrap;
+    justify-content: center;
+    white-space: normal;
+    row-gap: 0.75rem;
+    padding-right: 0;
+  }
+  .marquee-list[aria-hidden="true"] {
+    display: none;
+  }
+  .card,
+  .project,
+  .btn,
+  .faq-icon,
+  .shot img {
+    transition: none !important;
+    translate: none !important;
+  }
+  .card {
+    transform: none !important;
+  }
+  .faq::details-content {
+    transition: none;
+  }
+}

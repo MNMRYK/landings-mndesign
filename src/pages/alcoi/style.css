@@ -1,138 +1,150 @@
-/* La capçalera fixa fa 80px: els enllaços #secció no queden tapats */
+/* =========================================
+   BASE · landing de diseño web en Alcoy (/alcoi/)
+   Los efectos iridiscentes están en iris.css.
+   ========================================= */
+
+/* Margen lateral global: único sitio donde se define. Hasta 640 px: 20 px; desde 640 px: 32 px.
+   Lo usan la cabecera, todas las secciones y el pie (clase px-gutter), el menú móvil y los
+   carruseles (para alinear su primera tarjeta). La clase va aquí y no en tailwind.config.mjs
+   para que no dependa de reiniciar `astro dev` al cambiar la config. */
+:root {
+  --gutter: 20px;
+}
+@media (min-width: 640px) {
+  :root {
+    --gutter: 32px;
+  }
+}
+.px-gutter {
+  padding-inline: var(--gutter);
+}
+
+/* La cabecera fija mide 80px: los enlaces #sección no quedan tapados */
 html {
   scroll-padding-top: 5.5rem;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(124, 92, 255, 0.45) transparent;
 }
 body {
-  background-color: #fafafc;
+  background-color: #f8f6ff;
+  color: #1e1446;
   overflow-x: hidden;
 }
 
-/* Carrusel de projectes en mòbil: lliscant, sense barra visible */
-.no-scrollbar {
-  scrollbar-width: none;
-  -webkit-overflow-scrolling: touch;
-}
-.no-scrollbar::-webkit-scrollbar {
-  display: none;
-}
-
-/* Qui té activat "reduir moviment" no veu les animacions flotants */
-@media (prefers-reduced-motion: reduce) {
-  .anim-float,
-  .anim-float-delay {
-    animation: none;
-  }
-  html.scroll-smooth {
-    scroll-behavior: auto;
-  }
-}
-.glass-card {
-  background: #ffffff;
-  border: 1px solid rgba(226, 232, 240, 0.8);
-  transition: all 0.3s ease;
-}
-.glass-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.08);
-}
-.gradient-text {
-  background: linear-gradient(135deg, #0f172a 0%, #4a3355 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-@keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-15px); }
-}
-@keyframes float-delay {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
-}
-.anim-float {
-  animation: float 6s ease-in-out infinite;
-}
-.anim-float-delay {
-  animation: float-delay 7s ease-in-out 2s infinite;
-}
-
-/* =========================================
-   SCROLLBAR PERSONALIZADA (Morado Pastel)
-   ========================================= */
-
-
 ::-webkit-scrollbar {
-  width: 10px; 
+  width: 10px;
 }
-
 ::-webkit-scrollbar-track {
-  background: transparent; 
+  background: transparent;
 }
-
 ::-webkit-scrollbar-thumb {
-  background: rgba(139, 92, 246, 0.4); 
-  border-radius: 20px; 
-  border: 3px solid #fafafc; 
+  background: rgba(124, 92, 255, 0.4);
+  border-radius: 20px;
+  border: 3px solid #f8f6ff;
 }
-
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(139, 92, 246, 0.7); 
+  background: rgba(124, 92, 255, 0.7);
 }
 
-
-html {
-  scrollbar-width: thin;
-  scrollbar-color: rgba(139, 92, 246, 0.5) transparent;
-}
 /* =========================================
-   EFECTES DE MOVIMENT (sense llibreries)
-   Només transform i opacity: els anima la GPU i no
-   recalculen el disseny, així que no alenteixen la càrrega.
+   SCROLL SUAVE
+   Sin Lenis (táctil): scroll nativo + scroll-behavior: smooth (clase scroll-smooth del <html>)
+   y scroll-padding-top para la cabecera. Con Lenis (escritorio con ratón): reglas de
+   lenis.css adaptadas. Lenis solo se carga si no hay "reducir movimiento".
+   ========================================= */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+/* El suavizado lo hace Lenis: sin scroll-behavior: smooth para no animar dos veces */
+html.lenis {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-stopped {
+  overflow: clip;
+}
+.lenis [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+/* lenis.css quita el puntero a todos los iframes siempre; aquí solo mientras hay scroll,
+   para que el calendario de Cal.com se pueda usar */
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+/* Las secciones reciben el foco al navegar por anclas (accesibilidad), sin dibujar el anillo */
+main [tabindex="-1"]:focus {
+  outline: none;
+}
+
+/* Foco de teclado siempre visible */
+:focus-visible {
+  outline: 3px solid #5b3fd9;
+  outline-offset: 3px;
+  border-radius: 12px;
+}
+
+/* =========================================
+   MOVIMIENTO (sin librerías)
+   Solo transform, opacity y filter.
    ========================================= */
 
-/* 1. Entrada del hero en carregar. El titular i el paràgraf només es
-   desplacen (sense opacitat) perquè no endarrerisquen l'LCP. */
+/* 1. Entrada del hero al cargar. El titular y el párrafo solo se
+   desplazan (sin opacidad) para no retrasar el LCP. */
 @keyframes hero-in {
-  from { opacity: 0; transform: translateY(18px); }
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
 }
 @keyframes hero-move {
-  from { transform: translateY(18px); }
+  from {
+    transform: translateY(18px);
+  }
 }
 .hero-in {
-  animation: hero-in 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  animation: hero-in 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) both;
   animation-delay: var(--d, 0ms);
 }
 .hero-in-move {
   animation-name: hero-move;
 }
 
-/* 2. Aparició en fer scroll (classe afegida pel JS només als elements
-   que encara no es veuen; sense JS tot es mostra igual). */
-.reveal {
+/* 2. Aparición al hacer scroll: el JS añade .reveal solo a lo que aún no se ve
+   (sin JS todo se muestra igual). Fundido + subida + desenfoque que se aclara. */
+/* :not(.is-in) sube la especificidad para ganar al transform de .card */
+.reveal:not(.is-in) {
   opacity: 0;
-  transform: translateY(28px);
+  transform: translateY(24px);
+  filter: blur(8px);
 }
 .reveal.is-in {
   opacity: 1;
   transform: none;
+  filter: none;
   transition:
-    opacity 0.7s ease,
-    transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
+    opacity 0.8s ease,
+    transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1),
+    filter 0.8s ease;
   transition-delay: var(--d, 0ms);
 }
+/* En móvil, sin desenfoque: va más fluido */
+@media (max-width: 767px) {
+  .reveal:not(.is-in) {
+    filter: none;
+  }
+}
 
-/* 3. Els efectes lligats al scroll estan en un \3c style is:inline> de index.astro:
-   el minificador fusionava animation-timeline dins de la propietat animation
-   i el navegador descartava la regla. */
-
-/* Qui té activat "reduir moviment" no veu cap d'aquests efectes */
+/* "Reducir movimiento": solo fundidos */
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto !important;
+  }
   .hero-in,
   .hero-in-move {
     animation: none !important;
   }
-  .reveal {
-    opacity: 1;
+  .reveal:not(.is-in) {
     transform: none;
+    filter: none;
   }
 }
