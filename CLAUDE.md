@@ -44,6 +44,13 @@ Punto de partida (Search Console, 3 meses hasta el 14/10/2026): ~0,5 clics/día 
 ## Reglas fijas para cualquier cambio
 - No inventar reseñas, testimonios, logos de clientes, cifras ni proyectos. Usar marcadores `[PENDIENTE: ...]`.
 - No usar schema `aggregateRating` ni `Review` sobre la propia empresa.
+- Reseñas y testimonios (todas las landings):
+  - Solo reales. **Reseñas de Google:** Lara S. (Directora de arte), Miriam A. y Damaris López (textos en `src/pages/alcoi/index.astro`). **Clientes que no vienen de Google:** Nutrimente (Nutrición integrativa · Jaén), Dr. Carlos Mendoza y Dra. Laura Jiménez (/clinicas/, con sus fotos, cargos y las cifras "+20 clínicas", "86 %" y "240 %"), Dra. Sonia O. y Centro Kinetix (/psicologos/).
+  - Textos literales; solo se puede recortar con "[…]". Las reseñas de Google van en castellano tal cual, también en la página en valenciano.
+  - Etiqueta "Reseña de Google" ("Ressenya de Google" en valenciano) solo en las que vienen de Google; las de clientes llevan "Cliente" ("Client").
+  - Estrellas solo en las reseñas de Google; los testimonios de clientes, sin estrellas.
+  - Nada de valoraciones medias, número de reseñas ni "reseñas verificadas".
+  - Debajo de cada bloque de reseñas, el botón "Ver todas las reseñas en Google" ("Veure totes les ressenyes a Google") → https://share.google/H7PZUbk3sAkb31aDe.
 - URLs siempre con barra final; canonical con barra final.
 - Las landings de ciudad deben tener contenido propio (nada de copiar cambiando el nombre del pueblo).
 - Mantener el diseño, la tipografía y los colores existentes; nada de librerías pesadas.
@@ -53,7 +60,7 @@ Punto de partida (Search Console, 3 meses hasta el 14/10/2026): ~0,5 clics/día 
 ## Tareas técnicas pendientes (fuera de esta carpeta: web principal y blog)
 - Redirecciones 301 de URLs sin barra a URLs con barra (/nosotros, /disenoweb, /e-commerce, /posicionamiento-seo, /redes-sociales).
 - Fusionar contenido duplicado: /rescate-kit-digital + /blog/rescate-kit-digital/ + /blog/rescate-proyectos-kit-digital/, y /blog/mantenimiento-wordpress/ + /blog/mantenimiento-web-wordpress/.
-- Quitar el schema de reseñas de la web y las reseñas de ejemplo de la landing de psicólogos.
+- Quitar el schema de reseñas de la web principal (las landings ya no tienen reseñas inventadas).
 - Enlace "Diseño Web Cocentaina" del footer (`ReactMNDESIGN/src/Inicio/Footer.jsx`): ahora apunta a /alcoi/.
 - Rediseño del blog para que encaje con la web principal + 1 post cada martes.
 

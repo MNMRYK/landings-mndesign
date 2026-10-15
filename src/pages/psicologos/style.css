@@ -2242,30 +2242,17 @@ html:not(.js) .tl-card,
 }
 
 /* 15. AUTORIDAD: TESTIMONIOS + DEMOS */
+/* Tarjeta destacada a la izquierda (dos filas) y las otras cuatro opiniones en 2×2 */
 .proof-grid {
   display: grid;
-  grid-template-columns: 0.9fr 1.3fr 1fr;
+  grid-template-columns: 1.3fr 1fr 1fr;
   grid-template-rows: auto auto;
   gap: 18px;
   text-align: left;
 }
-.rating {
-  grid-row: span 2;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  background:
-    radial-gradient(300px 200px at 0% 0%, var(--sky2), transparent 70%),
-    var(--surface);
-}
-.rating .score {
-  font: 800 4.6rem/1 var(--f-title);
-  letter-spacing: -0.05em;
-}
-.rating .score span {
-  font-size: 1.4rem;
-  color: var(--muted);
-  letter-spacing: 0;
+.resenas-cta {
+  margin-top: 26px;
+  text-align: center;
 }
 .stars5 {
   display: flex;
@@ -2273,55 +2260,6 @@ html:not(.js) .tl-card,
   color: #f5b21b;
   margin: 12px 0 8px;
   font-size: 1.1rem;
-}
-.g-badge {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 14px;
-  border-radius: 16px;
-  background: var(--soft);
-  border: 1px solid var(--line);
-  margin-top: 28px;
-  font-size: 0.86rem;
-  line-height: 1.35;
-}
-.g-badge .g {
-  width: 36px;
-  height: 36px;
-  border-radius: 10px;
-  background: #fff;
-  display: grid;
-  place-items: center;
-  font: 800 1.1rem var(--f-title);
-  box-shadow: var(--sh-sm);
-  flex: none;
-}
-.g-badge .g span {
-  background: conic-gradient(
-    #ea4335 0 25%,
-    #fbbc05 0 50%,
-    #34a853 0 75%,
-    #4285f4 0
-  );
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-.trust-list {
-  list-style: none;
-  margin-top: 22px;
-  display: grid;
-  gap: 10px;
-  font-size: 0.92rem;
-}
-.trust-list li {
-  display: flex;
-  gap: 10px;
-  align-items: center;
-}
-.trust-list .i {
-  color: var(--mint);
 }
 .quote.feat {
   grid-row: span 2;
@@ -2382,6 +2320,10 @@ html:not(.js) .tl-card,
 }
 .quote.feat .who span {
   color: #a9bcd6;
+}
+/* Cargo y etiqueta ("Reseña de Google" / "Cliente") en líneas separadas bajo el nombre */
+.who > div > span {
+  display: flex;
 }
 .verified {
   color: var(--mint);
@@ -3318,10 +3260,6 @@ iframe {
   .proof-grid {
     grid-template-columns: 1fr 1fr;
   }
-  .rating {
-    grid-row: auto;
-    grid-column: span 2;
-  }
   .quote.feat {
     grid-row: auto;
     grid-column: span 2;
@@ -3868,7 +3806,7 @@ iframe {
   .bento {
     grid-template-columns: 1fr;
   }
-  .rating {
+  .quote.feat {
     grid-column: auto;
   }
   .demos {
@@ -4020,9 +3958,6 @@ iframe {
   }
   .price {
     font-size: 2.2rem;
-  }
-  .rating .score {
-    font-size: 3.8rem;
   }
   .quote.feat blockquote {
     margin: 14px 0 24px;

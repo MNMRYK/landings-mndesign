@@ -34,6 +34,23 @@ Búsquedas objetivo de Alcoy (mismo periodo):
 Orden cronológico inverso (lo más reciente arriba). Formato de cada entrada:
 fecha · qué se ha cambiado (archivos y URLs) · intención / por qué · objetivo · cómo medirlo · estado (hecho / publicado / pendiente de indexar).
 
+### 15/10/2026 · Reseñas: solo reales, con su origen, en todas las landings
+- **Qué** (reales confirmadas por María; reglas añadidas a CLAUDE.md):
+  - **/clinicas/** (`index.astro`, `style.css`): se mantienen el Dr. Carlos Mendoza, la Dra. Laura Jiménez y las cifras, con la etiqueta "Cliente". Se añaden las 3 reseñas de Google (Lara S., Miriam A., Damaris López) con estrellas, iniciales y "Reseña de Google", y el botón "Ver todas las reseñas en Google". Rejilla: 2 clientes arriba y 3 de Google debajo.
+  - **/psicologos/** (`index.astro`, `style.css`):
+    - Fuera la reseña inventada de "Dra. Elena M.", la tarjeta "5,0 / 5 · Media de 32 valoraciones" (con sus tres puntos de confianza), el bloque "Reseñas verificadas · Publicadas en Google", la frase "Valoraciones reales en Google…" y la píldora "5,0 en Google".
+    - Sonia O. y Centro Kinetix pasan a "Cliente", sin estrellas.
+    - Se añaden las 3 de Google (Lara S. en la tarjeta destacada) y el botón.
+    - "Webs reales de psicología…" pasa a "Demos de webs de psicología…".
+    - Rejilla nueva: la destacada a la izquierda y las otras 4 en 2×2. Fuera el CSS que ya no se usaba (`.rating`, `.g-badge`, `.trust-list`).
+  - **/nutricionistas/** (`index.astro`, `style.css`): fuera las 3 reseñas inventadas (Laura M., Carlos G. con "He triplicado mis primeras visitas", Elena R.). H2 "Lo que dicen quienes ya han trabajado con nosotros" y subtítulo "Reseñas publicadas en nuestra ficha de Google.". Las 3 de Google con su etiqueta y el botón.
+  - **/software-a-mida-alcoi/**: Nutrimente con la etiqueta "Client". Las 3 de Google, literales en castellano, con "Ressenya de Google" y el botón "Veure totes les ressenyes a Google".
+  - **/alcoi/**: ya cumplía (estrellas solo en las de Google; Nutrimente con un icono de comillas). Sin cambios.
+- **Intención:** ninguna prueba social inventada, y que se vea de dónde viene cada opinión (LSSI, Directiva Ómnibus y reglas de Google sobre reseñas).
+- **Comprobado** en el servidor de desarrollo a 1440 y 390 px: capturas de los 5 bloques, sin restos ("5,0", "32 valoraciones", "verificadas", Elena M./R., "triplicado"), botón presente y sin scroll horizontal.
+- **Cómo medirlo:** Clarity (clics en "Ver todas las reseñas en Google") y conversión de /psicologos/, /nutricionistas/ y /clinicas/ en GA4.
+- **Estado:** hecho en local y con commit, sin publicar.
+
 ### 15/10/2026 · Política de cookies al día y revisión de la de privacidad
 - **Qué:** `ReactMNDESIGN/src/Legales/PoliticaCookies.jsx` (https://mndesignweb.es/cookies/), con el texto aprobado por María:
   - Categorías con los mismos nombres que el banner (Técnicas / Analítica / Marketing).

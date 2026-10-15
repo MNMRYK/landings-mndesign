@@ -159,21 +159,41 @@ const steps = [
   },
 ];
 
+/* Opiniones REALES y literales (solo se recorta con "[…]"). google: true → "Reseña de Google" y
+   estrellas; google: false → cliente que no viene de Google, etiqueta "Cliente" y sin estrellas.
+   Sin valoración media, número de reseñas ni schema Review. La primera va en la tarjeta grande. */
+const GOOGLE_RESENAS = "https://share.google/H7PZUbk3sAkb31aDe";
 const quotes = [
   {
-    q: "La web ha transformado mi consulta, ahora todo está automatizado.",
-    n: "Dra. Elena M.",
-    i: "EM",
+    q: "[…] me ayudó a crear una web profesional a modo de portfolio y presentación de mi perfil, entendiendo perfectamente lo que buscaba y aportando siempre ideas y soluciones creativas que iban un paso más allá.",
+    n: "Lara S.",
+    r: "Directora de arte",
+    i: "LS",
+    google: true,
   },
   {
     q: "La automatización de mi agenda me ha ahorrado horas de gestión administrativa.",
     n: "Dra. Sonia O.",
     i: "SO",
+    google: false,
   },
   {
     q: "Por fin tengo un calendario que no me da problemas.",
     n: "Centro Kinetix",
     i: "CK",
+    google: false,
+  },
+  {
+    q: "Excelente servicio! Ha superado por completo mis expectativas con el diseño de la página web. […] un resultado final súper visual, moderno y fácil de navegar.",
+    n: "Miriam A.",
+    i: "MA",
+    google: true,
+  },
+  {
+    q: "Gran profesional! Cualquier duda me informo y me resolvió perfectamente. […] Muchas gracias, 100% recomendada.",
+    n: "Damaris López",
+    i: "DL",
+    google: true,
   },
 ];
 
@@ -1470,52 +1490,10 @@ const schema = {
             >
           </h2>
           <p class="lead rv">
-            Valoraciones reales en Google y webs que puedes abrir ahora mismo.
+            Opiniones de clientes y de nuestra ficha de Google, y demos de webs que puedes abrir ahora mismo.
           </p>
 
           <div class="proof-grid">
-            <div class="card rating rv" data-spot>
-              <div>
-                <div class="score">5,0<span> / 5</span></div>
-                <div class="stars5" aria-label="5 estrellas">
-                  {
-                    [0, 1, 2, 3, 4].map(() => (
-                      <svg class="i" viewBox="0 0 24 24" set:html={ic.star} />
-                    ))
-                  }
-                </div>
-                <p>Media de 32 valoraciones</p>
-                <ul class="trust-list">
-                  <li>
-                    <svg
-                      class="i"
-                      viewBox="0 0 24 24"
-                      set:html={ic.check}
-                    />Trato directo, sin intermediarios
-                  </li>
-                  <li>
-                    <svg class="i" viewBox="0 0 24 24" set:html={ic.check} />Web
-                    funcionando en 3-5 semanas
-                  </li>
-                  <li>
-                    <svg
-                      class="i"
-                      viewBox="0 0 24 24"
-                      set:html={ic.check}
-                    />Datos cifrados de serie
-                  </li>
-                </ul>
-              </div>
-              <div class="g-badge">
-                <span class="g"><span>G</span></span>
-                <div>
-                  <b>Reseñas verificadas</b><br /><span
-                    style="color:var(--muted)">Publicadas en Google</span
-                  >
-                </div>
-              </div>
-            </div>
-
             <figure class="card quote feat rv" style="--d:.08s">
               <div>
                 <div class="qmark" aria-hidden="true">“</div>
@@ -1525,6 +1503,7 @@ const schema = {
                 <span class="av">{quotes[0].i}</span>
                 <div>
                   <b>{quotes[0].n}</b>
+                  {quotes[0].r && <span>{quotes[0].r}</span>}
                   <span
                     ><svg
                       class="i verified"
@@ -1543,35 +1522,48 @@ const schema = {
                   data-spot
                   style={`--d:${0.16 + idx * 0.08}s`}
                 >
-                  <div class="stars5" aria-label="5 estrellas">
-                    {[0, 1, 2, 3, 4].map(() => (
-                      <svg class="i" viewBox="0 0 24 24" set:html={ic.star} />
-                    ))}
-                  </div>
+                  {q.google && (
+                    <div class="stars5" role="img" aria-label="5 de 5 estrellas">
+                      {[0, 1, 2, 3, 4].map(() => (
+                        <svg class="i" viewBox="0 0 24 24" set:html={ic.star} />
+                      ))}
+                    </div>
+                  )}
                   <blockquote>“{q.q}”</blockquote>
                   <figcaption class="who">
                     <span class="av">{q.i}</span>
                     <div>
                       <b>{q.n}</b>
-                      <span>
-                        <svg
-                          class="i verified"
-                          viewBox="0 0 24 24"
-                          set:html={ic.shield}
-                        />
-                        Reseña de Google
-                      </span>
+                      {q.google ? (
+                        <span>
+                          <svg
+                            class="i verified"
+                            viewBox="0 0 24 24"
+                            set:html={ic.shield}
+                          />
+                          Reseña de Google
+                        </span>
+                      ) : (
+                        <span>Cliente</span>
+                      )}
                     </div>
                   </figcaption>
                 </figure>
               ))
             }
           </div>
+          <div class="resenas-cta rv">
+            <a class="btn btn-ghost btn-sm" href={GOOGLE_RESENAS} target="_blank" rel="noopener"
+              >Ver todas las reseñas en Google <svg class="i" viewBox="0 0 24 24" set:html={ic.ext} /><span
+                class="sr-only"> (se abre en una pestaña nueva)</span
+              ></a
+            >
+          </div>
 
           <div class="demos-h" id="demos">
             <div>
               <span class="eyebrow">Demos</span>
-              <h3>Webs reales de psicología que puedes abrir ahora mismo</h3>
+              <h3>Demos de webs de psicología que puedes abrir ahora mismo</h3>
             </div>
             <a class="btn btn-ghost btn-sm" href="#contacto"
               >Quiero una así <svg
@@ -1830,10 +1822,6 @@ const schema = {
                   viewBox="0 0 24 24"
                   set:html={ic.clock}
                 />Respuesta en menos de 24 h</span
-              >
-              <span class="pill"
-                ><svg class="i" viewBox="0 0 24 24" set:html={ic.star} />5,0 en
-                Google</span
               >
             </div>
             <div class="cgrid">

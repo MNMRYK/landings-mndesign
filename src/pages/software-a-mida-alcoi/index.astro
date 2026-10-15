@@ -987,8 +987,54 @@ const schema = {
             <div class="text-left">
               <p class="font-bold text-saas-dark text-sm">Nutrimente</p>
               <p class="text-slate-500 text-sm">Nutricion Integrativa Jaén</p>
+              <span
+                class="inline-block mt-1 px-2.5 py-0.5 rounded-full border border-slate-200 bg-white text-xs font-bold text-slate-600"
+                >Client</span
+              >
             </div>
           </div>
+        </div>
+
+        <!-- Ressenyes REALS de Google, literals i en castellà (només es retallen amb […]). Sense schema Review. -->
+        <ul class="max-w-6xl mx-auto mt-12 grid gap-5 md:grid-cols-3 text-left" aria-label="Ressenyes de Google">
+          {
+            [
+              {
+                n: "Lara S.",
+                r: "Directora de arte",
+                t: "[…] me ayudó a crear una web profesional a modo de portfolio y presentación de mi perfil, entendiendo perfectamente lo que buscaba y aportando siempre ideas y soluciones creativas que iban un paso más allá.",
+              },
+              {
+                n: "Miriam A.",
+                t: "Excelente servicio! Ha superado por completo mis expectativas con el diseño de la página web. […] un resultado final súper visual, moderno y fácil de navegar.",
+              },
+              {
+                n: "Damaris López",
+                t: "Gran profesional! Cualquier duda me informo y me resolvió perfectamente. […] Muchas gracias, 100% recomendada.",
+              },
+            ].map((g) => (
+              <li class="flex flex-col bg-white rounded-3xl border border-slate-200 p-6 shadow-card">
+                <div class="flex items-center justify-between gap-2 mb-3">
+                  <span class="text-amber-600 tracking-widest" role="img" aria-label="5 de 5 estrelles">★★★★★</span>
+                  <span class="px-2.5 py-0.5 rounded-full border border-slate-200 text-xs font-bold text-slate-600 whitespace-nowrap"
+                    >Ressenya de Google</span
+                  >
+                </div>
+                <p class="text-slate-600 text-[15px] leading-relaxed mb-5 flex-1" lang="es">«{g.t}»</p>
+                <p class="font-bold text-saas-dark text-sm">{g.n}</p>
+                {g.r && <p class="text-slate-500 text-sm" lang="es">{g.r}</p>}
+              </li>
+            ))
+          }
+        </ul>
+        <div class="text-center mt-8">
+          <a
+            href="https://share.google/H7PZUbk3sAkb31aDe"
+            target="_blank"
+            rel="noopener"
+            class="inline-flex items-center gap-2 bg-white border border-slate-200 hover:border-saas-violet text-saas-dark font-bold text-sm px-6 py-3 rounded-full transition-colors"
+            >Veure totes les ressenyes a Google<span class="sr-only"> (s'obri en una pestanya nova)</span></a
+          >
         </div>
       </div>
 
