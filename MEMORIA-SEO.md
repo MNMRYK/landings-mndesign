@@ -30,9 +30,54 @@ Búsquedas objetivo de Alcoy (mismo periodo):
 - "—": posición no anotada; rellenarla en la próxima consulta a Search Console.
 - La URL /alcoi/ está en la posición 56 para estas búsquedas; Google muestra la home en su lugar.
 
+## Palabra clave por página (desde el 15/10/2026, para evitar la canibalización)
+
+Cada búsqueda se mide en una sola página. En Search Console: Rendimiento → filtro de página → consultas.
+
+| Página | Repo | Búsquedas que mide |
+| --- | --- | --- |
+| /alcoi/ | Landings | diseño web alcoy, páginas web alcoy, diseño páginas web alcoy, agencia de diseño web alcoy, diseño web alcoi |
+| /posicionamiento-seo/ | ReactMNDESIGN | posicionamiento seo alcoy, seo alcoy, posicionamiento web alcoy, agencia seo alcoy |
+| /e-commerce/ | ReactMNDESIGN | tienda online alcoy, diseño de tiendas online |
+| /redes-sociales/ | ReactMNDESIGN | gestión de redes sociales alcoy (y marketing en redes sociales alcoy) |
+| /psicologos/ | Landings | páginas web para psicólogos, diseño web para psicólogos |
+| /nutricionistas/ | Landings | diseño web para nutricionistas |
+| /clinicas/ | Landings | software para clínicas, software gestión de pacientes |
+| /academia-nutricion/ | Landings | plataforma de cursos online para nutricionistas, academia online |
+| /aprende-shopify/ | Landings | mentoría shopify |
+| /software-a-mida-alcoi/ | Landings | software a mida alcoi |
+| /bodas/ (inactiva) | Landings | invitaciones de boda digitales |
+
 ## Registro de cambios
 Orden cronológico inverso (lo más reciente arriba). Formato de cada entrada:
 fecha · qué se ha cambiado (archivos y URLs) · intención / por qué · objetivo · cómo medirlo · estado (hecho / publicado / pendiente de indexar).
+
+### 15/10/2026 · SEO on-page: una palabra clave por página
+- **Qué** (textos aprobados por María; tabla "Palabra clave por página" arriba):
+  - **Titles** (todos de 50 a 60 caracteres, sin "2026"):
+    - /alcoi/: "Diseño Web en Alcoy (Alcoi) · Páginas Web | MN Design Web" (fuera "Tiendas Online").
+    - /posicionamiento-seo/: "Posicionamiento SEO en Alcoy (Alcoi) | MN Design Web".
+    - /e-commerce/: "Diseño de Tiendas Online en Alcoy (Alcoi) | MN Design Web".
+    - /redes-sociales/: "Gestión de Redes Sociales en Alcoy (Alcoi) | MN Design Web".
+    - /psicologos/: "Páginas Web para Psicólogos y Agenda Online | MN Design Web".
+    - /clinicas/: "Software para Clínicas y Gestión de Pacientes | Portal Salud".
+    - /bodas/: "Invitaciones de Boda Digitales Interactivas | MN Design Web".
+    - /academia-nutricion/: "Plataforma de Cursos Online para Nutricionistas | MN Design" (también og:title y twitter:title).
+    - /aprende-shopify/: "Mentoría y Desarrollo de Tiendas Shopify | MN Design Web".
+    - /software-a-mida-alcoi/: "Software a Mida i Automatització a Alcoi | MN Design Web".
+    - /nutricionistas/ no cambia.
+  - **Descriptions:** de 120 a 155 caracteres en todas, con la palabra clave.
+  - **H1, primer párrafo y un H2 con la palabra clave** en /alcoi/, /posicionamiento-seo/, /e-commerce/, /redes-sociales/, /psicologos/, /nutricionistas/, /clinicas/ ("gestión de pacientes" también en el contenido), /bodas/ y /academia-nutricion/.
+  - **/alcoi/:** el H2 "…diseño web y SEO local en Alcoy" pasa a "Preguntas frecuentes sobre diseño web en Alcoy". Las tarjetas de tienda online y SEO siguen enlazando a sus páginas.
+  - **/e-commerce/:** el H2 copiado de /aprende-shopify/ ("Toma el control operativo de tu Shopify…") y su párrafo pasan a un texto propio ("¿Ya tienes tu tienda en Shopify? Te enseñamos a gestionarla") con un enlace a /aprende-shopify/.
+  - **/bodas/:** og:url corregido (apuntaba a la home) y twitter:title igualado.
+  - **/nutricionistas/:** voz "nosotros" en el bloque "Sobre nosotros" ("Somos MN Design Web y entendemos los números de tu consulta"…) y en las preguntas frecuentes (visible y schema). Fuera "a la mitad" ("Reduce el trabajo administrativo.").
+  - **/academia-nutricion/:** "+40h ahorradas al mes" pasa a "Menos horas de gestión", y fuera "definitiva".
+  - **Archivos de ReactMNDESIGN:** `PosicionamientoSeo.jsx`, `PosicionamientoSeo/PosicionamientoSeoSiguiente.jsx`, `PosicionamientoSeo/PlanesSeo.jsx`, `Ecommerce.jsx`, `Ecommerce/EcommerceSiguiente.jsx`, `Ecommerce/EcommercePlanes.jsx`, `RedesSociales.jsx`, `RedesSociales/RedesSocialesSiguiente.jsx` y `RedesSociales/PlanesRedes.jsx`.
+- **Intención:** que cada búsqueda tenga una sola página candidata. En concreto, que "seo alcoy" y "posicionamiento web alcoy" dejen de repartirse entre /alcoi/ y /posicionamiento-seo/, y "tienda online alcoy" entre /alcoi/ y /e-commerce/.
+- **Comprobado en los servidores de desarrollo:** las 9 páginas con palabra clave nueva la tienen en title, H1, primer párrafo y algún H2. Un solo H1, og:title igual al title, og:url correcto, sin errores y sin scroll horizontal a 390 px. Capturas de las cabeceras a 1440 y 390 px.
+- **Cómo medirlo:** Search Console, con las búsquedas de la tabla de arriba en su página. Revisar a las 2, 4 y 6 semanas de publicar: impresiones, posición y que la URL que sale es la esperada.
+- **Estado:** hecho en local y con commit. Se publica con el resto de la tanda.
 
 ### 15/10/2026 · Reseñas: solo reales, con su origen, en todas las landings
 - **Qué** (reales confirmadas por María; reglas añadidas a CLAUDE.md):
@@ -209,7 +254,7 @@ fecha · qué se ha cambiado (archivos y URLs) · intención / por qué · objet
   - La antigua página de software en valenciano (que estaba en /alcoi/) pasa tal cual a `src/pages/software-a-mida-alcoi/` → https://mndesignweb.es/software-a-mida-alcoi/ (solo cambian canonical, og:url y etiquetas de medición). Su Tailwind va con config congelada: `tailwind.software-a-mida-alcoi.config.mjs`.
 - **Intención:** /alcoi/ estaba en valenciano y hablaba de software industrial, mientras que la gente busca "diseño web alcoy" en castellano (783 impr./3 meses) y Google mostraba la home en la posición 17 y /alcoi/ en la 56. Ahora la URL local responde a lo que se busca.
 - **Objetivo:** que /alcoi/ (y no la home) sea la URL que posiciona para "diseño web alcoy" y sus variantes, primero en el top 10 y después en el top 5.
-- **Cómo medirlo:** Search Console → Rendimiento → filtro de página `https://mndesignweb.es/alcoi/`; mirar las consultas "diseño web alcoy", "diseño paginas web alcoy", "agencia de diseño web alcoy", "seo alcoy", "posicionamiento web alcoy" y "agencia seo alcoy" (posición, impresiones y clics) y comprobar que la URL que sale para ellas es /alcoi/ y no la home. Revisar el 28/10/2026 y el 04/11/2026 (2-3 semanas después de publicar). Comprobar también que /software-a-mida-alcoi/ se indexa.
+- **Cómo medirlo:** Search Console → Rendimiento → filtro de página `https://mndesignweb.es/alcoi/`; mirar las consultas "diseño web alcoy", "diseño paginas web alcoy", "agencia de diseño web alcoy", "seo alcoy", "posicionamiento web alcoy" y "agencia seo alcoy" (posición, impresiones y clics) y comprobar que la URL que sale para ellas es /alcoi/ y no la home. Revisar el 28/10/2026 y el 04/11/2026 (2-3 semanas después de publicar). Comprobar también que /software-a-mida-alcoi/ se indexa. **Desde el 15/10/2026, "seo alcoy", "posicionamiento web alcoy" y "agencia seo alcoy" se miden en /posicionamiento-seo/ (ver la tabla "Palabra clave por página").**
 - **Estado:** hecho en local, **sin publicar** (no hay push a main). Al publicar: pedir la indexación de /alcoi/ y /software-a-mida-alcoi/ en Search Console, y añadir /software-a-mida-alcoi/ a `ReactMNDESIGN/src/seo/rutas.js` (sitemap) y a `ReactMNDESIGN/public/llms.txt`.
 - **Lighthouse móvil (local, build de producción):** rendimiento 94 · accesibilidad 100 · buenas prácticas 100 · SEO 100 · LCP 2,5 s · CLS 0,021 · TBT 0 ms.
 
@@ -221,6 +266,14 @@ fecha · qué se ha cambiado (archivos y URLs) · intención / por qué · objet
 - **Estado:** hecho.
 
 ## Pendientes
+- [PENDIENTE: aprobar y conectar la og:image en castellano de /alcoi/] Creada en `public/alcoi/og-diseno-web-alcoy.webp` (1200×630, 47 KB). Al aprobarla: `ogImage` en `src/pages/alcoi/index.astro` y la valenciana (`imagen-miniatura-alcoi.webp`) solo para /software-a-mida-alcoi/.
+- [PENDIENTE: og:image propia para /posicionamiento-seo/, /redes-sociales/ y /e-commerce/ (ReactMNDESIGN)] Ahora las tres usan la genérica `logo-card.webp`.
+- [PENDIENTE CON CONDICIÓN: home y /disenoweb/ (ReactMNDESIGN) frente a /alcoi/] Revisar en Search Console 3-4 semanas después de publicar la tanda del 15/10. **Si para "diseño web alcoy" ya sale /alcoi/**, aplicar:
+  - Home: title de marca y diferenciación ("MN Design Web · Estudio de Diseño Web y Software a Medida"), sin "Alcoi" en el title ni en la description, y un enlace visible "Diseño web en Alcoy" a /alcoi/.
+  - /disenoweb/: página general del servicio ("diseño web profesional a medida"), sin ciudad en el title, la description ni el H1, y un enlace "¿Eres de Alcoy o la comarca?" a /alcoi/.
+  - En las dos, enlazar a /alcoi/ con el texto "diseño web en Alcoy". Sin canonical entre ellas, porque el contenido es distinto.
+  - Hasta entonces no se tocan: son las páginas que hoy traen más clics.
+- [PENDIENTE: maqueta del panel de /redes-sociales/] Muestra cifras ("124.5K cuentas alcanzadas", "↑34.2%") que pueden leerse como resultados reales. Valorar marcarlas como ejemplo o quitarlas.
 - [PENDIENTE: completar la política de privacidad (/privacidad/)] Ahora solo cubre el formulario de contacto. Le falta: destinatarios y encargados (Web3Forms, Make, SiteGround, Cal.com, Google, Microsoft, Meta); que, si se aceptan las cookies de Marketing, Meta y Google Ads reciben los eventos de conversión (envío de formulario, reserva, clics de contacto), Meta también por la API de Conversiones; transferencias internacionales a EE. UU. y su garantía; las reservas de Cal.com (qué datos se piden y para qué); la finalidad publicitaria y su base legal (consentimiento de cookies) separada de la del formulario; plazos de conservación concretos; el derecho a la portabilidad y a retirar el consentimiento; y enlace a la política de cookies. Si algún día se activa la coincidencia avanzada de Meta (email/teléfono cifrados), habría que decirlo expresamente.
 - [PENDIENTE: borrar de SiteGround el script antiguo de /alcoi/] `public_html/_astro/index.astro_astro_type_script_index_0_lang.B3rb_G58.js`, cuando María confirme que todo va bien. Solo lo usaba /alcoi/.
 - [PENDIENTE: quitar el píxel de Meta del tipo de evento `mentorias-shopify` en Cal.com] Sigue disparando Meta sin consentimiento desde el calendario de /aprende-shopify/ (comprobado el 15/10/2026).
