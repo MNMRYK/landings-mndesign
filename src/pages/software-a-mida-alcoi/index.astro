@@ -2406,19 +2406,6 @@ const schema = {
           }
         }
 
-        // 5. MESURAMENT DE CLICS EN TELÈFON, WHATSAPP I EMAIL
-        document.addEventListener("click", (e) => {
-          const link = e.target.closest && e.target.closest("a[href]");
-          if (!link) return;
-          const href = link.getAttribute("href");
-          let tipo = null;
-          if (href.startsWith("tel:")) tipo = "phone";
-          else if (href.includes("wa.me") || href.includes("whatsapp")) tipo = "whatsapp";
-          else if (href.startsWith("mailto:")) tipo = "email";
-          if (!tipo) return;
-          if (typeof fbq === "function") fbq("track", "Contact", { content_name: tipo });
-        });
-
         // 6. APARICIÓ EN FER SCROLL
         // Només als elements que encara no es veuen (sense parpelleig a dalt)
         // i res si l'usuari té activat "reduir moviment".

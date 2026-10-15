@@ -2540,24 +2540,6 @@ const schema = {
         }
       })();
 
-      /* JS-8 · Medición de clics en teléfono, WhatsApp y email */
-      document.addEventListener("click", function (e) {
-        var a = e.target.closest && e.target.closest("a[href]");
-        if (!a) return;
-        var href = a.getAttribute("href");
-        var tipo = null;
-        if (href.indexOf("tel:") === 0) tipo = "phone";
-        else if (
-          href.indexOf("wa.me") !== -1 ||
-          href.indexOf("whatsapp") !== -1
-        )
-          tipo = "whatsapp";
-        else if (href.indexOf("mailto:") === 0) tipo = "email";
-        if (!tipo) return;
-        if (typeof fbq === "function")
-          fbq("track", "Contact", { content_name: tipo });
-      });
-
     </script>
   </body>
 </html>

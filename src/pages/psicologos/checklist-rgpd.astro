@@ -3,7 +3,10 @@
    CHECKLIST RGPD PARA CONSULTAS DE PSICOLOGÍA
    Imán de captación: se entrega tras dejar el email en la landing.
    No indexable. Se puede imprimir o guardar como PDF.
+   Con banner de cookies y medición como las landings.
    ========================================================= */
+import CookiesHead from "../../components/CookiesHead.astro";
+import CookieBanner from "../../components/CookieBanner.astro";
 
 const blocks = [
   {
@@ -97,6 +100,7 @@ let n = 0;
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Checklist RGPD para consultas de psicología | MN Design Web</title>
     <meta name="robots" content="noindex, nofollow" />
+    <CookiesHead />
     <link rel="icon" type="image/webp" href="/favicon_v2.webp" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -300,7 +304,73 @@ let n = 0;
         font-size: 0.8rem;
         color: var(--muted);
       }
+      .cookies-config {
+        background: none;
+        border: 0;
+        padding: 0;
+        font: inherit;
+        color: inherit;
+        text-decoration: underline;
+        cursor: pointer;
+      }
+
+      /* Banner de cookies (colores de la página: vale en modo claro y oscuro) */
+      .cookie-banner {
+        position: fixed;
+        left: 16px;
+        right: 16px;
+        bottom: 16px;
+        z-index: 1000;
+        max-width: 440px;
+        flex-direction: column;
+        gap: 14px;
+        padding: 20px;
+        background: var(--surface);
+        color: var(--ink);
+        border: 1px solid var(--line);
+        border-radius: 20px;
+        box-shadow: 0 20px 40px rgba(11, 18, 32, 0.25);
+      }
+      .cookie-title {
+        margin: 0 0 4px;
+        font-weight: 700;
+      }
+      .cookie-desc {
+        margin: 0;
+        font-size: 0.875rem;
+        line-height: 1.5;
+        color: var(--muted);
+      }
+      .cookie-desc a {
+        color: var(--brand);
+        font-weight: 600;
+      }
+      .cookie-actions {
+        display: flex;
+        gap: 10px;
+      }
+      .cookie-btn {
+        flex: 1;
+        padding: 11px 16px;
+        border-radius: 999px;
+        border: 1px solid var(--ink);
+        font: inherit;
+        font-weight: 600;
+        cursor: pointer;
+      }
+      .cookie-btn-main {
+        background: var(--ink);
+        color: var(--bg);
+      }
+      .cookie-btn-ghost {
+        background: transparent;
+        color: var(--ink);
+      }
       @media print {
+        .cookie-banner,
+        .cookies-config {
+          display: none !important;
+        }
         body {
           background: #fff;
           padding: 0;
@@ -378,9 +448,33 @@ let n = 0;
       <p class="legal">
         Este checklist es orientativo y no sustituye el asesoramiento de un
         profesional en protección de datos. © MN Design Web · Cocentaina
-        (Alicante) · info@mndesignweb.es
+        (Alicante) · info@mndesignweb.es ·
+        <button type="button" class="cookies-config" data-configurar-cookies>Configurar cookies</button>
       </p>
     </main>
+
+    <div
+      id="cookie-banner"
+      class="cookie-banner"
+      style="display: none"
+      role="dialog"
+      aria-labelledby="cookie-title"
+      aria-describedby="cookie-desc"
+    >
+      <div class="cookie-txt">
+        <p class="cookie-title" id="cookie-title">Usamos cookies</p>
+        <p class="cookie-desc" id="cookie-desc">
+          Usamos cookies propias y de terceros para medir las visitas y mostrarte publicidad personalizada. Puedes
+          aceptarlas, rechazarlas o configurarlas.
+          <span class="cc-enlaces"><a href="https://mndesignweb.es/cookies/">Ver política de cookies</a> <button type="button" class="cc-link" data-configurar-cookies>Configurar</button></span>
+        </p>
+      </div>
+      <div class="cookie-actions">
+        <button id="btn-decline-cookies" type="button" class="cookie-btn cookie-btn-ghost">Rechazar</button>
+        <button id="btn-accept-cookies" type="button" class="cookie-btn cookie-btn-main">Aceptar</button>
+      </div>
+    </div>
+    <CookieBanner />
 
     <script is:inline>
       (function () {

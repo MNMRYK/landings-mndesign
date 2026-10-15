@@ -632,18 +632,8 @@ import CookieBanner from "../../components/CookieBanner.astro";
                 </p>
               </div>
 
-              <div class="cal-widget">
-                <iframe
-                  src="https://cal.com/mndesignweb/mentorias-shopify?embed=true"
-                  title="Reserva tu cita"
-                  class="calendar-iframe"
-                  width="100%"
-                  height="100%"
-                  frameBorder="0"
-                  loading="lazy"
-                >
-                </iframe>
-              </div>
+              <!-- Cal.com con el embed oficial (se carga al acercarse; mide las reservas) -->
+              <div class="cal-widget" id="cal-inline" role="region" aria-label="Reserva tu mentoría"></div>
 
               <div class="cta-box-below glass-card">
                 <div class="glass-icon">
@@ -1460,21 +1450,14 @@ import CookieBanner from "../../components/CookieBanner.astro";
       .cal-widget {
         margin: 2rem 0 0 0;
         width: 100%;
-        height: 400px;
+        height: 540px;
+        overflow-y: auto; /* altura fija: al elegir un día las horas se ven haciendo scroll dentro */
+        overscroll-behavior: contain;
         background: var(--white);
         border: 1px solid var(--border-color);
         border-radius: var(--radius);
-        overflow: hidden;
         box-shadow: var(--shadow-sm);
         position: relative;
-      }
-      .calendar-iframe {
-        width: 125%;
-        height: 570px;
-        border: none;
-        display: block;
-        transform: scale(0.8);
-        transform-origin: top left;
       }
 
       .cta-box-below {
@@ -2097,13 +2080,6 @@ import CookieBanner from "../../components/CookieBanner.astro";
           border-radius: 20px;
         }
 
-        .calendar-iframe {
-          width: 100%;
-          height: 100%;
-          transform: scale(1);
-          transform-origin: center;
-        }
-
         .lm-text {
           text-align: center;
           margin-bottom: 1.5rem;
@@ -2342,6 +2318,86 @@ import CookieBanner from "../../components/CookieBanner.astro";
           });
         }
 
+        // ==========================================
+        // CAL.COM (embed oficial): se carga al acercarse y mide las reservas
+        // ==========================================
+        const calBox = document.getElementById("cal-inline");
+        if (calBox) {
+          let calLoaded = false;
+          let booked = false;
+
+          const onBooked = () => {
+            // Cal.com emite el evento antiguo y el V2: solo contamos una reserva
+            if (booked) return;
+            booked = true;
+            window.enviarEvento("book_call", { method: "cal_com", calendario: "mentorias_shopify" });
+            window.enviarMeta("Schedule");
+            if (typeof window.clarity === "function") window.clarity("set", "lead", "shopify_reserva");
+          };
+
+          const loadCal = () => {
+            if (calLoaded) return;
+            calLoaded = true;
+            (function (C, A, L) {
+              const p = function (a, ar) {
+                a.q.push(ar);
+              };
+              const d = C.document;
+              C.Cal =
+                C.Cal ||
+                function () {
+                  const cal = C.Cal;
+                  const ar = arguments;
+                  if (!cal.loaded) {
+                    cal.ns = {};
+                    cal.q = cal.q || [];
+                    d.head.appendChild(d.createElement("script")).src = A;
+                    cal.loaded = true;
+                  }
+                  if (ar[0] === L) {
+                    const api = function () {
+                      p(api, arguments);
+                    };
+                    const namespace = ar[1];
+                    api.q = api.q || [];
+                    if (typeof namespace === "string") {
+                      cal.ns[namespace] = cal.ns[namespace] || api;
+                      p(cal.ns[namespace], ar);
+                      p(cal, ["initNamespace", namespace]);
+                    } else p(cal, ar);
+                    return;
+                  }
+                  p(cal, ar);
+                };
+            })(window, "https://app.cal.com/embed/embed.js", "init");
+
+            const Cal = window.Cal;
+            Cal("init", "mentoria", { origin: "https://cal.com" });
+            Cal.ns.mentoria("inline", {
+              elementOrSelector: "#cal-inline",
+              calLink: "mndesignweb/mentorias-shopify",
+              config: { layout: "month_view" },
+            });
+            Cal.ns.mentoria("ui", { hideEventTypeDetails: false, layout: "month_view" });
+            Cal.ns.mentoria("on", { action: "bookingSuccessfulV2", callback: onBooked });
+            Cal.ns.mentoria("on", { action: "bookingSuccessful", callback: onBooked });
+          };
+
+          if ("IntersectionObserver" in window) {
+            const calObserver = new IntersectionObserver(
+              (entries) => {
+                if (entries[0].isIntersecting) {
+                  loadCal();
+                  calObserver.disconnect();
+                }
+              },
+              { rootMargin: "800px 0px" },
+            );
+            calObserver.observe(calBox);
+          } else {
+            loadCal();
+          }
+        }
       });
     </script>
   </body>

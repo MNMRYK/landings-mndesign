@@ -34,6 +34,22 @@ Búsquedas objetivo de Alcoy (mismo periodo):
 Orden cronológico inverso (lo más reciente arriba). Formato de cada entrada:
 fecha · qué se ha cambiado (archivos y URLs) · intención / por qué · objetivo · cómo medirlo · estado (hecho / publicado / pendiente de indexar).
 
+### 15/10/2026 · Conversiones completas: email, Meta Contact/Lead, reservas de Shopify, /enlaces/ y checklist
+- **Qué:**
+  - `src/components/CookiesHead.astro` (y su copia en `ReactMNDESIGN/index.html`): un único detector de clics para teléfono, WhatsApp, email y cal.com → GA4 `click_telefono`, `click_whatsapp`, **`click_email`** (nuevo) y `click_reserva`, y `Contact` en Meta (`phone` / `whatsapp` / `email`). Nueva función `window.enviarMeta()`.
+  - Quitados los detectores de `Contact` propios de /alcoi/, /software-a-mida-alcoi/, /nutricionistas/ y /psicologos/, para que no se dupliquen. Ahora /clinicas/, /academia-nutricion/, /aprende-shopify/ y las páginas de React también envían `Contact`.
+  - `ReactMNDESIGN/src/utils/analitica.js`: `registrarLead()` envía también `Lead` a Meta. Afecta a los 7 formularios de la web principal (/posicionamiento-seo/, /redes-sociales/, /e-commerce/, contacto, diseño web, demos y kit digital).
+  - /aprende-shopify/: el iframe de Cal.com pasa a ser el embed oficial (`mndesignweb/mentorias-shopify`, namespace `mentoria`), con `book_call` (`calendario=mentorias_shopify`) y `Schedule` al reservar, y scroll interno.
+  - /enlaces/ y /psicologos/checklist-rgpd/: con `CookiesHead`, banner propio con su estilo (el del checklist en modo claro y oscuro, y oculto al imprimir) y enlace "Configurar cookies".
+  - /bodas/ queda fuera (landing inactiva).
+- **Comprobado con Playwright en los servidores de desarrollo** (todo interceptado, nada real enviado), en 12 páginas y en los 4 estados (aceptadas, solo Analítica, solo Marketing, rechazadas):
+  - Teléfono, WhatsApp, email, enlace a cal.com, formularios y reservas: GA4 en los 3 estados con consentimiento y Meta solo con Marketing. Rechazadas: no sale nada, aunque los formularios se envían igual.
+  - `gcs`: G111 / G101 / G110.
+  - Comprobación aparte, porque la prueba genérica no los cubría bien: los formularios de React (exigen marcar un servicio), el checklist de /psicologos/, el enlace a cal.com de /enlaces/ y la reserva de /alcoi/ con solo Marketing.
+  - Desde el 15/10, el calendario `mentorias-shopify` ya no dispara Meta al rechazar (comprobado en producción).
+- **Cómo medirlo:** GA4 → eventos `click_email` y `book_call` con `calendario=mentorias_shopify`. Meta Events Manager → `Contact` y `Lead` desde las landings que antes no los enviaban.
+- **Estado:** hecho en local y con commit, sin publicar (se publica todo junto). Pendiente de aprobación: el nuevo texto de la política de cookies.
+
 ### 15/10/2026 · Banner de cookies por categorías (landings y web principal)
 - **Qué:**
   - `src/components/CookiesHead.astro` y `ReactMNDESIGN/index.html` (mismo código): dos categorías desmarcadas por defecto. **Analítica** (GA4 + Clarity → `analytics_storage`) y **Marketing** (Píxel de Meta + remarketing de Google Ads → `ad_storage`, `ad_user_data`, `ad_personalization`). La etiqueta de Google se carga si hay alguna de las dos (Consent Mode limita lo que hace), Clarity solo con Analítica y Meta solo con Marketing. `localStorage.cookieConsent` = `accepted` / `declined` / `analytics` / `marketing`, y `cookieConsentVersion` = `2`.

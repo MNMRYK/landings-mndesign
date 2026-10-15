@@ -1671,18 +1671,6 @@ const marquee = [
           cargarCal();
         }
       }
-
-      // Clics en teléfono, WhatsApp y email para el Píxel de Meta (GA4 lo mide CookiesHead)
-      d.addEventListener("click", (e) => {
-        const link = (e.target as HTMLElement).closest?.("a[href]");
-        if (!link) return;
-        const href = link.getAttribute("href") || "";
-        let tipo: string | null = null;
-        if (href.startsWith("tel:")) tipo = "phone";
-        else if (href.includes("wa.me")) tipo = "whatsapp";
-        else if (href.startsWith("mailto:")) tipo = "email";
-        if (tipo && typeof w.fbq === "function") w.fbq("track", "Contact", { content_name: tipo });
-      });
     </script>
   </body>
 </html>

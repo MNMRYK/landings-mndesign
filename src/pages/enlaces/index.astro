@@ -1,5 +1,7 @@
 ---
-// Código Astro limpio
+// Enlaces de las bios de redes sociales (noindex). Con banner de cookies y medición como las landings.
+import CookiesHead from "../../components/CookiesHead.astro";
+import CookieBanner from "../../components/CookieBanner.astro";
 ---
 
 <html lang="es">
@@ -17,6 +19,7 @@
 		<meta name="theme-color" content="#0f172a" />
 		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 		<meta name="robots" content="noindex, nofollow">
+		<CookiesHead />
 	</head>
 	<body>
 		<main class="link-container">
@@ -71,7 +74,31 @@
 					<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
 				</a>
 			</footer>
+			<button type="button" class="cookies-config" data-configurar-cookies>Configurar cookies</button>
 		</main>
+
+		<div
+			id="cookie-banner"
+			class="cookie-banner"
+			style="display: none"
+			role="dialog"
+			aria-labelledby="cookie-title"
+			aria-describedby="cookie-desc"
+		>
+			<div class="cookie-txt">
+				<p class="cookie-title" id="cookie-title">Usamos cookies</p>
+				<p class="cookie-desc" id="cookie-desc">
+					Usamos cookies propias y de terceros para medir las visitas y mostrarte publicidad personalizada. Puedes
+					aceptarlas, rechazarlas o configurarlas.
+					<span class="cc-enlaces"><a href="https://mndesignweb.es/cookies/">Ver política de cookies</a> <button type="button" class="cc-link" data-configurar-cookies>Configurar</button></span>
+				</p>
+			</div>
+			<div class="cookie-actions">
+				<button id="btn-decline-cookies" type="button" class="btn btn-secondary">Rechazar</button>
+				<button id="btn-accept-cookies" type="button" class="btn btn-primary">Aceptar</button>
+			</div>
+		</div>
+		<CookieBanner />
 	</body>
 </html>
 
@@ -237,6 +264,62 @@
 
 	.social-footer a:hover {
 		color: #8a31da;
+	}
+
+	.cookies-config {
+		align-self: center;
+		margin-top: -16px;
+		background: none;
+		border: 0;
+		font: inherit;
+		font-size: 0.75rem;
+		color: #94a3b8;
+		text-decoration: underline;
+		cursor: pointer;
+	}
+
+	/* ---------- Banner de cookies (misma tarjeta y botones que los enlaces) ---------- */
+	.cookie-banner {
+		position: fixed;
+		left: 16px;
+		right: 16px;
+		bottom: 16px;
+		z-index: 1000;
+		max-width: 420px;
+		margin: 0 auto;
+		flex-direction: column;
+		gap: 14px;
+		padding: 20px;
+		background: #ffffff;
+		border-radius: 20px;
+		box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+		color: #334155;
+	}
+	.cookie-title {
+		margin-bottom: 4px;
+		font-size: 1rem;
+		font-weight: 700;
+		color: #0f172a;
+	}
+	.cookie-desc {
+		font-size: 0.85rem;
+		line-height: 1.5;
+	}
+	.cookie-desc a {
+		color: #7729bb;
+		font-weight: 600;
+	}
+	.cookie-actions {
+		display: flex;
+		gap: 10px;
+	}
+	.cookie-banner .btn {
+		flex: 1;
+		cursor: pointer;
+		font-family: inherit;
+	}
+	.cookie-banner .btn-primary {
+		border: 2px solid transparent;
 	}
 
 

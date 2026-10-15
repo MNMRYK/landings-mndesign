@@ -1551,21 +1551,6 @@ const schema = {
         }
       }
 
-      // ==========================================
-      // MEDICIÓN DE CLICS EN TELÉFONO, WHATSAPP Y EMAIL
-      // ==========================================
-      document.addEventListener("click", (e) => {
-        const link = e.target.closest && e.target.closest("a[href]");
-        if (!link) return;
-        const href = link.getAttribute("href");
-        let tipo = null;
-        if (href.startsWith("tel:")) tipo = "phone";
-        else if (href.includes("wa.me") || href.includes("whatsapp")) tipo = "whatsapp";
-        else if (href.startsWith("mailto:")) tipo = "email";
-        if (!tipo) return;
-        if (typeof fbq === "function") fbq("track", "Contact", { content_name: tipo });
-      });
-
       function mostrarToast(titulo, mensaje, tipo = "success") {
         const container = document.getElementById("toast-container");
         if (!container) return;
