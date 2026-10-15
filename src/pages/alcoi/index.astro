@@ -1539,7 +1539,8 @@ const marquee = [
         }, 4000);
       }
 
-      const valor = (id: string) => (d.getElementById(id) as HTMLInputElement).value;
+      // Si un campo deja de existir, se envía vacío en vez de romper el envío
+      const valor = (id: string) => (d.getElementById(id) as HTMLInputElement | null)?.value ?? "";
       const form = d.getElementById("formulario") as HTMLFormElement | null;
       if (form) {
         form.addEventListener("submit", (e) => {
@@ -1556,7 +1557,6 @@ const marquee = [
             email: valor("email"),
             telefono: valor("telefono"),
             negocio: valor("negocio"),
-            tipo: valor("tipo"),
             mensaje: valor("mensaje"),
             privacidad: "Aceptada",
           };

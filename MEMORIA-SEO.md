@@ -34,6 +34,20 @@ Búsquedas objetivo de Alcoy (mismo periodo):
 Orden cronológico inverso (lo más reciente arriba). Formato de cada entrada:
 fecha · qué se ha cambiado (archivos y URLs) · intención / por qué · objetivo · cómo medirlo · estado (hecho / publicado / pendiente de indexar).
 
+### 15/10/2026 · URGENTE: formulario de contacto de /alcoi/ reparado
+- **Qué:** `src/pages/alcoi/index.astro` (handler del formulario): se quita `tipo: valor("tipo")`, que leía un campo que ya no existe, y `valor()` devuelve "" si falta un campo en vez de lanzar un error. Misma URL /alcoi/.
+- **Causa:** desde la publicación del 14/10 (commit 6d472ea), al enviar el formulario saltaba `Cannot read properties of null (reading 'value')`: no se enviaba nada a Web3Forms ni a Make, no había conversión y el botón se quedaba en "Enviando…". Los leads por formulario de /alcoi/ de ese periodo se perdieron (las reservas de Cal.com, WhatsApp y teléfono sí funcionaban).
+- **Comprobado con Playwright (build de producción, todo interceptado, sin leads reales):** éxito → POST a Web3Forms y Make con los mismos datos (nombre, email, teléfono, negocio, mensaje), GA4 `generate_lead` (`formulario=alcoy`) y Meta `Lead`, aviso "¡Mensaje enviado!…", botón de vuelta a "Enviar mensaje" y formulario vaciado. Error de Web3Forms → aviso de error, botón restaurado y sin conversiones. Ningún otro formulario de las landings lee campos inexistentes.
+- **Cómo medirlo:** GA4 → `generate_lead` con `pagina=/alcoi/` y `formulario=alcoy` a partir de la subida; leads en Web3Forms/Make.
+- **Estado:** **publicado el 15/10/2026** en SiteGround (`dist/_astro/index.astro_astro_type_script_index_0_lang.Di2_FgYP.js` y `dist/alcoi/index.html`) y probado por María con un envío real. Pendiente: borrar de SiteGround el script antiguo (ver Pendientes).
+
+### 15/10/2026 · Píxel de Meta fuera de Cal.com (calendario sin Meta sin consentimiento)
+- **Qué:** María quita el píxel de Meta de la configuración de Cal.com. Sin cambios en el repo.
+- **Motivo:** la auditoría del 15/10 vio que el iframe de Cal.com disparaba el píxel `1627135808585120` (`PageView` y `CalcomView`) sin consentimiento: en /bodas/ nada más cargar, y en /alcoi/, /nutricionistas/, /psicologos/ y /aprende-shopify/ al rechazar las cookies y bajar hasta el calendario. El banner no puede controlar lo que hace un iframe de otro dominio.
+- **Comprobado con Playwright en producción (15/10, cookies rechazadas, bajando hasta el calendario):** el calendario carga y no hay `fbevents.js` ni envíos a Meta en /alcoi/, /software-a-mida-alcoi/, /nutricionistas/, /psicologos/ y /bodas/ (en esta, tampoco antes de decidir). **Falla en /aprende-shopify/:** su tipo de evento (`mndesignweb/mentorias-shopify`) sigue con el píxel y dispara `PageView` y `CalcomView` al rechazar.
+- **Cómo medirlo:** repetir la prueba tras cada cambio en Cal.com. En Meta Events Manager, los eventos `CalcomView` deberían dejar de llegar (salvo desde /aprende-shopify/ hasta que se corrija).
+- **Estado:** hecho en Cal.com, salvo el tipo de evento `mentorias-shopify` (ver Pendientes).
+
 ### 14/10/2026 · Demo "Norvia Suministros" en el hero y el carrusel de /alcoi/
 - **Qué** (`src/pages/alcoi/index.astro`, `src/pages/alcoi/iris.css`, `public/alcoi/demos/`; misma URL /alcoi/):
   - Hero: la captura de micropigmentación se sustituye por la primera pantalla de la demo Norvia Suministros (ficticia: almacén de material eléctrico, fontanería y suministro industrial en Alcoy). Imágenes optimizadas con sharp a partir de la @2x: `suministros-hero-720.webp` (31 KB), `-1440` (80 KB) y `-2880` (154 KB) con srcset (antes 106 y 261 KB). Barra de direcciones: mnmryk.github.io/demo-suministros. La captura ya es 16:10 como el marco, así que deja de desplazarse (fuera la animación `.hero-shot`/`hero-scroll` de iris.css).
@@ -144,6 +158,9 @@ fecha · qué se ha cambiado (archivos y URLs) · intención / por qué · objet
 - **Estado:** hecho.
 
 ## Pendientes
+- [PENDIENTE: borrar de SiteGround el script antiguo de /alcoi/] `public_html/_astro/index.astro_astro_type_script_index_0_lang.B3rb_G58.js`, cuando María confirme que todo va bien. Solo lo usaba /alcoi/.
+- [PENDIENTE: quitar el píxel de Meta del tipo de evento `mentorias-shopify` en Cal.com] Sigue disparando Meta sin consentimiento desde el calendario de /aprende-shopify/ (comprobado el 15/10/2026).
+- [PENDIENTE: decidir si se elimina el workflow de GitHub Pages] Publica en https://mnmryk.github.io/landings-mndesign/ una copia sin estilos e indexable (con canonical a mndesignweb.es). Ver CLAUDE.md → Publicación.
 - [PENDIENTE: posiciones actuales de las búsquedas de Alcoy marcadas con "—" en la tabla de partida]
 - [PENDIENTE: miniatura OG en castellano para /alcoi/] La actual (`public/alcoi/imagen-miniatura-alcoi.webp`) está en valenciano y pesa 344 KB.
 - [PENDIENTE: proyecto o cliente real de Alcoy] Cuando lo haya, va el primero del carrusel de /alcoi/.

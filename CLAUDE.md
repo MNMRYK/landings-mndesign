@@ -4,10 +4,21 @@
 Estudio de diseño web y software a medida en Cocentaina (Alicante), de María Nadal.
 Web principal: https://mndesignweb.es/ · Passeig del Comtat, 75, 5º 1º · 03820 Cocentaina · +34 645 854 934 · info@mndesignweb.es
 
-Este repo (Astro, desplegado en GitHub Pages con cada push a `main`) contiene las landings que cuelgan del dominio:
+Este repo (Astro) contiene las landings que cuelgan del dominio:
 /alcoi/ (diseño web en Alcoy, castellano), /software-a-mida-alcoi/ (software a medida, valenciano: es la "página de software de Cocentaina", antes vivía en /alcoi/; carpeta `src/pages/software-a-mida-alcoi/`), /clinicas/, /nutricionistas/, /psicologos/, /academia-nutricion/, /bodas/, /aprende-shopify/, /enlaces/ (noindex).
 La web principal (React) está en `../ReactMNDESIGN` y el blog en `../Blog-mndesignweb`.
 El sitemap del dominio lo genera ReactMNDESIGN a partir de `src/seo/rutas.js` (aquí no hay sitemap).
+
+## Publicación (SiteGround, subida manual)
+mndesignweb.es se sirve desde **SiteGround**: hay que subir a mano el contenido de `dist/` a `public_html`. Un push a `main` **no publica nada** en el dominio. El workflow `.github/workflows/deploy.yml` despliega en GitHub Pages, que no es donde apunta el dominio.
+1. `npm run build` (genera `dist/`).
+2. Averigua qué ha cambiado: compara el `dist/` nuevo con el anterior. Los JS y CSS de `dist/_astro/` llevan un hash en el nombre: si cambia el código, cambia el nombre del archivo y el HTML apunta al nuevo.
+3. Sube **primero** los archivos nuevos de `dist/_astro/` a `public_html/_astro/`.
+4. Sube **después** las páginas (`dist/<landing>/index.html` → `public_html/<landing>/`) y los archivos nuevos o cambiados de `public/`. Por este orden, ninguna página apunta a un script que aún no está subido.
+5. Vacía la caché de SiteGround (Site Tools → Speed → Caching) y comprueba la página en una ventana privada.
+6. Los `_astro/` antiguos se pueden borrar de SiteGround cuando se haya comprobado que todo va bien (y solo si ninguna otra página los usa).
+
+Pendiente de decidir: el workflow de GitHub Pages publica en https://mnmryk.github.io/landings-mndesign/ una copia de las landings sin estilos, pero indexable (con canonical a mndesignweb.es). Para retirarla hay que borrar el workflow y, además, despublicar Pages en GitHub → Settings → Pages.
 
 Piezas comunes de las landings:
 - Cookies y analítica: `src/components/CookiesHead.astro` (Consent Mode v2, GA4 `G-36WYJMYT3Z`, Clarity, Píxel de Meta; nada se carga sin aceptar) y `src/components/CookieBanner.astro`. Eventos con `window.enviarEvento()` (`generate_lead`, `book_call`, `click_telefono`, `click_whatsapp`, `click_reserva`).
