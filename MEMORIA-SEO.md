@@ -34,6 +34,21 @@ Búsquedas objetivo de Alcoy (mismo periodo):
 Orden cronológico inverso (lo más reciente arriba). Formato de cada entrada:
 fecha · qué se ha cambiado (archivos y URLs) · intención / por qué · objetivo · cómo medirlo · estado (hecho / publicado / pendiente de indexar).
 
+### 15/10/2026 · Política de cookies al día y revisión de la de privacidad
+- **Qué:** `ReactMNDESIGN/src/Legales/PoliticaCookies.jsx` (https://mndesignweb.es/cookies/), con el texto aprobado por María:
+  - Categorías con los mismos nombres que el banner (Técnicas / Analítica / Marketing).
+  - `cookieConsent` y `cookieConsentVersion` como técnicas.
+  - Fuera "Cookies de Personalización", que la web no usa.
+  - Retirada desde «Configurar cookies» también en Clarity.
+  - El caso "solo Marketing" (GA4 sin cookies).
+  - El envío por la API de Conversiones de Meta.
+  - Cal.com, con su cookie `__cf_bm` y los informes de errores a Sentry.
+  - La política no tiene fecha de "última actualización", así que no se ha añadido ninguna.
+- **Cal.com:** se deja como está: carga al acercarse a la sección de contacto y se trata como servicio técnico (decisión de María).
+- **Comprobado:** /cookies/ en el servidor de desarrollo, sin errores. Medido el 15/10 con un formulario de /alcoi/: ni el Píxel ni la pasarela de la API de Conversiones envían email, teléfono ni nombre, tampoco cifrados (no hay coincidencia avanzada); solo el evento, la URL y datos técnicos.
+- **Política de privacidad (`ReactMNDESIGN/src/Legales/PoliticaPrivacidad.jsx`), sin cambios; le falta:** ver la entrada de Pendientes.
+- **Estado:** hecho en local y con commit, sin publicar.
+
 ### 15/10/2026 · Conversiones completas: email, Meta Contact/Lead, reservas de Shopify, /enlaces/ y checklist
 - **Qué:**
   - `src/components/CookiesHead.astro` (y su copia en `ReactMNDESIGN/index.html`): un único detector de clics para teléfono, WhatsApp, email y cal.com → GA4 `click_telefono`, `click_whatsapp`, **`click_email`** (nuevo) y `click_reserva`, y `Contact` en Meta (`phone` / `whatsapp` / `email`). Nueva función `window.enviarMeta()`.
@@ -189,6 +204,7 @@ fecha · qué se ha cambiado (archivos y URLs) · intención / por qué · objet
 - **Estado:** hecho.
 
 ## Pendientes
+- [PENDIENTE: completar la política de privacidad (/privacidad/)] Ahora solo cubre el formulario de contacto. Le falta: destinatarios y encargados (Web3Forms, Make, SiteGround, Cal.com, Google, Microsoft, Meta); que, si se aceptan las cookies de Marketing, Meta y Google Ads reciben los eventos de conversión (envío de formulario, reserva, clics de contacto), Meta también por la API de Conversiones; transferencias internacionales a EE. UU. y su garantía; las reservas de Cal.com (qué datos se piden y para qué); la finalidad publicitaria y su base legal (consentimiento de cookies) separada de la del formulario; plazos de conservación concretos; el derecho a la portabilidad y a retirar el consentimiento; y enlace a la política de cookies. Si algún día se activa la coincidencia avanzada de Meta (email/teléfono cifrados), habría que decirlo expresamente.
 - [PENDIENTE: borrar de SiteGround el script antiguo de /alcoi/] `public_html/_astro/index.astro_astro_type_script_index_0_lang.B3rb_G58.js`, cuando María confirme que todo va bien. Solo lo usaba /alcoi/.
 - [PENDIENTE: quitar el píxel de Meta del tipo de evento `mentorias-shopify` en Cal.com] Sigue disparando Meta sin consentimiento desde el calendario de /aprende-shopify/ (comprobado el 15/10/2026).
 - [PENDIENTE: decidir si se elimina el workflow de GitHub Pages] Publica en https://mnmryk.github.io/landings-mndesign/ una copia sin estilos e indexable (con canonical a mndesignweb.es). Ver CLAUDE.md → Publicación.
