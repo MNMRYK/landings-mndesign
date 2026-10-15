@@ -2,21 +2,125 @@
 // Lógica común del banner de cookies de las landings. El HTML y el CSS del banner son
 // propios de cada landing (cada una con su estilo) y van justo antes de <CookieBanner />:
 //   - contenedor #cookie-banner con style="display: none"
-//   - botones #btn-accept-cookies y #btn-decline-cookies
+//   - botones #btn-accept-cookies y #btn-decline-cookies (igual de visibles)
+//   - un enlace discreto <button type="button" class="cc-link" data-configurar-cookies>Configurar</button>
 //   - data-cookies-display (opcional): display con el que se muestra (por defecto "flex")
 //   - data-cookies-ocultar (opcional): clases que animan la salida antes de ocultarlo
-// Necesita CookiesHead.astro en el <head>. Cualquier enlace con el atributo
-// data-configurar-cookies (el del footer) lo vuelve a abrir.
+// El panel "Configurar" (Analítica y Marketing, desmarcadas por defecto) lo crea este script dentro
+// del banner; su botón copia el estilo del botón Aceptar de cada landing. Textos en castellano o en
+// valenciano según el lang de la página.
+// Necesita CookiesHead.astro en el <head>. Cualquier elemento con data-configurar-cookies (el
+// enlace "Configurar cookies" del footer o el "Configurar" del banner) abre el panel.
 ---
+
+<style is:global>
+  /* Enlace a la política + "Configurar" en la misma línea, alineados como el texto del banner */
+  #cookie-banner .cc-enlaces {
+    display: block;
+    margin-top: 6px;
+  }
+  #cookie-banner .cc-enlaces > a {
+    display: inline;
+    margin: 0 14px 0 0;
+  }
+  #cookie-banner .cc-link {
+    background: none;
+    border: 0;
+    padding: 0;
+    font: inherit;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: inherit;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    cursor: pointer;
+  }
+  #cookie-banner .cc-panel {
+    position: relative;
+    z-index: 1;
+    flex: 1 1 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    text-align: left;
+  }
+  #cookie-banner .cc-panel[hidden] {
+    display: none;
+  }
+  #cookie-banner .cc-titulo {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 800;
+  }
+  #cookie-banner .cc-opcion {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin: 0;
+    font-size: 0.875rem;
+    line-height: 1.45;
+    cursor: pointer;
+  }
+  #cookie-banner .cc-opcion input {
+    flex-shrink: 0;
+    width: 18px;
+    height: 18px;
+    margin: 2px 0 0;
+    accent-color: var(--cc-acento, currentColor);
+    cursor: pointer;
+  }
+  #cookie-banner .cc-detalle {
+    display: block;
+    font-size: 0.8125rem;
+    opacity: 0.75;
+  }
+  #cookie-banner .cc-acciones {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+  #cookie-banner .cc-acciones > button:last-child {
+    width: auto;
+    flex: 0 1 auto;
+    padding-inline: 18px;
+  }
+</style>
 
 <script is:inline>
   (function () {
     var banner = document.getElementById("cookie-banner");
-    if (!banner) return;
+    if (!banner || !window.leerConsentimiento) return;
+
+    var valenciano = /^ca/i.test(document.documentElement.lang);
+    var T = valenciano
+      ? {
+          titulo: "Configurar cookies",
+          analitica: "Analítica",
+          analiticaDetalle: "Google Analytics i Microsoft Clarity: quantes visites rebem i com s'utilitza la web.",
+          marketing: "Màrqueting",
+          marketingDetalle: "Píxel de Meta i remarketing de Google Ads: anuncis personalitzats i mesura de campanyes.",
+          guardar: "Guardar preferències",
+          volver: "Tornar",
+        }
+      : {
+          titulo: "Configurar cookies",
+          analitica: "Analítica",
+          analiticaDetalle: "Google Analytics y Microsoft Clarity: cuántas visitas recibimos y cómo se usa la web.",
+          marketing: "Marketing",
+          marketingDetalle: "Píxel de Meta y remarketing de Google Ads: anuncios personalizados y medición de campañas.",
+          guardar: "Guardar preferencias",
+          volver: "Volver",
+        };
 
     var display = banner.getAttribute("data-cookies-display") || "flex";
     var clasesSalida = (banner.getAttribute("data-cookies-ocultar") || "").split(" ").filter(Boolean);
     var temporizador = null;
+    var aceptar = document.getElementById("btn-accept-cookies");
+    var rechazar = document.getElementById("btn-decline-cookies");
+    var panel = null;
+    var principal = [];
 
     function mostrar() {
       clearTimeout(temporizador);
@@ -27,96 +131,132 @@
     }
 
     function ocultar() {
-      if (!clasesSalida.length) {
+      var fin = function () {
         banner.style.display = "none";
-        return;
-      }
+        verPrincipal();
+      };
+      if (!clasesSalida.length) return fin();
       clasesSalida.forEach(function (c) {
         banner.classList.add(c);
       });
-      temporizador = setTimeout(function () {
-        banner.style.display = "none";
-      }, 500);
+      temporizador = setTimeout(fin, 500);
     }
 
-    var decision = null;
-    try {
-      decision = localStorage.getItem("cookieConsent");
-    } catch (e) {}
-    if (!decision) mostrar();
+    // El panel va en el mismo contenedor que los botones; lo que tiene texto o botones (título,
+    // descripción, botones) se oculta mientras se configura. Los iconos y fondos se quedan.
+    function crearPanel() {
+      var host = aceptar.parentElement.parentElement;
+      principal = Array.prototype.filter.call(host.children, function (el) {
+        return el.textContent.trim() !== "" || el.querySelector("button");
+      });
 
-    // Cookies y almacenamiento de GA4 (_ga, _ga_*, _gid, _gat*, _gcl_*), Clarity (_clck, _clsk)
-    // y Meta (_fbp, _fbc). No toca cookieConsent.
-    var DE_TRACKERS = /^(_ga|_gid|_gat|_gcl_|_cl[a-z]{2}$|_fb[pc]$|clarity)/i;
+      panel = document.createElement("div");
+      panel.className = "cc-panel";
+      panel.hidden = true;
+      panel.setAttribute("role", "group");
+      panel.setAttribute("aria-labelledby", "cc-titulo");
 
-    function borrarDatosTrackers() {
-      // Dominios donde pueden estar: sin dominio (solo este host), el host y cada dominio padre,
-      // con y sin punto delante (www.mndesignweb.es, mndesignweb.es, .mndesignweb.es…)
-      var partes = location.hostname.split(".");
-      var dominios = [""];
-      for (var i = 0; i < partes.length - 1 || i === 0; i++) {
-        var d = partes.slice(i).join(".");
-        dominios.push("; domain=" + d, "; domain=." + d);
-      }
-      var rutas = ["; path=/", "; path=" + location.pathname.replace(/[^/]*$/, ""), ""];
-      var caduca = "=; expires=Thu, 01 Jan 1970 00:00:00 GMT; max-age=0";
+      var titulo = document.createElement("p");
+      titulo.className = "cc-titulo";
+      titulo.id = "cc-titulo";
+      titulo.textContent = T.titulo;
+      panel.appendChild(titulo);
 
-      document.cookie.split(";").forEach(function (c) {
-        var nombre = c.split("=")[0].trim();
-        if (!nombre || !DE_TRACKERS.test(nombre)) return;
-        dominios.forEach(function (dominio) {
-          rutas.forEach(function (ruta) {
-            document.cookie = nombre + caduca + ruta + dominio;
-          });
+      [["analitica", T.analitica, T.analiticaDetalle], ["marketing", T.marketing, T.marketingDetalle]].forEach(function (o) {
+        var label = document.createElement("label");
+        label.className = "cc-opcion";
+        var caja = document.createElement("input");
+        caja.type = "checkbox";
+        caja.id = "cc-" + o[0];
+        var texto = document.createElement("span");
+        var nombre = document.createElement("strong");
+        nombre.textContent = o[1];
+        var detalle = document.createElement("span");
+        detalle.className = "cc-detalle";
+        detalle.textContent = o[2];
+        texto.appendChild(nombre);
+        texto.appendChild(detalle);
+        label.appendChild(caja);
+        label.appendChild(texto);
+        panel.appendChild(label);
+      });
+
+      var acciones = document.createElement("div");
+      acciones.className = "cc-acciones";
+      var volver = document.createElement("button");
+      volver.type = "button";
+      volver.className = "cc-link";
+      volver.textContent = T.volver;
+      volver.addEventListener("click", function () {
+        verPrincipal();
+        var configurar = banner.querySelector("[data-configurar-cookies]");
+        if (configurar) configurar.focus();
+      });
+      // Guardar con el mismo estilo que el botón Aceptar de la landing
+      var guardar = aceptar.cloneNode(false);
+      guardar.removeAttribute("id");
+      guardar.type = "button";
+      guardar.textContent = T.guardar;
+      guardar.addEventListener("click", function () {
+        elegir({
+          analitica: document.getElementById("cc-analitica").checked,
+          marketing: document.getElementById("cc-marketing").checked,
         });
       });
+      acciones.appendChild(volver);
+      acciones.appendChild(guardar);
+      panel.appendChild(acciones);
 
-      [window.localStorage, window.sessionStorage].forEach(function (almacen) {
-        try {
-          Object.keys(almacen).forEach(function (clave) {
-            if (clave !== "cookieConsent" && DE_TRACKERS.test(clave)) almacen.removeItem(clave);
-          });
-        } catch (e) {}
+      host.appendChild(panel);
+      var fondo = getComputedStyle(aceptar).backgroundColor;
+      if (fondo && fondo !== "rgba(0, 0, 0, 0)") panel.style.setProperty("--cc-acento", fondo);
+    }
+
+    function verConfiguracion() {
+      if (!panel) crearPanel();
+      // Casillas desmarcadas si todavía no ha decidido; si no, su elección actual
+      var actual = window.leerConsentimiento() || { analitica: false, marketing: false };
+      document.getElementById("cc-analitica").checked = actual.analitica;
+      document.getElementById("cc-marketing").checked = actual.marketing;
+      // style.display y no hidden: el CSS de cada landing da display a sus bloques y ganaría
+      principal.forEach(function (el) {
+        el.style.display = "none";
+      });
+      panel.hidden = false;
+      document.getElementById("cc-analitica").focus();
+    }
+
+    function verPrincipal() {
+      if (!panel) return;
+      panel.hidden = true;
+      principal.forEach(function (el) {
+        el.style.display = "";
       });
     }
 
-    // GA4 vuelve a escribir _ga_<ID> al cerrarse la página (evento user_engagement), justo
-    // después del borrado y antes de la recarga: con la elección "declined" se limpia al cargar
-    if (decision === "declined") borrarDatosTrackers();
-
-    function elegir(valor) {
-      try {
-        localStorage.setItem("cookieConsent", valor);
-      } catch (e) {}
+    function elegir(preferencias) {
       ocultar();
-
-      if (valor === "accepted") {
-        window.cargarTrackers();
-      } else if (window.__trackersCargados) {
-        // Había aceptado antes y los trackers ya están cargados: borramos lo que dejaron
-        // y recargamos para pararlos
-        borrarDatosTrackers();
-        location.reload();
-      }
+      window.guardarConsentimiento(preferencias);
     }
 
-    var aceptar = document.getElementById("btn-accept-cookies");
-    var rechazar = document.getElementById("btn-decline-cookies");
+    if (!window.leerConsentimiento()) mostrar();
+
     if (aceptar)
       aceptar.addEventListener("click", function () {
-        elegir("accepted");
+        elegir({ analitica: true, marketing: true });
       });
     if (rechazar)
       rechazar.addEventListener("click", function () {
-        elegir("declined");
+        elegir({ analitica: false, marketing: false });
       });
 
-    // "Configurar cookies" del footer: vuelve a mostrar el banner
+    // "Configurar" del banner y "Configurar cookies" del footer: abren el panel
     document.addEventListener("click", function (e) {
       var enlace = e.target.closest && e.target.closest("[data-configurar-cookies]");
-      if (!enlace) return;
+      if (!enlace || !aceptar) return;
       e.preventDefault();
       mostrar();
+      verConfiguracion();
     });
   })();
 </script>

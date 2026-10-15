@@ -34,6 +34,21 @@ Búsquedas objetivo de Alcoy (mismo periodo):
 Orden cronológico inverso (lo más reciente arriba). Formato de cada entrada:
 fecha · qué se ha cambiado (archivos y URLs) · intención / por qué · objetivo · cómo medirlo · estado (hecho / publicado / pendiente de indexar).
 
+### 15/10/2026 · Banner de cookies por categorías (landings y web principal)
+- **Qué:**
+  - `src/components/CookiesHead.astro` y `ReactMNDESIGN/index.html` (mismo código): dos categorías desmarcadas por defecto. **Analítica** (GA4 + Clarity → `analytics_storage`) y **Marketing** (Píxel de Meta + remarketing de Google Ads → `ad_storage`, `ad_user_data`, `ad_personalization`). La etiqueta de Google se carga si hay alguna de las dos (Consent Mode limita lo que hace), Clarity solo con Analítica y Meta solo con Marketing. `localStorage.cookieConsent` = `accepted` / `declined` / `analytics` / `marketing`, y `cookieConsentVersion` = `2`.
+  - Las aceptaciones guardadas antes de este cambio (cuyo texto no informaba de la publicidad) dejan de valer: el banner vuelve a salir y no se carga nada hasta que se decida de nuevo. Los rechazos antiguos se respetan.
+  - Al retirar una categoría ya cargada, se borran sus cookies y se recarga la página. Al entrar, se borran las de las categorías no aceptadas.
+  - `src/components/CookieBanner.astro`: botones Aceptar / Rechazar como antes, más un enlace "Configurar" que abre, dentro del mismo banner, el panel con las dos casillas y "Guardar preferencias" (copia el estilo del botón Aceptar de cada landing; textos en valenciano en /software-a-mida-alcoi/). El "Configurar cookies" del footer abre ese panel con la elección actual.
+  - Texto de los 8 banners de landings y del de React: "Usamos cookies propias y de terceros para medir las visitas y mostrarte publicidad personalizada. Puedes aceptarlas, rechazarlas o configurarlas." El botón "Permitir" pasa a "Aceptar".
+  - `ReactMNDESIGN/src/Legales/CookieBanner.jsx` y `CookieBanner.css`: la misma lógica y el mismo panel.
+- **Intención:** consentimiento informado y por finalidades (LSSI / guía de cookies de la AEPD). Antes, aceptar activaba publicidad sin decirlo.
+- **Comprobado con Playwright (builds locales, envíos interceptados):** en las 8 landings y en `/` y `/posicionamiento-seo/` de React, nada se carga antes de decidir. Solo Analítica → gtag + Clarity, `gcs=G101`. Solo Marketing → gtag + Meta, `gcs=G110`. Aceptar → todo, `gcs=G111`. Guardar sin marcar = rechazar. El footer abre el panel con la elección actual, y quitar Marketing borra `_fbp` y `_gcl_au` y deja de cargar Meta. Aceptación antigua → vuelve a salir el banner. "Aceptar" y "Rechazar" tienen el mismo tamaño y están en la misma fila en todos los banners.
+- **Efecto esperado en la medición:** baja temporal de usuarios medidos en GA4 y Clarity (las aceptaciones antiguas se piden de nuevo) y algo menos de Meta y Ads, porque ahora se puede aceptar solo la analítica.
+- **Cómo medirlo:** GA4 → usuarios y `generate_lead` por semana, comparando las 2 semanas antes y después de publicar.
+- **Estado:** hecho en local y con commit, sin publicar. Volver a pedir el consentimiento a quien aceptó antes del 15/10: confirmado por María.
+- **Detectado y fuera de este cambio:** en /bodas/ (landing inactiva) el contenido desborda en móvil y el banner queda fuera de la pantalla. En /aprende-shopify/ el calendario de Cal.com (`mentorias-shopify`) sigue cargando Meta sin consentimiento.
+
 ### 15/10/2026 · URGENTE: formulario de contacto de /alcoi/ reparado
 - **Qué:** `src/pages/alcoi/index.astro` (handler del formulario): se quita `tipo: valor("tipo")`, que leía un campo que ya no existe, y `valor()` devuelve "" si falta un campo en vez de lanzar un error. Misma URL /alcoi/.
 - **Causa:** desde la publicación del 14/10 (commit 6d472ea), al enviar el formulario saltaba `Cannot read properties of null (reading 'value')`: no se enviaba nada a Web3Forms ni a Make, no había conversión y el botón se quedaba en "Enviando…". Los leads por formulario de /alcoi/ de ese periodo se perdieron (las reservas de Cal.com, WhatsApp y teléfono sí funcionaban).
