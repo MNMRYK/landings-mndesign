@@ -52,6 +52,20 @@ Cada búsqueda se mide en una sola página. En Search Console: Rendimiento → f
 Orden cronológico inverso (lo más reciente arriba). Formato de cada entrada:
 fecha · qué se ha cambiado (archivos y URLs) · intención / por qué · objetivo · cómo medirlo · estado (hecho / publicado / pendiente de indexar).
 
+### 16/10/2026 · Rediseño de /enlaces/ (enlace de la bio de Instagram)
+- **Qué** (`src/pages/enlaces/index.astro`; sigue con `noindex, nofollow`):
+  - Estética "glass" de /alcoi/ con el morado del logo (#8A3FD8) como protagonista. Velo lila con una aurora que gira despacio, sin la caja blanca: pantalla completa en móvil y 440 px centrado en escritorio.
+  - **Cabecera:** logo en un anillo iridiscente que gira y las píldoras "📍 Cocentaina · Alcoy" y "🟢 Respuesta en menos de 24 h".
+  - **Botones:** "Escríbenos por WhatsApp" (logo oficial, oscuro con borde iridiscente y brillo) y, debajo, "Llamada gratis" y "Ver la web".
+  - **Tarjetas:** "Para negocios de la zona" (/alcoi/ y /software-a-mida-alcoi/, con la píldora "en valencià"), "Para profesionales de la salud" (nutricionistas, psicólogos, clínicas y academias online) y "Mentorías Shopify" destacada.
+  - **Pie:** redes y un pie con "Configurar cookies".
+  - **Técnico:** Plus Jakarta Sans servida desde el propio dominio (`public/fonts/plus-jakarta-sans-latin.woff2`: variable 500-800, solo latín, 27 KB, licencia OFL) en lugar de Google Fonts. Estilos incrustados en el `<head>`. Logo optimizado propio (`public/enlaces/logo-192.webp`, 3 KB). El brillo y el anillo se animan solo con transform; con "reducir movimiento", ninguna animación.
+- **Medición:** `click_enlace` (parámetro `destino`) en cada enlace. `click_whatsapp` + Contact y `click_reserva` desde CookiesHead. "Llamada gratis" abre Cal.com en una ventana emergente: `book_call` + Schedule **solo al completar la reserva**, no al pulsar (para no inflar la conversión de Ads; acordado con María).
+- **Comprobado** (build de producción, todo interceptado): Lighthouse móvil 100 · 100 · 100 en tres pasadas (FCP 0,8 s · LCP 1,2 s · CLS 0 · TBT 0). El SEO sale en 66 por el `noindex`, que es intencionado. A 360, 390 y 1440 px: contraste AA en todos los textos, zonas táctiles de 44 px o más y sin scroll horizontal. Eventos y ventana de Cal.com comprobados.
+  - Antes de servir la fuente desde el dominio, el rendimiento se quedaba en 94: la conexión a Google Fonts retrasaba el primer pintado en móvil (2,5 s).
+- **Cómo medirlo:** GA4 → `click_enlace` por `destino` (qué buscan quienes llegan desde Instagram) y `book_call` con `calendario=enlaces`.
+- **Estado:** hecho en local y con commit, pendiente de subir.
+
 ### 16/10/2026 · Foto de Lara S. en sus reseñas y og:image en castellano de /alcoi/
 - **Qué:**
   - Foto de Lara S. (`public/resenas/lara.webp` de 96×96 y `lara@2x.webp` de 192×192, carpeta compartida por todas las landings) como avatar de su reseña de Google en /alcoi/, /clinicas/, /psicologos/, /nutricionistas/ y /software-a-mida-alcoi/. Sale de la imagen que pasó María (90×90): recortada en círculo centrado en la cara y sin la insignia amarilla de la esquina (la zona que tapaba se ha rellenado a partir de los píxeles de alrededor). La versión @2x está ampliada desde un recorte de 72 px: con una foto más grande se vería más nítida en retina. El PNG original sale de `public/` para no publicarlo por duplicado.

@@ -1,326 +1,814 @@
 ---
-// Enlaces de las bios de redes sociales (noindex). Con banner de cookies y medición como las landings.
+// Enlaces de la bio de Instagram y demás redes (noindex). Estética "glass" de /alcoi/ con el morado
+// del logo como protagonista. Sin librerías: iconos Lucide convertidos a SVG al compilar, CSS propio
+// y un script mínimo (medición de clics y calendario de Cal.com en ventana emergente).
+// Medición: click_enlace (destino) en cada enlace; click_whatsapp, click_reserva y Contact los envía
+// CookiesHead; book_call + Schedule solo cuando la reserva de Cal.com se completa.
 import CookiesHead from "../../components/CookiesHead.astro";
 import CookieBanner from "../../components/CookieBanner.astro";
+import {
+  ArrowRight,
+  Brain,
+  CalendarCheck,
+  Globe,
+  GraduationCap,
+  Salad,
+  ShoppingBag,
+  Stethoscope,
+  Workflow,
+} from "lucide";
+
+const icon = (node: any[], cls = "ico") =>
+  `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="${cls}" aria-hidden="true">${node
+    .map(([tag, attrs]) => `<${tag} ${Object.entries(attrs).map(([k, v]) => `${k}="${v}"`).join(" ")}/>`)
+    .join("")}</svg>`;
+
+const WHATSAPP =
+  "https://wa.me/34645854934?text=" + encodeURIComponent("¡Hola! Vengo de vuestras redes y me gustaría hablar sobre un proyecto.");
+const CAL = "https://cal.com/mndesignweb/reunion-30-min";
+
+const zona = [
+  { href: "/alcoi/", destino: "alcoi", icono: Globe, titulo: "Diseño web en Alcoy", texto: "Webs que traen clientes" },
+  { href: "/software-a-mida-alcoi/", destino: "software-a-mida-alcoi", icono: Workflow, titulo: "Software a medida", texto: "Automatiza tu empresa", etiqueta: "en valencià", lang: "ca" },
+];
+const salud = [
+  { href: "/nutricionistas/", destino: "nutricionistas", icono: Salad, titulo: "Nutricionistas", texto: "Citas y portal del paciente" },
+  { href: "/psicologos/", destino: "psicologos", icono: Brain, titulo: "Psicólogos", texto: "Agenda y terapia online" },
+  { href: "/clinicas/", destino: "clinicas", icono: Stethoscope, titulo: "Clínicas", texto: "Gestión sin cuotas" },
+  { href: "/academia-nutricion/", destino: "academia-nutricion", icono: GraduationCap, titulo: "Academias online", texto: "Cursos sin comisiones" },
+];
+let i = 0; // orden de la animación de entrada
+const paso = () => `--i:${i++}`;
 ---
 
+<!doctype html>
 <html lang="es">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>MN Design Web | Enlaces</title>
-		<link rel="preconnect" href="https://fonts.googleapis.com">
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-		<meta name="apple-mobile-web-app-status-bar-style" content="default" />
-		<link rel="canonical" href="https://mndesignweb.es/enlaces/" />
-		<link rel="icon" type="image/webp" href="/favicon_v2.webp" />
-		<meta name="theme-color" content="#0f172a" />
-		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-		<meta name="robots" content="noindex, nofollow">
-		<CookiesHead />
-	</head>
-	<body>
-		<main class="link-container">
-			<!-- Cabecera / Perfil -->
-			<div class="profile-header">
-				<div class="logo-wrapper">
-					<!-- Asegúrate de tener tu logo en public o cámbialo por SVG -->
-					<img src="/favicon_v2.webp" alt="MN Design Web Logo" class="logo" />
-				</div>
-				<h1>MN Design Web</h1>
-				<p>Desarrollo a medida | E-commerce | Software</p>
-			</div>
-
-			<!-- Bloque 1: Llamadas a la acción principales -->
-			<div class="links-group">
-				<a href="https://cal.com/mndesignweb/reunion-30-min" class="btn btn-primary">
-					<!-- Icono Calendario -->
-					<svg class="btn-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
-					Agenda tu Auditoría Gratuita
-				</a>
-				<a href="https://mndesignweb.es/" class="btn btn-secondary">
-					Visita nuestra Web
-				</a>
-			</div>
-
-			<!-- Bloque 2: Ataque directo al nicho (Salud) -->
-			<div class="links-group">
-				<a href="/nutricionistas/" class="btn btn-subtle">Diseño Web Nutricionistas</a>
-				<a href="/psicologos/" class="btn btn-subtle">Diseño Web Psicólogos</a>
-				<a href="/clinicas/" class="btn btn-subtle">Software Consulta Clínica</a>
-				<a href="/academia-nutricion/" class="btn btn-subtle">Software Academia E-Learning</a>
-			</div>
-
-			<!-- Bloque 3: E-commerce -->
-			<div class="links-group">
-				<a href="/aprende-shopify/" class="btn btn-dark">
-					<!-- Icono Bolsa Shopify -->
-					<svg class="btn-icon shopify-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
-					Mentorías Shopify
-				</a>
-			</div>
-
-			<!-- Bloque 4: Redes Sociales con Iconos -->
-			<footer class="social-footer">
-				<a href="https://www.linkedin.com/in/mar%C3%ADa-nadal-masi%C3%A1-080a77315/" target="_blank" rel="noopener" aria-label="LinkedIn">
-					<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
-				</a>
-				<a href="https://github.com/MNMRYK" target="_blank" rel="noopener" aria-label="GitHub">
-					<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-				</a>
-				<a href="https://www.instagram.com/mndesignweb/" target="_blank" rel="noopener" aria-label="Instagram">
-					<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
-				</a>
-			</footer>
-			<button type="button" class="cookies-config" data-configurar-cookies>Configurar cookies</button>
-		</main>
-
-		<div
-			id="cookie-banner"
-			class="cookie-banner"
-			style="display: none"
-			role="dialog"
-			aria-labelledby="cookie-title"
-			aria-describedby="cookie-desc"
-		>
-			<div class="cookie-txt">
-				<p class="cookie-title" id="cookie-title">Usamos cookies</p>
-				<p class="cookie-desc" id="cookie-desc">
-					Usamos cookies propias y de terceros para medir las visitas y mostrarte publicidad personalizada. Puedes
-					aceptarlas, rechazarlas o configurarlas.
-					<span class="cc-enlaces"><a href="https://mndesignweb.es/cookies/">Ver política de cookies</a> <button type="button" class="cc-link" data-configurar-cookies>Configurar</button></span>
-				</p>
-			</div>
-			<div class="cookie-actions">
-				<button id="btn-decline-cookies" type="button" class="btn btn-secondary">Rechazar</button>
-				<button id="btn-accept-cookies" type="button" class="btn btn-primary">Aceptar</button>
-			</div>
-		</div>
-		<CookieBanner />
-	</body>
-</html>
-
-<style>
-	* {
-		box-sizing: border-box;
-		margin: 0;
-		padding: 0;
-	}
-
-	html {
-        background-color: #0f172a; 
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>MN Design Web | Enlaces</title>
+    <meta name="description" content="Enlaces de MN Design Web: WhatsApp, llamada gratuita y nuestras webs para negocios y profesionales de la salud." />
+    <meta name="robots" content="noindex, nofollow" />
+    <link rel="canonical" href="https://mndesignweb.es/enlaces/" />
+    <link rel="icon" type="image/webp" href="/favicon_v2.webp" />
+    <meta name="theme-color" content="#f4efff" />
+    <!-- Plus Jakarta Sans servida desde el propio dominio (variable 500-800, solo latín): sin conexiones a Google
+         que retrasen el primer pintado en móvil -->
+    <link rel="preload" href="/fonts/plus-jakarta-sans-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <CookiesHead />
+    <!-- Estilos en el <head> e incrustados (is:inline): sin hoja CSS externa que bloquee el primer pintado -->
+    <style is:inline>
+      @font-face {
+        font-family: "Plus Jakarta Sans";
+        font-style: normal;
+        font-weight: 500 800;
+        font-display: swap;
+        src: url("/fonts/plus-jakarta-sans-latin.woff2") format("woff2");
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+      }
+    :root {
+      --violeta: #8a3fd8; /* morado del logo: botones, iconos y anillo */
+      --violeta-osc: #6b2bb5; /* para texto sobre claro (AA) */
+      --tinta: #1e1446;
+      --gris: #4b4468; /* texto secundario (AA sobre el cristal) */
+      --cristal: rgba(255, 255, 255, 0.62);
+      --cristal-borde: rgba(255, 255, 255, 0.85);
+      --sombra: 0 14px 34px -16px rgba(107, 43, 181, 0.38), 0 2px 8px -3px rgba(30, 20, 70, 0.08);
+      --anillo: conic-gradient(from 0deg, #8a3fd8, #a35ef0, #e25fd0, #8a3fd8, #6ee7f0, #8a3fd8);
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    html {
+      background: #f4efff;
+    }
+    body {
+      min-height: 100dvh;
+      font-family: "Plus Jakarta Sans", system-ui, sans-serif;
+      color: var(--tinta);
+      -webkit-font-smoothing: antialiased;
+      background: #f4efff;
     }
 
-	body {
-		font-family: 'Poppins', sans-serif;
-		background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
-        background-attachment: fixed;
-		color: #1e293b;
-		min-height: 100dvh;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		padding: 30px !important;
-	}
+    /* ---------- Fondo: velo lila con aurora que gira despacio ---------- */
+    .fondo {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      overflow: hidden;
+      background:
+        radial-gradient(70% 45% at 15% 5%, #e6dbff 0%, transparent 70%),
+        radial-gradient(60% 40% at 100% 35%, #efe2ff 0%, transparent 70%),
+        radial-gradient(70% 45% at 30% 100%, #e9ddff 0%, transparent 70%),
+        #f4efff;
+    }
+    .aurora {
+      position: absolute;
+      left: 50%;
+      top: 12%;
+      width: 150vmax;
+      aspect-ratio: 1;
+      translate: -50% -30%;
+      border-radius: 50%;
+      background: conic-gradient(from 0deg, #b48aff, #9a6bff, #ef9fe8, #b48aff, #93e3ee, #a27bff, #b48aff);
+      filter: blur(64px);
+      opacity: 0.7;
+      animation: girar 60s linear infinite;
+      will-change: transform;
+    }
 
-	.link-container {
-		width: 100%;
-		max-width: 420px;
-		background: #ffffff;
-		border-radius: 24px;
-		padding: 30px 30px;
-		box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-		display: flex;
-		flex-direction: column;
-		gap: 28px;
-	}
+    /* ---------- Contenedor: pantalla completa en móvil, 440 px centrado en escritorio ---------- */
+    .enlaces {
+      width: 100%;
+      max-width: 440px;
+      margin: 0 auto;
+      padding: calc(28px + env(safe-area-inset-top)) 20px calc(32px + env(safe-area-inset-bottom));
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
 
-	.profile-header {
-		text-align: center;
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		gap: 6px;
-	}
+    /* ---------- 1. Cabecera ---------- */
+    .perfil {
+      text-align: center;
+      margin-bottom: 8px;
+    }
+    .logo-anillo {
+      position: relative;
+      width: 104px;
+      height: 104px;
+      margin: 0 auto 14px;
+      padding: 4px;
+      border-radius: 50%;
+      isolation: isolate;
+    }
+    .logo-anillo::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      border-radius: 50%;
+      background: var(--anillo);
+      animation: girar 14s linear infinite;
+    }
+    .logo-anillo::after {
+      content: "";
+      position: absolute;
+      inset: -10px;
+      z-index: -2;
+      border-radius: 50%;
+      background: radial-gradient(closest-side, rgba(138, 63, 216, 0.35), transparent);
+    }
+    .logo-anillo img {
+      display: block;
+      width: 96px;
+      height: 96px;
+      border-radius: 50%;
+      background: #fff;
+      border: 3px solid #fff;
+      object-fit: cover;
+    }
+    h1 {
+      font-size: 1.6rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+    }
+    .lema {
+      margin-top: 4px;
+      font-size: 0.98rem;
+      font-weight: 600;
+      color: var(--gris);
+    }
+    .pildoras {
+      list-style: none;
+      margin-top: 14px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+    }
+    .pildoras li {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--tinta);
+      background: var(--cristal);
+      border: 1px solid var(--cristal-borde);
+      -webkit-backdrop-filter: blur(12px);
+      backdrop-filter: blur(12px);
+    }
 
-	.logo-wrapper {
-		width: 80px;
-		height: 80px;
-		background: linear-gradient(135deg, #8a31da 0%, #7729bb 100%);
-		border-radius: 50%;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		box-shadow: 0 6px 12px rgba(139, 92, 246, 0.3);
-	}
+    /* ---------- Iconos ---------- */
+    .ico {
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+    }
+    .ico-grande {
+      width: 22px;
+      height: 22px;
+    }
+    .icono svg {
+      width: 20px;
+      height: 20px;
+    }
+    .icono {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+      color: #fff;
+      background: linear-gradient(135deg, #a35ef0 0%, #8a3fd8 55%, #6b2bb5 100%);
+      box-shadow:
+        inset 0 0 0 1px rgba(255, 255, 255, 0.35),
+        0 8px 18px -8px rgba(107, 43, 181, 0.7);
+    }
 
-	.logo {
-		width: 72px;
-		height: 72px;
-		object-fit: contain;
-	}
+    /* ---------- 2. Botón principal: oscuro, borde iridiscente y brillo ---------- */
+    .btn-principal {
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+      min-height: 58px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 0 20px;
+      border-radius: 999px;
+      font-size: 1.02rem;
+      font-weight: 800;
+      color: #fff;
+      text-decoration: none;
+      background: #1e1446;
+      box-shadow: 0 16px 34px -14px rgba(107, 43, 181, 0.85);
+      transition: transform 0.25s ease, box-shadow 0.3s ease;
+    }
+    .btn-principal::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      border-radius: inherit;
+      padding: 2px;
+      background: linear-gradient(110deg, #8a3fd8, #e25fd0, #6ee7f0, #a35ef0, #8a3fd8);
+      -webkit-mask:
+        linear-gradient(#000 0 0) content-box,
+        linear-gradient(#000 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+    }
+    .brillo {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      width: 30%;
+      z-index: 1;
+      background: linear-gradient(100deg, transparent, rgba(255, 255, 255, 0.28), transparent);
+      transform: translateX(-120%) skewX(-20deg);
+      animation: brillo 4.5s ease-in-out infinite; /* solo transform: no recalcula la maquetación */
+      will-change: transform;
+      pointer-events: none;
+    }
+    .btn-principal > :not(.brillo) {
+      position: relative;
+      z-index: 3;
+    }
 
-	h1 {
-		font-size: 1.25rem;
-		font-weight: 700;
-		color: #0f172a;
-	}
+    /* ---------- 3. Botones de cristal ---------- */
+    .fila-dos {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+    .btn-cristal {
+      min-height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 0 12px;
+      border-radius: 999px;
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: var(--tinta);
+      text-decoration: none;
+      background: var(--cristal);
+      border: 1px solid var(--cristal-borde);
+      -webkit-backdrop-filter: blur(14px);
+      backdrop-filter: blur(14px);
+      box-shadow: var(--sombra);
+      transition: transform 0.25s ease, box-shadow 0.3s ease, background 0.3s ease;
+    }
+    .btn-cristal .ico {
+      color: var(--violeta);
+    }
+    .btn-cristal {
+      white-space: nowrap;
+    }
+    @media (max-width: 380px) {
+      .btn-cristal {
+        gap: 6px;
+        padding: 0 8px;
+        font-size: 0.86rem;
+      }
+    }
 
-	.profile-header p {
-		font-size: 0.8rem;
-		color: #64748b;
-		font-weight: 500;
-	}
+    /* ---------- Secciones y tarjetas ---------- */
+    .bloque {
+      margin-top: 10px;
+    }
+    .bloque h2 {
+      margin: 0 4px 10px;
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--violeta-osc);
+    }
+    .rejilla {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+    .tarjeta {
+      position: relative;
+      min-height: 136px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 4px;
+      padding: 14px;
+      border-radius: 22px;
+      text-decoration: none;
+      color: var(--tinta);
+      background: var(--cristal);
+      border: 1px solid var(--cristal-borde);
+      -webkit-backdrop-filter: blur(14px);
+      backdrop-filter: blur(14px);
+      box-shadow: var(--sombra);
+      transition: transform 0.25s ease, box-shadow 0.3s ease, background 0.3s ease, border-color 0.3s ease;
+    }
+    .tarjeta .icono {
+      margin-bottom: 8px;
+    }
+    .t-titulo {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.95rem;
+      font-weight: 800;
+      line-height: 1.25;
+    }
+    .t-texto {
+      font-size: 0.82rem;
+      font-weight: 600;
+      line-height: 1.35;
+      color: var(--gris);
+    }
+    .etiqueta {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      padding: 2px 7px;
+      border-radius: 999px;
+      font-size: 0.66rem;
+      font-weight: 700;
+      color: var(--violeta-osc);
+      background: rgba(138, 63, 216, 0.1);
+      border: 1px solid rgba(138, 63, 216, 0.22);
+    }
 
-	.links-group {
-		display: flex;
-		flex-direction: column;
-		gap: 8px;
-		width: 100%;
-	}
+    /* ---------- 6. Tarjeta destacada oscura ---------- */
+    .destacada {
+      position: relative;
+      isolation: isolate;
+      margin-top: 10px;
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 14px 18px 14px 14px;
+      border-radius: 24px;
+      text-decoration: none;
+      color: #fff;
+      background: linear-gradient(140deg, #1e1446 0%, #2d1a63 100%);
+      box-shadow: 0 18px 36px -16px rgba(107, 43, 181, 0.8);
+      transition: transform 0.25s ease, box-shadow 0.3s ease;
+    }
+    .destacada::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      padding: 1.5px;
+      background: linear-gradient(110deg, #8a3fd8, #e25fd0, #6ee7f0, #a35ef0, #8a3fd8);
+      -webkit-mask:
+        linear-gradient(#000 0 0) content-box,
+        linear-gradient(#000 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+    }
+    .d-textos {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .destacada .t-texto {
+      color: #d9d3f7;
+    }
+    .icono-claro {
+      background: linear-gradient(135deg, #c79bff, #8a3fd8);
+    }
+    .destacada .flecha {
+      color: #d9d3f7;
+    }
 
-	.btn {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		gap: 8px;
-		width: 100%;
-		padding: 11px 16px;
-		text-align: center;
-		text-decoration: none;
-		border-radius: 50px;
-		font-size: 0.9rem;
-		font-weight: 600;
-		transition: all 0.25s ease;
-	}
+    /* ---------- Elevación e iluminación al pasar o tocar ---------- */
+    .btn-principal:hover,
+    .btn-principal:focus-visible {
+      transform: translateY(-2px);
+      box-shadow: 0 0 0 6px rgba(138, 63, 216, 0.18), 0 20px 40px -14px rgba(107, 43, 181, 0.9);
+    }
+    .btn-cristal:hover,
+    .btn-cristal:focus-visible,
+    .tarjeta:hover,
+    .tarjeta:focus-visible {
+      transform: translateY(-3px);
+      background: rgba(255, 255, 255, 0.86);
+      border-color: rgba(163, 94, 240, 0.45);
+      box-shadow: 0 0 0 5px rgba(138, 63, 216, 0.12), 0 18px 36px -16px rgba(107, 43, 181, 0.5);
+    }
+    .destacada:hover,
+    .destacada:focus-visible {
+      transform: translateY(-3px);
+      box-shadow: 0 0 0 5px rgba(138, 63, 216, 0.2), 0 22px 42px -16px rgba(107, 43, 181, 0.95);
+    }
+    .btn-principal:active,
+    .btn-cristal:active,
+    .tarjeta:active,
+    .destacada:active {
+      transform: translateY(-1px) scale(0.985);
+    }
+    :focus-visible {
+      outline: 3px solid var(--violeta-osc);
+      outline-offset: 3px;
+    }
 
-	.btn:hover {
-		transform: translateY(-2px);
-		box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
-	}
+    /* ---------- 7. Redes y pie ---------- */
+    .pie {
+      margin-top: 16px;
+      text-align: center;
+    }
+    .redes {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+    .redes a {
+      width: 48px;
+      height: 48px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      color: var(--violeta-osc);
+      background: var(--cristal);
+      border: 1px solid var(--cristal-borde);
+      -webkit-backdrop-filter: blur(12px);
+      backdrop-filter: blur(12px);
+      box-shadow: var(--sombra);
+      transition: transform 0.25s ease, color 0.25s ease;
+    }
+    .redes a:hover,
+    .redes a:focus-visible {
+      transform: translateY(-2px);
+      color: var(--violeta);
+    }
+    .redes svg {
+      width: 20px;
+      height: 20px;
+    }
+    .pie p {
+      font-size: 0.78rem;
+      line-height: 1.8;
+      color: var(--gris);
+    }
+    .pie p a,
+    .enlace-pie {
+      display: inline-block;
+      min-height: 44px; /* zona táctil de 44 px */
+      padding: 11px 4px;
+      color: var(--gris);
+      font: inherit;
+      font-weight: 600;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      background: none;
+      border: 0;
+      cursor: pointer;
+    }
 
-	.btn-primary {
-		background: linear-gradient(135deg, #8a31da 0%, #7729bb 100%);
-		color: #ffffff;
-		box-shadow: 0 6px 15px rgba(122, 41, 187, 0.3);
-	}
+    /* ---------- Animaciones ---------- */
+    .entra {
+      animation: entra 0.6s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+      animation-delay: calc(var(--i, 0) * 60ms);
+    }
+    @keyframes entra {
+      from {
+        opacity: 0;
+        transform: translateY(14px);
+      }
+    }
+    @keyframes girar {
+      to {
+        transform: rotate(1turn);
+      }
+    }
+    @keyframes brillo {
+      0%,
+      60% {
+        transform: translateX(-120%) skewX(-20deg);
+      }
+      100% {
+        transform: translateX(420%) skewX(-20deg);
+      }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .aurora,
+      .logo-anillo::before,
+      .btn-principal::before,
+      .destacada::before,
+      .brillo,
+      .entra {
+        animation: none !important;
+      }
+      .brillo {
+        display: none;
+      }
+      .btn-principal,
+      .btn-cristal,
+      .tarjeta,
+      .destacada,
+      .redes a {
+        transition: none;
+      }
+    }
 
-	.btn-secondary {
-		background: #ffffff;
-		color: #7729bb;
-		border: 2px solid #8a31da;
-	}
+    /* ---------- Banner de cookies con la misma estética ---------- */
+    .cookie-banner {
+      position: fixed;
+      left: 12px;
+      right: 12px;
+      bottom: calc(12px + env(safe-area-inset-bottom));
+      z-index: 1000;
+      max-width: 416px;
+      margin: 0 auto;
+      flex-direction: column;
+      gap: 14px;
+      padding: 18px;
+      border-radius: 24px;
+      color: var(--tinta);
+      background: rgba(255, 255, 255, 0.92);
+      border: 1px solid var(--cristal-borde);
+      -webkit-backdrop-filter: blur(18px);
+      backdrop-filter: blur(18px);
+      box-shadow: 0 24px 48px -18px rgba(107, 43, 181, 0.45);
+    }
+    .cookie-title {
+      margin-bottom: 4px;
+      font-size: 1rem;
+      font-weight: 800;
+    }
+    .cookie-desc {
+      font-size: 0.85rem;
+      line-height: 1.5;
+      color: var(--gris);
+    }
+    .cookie-desc a {
+      color: var(--violeta-osc);
+      font-weight: 700;
+    }
+    .cookie-actions {
+      display: flex;
+      gap: 10px;
+    }
+    .cookie-btn {
+      flex: 1;
+      min-height: 46px;
+      border-radius: 999px;
+      font: inherit;
+      font-size: 0.92rem;
+      font-weight: 800;
+      cursor: pointer;
+      border: 1.5px solid var(--tinta);
+    }
+    .cookie-btn-main {
+      color: #fff;
+      background: var(--tinta);
+    }
+    .cookie-btn-ghost {
+      color: var(--tinta);
+      background: transparent;
+    }
+    </style>
+  </head>
+  <body>
+    <div class="fondo" aria-hidden="true"><div class="aurora"></div></div>
 
-	.btn-secondary:hover {
-		background: #f5f3ff;
-	}
+    <main class="enlaces">
+      <!-- 1. Cabecera -->
+      <header class="perfil entra" style={paso()}>
+        <div class="logo-anillo">
+          <img src="/enlaces/logo-192.webp" width="192" height="192" alt="Logo de MN Design Web" fetchpriority="high" />
+        </div>
+        <h1>MN Design Web</h1>
+        <p class="lema">Diseño web y software a medida</p>
+        <ul class="pildoras">
+          <li><span aria-hidden="true">📍</span> Cocentaina · Alcoy</li>
+          <li><span aria-hidden="true">🟢</span> Respuesta en menos de 24 h</li>
+        </ul>
+      </header>
 
-	.btn-subtle {
-		background: #f1f5f9;
-		color: #334155;
-		font-weight: 500;
-		padding: 10px 16px; /* Ligeramente más compacto */
-	}
+      <!-- 2. Botón principal -->
+      <a class="btn-principal entra" style={paso()} href={WHATSAPP} target="_blank" rel="noopener" data-destino="whatsapp">
+        <span class="brillo" aria-hidden="true"></span>
+        <!-- Logo oficial de WhatsApp (Simple Icons) -->
+        <svg class="ico ico-grande" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"></path></svg>
+        Escríbenos por WhatsApp
+      </a>
 
-	.btn-subtle:hover {
-		background: #e2e8f0;
-		color: #0f172a;
-	}
+      <!-- 3. Botones secundarios -->
+      <div class="fila-dos entra" style={paso()}>
+        <a class="btn-cristal" href={CAL} target="_blank" rel="noopener" data-destino="cal.com" data-cal>
+          <Fragment set:html={icon(CalendarCheck)} /> Llamada gratis
+        </a>
+        <a class="btn-cristal" href="https://mndesignweb.es/" data-destino="web">
+          <Fragment set:html={icon(Globe)} /> Ver la web
+        </a>
+      </div>
 
-	.btn-dark {
-		background: #0f172a;
-		color: #ffffff;
-	}
+      <!-- 4. Negocios de la zona -->
+      <section class="bloque" aria-labelledby="t-zona">
+        <h2 id="t-zona" class="entra" style={paso()}>Para negocios de la zona</h2>
+        <div class="rejilla">
+          {
+            zona.map((t) => (
+              <a class="tarjeta entra" style={paso()} href={t.href} data-destino={t.destino}>
+                <span class="icono" set:html={icon(t.icono)} />
+                {t.etiqueta && <span class="etiqueta" lang={t.lang}>{t.etiqueta}</span>}
+                <span class="t-titulo">{t.titulo}</span>
+                <span class="t-texto">{t.texto}</span>
+              </a>
+            ))
+          }
+        </div>
+      </section>
 
-	.btn-dark:hover {
-		background: #1e293b;
-	}
+      <!-- 5. Profesionales de la salud -->
+      <section class="bloque" aria-labelledby="t-salud">
+        <h2 id="t-salud" class="entra" style={paso()}>Para profesionales de la salud</h2>
+        <div class="rejilla">
+          {
+            salud.map((t) => (
+              <a class="tarjeta entra" style={paso()} href={t.href} data-destino={t.destino}>
+                <span class="icono" set:html={icon(t.icono)} />
+                <span class="t-titulo">{t.titulo}</span>
+                <span class="t-texto">{t.texto}</span>
+              </a>
+            ))
+          }
+        </div>
+      </section>
 
-	.btn-icon {
-		stroke: currentColor;
-	}
+      <!-- 6. Destacada -->
+      <a class="destacada entra" style={paso()} href="/aprende-shopify/" data-destino="aprende-shopify">
+        <span class="icono icono-claro" set:html={icon(ShoppingBag)} />
+        <span class="d-textos">
+          <span class="t-titulo">Mentorías Shopify</span>
+          <span class="t-texto">Toma el control de tu tienda, 1&nbsp;a&nbsp;1</span>
+        </span>
+        <Fragment set:html={icon(ArrowRight, "ico flecha")} />
+      </a>
 
-	.shopify-icon {
-		stroke: #d946ef; /* Tonalidad rosa/morada para la bolsa de shopify */
-	}
+      <!-- 7. Redes y pie -->
+      <footer class="pie entra" style={paso()}>
+        <nav class="redes" aria-label="Redes sociales">
+          <a href="https://www.linkedin.com/in/mar%C3%ADa-nadal-masi%C3%A1-080a77315/" target="_blank" rel="noopener" aria-label="LinkedIn" data-destino="linkedin">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+          </a>
+          <a href="https://github.com/MNMRYK" target="_blank" rel="noopener" aria-label="GitHub" data-destino="github">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+          </a>
+          <a href="https://www.instagram.com/mndesignweb/" target="_blank" rel="noopener" aria-label="Instagram" data-destino="instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+          </a>
+        </nav>
+        <p>
+          © 2026 MN Design Web · Cocentaina (Alicante)<br />
+          <a href="https://mndesignweb.es/privacidad/">Privacidad</a> ·
+          <a href="https://mndesignweb.es/cookies/">Cookies</a> ·
+          <button type="button" class="enlace-pie" data-configurar-cookies>Configurar cookies</button>
+        </p>
+      </footer>
+    </main>
 
-	.social-footer {
-		display: flex;
-		justify-content: center;
-		gap: 24px;
-		margin-top: 4px;
-		padding-top: 10px;
-		border-top: 1px solid #f1f5f9;
-	}
+    <div
+      id="cookie-banner"
+      class="cookie-banner"
+      style="display: none"
+      role="dialog"
+      aria-labelledby="cookie-title"
+      aria-describedby="cookie-desc"
+    >
+      <div class="cookie-txt">
+        <p class="cookie-title" id="cookie-title">Usamos cookies</p>
+        <p class="cookie-desc" id="cookie-desc">
+          Usamos cookies propias y de terceros para medir las visitas y mostrarte publicidad personalizada. Puedes
+          aceptarlas, rechazarlas o configurarlas.
+          <span class="cc-enlaces"><a href="https://mndesignweb.es/cookies/">Ver política de cookies</a> <button type="button" class="cc-link" data-configurar-cookies>Configurar</button></span>
+        </p>
+      </div>
+      <div class="cookie-actions">
+        <button id="btn-decline-cookies" type="button" class="cookie-btn cookie-btn-ghost">Rechazar</button>
+        <button id="btn-accept-cookies" type="button" class="cookie-btn cookie-btn-main">Aceptar</button>
+      </div>
+    </div>
+    <CookieBanner />
 
-	.social-footer a {
-		color: #94a3b8;
-		transition: color 0.2s ease;
-		display: flex;
-		align-items: center;
-	}
+    <script is:inline define:vars={{ CAL_LINK: "mndesignweb/reunion-30-min" }}>
+      // click_enlace en cada enlace (los de WhatsApp y cal.com envían además click_whatsapp / click_reserva
+      // desde CookiesHead). enviarEvento solo envía si el usuario ha aceptado las cookies.
+      document.addEventListener("click", function (e) {
+        var a = e.target.closest && e.target.closest("a[data-destino]");
+        if (a && window.enviarEvento) window.enviarEvento("click_enlace", { destino: a.getAttribute("data-destino") });
+      });
 
-	.social-footer a:hover {
-		color: #8a31da;
-	}
+      // "Llamada gratis": calendario de Cal.com en ventana emergente (el embed solo se descarga al pulsar).
+      // book_call y Schedule se envían cuando la reserva se completa, no al pulsar.
+      // Si el embed no carga, el enlace abre cal.com como siempre.
+      var calBtn = document.querySelector("[data-cal]");
+      var reservado = false;
+      function onBooked() {
+        if (reservado) return;
+        reservado = true;
+        window.enviarEvento && window.enviarEvento("book_call", { method: "cal_com", calendario: "enlaces" });
+        window.enviarMeta && window.enviarMeta("Schedule");
+      }
+      function cargarCal() {
+        (function (C, A, L) {
+          var p = function (a, ar) { a.q.push(ar); };
+          var d = C.document;
+          C.Cal = C.Cal || function () {
+            var cal = C.Cal, ar = arguments;
+            if (!cal.loaded) {
+              cal.ns = {}; cal.q = cal.q || [];
+              var s = d.head.appendChild(d.createElement("script"));
+              s.src = A;
+              s.onerror = function () { window.open(calBtn.href, "_blank", "noopener"); };
+              cal.loaded = true;
+            }
+            if (ar[0] === L) {
+              var api = function () { p(api, arguments); };
+              var namespace = ar[1];
+              api.q = api.q || [];
+              if (typeof namespace === "string") {
+                cal.ns[namespace] = cal.ns[namespace] || api;
+                p(cal.ns[namespace], ar);
+                p(cal, ["initNamespace", namespace]);
+              } else p(cal, ar);
+              return;
+            }
+            p(cal, ar);
+          };
+        })(window, "https://app.cal.com/embed/embed.js", "init");
+        Cal("init", "enlaces", { origin: "https://cal.com" });
+        Cal.ns.enlaces("ui", { hideEventTypeDetails: false, layout: "month_view" });
+        Cal.ns.enlaces("on", { action: "bookingSuccessfulV2", callback: onBooked });
+        Cal.ns.enlaces("on", { action: "bookingSuccessful", callback: onBooked });
+      }
+      if (calBtn) {
+        calBtn.addEventListener("click", function (e) {
+          e.preventDefault();
+          if (!window.Cal || !window.Cal.ns || !window.Cal.ns.enlaces) cargarCal();
+          window.Cal.ns.enlaces("modal", { calLink: CAL_LINK, config: { layout: "month_view" } });
+        });
+      }
+    </script>
+  </body>
+</html>
 
-	.cookies-config {
-		align-self: center;
-		margin-top: -16px;
-		background: none;
-		border: 0;
-		font: inherit;
-		font-size: 0.75rem;
-		color: #94a3b8;
-		text-decoration: underline;
-		cursor: pointer;
-	}
-
-	/* ---------- Banner de cookies (misma tarjeta y botones que los enlaces) ---------- */
-	.cookie-banner {
-		position: fixed;
-		left: 16px;
-		right: 16px;
-		bottom: 16px;
-		z-index: 1000;
-		max-width: 420px;
-		margin: 0 auto;
-		flex-direction: column;
-		gap: 14px;
-		padding: 20px;
-		background: #ffffff;
-		border-radius: 20px;
-		box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
-		color: #334155;
-	}
-	.cookie-title {
-		margin-bottom: 4px;
-		font-size: 1rem;
-		font-weight: 700;
-		color: #0f172a;
-	}
-	.cookie-desc {
-		font-size: 0.85rem;
-		line-height: 1.5;
-	}
-	.cookie-desc a {
-		color: #7729bb;
-		font-weight: 600;
-	}
-	.cookie-actions {
-		display: flex;
-		gap: 10px;
-	}
-	.cookie-banner .btn {
-		flex: 1;
-		cursor: pointer;
-		font-family: inherit;
-	}
-	.cookie-banner .btn-primary {
-		border: 2px solid transparent;
-	}
-
-
-</style>
