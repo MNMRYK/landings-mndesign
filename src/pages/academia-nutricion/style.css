@@ -82,10 +82,16 @@ html {
   z-index: 100;
   text-decoration: none;
 }
+.texto-logo img {
+  /* Pájaro de la marca */
+  width: 34px;
+  height: 34px;
+  flex-shrink: 0;
+}
 .texto-logo {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 10px;
   line-height: 1;
 }
 .siglas {
@@ -1628,12 +1634,19 @@ html {
   font-family: var(--font-titulos);
   font-size: 1.5rem;
   color: var(--white);
-  display: block;
+  display: flex;
+  align-items: center;
+  gap: 10px;
   margin-bottom: 16px;
 }
 
 .footer-logo strong {
   color: var(--accent);
+}
+.footer-logo img {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
 }
 
 .footer-brand p {

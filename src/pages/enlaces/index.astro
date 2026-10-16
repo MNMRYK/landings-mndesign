@@ -50,7 +50,10 @@ const paso = () => `--i:${i++}`;
     <meta name="description" content="Enlaces de MN Design Web: WhatsApp, llamada gratuita y nuestras webs para negocios y profesionales de la salud." />
     <meta name="robots" content="noindex, nofollow" />
     <link rel="canonical" href="https://mndesignweb.es/enlaces/" />
-    <link rel="icon" type="image/webp" href="/favicon_v2.webp" />
+    <link rel="icon" href="/marca/favicon.ico" sizes="32x32" />
+    <link rel="icon" type="image/svg+xml" href="/marca/favicon.svg" />
+    <link rel="apple-touch-icon" href="/marca/apple-touch-icon.png" />
+    <link rel="manifest" href="/marca/site.webmanifest" />
     <meta name="theme-color" content="#f4efff" />
     <!-- Plus Jakarta Sans servida desde el propio dominio (variable 500-800, solo latín): sin conexiones a Google
          que retrasen el primer pintado en móvil -->
@@ -166,9 +169,8 @@ const paso = () => `--i:${i++}`;
       width: 96px;
       height: 96px;
       border-radius: 50%;
-      background: #fff;
+      background: #e3d6ff;
       border: 3px solid #fff;
-      object-fit: cover;
     }
     h1 {
       font-size: 1.6rem;
@@ -634,7 +636,7 @@ const paso = () => `--i:${i++}`;
       <!-- 1. Cabecera -->
       <header class="perfil entra" style={paso()}>
         <div class="logo-anillo">
-          <img src="/enlaces/logo-192.webp" width="192" height="192" alt="Logo de MN Design Web" fetchpriority="high" />
+          <img src="/marca/favicon.svg" width="96" height="96" alt="Logo de MN Design Web" fetchpriority="high" />
         </div>
         <h1>MN Design Web</h1>
         <p class="lema">Diseño web y software a medida</p>

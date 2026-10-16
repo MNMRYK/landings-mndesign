@@ -432,7 +432,10 @@ const marquee = [
     <link rel="canonical" href={pageUrl} />
     <meta name="robots" content="index, follow" />
     <meta name="author" content="MN Design Web" />
-    <link rel="icon" type="image/webp" href="/favicon_v2.webp" />
+    <link rel="icon" href="/marca/favicon.ico" sizes="32x32" />
+    <link rel="icon" type="image/svg+xml" href="/marca/favicon.svg" />
+    <link rel="apple-touch-icon" href="/marca/apple-touch-icon.png" />
+    <link rel="manifest" href="/marca/site.webmanifest" />
     <meta name="theme-color" content="#F8F6FF" />
 
     <meta property="og:type" content="website" />
@@ -516,15 +519,14 @@ const marquee = [
     <header class="header-glass fixed top-0 left-0 w-full z-[100]">
       <div class="max-w-7xl mx-auto px-gutter h-20 flex items-center justify-between">
         <a href="/" class="flex items-center gap-3 group shrink-0">
-          <span
-            class="flex items-center justify-center w-10 h-10 rounded-xl bg-gradient-to-br from-saas-violet to-indigo-600 shadow-md shadow-saas-violet/20 transition-transform group-hover:scale-110"
-          >
-            <span class="text-lg font-black tracking-tighter text-white">MN</span>
-          </span>
-          <span class="flex flex-col justify-center">
-            <span class="text-base sm:text-lg font-extrabold text-saas-ink tracking-tight leading-none mb-0.5">Design Web</span>
-            <span class="text-[10px] font-bold text-saas-iris-ink uppercase tracking-[0.2em] leading-none">Estudio</span>
-          </span>
+          <img
+            src="/marca/pajaro-morado.svg"
+            width="40"
+            height="40"
+            alt=""
+            class="w-8 h-8 sm:w-9 sm:h-9 transition-transform group-hover:scale-110"
+          />
+          <span class="text-[1.05rem] sm:text-xl font-extrabold text-saas-ink tracking-tight leading-none">MN Design Web</span>
         </a>
 
         <nav aria-label="Secciones" class="hidden lg:flex items-center gap-8 font-semibold text-sm text-saas-muted">
@@ -1194,13 +1196,8 @@ const marquee = [
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-12 mb-10">
           <div class="sm:col-span-2">
             <a href="/" class="inline-flex items-center gap-4 mb-6">
-              <span class="flex items-center justify-center w-14 h-14 rounded-2xl bg-gradient-to-br from-saas-violet to-indigo-600 shadow-lg shadow-saas-violet/30">
-                <span class="text-2xl font-black tracking-tighter text-white">MN</span>
-              </span>
-              <span class="flex flex-col">
-                <span class="text-xl font-extrabold tracking-tight leading-none mb-1.5">Design Web</span>
-                <span class="text-[11px] font-bold text-saas-iris-ink uppercase tracking-[0.2em] leading-none">Estudio</span>
-              </span>
+              <img src="/marca/pajaro-morado.svg" width="48" height="48" loading="lazy" alt="" class="w-11 h-11" />
+              <span class="text-2xl font-extrabold tracking-tight leading-none">MN Design Web</span>
             </a>
             <p class="text-saas-muted text-sm max-w-sm font-medium leading-relaxed mb-5">
               Estudio de diseño web, tiendas online y software a medida en Cocentaina, para negocios de Alcoy (Alcoi),

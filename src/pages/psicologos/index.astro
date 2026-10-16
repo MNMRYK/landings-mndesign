@@ -412,7 +412,10 @@ const schema = {
     <title>{seoTitle}</title>
     <meta name="description" content={seoDescription} />
     <meta name="theme-color" content="#EAF4FF" />
-    <link rel="icon" type="image/webp" href="/favicon_v2.webp" />
+    <link rel="icon" href="/marca/favicon.ico" sizes="32x32" />
+    <link rel="icon" type="image/svg+xml" href="/marca/favicon.svg" />
+    <link rel="apple-touch-icon" href="/marca/apple-touch-icon.png" />
+    <link rel="manifest" href="/marca/site.webmanifest" />
     <link rel="canonical" href="https://mndesignweb.es/psicologos/" />
     <meta name="robots" content="index, follow" />
 
@@ -467,7 +470,7 @@ const schema = {
     <!-- HTML-1 · NAVEGACIÓN -->
     <header class="top" id="top">
       <div class="nav">
-        <a class="logo" href="#"><i>MN</i><span>Design Web</span></a>
+        <a class="logo" href="#"><picture><source srcset="/marca/pajaro-blanco-puro.svg" media="(prefers-color-scheme: dark)" /><img src="/marca/pajaro-morado.svg" width="36" height="36" alt="" /></picture><span>MN Design Web</span></a>
         <nav class="links" aria-label="Secciones">
           <a href="#funciones">Funciones</a>
           <a href="#proceso">Proceso</a>
@@ -498,7 +501,7 @@ const schema = {
       <!-- Panel de menú móvil: capa fija a pantalla completa -->
       <nav class="mnav" id="mnav" aria-label="Menú móvil">
         <div class="mnav-head">
-          <a class="logo" href="#"><i>MN</i><span>Design Web</span></a>
+          <a class="logo" href="#"><picture><source srcset="/marca/pajaro-blanco-puro.svg" media="(prefers-color-scheme: dark)" /><img src="/marca/pajaro-morado.svg" width="36" height="36" alt="" /></picture><span>MN Design Web</span></a>
           <button
             class="mnav-close"
             id="mnav-close"
@@ -1994,8 +1997,8 @@ const schema = {
           <!-- Columna 1: Marca y Contacto -->
           <div class="footer-brand">
             <a class="logo" href="#" aria-label="MN Design Web, volver arriba">
-              <i>MN</i>
-              <span>Design Web</span>
+              <picture><source srcset="/marca/pajaro-blanco-puro.svg" media="(prefers-color-scheme: dark)" /><img src="/marca/pajaro-morado.svg" width="36" height="36" loading="lazy" alt="" /></picture>
+              <span>MN Design Web</span>
             </a>
             <p>
               Diseño web y estrategias digitales para psicólogos y profesionales de la salud mental.

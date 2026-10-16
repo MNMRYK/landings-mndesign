@@ -179,6 +179,27 @@ html {
   color: var(--card-bg);
   font-weight: 300;
 }
+/* Pájaro de la marca delante del nombre (versión blanca: la barra es oscura) */
+.navbar-logo,
+.footer-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+.navbar-logo img {
+  width: 28px;
+  height: 28px;
+}
+.footer-logo img {
+  width: 34px;
+  height: 34px;
+}
+/* El texto del logo hereda el estilo del enlace; solo el <span> interior ("Web") mantiene el suyo */
+.navbar-logo .logo-txt,
+.footer-logo .logo-txt {
+  color: inherit;
+  font-weight: inherit;
+}
 
 
 .desktop-nav {

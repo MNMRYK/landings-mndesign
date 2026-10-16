@@ -25,7 +25,10 @@ import CookieBanner from "../../components/CookieBanner.astro";
     />
 
     <link rel="canonical" href="https://mndesignweb.es/aprende-shopify/" />
-    <link rel="icon" type="image/webp" href="/favicon_v2.webp" />
+    <link rel="icon" href="/marca/favicon.ico" sizes="32x32" />
+    <link rel="icon" type="image/svg+xml" href="/marca/favicon.svg" />
+    <link rel="apple-touch-icon" href="/marca/apple-touch-icon.png" />
+    <link rel="manifest" href="/marca/site.webmanifest" />
     <meta name="robots" content="index, follow" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -201,6 +204,7 @@ import CookieBanner from "../../components/CookieBanner.astro";
       <section class="hero">
         <header class="top-nav container">
           <a href="https://mndesignweb.es/" class="texto-logo">
+            <img src="/marca/pajaro-blanco-puro.svg" width="36" height="36" alt="" />
             <span class="siglas">MN</span>
             <span class="marca">Design Web</span>
           </a>
@@ -1065,6 +1069,14 @@ import CookieBanner from "../../components/CookieBanner.astro";
         flex: 1;
         text-decoration: none;
       }
+      .texto-logo img {
+        /* Pájaro de la marca, en blanco sobre el verde oscuro */
+        width: 34px;
+        height: 34px;
+        flex-shrink: 0;
+        margin-right: 4px;
+        align-self: center;
+      }
       .texto-logo .siglas {
         font-size: 1.8rem;
         font-weight: 900;
@@ -1650,6 +1662,7 @@ import CookieBanner from "../../components/CookieBanner.astro";
         font-size: 1.5rem;
         vertical-align: top;
         margin-right: 4px;
+        align-self: center;
       }
       .dev-price .vat {
         font-size: 1rem;
@@ -2092,6 +2105,28 @@ import CookieBanner from "../../components/CookieBanner.astro";
       @media (max-width: 576px) {
         .hero h1 {
           font-size: 2rem;
+        }
+        /* Logo y distintivo de Shopify más compactos para que no se toquen */
+        .top-nav {
+          gap: 12px;
+        }
+        .texto-logo img {
+          width: 28px;
+          height: 28px;
+          margin-right: 2px;
+        }
+        .texto-logo .siglas {
+          font-size: 1.45rem;
+        }
+        .texto-logo .marca {
+          font-size: 1rem;
+        }
+        .shopify-bag {
+          height: 30px;
+          width: auto;
+        }
+        .shopify-text {
+          font-size: 1.15rem;
         }
         .trust-badges {
           flex-direction: column;

@@ -166,18 +166,10 @@ html {
 }
 
 .logo-icon {
-  width: 36px;
-  height: 36px;
-  background: linear-gradient(135deg, #0f172a, #3b82f6);
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  font-size: 0.9rem;
-  font-weight: 900;
-  letter-spacing: 0;
-  box-shadow: 0 4px 10px rgba(59, 130, 246, 0.3);
+  /* Pájaro de MN Design Web (public/marca/pajaro-morado.svg) */
+  width: 34px;
+  height: 34px;
+  flex-shrink: 0;
 }
 
 .desktop-nav {

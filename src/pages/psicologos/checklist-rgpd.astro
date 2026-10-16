@@ -101,7 +101,10 @@ let n = 0;
     <title>Checklist RGPD para consultas de psicología | MN Design Web</title>
     <meta name="robots" content="noindex, nofollow" />
     <CookiesHead />
-    <link rel="icon" type="image/webp" href="/favicon_v2.webp" />
+    <link rel="icon" href="/marca/favicon.ico" sizes="32x32" />
+    <link rel="icon" type="image/svg+xml" href="/marca/favicon.svg" />
+    <link rel="apple-touch-icon" href="/marca/apple-touch-icon.png" />
+    <link rel="manifest" href="/marca/site.webmanifest" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -161,14 +164,16 @@ let n = 0;
         font: 800 1.05rem "Inter Tight", sans-serif;
         color: var(--ink);
         text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
       }
-      .logo i {
-        font-style: normal;
-        background: var(--grad);
-        -webkit-background-clip: text;
-        background-clip: text;
-        color: transparent;
-        margin-right: 4px;
+      .logo picture {
+        display: flex;
+      }
+      .logo img {
+        width: 28px;
+        height: 28px;
       }
       .print {
         font: 600 0.92rem "Inter", sans-serif;
@@ -391,7 +396,7 @@ let n = 0;
   <body>
     <main class="sheet">
       <header>
-        <a class="logo" href="/psicologos/"><i>MN</i>Design Web</a>
+        <a class="logo" href="/psicologos/"><picture><source srcset="/marca/pajaro-blanco-puro.svg" media="(prefers-color-scheme: dark)" /><img src="/marca/pajaro-morado.svg" width="30" height="30" alt="" /></picture>MN Design Web</a>
         <button class="print" type="button" onclick="window.print()">
           Imprimir o guardar en PDF
         </button>
