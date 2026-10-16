@@ -83,37 +83,30 @@ html {
   text-decoration: none;
 }
 .texto-logo img {
-  /* Pájaro de la marca */
-  width: 34px;
-  height: 34px;
+  /* Pájaro índigo de la marca, del alto del texto */
+  width: 28px;
+  height: 28px;
   flex-shrink: 0;
 }
 .texto-logo {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 9px;
   line-height: 1;
 }
-.siglas {
+.nombre-logo {
+  /* "MN" y "Design Web" al mismo tamaño y sobre la misma línea base */
   font-family: var(--font-texto);
+  font-size: 1.35rem;
+  white-space: nowrap;
+}
+.siglas {
   font-weight: 900;
-  font-size: 1.5rem;
-  color: var(--text-main);
-  transition: color 0.3s ease;
+  color: #000;
 }
 .marca {
-  font-family: var(--font-texto);
-  font-weight: 700;
-  font-size: 1.15rem;
+  font-weight: 400;
   color: var(--accent);
-  opacity: 0.9;
-  transition: opacity 0.3s ease;
-}
-.global-logo:hover .siglas {
-  color: var(--accent);
-}
-.global-logo:hover .marca {
-  opacity: 1;
 }
 
 /* ==========================================

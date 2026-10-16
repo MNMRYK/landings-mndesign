@@ -129,6 +129,8 @@ let n = 0;
           --bg: #070d18;
           --surface: #0f1a2b;
           --ink: #eef3fa;
+          --logo-mn: #eef3fa;
+          --logo-dw: #9aabc2;
           --muted: #9aabc2;
           --line: #1d2b40;
           --brand: #5aa2ff;
@@ -168,12 +170,25 @@ let n = 0;
         align-items: center;
         gap: 8px;
       }
-      .logo picture {
-        display: flex;
-      }
       .logo img {
-        width: 28px;
-        height: 28px;
+        /* Logo de la marca: pájaro blanco sobre círculo negro */
+        width: 36px;
+        height: 36px;
+        flex-shrink: 0;
+      }
+      .logo .logo-mn {
+        color: var(--logo-mn, #000);
+      }
+      .logo .logo-dw {
+        /* "Design Web" fino en gris pizarra */
+        font: 400 1.05rem "Inter", sans-serif;
+        color: var(--logo-dw, #475569);
+      }
+      @media (max-width: 768px) {
+        .logo img {
+          width: 32px;
+          height: 32px;
+        }
       }
       .print {
         font: 600 0.92rem "Inter", sans-serif;
@@ -396,7 +411,7 @@ let n = 0;
   <body>
     <main class="sheet">
       <header>
-        <a class="logo" href="/psicologos/"><picture><source srcset="/marca/pajaro-blanco-puro.svg" media="(prefers-color-scheme: dark)" /><img src="/marca/pajaro-morado.svg" width="30" height="30" alt="" /></picture>MN Design Web</a>
+        <a class="logo" href="/psicologos/"><img src="/marca/logo-blanco-puro.svg" width="36" height="36" alt="" /><span><span class="logo-mn">MN</span> <span class="logo-dw">Design Web</span></span></a>
         <button class="print" type="button" onclick="window.print()">
           Imprimir o guardar en PDF
         </button>

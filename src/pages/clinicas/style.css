@@ -166,10 +166,27 @@ html {
 }
 
 .logo-icon {
-  /* Pájaro de MN Design Web (public/marca/pajaro-morado.svg) */
-  width: 34px;
-  height: 34px;
+  /* Logo de MN Design Web: pájaro blanco sobre círculo negro, a juego con los botones */
+  width: 38px;
+  height: 38px;
   flex-shrink: 0;
+}
+.logo-txt {
+  white-space: nowrap;
+}
+.logo-mn {
+  color: #000;
+}
+.logo-dw {
+  /* "Design Web" fino en gris pizarra */
+  font-weight: 400;
+  color: #475569;
+}
+@media (max-width: 768px) {
+  .logo-icon {
+    width: 32px;
+    height: 32px;
+  }
 }
 
 .desktop-nav {

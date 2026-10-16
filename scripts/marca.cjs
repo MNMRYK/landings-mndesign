@@ -1,6 +1,6 @@
 // Genera los logos e iconos de las landings en public/marca/ a partir de brand/ (originales, fuera de public/ para que no se publiquen).
 // Uso: node scripts/marca.cjs (desde la raíz del repo). Solo genera lo que usan las landings:
-// pajaro-blanco.svg (fondos morados oscuros) no se usa ahora; añádelo a la lista si hace falta.
+// pajaro-blanco.svg, pajaro-azul.svg, logo-azul.svg, logo-indigo.svg y logo-circulo-blanco.svg no se usan ahora; añádelos a la lista si hace falta.
 // - SVG limpios: sin width/height fijos, trazo común en un <g>, coordenadas sin ceros sobrantes.
 // - favicon.ico (16 y 32 px), apple-touch-icon (180), icon-192, icon-512 y site.webmanifest.
 const fs = require('fs'), path = require('path');
@@ -20,7 +20,7 @@ function limpiar(svg) {
 }
 (async () => {
   const salida = {};
-  for (const [origen, destino] of [['pajaro-morado', 'pajaro-morado'], ['pajaro-blanco-puro', 'pajaro-blanco-puro'], ['logo-morado', 'favicon']]) {
+  for (const [origen, destino] of [['pajaro-morado', 'pajaro-morado'], ['pajaro-indigo', 'pajaro-indigo'], ['pajaro-blanco-puro', 'pajaro-blanco-puro'], ['logo-blanco', 'logo-blanco'], ['logo-blanco-puro', 'logo-blanco-puro'], ['logo-morado', 'favicon']]) {
     const svg = limpiar(fs.readFileSync(path.join(SRC, origen + '.svg'), 'utf8'));
     fs.writeFileSync(path.join(OUT, destino + '.svg'), svg);
     salida[destino + '.svg'] = svg.length;

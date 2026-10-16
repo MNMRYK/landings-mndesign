@@ -52,6 +52,19 @@ Cada búsqueda se mide en una sola página. En Search Console: Rendimiento → f
 Orden cronológico inverso (lo más reciente arriba). Formato de cada entrada:
 fecha · qué se ha cambiado (archivos y URLs) · intención / por qué · objetivo · cómo medirlo · estado (hecho / publicado / pendiente de indexar).
 
+### 16/10/2026 · El color del logo se adapta a cada landing
+- **Qué** (indicaciones de María; el favicon sigue siendo siempre el morado):
+  - **/alcoi/:** pájaro morado. "MN" en #1E1446 y "Design Web" fino (400) en #7330CC, en la cabecera y el pie.
+  - **/software-a-mida-alcoi/:** `logo-blanco.svg` (pájaro claro sobre círculo morado oscuro, a juego con su botón oscuro), con los mismos colores de texto que /alcoi/.
+  - **/enlaces/:** `logo-blanco.svg` dentro del anillo iridiscente, que sigue girando. En el nombre de debajo, "MN" en #1E1446 y "Design Web" en #7330CC (peso 500, el más ligero de la fuente propia).
+  - **/academia-nutricion/:** pájaro índigo (`pajaro-indigo.svg`). "MN" en negro y "Design Web" fino en el azul de la landing (#1648d3), los dos al mismo tamaño y sobre la misma línea base. El pájaro baja a 28 px, del alto del texto. El pie (oscuro) sigue con el pájaro blanco puro.
+  - **/clinicas/** y **/psicologos/** (con su checklist): `logo-blanco-puro.svg` (pájaro blanco sobre círculo negro, a juego con sus botones negros). "MN" en negro y "Design Web" fino en gris pizarra (#475569). En /psicologos/ el texto fino va en Inter 400, porque Inter Tight solo se carga desde 600. Con modo oscuro, el texto pasa a claro (#eef3fa / #9aabc2).
+  - **Sin tocar:** /nutricionistas/ y /aprende-shopify/ (son la referencia: pájaro blanco puro sobre fondo oscuro) y /bodas/.
+  - **Tamaños:** los logos con círculo miden 38 px en escritorio (36 en el checklist) y 32 px en móvil. Los pájaros blancos sin círculo solo van sobre fondos oscuros.
+  - **`public/marca/`** solo lleva los SVG que se usan: `pajaro-morado`, `pajaro-indigo`, `pajaro-blanco-puro`, `logo-blanco`, `logo-blanco-puro` y `favicon`. Los originales nuevos (`pajaro-indigo`, `pajaro-azul`, `logo-azul`) están en `brand/`, fuera de `public/`.
+- **Comprobado:** servidor de desarrollo a 1440 y 390 px, en cabeceras y pies, y /psicologos/ también en modo oscuro. Ningún 404. Lighthouse móvil de /enlaces/ sobre el build: 100 · 100 · 100 en tres pasadas (LCP 1,1-1,2 s, CLS 0).
+- **Estado:** hecho en local y con commit, pendiente de subir con la tanda.
+
 ### 16/10/2026 · Logo nuevo (pájaro) en todas las landings, favicon e iconos de app
 - **Qué:**
   - **Originales** en `brand/` (raíz del repo, fuera de `public/` para que no se publiquen). `scripts/marca.cjs` genera desde ahí `public/marca/`, con los SVG limpios y solo lo que se usa: `pajaro-morado.svg` (594 B), `pajaro-blanco-puro.svg` (582 B), `favicon.svg` (de `logo-morado.svg`, pájaro sobre círculo lila, 681 B), `favicon.ico` (16 + 32 px, 1,5 KB), `apple-touch-icon.png` (180 px, 2,6 KB), `icon-192.png`, `icon-512.png` y `site.webmanifest`. `pajaro-blanco.svg` (para fondos morados oscuros) no se genera porque ahora no hay ningún logo sobre morado oscuro. `logo-blanco*`, `logo-circulo-blanco` y `logo-indigo` son de reserva y no se usan.

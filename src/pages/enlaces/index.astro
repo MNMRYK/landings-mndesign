@@ -169,7 +169,7 @@ const paso = () => `--i:${i++}`;
       width: 96px;
       height: 96px;
       border-radius: 50%;
-      background: #e3d6ff;
+      background: #3a0f78;
       border: 3px solid #fff;
     }
     h1 {
@@ -177,6 +177,14 @@ const paso = () => `--i:${i++}`;
       font-weight: 800;
       letter-spacing: -0.03em;
       line-height: 1.15;
+    }
+    .h1-mn {
+      color: #1e1446;
+    }
+    .h1-dw {
+      /* "Design Web" fino: el peso más ligero de la fuente propia */
+      font-weight: 500;
+      color: #7330cc;
     }
     .lema {
       margin-top: 4px;
@@ -636,9 +644,9 @@ const paso = () => `--i:${i++}`;
       <!-- 1. Cabecera -->
       <header class="perfil entra" style={paso()}>
         <div class="logo-anillo">
-          <img src="/marca/favicon.svg" width="96" height="96" alt="Logo de MN Design Web" fetchpriority="high" />
+          <img src="/marca/logo-blanco.svg" width="96" height="96" alt="Logo de MN Design Web" fetchpriority="high" />
         </div>
-        <h1>MN Design Web</h1>
+        <h1><span class="h1-mn">MN</span> <span class="h1-dw">Design Web</span></h1>
         <p class="lema">Diseño web y software a medida</p>
         <ul class="pildoras">
           <li><span aria-hidden="true">📍</span> Cocentaina · Alcoy</li>
