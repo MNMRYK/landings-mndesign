@@ -54,7 +54,7 @@ fecha · qué se ha cambiado (archivos y URLs) · intención / por qué · objet
 
 ### 16/10/2026 · El color del logo se adapta a cada landing
 - **Qué** (indicaciones de María; el favicon sigue siendo siempre el morado):
-  - **/alcoi/:** pájaro morado. "MN" en #1E1446 y "Design Web" fino (400) en #7330CC, en la cabecera y el pie.
+  - **/alcoi/:** `logo-blanco.svg` (pájaro claro sobre círculo morado oscuro; al principio era el pájaro morado, y María pidió cambiarlo). "MN" en #1E1446 y "Design Web" fino (400) en #7330CC, en la cabecera y el pie. El pájaro morado sin círculo queda solo en /bodas/.
   - **/software-a-mida-alcoi/:** `logo-blanco.svg` (pájaro claro sobre círculo morado oscuro, a juego con su botón oscuro), con los mismos colores de texto que /alcoi/.
   - **/enlaces/:** `logo-blanco.svg` dentro del anillo iridiscente, que sigue girando. En el nombre de debajo, "MN" en #1E1446 y "Design Web" en #7330CC (peso 500, el más ligero de la fuente propia).
   - **/academia-nutricion/:** pájaro índigo (`pajaro-indigo.svg`). "MN" en negro y "Design Web" fino en el azul de la landing (#1648d3), los dos al mismo tamaño y sobre la misma línea base. El pájaro baja a 28 px, del alto del texto. El pie (oscuro) sigue con el pájaro blanco puro.
