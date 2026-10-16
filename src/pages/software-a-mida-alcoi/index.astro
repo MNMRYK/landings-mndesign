@@ -1002,14 +1002,18 @@ const schema = {
               {
                 n: "Lara S.",
                 r: "Directora de arte",
+                foto: "/resenas/lara.webp",
+                i: "LS",
                 t: "[…] me ayudó a crear una web profesional a modo de portfolio y presentación de mi perfil, entendiendo perfectamente lo que buscaba y aportando siempre ideas y soluciones creativas que iban un paso más allá.",
               },
               {
                 n: "Miriam A.",
+                i: "MA",
                 t: "Excelente servicio! Ha superado por completo mis expectativas con el diseño de la página web. […] un resultado final súper visual, moderno y fácil de navegar.",
               },
               {
                 n: "Damaris López",
+                i: "DL",
                 t: "Gran profesional! Cualquier duda me informo y me resolvió perfectamente. […] Muchas gracias, 100% recomendada.",
               },
             ].map((g) => (
@@ -1021,8 +1025,26 @@ const schema = {
                   >
                 </div>
                 <p class="text-slate-600 text-[15px] leading-relaxed mb-5 flex-1" lang="es">«{g.t}»</p>
-                <p class="font-bold text-saas-dark text-sm">{g.n}</p>
-                {g.r && <p class="text-slate-500 text-sm" lang="es">{g.r}</p>}
+                <div class="flex items-center gap-3">
+                  {g.foto ? (
+                    <img
+                      src={g.foto}
+                      srcset={`${g.foto} 1x, ${g.foto.replace(".webp", "@2x.webp")} 2x`}
+                      width="96"
+                      height="96"
+                      loading="lazy"
+                      decoding="async"
+                      alt=""
+                      class="w-11 h-11 rounded-full object-cover shrink-0"
+                    />
+                  ) : (
+                    <span class="w-11 h-11 rounded-full shrink-0 flex items-center justify-center bg-saas-violet/10 text-saas-violet text-sm font-extrabold" aria-hidden="true">{g.i}</span>
+                  )}
+                  <div>
+                    <p class="font-bold text-saas-dark text-sm">{g.n}</p>
+                    {g.r && <p class="text-slate-500 text-sm" lang="es">{g.r}</p>}
+                  </div>
+                </div>
               </li>
             ))
           }

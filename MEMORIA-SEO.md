@@ -52,6 +52,14 @@ Cada búsqueda se mide en una sola página. En Search Console: Rendimiento → f
 Orden cronológico inverso (lo más reciente arriba). Formato de cada entrada:
 fecha · qué se ha cambiado (archivos y URLs) · intención / por qué · objetivo · cómo medirlo · estado (hecho / publicado / pendiente de indexar).
 
+### 16/10/2026 · Foto de Lara S. en sus reseñas y og:image en castellano de /alcoi/
+- **Qué:**
+  - Foto de Lara S. (`public/resenas/lara.webp` de 96×96 y `lara@2x.webp` de 192×192, carpeta compartida por todas las landings) como avatar de su reseña de Google en /alcoi/, /clinicas/, /psicologos/, /nutricionistas/ y /software-a-mida-alcoi/. Sale de la imagen que pasó María (90×90): recortada en círculo centrado en la cara y sin la insignia amarilla de la esquina (la zona que tapaba se ha rellenado a partir de los píxeles de alrededor). La versión @2x está ampliada desde un recorte de 72 px: con una foto más grande se vería más nítida en retina. El PNG original sale de `public/` para no publicarlo por duplicado.
+  - Las demás reseñas de Google, con iniciales. En /nutricionistas/ y /software-a-mida-alcoi/ las tarjetas no tenían avatar: se añade uno a las tres (la foto de Lara; "MA" y "DL") para que la rejilla quede igualada.
+  - /alcoi/: og:image y twitter:image pasan a `alcoi/og-diseno-web-alcoy.webp` (en castellano, 1200×630, 47 KB). La valenciana (`imagen-miniatura-alcoi.webp`) queda solo para /software-a-mida-alcoi/.
+- **Comprobado** en el servidor de desarrollo a 1440 y 390 px: en las 5 landings la foto carga (en pantallas 2x, la versión @2x), redonda y del tamaño del avatar de cada diseño (36, 56, 46, 48 y 44 px). Capturas de las tarjetas y de las rejillas.
+- **Estado:** hecho en local y con commit, pendiente de subir con la tanda.
+
 ### 15/10/2026 · SEO on-page: una palabra clave por página
 - **Qué** (textos aprobados por María; tabla "Palabra clave por página" arriba):
   - **Titles** (todos de 50 a 60 caracteres, sin "2026"):
@@ -266,7 +274,6 @@ fecha · qué se ha cambiado (archivos y URLs) · intención / por qué · objet
 - **Estado:** hecho.
 
 ## Pendientes
-- [PENDIENTE: aprobar y conectar la og:image en castellano de /alcoi/] Creada en `public/alcoi/og-diseno-web-alcoy.webp` (1200×630, 47 KB). Al aprobarla: `ogImage` en `src/pages/alcoi/index.astro` y la valenciana (`imagen-miniatura-alcoi.webp`) solo para /software-a-mida-alcoi/.
 - [PENDIENTE: og:image propia para /posicionamiento-seo/, /redes-sociales/ y /e-commerce/ (ReactMNDESIGN)] Ahora las tres usan la genérica `logo-card.webp`.
 - [PENDIENTE CON CONDICIÓN: home y /disenoweb/ (ReactMNDESIGN) frente a /alcoi/] Revisar en Search Console 3-4 semanas después de publicar la tanda del 15/10. **Si para "diseño web alcoy" ya sale /alcoi/**, aplicar:
   - Home: title de marca y diferenciación ("MN Design Web · Estudio de Diseño Web y Software a Medida"), sin "Alcoi" en el title ni en la description, y un enlace visible "Diseño web en Alcoy" a /alcoi/.
@@ -279,7 +286,6 @@ fecha · qué se ha cambiado (archivos y URLs) · intención / por qué · objet
 - [PENDIENTE: quitar el píxel de Meta del tipo de evento `mentorias-shopify` en Cal.com] Sigue disparando Meta sin consentimiento desde el calendario de /aprende-shopify/ (comprobado el 15/10/2026).
 - [PENDIENTE: decidir si se elimina el workflow de GitHub Pages] Publica en https://mnmryk.github.io/landings-mndesign/ una copia sin estilos e indexable (con canonical a mndesignweb.es). Ver CLAUDE.md → Publicación.
 - [PENDIENTE: posiciones actuales de las búsquedas de Alcoy marcadas con "—" en la tabla de partida]
-- [PENDIENTE: miniatura OG en castellano para /alcoi/] La actual (`public/alcoi/imagen-miniatura-alcoi.webp`) está en valenciano y pesa 344 KB.
 - [PENDIENTE: proyecto o cliente real de Alcoy] Cuando lo haya, va el primero del carrusel de /alcoi/.
 - [PENDIENTE: texto original en castellano del testimonio de Nutrimente] En /alcoi/ va traducido del valenciano.
 - [PENDIENTE: captura de página completa definitiva de Norvia Suministros] Cuando estén todas las ilustraciones de producto: sustituir `public/alcoi/demos/suministros.webp` (1280 px) y `suministros-640.webp` y ajustar `alto` en `demos` de `src/pages/alcoi/index.astro`. La actual es provisional (dos productos con icono de caja).

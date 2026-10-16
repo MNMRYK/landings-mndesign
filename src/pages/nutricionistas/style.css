@@ -1972,6 +1972,26 @@ html {
   font-weight: 600;
   color: var(--primary);
 }
+/* Avatar de las reseñas: foto (Lara) o iniciales */
+.review-author-av {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.review-author .review-av {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(102, 112, 85, 0.12);
+  color: var(--primary);
+  font-weight: 700;
+  font-size: 15px;
+}
 .reviews-cta {
   margin-top: 36px;
   text-align: center;

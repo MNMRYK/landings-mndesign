@@ -2292,6 +2292,9 @@ html:not(.js) .tl-card,
   align-items: center;
   gap: 12px;
 }
+.who img.av {
+  object-fit: cover;
+}
 .who .av {
   width: 46px;
   height: 46px;

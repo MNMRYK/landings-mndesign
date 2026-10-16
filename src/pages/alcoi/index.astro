@@ -252,6 +252,7 @@ const resenas = [
   {
     nombre: "Lara S.",
     detalle: "Directora de arte",
+    foto: "/resenas/lara.webp", // foto compartida por todas las landings (/resenas/), con versión @2x
     google: true,
     texto:
       "[…] me ayudó a crear una web profesional a modo de portfolio y presentación de mi perfil, entendiendo perfectamente lo que buscaba y aportando siempre ideas y soluciones creativas que iban un paso más allá.",
@@ -326,8 +327,8 @@ const pageUrl = "https://mndesignweb.es/alcoi/";
 const seoTitle = "Diseño Web en Alcoy (Alcoi) · Páginas Web | MN Design Web";
 const seoDescription =
   "Diseño web en Alcoy (Alcoi): páginas web rápidas, fáciles de encontrar en Google y pensadas para traerte clientes. Llamada gratuita de 30 min.";
-// [PENDIENTE: miniatura OG en castellano] La actual está en valenciano
-const ogImage = "https://mndesignweb.es/alcoi/imagen-miniatura-alcoi.webp";
+// Miniatura en castellano (1200×630). La valenciana (imagen-miniatura-alcoi.webp) es solo de /software-a-mida-alcoi/
+const ogImage = "https://mndesignweb.es/alcoi/og-diseno-web-alcoy.webp";
 
 const lugar = (tipo: string, nombre: string) => ({ "@type": tipo, name: nombre });
 const schema = {
@@ -865,7 +866,18 @@ const marquee = [
                   </div>
                   <blockquote class="resena-texto">«{r.texto}»</blockquote>
                   <figcaption class="mt-4 flex items-center gap-2.5">
-                    {r.google ? (
+                    {r.foto ? (
+                      <img
+                        src={r.foto}
+                        srcset={`${r.foto} 1x, ${r.foto.replace(".webp", "@2x.webp")} 2x`}
+                        width="96"
+                        height="96"
+                        loading="lazy"
+                        decoding="async"
+                        alt=""
+                        class="w-9 h-9 rounded-full object-cover shrink-0"
+                      />
+                    ) : r.google ? (
                       <span class="w-9 h-9 rounded-full grid place-items-center text-sm font-extrabold text-white bg-gradient-to-br from-[#6a45f5] to-[#c23bb0] shrink-0" aria-hidden="true">
                         {r.nombre.charAt(0)}
                       </span>

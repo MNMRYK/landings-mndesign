@@ -169,6 +169,7 @@ const quotes = [
     n: "Lara S.",
     r: "Directora de arte",
     i: "LS",
+    foto: "/resenas/lara.webp", // foto compartida por todas las landings, con versión @2x
     google: true,
   },
   {
@@ -1498,7 +1499,20 @@ const schema = {
                 <blockquote>{quotes[0].q}</blockquote>
               </div>
               <figcaption class="who">
-                <span class="av">{quotes[0].i}</span>
+                {quotes[0].foto ? (
+                  <img
+                    class="av"
+                    src={quotes[0].foto}
+                    srcset={`${quotes[0].foto} 1x, ${quotes[0].foto.replace(".webp", "@2x.webp")} 2x`}
+                    width="96"
+                    height="96"
+                    loading="lazy"
+                    decoding="async"
+                    alt=""
+                  />
+                ) : (
+                  <span class="av">{quotes[0].i}</span>
+                )}
                 <div>
                   <b>{quotes[0].n}</b>
                   {quotes[0].r && <span>{quotes[0].r}</span>}
@@ -1529,7 +1543,11 @@ const schema = {
                   )}
                   <blockquote>“{q.q}”</blockquote>
                   <figcaption class="who">
-                    <span class="av">{q.i}</span>
+                    {q.foto ? (
+                      <img class="av" src={q.foto} srcset={`${q.foto} 1x, ${q.foto.replace(".webp", "@2x.webp")} 2x`} width="96" height="96" loading="lazy" decoding="async" alt="" />
+                    ) : (
+                      <span class="av">{q.i}</span>
+                    )}
                     <div>
                       <b>{q.n}</b>
                       {q.google ? (
