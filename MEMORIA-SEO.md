@@ -53,6 +53,18 @@ Cada búsqueda se mide en una sola página. En Search Console: Rendimiento → f
 Orden cronológico inverso (lo más reciente arriba). Formato de cada entrada:
 fecha · qué se ha cambiado (archivos y URLs) · intención / por qué · objetivo · cómo medirlo · estado (hecho / publicado / pendiente de indexar).
 
+### 23/10/2026 · /alcoi/ trabaja "agencia de diseño web alcoy"
+- **Por qué:** "agencia de diseño web alcoy" tiene 318 impresiones y 0 clics, repartidas entre 10 URLs de la web principal; /alcoi/ solo recibía 31 (entrada del 22/10).
+- **Qué** (propuesta aprobada por María):
+  - **Title:** «Diseño Web en Alcoy (Alcoi) · Páginas Web | MN Design Web» → «Agencia de Diseño Web en Alcoy (Alcoi) | MN Design Web» (55 caracteres; también og:title, twitter:title y schema).
+  - **Description:** empieza por «Agencia de diseño web en Alcoy (Alcoi): …».
+  - **H1:** «Agencia de diseño web en Alcoy (Alcoi): páginas web que trabajan por tu negocio».
+  - **Primer párrafo:** «Somos una agencia de diseño web de la comarca. Hacemos páginas web en Alcoy (Alcoi)…».
+  - "Diseño web en Alcoy" sigue literal en el title y el H1. "Páginas web" sale del title, pero sigue en el H1.
+- **Comprobado:** el H1 queda bien a 1440 y 390 px, sin scroll horizontal.
+- **Cómo medirlo:** Search Console → consulta "agencia de diseño web alcoy" → Páginas: las impresiones deberían pasar a /alcoi/ y aparecer los primeros clics. Revisar también que "diseño web alcoy" no baje. A las 2, 4 y 6 semanas de publicar.
+- **Estado:** hecho en local y con commit, sin publicar.
+
 ### 23/10/2026 · Tarjetas de precios de /psicologos/ y /clinicas/ equilibradas
 - **Qué** (indicaciones de María; /nutricionistas/ no se toca): entre 4 y 6 puntos cortos por tarjeta. El plan 2 se resume en «Todo lo de Web profesional, ampliada a 5 páginas con blog» + lo que añade. Los planes 3 y 4 recuperan funciones que ya estaban en estas landings antes de la tanda (comprobado en git: antigua Fase 2 de /psicologos/ y planes antiguos de /clinicas/); no se ha inventado ninguna.
   - **/psicologos/ plan 3:** además de lo que indicó María, «Expedientes de pacientes (CRM clínico)», que viene del portal de /clinicas/.
@@ -379,7 +391,7 @@ fecha · qué se ha cambiado (archivos y URLs) · intención / por qué · objet
   - Al cambiar precios: actualizar también el schema (catálogo con precios "desde"), las FAQ que mencionen precios, los mensajes de WhatsApp de cada plan y los anuncios/extensiones de Google Ads.
 - [HECHO 23/10/2026, solo en /academia-nutricion/ (ver registro): reseña de Google de Alinea en las landings] Reseña real nueva (María les hizo una plataforma de cursos online). Texto literal: «María es una gran profesional! Colaboramos con ella en un proyecto para crear una plataforma de cursos online y fue un 10/10. Seguiremos colaborando en otros proyectos futuros porque no solo su trabajo es impecable, sino que también es muy amable y cercana 😊». Detalle: «Plataforma de cursos online». Encaja sobre todo en /academia-nutricion/ (y en /alcoi/ y /clinicas/). Ya está en la web principal (`ReactMNDESIGN/src/Resenas/resenas.js`). Añadirla también a la lista de reseñas de Google de CLAUDE.md.
 - [HECHO 23/10/2026: pack «Desarrollo + mantenimiento integral 1 año» de /clinicas/] María lo ha subido a «desde 3.490 € + IVA» (antes 2.890 €). Portal + Academia más un año de mantenimiento por separado costaría 3.090 € + 12 × 90 € = 4.170 € + IVA, así que el pack ahorra 680 €. Cambiarlo también en Google Ads si aparece en algún anuncio.
-- [PENDIENTE (23/10/2026): title, description, H1 y primer párrafo de /alcoi/ con "agencia de diseño web" + "Alcoy (Alcoi)"] Propuesta enviada a María el 23/10, sin aplicar hasta su visto bueno.
+- [HECHO 23/10/2026: title, description, H1 y primer párrafo de /alcoi/ con "agencia de diseño web" + "Alcoy (Alcoi)"] Aprobado por María y aplicado (ver registro).
 - [PENDIENTE: página local para "seo alcoy" y "posicionamiento web alcoy"] Desde el 22/10/2026 /posicionamiento-seo/ es general. Decidir si es una landing propia o una sección de /alcoi/.
 - [YA NO ES CONDICIONAL desde el 22/10/2026: home y /disenoweb/ (ReactMNDESIGN) frente a /alcoi/] Con el enfoque general de la web principal se aplica sin esperar a Search Console, con la palabra clave nueva de cada página (home → "agencia de diseño y desarrollo web"; /disenoweb/ → "diseño web a medida"; ver `ReactMNDESIGN/REGISTRO-CAMBIOS.md`). Lo que se planteó entonces:
   - Home: title de marca y diferenciación ("MN Design Web · Estudio de Diseño Web y Software a Medida"), sin "Alcoi" en el title ni en la description, y un enlace visible "Diseño web en Alcoy" a /alcoi/.
