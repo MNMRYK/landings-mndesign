@@ -53,6 +53,16 @@ Cada búsqueda se mide en una sola página. En Search Console: Rendimiento → f
 Orden cronológico inverso (lo más reciente arriba). Formato de cada entrada:
 fecha · qué se ha cambiado (archivos y URLs) · intención / por qué · objetivo · cómo medirlo · estado (hecho / publicado / pendiente de indexar).
 
+### 23/10/2026 · Tarjetas de precios de /psicologos/ y /clinicas/ equilibradas
+- **Qué** (indicaciones de María; /nutricionistas/ no se toca): entre 4 y 6 puntos cortos por tarjeta. El plan 2 se resume en «Todo lo de Web profesional, ampliada a 5 páginas con blog» + lo que añade. Los planes 3 y 4 recuperan funciones que ya estaban en estas landings antes de la tanda (comprobado en git: antigua Fase 2 de /psicologos/ y planes antiguos de /clinicas/); no se ha inventado ninguna.
+  - **/psicologos/ plan 3:** además de lo que indicó María, «Expedientes de pacientes (CRM clínico)», que viene del portal de /clinicas/.
+  - **/psicologos/ plan 4:** academia (cursos, vídeo y descargas), aula virtual para talleres y directos, y cobros recurrentes.
+  - **/clinicas/:** listas tal como las indicó María.
+  - **Mantenimiento/auditoría** fuera de la lista: van en el pie de la tarjeta, encima del botón, en las dos. En /clinicas/ el botón «Pedir presupuesto» baja de la parte de arriba al pie. El pie reserva dos líneas para que los botones queden a la misma altura. En /psicologos/ los botones de los planes 1 y 2 pasan a «Quiero este plan», porque los textos largos ocupaban dos líneas y desalineaban.
+  - Debajo de las tarjetas: «Extras a medida: agente de IA integrado y sincronización con tu ERP o gestor (precio en presupuesto)».
+- **Comprobado** (servidor de desarrollo, medido con Playwright): a 1440, 1024 y 390 px, las tarjetas de cada fila tienen el mismo alto y los pies y botones están a la misma altura (±2 px). Sin scroll horizontal.
+- **Estado:** hecho en local y con commit, sin publicar.
+
 ### 23/10/2026 · Tanda de landings: formularios sin Make, reseñas nuevas y precios nuevos de salud
 - **Formularios sin Make** (alcoi, software-a-mida-alcoi, nutricionistas, clinicas, psicologos ×2 —contacto y checklist RGPD—, academia-nutricion ×2, aprende-shopify ×2 y bodas): envían solo a Web3Forms. Todos tenían ya `finally`. En /academia-nutricion/ los dos botones volvían con otro texto y sin icono ("Descargar Dossier Ahora"); ahora recuperan exactamente el HTML original.
   - **Comprobado con Puppeteer** (puppeteer-core + Edge, servidor de desarrollo, envíos interceptados, sin leads reales): los 12 formularios envían a Web3Forms y ninguno a Make. Envío correcto → `generate_lead` (con el mismo `formulario` de antes) + `fbq track Lead`, y el botón vuelve a su texto. Error simulado (Web3Forms 500) → sin eventos y el botón vuelve a estar disponible.

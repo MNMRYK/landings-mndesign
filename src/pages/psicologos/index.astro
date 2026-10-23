@@ -287,7 +287,7 @@ const planes = [
       "SEO local para que te encuentren en tu ciudad",
     ],
     mantenimiento: "Sin cuota de mantenimiento",
-    boton: "Quiero la web profesional",
+    boton: "Quiero este plan",
   },
   {
     nombre: "Web + herramientas",
@@ -295,17 +295,14 @@ const planes = [
     etiqueta: "Para trabajar online",
     texto: "Tu web con las herramientas para pasar consulta online y gestionar documentos.",
     incluye: [
-      "5 páginas: inicio, sobre mí, servicios, blog y contacto",
-      "Calendario y formulario de captación",
-      "API de citas (p. ej. Calendly)",
+      "Todo lo de Web profesional, ampliada a 5 páginas con blog",
       "Videoconsulta cifrada",
       "Firma de documentos legales",
-      "Documentos compartidos y gestor documental básico",
-      "Botón de WhatsApp y diseño para móvil",
-      "SEO básico y panel para editar tú mismo",
+      "Documentos compartidos y gestor documental",
+      "Citas conectadas a tu calendario (p. ej. Calendly)",
     ],
     mantenimiento: "Auditoría trimestral: 30 € + IVA",
-    boton: "Quiero web + herramientas",
+    boton: "Quiero este plan",
   },
   {
     nombre: "Portal Paciente",
@@ -313,8 +310,14 @@ const planes = [
     etiqueta: "Más elegida",
     destacado: true,
     texto: "Tu propia plataforma de pacientes para consultas consolidadas. Sin cuotas a terceros.",
-    incluye: ["Todo lo de Web + herramientas", "Portal privado del paciente en tu propia web"],
-    mantenimiento: "Mantenimiento mensual obligatorio: desde 45 €/mes + IVA",
+    incluye: [
+      "Todo lo de Web + herramientas",
+      "Portal privado del paciente en tu propia web",
+      "Notificaciones y recordatorios",
+      "Expedientes de pacientes (CRM clínico)",
+      "Sin cuotas a plataformas de terceros",
+    ],
+    mantenimiento: "Mantenimiento obligatorio desde 45 €/mes + IVA",
     boton: "Pedir presupuesto",
   },
   {
@@ -322,8 +325,13 @@ const planes = [
     precio: 2190,
     etiqueta: "Todo en uno",
     texto: "El portal del paciente más una academia online para tus cursos y talleres.",
-    incluye: ["Todo lo de Portal Paciente", "Academia online"],
-    mantenimiento: "Mantenimiento mensual obligatorio: desde 45 €/mes + IVA",
+    incluye: [
+      "Todo lo de Portal Paciente",
+      "Academia online: cursos, vídeo y descargas",
+      "Aula virtual para talleres y directos",
+      "Cobros recurrentes",
+    ],
+    mantenimiento: "Mantenimiento obligatorio desde 45 €/mes + IVA",
     boton: "Pedir presupuesto",
   },
 ];
@@ -1456,6 +1464,9 @@ const schema = {
               ))
             }
           </div>
+          <p class="plan-extra-line rv">
+            Extras a medida: agente de IA integrado y sincronización con tu ERP o gestor (precio en presupuesto)
+          </p>
           <!-- Mantenimiento y auditorías (mismo bloque en /nutricionistas/ y /clinicas/, cada una con su precio) -->
           <div class="plan-extras rv">
             <div class="px">

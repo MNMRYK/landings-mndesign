@@ -68,29 +68,24 @@ const planes = [
     texto: "Para clínicas que quieren presentar a todo su equipo y captar pacientes desde Google.",
     incluye: [
       "Web de la clínica con el equipo y las especialidades",
-      "Agenda online de primeras visitas por profesional",
+      "Agenda online por profesional",
       "Formulario de cualificación de pacientes",
-      "SEO local para aparecer en tu ciudad",
+      "SEO local",
     ],
     mantenimiento: "Sin cuota de mantenimiento",
-    obligatorio: false,
   },
   {
     nombre: "Web + herramientas",
     precio: 1050,
     texto: "La web de la clínica con las herramientas para atender online y gestionar documentos.",
     incluye: [
-      "5 páginas: inicio, sobre nosotros, servicios, blog y contacto",
-      "Calendario y formulario de captación",
-      "API de citas (p. ej. Calendly)",
+      "Todo lo de Web profesional, ampliada a 5 páginas con blog",
       "Videoconsulta cifrada",
       "Firma de documentos legales",
-      "Gestor documental básico y documentos compartidos",
-      "Botón de WhatsApp y diseño para móvil",
-      "SEO básico y panel para editar",
+      "Gestor documental y documentos compartidos",
+      "Citas conectadas por API (p. ej. Calendly)",
     ],
     mantenimiento: "Auditoría trimestral: 45 € + IVA",
-    obligatorio: false,
   },
   {
     nombre: "Portal Paciente",
@@ -99,14 +94,13 @@ const planes = [
     texto: "Digitalización completa para clínicas con equipo: agenda, pacientes, documentos y facturación en un solo sistema.",
     incluye: [
       "Todo lo de Web + herramientas",
-      "Portal privado del paciente",
-      "Varias agendas: una por profesional",
-      "Roles y permisos para recepción y profesionales",
-      "Migración de datos de vuestro programa actual",
+      "Portal del paciente y CRM clínico (expedientes)",
+      "Varias agendas y roles para recepción y profesionales",
+      "Consentimientos RGPD con firma",
       "Facturación y finanzas",
+      "Migración de datos de vuestro programa actual",
     ],
-    mantenimiento: "Mantenimiento mensual obligatorio: desde 90 €/mes + IVA",
-    obligatorio: true,
+    mantenimiento: "Mantenimiento obligatorio desde 90 €/mes + IVA",
   },
   {
     nombre: "Portal + Academia",
@@ -114,11 +108,12 @@ const planes = [
     texto: "Todo el Portal Paciente más una academia online para formar a pacientes, alumnos o profesionales.",
     incluye: [
       "Todo lo de Portal Paciente",
-      "Academia online: cursos, lecciones en vídeo y descargas",
+      "Academia online: cursos, vídeo y descargas",
       "Gestión unificada de pacientes y alumnado",
+      "Aulas, directos y talleres",
+      "Comunidad, foros y retos",
     ],
-    mantenimiento: "Mantenimiento mensual obligatorio: desde 90 €/mes + IVA",
-    obligatorio: true,
+    mantenimiento: "Mantenimiento obligatorio desde 90 €/mes + IVA",
   },
 ];
 // 1890 -> "1.890" (toLocaleString no agrupa los números de 4 cifras en español)
@@ -920,7 +915,8 @@ const schema = {
           </p>
         </div>
 
-        <!-- 4 planes: fila de 4 en escritorio, 2 × 2 en tablet y carrusel en móvil (datos en `planes`) -->
+        <!-- 4 planes: fila de 4 en escritorio, 2 × 2 en tablet y carrusel en móvil (datos en `planes`).
+             Pie de cada tarjeta (mantenimiento + botón) abajo del todo, a la misma altura en las 4. -->
         <div class="pricing-grid pricing-4">
           {
             planes.map((p) => (
@@ -932,12 +928,6 @@ const schema = {
                     <small class="price-from">Desde</small> {euros(p.precio)}&nbsp;€ <span>+ IVA · pago único</span>
                   </div>
                   <p class="text-muted">{p.texto}</p>
-                  <a
-                    href={whatsapp(p.nombre)}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class={`btn ${p.destacado ? "btn-primary" : "btn-secondary"}`}>Pedir presupuesto</a
-                  >
                 </div>
                 <div class="pricing-bottom">
                   <p class="features-title">Incluye:</p>
@@ -952,26 +942,24 @@ const schema = {
                         {" "}{x}
                       </li>
                     ))}
-                    <li>
-                      <span
-                        class="check-icon"
-                        style={p.obligatorio ? "color: #EF4444; border-color: #EF4444;" : "color: #6B7280; border-color: #6B7280;"}
-                        ><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                          ><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line
-                            x1="12"
-                            y1="16"
-                            x2="12.01"
-                            y2="16"></line></svg
-                        ></span
-                      >
-                      {" "}{p.mantenimiento}
-                    </li>
                   </ul>
+                  <div class="pricing-foot">
+                    <p class="pricing-mant">{p.mantenimiento}</p>
+                    <a
+                      href={whatsapp(p.nombre)}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class={`btn ${p.destacado ? "btn-primary" : "btn-secondary"}`}>Pedir presupuesto</a
+                    >
+                  </div>
                 </div>
               </div>
             ))
           }
         </div>
+        <p class="pricing-extra-line">
+          Extras a medida: agente de IA integrado y sincronización con tu ERP o gestor (precio en presupuesto)
+        </p>
 
         <!-- Mantenimiento y auditorías (mismo bloque que /psicologos/ y /nutricionistas/, cada una con su precio) -->
         <div class="pricing-extras">

@@ -4163,3 +4163,18 @@ iframe {
     scroll-padding-inline: 16px;
   }
 }
+
+/* Línea de extras a medida, justo debajo de las 4 tarjetas */
+.plan-extra-line {
+  margin: 22px auto 0;
+  max-width: 1240px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--ink2);
+}
+
+/* El pie ocupa siempre dos líneas para que los botones queden a la misma altura */
+.plans-4 .plan-mant {
+  line-height: 1.45;
+  min-height: calc(2.9em + 15px);
+}
