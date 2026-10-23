@@ -8,7 +8,7 @@ import "./style.css";
 const faqs = [
   [
     "¿Cómo se paga el software y cuánto cuesta para nuestra clínica?",
-    "Con una <strong>inversión inicial de pago único</strong>. Los precios de los planes son de partida: tras el diagnóstico gratuito te enviamos un presupuesto cerrado por fases según el tamaño de tu equipo y las funciones que necesitéis. El software es vuestro, así que no pagáis licencias por profesional ni cuotas a terceros.",
+    "El desarrollo se paga una vez. Los planes empiezan en <strong>700 € + IVA</strong> (Web profesional), <strong>1.050 € + IVA</strong> (Web + herramientas), <strong>1.890 € + IVA</strong> (Portal Paciente) y <strong>3.090 € + IVA</strong> (Portal + Academia). Son precios de partida: tras el diagnóstico gratuito te enviamos un presupuesto cerrado por fases según el tamaño de tu equipo y las funciones que necesitéis. Los planes con portal llevan mantenimiento mensual obligatorio, desde 90 €/mes + IVA. El software es vuestro, así que no pagáis licencias por profesional ni cuotas a terceros.",
   ],
   [
     "¿Sirve para una clínica con varios profesionales y especialidades?",
@@ -28,7 +28,7 @@ const faqs = [
   ],
   [
     "¿Hay permanencia o contratos a largo plazo?",
-    "No. El desarrollo se paga una vez y el software, la web y la base de datos son vuestros desde el primer día. El mantenimiento es mensual y sin permanencia; si un día decidís cambiar de proveedor, os entregamos el código y una exportación completa de los datos.",
+    "No. El desarrollo se paga una vez y el software, la web y la base de datos son vuestros desde el primer día. En los planes con portal el mantenimiento mensual es obligatorio (desde 90 €/mes + IVA, según el tamaño de la clínica), pero sin permanencia: si un día decidís cambiar de proveedor, os entregamos el código y una exportación completa de los datos.",
   ],
   [
     "¿Cuánto tarda en estar en marcha?",
@@ -43,7 +43,7 @@ const faqs = [
 const pageUrl = "https://mndesignweb.es/clinicas/";
 const seoTitle = "Software para Clínicas y Gestión de Pacientes | Portal Salud";
 const seoDescription =
-  "Software para clínicas con equipo: agenda por profesional, gestión de pacientes, cobros y facturación Verifactu en tu web. Pago único, sin licencias.";
+  "Software para clínicas con equipo: agenda por profesional, gestión de pacientes, cobros y facturación Verifactu en tu web. Sin licencias por profesional.";
 const ogDescription =
   "Portal Salud: el software de gestión de tu clínica dentro de tu propia web. Agenda del equipo, portal del paciente, cobros y facturación, sin cuotas a terceros.";
 
@@ -58,11 +58,74 @@ const capabilities = [
   "Roles y permisos", "Copias diarias", "Servidores en la UE",
 ];
 
-const plans = [
-  ["Primera Presencia", 790],
-  ["Portal Paciente", 1350],
-  ["Portal + Academia", 2190],
+/* Planes (decisión de María, 23/10/2026): misma escalera que /psicologos/ y /nutricionistas/, un 40 % más
+   cara por el equipo, el volumen de pacientes y lo propio de una clínica (varias agendas, roles y permisos,
+   migración y facturación). Precios "desde", SIN IVA. Una sola fuente para las tarjetas y el Schema. */
+const planes = [
+  {
+    nombre: "Web profesional",
+    precio: 700,
+    texto: "Para clínicas que quieren presentar a todo su equipo y captar pacientes desde Google.",
+    incluye: [
+      "Web de la clínica con el equipo y las especialidades",
+      "Agenda online de primeras visitas por profesional",
+      "Formulario de cualificación de pacientes",
+      "SEO local para aparecer en tu ciudad",
+    ],
+    mantenimiento: "Sin cuota de mantenimiento",
+    obligatorio: false,
+  },
+  {
+    nombre: "Web + herramientas",
+    precio: 1050,
+    texto: "La web de la clínica con las herramientas para atender online y gestionar documentos.",
+    incluye: [
+      "5 páginas: inicio, sobre nosotros, servicios, blog y contacto",
+      "Calendario y formulario de captación",
+      "API de citas (p. ej. Calendly)",
+      "Videoconsulta cifrada",
+      "Firma de documentos legales",
+      "Gestor documental básico y documentos compartidos",
+      "Botón de WhatsApp y diseño para móvil",
+      "SEO básico y panel para editar",
+    ],
+    mantenimiento: "Auditoría trimestral: 45 € + IVA",
+    obligatorio: false,
+  },
+  {
+    nombre: "Portal Paciente",
+    precio: 1890,
+    destacado: "Más popular",
+    texto: "Digitalización completa para clínicas con equipo: agenda, pacientes, documentos y facturación en un solo sistema.",
+    incluye: [
+      "Todo lo de Web + herramientas",
+      "Portal privado del paciente",
+      "Varias agendas: una por profesional",
+      "Roles y permisos para recepción y profesionales",
+      "Migración de datos de vuestro programa actual",
+      "Facturación y finanzas",
+    ],
+    mantenimiento: "Mantenimiento mensual obligatorio: desde 90 €/mes + IVA",
+    obligatorio: true,
+  },
+  {
+    nombre: "Portal + Academia",
+    precio: 3090,
+    texto: "Todo el Portal Paciente más una academia online para formar a pacientes, alumnos o profesionales.",
+    incluye: [
+      "Todo lo de Portal Paciente",
+      "Academia online: cursos, lecciones en vídeo y descargas",
+      "Gestión unificada de pacientes y alumnado",
+    ],
+    mantenimiento: "Mantenimiento mensual obligatorio: desde 90 €/mes + IVA",
+    obligatorio: true,
+  },
 ];
+// 1890 -> "1.890" (toLocaleString no agrupa los números de 4 cifras en español)
+const euros = (n: number) => String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+const whatsapp = (plan: string) =>
+  "https://wa.me/34645854934?text=" +
+  encodeURIComponent(`Hola! Tenemos una clínica y nos interesa el plan ${plan} de Portal Salud.`);
 
 const schema = {
   "@context": "https://schema.org",
@@ -106,18 +169,47 @@ const schema = {
       description: seoDescription,
       image: "https://mndesignweb.es/imagen-miniatura-clinicas.webp",
       provider: { "@id": "https://mndesignweb.es/#empresa" },
-      offers: plans.map(([name, price]) => ({
-        "@type": "Offer",
-        name,
-        priceCurrency: "EUR",
-        priceSpecification: {
-          "@type": "PriceSpecification",
-          minPrice: price,
+      offers: [
+        ...planes.map((p) => ({
+          "@type": "Offer",
+          name: p.nombre,
           priceCurrency: "EUR",
-          valueAddedTaxIncluded: false,
+          priceSpecification: {
+            "@type": "PriceSpecification",
+            minPrice: p.precio,
+            priceCurrency: "EUR",
+            valueAddedTaxIncluded: false,
+          },
+          description: `Desde ${euros(p.precio)} € + IVA, pago único. ${p.incluye.join(". ")}. ${p.mantenimiento}.`,
+        })),
+        {
+          "@type": "Offer",
+          name: "Mantenimiento activo mensual",
+          priceCurrency: "EUR",
+          priceSpecification: {
+            "@type": "UnitPriceSpecification",
+            minPrice: 90,
+            priceCurrency: "EUR",
+            unitText: "MONTH",
+            valueAddedTaxIncluded: false,
+          },
+          description:
+            "Obligatorio en Portal Paciente y Portal + Academia: seguridad, copias diarias y pequeños cambios. El precio final depende del tamaño de la clínica.",
         },
-        description: "Pago único. Precio de partida; presupuesto cerrado tras el diagnóstico.",
-      })),
+        {
+          "@type": "Offer",
+          name: "Auditoría trimestral",
+          priceCurrency: "EUR",
+          priceSpecification: {
+            "@type": "UnitPriceSpecification",
+            price: 45,
+            priceCurrency: "EUR",
+            billingDuration: "P3M",
+            valueAddedTaxIncluded: false,
+          },
+          description: "Incluida en Web + herramientas, sin cuota mensual: seguridad, velocidad, SEO local y RGPD.",
+        },
+      ],
     },
     {
       "@type": "FAQPage",
@@ -740,6 +832,21 @@ const schema = {
           <div class="testimonial-card testimonial-google">
             <div class="resena-estrellas" role="img" aria-label="5 de 5 estrellas">★★★★★</div>
             <p class="testimonial-text">
+              «[…] La recomiendo totalmente, te escucha y entiende a la perfección y aporta ideas y soluciones muy
+              buenas. Estoy encantada con el diseño, la funcionalidad y el acompañamiento cercano. […]»
+            </p>
+            <div class="testimonial-author">
+              <span class="author-avatar-ini" aria-hidden="true">SS</span>
+              <div class="author-info">
+                <h4>Sara Santos</h4>
+                <p>Nutricionista</p>
+                <span class="resena-tipo">Reseña de Google</span>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card testimonial-google">
+            <div class="resena-estrellas" role="img" aria-label="5 de 5 estrellas">★★★★★</div>
+            <p class="testimonial-text">
               «[…] me ayudó a crear una web profesional a modo de portfolio y presentación de mi perfil, entendiendo
               perfectamente lo que buscaba y aportando siempre ideas y soluciones creativas que iban un paso más allá.»
             </p>
@@ -809,368 +916,75 @@ const schema = {
             diagnóstico gratuito te enviamos un presupuesto cerrado por fases
             según tu equipo y las funciones que necesitéis. Todos los planes
             incluyen dominio y servidor.<br />
-            <small>* Pago único. IVA no incluido.</small>
+            <small>* Desarrollo de pago único. Precios sin IVA.</small>
           </p>
         </div>
 
-        <div class="pricing-grid">
-          <div class="pricing-card">
-            <div class="pricing-top">
-              <h3>Primera Presencia</h3>
-              <div class="price-amount"><small class="price-from">Desde</small>790&nbsp;€ <span>/ pago único</span></div>
-              <p class="text-muted">
-                Para centros que empiezan a digitalizar la agenda y la atención
-                a sus pacientes y aún no tienen una identidad digital.
-              </p>
-              <a href="https://wa.me/34645854934?text=Hola!%20Tenemos%20una%20cl%C3%ADnica%20y%20nos%20interesa%20el%20plan%20Primera%20Presencia%20de%20Portal%20Salud." target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Pedir presupuesto</a>
-            </div>
-            <div class="pricing-bottom">
-              <p class="features-title">Características incluidas:</p>
-              <ul class="price-features">
-                <li>
-                  <span class="check-icon"
-                    ><svg
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="3"
-                      ><polyline points="20 6 9 17 4 12"></polyline></svg
-                    ></span
-                  > Landing WordPress + 3h formación
-                </li>
-                <li>
-                  <span class="check-icon"
-                    ><svg
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="3"
-                      ><polyline points="20 6 9 17 4 12"></polyline></svg
-                    ></span
-                  > Interfaz dual: Panel de Administración y Área de Paciente
-                </li>
-                <li>
-                  <span class="check-icon"
-                    ><svg
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="3"
-                      ><polyline points="20 6 9 17 4 12"></polyline></svg
-                    ></span
-                  > CRM Clínico integral
-                </li>
-                <li>
-                  <span class="check-icon"
-                    ><svg
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="3"
-                      ><polyline points="20 6 9 17 4 12"></polyline></svg
-                    ></span
-                  > Integración API Citas (Ej. Calendly)
-                </li>
-                <li>
-                  <span class="check-icon"
-                    ><svg
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="3"
-                      ><polyline points="20 6 9 17 4 12"></polyline></svg
-                    ></span
-                  > Videoconsulta cifrada
-                </li>
-                <li>
-                  <span class="check-icon"
-                    ><svg
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="3"
-                      ><polyline points="20 6 9 17 4 12"></polyline></svg
-                    ></span
-                  > Gestor Documental básico
-                </li>
-                <li>
-                  <span
-                    class="check-icon"
-                    style="color: #6B7280; border-color: #6B7280;"
-                    ><svg
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      ><circle cx="12" cy="12" r="10"></circle><line
-                        x1="12"
-                        y1="8"
-                        x2="12"
-                        y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"
-                      ></line></svg
-                    ></span
-                  > Mantenimiento: Sin cuota activa. Revisión 2-3 meses.
-                </li>
-              </ul>
-            </div>
-          </div>
+        <!-- 4 planes: fila de 4 en escritorio, 2 × 2 en tablet y carrusel en móvil (datos en `planes`) -->
+        <div class="pricing-grid pricing-4">
+          {
+            planes.map((p) => (
+              <div class={`pricing-card${p.destacado ? " pro" : ""}`}>
+                <div class="pricing-top">
+                  {p.destacado && <div class="pro-badge">{p.destacado}</div>}
+                  <h3>{p.nombre}</h3>
+                  <div class="price-amount">
+                    <small class="price-from">Desde</small> {euros(p.precio)}&nbsp;€ <span>+ IVA · pago único</span>
+                  </div>
+                  <p class="text-muted">{p.texto}</p>
+                  <a
+                    href={whatsapp(p.nombre)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class={`btn ${p.destacado ? "btn-primary" : "btn-secondary"}`}>Pedir presupuesto</a
+                  >
+                </div>
+                <div class="pricing-bottom">
+                  <p class="features-title">Incluye:</p>
+                  <ul class="price-features">
+                    {p.incluye.map((x) => (
+                      <li>
+                        <span class="check-icon"
+                          ><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+                            ><polyline points="20 6 9 17 4 12"></polyline></svg
+                          ></span
+                        >
+                        {" "}{x}
+                      </li>
+                    ))}
+                    <li>
+                      <span
+                        class="check-icon"
+                        style={p.obligatorio ? "color: #EF4444; border-color: #EF4444;" : "color: #6B7280; border-color: #6B7280;"}
+                        ><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                          ><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line
+                            x1="12"
+                            y1="16"
+                            x2="12.01"
+                            y2="16"></line></svg
+                        ></span
+                      >
+                      {" "}{p.mantenimiento}
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            ))
+          }
+        </div>
 
-          <div class="pricing-card pro">
-            <div class="pricing-top">
-              <div class="pro-badge">Más popular</div>
-              <h3>Portal Paciente</h3>
-              <div class="price-amount"><small class="price-from">Desde</small>1.350&nbsp;€ <span>/ pago único</span></div>
-              <p class="text-muted">
-                Digitalización completa para clínicas con equipo: agenda,
-                pacientes, documentos y facturación en un solo sistema.
-              </p>
-              <a href="https://wa.me/34645854934?text=Hola!%20Tenemos%20una%20cl%C3%ADnica%20y%20nos%20interesa%20el%20plan%20Portal%20Paciente%20de%20Portal%20Salud." target="_blank" rel="noopener noreferrer" class="btn btn-primary">Pedir presupuesto</a>
-            </div>
-            <div class="pricing-bottom">
-              <p class="features-title">Todas las funciones incluidas:</p>
-              <ul class="price-features">
-                <li>
-                  <span class="check-icon"
-                    ><svg
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="3"
-                      ><polyline points="20 6 9 17 4 12"></polyline></svg
-                    ></span
-                  > CRM Clínico integral (Gestión avanzada de expedientes)
-                </li>
-                <li>
-                  <span class="check-icon"
-                    ><svg
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="3"
-                      ><polyline points="20 6 9 17 4 12"></polyline></svg
-                    ></span
-                  > Interfaz dual: Panel de Administración y Área de Paciente
-                </li>
-                <li>
-                  <span class="check-icon"
-                    ><svg
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="3"
-                      ><polyline points="20 6 9 17 4 12"></polyline></svg
-                    ></span
-                  > Gestor Documental e Infraestructura
-                </li>
-                <li>
-                  <span class="check-icon"
-                    ><svg
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="3"
-                      ><polyline points="20 6 9 17 4 12"></polyline></svg
-                    ></span
-                  > Módulo Facturación y Finanzas
-                </li>
-                <li>
-                  <span class="check-icon"
-                    ><svg
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="3"
-                      ><polyline points="20 6 9 17 4 12"></polyline></svg
-                    ></span
-                  > Formularios y firma de consentimientos (RGPD)
-                </li>
-                <li>
-                  <span class="check-icon"
-                    ><svg
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="3"
-                      ><polyline points="20 6 9 17 4 12"></polyline></svg
-                    ></span
-                  > Roles y permisos para recepción y profesionales
-                </li>
-                <li>
-                  <span class="check-icon"
-                    ><svg
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="3"
-                      ><polyline points="20 6 9 17 4 12"></polyline></svg
-                    ></span
-                  > Migración de datos incluida
-                </li>
-                <li>
-                  <span class="check-icon"
-                    ><svg
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="3"
-                      ><polyline points="20 6 9 17 4 12"></polyline></svg
-                    ></span
-                  > Videoconsulta cifrada y API de citas
-                </li>
-                <li>
-                  <span class="check-icon"
-                    ><svg
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="3"
-                      ><polyline points="20 6 9 17 4 12"></polyline></svg
-                    ></span
-                  > Analíticas, Algoritmo Adherencia y Alertas
-                </li>
-                <li>
-                  <span
-                    class="check-icon"
-                    style="color: #6B7280; border-color: #6B7280;"
-                    ><svg
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      ><circle cx="12" cy="12" r="10"></circle><line
-                        x1="12"
-                        y1="8"
-                        x2="12"
-                        y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"
-                      ></line></svg
-                    ></span
-                  > Mantenimiento: Sin cuota activa. Revisión 2-3 meses.
-                </li>
-              </ul>
-            </div>
+        <!-- Mantenimiento y auditorías (mismo bloque que /psicologos/ y /nutricionistas/, cada una con su precio) -->
+        <div class="pricing-extras">
+          <div class="pricing-extra">
+            <b>Mantenimiento activo · desde 90 €/mes + IVA</b>
+            <span
+              >Obligatorio en Portal Paciente y Portal + Academia: seguridad, copias diarias y pequeños cambios. El
+              precio final depende del tamaño de la clínica y va en el presupuesto.</span
+            >
           </div>
-
-          <div class="pricing-card">
-            <div class="pricing-top">
-              <h3>Portal + Academia</h3>
-              <div class="price-amount"><small class="price-from">Desde</small>2.190&nbsp;€ <span>/ pago único</span></div>
-              <p class="text-muted">
-                Todo el Portal Paciente más una academia online para formar a
-                pacientes, alumnos o profesionales.
-              </p>
-              <a href="https://wa.me/34645854934?text=Hola!%20Tenemos%20una%20cl%C3%ADnica%20y%20nos%20interesa%20el%20plan%20Portal%20%2B%20Academia%20de%20Portal%20Salud." target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Pedir presupuesto</a>
-            </div>
-            <div class="pricing-bottom">
-              <p class="features-title">Portal Paciente + Academia:</p>
-              <ul class="price-features">
-                <li>
-                  <span class="check-icon"
-                    ><svg
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="3"
-                      ><polyline points="20 6 9 17 4 12"></polyline></svg
-                    ></span
-                  > Todas las funciones del Portal del Paciente
-                </li>
-                <li>
-                  <span class="check-icon"
-                    ><svg
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="3"
-                      ><polyline points="20 6 9 17 4 12"></polyline></svg
-                    ></span
-                  > Gestión unificada de expedientes clínicos y alumnado
-                </li>
-                <li>
-                  <span class="check-icon"
-                    ><svg
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="3"
-                      ><polyline points="20 6 9 17 4 12"></polyline></svg
-                    ></span
-                  > Cursos interactivos, lecciones multimedia (vídeo/audio) y descargas
-                </li>
-                <li>
-                  <span class="check-icon"
-                    ><svg
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="3"
-                      ><polyline points="20 6 9 17 4 12"></polyline></svg
-                    ></span
-                  > Módulo Facturación y Finanzas
-                </li>
-                <li>
-                  <span class="check-icon"
-                    ><svg
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="3"
-                      ><polyline points="20 6 9 17 4 12"></polyline></svg
-                    ></span
-                  > Aulas Inmersivas, Directos y Talleres
-                </li>
-                <li>
-                  <span class="check-icon"
-                    ><svg
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="3"
-                      ><polyline points="20 6 9 17 4 12"></polyline></svg
-                    ></span
-                  > Comunidad, Foros y Gamificación
-                </li>
-                <li>
-                  <span class="check-icon"
-                    ><svg
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="3"
-                      ><polyline points="20 6 9 17 4 12"></polyline></svg
-                    ></span
-                  > Recursos Académicos y Retos
-                </li>
-                <li>
-                  <span class="check-icon"
-                    ><svg
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="3"
-                      ><polyline points="20 6 9 17 4 12"></polyline></svg
-                    ></span
-                  > Soporte Tickets y Notificaciones
-                </li>
-                <li>
-                  <span
-                    class="check-icon"
-                    style="color: #EF4444; border-color: #EF4444;"
-                    ><svg
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      ><circle cx="12" cy="12" r="10"></circle><line
-                        x1="12"
-                        y1="8"
-                        x2="12"
-                        y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"
-                      ></line></svg
-                    ></span
-                  > Requiere mantenimiento activo mensual.
-                </li>
-              </ul>
-            </div>
+          <div class="pricing-extra">
+            <b>Auditorías · 45 € + IVA al trimestre</b>
+            <span>En Web + herramientas, sin cuota mensual: revisamos seguridad, velocidad, SEO local y RGPD.</span>
           </div>
         </div>
       </section>
@@ -1181,7 +995,7 @@ const schema = {
           <p class="text-muted">
             Amplía la plataforma cuando la clínica lo necesite, o déjanos
             también el mantenimiento para que el equipo solo se ocupe de los
-            pacientes.
+            pacientes. Precios sin IVA.
           </p>
         </div>
 
@@ -1244,7 +1058,7 @@ const schema = {
                   > Alojamiento y CDN Vídeo
                 </li>
               </ul>
-              <div class="addon-price-big"><small class="price-from">Desde</small>2.890&nbsp;€</div>
+              <div class="addon-price-big"><small class="price-from">Desde</small> 2.890&nbsp;€ <small class="price-from">+ IVA</small></div>
               <a href="https://wa.me/34645854934?text=Hola!%20Tenemos%20una%20cl%C3%ADnica%20y%20nos%20interesa%20el%20plan%20de%20desarrollo%20%2B%20mantenimiento%20integral%201%20a%C3%B1o%20de%20Portal%20Salud." target="_blank" rel="noopener noreferrer" class="btn btn-primary">Pedir presupuesto</a>
             </div>
 
@@ -1313,7 +1127,7 @@ const schema = {
               </div>
               <div class="addon-header-small">
                 <h4>Agente de IA</h4>
-                <span>+390€</span>
+                <span>+390&nbsp;€ + IVA</span>
               </div>
               <p>
                 Asistente inteligente que prepara pautas y planes
@@ -1342,7 +1156,7 @@ const schema = {
               </div>
               <div class="addon-header-small">
                 <h4>Branding Premium</h4>
-                <span>+490€</span>
+                <span>+490&nbsp;€ + IVA</span>
               </div>
               <p>
                 Una tecnología de alto valor no puede vestir un diseño mediocre.
@@ -1387,7 +1201,7 @@ const schema = {
               </div>
               <div class="addon-header-small">
                 <h4>Landing en WordPress</h4>
-                <span>+350€</span>
+                <span>+350&nbsp;€ + IVA</span>
               </div>
               <p>
                 Página de captación optimizada para SEO local y pensada para
@@ -1911,26 +1725,16 @@ const schema = {
               privacidad: "Aceptada",
             };
 
-            Promise.all([
-              fetch("https://api.web3forms.com/submit", {
+            fetch("https://api.web3forms.com/submit", {
                 method: "POST",
                 headers: {
                   "Content-Type": "application/json",
                   Accept: "application/json",
                 },
                 body: JSON.stringify(data),
-              }),
-              fetch(
-                "https://hook.eu1.make.com/mxvqg7gwne43yab165v2uhtyw5yh115r",
-                {
-                  method: "POST",
-                  headers: { "Content-Type": "application/json" },
-                  body: JSON.stringify(data),
-                },
-              ).catch(() => null),
-            ])
-              .then(async (results) => {
-                const result = await results[0].json();
+              })
+              .then(async (res) => {
+                const result = await res.json();
                 if (result.success) {
                   window.enviarEvento("generate_lead", { formulario: "clinicas" });
                   if (typeof fbq === "function") fbq("track", "Lead");

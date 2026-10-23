@@ -69,7 +69,7 @@ const features = [
   ["card", "Cobro antes de la sesión"],
   ["file", "Consentimiento digital"],
   ["shield", "RGPD sanitario"],
-  ["plug", "Tu propio software, sin cuotas"],
+  ["plug", "Tu propio software, sin cuotas a terceros"],
   ["spark", "Diseño a medida"],
 ];
 
@@ -264,7 +264,7 @@ const faqs = [
   ],
   [
     "¿Y si algo falla o quiero cambios?",
-    "Nuestro mantenimiento activo cuesta 65 €/mes e incluye actualizaciones de seguridad, copias diarias y pequeñas modificaciones, para que tú solo te ocupes de tus pacientes. Si solo necesitas revisar algo puntual, las auditorías empiezan en 30 €.",
+    "Depende del plan. La Web profesional no tiene cuota. En Web + herramientas hacemos una auditoría cada trimestre (30 € + IVA, sin cuota mensual). En Portal Paciente y Portal + Academia el mantenimiento mensual es obligatorio, desde 45 €/mes + IVA, porque el portal guarda datos de salud: incluye actualizaciones de seguridad, copias diarias y pequeñas modificaciones, para que tú solo te ocupes de tus pacientes.",
   ],
   [
     "¿Me ayudáis a aparecer en Google en mi ciudad?",
@@ -272,11 +272,69 @@ const faqs = [
   ],
 ];
 
+/* Planes (decisión de María, 23/10/2026): misma escalera que /nutricionistas/ y /clinicas/ (+40 %).
+   Precios "desde", SIN IVA. Una sola fuente para las tarjetas y el Schema. */
+const planes = [
+  {
+    nombre: "Web profesional",
+    precio: 500,
+    etiqueta: "Para empezar",
+    texto: "Para psicólogos que quieren captar sus primeros pacientes con una web profesional.",
+    incluye: [
+      "Web profesional pensada para captar pacientes",
+      "Agenda online de primeras visitas",
+      "Formulario de cualificación de pacientes",
+      "SEO local para que te encuentren en tu ciudad",
+    ],
+    mantenimiento: "Sin cuota de mantenimiento",
+    boton: "Quiero la web profesional",
+  },
+  {
+    nombre: "Web + herramientas",
+    precio: 750,
+    etiqueta: "Para trabajar online",
+    texto: "Tu web con las herramientas para pasar consulta online y gestionar documentos.",
+    incluye: [
+      "5 páginas: inicio, sobre mí, servicios, blog y contacto",
+      "Calendario y formulario de captación",
+      "API de citas (p. ej. Calendly)",
+      "Videoconsulta cifrada",
+      "Firma de documentos legales",
+      "Documentos compartidos y gestor documental básico",
+      "Botón de WhatsApp y diseño para móvil",
+      "SEO básico y panel para editar tú mismo",
+    ],
+    mantenimiento: "Auditoría trimestral: 30 € + IVA",
+    boton: "Quiero web + herramientas",
+  },
+  {
+    nombre: "Portal Paciente",
+    precio: 1350,
+    etiqueta: "Más elegida",
+    destacado: true,
+    texto: "Tu propia plataforma de pacientes para consultas consolidadas. Sin cuotas a terceros.",
+    incluye: ["Todo lo de Web + herramientas", "Portal privado del paciente en tu propia web"],
+    mantenimiento: "Mantenimiento mensual obligatorio: desde 45 €/mes + IVA",
+    boton: "Pedir presupuesto",
+  },
+  {
+    nombre: "Portal + Academia",
+    precio: 2190,
+    etiqueta: "Todo en uno",
+    texto: "El portal del paciente más una academia online para tus cursos y talleres.",
+    incluye: ["Todo lo de Portal Paciente", "Academia online"],
+    mantenimiento: "Mantenimiento mensual obligatorio: desde 45 €/mes + IVA",
+    boton: "Pedir presupuesto",
+  },
+];
+// 1350 -> "1.350" (toLocaleString no agrupa los números de 4 cifras en español)
+const euros = (n: number) => String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+
 // SEO: título y descripciones compartidos por <title>, Open Graph, Twitter y Schema
 const pageUrl = "https://mndesignweb.es/psicologos/";
 const seoTitle = "Páginas Web para Psicólogos y Agenda Online | MN Design Web";
 const seoDescription =
-  "Diseño web para psicólogos con software propio de gestión de pacientes: agenda online, terapia online cifrada y cobros. Sin cuotas y con RGPD.";
+  "Diseño web para psicólogos con software propio de gestión de pacientes: agenda online, terapia online cifrada y cobros. Sin cuotas a terceros y con RGPD.";
 const socialDescription =
   "Web para psicólogos y clínicas de psicología con tu propia plataforma de pacientes a medida: agenda, recordatorios, cobros y videoconsulta cifrada sin pagar cuotas a terceros.";
 
@@ -330,40 +388,39 @@ const schema = {
         "@type": "OfferCatalog",
         name: "Planes de web y software para psicólogos",
         itemListElement: [
-          {
+          ...planes.map((p) => ({
             "@type": "Offer",
-            name: "Fase 1 · Web en WordPress para psicólogos",
-            description:
-              "Web profesional de 5 páginas con calendario de citas, formulario de captación de pacientes, videoconsulta cifrada, firma de documentos, botón de WhatsApp, SEO básico y panel autogestionable.",
+            name: p.nombre,
+            description: `${p.incluye.join(". ")}. ${p.mantenimiento}.`,
             priceSpecification: {
               "@type": "PriceSpecification",
-              price: 500,
+              minPrice: p.precio,
               priceCurrency: "EUR",
               valueAddedTaxIncluded: false,
             },
-          },
-          {
-            "@type": "Offer",
-            name: "Fase 2 · Software para psicólogos a medida",
-            description:
-              "Plataforma de pacientes a medida integrada en tu web: portal privado del paciente, agente de IA, recordatorios automáticos, aula virtual, cobros recurrentes y sincronización con tu ERP o gestor.",
-            priceSpecification: {
-              "@type": "PriceSpecification",
-              minPrice: 1350,
-              priceCurrency: "EUR",
-              valueAddedTaxIncluded: false,
-            },
-          },
+          })),
           {
             "@type": "Offer",
             name: "Mantenimiento activo mensual",
             description:
-              "Actualizaciones de seguridad, copias de seguridad diarias y pequeñas modificaciones de la web y el software.",
+              "Obligatorio en Portal Paciente y Portal + Academia: actualizaciones de seguridad, copias de seguridad diarias y pequeñas modificaciones.",
             priceSpecification: {
               "@type": "UnitPriceSpecification",
-              price: 65,
+              minPrice: 45,
               priceCurrency: "EUR",
               unitText: "MONTH",
+              valueAddedTaxIncluded: false,
+            },
+          },
+          {
+            "@type": "Offer",
+            name: "Auditoría trimestral",
+            description: "Incluida en Web + herramientas, sin cuota mensual: seguridad, velocidad, SEO local y RGPD.",
+            priceSpecification: {
+              "@type": "UnitPriceSpecification",
+              price: 30,
+              priceCurrency: "EUR",
+              billingDuration: "P3M",
               valueAddedTaxIncluded: false,
             },
           },
@@ -1372,77 +1429,34 @@ const schema = {
             No necesitas una gran inversión inicial. Empieza con tu web de
             psicólogo y amplía a tu propio software cuando lo necesites.
           </p>
-          <div class="plans">
-            <div class="card plan rv" data-spot>
-              <span class="ptag">Para empezar hoy</span>
-              <h3>Fase 1 · Web en WordPress</h3>
-              <div class="price">500 € <small>IVA no incluido</small></div>
-              <p>
-                Para psicólogos que quieren captar sus primeros pacientes con
-                una presencia profesional.
-              </p>
-              <ul>
-                <li>
-                  <span class="ck">✓</span>5 páginas: inicio, sobre mí,
-                  servicios, blog y contacto
-                </li>
-                <li>
-                  <span class="ck">✓</span>Calendario y formulario de captación
-                </li>
-                <li>
-                  <span class="ck">✓</span>Funciones de Videoconsulta Cifrada,
-                  Firma de Documentos Legales y Documentos Compartidos
-                </li>
-                <li>
-                  <span class="ck">✓</span>Botón de WhatsApp y diseño para móvil
-                </li>
-                <li>
-                  <span class="ck">✓</span>SEO básico y panel para editar tú
-                  mismo
-                </li>
-              </ul>
-              <a class="btn btn-ghost" href="#contacto"
-                >Quiero la Fase 1 <svg
-                  class="i i-arrow"
-                  viewBox="0 0 24 24"
-                  set:html={ic.arrow}
-                /></a
-              >
-            </div>
-            <div class="card plan hot rv" style="--d:.1s">
-              <span class="ptag">Más elegida</span>
-              <h3>Fase 2 · Software para psicólogos a medida</h3>
-              <div class="price">
-                <span class="from">Desde</span> 1.350 € <small
-                  >IVA no incluido · presupuesto cerrado tras la llamada</small
-                >
-              </div>
-              <p>
-                Tu propia plataforma de pacientes para clínicas de psicología y
-                consultas consolidadas. Sin cuotas a terceros.
-              </p>
-              <ul>
-                <li><span class="ck">✓</span>Todo lo de la Fase 1</li>
-                <li><span class="ck">✓</span>Portal privado del paciente</li>
-                <li><span class="ck">✓</span>Agente de IA integrado</li>
-                <li><span class="ck">✓</span>Notificaciones y recordatorios</li>
-                <li>
-                  <span class="ck">✓</span>Aula virtual y cobros recurrentes
-                </li>
-                <li>
-                  <span class="ck">✓</span>Sincronización con tu ERP o gestor
-                </li>
-              </ul>
-              <a class="btn btn-main" href="#contacto"
-                >Pedir presupuesto <svg
-                  class="i i-arrow"
-                  viewBox="0 0 24 24"
-                  set:html={ic.arrow}
-                /></a
-              >
-            </div>
+          <!-- 4 planes: fila de 4 en escritorio, 2 × 2 en tablet y carrusel en móvil (datos en `planes`) -->
+          <div class="plans plans-4">
+            {
+              planes.map((p, i) => (
+                <div class={`card plan rv${p.destacado ? " hot" : ""}`} style={`--d:${i * 0.08}s`} data-spot={!p.destacado ? "" : undefined}>
+                  <span class="ptag">{p.etiqueta}</span>
+                  <h3>{p.nombre}</h3>
+                  <div class="price">
+                    <span class="from">Desde</span> {euros(p.precio)} € <small>+ IVA</small>
+                  </div>
+                  <p>{p.texto}</p>
+                  <ul>
+                    {p.incluye.map((x) => (
+                      <li>
+                        <span class="ck">✓</span>
+                        {x}
+                      </li>
+                    ))}
+                  </ul>
+                  <p class="plan-mant">{p.mantenimiento}</p>
+                  <a class={`btn ${p.destacado ? "btn-main" : "btn-ghost"}`} href="#contacto">
+                    {p.boton} <svg class="i i-arrow" viewBox="0 0 24 24" set:html={ic.arrow} />
+                  </a>
+                </div>
+              ))
+            }
           </div>
-          <!-- Servicios complementarios con precio -->
+          <!-- Mantenimiento y auditorías (mismo bloque en /nutricionistas/ y /clinicas/, cada una con su precio) -->
           <div class="plan-extras rv">
             <div class="px">
               <span class="ico-box"
@@ -1453,9 +1467,10 @@ const schema = {
                 /></span
               >
               <div>
-                <b>Mantenimiento activo · 65 €/mes</b>
+                <b>Mantenimiento activo · desde 45 €/mes + IVA</b>
                 <span
-                  >Seguridad, copias diarias y pequeños cambios incluidos.</span
+                  >Obligatorio en Portal Paciente y Portal + Academia: seguridad, copias diarias y pequeños
+                  cambios.</span
                 >
               </div>
             </div>
@@ -1464,16 +1479,16 @@ const schema = {
                 ><svg class="i" viewBox="0 0 24 24" set:html={ic.spark} /></span
               >
               <div>
-                <b>Auditorías · desde 30 €</b>
+                <b>Auditorías · 30 € + IVA al trimestre</b>
                 <span
-                  >Revisamos tu web actual: velocidad, SEO local y RGPD.</span
+                  >En Web + herramientas, sin cuota mensual: revisamos seguridad, velocidad, SEO local y RGPD.</span
                 >
               </div>
             </div>
           </div>
           <p class="plan-note rv">
-            Sin permanencia. La web, el software y los datos son tuyos desde el
-            primer día.
+            Precios de partida sin IVA. La web, el software y los datos son tuyos desde el primer día, y el
+            mantenimiento no tiene permanencia.
           </p>
         </div>
       </section>
@@ -2354,26 +2369,16 @@ const schema = {
               privacidad: "Aceptada",
             };
 
-            Promise.all([
-              fetch("https://api.web3forms.com/submit", {
+            fetch("https://api.web3forms.com/submit", {
                 method: "POST",
                 headers: {
                   "Content-Type": "application/json",
                   Accept: "application/json",
                 },
                 body: JSON.stringify(data),
-              }),
-              fetch(
-                "https://hook.eu1.make.com/mxvqg7gwne43yab165v2uhtyw5yh115r",
-                {
-                  method: "POST",
-                  headers: { "Content-Type": "application/json" },
-                  body: JSON.stringify(data),
-                },
-              ).catch(() => null),
-            ])
-              .then(async (results) => {
-                const result = await results[0].json();
+              })
+              .then(async (res) => {
+                const result = await res.json();
                 if (result.success) {
                   window.enviarEvento("generate_lead", { formulario: "psicologos" });
                   if (typeof fbq === "function") fbq("track", "Lead");
@@ -2429,16 +2434,6 @@ const schema = {
             })
             .then(function (result) {
               if (!result.success) throw new Error("Error en el envío");
-              // Copia a Make sin bloquear la descarga si falla
-              fetch(
-                "https://hook.eu1.make.com/mxvqg7gwne43yab165v2uhtyw5yh115r",
-                {
-                  method: "POST",
-                  headers: { "Content-Type": "application/json" },
-                  body: JSON.stringify(data),
-                },
-              ).catch(function () {});
-
               window.enviarEvento("generate_lead", { formulario: "checklist_rgpd" });
               if (typeof fbq === "function")
                 fbq("track", "Lead", { content_name: "Checklist RGPD" });

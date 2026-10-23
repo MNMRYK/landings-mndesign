@@ -15,7 +15,7 @@ const faqs = [
   ],
   [
     "He tenido malas experiencias con plazos, ¿cuánto tardaremos en lanzar?",
-    "Trabajamos con metodologías ágiles y fechas bloqueadas por contrato. Una Fase 1 (Web y Agenda) suele estar lista en 3-4 semanas desde que recibimos tu material. Si optamos por el Ecosistema Total, el cronograma es de 6 a 8 semanas. Sin retrasos, sorpresas ni excusas.",
+    "Trabajamos con metodologías ágiles y fechas bloqueadas por contrato. La Web profesional suele estar lista en 3-4 semanas desde que recibimos tu material. Con el Portal Paciente o el Portal + Academia, el cronograma es de 6 a 8 semanas. Sin retrasos, sorpresas ni excusas.",
   ],
   [
     "Mis pacientes no son muy tecnológicos, ¿les costará usar el portal?",
@@ -23,9 +23,62 @@ const faqs = [
   ],
   [
     "¿Qué pasa si la web se cae o tengo un problema tras el lanzamiento?",
-    "No te dejamos sola frente a una pantalla en blanco. Ofrecemos planes opcionales de soporte y mantenimiento técnico en los que nos encargamos de las actualizaciones, la seguridad y la resolución de incidencias. Tu único trabajo es pasar consulta; del código y los servidores nos encargamos nosotros.",
+    "No te dejamos sola frente a una pantalla en blanco. En Web + herramientas hacemos una auditoría cada trimestre (30 € + IVA, sin cuota mensual). En Portal Paciente y Portal + Academia el mantenimiento mensual es obligatorio, desde 45 €/mes + IVA, porque el portal guarda datos de salud: nos encargamos de las actualizaciones, la seguridad, las copias diarias y la resolución de incidencias. La Web profesional no tiene cuota. Tu único trabajo es pasar consulta; del código y los servidores nos encargamos nosotros.",
   ],
 ];
+
+/* Planes (decisión de María, 23/10/2026): misma escalera que /psicologos/ y /clinicas/ (+40 %).
+   Precios "desde", SIN IVA. Una sola fuente para las tarjetas y el Schema. */
+const planes = [
+  {
+    nombre: "Web profesional",
+    precio: 500,
+    texto: "Diseño web en WordPress con agenda integrada para atraer pacientes y profesionalizar tu imagen hoy mismo.",
+    incluye: [
+      "Web profesional con SEO local",
+      "Agenda online de primeras visitas",
+      "Formulario de cualificación de pacientes",
+    ],
+    mantenimiento: "Sin cuota de mantenimiento",
+    boton: "Quiero la web profesional",
+  },
+  {
+    nombre: "Web + herramientas",
+    precio: 750,
+    texto: "Tu web con las herramientas para pasar consulta online, firmar y compartir documentos con tus pacientes.",
+    incluye: [
+      "5 páginas: inicio, sobre mí, servicios, blog y contacto",
+      "Calendario y formulario de captación",
+      "API de citas (p. ej. Calendly)",
+      "Videoconsulta cifrada",
+      "Firma de documentos legales",
+      "Documentos compartidos y gestor documental básico",
+      "Botón de WhatsApp y diseño para móvil",
+      "SEO básico y panel para editar tú misma",
+    ],
+    mantenimiento: "Auditoría trimestral: 30 € + IVA",
+    boton: "Quiero web + herramientas",
+  },
+  {
+    nombre: "Portal Paciente",
+    precio: 1350,
+    destacado: "Más elegida",
+    texto: "Tu propia plataforma de pacientes para consultas consolidadas, en tu dominio y sin cuotas a terceros.",
+    incluye: ["Todo lo de Web + herramientas", "Portal del paciente privado y 100% seguro"],
+    mantenimiento: "Mantenimiento mensual obligatorio: desde 45 €/mes + IVA",
+    boton: "Quiero el Portal Paciente",
+  },
+  {
+    nombre: "Portal + Academia",
+    precio: 2190,
+    texto: "El portal del paciente más tu propia academia online para vender cursos y programas.",
+    incluye: ["Todo lo de Portal Paciente", "Academia online"],
+    mantenimiento: "Mantenimiento mensual obligatorio: desde 45 €/mes + IVA",
+    boton: "Quiero Portal + Academia",
+  },
+];
+// 1350 -> "1.350" (toLocaleString no agrupa los números de 4 cifras en español)
+const euros = (n: number) => String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 
 // Schema.org (JSON-LD) en un único bloque, generado para que siempre sea válido
 const pageUrl = "https://mndesignweb.es/nutricionistas/";
@@ -73,6 +126,48 @@ const schema = {
       audience: {
         "@type": "Audience",
         audienceType: "Nutricionistas, dietistas y clínicas de nutrición",
+      },
+      hasOfferCatalog: {
+        "@type": "OfferCatalog",
+        name: "Planes de diseño web y software para nutricionistas",
+        itemListElement: [
+          ...planes.map((p) => ({
+            "@type": "Offer",
+            name: p.nombre,
+            description: `${p.incluye.join(". ")}. ${p.mantenimiento}.`,
+            priceSpecification: {
+              "@type": "PriceSpecification",
+              minPrice: p.precio,
+              priceCurrency: "EUR",
+              valueAddedTaxIncluded: false,
+            },
+          })),
+          {
+            "@type": "Offer",
+            name: "Mantenimiento activo mensual",
+            description:
+              "Obligatorio en Portal Paciente y Portal + Academia: actualizaciones de seguridad, copias de seguridad diarias y pequeñas modificaciones.",
+            priceSpecification: {
+              "@type": "UnitPriceSpecification",
+              minPrice: 45,
+              priceCurrency: "EUR",
+              unitText: "MONTH",
+              valueAddedTaxIncluded: false,
+            },
+          },
+          {
+            "@type": "Offer",
+            name: "Auditoría trimestral",
+            description: "Incluida en Web + herramientas, sin cuota mensual: seguridad, velocidad, SEO local y RGPD.",
+            priceSpecification: {
+              "@type": "UnitPriceSpecification",
+              price: 30,
+              priceCurrency: "EUR",
+              billingDuration: "P3M",
+              valueAddedTaxIncluded: false,
+            },
+          },
+        ],
       },
     },
     {
@@ -731,82 +826,58 @@ const schema = {
         <div class="pricing-header">
           <h2>Planes de diseño web para nutricionistas</h2>
           <p>
-            Escoge el punto de partida perfecto para tu consulta. Dos soluciones
-            integrales diseñadas para acompañarte desde tu primera visita online
-            hasta la automatización total de tu negocio.
+            Escoge el punto de partida perfecto para tu consulta. Cuatro planes
+            para acompañarte desde tu primera visita online hasta tu propia
+            academia. Precios de partida sin IVA.
           </p>
         </div>
 
-        <div class="pricing-interactive-grid">
-          <div class="pricing-card-alpha">
-            <div>
-              <h3 class="pricing-card-title">Fase 1: Presencia y Captación</h3>
-              <p class="pricing-card-desc">
-                Diseño Web en WordPress con agenda integrada. El motor perfecto
-                para nutricionistas que necesitan atraer pacientes y
-                profesionalizar su imagen hoy mismo.
-              </p>
+        <!-- 4 planes: fila de 4 en escritorio, 2 × 2 en tablet y carrusel en móvil (datos en `planes`) -->
+        <div class="pricing-interactive-grid pricing-4">
+          {
+            planes.map((p) => (
+              <div class={p.destacado ? "pricing-card-beta" : "pricing-card-alpha"}>
+                {p.destacado && <span class="pricing-badge-top">{p.destacado}</span>}
+                <div>
+                  <h3 class="pricing-card-title">{p.nombre}</h3>
+                  <p class="pricing-card-desc">{p.texto}</p>
 
-              <span class="pricing-card-hint"
-                >Pasa el ratón para ver detalles ↓</span
-              >
+                  <span class="pricing-card-hint">Pasa el ratón para ver detalles ↓</span>
 
-              <div class="pricing-content-box">
-                <div class="pricing-reveal-price">
-                  <span class="price-from">Inversión desde</span>
-                  <div class="price-amount">
-                    790€ <span class="price-tax">+ IVA</span>
+                  <div class="pricing-content-box">
+                    <div class="pricing-reveal-price">
+                      <span class="price-from">Inversión desde</span>
+                      <div class="price-amount">
+                        {euros(p.precio)} € <span class="price-tax">+ IVA</span>
+                      </div>
+                    </div>
+
+                    <ul class="pricing-features-list">
+                      {p.incluye.map((x) => <li>{x}</li>)}
+                    </ul>
+                    <p class="pricing-mant">{p.mantenimiento}</p>
                   </div>
                 </div>
-
-                <ul class="pricing-features-list">
-                  <li>Diseño Web corporativo y estratégico (SEO local)</li>
-                  <li>Integración de agenda online de primeras visitas</li>
-                  <li>Formulario de cualificación de pacientes</li>
-                  <li>Inversión inicial accesible para arrancar</li>
-                </ul>
+                <a href="#agendar-consultoria" class="pricing-card-btn">{p.boton}</a>
               </div>
-            </div>
-            <a href="#agendar-consultoria" class="pricing-card-btn"
-              >Solicitar Despegue</a
-            >
+            ))
+          }
+        </div>
+
+        <!-- Mantenimiento y auditorías (mismo bloque que /psicologos/ y /clinicas/, cada una con su precio) -->
+        <div class="pricing-extras">
+          <div class="pricing-extra">
+            <b>Mantenimiento activo · desde 45 €/mes + IVA</b>
+            <span>Obligatorio en Portal Paciente y Portal + Academia: seguridad, copias diarias y pequeños cambios.</span>
           </div>
-
-          <div class="pricing-card-beta">
-            <span class="pricing-badge-top">La opción definitiva</span>
-            <div>
-              <h3 class="pricing-card-title">Fase 2: Automatización Total</h3>
-              <p class="pricing-card-desc">
-                Plataforma All-in-One. La infraestructura web definitiva para
-                consultas consolidadas que buscan escalar ingresos y automatizar
-                el 100% de su gestión diaria.
-              </p>
-
-              <span class="pricing-card-hint"
-                >Pasa el ratón para ver detalles ↓</span
-              >
-
-              <div class="pricing-content-box">
-                <div class="pricing-reveal-price">
-                  <span class="price-from">Inversión desde</span>
-                  <div class="price-amount">
-                    1.850€ <span class="price-tax">+ IVA</span>
-                  </div>
-                </div>
-
-                <ul class="pricing-features-list">
-                  <li>Todo lo incluido en la Fase 1 (Web optimizada)</li>
-                  <li>Portal del Paciente privado y 100% seguro</li>
-                  <li>Academia virtual y gestión de cobros recurrentes</li>
-                  <li>Sincronización completa con facturación y ERP</li>
-                </ul>
-              </div>
-            </div>
-            <a href="#agendar-consultoria" class="pricing-card-btn"
-              >Elegir Ecosistema Total</a
-            >
+          <div class="pricing-extra">
+            <b>Auditorías · 30 € + IVA al trimestre</b>
+            <span>En Web + herramientas, sin cuota mensual: revisamos seguridad, velocidad, SEO local y RGPD.</span>
           </div>
         </div>
+        <p class="pricing-note">
+          La web, el software y los datos son tuyos desde el primer día, y el mantenimiento no tiene permanencia.
+        </p>
       </section>
 
       <section class="modular-section" id="modulos">
@@ -1141,6 +1212,21 @@ const schema = {
         </div>
         <!-- Reseñas REALES de Google, literales (solo se recorta con […]). Sin schema Review. -->
         <div class="reviews-grid reveal">
+          <div class="review-card">
+            <div class="review-stars" role="img" aria-label="5 de 5 estrellas">★★★★★</div>
+            <p class="review-text">
+              «[…] La recomiendo totalmente, te escucha y entiende a la perfección y aporta ideas y soluciones muy
+              buenas. Estoy encantada con el diseño, la funcionalidad y el acompañamiento cercano. […]»
+            </p>
+            <div class="review-author review-author-av">
+              <span class="review-av" aria-hidden="true">SS</span>
+              <div>
+                <strong>Sara Santos</strong>
+                <span>Nutricionista</span>
+                <em class="review-tipo">Reseña de Google</em>
+              </div>
+            </div>
+          </div>
           <div class="review-card">
             <div class="review-stars" role="img" aria-label="5 de 5 estrellas">★★★★★</div>
             <p class="review-text">
@@ -1621,26 +1707,16 @@ const schema = {
               privacidad: "Aceptada",
             };
 
-            Promise.all([
-              fetch("https://api.web3forms.com/submit", {
+            fetch("https://api.web3forms.com/submit", {
                 method: "POST",
                 headers: {
                   "Content-Type": "application/json",
                   Accept: "application/json",
                 },
                 body: JSON.stringify(data),
-              }),
-              fetch(
-                "https://hook.eu1.make.com/mxvqg7gwne43yab165v2uhtyw5yh115r",
-                {
-                  method: "POST",
-                  headers: { "Content-Type": "application/json" },
-                  body: JSON.stringify(data),
-                },
-              ).catch(() => null),
-            ])
-              .then(async (results) => {
-                const result = await results[0].json();
+              })
+              .then(async (res) => {
+                const result = await res.json();
                 if (result.success) {
                   window.enviarEvento("generate_lead", { formulario: "nutricionistas" });
                   if (typeof fbq === "function") fbq("track", "Lead");

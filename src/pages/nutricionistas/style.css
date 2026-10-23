@@ -1960,10 +1960,11 @@ html {
 .reviews-header p { color: var(--text-muted); font-size: 18px; line-height: 1.6; }
 
 .reviews-grid {
-  max-width: 1100px;
+  /* 4 reseñas: 2 × 2 */
+  max-width: 900px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 30px;
 }
 
@@ -2955,5 +2956,119 @@ html {
 @media (hover: none) and (prefers-reduced-motion: reduce) {
   .web-card-img {
     animation: none;
+  }
+}
+
+/* CUATRO PLANES (23/10/2026)
+   Escritorio (≥1180 px): una fila de 4. Tablet: 2 × 2. Móvil (≤700 px): carrusel con scroll-snap
+   en el que asoma la tarjeta siguiente. Mismas tarjetas que antes (precio al pasar el ratón). */
+.pricing-interactive-grid.pricing-4 {
+  max-width: 1240px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 20px;
+}
+.pricing-4 .pricing-card-alpha,
+.pricing-4 .pricing-card-beta {
+  padding: 34px 22px 26px;
+}
+.pricing-4 .pricing-card-title {
+  font-size: 21px;
+  padding-right: 4px;
+}
+.pricing-4 .pricing-card-beta .pricing-card-title {
+  padding-top: 14px;
+}
+.pricing-4 .pricing-card-desc {
+  min-height: 120px;
+}
+.pricing-4 .pricing-card-alpha:hover .pricing-content-box,
+.pricing-4 .pricing-card-beta:hover .pricing-content-box {
+  max-height: 640px;
+}
+.pricing-4 .pricing-features-list li {
+  align-items: flex-start;
+  line-height: 1.4;
+}
+.pricing-mant {
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px dashed rgba(102, 112, 85, 0.2);
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--text-muted);
+}
+.pricing-extras {
+  max-width: 1240px;
+  margin: 24px auto 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  position: relative;
+  z-index: 1;
+}
+.pricing-extra {
+  background: rgba(255, 255, 255, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: 16px;
+  padding: 18px 22px;
+}
+.pricing-extra b {
+  display: block;
+  color: var(--primary);
+  font-size: 15px;
+  margin-bottom: 4px;
+}
+.pricing-extra span {
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--text-muted);
+}
+.pricing-note {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  margin: 18px auto 0;
+  max-width: 760px;
+  font-size: 14px;
+  color: var(--text-muted);
+}
+@media (max-width: 1179px) {
+  .pricing-interactive-grid.pricing-4 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    max-width: 900px;
+  }
+  .pricing-extras {
+    max-width: 900px;
+  }
+}
+@media (max-width: 700px) {
+  .pricing-interactive-grid.pricing-4 {
+    display: flex;
+    gap: 14px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: 5vw;
+    margin: 0 -5.3vw;
+    padding: 18px 5vw 18px;
+    scrollbar-width: none;
+    overscroll-behavior-x: contain;
+    align-items: stretch;
+  }
+  .pricing-interactive-grid.pricing-4::-webkit-scrollbar {
+    display: none;
+  }
+  .pricing-interactive-grid.pricing-4 > div {
+    flex: 0 0 min(80vw, 330px);
+    width: min(80vw, 330px);
+    max-width: none;
+    min-width: 0;
+    box-sizing: border-box;
+    scroll-snap-align: start;
+  }
+  .pricing-4 .pricing-card-desc {
+    min-height: 0;
+  }
+  .pricing-extras {
+    grid-template-columns: 1fr;
   }
 }

@@ -269,8 +269,7 @@ const resenas = [
     texto: "Gran profesional! Cualquier duda me informo y me resolvió perfectamente. […] Muchas gracias, 100% recomendada.",
   },
   {
-    // Testimonio de cliente, NO de Google.
-    // [PENDIENTE: confirmar el texto original en castellano; está traducido del valenciano]
+    // Testimonio de cliente, NO de Google. Texto confirmado por María el 23/10/2026.
     nombre: "Nutrimente",
     detalle: "Nutrición integrativa · Jaén",
     google: false,
@@ -1573,20 +1572,13 @@ const marquee = [
             privacidad: "Aceptada",
           };
 
-          Promise.all([
-            fetch("https://api.web3forms.com/submit", {
+          fetch("https://api.web3forms.com/submit", {
               method: "POST",
               headers: { "Content-Type": "application/json", Accept: "application/json" },
               body: JSON.stringify(data),
-            }),
-            fetch("https://hook.eu1.make.com/mxvqg7gwne43yab165v2uhtyw5yh115r", {
-              method: "POST",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify(data),
-            }).catch(() => null),
-          ])
-            .then(async (results) => {
-              const result = await results[0].json();
+            })
+            .then(async (res) => {
+              const result = await res.json();
               if (!result.success) throw new Error("Error en el envío");
               w.enviarEvento("generate_lead", { formulario: "alcoy" });
               if (typeof w.fbq === "function") w.fbq("track", "Lead");

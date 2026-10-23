@@ -2442,3 +2442,135 @@ html {
     justify-content: center; 
   }
 }
+
+/* ==========================================
+   RESEÑAS DE GOOGLE (reales y literales; solo se recorta con […])
+========================================== */
+.resenas-section {
+  padding: 70px 0 60px;
+  background-color: var(--white);
+}
+.resenas-header {
+  max-width: 760px;
+  margin: 0 auto 36px;
+  text-align: center;
+}
+.resenas-header h2 {
+  font-family: var(--font-titulos);
+  font-size: clamp(1.8rem, 4vw, 2.4rem);
+  font-weight: 800;
+  color: var(--text-main);
+  margin-bottom: 10px;
+}
+.resenas-header p {
+  font-size: 1.05rem;
+  color: var(--text-muted);
+}
+.resenas-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  max-width: 920px;
+  margin: 0 auto;
+}
+.resena-card {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-body);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 28px;
+}
+.resena-cabecera {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+.resena-estrellas {
+  /* Ámbar oscurecido: 3:1 sobre fondo claro */
+  color: #d97706;
+  letter-spacing: 2px;
+  font-size: 1rem;
+}
+.resena-tipo {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--accent);
+  background: var(--accent-light);
+  border-radius: 999px;
+  padding: 4px 10px;
+  white-space: nowrap;
+}
+.resena-texto {
+  margin: 0;
+  flex: 1;
+  font-size: 1.02rem;
+  line-height: 1.65;
+  color: var(--text-main);
+}
+.resena-autor {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 20px;
+}
+.resena-av {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  background: var(--accent);
+  color: var(--white);
+  font-weight: 800;
+  font-size: 0.9rem;
+}
+.resena-autor strong {
+  display: block;
+  color: var(--text-main);
+}
+.resena-autor span span {
+  display: block;
+  font-size: 0.88rem;
+  color: var(--text-muted);
+}
+.resenas-cta {
+  text-align: center;
+  margin-top: 28px;
+}
+.resenas-cta a {
+  display: inline-block;
+  padding: 12px 22px;
+  border-radius: 999px;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  font-weight: 700;
+  text-decoration: none;
+}
+.resenas-cta a:hover {
+  background: var(--accent);
+  color: var(--white);
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+@media (max-width: 768px) {
+  .resenas-grid {
+    grid-template-columns: 1fr;
+  }
+  .resenas-section {
+    padding: 50px 0 40px;
+  }
+}

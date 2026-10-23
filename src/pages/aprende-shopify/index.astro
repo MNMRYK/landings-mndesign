@@ -2232,26 +2232,16 @@ import CookieBanner from "../../components/CookieBanner.astro";
               problema_principal: document.getElementById("pain").value,
             };
 
-            Promise.all([
-              fetch("https://api.web3forms.com/submit", {
+            fetch("https://api.web3forms.com/submit", {
                 method: "POST",
                 headers: {
                   "Content-Type": "application/json",
                   Accept: "application/json",
                 },
                 body: JSON.stringify(data),
-              }),
-              fetch(
-                "https://hook.eu1.make.com/mxvqg7gwne43yab165v2uhtyw5yh115r",
-                {
-                  method: "POST",
-                  headers: { "Content-Type": "application/json" },
-                  body: JSON.stringify(data),
-                },
-              ).catch(() => null),
-            ])
-              .then(async (results) => {
-                const result = await results[0].json();
+              })
+              .then(async (res) => {
+                const result = await res.json();
                 if (result.success) {
                   window.enviarEvento("generate_lead", { formulario: "mentoria_shopify" });
                   if (typeof fbq === "function") fbq("track", "Lead");
@@ -2296,26 +2286,16 @@ import CookieBanner from "../../components/CookieBanner.astro";
               tipo_lead: "Lead Magnet PDF",
             };
 
-            Promise.all([
-              fetch("https://api.web3forms.com/submit", {
+            fetch("https://api.web3forms.com/submit", {
                 method: "POST",
                 headers: {
                   "Content-Type": "application/json",
                   Accept: "application/json",
                 },
                 body: JSON.stringify(dataLM),
-              }),
-              fetch(
-                "https://hook.eu1.make.com/mxvqg7gwne43yab165v2uhtyw5yh115r",
-                {
-                  method: "POST",
-                  headers: { "Content-Type": "application/json" },
-                  body: JSON.stringify(dataLM),
-                },
-              ).catch(() => null),
-            ])
-              .then(async (results) => {
-                const result = await results[0].json();
+              })
+              .then(async (res) => {
+                const result = await res.json();
                 if (result.success) {
                   window.enviarEvento("generate_lead", { formulario: "pdf_shopify" });
                   if (typeof fbq === "function") fbq("track", "Lead");

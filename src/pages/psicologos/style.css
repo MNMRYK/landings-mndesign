@@ -4081,3 +4081,85 @@ iframe {
     transform: none;
   }
 }
+
+/* 20. CUATRO PLANES (23/10/2026)
+   Escritorio (≥1180 px): una fila de 4. Tablet: 2 × 2. Móvil (≤700 px): carrusel con scroll-snap
+   en el que asoma la tarjeta siguiente. Mismo diseño de tarjeta que antes, algo más compacto. */
+.plans.plans-4 {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  max-width: 1240px;
+  gap: 18px;
+}
+.plans-4 .plan {
+  padding: 30px 24px;
+}
+.plans-4 .plan h3 {
+  font-size: 1.25rem;
+}
+.plans-4 .price {
+  font-size: 2.15rem;
+}
+.plans-4 .plan li {
+  font-size: 0.93rem;
+  padding: 6px 0;
+}
+.plans-4 .plan ul {
+  margin-bottom: 18px;
+}
+.plan-mant {
+  font-size: 0.86rem;
+  font-weight: 600;
+  color: var(--muted);
+  padding-top: 14px;
+  margin-bottom: 18px !important;
+  border-top: 1px solid var(--line);
+}
+.plan.hot .plan-mant {
+  color: #a9bcd6;
+  border-top-color: rgba(255, 255, 255, 0.14);
+}
+.plans-4 + .plan-extras {
+  max-width: 1240px;
+}
+@media (max-width: 1179px) {
+  .plans.plans-4 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    max-width: 960px;
+  }
+  .plans-4 + .plan-extras {
+    max-width: 960px;
+  }
+}
+@media (max-width: 700px) {
+  .plans.plans-4 {
+    display: flex;
+    gap: 14px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: 24px;
+    margin: 0 -24px;
+    padding: 6px 24px 18px;
+    scrollbar-width: none;
+    overscroll-behavior-x: contain;
+  }
+  .plans.plans-4::-webkit-scrollbar {
+    display: none;
+  }
+  .plans-4 > .plan {
+    flex: 0 0 min(84vw, 340px);
+    scroll-snap-align: start;
+  }
+  /* En el carrusel, las tarjetas de la derecha no esperan a la animación de entrada */
+  html.js .plans-4 > .rv {
+    opacity: 1;
+    transform: none;
+  }
+}
+@media (max-width: 640px) {
+  /* El margen lateral de .wrap baja a 16 px */
+  .plans.plans-4 {
+    margin: 0 -16px;
+    padding: 6px 16px 18px;
+    scroll-padding-inline: 16px;
+  }
+}
