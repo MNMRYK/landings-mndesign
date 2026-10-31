@@ -53,6 +53,18 @@ Cada búsqueda se mide en una sola página. En Search Console: Rendimiento → f
 Orden cronológico inverso (lo más reciente arriba). Formato de cada entrada:
 fecha · qué se ha cambiado (archivos y URLs) · intención / por qué · objetivo · cómo medirlo · estado (hecho / publicado / pendiente de indexar).
 
+### 31/10/2026 · /alcoi/: sección de servicios creativos con Lara Summers y reseña de Sara Santos en lugar de la de Lara
+- **Servicios creativos** (sección nueva `#creativos`, justo después del bloque oscuro «¿Tu negocio necesita algo más que una web?» y antes del proceso; después de los precios, para no alejar el contacto, que es el objetivo de la campaña de Google Ads):
+  - **Título:** «Tu web y tu marca, en un mismo proyecto».
+  - **Texto:** la web la hacemos nosotros; Lara Summers, directora de arte, se encarga de la marca y del contenido visual; un solo interlocutor.
+  - **Tarjetas:** «Branding e identidad de marca» → https://mndesignweb.es/branding/ y «Redes sociales y contenido» → https://mndesignweb.es/redes-sociales/, con 4 puntos cada una. Los textos parten de esas páginas de ReactMNDESIGN, sin copiarlos y sin cifras ni clientes.
+  - **Mención a Lara Summers** como colaboradora, con su foto.
+  - **Imágenes:** en `public/creativos/` no había ninguna, así que se han copiado las de esas mismas páginas: `branding.webp` (de `ReactMNDESIGN/public/branding/ctabranding.webp`, 736×736, recomprimida de 300 a 39 KB con las mismas medidas), `redes-sociales.webp` (de `public/redes/ctaredes.webp`, 1000×1331) y `lara-summers.webp` (400×400). Sin recortar (`h-auto`), con width/height, alt y `loading="lazy"`. La de redes, al ser vertical, va al 75 % de ancho para que las dos tarjetas tengan un alto parecido.
+  - **JSON-LD:** los dos servicios entran en el `hasOfferCatalog` de `#empresa` como `Offer` → `Service` (con `@id` `…/branding/#servicio` y `…/redes-sociales/#servicio`, que son los de esas páginas, y `provider` = `https://mndesignweb.es/#empresa`).
+- **Reseñas:** sale la de Lara S. (es colaboradora, no clienta) y entra Sara Santos en su lugar, con el mismo texto literal y el logo `resenas/logosarasantos.webp` que en /nutricionistas/, /clinicas/ y /academia-nutricion/, a 36 px en círculo y con fondo blanco, como el resto de avatares. Las demás reseñas, sin tocar. Sin schema Review.
+- **Comprobado:** `npm run build` sin errores; JSON-LD válido. Comparado archivo a archivo con mndesignweb.es: la tanda del 23/10 ya está publicada; faltan esta sección y el logo de Sara Santos (commit 0cb9219).
+- **Estado:** hecho y con commit; pendiente de subir.
+
 ### 23/10/2026 · /alcoi/ trabaja "agencia de diseño web alcoy"
 - **Por qué:** "agencia de diseño web alcoy" tiene 318 impresiones y 0 clics, repartidas entre 10 URLs de la web principal; /alcoi/ solo recibía 31 (entrada del 22/10).
 - **Qué** (propuesta aprobada por María):

@@ -245,17 +245,60 @@ const extrasSoftware = [
   { icono: Users, titulo: "Portal de clientes", texto: "Un área privada con sus pedidos, citas o documentos." },
 ];
 
+/* Servicios creativos, con Lara Summers (directora de arte, colaboradora). Textos coherentes con
+   /branding/ y /redes-sociales/ de la web principal; sin cifras ni clientes. Imágenes en public/creativos/
+   (sacadas de esas páginas, sin recortar). También van al catálogo del JSON-LD. */
+const creativos = [
+  {
+    titulo: "Branding e identidad de marca",
+    texto: "Una identidad visual que se reconozca en tu web, tus redes y todo lo que enseñas a tus clientes.",
+    incluye: [
+      "Logotipo, paleta de color y tipografías",
+      "Aplicaciones a web, redes, packaging y papelería",
+      "Imágenes y vídeos para tu marca, también con IA",
+      "Guía de uso para que todo vaya a juego",
+    ],
+    href: "https://mndesignweb.es/branding/",
+    enlace: "Ver branding e identidad de marca",
+    img: {
+      src: "/creativos/branding.webp",
+      width: 736,
+      height: 736,
+      alt: "Identidad visual con logotipo en degradado de naranja a morado, símbolo, caja, pegatinas, bolsa de tela y tarjetas",
+    },
+  },
+  {
+    titulo: "Redes sociales y contenido",
+    texto: "Dirección visual para que cada publicación se reconozca como tuya y vaya a juego con tu web.",
+    incluye: [
+      "Línea visual propia, plantillas y guía de estilo",
+      "Publicaciones, carruseles y vídeos cortos",
+      "Calendario editorial y líneas de contenido",
+      "Piezas para campañas y lanzamientos",
+    ],
+    href: "https://mndesignweb.es/redes-sociales/",
+    enlace: "Ver redes sociales y contenido",
+    img: {
+      src: "/creativos/redes-sociales.webp",
+      width: 1000,
+      height: 1331,
+      alt: "Móvil con stories y carruseles en blanco y negro para una marca de moda y cosmética",
+    },
+  },
+];
+
 /* Reseñas REALES. Textos copiados literalmente de Google (sin corregir); solo se recorta con "[…]".
    No añadir schema Review ni aggregateRating. Sin fechas relativas. */
 const GOOGLE_RESENAS = "https://share.google/H7PZUbk3sAkb31aDe";
 const resenas = [
   {
-    nombre: "Lara S.",
-    detalle: "Directora de arte",
-    foto: "/resenas/lara.webp", // foto compartida por todas las landings (/resenas/), con versión @2x
+    // Lara S. ya no va aquí: es colaboradora (servicios creativos), no clienta.
+    nombre: "Sara Santos",
+    detalle: "Nutricionista",
+    logo: { src: "/resenas/logosarasantos.webp", width: 96, height: 97, alt: "Logo de Sara Santos, nutricionista" },
     google: true,
     texto:
-      "[…] me ayudó a crear una web profesional a modo de portfolio y presentación de mi perfil, entendiendo perfectamente lo que buscaba y aportando siempre ideas y soluciones creativas que iban un paso más allá.",
+      "[…] La recomiendo totalmente, te escucha y entiende a la perfección y aporta ideas y soluciones muy buenas. Estoy encantada con el diseño, la funcionalidad y el acompañamiento cercano. […]",
   },
   {
     nombre: "Miriam A.",
@@ -373,16 +416,31 @@ const schema = {
       hasOfferCatalog: {
         "@type": "OfferCatalog",
         name: "Diseño web en Alcoy",
-        itemListElement: precios.map((p) => ({
-          "@type": "Offer",
-          itemOffered: { "@type": "Service", name: p.titulo, areaServed: lugar("City", "Alcoy") },
-          priceSpecification: {
-            "@type": "PriceSpecification",
-            minPrice: Number(p.precio.replace(".", "")),
-            priceCurrency: "EUR",
-            valueAddedTaxIncluded: false,
-          },
-        })),
+        itemListElement: [
+          ...precios.map((p) => ({
+            "@type": "Offer",
+            itemOffered: { "@type": "Service", name: p.titulo, areaServed: lugar("City", "Alcoy") },
+            priceSpecification: {
+              "@type": "PriceSpecification",
+              minPrice: Number(p.precio.replace(".", "")),
+              priceCurrency: "EUR",
+              valueAddedTaxIncluded: false,
+            },
+          })),
+          // Servicios creativos (con Lara Summers), enlazados a sus páginas de la web principal
+          ...creativos.map((c) => ({
+            "@type": "Offer",
+            itemOffered: {
+              "@type": "Service",
+              "@id": `${c.href}#servicio`,
+              name: c.titulo,
+              description: `${c.texto} ${c.incluye.join(". ")}.`,
+              url: c.href,
+              provider: { "@id": "https://mndesignweb.es/#empresa" },
+              areaServed: lugar("City", "Alcoy"),
+            },
+          })),
+        ],
       },
     },
     {
@@ -878,7 +936,18 @@ const marquee = [
                         alt=""
                         class="w-9 h-9 rounded-full object-cover shrink-0"
                       />
+                    ) : r.logo ? (
+                      <img
+                        src={r.logo.src}
+                        width={r.logo.width}
+                        height={r.logo.height}
+                        loading="lazy"
+                        decoding="async"
+                        alt={r.logo.alt}
+                        class="w-9 h-9 rounded-full object-cover bg-white shrink-0"
+                      />
                     ) : r.google ? (
+
                       <span class="w-9 h-9 rounded-full grid place-items-center text-sm font-extrabold text-white bg-gradient-to-br from-[#6a45f5] to-[#c23bb0] shrink-0" aria-hidden="true">
                         {r.nombre.charAt(0)}
                       </span>
@@ -1007,6 +1076,78 @@ const marquee = [
             <a href="#contacto" class="btn w-full sm:w-auto text-white border border-white/30 hover:bg-white/10">Contarnos tu caso</a>
           </div>
           <p class="text-center text-sm font-medium text-[#D9D3F7] mt-4">La página de software a medida está en valenciano.</p>
+        </div>
+      </section>
+
+      <!-- 7b. SERVICIOS CREATIVOS (con Lara Summers, directora de arte). Va después de los precios y junto al
+           bloque de software: el objetivo de esta landing (Google Ads) es el contacto. Datos en `creativos`. -->
+      <section id="creativos" class="relative isolate py-16 sm:py-24">
+        <div class="halo halo-servicios" aria-hidden="true"></div>
+        <div class="max-w-6xl mx-auto px-gutter">
+          <div class="text-center mb-10 sm:mb-14 max-w-3xl mx-auto" data-reveal>
+            <p class="text-xs font-bold uppercase tracking-[0.18em] text-saas-iris-ink mb-4">Servicios creativos</p>
+            <h2 class="text-3xl md:text-5xl font-extrabold tracking-tighter mb-5">
+              Tu web y tu marca, <span class="text-iris">en un mismo proyecto</span>
+            </h2>
+            <p class="text-base sm:text-lg text-saas-muted font-medium">
+              Si además de la web necesitas una imagen que vaya a juego, lo planteamos como un solo proyecto. Nosotros
+              diseñamos y desarrollamos tu web, y Lara Summers, directora de arte, se encarga de la marca y del
+              contenido visual. Cada una en su especialidad, y tú con un solo interlocutor.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
+            {
+              creativos.map((c, i) => (
+                <article data-reveal class="card glass ring rounded-[28px] sm:rounded-[32px] p-5 sm:p-8 flex flex-col">
+                  {/* Imagen entera (sin recorte). La de redes es vertical: algo más estrecha para que las dos
+                      tarjetas tengan un alto parecido. */}
+                  <img
+                    src={c.img.src}
+                    width={c.img.width}
+                    height={c.img.height}
+                    alt={c.img.alt}
+                    loading="lazy"
+                    decoding="async"
+                    class:list={["h-auto rounded-[20px] mx-auto mb-6", i === 0 ? "w-full" : "w-3/4"]}
+                  />
+                  <h3 class="text-xl sm:text-2xl font-extrabold tracking-tight mb-3">{c.titulo}</h3>
+                  <p class="text-saas-muted font-medium leading-relaxed mb-5">{c.texto}</p>
+                  <ul class="space-y-2.5 mb-6">
+                    {c.incluye.map((x) => (
+                      <li class="flex items-start gap-2.5 text-sm sm:text-base font-medium">
+                        <span class="text-saas-iris-ink mt-0.5 shrink-0" set:html={icon(Check, "w-4 h-4")} />
+                        {x}
+                      </li>
+                    ))}
+                  </ul>
+                  <a
+                    href={c.href}
+                    class="mt-auto inline-flex items-center gap-1.5 font-bold text-saas-iris-ink hover:gap-2.5 transition-all w-fit"
+                  >
+                    {c.enlace}
+                    <Fragment set:html={icon(ArrowRight, "w-4 h-4")} />
+                  </a>
+                </article>
+              ))
+            }
+          </div>
+
+          <div data-reveal class="glass ring rounded-[24px] p-4 sm:p-5 mt-5 sm:mt-6 flex items-center gap-4 max-w-3xl mx-auto">
+            <img
+              src="/creativos/lara-summers.webp"
+              width="400"
+              height="400"
+              alt="Lara Summers, directora de arte y colaboradora de MN Design Web"
+              loading="lazy"
+              decoding="async"
+              class="w-14 h-14 sm:w-16 sm:h-16 rounded-full shrink-0"
+            />
+            <p class="text-sm sm:text-base text-saas-muted font-medium leading-relaxed">
+              <strong class="text-saas-ink">Lara Summers</strong>, directora de arte especializada en identidad visual
+              y contenido, colabora con nosotros en los proyectos de marca y de redes sociales.
+            </p>
+          </div>
         </div>
       </section>
 
