@@ -419,3 +419,5 @@ fecha · qué se ha cambiado (archivos y URLs) · intención / por qué · objet
 
 ## Resultados
 <!-- Anotar aquí la evolución: fecha · búsqueda o página · impresiones · clics · posición -->
+
+- [HECHO 31/10/2026, sin publicar: logo de Sara Santos en su reseña] `public/resenas/logosarasantos.webp` (el mismo archivo que pasó María para la web React, sin convertir) en lugar de las iniciales «SS» en /nutricionistas/, /clinicas/ y /academia-nutricion/, con el tamaño de cada avatar y fondo blanco (el logo tiene transparencia). Texto de la reseña sin tocar, sin schema Review. [PENDIENTE: nombre del negocio de Sara para el alt; ahora «Logo de Sara Santos, nutricionista».] Subir: `resenas/logosarasantos.webp`, los `_astro/` nuevos y las tres páginas.

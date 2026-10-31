@@ -1017,6 +1017,10 @@ html {
   border: 1px solid var(--border-color);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05); /* Un toquecito de sombra premium */
 }
+/* Logo del negocio en lugar de las iniciales (Sara Santos): fondo blanco tras su transparencia */
+.author-avatar-logo {
+  background: #fff;
+}
 .author-info h4 {
   font-size: 1.05rem;
   font-weight: 700;

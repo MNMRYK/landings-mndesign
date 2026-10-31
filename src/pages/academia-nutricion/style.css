@@ -2529,6 +2529,12 @@ html {
   font-weight: 800;
   font-size: 0.9rem;
 }
+/* Logo del negocio en lugar de las iniciales (Sara Santos): fondo blanco tras su transparencia */
+.resena-av-logo {
+  object-fit: cover;
+  background: #fff;
+}
+
 .resena-autor strong {
   display: block;
   color: var(--text-main);

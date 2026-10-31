@@ -2014,6 +2014,10 @@ html {
   font-weight: 700;
   font-size: 15px;
 }
+/* Logo del negocio en lugar de las iniciales (Sara Santos): fondo blanco tras su transparencia */
+.review-author .review-av-logo {
+  background: #fff;
+}
 .reviews-cta {
   margin-top: 36px;
   text-align: center;
