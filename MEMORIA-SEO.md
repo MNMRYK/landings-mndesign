@@ -53,6 +53,12 @@ Cada búsqueda se mide en una sola página. En Search Console: Rendimiento → f
 Orden cronológico inverso (lo más reciente arriba). Formato de cada entrada:
 fecha · qué se ha cambiado (archivos y URLs) · intención / por qué · objetivo · cómo medirlo · estado (hecho / publicado / pendiente de indexar).
 
+### 13/11/2026 (3) · /alcoi/: "¿Qué necesitas?" del hero con píldoras en lugar de desplegable
+- El `<select>` nativo no se puede estilizar en Windows. Ahora es un `<fieldset id="hero-servicio">` con `<legend>` y radios `name="servicio"` (lista `SERVICIOS_HERO`) estilizados como píldoras (`.chips`, `.chip`, `.chip-input` en iris.css): blancas con borde suave y, al elegir, el degradado de `.btn-grad` con texto blanco. El campo ocupa todo el ancho, debajo de nombre y teléfono (que pasan a 2 columnas).
+- Teclado nativo de los radios (Tab, flechas, Espacio) y foco visible. Sigue siendo obligatorio: mismo mensaje de error, el grupo se marca en rojo y el foco va a la primera opción. Envío, `generate_lead {formulario:"alcoy_hero"}` y copia al portal sin cambios. Eliminados los estilos de `select.field`.
+- **Comprobado** a 1440 y 390 px con Web3Forms interceptado: error y foco sin servicio, elección con flechas y con ratón, envío con el servicio elegido, aviso de éxito y reset; en móvil 3 filas sin desbordar.
+- **Estado:** commit en main, sin publicar.
+
 ### 13/11/2026 (2) · /alcoi/: tarjetas de precios alineadas, bloque de mantenimiento y SEO más compacto
 - **Mantenimiento:** la franja del final de #servicios pasa a ser un bloque destacado debajo de las tarjetas de "Páginas web": «Mantenimiento web: tú a lo tuyo, nosotros de tu web», desde 65 €/mes + IVA, texto, 4 puntos (array `mantenimiento`) y dentro, en pequeño, la nota «¿Código a medida o WordPress?». La FAQ «¿Ofrecéis mantenimiento web?» ahora menciona código a medida o WordPress, modificaciones mensuales de contenido y soporte directo.
 - **Tarjetas de precios:** las 4 de "Páginas web" con 5 puntos cada una (textos de María). Cada tarjeta es un subgrid de 6 filas (`.precios-grid` / `.precio-card` en iris.css): misma altura y título, tipo, texto, precio, lista y botón alineados; también en "Posicionamiento y software". Sin `tipo` se pinta un `<span>` vacío para no descuadrar las filas. «Más elegida» (`.precio-etiqueta`) va centrada sobre el borde superior, en posición absoluta.

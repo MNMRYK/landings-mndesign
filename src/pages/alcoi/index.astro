@@ -44,6 +44,7 @@ const icon = (node: any[], cls = "w-5 h-5") =>
 
 const CAL_LINK = "mndesignweb/reunion-30-min";
 const WHATSAPP = "https://wa.me/34645854934?text=Hola,%20me%20gustar%C3%ADa%20hablar%20sobre%20una%20web%20para%20mi%20negocio%20en%20Alcoy.";
+const SERVICIOS_HERO = ["Página web", "Landing page", "Tienda online", "SEO", "Software a medida", "Otro"];
 const WHATSAPP_FLOTANTE =
   "https://wa.me/34645854934?text=" + encodeURIComponent("Hola, vengo de vuestra web de Alcoy y me interesa un presupuesto");
 const MAPS = "https://www.google.com/maps/search/?api=1&query=Passeig+del+Comtat+75+03820+Cocentaina";
@@ -818,7 +819,7 @@ const marquee = [
           >
             <p id="form-hero-titulo" class="text-lg sm:text-xl font-extrabold tracking-tight mb-1">Pide tu presupuesto de página web</p>
             <p class="text-sm text-saas-muted font-medium mb-4">Te llamamos o te escribimos por WhatsApp en menos de 24 h.</p>
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
               <div>
                 <label for="hero-nombre" class="block text-sm font-bold">Nombre</label>
                 <input id="hero-nombre" name="nombre" type="text" required autocomplete="name" aria-describedby="hero-nombre-error" class="field mt-1.5" />
@@ -829,19 +830,20 @@ const marquee = [
                 <input id="hero-telefono" name="telefono" type="tel" required autocomplete="tel" inputmode="tel" aria-describedby="hero-telefono-error" class="field mt-1.5" />
                 <p id="hero-telefono-error" class="hero-error" hidden>Escribe un teléfono válido (al menos 9 cifras).</p>
               </div>
-              <div>
-                <label for="hero-servicio" class="block text-sm font-bold">¿Qué necesitas?</label>
-                <select id="hero-servicio" name="servicio" required aria-describedby="hero-servicio-error" class="field mt-1.5">
-                  <option value="" selected disabled>Elige una opción</option>
-                  <option>Página web</option>
-                  <option>Landing page</option>
-                  <option>Tienda online</option>
-                  <option>SEO</option>
-                  <option>Software a medida</option>
-                  <option>Otro</option>
-                </select>
+              {/* Píldoras (radios) en lugar de <select>: la lista nativa no se puede estilizar en Windows.
+                  Teclado nativo de los radios: Tab entra en el grupo, flechas cambian y Espacio marca. */}
+              <fieldset id="hero-servicio" class="chips sm:col-span-2" aria-describedby="hero-servicio-error">
+                <legend class="block text-sm font-bold">¿Qué necesitas?</legend>
+                <div class="flex flex-wrap gap-2 mt-1.5">
+                  {SERVICIOS_HERO.map((op) => (
+                    <label class="chip">
+                      <input type="radio" name="servicio" value={op} required class="chip-input" />
+                      <span>{op}</span>
+                    </label>
+                  ))}
+                </div>
                 <p id="hero-servicio-error" class="hero-error" hidden>Elige qué necesitas.</p>
-              </div>
+              </fieldset>
             </div>
             <div class="mt-4 flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-6">
               <div class="flex-1">
@@ -2076,7 +2078,6 @@ const marquee = [
         const campos: [string, (el: HTMLInputElement) => boolean][] = [
           ["hero-nombre", (el) => el.value.trim().length > 1],
           ["hero-telefono", (el) => el.value.replace(/\D/g, "").length >= 9],
-          ["hero-servicio", (el) => el.value !== ""],
           ["hero-privacidad", (el) => el.checked],
         ];
         const marcar = (el: HTMLInputElement, ok: boolean) => {
@@ -2086,20 +2087,41 @@ const marquee = [
         // Al corregir un campo, su error desaparece
         campos.forEach(([id, ok]) => {
           const el = d.getElementById(id) as HTMLInputElement;
-          el.addEventListener(el.type === "checkbox" || el.tagName === "SELECT" ? "change" : "input", () => {
+          el.addEventListener(el.type === "checkbox" ? "change" : "input", () => {
             if (el.getAttribute("aria-invalid") === "true") marcar(el, ok(el));
           });
         });
+
+        // Servicio (grupo de píldoras): obligatorio; el error se marca en el grupo y en sus radios
+        const grupoServicio = d.getElementById("hero-servicio")!;
+        const radiosServicio = [...formHero.querySelectorAll<HTMLInputElement>('input[name="servicio"]')];
+        const servicioElegido = () => radiosServicio.find((r) => r.checked)?.value ?? "";
+        const marcarServicio = (ok: boolean) => {
+          grupoServicio.toggleAttribute("data-invalid", !ok);
+          radiosServicio.forEach((r) => r.setAttribute("aria-invalid", String(!ok)));
+          d.getElementById("hero-servicio-error")!.hidden = ok;
+        };
+        radiosServicio.forEach((r) =>
+          r.addEventListener("change", () => {
+            if (grupoServicio.hasAttribute("data-invalid")) marcarServicio(true);
+          })
+        );
 
         formHero.addEventListener("submit", (e) => {
           e.preventDefault();
           estado.textContent = "";
           let primero: HTMLInputElement | null = null;
-          campos.forEach(([id, ok]) => {
+          campos.forEach(([id, ok], i) => {
             const el = d.getElementById(id) as HTMLInputElement;
             const bien = ok(el);
             marcar(el, bien);
             if (!bien && !primero) primero = el;
+            // El servicio va entre el teléfono y la privacidad, también en el orden del foco
+            if (i === 1) {
+              const okServicio = servicioElegido() !== "";
+              marcarServicio(okServicio);
+              if (!okServicio && !primero) primero = radiosServicio[0];
+            }
           });
           if (primero) {
             (primero as HTMLInputElement).focus();
@@ -2111,7 +2133,7 @@ const marquee = [
           btn.innerText = "Enviando...";
           btn.disabled = true;
 
-          const servicio = valor("hero-servicio");
+          const servicio = servicioElegido();
           const data = {
             access_key: "1bc2d285-71cb-4fe3-806f-530066ab6e15",
             subject: `Nuevo Lead: Alcoy · ${servicio} (formulario del hero)`,
