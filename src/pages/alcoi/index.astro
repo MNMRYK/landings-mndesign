@@ -12,24 +12,27 @@ import {
   ArrowLeft,
   ArrowRight,
   CalendarCheck,
+  ChartLine,
   Check,
   CreditCard,
   ExternalLink,
+  Gauge,
   Mail,
   MapPin,
+  Megaphone,
   Menu,
   MessageCircle,
   Navigation,
-  PenTool,
   Phone,
   Plus,
   Quote,
   Repeat,
-  ShoppingBag,
+  Search,
   Sparkles,
   Tag,
   Users,
   Workflow,
+  Wrench,
   X,
 } from "lucide";
 
@@ -41,6 +44,8 @@ const icon = (node: any[], cls = "w-5 h-5") =>
 
 const CAL_LINK = "mndesignweb/reunion-30-min";
 const WHATSAPP = "https://wa.me/34645854934?text=Hola,%20me%20gustar%C3%ADa%20hablar%20sobre%20una%20web%20para%20mi%20negocio%20en%20Alcoy.";
+const WHATSAPP_FLOTANTE =
+  "https://wa.me/34645854934?text=" + encodeURIComponent("Hola, vengo de vuestra web de Alcoy y me interesa un presupuesto");
 const MAPS = "https://www.google.com/maps/search/?api=1&query=Passeig+del+Comtat+75+03820+Cocentaina";
 
 /* Capturas de página completa de las demos (public/alcoi/demos/, 1280 px de ancho).
@@ -135,38 +140,19 @@ const demos = [
     alt: "Demo de SupplyConnect, ERP industrial a medida",
   },
 ];
-
-const servicios = [
-  {
-    icono: PenTool,
-    titulo: "Diseño web a medida",
-    texto:
-      "Webs corporativas diseñadas desde cero para tu negocio: rápidas en el móvil, claras y con textos pensados para que te llamen. Te la entregamos lista para que puedas editarla tú.",
-    enlace: { href: "https://mndesignweb.es/disenoweb/", texto: "Diseño web" },
-  },
-  {
-    icono: ShoppingBag,
-    titulo: "Tienda online con Shopify o WooCommerce",
-    texto:
-      "Vende online con pagos seguros, control de stock y envíos configurados. Te ayudamos a elegir la plataforma que encaja con tu catálogo y te dejamos la tienda lista para vender.",
-    enlace: { href: "https://mndesignweb.es/e-commerce/", texto: "Tiendas online" },
-  },
-  {
-    icono: MapPin,
-    titulo: "SEO local y posicionamiento web en Alcoy",
-    texto:
-      "Trabajamos tu web y tu Perfil de Empresa de Google para que aparezcas cuando alguien de Alcoy, Cocentaina o Ibi busca lo que haces, también en Google Maps.",
-    enlace: { href: "https://mndesignweb.es/posicionamiento-seo/", texto: "Posicionamiento SEO" },
-  },
-  {
-    icono: Workflow,
-    titulo: "Software y automatizaciones a medida",
-    texto:
-      "Cuando tu web se queda corta: reservas, cobros, portal de clientes o conexión con tu programa de facturación. Lo programamos para tu negocio y el código es tuyo.",
-    enlace: { href: "https://mndesignweb.es/software-a-mida-alcoi/", texto: "Software a medida" },
-    destacado: true,
-  },
+// Orden del carrusel: primero las webs y después el software (los textos y enlaces no cambian)
+const ORDEN_DEMOS = [
+  "micropigmentacion", // Lucia Micropigmentación
+  "nutricion", // Consulta de nutrición
+  "evento-gastronomico", // UMAMI
+  "novoteix", // NovoTeix
+  "evento-b2b", // NEXUS X
+  "suministros", // Norvia Suministros
+  "elearning", // NutriLearn Pro (título "Academia online")
+  "portal-salud", // Portal Salud
+  "supplyconnect", // SupplyConnect
 ];
+demos.sort((a, b) => ORDEN_DEMOS.indexOf(a.file) - ORDEN_DEMOS.indexOf(b.file));
 
 const motivos = [
   {
@@ -191,30 +177,74 @@ const motivos = [
   },
 ];
 
-const precios = [
+/* SERVICIOS Y PRECIOS (una sola sección, #servicios; tarjetas en #precios).
+   Precios "desde", IVA no incluido. También alimentan el catálogo del JSON-LD.
+   Ningún enlace de esta sección sale de la landing: todos los botones van a #contacto. */
+type Precio = {
+  titulo: string;
+  precio: string;
+  tipo?: string;
+  etiqueta?: string;
+  texto: string;
+  incluye: string[];
+  enlace?: { href: string; texto: string };
+};
+const preciosWeb: Precio[] = [
   {
-    titulo: "Web a medida",
-    precio: "500",
-    etiqueta: "Para empezar",
-    texto: "Tu web corporativa, lista para que te encuentren y te contacten.",
+    titulo: "Web one page",
+    precio: "390",
+    tipo: "Código a medida",
+    texto: "Para negocios que quieren estar en internet con todo en una sola página.",
     incluye: [
-      "Diseño a medida en WordPress, adaptado al móvil",
+      "Diseño a medida adaptado al móvil",
+      "Todo en una página: servicios, sobre ti y contacto",
+      "Botón de WhatsApp y formulario de contacto",
+      "Muy rápida y segura, sin plugins que actualizar",
+      "Los cambios los hacemos nosotros (incluidos en el mantenimiento)",
+    ],
+  },
+  {
+    titulo: "Landing page",
+    precio: "450",
+    tipo: "Código a medida",
+    texto: "Para una campaña de Google Ads o Meta, un servicio o un evento.",
+    incluye: [
+      "Enfocada a una sola acción: llamar, reservar o pedir presupuesto",
+      "Textos orientados a conseguir contactos",
+      "Formulario y WhatsApp con medición de contactos",
+      "Carga al instante: mejor nivel de calidad en Google Ads",
+      "Lista para conectar con tus campañas",
+    ],
+  },
+  {
+    titulo: "Web corporativa",
+    precio: "500",
+    tipo: "WordPress autogestionable",
+    etiqueta: "Más elegida",
+    texto: "Varias páginas, una por servicio, para aparecer en Google por cada una.",
+    incluye: [
+      "Diseño a medida adaptado al móvil",
       "Estructura y textos preparados para Google",
-      "3 horas de formación para editarla tú",
+      "Editas tú los textos",
+      "3 horas de formación",
       "Hosting y dominio incluidos",
     ],
   },
   {
     titulo: "Tienda online",
     precio: "790",
+    tipo: "Shopify o WooCommerce",
     texto: "Para vender tus productos por internet desde el primer día.",
     incluye: [
       "Shopify o WooCommerce, según tu caso",
       "Pagos seguros y envíos configurados",
       "Gestión de stock y pedidos",
+      "Fichas de producto preparadas para Google",
       "Formación para llevar la tienda tú",
     ],
   },
+];
+const preciosSeo: Precio[] = [
   {
     titulo: "SEO local",
     precio: "200",
@@ -225,6 +255,18 @@ const precios = [
       "Búsquedas locales de Alcoy, Cocentaina e Ibi",
       "Recomendaciones claras para seguir creciendo",
     ],
+  },
+  {
+    titulo: "SEO avanzado",
+    precio: "750",
+    texto: "Para posicionar tus servicios más allá de la comarca.",
+    incluye: [
+      "Auditoría y mejoras técnicas",
+      "Palabras clave, contenidos y páginas locales",
+      "Medición de visitas y contactos",
+      "Incluye la gestión de campañas en Google Ads o Meta",
+    ],
+    enlace: { href: "#seo-avanzado", texto: "Ver qué incluye" },
   },
   {
     titulo: "Software a medida",
@@ -238,6 +280,17 @@ const precios = [
     ],
   },
 ];
+/* Mantenimiento: bloque destacado debajo de las tarjetas de "Páginas web" */
+const mantenimiento = [
+  "Modificaciones mensuales para añadir o editar contenido",
+  "Actualizaciones de seguridad y copias de seguridad",
+  "Hosting y dominio incluidos en todos los proyectos",
+  "Soporte directo con quien hizo tu web",
+];
+const gruposPrecios = [
+  { titulo: "Páginas web", items: preciosWeb },
+  { titulo: "Posicionamiento y software", items: preciosSeo },
+];
 
 const extrasSoftware = [
   { icono: CalendarCheck, titulo: "Reservas online", texto: "Tus clientes reservan solos y a ti te llega el aviso." },
@@ -246,12 +299,68 @@ const extrasSoftware = [
   { icono: Users, titulo: "Portal de clientes", texto: "Un área privada con sus pedidos, citas o documentos." },
 ];
 
+/* POSICIONAMIENTO WEB Y SEO (#seo-avanzado): lo que incluye el SEO avanzado (desde 750 €) */
+const seoBloques = [
+  {
+    icono: Gauge,
+    titulo: "Auditoría y técnica",
+    incluye: [
+      "Auditoría SEO completa",
+      "Velocidad y Core Web Vitals",
+      "URLs, encabezados e imágenes optimizadas",
+      "Sitemap, robots.txt y redirecciones 301",
+      "Datos estructurados",
+    ],
+  },
+  {
+    icono: Search,
+    titulo: "Palabras clave y contenidos",
+    incluye: [
+      "Estudio de palabras clave",
+      "Análisis de la competencia",
+      "Arquitectura de contenidos",
+      "Títulos y metadescripciones",
+      "Optimización de textos",
+    ],
+  },
+  {
+    icono: MapPin,
+    titulo: "SEO local",
+    incluye: [
+      "Optimización del Perfil de Empresa de Google",
+      "Aparecer en Google Maps",
+      "Búsquedas locales en Alcoy, Cocentaina, Ibi y la comarca",
+      "Hasta 10 páginas por localidad con contenido único",
+      "Recomendaciones para seguir creciendo",
+    ],
+  },
+  {
+    icono: ChartLine,
+    titulo: "Medición",
+    incluye: [
+      "Search Console y Google Analytics",
+      "Etiquetas de Google (Tag Manager)",
+      "Píxel de Meta y Microsoft Clarity",
+      "Cookies con Consent Mode",
+      "Informe de posiciones",
+    ],
+  },
+];
+const inversionAnuncios = [
+  "Tú decides cuánto invertir al día. Recomendamos empezar con al menos 10 €/día (unos 300 €/mes).",
+  "Ese dinero lo pagas directamente a Google o Meta con tu tarjeta; no pasa por nosotros.",
+  "En Google Ads pagas solo cuando alguien hace clic en tu anuncio; en Meta, por las veces que se muestra.",
+  "Puedes subir, bajar o pausar la inversión cuando quieras, sin permanencia.",
+  "Te enseñamos cuántas visitas y contactos te trae cada euro invertido.",
+];
+
 /* Servicios creativos, con Lara Summers (directora de arte, colaboradora). Textos coherentes con
    /branding/ y /redes-sociales/ de la web principal; sin cifras ni clientes. Imágenes en public/creativos/
    (sacadas de esas páginas, sin recortar). También van al catálogo del JSON-LD. */
 const creativos = [
   {
     titulo: "Branding e identidad de marca",
+    precio: "600",
     texto: "Una identidad visual que se reconozca en tu web, tus redes y todo lo que enseñas a tus clientes.",
     incluye: [
       "Logotipo, paleta de color y tipografías",
@@ -270,6 +379,7 @@ const creativos = [
   },
   {
     titulo: "Redes sociales y contenido",
+    precio: "400",
     texto: "Dirección visual para que cada publicación se reconozca como tuya y vaya a juego con tu web.",
     incluye: [
       "Línea visual propia, plantillas y guía de estilo",
@@ -334,7 +444,15 @@ const pasos = [
 const faqs = [
   [
     "¿Cuánto cuesta una página web en Alcoy?",
-    "Con nosotros, una web corporativa empieza en <strong>500 € + IVA</strong> y una tienda online en <strong>790 € + IVA</strong>. El precio final depende del número de páginas, de si necesitas reservas o pagos online y de quién prepara los textos. Después de la llamada te damos un presupuesto cerrado, sin sorpresas.",
+    "Con nosotros, una <strong>web one page</strong> empieza en <strong>390 € + IVA</strong>, una <strong>landing page</strong> en <strong>450 € + IVA</strong>, una <strong>web corporativa</strong> en <strong>500 € + IVA</strong> y una <strong>tienda online</strong> en <strong>790 € + IVA</strong>. El precio final depende del número de páginas, de las funciones que necesites (reservas, pagos online…) y de quién prepara los textos. Después de la llamada te damos el presupuesto de tu página web cerrado, sin sorpresas.",
+  ],
+  [
+    "¿Qué diferencia hay entre una landing page, una web one page y una web corporativa?",
+    "Una <strong>landing page</strong> es una página pensada para un solo objetivo: una campaña de Google Ads o Meta, un servicio o un evento. Una <strong>web one page</strong> reúne todo tu negocio en una sola página, para estar en internet de forma sencilla. Las dos se hacen con <strong>código a medida</strong>: son muy rápidas y seguras, no necesitan actualizaciones y los cambios los hacemos nosotros. Una <strong>web corporativa</strong> tiene varias páginas, una por servicio, para aparecer en Google por cada una, y se hace en <strong>WordPress</strong> para que puedas editar los textos tú.",
+  ],
+  [
+    "¿Qué incluye el SEO avanzado y cuándo se ven resultados?",
+    "El SEO avanzado (desde <strong>750 € + IVA</strong>) incluye la auditoría y las mejoras técnicas, el estudio de palabras clave, los contenidos, las páginas locales, la medición y la <strong>gestión de tus campañas en Google Ads o Meta</strong>. La inversión en anuncios se paga aparte, directamente a Google o Meta; recomendamos empezar con al menos <strong>10 €/día</strong>. Las mejoras técnicas se notan en semanas, y posicionar palabras clave con competencia suele llevar de <strong>3 a 6 meses</strong>.",
   ],
   [
     "¿Cuánto tardáis en tener la web lista?",
@@ -346,7 +464,7 @@ const faqs = [
   ],
   [
     "¿Podré editar la web yo mismo?",
-    "Sí. Te la entregamos con un panel sencillo y, en las webs WordPress, con <strong>3 horas de formación</strong> para que cambies textos, fotos, precios o entradas del blog sin depender de nadie.",
+    "En las webs corporativas y tiendas online, sí: te las entregamos con un panel sencillo y, en las webs WordPress, con <strong>3 horas de formación</strong> para que cambies textos, fotos, precios o entradas del blog sin depender de nadie. En las webs one page y las landing pages, hechas con código a medida, los cambios los hacemos nosotros (incluidos en el mantenimiento).",
   ],
   [
     "¿Cómo aparezco en Google Maps en Alcoy?",
@@ -358,7 +476,7 @@ const faqs = [
   ],
   [
     "¿Ofrecéis mantenimiento web?",
-    "Sí, desde <strong>65 €/mes + IVA</strong>: actualizaciones de seguridad, copias de seguridad y pequeños cambios para que tú solo te ocupes de tu negocio. Además, todos los proyectos incluyen hosting y dominio.",
+    "Sí, desde <strong>65 €/mes + IVA</strong>, tanto si tu web está hecha en código a medida como en WordPress: modificaciones mensuales para añadir o editar contenido, actualizaciones de seguridad, copias de seguridad y soporte directo con quien hizo tu web. Además, todos los proyectos incluyen hosting y dominio.",
   ],
   [
     "¿Trabajáis también en Cocentaina, Ibi y el resto de l'Alcoià?",
@@ -367,9 +485,11 @@ const faqs = [
 ];
 
 const pageUrl = "https://mndesignweb.es/alcoi/";
-const seoTitle = "Agencia de Diseño Web en Alcoy (Alcoi) | MN Design Web";
+const seoTitle = "Diseño de Páginas Web en Alcoy desde 390 € | MN Design Web";
 const seoDescription =
-  "Agencia de diseño web en Alcoy (Alcoi): páginas web rápidas, fáciles de encontrar en Google y pensadas para traerte clientes. Llamada gratuita de 30 min.";
+  "Diseño de páginas web en Alcoy (Alcoi) desde 390 € + IVA: webs rápidas, SEO local y avanzado y presupuesto cerrado. Llamada gratuita de 30 min.";
+const ogDescription =
+  "Empresa de diseño web en Alcoy (Alcoi): webs one page, landing pages, webs corporativas y tiendas online desde 390 €, y posicionamiento web y SEO. Presupuesto cerrado tras una llamada gratuita.";
 // Miniatura en castellano (1200×630). La valenciana (imagen-miniatura-alcoi.webp) es solo de /software-a-mida-alcoi/
 const ogImage = "https://mndesignweb.es/alcoi/og-diseno-web-alcoy.webp";
 
@@ -416,9 +536,9 @@ const schema = {
       priceRange: "€€",
       hasOfferCatalog: {
         "@type": "OfferCatalog",
-        name: "Diseño web en Alcoy",
+        name: "Diseño de páginas web, SEO y software en Alcoy",
         itemListElement: [
-          ...precios.map((p) => ({
+          ...[...preciosWeb, ...preciosSeo].map((p) => ({
             "@type": "Offer",
             itemOffered: { "@type": "Service", name: p.titulo, areaServed: lugar("City", "Alcoy") },
             priceSpecification: {
@@ -439,6 +559,12 @@ const schema = {
               url: c.href,
               provider: { "@id": "https://mndesignweb.es/#empresa" },
               areaServed: lugar("City", "Alcoy"),
+            },
+            priceSpecification: {
+              "@type": "PriceSpecification",
+              minPrice: Number(c.precio),
+              priceCurrency: "EUR",
+              valueAddedTaxIncluded: false,
             },
           })),
         ],
@@ -501,7 +627,7 @@ const marquee = [
     <meta property="og:title" content={seoTitle} />
     <meta
       property="og:description"
-      content="Páginas web, tiendas online y SEO local para negocios de Alcoy (Alcoi) y la comarca. Webs que trabajan por tu negocio: reservas, cobros y automatizaciones."
+      content={ogDescription}
     />
     <meta property="og:image" content={ogImage} />
     <meta property="og:locale" content="es_ES" />
@@ -512,7 +638,7 @@ const marquee = [
     <meta name="twitter:title" content={seoTitle} />
     <meta
       name="twitter:description"
-      content="Páginas web, tiendas online y SEO local para negocios de Alcoy (Alcoi) y la comarca."
+      content={seoDescription}
     />
     <meta name="twitter:image" content={ogImage} />
 
@@ -589,10 +715,10 @@ const marquee = [
         </a>
 
         <nav aria-label="Secciones" class="hidden lg:flex items-center gap-8 font-semibold text-sm text-saas-muted">
-          <a href="#servicios" class="hover:text-saas-iris-ink transition-colors">Servicios</a>
-          <a href="#por-que" class="hover:text-saas-iris-ink transition-colors">Por qué nosotros</a>
+          <a href="#servicios" class="hover:text-saas-iris-ink transition-colors">Servicios y precios</a>
           <a href="#proyectos" class="hover:text-saas-iris-ink transition-colors">Proyectos</a>
-          <a href="#precios" class="hover:text-saas-iris-ink transition-colors">Precios</a>
+          <a href="#seo-avanzado" class="hover:text-saas-iris-ink transition-colors">SEO</a>
+          <a href="#por-que" class="hover:text-saas-iris-ink transition-colors">Por qué nosotros</a>
           <a href="#preguntas" class="hover:text-saas-iris-ink transition-colors">Preguntas</a>
         </nav>
 
@@ -617,10 +743,10 @@ const marquee = [
     <!-- Menú móvil: hermano del header (no hijo) para que su backdrop-filter desenfoque la página.
          Un backdrop-filter dentro de otro backdrop-filter no ve el contenido de detrás. -->
     <nav id="mobile-dropdown" aria-label="Menú" class="mobile-panel lg:hidden" data-lenis-prevent hidden>
-      <a href="#servicios" class="mobile-link">Servicios</a>
-      <a href="#por-que" class="mobile-link">Por qué nosotros</a>
+      <a href="#servicios" class="mobile-link">Servicios y precios</a>
       <a href="#proyectos" class="mobile-link">Proyectos</a>
-      <a href="#precios" class="mobile-link">Precios</a>
+      <a href="#seo-avanzado" class="mobile-link">SEO</a>
+      <a href="#por-que" class="mobile-link">Por qué nosotros</a>
       <a href="#preguntas" class="mobile-link">Preguntas</a>
       <a href="#contacto" class="mobile-link btn btn-primary w-full mt-3">Agendar llamada gratuita</a>
     </nav>
@@ -657,15 +783,85 @@ const marquee = [
           te ahorren trabajo de verdad.
         </p>
 
-        <div
-          style="--d: 220ms"
-          class="hero-in flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mb-8 sm:mb-10"
+        <!-- Línea de confianza -->
+        <p
+          style="--d: 180ms"
+          class="hero-in glass inline-flex flex-wrap items-center justify-center gap-x-2.5 gap-y-1 px-5 py-2.5 rounded-full mb-8 sm:mb-10 text-sm sm:text-[15px] font-bold text-saas-ink"
         >
-          <a href="#contacto" class="btn btn-primary ring ring-spin magnetic w-full sm:w-auto text-[15px] sm:text-base">
-            Agendar llamada gratuita de 30 min
-            <Fragment set:html={icon(ArrowRight, "w-4 h-4")} />
-          </a>
-          <a href="#proyectos" class="btn btn-glass w-full sm:w-auto text-[15px] sm:text-base">Ver proyectos</a>
+          <span>Presupuesto cerrado</span>
+          <span aria-hidden="true" class="text-saas-iris-ink">·</span>
+          <span>Webs desde 390&nbsp;€</span>
+          <span aria-hidden="true" class="text-saas-iris-ink">·</span>
+          <span>Llamada gratuita de 30&nbsp;min</span>
+        </p>
+
+        <!-- Móvil: texto → formulario → botones. Desde sm: botones → formulario. -->
+        <div class="flex flex-col">
+          <div
+            style="--d: 220ms"
+            class="hero-in order-2 sm:order-1 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mb-8 sm:mb-10"
+          >
+            <a href="#contacto" class="btn btn-primary ring ring-spin magnetic w-full sm:w-auto text-[15px] sm:text-base">
+              Agendar llamada gratuita de 30 min
+              <Fragment set:html={icon(ArrowRight, "w-4 h-4")} />
+            </a>
+            <a href="#proyectos" class="btn btn-glass w-full sm:w-auto text-[15px] sm:text-base">Ver proyectos</a>
+          </div>
+
+          <!-- Formulario corto: mismo envío que el de contacto (Web3Forms + copia al portal + generate_lead) -->
+          <form
+            id="form-hero"
+            novalidate
+            aria-labelledby="form-hero-titulo"
+            style="--d: 260ms"
+            class="hero-in order-1 sm:order-2 glass ring rounded-[28px] p-5 sm:p-6 w-full max-w-4xl mx-auto mb-8 sm:mb-10 text-left"
+          >
+            <p id="form-hero-titulo" class="text-lg sm:text-xl font-extrabold tracking-tight mb-1">Pide tu presupuesto de página web</p>
+            <p class="text-sm text-saas-muted font-medium mb-4">Te llamamos o te escribimos por WhatsApp en menos de 24 h.</p>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
+              <div>
+                <label for="hero-nombre" class="block text-sm font-bold">Nombre</label>
+                <input id="hero-nombre" name="nombre" type="text" required autocomplete="name" aria-describedby="hero-nombre-error" class="field mt-1.5" />
+                <p id="hero-nombre-error" class="hero-error" hidden>Escribe tu nombre.</p>
+              </div>
+              <div>
+                <label for="hero-telefono" class="block text-sm font-bold">Teléfono o WhatsApp</label>
+                <input id="hero-telefono" name="telefono" type="tel" required autocomplete="tel" inputmode="tel" aria-describedby="hero-telefono-error" class="field mt-1.5" />
+                <p id="hero-telefono-error" class="hero-error" hidden>Escribe un teléfono válido (al menos 9 cifras).</p>
+              </div>
+              <div>
+                <label for="hero-servicio" class="block text-sm font-bold">¿Qué necesitas?</label>
+                <select id="hero-servicio" name="servicio" required aria-describedby="hero-servicio-error" class="field mt-1.5">
+                  <option value="" selected disabled>Elige una opción</option>
+                  <option>Página web</option>
+                  <option>Landing page</option>
+                  <option>Tienda online</option>
+                  <option>SEO</option>
+                  <option>Software a medida</option>
+                  <option>Otro</option>
+                </select>
+                <p id="hero-servicio-error" class="hero-error" hidden>Elige qué necesitas.</p>
+              </div>
+            </div>
+            <div class="mt-4 flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-6">
+              <div class="flex-1">
+                <label class="flex items-start gap-3 text-sm text-saas-muted font-medium cursor-pointer">
+                  <input id="hero-privacidad" type="checkbox" required aria-describedby="hero-privacidad-error" class="mt-0.5 w-4 h-4 shrink-0 accent-saas-iris cursor-pointer" />
+                  <span>
+                    He leído y acepto la <a
+                      href="https://mndesignweb.es/privacidad/"
+                      target="_blank"
+                      rel="noopener"
+                      class="text-saas-iris-ink font-bold underline">política de privacidad</a
+                    >.
+                  </span>
+                </label>
+                <p id="hero-privacidad-error" class="hero-error" hidden>Tienes que aceptar la política de privacidad.</p>
+              </div>
+              <button id="btn-hero" type="submit" class="btn btn-primary ring w-full sm:w-auto shrink-0">Quiero mi presupuesto</button>
+            </div>
+            <p id="hero-estado" role="status" aria-live="polite" class="text-sm font-bold mt-3 empty:hidden"></p>
+          </form>
         </div>
 
         <ul
@@ -741,81 +937,126 @@ const marquee = [
         </div>
       </section>
 
-      <!-- 3. SERVICIOS -->
+      <!-- 3. SERVICIOS Y PRECIOS (#servicios; tarjetas en #precios). Sustituye a las antiguas secciones de
+           servicios y de precios. Ningún enlace sale de la landing: los botones van a #contacto. -->
       <section id="servicios" class="relative isolate py-12 sm:py-20">
         <div class="halo halo-servicios" aria-hidden="true"></div>
-        <div class="max-w-6xl mx-auto px-gutter">
+        <div class="max-w-7xl mx-auto px-gutter">
           <div class="text-center mb-10 sm:mb-14 max-w-3xl mx-auto" data-reveal>
+            <p class="text-xs font-bold uppercase tracking-[0.18em] text-saas-iris-ink mb-4">Servicios y precios</p>
             <h2 class="text-3xl md:text-5xl font-extrabold tracking-tighter mb-5">
-              <span class="text-iris">Páginas web en Alcoy</span> pensadas para traerte clientes
+              <span class="text-iris">Diseño de páginas web en Alcoy</span>: servicios y precios
             </h2>
             <p class="text-base sm:text-lg text-saas-muted font-medium">
-              Una web bonita está bien. Una web que aparece en Google, carga rápido en el móvil y consigue que te
-              llamen está mejor. Esto es lo que hacemos para negocios de Alcoy y la comarca.
+              Webs rápidas, que aparecen en Google y consiguen que te llamen. Precios orientativos; el presupuesto
+              cerrado te lo damos tras la llamada.
             </p>
           </div>
 
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
+          <div id="precios" class="space-y-12 sm:space-y-16">
             {
-              servicios.map((s) => (
-                <article
-                  data-reveal
-                  class:list={["card glass ring rounded-[28px] sm:rounded-[32px] p-5 sm:p-8 flex flex-col", s.destacado && "ring-always ring-spin"]}
-                >
-                  <span class="icon-iris mb-5" set:html={icon(s.icono, "w-6 h-6")} />
-                  <h3 class="text-xl sm:text-2xl font-extrabold tracking-tight mb-3">{s.titulo}</h3>
-                  <p class="text-saas-muted font-medium leading-relaxed mb-6">{s.texto}</p>
-                  <a
-                    href={s.enlace.href}
-                    hreflang={s.destacado ? "ca" : undefined}
-                    class="mt-auto inline-flex items-center gap-1.5 font-bold text-saas-iris-ink hover:gap-2.5 transition-all w-fit"
-                  >
-                    {s.enlace.texto}
-                    <Fragment set:html={icon(ArrowRight, "w-4 h-4")} />
-                  </a>
-                </article>
+              gruposPrecios.map((g, gi) => (
+                <div>
+                  <h3 class="text-xl sm:text-2xl font-extrabold tracking-tight mb-5 sm:mb-6" data-reveal>{g.titulo}</h3>
+                  {/* .precios-grid + .precio-card (iris.css): cada tarjeta es un subgrid de 6 filas
+                      (título, tipo, texto, precio, lista y botones), así todas miden lo mismo y cada
+                      fila queda alineada con la de las tarjetas vecinas. */}
+                  <div class:list={["precios-grid relative grid grid-cols-1 sm:grid-cols-2 gap-x-5", gi === 0 ? "lg:grid-cols-4" : "lg:grid-cols-3"]}>
+                    {/* Toque de color detrás de la tarjeta destacada, para que se note el cristal */}
+                    {gi === 0 && <div class="halo halo-precio" aria-hidden="true" />}
+                    {g.items.map((p) => (
+                      <article
+                        data-reveal
+                        class:list={["precio-card card glass ring rounded-[28px] p-5 sm:p-7 flex flex-col", p.etiqueta && "ring-always ring-spin !bg-white/80"]}
+                        style={p.etiqueta ? "--ring-w:2px" : undefined}
+                      >
+                        {p.etiqueta && (
+                          <span class="precio-etiqueta inline-flex items-center gap-1.5 rounded-full bg-saas-ink text-white text-sm font-bold px-3 py-1.5 whitespace-nowrap">
+                            <Fragment set:html={icon(Sparkles, "w-3.5 h-3.5")} />
+                            {p.etiqueta}
+                          </span>
+                        )}
+                        <h4 class="text-xl font-extrabold tracking-tight mb-1">{p.titulo}</h4>
+                        {p.tipo ? (
+                          <p class="text-xs font-bold uppercase tracking-wider text-saas-iris-ink mb-2">{p.tipo}</p>
+                        ) : (
+                          <span aria-hidden="true" />
+                        )}
+                        <p class="text-sm text-saas-muted font-medium mb-5">{p.texto}</p>
+                        <p class="mb-5">
+                          <span class="block text-sm font-bold uppercase tracking-widest text-saas-muted">Desde</span>
+                          <span class="text-4xl font-black tracking-tighter">{p.precio}&nbsp;€</span>
+                          <span class="block text-sm font-semibold text-saas-muted mt-1">IVA no incluido</span>
+                        </p>
+                        <ul class="space-y-2.5 text-sm font-medium text-saas-muted mb-6">
+                          {p.incluye.map((x) => (
+                            <li class="flex gap-2">
+                              <Fragment set:html={icon(Check, "w-4 h-4 text-saas-iris-ink shrink-0 mt-0.5")} />
+                              {x}
+                            </li>
+                          ))}
+                        </ul>
+                        <div class="precio-acciones mt-auto flex flex-col gap-3">
+                          {p.enlace && (
+                            <a
+                              href={p.enlace.href}
+                              class="inline-flex items-center gap-1.5 text-sm font-bold text-saas-iris-ink hover:gap-2.5 transition-all w-fit"
+                            >
+                              {p.enlace.texto}
+                              <Fragment set:html={icon(ArrowRight, "w-4 h-4")} />
+                            </a>
+                          )}
+                          <a href="#contacto" class:list={["btn w-full text-sm", p.etiqueta ? "btn-grad" : "btn-glass"]}>
+                            Pedir presupuesto
+                          </a>
+                        </div>
+                      </article>
+                    ))}
+                  </div>
+                  {gi === 0 && (
+                    <div data-reveal class="glass ring ring-always rounded-[28px] p-5 sm:p-7 lg:p-8 mt-6 sm:mt-8" style="--ring-w:1.5px">
+                      <div class="grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-5 lg:gap-10">
+                        <div>
+                          <div class="flex items-center gap-3 mb-3">
+                            <span class="icon-iris icon-iris-sm" set:html={icon(Wrench, "w-5 h-5")} />
+                            <h4 class="text-xl sm:text-2xl font-extrabold tracking-tight">
+                              Mantenimiento web: <span class="text-iris">tú a lo tuyo, nosotros de tu web</span>
+                            </h4>
+                          </div>
+                          <p class="text-sm sm:text-base font-semibold text-saas-muted mb-3">
+                            Desde <strong class="text-saas-ink text-lg">65&nbsp;€/mes</strong> + IVA
+                          </p>
+                          <p class="text-sm sm:text-base text-saas-muted font-medium leading-relaxed">
+                            Nos encargamos de tu web, esté hecha en código a medida o en WordPress, para que no tengas que
+                            preocuparte de nada.
+                          </p>
+                        </div>
+                        <div>
+                          <ul class="space-y-2.5 text-sm sm:text-base font-medium text-saas-muted mb-5">
+                            {mantenimiento.map((x) => (
+                              <li class="flex gap-2">
+                                <Fragment set:html={icon(Check, "w-4 h-4 text-saas-iris-ink shrink-0 mt-1")} />
+                                {x}
+                              </li>
+                            ))}
+                          </ul>
+                          <p class="text-xs sm:text-sm text-saas-muted font-medium leading-relaxed border-t border-saas-ink/10 pt-4">
+                            <strong class="text-saas-ink">¿Código a medida o WordPress?</strong> El código a medida es más
+                            rápido y seguro y no necesita actualizaciones; los cambios los hacemos nosotros. WordPress te
+                            permite editar los textos por tu cuenta. Te recomendamos la mejor opción en la llamada.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </div>
               ))
             }
           </div>
         </div>
       </section>
 
-      <!-- 4. POR QUÉ ELEGIRNOS (título fijo a la izquierda en escritorio) -->
-      <section id="por-que" class="relative isolate py-16 sm:py-24">
-        <div class="halo halo-porque" aria-hidden="true"></div>
-        <div class="max-w-6xl mx-auto px-gutter grid lg:grid-cols-[0.9fr_1.1fr] gap-10 lg:gap-16">
-          <div class="lg:sticky lg:top-32 self-start" data-reveal>
-            <p class="text-xs font-bold uppercase tracking-[0.18em] text-saas-iris-ink mb-4">Por qué elegirnos</p>
-            <h2 class="text-3xl md:text-5xl font-extrabold tracking-tighter mb-5">
-              Una <span class="text-iris">agencia de diseño web</span> de la comarca, con trato directo
-            </h2>
-            <p class="text-base sm:text-lg text-saas-muted font-medium leading-relaxed mb-8">
-              En Alcoy hay buenas agencias que hacen webs bonitas. Nosotros queremos que la tuya, además, trabaje:
-              que te traiga llamadas, reservas o ventas y que te quite tareas de encima.
-            </p>
-            <a href="#contacto" class="btn btn-grad">
-              Hablemos de tu web
-              <Fragment set:html={icon(ArrowRight, "w-4 h-4")} />
-            </a>
-          </div>
-
-          <ol class="flex flex-col gap-5 sm:gap-6">
-            {
-              motivos.map((m, i) => (
-                <li data-reveal class="why-card glass ring rounded-[28px] sm:rounded-[32px] p-5 sm:p-8 lg:min-h-[15rem] flex flex-col justify-center">
-                  <span class="text-iris text-4xl sm:text-5xl font-black tracking-tighter mb-3" aria-hidden="true">
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                  <h3 class="text-xl sm:text-2xl font-extrabold tracking-tight mb-2">{m.titulo}</h3>
-                  <p class="text-saas-muted font-medium leading-relaxed">{m.texto}</p>
-                </li>
-              ))
-            }
-          </ol>
-        </div>
-      </section>
-
-      <!-- 5. PROYECTOS Y DEMOS: carrusel con scroll-snap, arrastrable y con flechas -->
+      <!-- 4. PROYECTOS Y DEMOS: carrusel con scroll-snap, arrastrable y con flechas -->
       <section id="proyectos" class="relative isolate py-16 sm:py-24" data-carousel>
         <!-- [PENDIENTE: proyecto o cliente real de Alcoy] Cuando lo haya, va el primero del carrusel -->
         <div class="max-w-7xl mx-auto px-gutter flex flex-col md:flex-row md:items-end justify-between gap-6 mb-6 sm:mb-8">
@@ -885,7 +1126,7 @@ const marquee = [
 
       </section>
 
-      <!-- 5b. RESEÑAS REALES: 3 de Google + 1 testimonio de cliente. Sin enlaces por tarjeta
+      <!-- 5. RESEÑAS REALES: 3 de Google + 1 testimonio de cliente. Sin enlaces por tarjeta
            y sin schema Review/aggregateRating. -->
       <section id="resenas" class="relative isolate py-10 sm:py-16">
         <div class="halo halo-resenas" aria-hidden="true"></div>
@@ -984,62 +1225,80 @@ const marquee = [
         </div>
       </section>
 
-      <!-- 6. PRECIOS ORIENTATIVOS -->
-      <section id="precios" class="relative isolate py-16 sm:py-24">
-        <div class="max-w-7xl mx-auto px-gutter">
+      <!-- 6. POSICIONAMIENTO WEB Y SEO (#seo-avanzado): qué incluye el SEO avanzado y cómo funciona la
+           inversión en anuncios. Datos en `seoBloques` e `inversionAnuncios`. -->
+      <section id="seo-avanzado" class="relative isolate py-16 sm:py-24">
+        <div class="halo halo-porque" aria-hidden="true"></div>
+        <div class="max-w-6xl mx-auto px-gutter">
           <div class="text-center mb-10 sm:mb-14 max-w-3xl mx-auto" data-reveal>
-            <p class="text-xs font-bold uppercase tracking-[0.18em] text-saas-iris-ink mb-4">Precios orientativos</p>
+            <p class="text-xs font-bold uppercase tracking-[0.18em] text-saas-iris-ink mb-4">Posicionamiento web</p>
             <h2 class="text-3xl md:text-5xl font-extrabold tracking-tighter mb-5">
-              Cuánto cuesta una <span class="text-iris">página web o una tienda online</span> en Alcoy
+              Posicionamiento web y <span class="text-iris">SEO en Alcoy… y más allá</span>
             </h2>
             <p class="text-base sm:text-lg text-saas-muted font-medium">
-              Para que sepas desde dónde partimos. Después de la llamada te damos un presupuesto cerrado para tu caso.
+              El posicionamiento web en Alcoy empieza por el SEO local, que te hace aparecer en Google Maps cuando te buscan en la comarca. El SEO avanzado
+              posiciona tus servicios en toda la provincia o a nivel nacional. Como empresa de diseño web, lo
+              trabajamos desde el código de tu página.
             </p>
           </div>
 
-          <div class="relative grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            <!-- Toque de color detrás de la tarjeta destacada, para que se note el cristal -->
-            <div class="halo halo-precio" aria-hidden="true"></div>
+          <div class="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2 mb-5 sm:mb-6" data-reveal>
+            <h3 class="text-xl sm:text-2xl font-extrabold tracking-tight">Qué incluye el SEO avanzado</h3>
+            <p class="text-sm sm:text-base font-semibold text-saas-muted">
+              Desde <strong class="text-saas-ink text-lg">750&nbsp;€</strong> · IVA no incluido
+            </p>
+          </div>
+          <div class="seo-bloques grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
             {
-              precios.map((p) => (
-                <article
-                  data-reveal
-                  class:list={["card glass ring rounded-[28px] p-5 sm:p-7 flex flex-col", p.etiqueta && "ring-always ring-spin !bg-white/80"]}
-                  style={p.etiqueta ? "--ring-w:2px" : undefined}
-                >
-                  {p.etiqueta && (
-                    <span class="self-start mb-4 inline-flex items-center gap-1.5 rounded-full bg-saas-ink text-white text-sm font-bold px-3 py-1.5">
-                      <Fragment set:html={icon(Sparkles, "w-3.5 h-3.5")} />
-                      {p.etiqueta}
-                    </span>
-                  )}
-                  <h3 class="text-xl font-extrabold tracking-tight mb-1">{p.titulo}</h3>
-                  <p class="text-sm text-saas-muted font-medium mb-5">{p.texto}</p>
-                  <p class="mb-5">
-                    <span class="block text-sm font-bold uppercase tracking-widest text-saas-muted">Desde</span>
-                    <span class="text-4xl font-black tracking-tighter">{p.precio}&nbsp;€</span>
-                    <span class="block text-sm font-semibold text-saas-muted mt-1">IVA no incluido</span>
-                  </p>
-                  <ul class="space-y-2.5 text-sm font-medium text-saas-muted mb-6">
-                    {p.incluye.map((x) => (
+              seoBloques.map((b) => (
+                <article data-reveal class="card glass ring rounded-[24px] p-4 sm:p-5 flex flex-col">
+                  <div class="flex items-center gap-3 mb-3">
+                    <span class="icon-iris icon-iris-sm" set:html={icon(b.icono, "w-5 h-5")} />
+                    <h4 class="text-base sm:text-lg font-extrabold tracking-tight leading-snug">{b.titulo}</h4>
+                  </div>
+                  <ul class="space-y-1.5 text-sm font-medium text-saas-muted">
+                    {b.incluye.map((x) => (
                       <li class="flex gap-2">
                         <Fragment set:html={icon(Check, "w-4 h-4 text-saas-iris-ink shrink-0 mt-0.5")} />
                         {x}
                       </li>
                     ))}
                   </ul>
-                  <a href="#contacto" class:list={["btn mt-auto w-full text-sm", p.etiqueta ? "btn-grad" : "btn-glass"]}>
-                    Pedir presupuesto
-                  </a>
                 </article>
               ))
             }
           </div>
 
-          <p data-reveal class="glass rounded-full max-w-3xl mx-auto mt-8 px-6 py-4 text-center text-sm sm:text-base font-semibold">
-            Mantenimiento web desde <strong class="text-saas-iris-ink">65&nbsp;€/mes + IVA</strong> · Hosting y dominio
-            incluidos en todos los proyectos
-          </p>
+          <!-- Destacado: SEO + anuncios -->
+          <div data-reveal class="glass ring ring-always rounded-[28px] p-5 sm:p-6 lg:p-7 mt-5 sm:mt-6 !bg-white/80" style="--ring-w:2px">
+            <div class="grid grid-cols-1 lg:grid-cols-[1fr_1.15fr] gap-5 lg:gap-8">
+              <div>
+                <span class="icon-iris icon-iris-sm mb-3" set:html={icon(Megaphone, "w-5 h-5")} />
+                <h3 class="text-xl sm:text-2xl font-extrabold tracking-tight mb-3">
+                  ¿Quieres resultados desde el primer día? <span class="text-iris">Lo combinamos con anuncios</span>
+                </h3>
+                <p class="text-saas-muted font-medium leading-relaxed mb-5">
+                  El SEO tarda unos meses en dar resultados; los anuncios te traen visitas desde el primer día. La
+                  creación y gestión de tus campañas en Google Ads o Meta Ads está incluida en el SEO avanzado.
+                </p>
+                <a href="#contacto" class="btn btn-grad w-full sm:w-auto">
+                  Pedir presupuesto de SEO
+                  <Fragment set:html={icon(ArrowRight, "w-4 h-4")} />
+                </a>
+              </div>
+              <div>
+                <h4 class="font-extrabold text-base sm:text-lg mb-3">Cómo funciona la inversión</h4>
+                <ul class="space-y-2 text-sm sm:text-base font-medium text-saas-muted">
+                  {inversionAnuncios.map((x) => (
+                    <li class="flex gap-2.5">
+                      <Fragment set:html={icon(Check, "w-4 h-4 text-saas-iris-ink shrink-0 mt-1")} />
+                      {x}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -1081,12 +1340,12 @@ const marquee = [
         </div>
       </section>
 
-      <!-- 7b. SERVICIOS CREATIVOS (con Lara Summers, directora de arte). Va después de los precios y junto al
+      <!-- 8. SERVICIOS CREATIVOS (con Lara Summers, directora de arte). Va después de los precios y junto al
            bloque de software: el objetivo de esta landing (Google Ads) es el contacto. Datos en `creativos`. -->
-      <section id="creativos" class="relative isolate py-16 sm:py-24">
+      <section id="creativos" class="relative isolate py-12 sm:py-16">
         <div class="halo halo-servicios" aria-hidden="true"></div>
         <div class="max-w-6xl mx-auto px-gutter">
-          <div class="text-center mb-10 sm:mb-14 max-w-3xl mx-auto" data-reveal>
+          <div class="text-center mb-8 sm:mb-10 max-w-3xl mx-auto" data-reveal>
             <p class="text-xs font-bold uppercase tracking-[0.18em] text-saas-iris-ink mb-4">Servicios creativos</p>
             <h2 class="text-3xl md:text-5xl font-extrabold tracking-tighter mb-5">
               Tu web y tu marca, <span class="text-iris">en un mismo proyecto</span>
@@ -1100,10 +1359,9 @@ const marquee = [
 
           <div class="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
             {
-              creativos.map((c, i) => (
-                <article data-reveal class="card glass ring rounded-[28px] sm:rounded-[32px] p-5 sm:p-8 flex flex-col">
-                  {/* Imagen entera (sin recorte). La de redes es vertical: algo más estrecha para que las dos
-                      tarjetas tengan un alto parecido. */}
+              creativos.map((c) => (
+                <article data-reveal class="card glass ring rounded-[28px] flex flex-col h-full">
+                  {/* Imagen arriba a todo el ancho, 16:9 con recorte (object-cover) y esquinas superiores como la tarjeta */}
                   <img
                     src={c.img.src}
                     width={c.img.width}
@@ -1111,25 +1369,30 @@ const marquee = [
                     alt={c.img.alt}
                     loading="lazy"
                     decoding="async"
-                    class:list={["h-auto rounded-[20px] mx-auto mb-6", i === 0 ? "w-full" : "w-3/4"]}
+                    class="w-full aspect-video object-cover rounded-t-[27px]"
                   />
-                  <h3 class="text-xl sm:text-2xl font-extrabold tracking-tight mb-3">{c.titulo}</h3>
-                  <p class="text-saas-muted font-medium leading-relaxed mb-5">{c.texto}</p>
-                  <ul class="space-y-2.5 mb-6">
-                    {c.incluye.map((x) => (
-                      <li class="flex items-start gap-2.5 text-sm sm:text-base font-medium">
-                        <span class="text-saas-iris-ink mt-0.5 shrink-0" set:html={icon(Check, "w-4 h-4")} />
-                        {x}
-                      </li>
-                    ))}
-                  </ul>
-                  <a
-                    href={c.href}
-                    class="mt-auto inline-flex items-center gap-1.5 font-bold text-saas-iris-ink hover:gap-2.5 transition-all w-fit"
-                  >
-                    {c.enlace}
-                    <Fragment set:html={icon(ArrowRight, "w-4 h-4")} />
-                  </a>
+                  <div class="flex flex-col flex-1 min-w-0 p-5 sm:p-6">
+                    <h3 class="text-lg sm:text-xl font-extrabold tracking-tight mb-1">{c.titulo}</h3>
+                    <p class="text-sm font-semibold text-saas-muted mb-3">
+                      Desde <strong class="text-saas-ink text-base">{c.precio}&nbsp;€</strong> · IVA no incluido
+                    </p>
+                    <p class="text-sm sm:text-base text-saas-muted font-medium leading-relaxed mb-3">{c.texto}</p>
+                    <ul class="space-y-1.5 mb-4">
+                      {c.incluye.map((x) => (
+                        <li class="flex items-start gap-2 text-sm font-medium">
+                          <span class="text-saas-iris-ink mt-0.5 shrink-0" set:html={icon(Check, "w-4 h-4")} />
+                          {x}
+                        </li>
+                      ))}
+                    </ul>
+                    <a
+                      href={c.href}
+                      class="mt-auto inline-flex items-center gap-1.5 text-sm font-bold text-saas-iris-ink hover:gap-2.5 transition-all w-fit"
+                    >
+                      {c.enlace}
+                      <Fragment set:html={icon(ArrowRight, "w-4 h-4")} />
+                    </a>
+                  </div>
                 </article>
               ))
             }
@@ -1153,7 +1416,42 @@ const marquee = [
         </div>
       </section>
 
-      <!-- 8. PROCESO EN 4 PASOS: la línea se rellena con el scroll -->
+      <!-- 9. POR QUÉ ELEGIRNOS (título fijo a la izquierda en escritorio) -->
+      <section id="por-que" class="relative isolate py-16 sm:py-24">
+        <div class="halo halo-porque" aria-hidden="true"></div>
+        <div class="max-w-6xl mx-auto px-gutter grid lg:grid-cols-[0.9fr_1.1fr] gap-10 lg:gap-16">
+          <div class="lg:sticky lg:top-32 self-start" data-reveal>
+            <p class="text-xs font-bold uppercase tracking-[0.18em] text-saas-iris-ink mb-4">Por qué elegirnos</p>
+            <h2 class="text-3xl md:text-5xl font-extrabold tracking-tighter mb-5">
+              Una <span class="text-iris">agencia de diseño web</span> de la comarca, con trato directo
+            </h2>
+            <p class="text-base sm:text-lg text-saas-muted font-medium leading-relaxed mb-8">
+              En Alcoy hay buenas agencias que hacen webs bonitas. Nosotros queremos que la tuya, además, trabaje:
+              que te traiga llamadas, reservas o ventas y que te quite tareas de encima.
+            </p>
+            <a href="#contacto" class="btn btn-grad">
+              Hablemos de tu web
+              <Fragment set:html={icon(ArrowRight, "w-4 h-4")} />
+            </a>
+          </div>
+
+          <ol class="flex flex-col gap-5 sm:gap-6">
+            {
+              motivos.map((m, i) => (
+                <li data-reveal class="why-card glass ring rounded-[28px] sm:rounded-[32px] p-5 sm:p-8 lg:min-h-[15rem] flex flex-col justify-center">
+                  <span class="text-iris text-4xl sm:text-5xl font-black tracking-tighter mb-3" aria-hidden="true">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <h3 class="text-xl sm:text-2xl font-extrabold tracking-tight mb-2">{m.titulo}</h3>
+                  <p class="text-saas-muted font-medium leading-relaxed">{m.texto}</p>
+                </li>
+              ))
+            }
+          </ol>
+        </div>
+      </section>
+
+      <!-- 10. PROCESO EN 4 PASOS: la línea se rellena con el scroll -->
       <section class="relative py-16 sm:py-24">
         <div class="max-w-6xl mx-auto px-gutter">
           <div class="text-center mb-12 sm:mb-16 max-w-3xl mx-auto" data-reveal>
@@ -1181,7 +1479,7 @@ const marquee = [
         </div>
       </section>
 
-      <!-- 9. PREGUNTAS FRECUENTES -->
+      <!-- 11. PREGUNTAS FRECUENTES -->
       <section id="preguntas" class="relative py-16 sm:py-24">
         <div class="max-w-3xl mx-auto px-gutter">
           <div class="text-center mb-10 sm:mb-12" data-reveal>
@@ -1206,7 +1504,7 @@ const marquee = [
         </div>
       </section>
 
-      <!-- 10. CONTACTO -->
+      <!-- 12. CONTACTO -->
       <section id="contacto" class="relative isolate px-gutter pt-8 sm:pt-12 pb-16 sm:pb-24">
         <!-- Color 3 de 3: velo suave detrás de la gran tarjeta de cristal -->
         <div class="veil veil-contacto" aria-hidden="true"><i></i><i></i><i></i></div>
@@ -1227,13 +1525,13 @@ const marquee = [
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-x-10 lg:gap-y-6">
               <!-- Contacto rápido -->
               <div class="lg:col-start-2 lg:row-start-2 self-start grid grid-cols-1 sm:grid-cols-2 gap-3">
-                <a href={WHATSAPP} target="_blank" rel="noopener" class="btn btn-grad !justify-start !rounded-[20px] !px-5">
+                <a href={WHATSAPP} target="_blank" rel="noopener" class="btn btn-grad !justify-center !rounded-[20px] !px-5">
                   <Fragment set:html={icon(MessageCircle, "w-5 h-5")} /> WhatsApp
                 </a>
-                <a href="tel:+34645854934" class="btn btn-glass !justify-start !rounded-[20px] !px-5">
+                <a href="tel:+34645854934" class="btn btn-glass !justify-center !rounded-[20px] !px-5">
                   <Fragment set:html={icon(Phone, "w-5 h-5 text-saas-iris-ink")} /> 645 854 934
                 </a>
-                <a href="mailto:info@mndesignweb.es" class="btn btn-glass !justify-start !rounded-[20px] !px-5 sm:col-span-2">
+                <a href="mailto:info@mndesignweb.es" class="btn btn-glass !justify-center !rounded-[20px] !px-5 sm:col-span-2">
                   <Fragment set:html={icon(Mail, "w-5 h-5 text-saas-iris-ink")} /> info@mndesignweb.es
                 </a>
               </div>
@@ -1395,9 +1693,23 @@ const marquee = [
       </div>
     </footer>
 
+    <!-- Botón flotante de WhatsApp. El clic lo mide CookiesHead (click_whatsapp + Contact), como el resto de
+         enlaces a wa.me. Se oculta mientras se ve el banner de cookies y, en móvil, cuando un botón de enviar
+         está en pantalla (iris.css + script), para no taparlos. -->
+    <a
+      id="wa-flotante"
+      href={WHATSAPP_FLOTANTE}
+      target="_blank"
+      rel="noopener"
+      aria-label="Escríbenos por WhatsApp"
+      class="wa-flotante"
+    >
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="w-7 h-7"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+    </a>
+
     <div
       id="toast-container"
-      class="fixed top-24 left-4 right-4 sm:left-auto sm:top-auto sm:bottom-5 sm:right-5 z-[9999999] flex flex-col gap-3 pointer-events-none"
+      class="fixed top-24 left-4 right-4 sm:left-auto sm:top-auto sm:bottom-24 sm:right-5 z-[9999999] flex flex-col gap-3 pointer-events-none"
       role="status"
       aria-live="polite"
     >
@@ -1672,6 +1984,18 @@ const marquee = [
         matchMedia("(min-width: 1024px)").addEventListener("change", (m) => m.matches && setMenu(false));
       }
 
+      // 7. Botón flotante de WhatsApp: en móvil se aparta cuando un botón de enviar está en pantalla
+      const waFlotante = d.getElementById("wa-flotante");
+      const enviar = [d.getElementById("btn-hero"), d.getElementById("btn-submit")].filter(Boolean) as HTMLElement[];
+      if (waFlotante && enviar.length && "IntersectionObserver" in window) {
+        const visibles = new Set<Element>();
+        const ioWa = new IntersectionObserver((entries) => {
+          entries.forEach((e) => (e.isIntersecting ? visibles.add(e.target) : visibles.delete(e.target)));
+          waFlotante.classList.toggle("is-apartado", visibles.size > 0);
+        });
+        enviar.forEach((b) => ioWa.observe(b));
+      }
+
       /* =========================================
          FORMULARIO, CAL.COM Y MEDICIÓN (igual que en el resto de landings)
          ========================================= */
@@ -1735,6 +2059,92 @@ const marquee = [
             .catch((error) => {
               console.error(error);
               showToast("Ha habido un error. Inténtalo de nuevo o escríbenos por WhatsApp.", "error");
+            })
+            .finally(() => {
+              btn.innerText = textoOriginal;
+              btn.disabled = false;
+            });
+        });
+      }
+
+      // Formulario corto del hero: mismo envío que el de contacto (Web3Forms → copia al portal →
+      // generate_lead + Lead), con el servicio elegido y el origen. Validación propia y accesible:
+      // aria-invalid + mensaje enlazado con aria-describedby y foco en el primer campo con error.
+      const formHero = d.getElementById("form-hero") as HTMLFormElement | null;
+      if (formHero) {
+        const estado = d.getElementById("hero-estado")!;
+        const campos: [string, (el: HTMLInputElement) => boolean][] = [
+          ["hero-nombre", (el) => el.value.trim().length > 1],
+          ["hero-telefono", (el) => el.value.replace(/\D/g, "").length >= 9],
+          ["hero-servicio", (el) => el.value !== ""],
+          ["hero-privacidad", (el) => el.checked],
+        ];
+        const marcar = (el: HTMLInputElement, ok: boolean) => {
+          el.setAttribute("aria-invalid", String(!ok));
+          d.getElementById(`${el.id}-error`)!.hidden = ok;
+        };
+        // Al corregir un campo, su error desaparece
+        campos.forEach(([id, ok]) => {
+          const el = d.getElementById(id) as HTMLInputElement;
+          el.addEventListener(el.type === "checkbox" || el.tagName === "SELECT" ? "change" : "input", () => {
+            if (el.getAttribute("aria-invalid") === "true") marcar(el, ok(el));
+          });
+        });
+
+        formHero.addEventListener("submit", (e) => {
+          e.preventDefault();
+          estado.textContent = "";
+          let primero: HTMLInputElement | null = null;
+          campos.forEach(([id, ok]) => {
+            const el = d.getElementById(id) as HTMLInputElement;
+            const bien = ok(el);
+            marcar(el, bien);
+            if (!bien && !primero) primero = el;
+          });
+          if (primero) {
+            (primero as HTMLInputElement).focus();
+            return;
+          }
+
+          const btn = d.getElementById("btn-hero") as HTMLButtonElement;
+          const textoOriginal = btn.innerText;
+          btn.innerText = "Enviando...";
+          btn.disabled = true;
+
+          const servicio = valor("hero-servicio");
+          const data = {
+            access_key: "1bc2d285-71cb-4fe3-806f-530066ab6e15",
+            subject: `Nuevo Lead: Alcoy · ${servicio} (formulario del hero)`,
+            nombre: valor("hero-nombre"),
+            telefono: valor("hero-telefono"),
+            servicio,
+            mensaje: `Servicio: ${servicio}`,
+            origen: "Origen: formulario hero /alcoi/",
+            privacidad: "Aceptada",
+          };
+
+          fetch("https://api.web3forms.com/submit", {
+              method: "POST",
+              headers: { "Content-Type": "application/json", Accept: "application/json" },
+              body: JSON.stringify(data),
+            })
+            .then(async (res) => {
+              const result = await res.json();
+              if (!result.success) throw new Error("Error en el envío");
+              // Copia al portal de clientes (sin await y sin la clave de Web3Forms)
+              if (typeof w.copiarAlPortal === "function")
+                w.copiarAlPortal({ ...data, access_key: undefined, pagina: "Landing Alcoi · Formulario del hero" });
+              w.enviarEvento("generate_lead", { formulario: "alcoy_hero" });
+              if (typeof w.fbq === "function") w.fbq("track", "Lead");
+              if (typeof w.clarity === "function") w.clarity("set", "lead", "web_hero");
+              estado.className = "text-sm font-bold mt-3 text-saas-iris-ink";
+              estado.textContent = "¡Recibido! Te llamamos o te escribimos por WhatsApp muy pronto.";
+              formHero.reset();
+            })
+            .catch((error) => {
+              console.error(error);
+              estado.className = "text-sm font-bold mt-3 text-[#b42318]";
+              estado.textContent = "Ha habido un error. Inténtalo de nuevo o escríbenos por WhatsApp.";
             })
             .finally(() => {
               btn.innerText = textoOriginal;

@@ -53,6 +53,40 @@ Cada búsqueda se mide en una sola página. En Search Console: Rendimiento → f
 Orden cronológico inverso (lo más reciente arriba). Formato de cada entrada:
 fecha · qué se ha cambiado (archivos y URLs) · intención / por qué · objetivo · cómo medirlo · estado (hecho / publicado / pendiente de indexar).
 
+### 13/11/2026 (2) · /alcoi/: tarjetas de precios alineadas, bloque de mantenimiento y SEO más compacto
+- **Mantenimiento:** la franja del final de #servicios pasa a ser un bloque destacado debajo de las tarjetas de "Páginas web": «Mantenimiento web: tú a lo tuyo, nosotros de tu web», desde 65 €/mes + IVA, texto, 4 puntos (array `mantenimiento`) y dentro, en pequeño, la nota «¿Código a medida o WordPress?». La FAQ «¿Ofrecéis mantenimiento web?» ahora menciona código a medida o WordPress, modificaciones mensuales de contenido y soporte directo.
+- **Tarjetas de precios:** las 4 de "Páginas web" con 5 puntos cada una (textos de María). Cada tarjeta es un subgrid de 6 filas (`.precios-grid` / `.precio-card` en iris.css): misma altura y título, tipo, texto, precio, lista y botón alineados; también en "Posicionamiento y software". Sin `tipo` se pinta un `<span>` vacío para no descuadrar las filas. «Más elegida» (`.precio-etiqueta`) va centrada sobre el borde superior, en posición absoluta.
+- **#seo-avanzado:** 4 bloques en una fila en escritorio (2x2 en tablet, 1 columna en móvil), con icono pequeño (`.icon-iris-sm`) en línea con el título y subgrid (`.seo-bloques`) para alinear las listas. Contenido repartido en 5 puntos por bloque; "Hasta 10 páginas por localidad" pasa a SEO local. Bloque de anuncios igual, con menos padding.
+- **#creativos:** imagen arriba a todo el ancho (16:9, object-cover, esquinas superiores redondeadas) y contenido debajo; misma altura y enlace abajo. Textos, precios y franja de Lara Summers sin tocar.
+- **Avisos (toast):** en escritorio suben a `sm:bottom-24`, encima del botón flotante de WhatsApp. En móvil siguen arriba.
+- **Comprobado:** build sin errores; a 1440 y 1024 px todas las tarjetas de cada grupo miden lo mismo y sus filas empiezan a la misma altura; a 390 px, una columna, sin scroll horizontal.
+- **Estado:** commit en main, sin publicar.
+
+### 13/11/2026 · /alcoi/ reorganizada para convertir el tráfico de Google Ads ("diseño de páginas web", "empresa de diseño web", "diseño web alcoy", "seo alcoy")
+- **Orden nuevo:** Hero (con formulario corto) → franja de tecnologías → Servicios y precios (`#servicios`, tarjetas en `#precios`) → Proyectos → Reseñas → Posicionamiento web y SEO (`#seo-avanzado`, nueva) → ¿Tu negocio necesita algo más que una web? → Tu web y tu marca (`#creativos`) → Por qué elegirnos → Cómo trabajamos → Preguntas frecuentes → Contacto. Siguen existiendo todas las anclas de los enlaces de sitio de Google Ads (#servicios, #precios, #proyectos, #creativos, #contacto) y se añade #seo-avanzado.
+- **Hero:** el mismo H1 y los mismos botones. Se añade la línea «Presupuesto cerrado · Webs desde 390 € · Llamada gratuita de 30 min» y un formulario corto (`#form-hero`: nombre, teléfono o WhatsApp, «¿Qué necesitas?» y privacidad). Usa el mismo envío que el de contacto: Web3Forms → `copiarAlPortal` (página «Landing Alcoi · Formulario del hero») → `generate_lead` con `formulario: "alcoy_hero"` + Lead de Meta. El asunto lleva el servicio y el envío incluye «Origen: formulario hero /alcoi/». El aviso de éxito o de error sale en el propio formulario (role=status). Validación propia: `aria-invalid`, mensaje enlazado con `aria-describedby` y foco en el primer error. En móvil va justo después del texto; desde 640 px, debajo de los botones.
+- **Servicios y precios** (sustituye a las secciones de servicios, con 4 tarjetas que enlazaban fuera, y de precios). Precios desde, IVA no incluido:
+  - **Páginas web:** web one page 390 €, landing page 450 €, web corporativa 500 € («Más elegida») y tienda online 790 €, con la nota «¿Código a medida o WordPress?».
+  - **Posicionamiento y software:** SEO local 200 €, SEO avanzado 750 € (con «Ver qué incluye» → #seo-avanzado) y software a medida 1.350 €.
+  - Pie: mantenimiento desde 65 €/mes + IVA. Ningún enlace de la sección sale de la landing.
+- **Posicionamiento web y SEO (#seo-avanzado):** 4 bloques (auditoría y mejoras técnicas, palabras clave y contenidos, SEO local, medición), el destacado «¿Quieres resultados desde el primer día? Lo combinamos con anuncios» con «Cómo funciona la inversión» (desde 10 €/día, se paga directamente a Google o Meta) y el CTA «Pedir presupuesto de SEO».
+- **Proyectos:** primero las webs (Lucia Micropigmentación, Consulta de nutrición, UMAMI, NovoTeix, NEXUS X) y después el software (Norvia, NutriLearn Pro —su título visible es «Academia online»—, Portal Salud, SupplyConnect). Textos y enlaces sin cambios.
+- **Creativos:** precio en cada tarjeta (branding desde 600 €, redes sociales desde 400 €, IVA no incluido) y tarjetas más compactas (imagen en una columna estrecha, sin recortar). Lara Summers, sin cambios.
+- **FAQ:** precios nuevos en «¿Cuánto cuesta una página web en Alcoy?» y dos preguntas nuevas: diferencia entre landing page, web one page y web corporativa, y qué incluye el SEO avanzado y cuándo se ven resultados. «¿Podré editar la web yo mismo?» se ajusta para que no contradiga las webs de código a medida, en las que los cambios los hacemos nosotros. El FAQPage del JSON-LD sale de la misma lista (10 preguntas, iguales a las visibles).
+- **Contacto:** los botones de WhatsApp, teléfono y email llevan el icono y el texto centrados.
+- **Botón flotante de WhatsApp** (`#wa-flotante`, abajo a la derecha) con «Hola, vengo de vuestra web de Alcoy y me interesa un presupuesto». El clic lo mide CookiesHead, como cualquier enlace a wa.me. Se oculta mientras se ve el banner de cookies y, en móvil, cuando un botón de enviar está en pantalla.
+- **Nav:** «Servicios y precios» (#servicios) sustituye a «Servicios» y «Precios», y se añade «SEO» (#seo-avanzado). Los enlaces van en el orden de las secciones. A 1024 px cabe en una línea.
+- **SEO de la página:**
+  - **Title:** «Diseño de Páginas Web en Alcoy desde 390 € | MN Design Web» (58 caracteres).
+  - **Description:** «Diseño de páginas web en Alcoy (Alcoi) desde 390 € + IVA: webs rápidas, SEO local y avanzado y presupuesto cerrado. Llamada gratuita de 30 min.» (143 caracteres).
+  - **og:description** propia; twitter:description = description.
+  - **Catálogo del JSON-LD:** los 7 servicios con sus precios nuevos + branding (600) y redes (400). Sin aggregateRating ni Review.
+  - **Términos:** salen de forma natural "diseño de páginas web", "empresa de diseño web", "presupuesto de página web", "posicionamiento web en Alcoy" y "SEO en Alcoy".
+  - Este title sustituye al del 23/10 («Agencia de Diseño Web en Alcoy (Alcoi)»). El H1 sigue igual, con "agencia de diseño web".
+- **Comprobado:** `npm run build` sin errores. Sobre el build, a 1440, 1024 y 390 px, con los envíos interceptados: validación, envío con servicio y origen, `generate_lead`, aviso de éxito y botón recuperado; sin scroll horizontal. Un solo H1.
+- **Cómo medirlo:** GA4 → `generate_lead` con `formulario=alcoy_hero` frente a `alcoy`; Google Ads → conversiones por enlace de sitio; Search Console → "diseño de páginas web alcoy", "empresa de diseño web" y "seo alcoy" en /alcoi/.
+- **Estado:** commit en main (junto con la entrada siguiente), sin publicar.
+
 ### 31/10/2026 · /alcoi/: sección de servicios creativos con Lara Summers y reseña de Sara Santos en lugar de la de Lara
 - **Servicios creativos** (sección nueva `#creativos`, justo después del bloque oscuro «¿Tu negocio necesita algo más que una web?» y antes del proceso; después de los precios, para no alejar el contacto, que es el objetivo de la campaña de Google Ads):
   - **Título:** «Tu web y tu marca, en un mismo proyecto».

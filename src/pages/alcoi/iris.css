@@ -982,3 +982,123 @@ html.menu-open {
     transition: none;
   }
 }
+
+/* Formulario corto del hero: errores de validación (aria-invalid + mensaje enlazado) */
+.hero-error {
+  margin-top: 0.35rem;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: #b42318; /* 6:1 sobre blanco */
+}
+.field[aria-invalid="true"] {
+  border-color: #d92d20;
+  box-shadow: 0 0 0 3px rgba(217, 45, 32, 0.15);
+}
+select.field {
+  appearance: none;
+  padding-right: 2.5rem;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%237c5cff' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.9rem center;
+  background-size: 1.1rem;
+}
+
+/* Botón flotante de WhatsApp (abajo a la derecha). Por debajo del banner de cookies y oculto mientras
+   se ve; en móvil se aparta cuando un botón de enviar está en pantalla (.is-apartado, desde el script). */
+.wa-flotante {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  z-index: 90;
+  width: 56px;
+  height: 56px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  color: #fff;
+  background: #25d366;
+  box-shadow:
+    0 10px 30px -6px rgba(37, 211, 102, 0.55),
+    0 4px 12px rgba(30, 20, 70, 0.18);
+  transition:
+    transform 0.25s ease,
+    opacity 0.25s ease;
+}
+.wa-flotante:hover {
+  transform: scale(1.06);
+}
+.wa-flotante:focus-visible {
+  outline: 3px solid #1e1446;
+  outline-offset: 3px;
+}
+body:has(#cookie-banner[style*="flex"]) .wa-flotante {
+  opacity: 0;
+  pointer-events: none;
+}
+@media (max-width: 1023px) {
+  .wa-flotante.is-apartado {
+    opacity: 0;
+    transform: translateY(20px);
+    pointer-events: none;
+  }
+}
+@media (min-width: 640px) {
+  .wa-flotante {
+    right: 24px;
+    bottom: 24px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .wa-flotante {
+    transition: none;
+  }
+}
+
+/* ---------- Tarjetas de precios alineadas (#precios) ----------
+   Cada tarjeta ocupa 6 filas del grid padre y las hereda con subgrid: título, tipo, texto, precio,
+   lista y botones quedan a la misma altura en todas las tarjetas de una fila, y todas miden lo mismo.
+   Sin subgrid (navegadores antiguos) se quedan como columna flex con el botón abajo. */
+.precios-grid {
+  row-gap: 1.5rem;
+}
+@supports (grid-template-rows: subgrid) {
+  .precios-grid > .precio-card {
+    display: grid;
+    grid-row: span 6;
+    grid-template-rows: subgrid;
+    row-gap: 0;
+  }
+  .precio-card > .precio-acciones {
+    align-self: end;
+  }
+}
+/* "Más elegida": centrada sobre el borde superior, sin empujar el contenido */
+.card > .precio-etiqueta {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 3;
+}
+@media (min-width: 640px) {
+  /* Hueco extra arriba para la etiqueta en las filas que la llevan */
+  .precios-grid:has(.precio-etiqueta) {
+    padding-top: 0.25rem;
+  }
+}
+
+/* Icono iridiscente pequeño, en línea con el título */
+.icon-iris.icon-iris-sm {
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
+/* Bloques de #seo-avanzado: cabecera (icono + título) y lista alineadas entre bloques */
+@supports (grid-template-rows: subgrid) {
+  .seo-bloques > article {
+    display: grid;
+    grid-row: span 2;
+    grid-template-rows: subgrid;
+    row-gap: 0;
+  }
+}
