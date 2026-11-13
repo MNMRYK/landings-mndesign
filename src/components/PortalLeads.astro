@@ -1,0 +1,31 @@
+---
+// Copia de cada lead al portal de clientes (crea el lead en Directus), además de Web3Forms.
+// Es la misma función copiarAlPortal() de ReactMNDESIGN/src/utils/enviarLead.js: si cambias una, cambia la otra.
+// Uso, justo después de comprobar result.success (sin await, «disparar y olvidar»):
+//   if (typeof window.copiarAlPortal === "function")
+//     window.copiarAlPortal({ ...data, access_key: undefined, pagina: "Landing …" });
+// access_key: undefined hace que JSON.stringify no envíe la clave de Web3Forms al portal.
+---
+<script is:inline>
+  window.copiarAlPortal = function (datos) {
+    try {
+      var control = new AbortController();
+      var espera = setTimeout(function () {
+        control.abort();
+      }, 8000);
+      fetch("https://clientes.mndesignweb.es/api/leads/web", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify(Object.assign({}, datos, { access_key: undefined })),
+        keepalive: true,
+        signal: control.signal,
+      })
+        .catch(function () {})
+        .finally(function () {
+          clearTimeout(espera);
+        });
+    } catch (e) {
+      // nada: el lead ya está en el email
+    }
+  };
+</script>

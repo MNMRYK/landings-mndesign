@@ -1,5 +1,6 @@
 ---
 import CookiesHead from "../../components/CookiesHead.astro";
+import PortalLeads from "../../components/PortalLeads.astro";
 import CookieBanner from "../../components/CookieBanner.astro";
 import "./tailwind.css";
 import "./style.css";
@@ -179,6 +180,7 @@ const schema = {
     <script type="application/ld+json" is:inline set:html={JSON.stringify(schema)} />
 
     <CookiesHead />
+    <PortalLeads />
     <!-- Efectes lligats al scroll (scroll-driven animations, només CSS).
          Inline perquè el minificador no fusione animation-timeline dins d'animation. -->
     <style is:inline>
@@ -2334,6 +2336,9 @@ const schema = {
               .then(async (res) => {
                 const result = await res.json();
                 if (result.success) {
+                  // Copia al portal de clientes (sin await y sin la clave de Web3Forms)
+                  if (typeof window.copiarAlPortal === "function")
+                    window.copiarAlPortal({ ...data, access_key: undefined, pagina: "Landing Software a mida Alcoi" });
                   window.enviarEvento("generate_lead", { formulario: "software-a-mida-alcoi" });
                   if (typeof fbq === "function") fbq("track", "Lead");
                   if (typeof clarity === "function")

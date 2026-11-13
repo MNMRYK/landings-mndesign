@@ -1,5 +1,6 @@
 ---
 import CookiesHead from "../../components/CookiesHead.astro";
+import PortalLeads from "../../components/PortalLeads.astro";
 import CookieBanner from "../../components/CookieBanner.astro";
 import "./style.css";
 
@@ -295,6 +296,7 @@ const schema = {
     <script type="application/ld+json" is:inline set:html={JSON.stringify(schema)} />
 
     <CookiesHead />
+    <PortalLeads />
   </head>
   <body>
     <header class="navbar" id="main-nav">
@@ -1732,6 +1734,9 @@ const schema = {
               .then(async (res) => {
                 const result = await res.json();
                 if (result.success) {
+                  // Copia al portal de clientes (sin await y sin la clave de Web3Forms)
+                  if (typeof window.copiarAlPortal === "function")
+                    window.copiarAlPortal({ ...data, access_key: undefined, pagina: "Landing Clínicas", empresa: data.clinica });
                   window.enviarEvento("generate_lead", { formulario: "clinicas" });
                   if (typeof fbq === "function") fbq("track", "Lead");
                   if (typeof clarity === "function")

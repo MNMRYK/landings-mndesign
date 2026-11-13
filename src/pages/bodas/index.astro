@@ -1,5 +1,6 @@
 ---
 import CookiesHead from "../../components/CookiesHead.astro";
+import PortalLeads from "../../components/PortalLeads.astro";
 import CookieBanner from "../../components/CookieBanner.astro";
 ---
 
@@ -183,6 +184,7 @@ import CookieBanner from "../../components/CookieBanner.astro";
       ]
     </script>
     <CookiesHead />
+    <PortalLeads />
   </head>
   <body
     class="bg-white text-slate-900 antialiased selection:bg-purple-200 selection:text-purple-900"
@@ -1039,6 +1041,9 @@ import CookieBanner from "../../components/CookieBanner.astro";
               .then(async (res) => {
                 const result = await res.json();
                 if (result.success) {
+                  // Copia al portal de clientes (sin await y sin la clave de Web3Forms)
+                  if (typeof window.copiarAlPortal === "function")
+                    window.copiarAlPortal({ ...data, access_key: undefined, pagina: "Landing Bodas · Invitación" });
                   window.enviarEvento("generate_lead", { formulario: "invitacion_boda" });
                   if (typeof fbq === "function") fbq("track", "Lead");
                   if (typeof clarity === "function")

@@ -1,5 +1,6 @@
 ---
 import CookiesHead from "../../components/CookiesHead.astro";
+import PortalLeads from "../../components/PortalLeads.astro";
 import CookieBanner from "../../components/CookieBanner.astro";
 import "./style.css";
 ---
@@ -195,6 +196,7 @@ import "./style.css";
 
 
     <CookiesHead />
+    <PortalLeads />
   </head>
 
   <body class="academy-landing-body">
@@ -1414,6 +1416,9 @@ import "./style.css";
               .then(async (res) => {
                 const result = await res.json();
                 if (result.success) {
+                  // Copia al portal de clientes (sin await y sin la clave de Web3Forms)
+                  if (typeof window.copiarAlPortal === "function")
+                    window.copiarAlPortal({ ...data, access_key: undefined, pagina: "Landing Academia nutrición · Dossier" });
                   window.enviarEvento("generate_lead", { formulario: "dossier_academia" });
                   if (typeof fbq === "function") fbq("track", "Lead");
                   if (typeof clarity === "function")
@@ -1480,6 +1485,9 @@ import "./style.css";
               .then(async (res) => {
                 const result = await res.json();
                 if (result.success) {
+                  // Copia al portal de clientes (sin await y sin la clave de Web3Forms)
+                  if (typeof window.copiarAlPortal === "function")
+                    window.copiarAlPortal({ ...data, access_key: undefined, pagina: "Landing Academia nutrición · Contacto" });
                   window.enviarEvento("generate_lead", { formulario: "academia_nutricion" });
                   if (typeof fbq === "function") fbq("track", "Lead");
                   if (typeof clarity === "function")

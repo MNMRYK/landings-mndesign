@@ -1,5 +1,6 @@
 ---
 import CookiesHead from "../../components/CookiesHead.astro";
+import PortalLeads from "../../components/PortalLeads.astro";
 import CookieBanner from "../../components/CookieBanner.astro";
 import "./style.css";
 
@@ -529,6 +530,7 @@ const schema = {
 
     <!-- Google Analytics -->
     <CookiesHead />
+    <PortalLeads />
   </head>
 
   <body>
@@ -2391,6 +2393,9 @@ const schema = {
               .then(async (res) => {
                 const result = await res.json();
                 if (result.success) {
+                  // Copia al portal de clientes (sin await y sin la clave de Web3Forms)
+                  if (typeof window.copiarAlPortal === "function")
+                    window.copiarAlPortal({ ...data, access_key: undefined, pagina: "Landing Psicólogos · Contacto" });
                   window.enviarEvento("generate_lead", { formulario: "psicologos" });
                   if (typeof fbq === "function") fbq("track", "Lead");
                   if (typeof clarity === "function")
@@ -2445,6 +2450,9 @@ const schema = {
             })
             .then(function (result) {
               if (!result.success) throw new Error("Error en el envío");
+              // Copia al portal de clientes (sin await y sin la clave de Web3Forms)
+              if (typeof window.copiarAlPortal === "function")
+                window.copiarAlPortal({ ...data, access_key: undefined, pagina: "Landing Psicólogos · Checklist RGPD" });
               window.enviarEvento("generate_lead", { formulario: "checklist_rgpd" });
               if (typeof fbq === "function")
                 fbq("track", "Lead", { content_name: "Checklist RGPD" });

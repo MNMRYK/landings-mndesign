@@ -3,6 +3,7 @@
 // La antigua página de software en valenciano que vivía aquí está ahora en /software-a-mida-alcoi/.
 // Antes de tocarla, lee CLAUDE.md y MEMORIA-SEO.md (estrategia y reglas de SEO).
 import CookiesHead from "../../components/CookiesHead.astro";
+import PortalLeads from "../../components/PortalLeads.astro";
 import CookieBanner from "../../components/CookieBanner.astro";
 import "./tailwind.css";
 import "./style.css";
@@ -526,6 +527,7 @@ const marquee = [
     <script type="application/ld+json" is:inline set:html={JSON.stringify(schema)} />
 
     <CookiesHead />
+    <PortalLeads />
 
     <!-- Efectos ligados al scroll (scroll-driven animations, solo CSS). Inline porque el
          minificador fusiona animation-timeline dentro de animation y el navegador descarta la regla. -->
@@ -1721,6 +1723,9 @@ const marquee = [
             .then(async (res) => {
               const result = await res.json();
               if (!result.success) throw new Error("Error en el envío");
+              // Copia al portal de clientes (sin await y sin la clave de Web3Forms)
+              if (typeof w.copiarAlPortal === "function")
+                w.copiarAlPortal({ ...data, access_key: undefined, pagina: "Landing Alcoi · Diseño web", empresa: data.negocio });
               w.enviarEvento("generate_lead", { formulario: "alcoy" });
               if (typeof w.fbq === "function") w.fbq("track", "Lead");
               if (typeof w.clarity === "function") w.clarity("set", "lead", "web");
